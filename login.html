@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Login</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/Login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <!-- JS -->
+    <script src="./js/login.js"></script>
+    <script src="./js/data.js"></script>
+    <script src="./js/script.js"></script>
+
+</head>
+
+<body onload="loadNewUser()">
+    <div class="body-login" id="body-login1">
+        <div class="form-box" id="form-box1">
+            <h1>Login</h1>
+
+            <div class="input-box">
+                <i class="fa fa-envelope icon"></i>
+                <input required class="email-input" type="email" placeholder="E-mail" id="user">
+            </div>
+
+            <div class="input-box">
+                <i class="fa fa-key icon"></i>
+                <input class="password-input" type="password" placeholder="Passwort" id="password">
+                <span class="eye" onclick="showPassword()">
+            <i class="fa fa-eye" id="hide1"></i>
+            <i class="fa fa-eye-slash" id="hide2"></i>
+            </span>
+            </div>
+
+            <button type="button" class="login-btn" onclick="checkLogin()">Login</button>
+            <button type="button" class="login-button" onclick="openRegisterWindow()">Register</button>
+        </div>
+    </div>
+
+
+    <div class="body-login display-none" id="body-login2">
+        <div class="form-box" id="form-box2">
+            <h1>Register</h1>
+
+            <div class="input-box">
+                <i class="fa fa-user icon"></i>
+                <input required class="email-input" type="text" placeholder="Name" id="new-name">
+            </div>
+
+            <div class="input-box">
+                <i class="fa fa-envelope icon"></i>
+                <input required class="email-input" type="email" placeholder="E-mail" id="new-user">
+            </div>
+
+            <div class="input-box">
+                <i class="fa fa-key icon"></i>
+                <input class="password-input" type="password" placeholder="Passwort" id="new-password">
+                <span class="eye" onclick="showPasswordRegister()">
+            <i class="fa fa-eye" id="hide3"></i>
+            <i class="fa fa-eye-slash" id="hide4"></i>
+            </span>
+            </div>
+
+            <button type="button" class="login-btn" onclick="registerNewUser()">Register</button>
+            <button type="button" class="login-button" onclick="closeRegisterWindow()">Back</button>
+        </div>
+    </div>
+</body>
+
+</html>

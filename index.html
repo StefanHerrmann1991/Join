@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 1. Libraries -->
+    <!-- fonts -->
+    <link rel="stylesheet" href="css/fonts.css">
+    <!-- 2. Own stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+    </style>
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script src="js/includeHTML.js"></script>
+    <title>Join</title>
+    <script>
+        async function init() {
+            setURL('https://228.developerakademie.net/smallest_backend_ever');
+            await downloadFromServer();
+            users = JSON.parse(backend.getItem('tasks')) || [];
+        }
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js?thirdparty=1&always=1&noGeoIp=1&blocking=1"></script>
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+</head>
+
+<body onload="includeHTML()">
+
+    <!-- <div class="content-wrap"> -->
+
+    <!-- site-content -->
+    <main>
+        <div class="mainpage-start">
+            <div w3-include-html="navbar.html"></div>
+            <div class="main-wrap">
+                <div class="welcome-text">
+
+                    <h2 class="welcome">Wilkommen</h2>
+                    <span>Dieses Kanban-Projekt ist in Teamarbeit entstanden.</span> <br>
+                    <span>Hier können Sie Aufgaben Anlegen, diese nach Dringlichkeit Sortieren und bestimmten
+                        Mitarbeitern zuteilen. </span> <br>
+                    <span> Unter dem Reiter <b>Help</b> finden Sie alle wichtigen Informationen um die Seite optimal
+                        nutzen zu können.</span>
+                </div>
+
+                <div class="links-wrap">
+
+                    <a href="./01board.html">
+                        <div class="card">
+                            <div class="card-center">
+                                <img class="card-image" src="./img/Board.jpg" alt="">
+                                <h3 class="card-title">Board</h3>
+                            </div>
+
+                        </div>
+                    </a>
+
+
+                    <a href="./02backlog.html">
+                        <div class="card">
+                            <div class="card-center">
+                                <img class="card-image" src="./img/Backlog.jpg" alt="">
+                                <h3 class="card-title">Backlog</h3>
+                            </div>
+
+                        </div>
+                    </a>
+
+
+                    <a href="./03addToTask.html">
+                        <div class="card">
+                            <div class="card-center">
+                                <img class="card-image" src="./img/create.jpg" alt="">
+                                <h3 class="card-title">Add Task</h3>
+                            </div>
+
+                        </div>
+                    </a>
+
+
+                    <a href="./04help.html">
+                        <div class="card">
+                            <div class="card-center">
+                                <img class="card-image" src="./img/help.jpg" alt="">
+                                <h3 class="card-title">Help</h3>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- </div> -->
+    <!-- end: content-wrap -->
+    <!-- <footer></footer> -->
+
+</body>
+
+</html>

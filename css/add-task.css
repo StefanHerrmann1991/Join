@@ -1,0 +1,282 @@
+/*AddToTask these are the styles for the add To Task Sub Page of the canban-board*/
+
+.add-task-container {
+    width: 100%;
+}
+
+.add-to-task-sub-menu {
+    padding: 40px 50px 95px 50px;
+    max-width: 1000px;
+    /* aligned with left edge of first board (try) */
+    padding-left: calc(50% - 476px);
+    /* width form inkl p & m: 952px */
+}
+
+.add-to-task-sub-menu p {
+    font-size: 14px;
+    /* color: rgb(14, 11, 167); */
+    color: var(--col-blue1);
+}
+
+.task-input-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4em;
+}
+
+.task-input-container {
+    background-color: rgb(233, 233, 241);
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 12px;
+    max-width: 1000px;
+}
+
+.form-field {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 16px;
+    padding-bottom: 40px;
+    gap: 0 50px;
+}
+
+.form-field input {
+    height: 50px;
+    width: 400px;
+    outline: none;
+    padding-left: 10px;
+}
+
+.form-field select {
+    height: 50px;
+    width: 415px;
+    outline: none;
+    padding-left: 10px;
+}
+
+.form-field textarea {
+    resize: none;
+    outline: none;
+    width: 405px;
+    height: 180px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.form-field h2 {
+    color: rgb(0, 0, 116);
+    font-size: 16px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+.mgn-t {
+    margin-top: 20px;
+}
+
+.mgn-l {
+    margin-left: 20px;
+}
+
+.assignment-box {
+    background-color: rgb(233, 233, 241);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: -8px;
+    left: 25%;
+    /* right: 600px; */
+    width: 300px;
+    height: 150px;
+    overflow-y: auto;
+    border-radius: 12px;
+    /* border-style: solid; */
+    box-shadow: 0 0 3px 2px rgb(128, 128, 128, 0.8);
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-right: 0px !important;
+}
+
+.user-box {
+    /* margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px; */
+    margin: 10px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-left: 40px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.assignment-container {
+    /* padding-top: 80px; */
+    position: relative;
+    margin: 24px 0 32px 0;
+}
+
+.assignment-container img,
+.user-icon
+/* ,.assignment-btn  */
+
+{
+    height: 45px;
+    width: 45px;
+}
+
+.assignment-btn {
+    height: 35px;
+}
+
+.user-icon {
+    border-radius: 50%;
+    border: 1px solid rgb(192, 192, 192);
+    height: 45px;
+    /* padding: 10px 12px; */
+    color: var(--col-blue1);
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    opacity: 0.75;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    transition: all 225ms linear;
+}
+
+.assignment-container h2 {
+    padding-bottom: 12px;
+}
+
+.assignment-container img:hover,
+.user-icon:hover,
+.assignment-btn:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.assignment-button-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+    max-width: 85%;
+}
+
+.assign-button {
+    cursor: pointer;
+    height: 50px;
+    width: 130px;
+    color: white;
+    font-weight: bold;
+    background-color: rgb(34, 49, 139);
+    border-radius: 8px;
+    border-style: none;
+}
+
+.assign-button:hover {
+    transform: scale(1.01);
+    background-color: rgb(47, 68, 185);
+}
+
+.cancel-button {
+    cursor: pointer;
+    height: 50px;
+    width: 130px;
+    color: rgb(34, 49, 139);
+    font-weight: bold;
+    background-color: rgba(34, 50, 139, 0);
+    border-radius: 8px;
+    border-style: none;
+    /* border-color: rgb(34, 49, 139); */
+    box-shadow: 0 0 2px 1px rgb(34, 49, 139, 0.5);
+}
+
+.cancel-button:hover {
+    color: rgb(59, 84, 228);
+}
+
+.btn-box {
+    width: 100%;
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 32px;
+}
+
+#assignUser {
+    background-image: none;
+    height: 90px;
+}
+
+#closeBtn {
+    cursor: pointer;
+    color: var(--col-blue1);
+    font-weight: bold;
+}
+
+input {
+    border-radius: 10px;
+}
+
+select {
+    border-radius: 10px;
+}
+
+textarea {
+    border-radius: 10px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background-image: url("../img/icons8-calendar-150.png");
+    display: block;
+    font-size: 25px;
+    cursor: pointer;
+    margin-right: 4.5px;
+}
+
+select {
+    background: white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("../img/chevron.png");
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 0.75rem) center !important;
+    cursor: pointer;
+}
+
+.task-submit-success {
+    background-color: var(--col-green1);
+    opacity: 0.8;
+    border-radius: 8px;
+    border-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 20px;
+    width: 71%; */
+    /* height: 50px; */
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+    right: 0;
+    left: 0;
+    padding: 36px;
+    font-weight: bold;
+}
+
+.backlog-link {
+    padding: 0 8px;
+    text-decoration: underline;
+    color: white;
+}

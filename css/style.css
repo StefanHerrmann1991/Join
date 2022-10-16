@@ -1,0 +1,431 @@
+/* global css variables
+ Here we can define the basic color scheme (and other repeatet stuff) of our page */
+
+
+/* color scheme example: https://colorhunt.co/palette/533e85488fb14fd3c4c1f8cf (if 19.04) */
+
+:root {
+    /*** opacities ***/
+    --opacity0: 1;
+    /* --opacity: 1; */
+    /*** font-colors ***/
+    --col-main: #141E27;
+    --col-secondary: #515151;
+    --col-tertiary: #9a9a9a;
+    /*** colors ***/
+    --col-blue1: rgb(3, 4, 94);
+    /* TEST: can vars in vars be adapted as needed in classes? nope */
+    /* --col-blue1: rgba(75, 62, 133, var(opacity)); */
+    --col-blue2: #488FB1;
+    --col-blue3: #C1F8CF;
+    --col-teal: #4FD3C4;
+    --col-green1: #57CC99;
+    --col-red1: #EB5353;
+    --col-orange1: #fb6100;
+    --col-yellow1: #FFE162;
+    /* "led" background-lighting */
+    --led-priority0: 0 0 4px 2px rgba(0, 255, 221, 0.7);
+    --led-priority1: 0 0 3px 2px rgb(251, 255, 0, 0.7);
+    /* --led-priority2: 0 0 3px 1px rgb(255, 0, 0, 0.7); */
+    --led-priority2: 0 0 4px 2px rgba(255, 105, 86, 0.7);
+    /* alternativ*/
+    /*** border-radius ***/
+    /* 1rem ^= 16px (if not defined otherwise) */
+    --br-main: 0.25rem;
+    --br-secondary: 0.25rem;
+    /*** fonts ***/
+    --font-main: 'PT Sans', Helvetica, Arial, sans-serif;
+    /*--font-secondary: */
+    /*** box-shadows ***/
+    --shadow-light: 0 0 3px 1px rgba(0, 0, 0, 0.5);
+}
+
+
+/*** general ***/
+
+* {
+    margin: 0;
+    padding: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+body {
+    /* color: var(--col-main); */
+    color: white;
+    font-family: var(--font-main);
+    line-height: 1.5;
+    margin: 0;
+    min-height: 100vh;
+    position: relative;
+    /* background-color: rgba(211, 222, 220,0.9); */
+    /* background-color: rgba(200, 198, 198); */
+    background-color: rgba(53, 87, 107, 0.6);
+    overflow: auto;
+}
+
+
+/* background: transparent bg (picture) or overlay */
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url('../img/bg.jpg');
+    background-size: cover;
+    z-index: -1;
+    opacity: 0.35;
+}
+
+
+/* p {
+    color: var(--col-secondary);
+} */
+
+img {
+    /* ensures that the image is never larger than its container */
+    max-width: 100%;
+    /* ensures that the image keeps its aspect ratio */
+    height: auto;
+}
+
+input,
+textarea,
+select {
+    outline: none;
+    border: none;
+    box-shadow: 0 0 2px 1px rgb(128, 128, 128, 0.5);
+}
+
+option {
+    padding: 4px 0;
+}
+
+
+/*** impressum ***/
+
+.impressum-sub-menu {
+    padding-top: 80px;
+    padding-left: 50px;
+}
+
+.impressum-sub-menu p {
+    font-size: 14px;
+    /* color: rgb(14, 11, 167); */
+    color: var(--col-blue1);
+}
+
+.impressum {
+    /* height: 100vh; */
+    display: flex;
+    flex-direction: column;
+    /* font-size: 20px; */
+    padding: 50px;
+}
+
+/*** dataprotection ***/
+
+.datenschutz-sub-menu {
+    padding: 50px;
+    padding-bottom: 0;
+}
+
+.datenschutz-sub-menu p {
+    /* color: rgb(14, 11, 167); */
+    color: var(--col-blue1);
+}
+
+.datenschutz {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+}
+
+
+/*** generic classes ***/
+
+.d-none {
+    display: none !important;
+}
+
+
+/*** footer ***/
+
+
+/* this container ensures that the footer always stays in place 
+see: https://www.freecodecamp.org/news/how-to-keep-your-footer-where-it-belongs-59c6aa05c59c/ */
+
+.content-wrap {
+    padding-bottom: 3rem;
+    /* should match footer height */
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3rem;
+    box-sizing: border-box;
+}
+
+.footer {
+    position: absolute;
+    bottom: 30px;
+}
+
+.footer-content a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255) 50%, rgb(153, 153, 153) 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 350ms ease;
+    text-decoration: none;
+}
+
+.footer-content a:hover {
+    transform: scale(1.1);
+    transition: 225ms ease-in-out;
+    background-position: 0 100%;
+    cursor: pointer;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Board mainpage */
+
+.nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    padding: 66px 20px;
+    gap: 103px;
+    width: 30%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background: #2A3647;
+    /* nuevo */
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 0px;
+}
+
+
+.navbar-header {
+    width: 50px;
+    margin-top: 44px;
+    margin-bottom: 60px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar-menu-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    margin-top: 2em;
+    cursor: pointer;
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255) 50%, rgb(153, 153, 153) 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 350ms ease;
+    text-decoration: none;
+}
+
+.navbar-menu-text:hover {
+    transform: scale(1.1);
+    transition: 225ms ease-in-out;
+    background-position: 0 100%;
+    cursor: pointer;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    /* position:relative; */
+}
+
+
+/* mobile-bar-onclick-navbar */
+
+.mobile-onclick-navbar {
+    position: fixed;
+    top: 50px;
+    z-index: 50;
+    width: 100vw;
+    background-color: rgb(3, 4, 94, 0.75);
+}
+
+.mobile-onclick-navbar-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mobile-navbar-menu-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    margin-top: 0.5em;
+    cursor: pointer;
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255) 50%, rgb(153, 153, 153) 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 350ms ease;
+    text-decoration: none;
+}
+
+
+/* .mobile-navbar-menu-text:hover {
+    transform: scale(1.1);
+    transition: 225ms ease-in-out;
+    background-position: 0 100%;
+    cursor: pointer;
+} */
+
+
+/* mainpage-style */
+
+.mainpage-start {
+    display: flex;
+}
+
+.main-wrap {
+    width: 100vw;
+    height: 100vh;
+}
+
+.welcome-text {
+    text-align: center;
+    box-sizing: border-box;
+    /* color: darkslategray; */
+    padding-bottom: 24px;
+    outline-offset: -8px;
+    /* outline: 1px solid rgba(255, 255, 255, 0.25); */
+    /* background-color: rgba(211, 222, 220, 0.9); */
+    /* background-color: rgba(200, 198, 198); */
+    background-color: rgb(3, 4, 94, 0.5);
+    /*--col-blue1 aber mit opacity*/
+    background-color: rgba(0, 0, 0, 0.3);
+    /* border-bottom: 2px solid gray; */
+    /* height: 20vh; */
+}
+
+.welcome {
+    padding-top: 4vh;
+}
+
+.links-wrap {
+    overflow: hidden;
+}
+
+.links-wrap a {
+    color: white;
+}
+
+.card {
+    width: 100%;
+    height: 20vh;
+    background-color: #333;
+    outline: 1px solid rgba(255, 255, 255, 0.5);
+    outline-offset: -8px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-center {
+    display: flex;
+}
+
+.card-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    transition: transform 0.75s;
+}
+
+.card:hover .card-image {
+    transform: scale(1.15);
+    opacity: 0.8;
+}
+
+.card-title {
+    color: white;
+    z-index: 2;
+    font-size: 20px;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+
+/* modal-overlay */
+
+#overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    /* background-color: rgba(75, 62, 133, 0.75); */
+    background-color: rgba(14, 11, 167, 0.5);
+    /* --opacity: 0.5;
+    background-color: var(--col-blue1); */
+}
+
+
+/* edit form in overlay field */
+
+.edit-task-headline {
+    text-align: center;
+    /* width:100%;
+    line-break: after; */
+    color: white;
+}
+
+.form-section {
+    /* align-self: center; */
+    padding: 0 8px !important;
+}
+
+.edit-form {
+    margin: 20px;
+    margin-top: 0 !important;
+    /* padding-bottom: 40px; */
+    background-color: rgb(233, 233, 241);
+    border-radius: 12px;
+}
+
+.edit-form .assignment-container {
+    padding-top: 0;
+}

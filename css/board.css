@@ -1,0 +1,334 @@
+.board-container {
+    width: 100%;
+}
+
+.overflow-hidden {
+    overflow: hidden !important;
+}
+
+.board-sub-menu {
+    /* aligned with Logo on Sidenav (approximately as much as possible)*/
+    padding-top: 40px;
+    /* aligned with left edge of first board (try) */
+    padding-left: calc(40% - 580px);
+    /* width 4 boards - 1180px*/
+}
+
+.board-sub-menu p {
+    font-size: 14px;
+    /* color: rgb(14, 11, 167); */
+    color: var(--col-blue1);
+}
+
+.board-content {
+    overflow-x: auto;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 4em;
+    margin-bottom: 4em;
+    /* padding: 45px 50px;
+    padding-right: 0; */
+    padding-left: 20px;
+    /* padding-left: 50px; align boards with headline */
+    gap: 24px 0;
+    /* 24px top and bottom, 0px left and right between elements*/
+    color: var(--col-main);
+
+
+}
+
+.board-content h2 {
+    padding-bottom: 8px;
+    font-size: 17px;
+    text-align: center;
+    color: white;
+}
+
+.board-task-container {
+    position: relative;
+    /* margin-right: 20px; */
+    padding: 5px;
+    min-width: 265px;
+    max-width: 265px;
+    min-height: 550px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(233, 233, 241);
+    box-shadow: 0.5px 0.5px 4px 0.5px #b9b9b9;
+}
+
+.task {
+    /* border: 1px solid gray; */
+    box-shadow: 0 0 2px 1px rgba(139, 139, 139, 0.5);
+    border-radius: 8px;
+    width: 95%;
+    margin-top: 0.75em;
+    min-height: 110px;
+    overflow-y: auto;
+    /* TEST: */
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.task:hover {
+    cursor: pointer;
+}
+
+.task p {
+    cursor: pointer;
+}
+
+.task-headline-text {
+    padding-left: 47px;
+    padding-right: 47px;
+    padding-top: 8px;
+}
+
+.task-description-text {
+    text-align: center;
+    max-width: 300px;
+    overflow-wrap: break-word;
+}
+
+.light-text {
+    color: var(--col-secondary);
+    text-align: left;
+}
+
+.task-links {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    right: 12px;
+    /* left: 5px; */
+    display: flex;
+    justify-content: space-between;
+    /* z-index: -1; */
+    transition: all 225ms linear;
+}
+
+.task-links a {
+    color: gray;
+    font-weight: bold;
+    padding: 4px 8px;
+}
+
+.delete-task,
+.edit-task {
+    width: 22px;
+    transition: all 225ms linear;
+}
+
+.delete-task:hover,
+.edit-task:hover {
+    cursor: pointer;
+    transform: scale(1.25);
+}
+
+.members {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 8px;
+    margin-bottom: 40px;
+}
+
+.members img,
+.members .user-icon {
+    height: 35px;
+    width: 35px;
+    font-size: 0.8rem;
+}
+
+
+/*Backrounds for the different urgency of the tasks */
+
+.background-urgency-high {
+    background-color: rgba(197, 197, 197);
+    /* border: 3px solid var(--col-red1); */
+    box-shadow: var(--led-priority2);
+    transition: all 225ms linear;
+}
+
+.background-urgency-high:hover {
+    /* background-color: rgba(228, 87, 87, 0.2); */
+    /* background-color: rgba(168, 67, 60, 0.3); */
+    background-color: rgba(173, 123, 126, 0.4);
+    transform: scale(1.01);
+}
+
+.background-urgency-medium {
+    background-color: rgba(197, 197, 197);
+    /* border: 3px solid var(--col-yellow1); */
+    box-shadow: var(--led-priority1);
+    transition: all 225ms linear;
+}
+
+.background-urgency-medium:hover {
+    background-color: rgba(255, 255, 0, 0.2);
+    transform: scale(1.01);
+}
+
+.background-urgency-low {
+    background-color: rgba(197, 197, 197);
+    /* border: 3px solid var(--col-green1); */
+    box-shadow: var(--led-priority0);
+    transition: all 225ms linear;
+}
+
+.background-urgency-low:hover {
+    background-color: rgba(0, 128, 0, 0.2);
+    transform: scale(1.01);
+}
+
+.scroll-bar {
+    overflow-x: auto;
+    max-height: 560px;
+    margin-right: 20px;
+    box-shadow: 0 0 4px 3px rgb(251, 97, 0, 0.5);
+    border-radius: 8px;
+    background-color: rgb(233, 233, 241);
+}
+
+.scroll-bar-small {
+    overflow-y: auto;
+}
+
+.hide-scrollbar {
+    overflow: hidden;
+}
+
+
+/* scrollbar-mainpage */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #333;
+    background: aliceblue;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, .5);
+    background: var(--col-blue1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, .75);
+}
+
+
+/* Scrollbar small */
+
+.scroll-bar::-webkit-scrollbar {
+    width: 6px;
+    height: 0px;
+}
+
+.scroll-bar::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 15px;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+    /* background: rgb(14, 11, 167); */
+    background: var(--col-blue1);
+    border-radius: 15px;
+    transition: ease-in-out 200ms;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb:hover {
+    background: #fb6100;
+}
+
+.move-to {
+    display: none;
+    /* margin-bottom: 16px; */
+}
+
+.move-to-btn {
+    z-index: 2;
+    padding: 8px;
+    margin-bottom: 16px;
+}
+
+
+/* TODO */
+
+.show-more {
+    z-index: 2;
+    cursor: pointer;
+    display: unset;
+    padding: 8px;
+}
+
+.icon-replacement {
+    cursor: default !important;
+}
+
+.description-transition-in {
+    animation: trans-in 600ms;
+}
+
+@keyframes trans-in {
+    0% {
+        transform: translateY(150px)
+    }
+
+    70% {
+        transform: translateY(0px);
+    }
+}
+
+.description-transition-out {
+    animation: trans-out 600ms;
+}
+
+@keyframes trans-out {
+    0% {
+        transform: translateY(0px)
+    }
+
+    70% {
+        transform: translateY(-150px);
+    }
+}
+
+.input-bar input {
+    background-color: rgb(233, 233, 241);
+   
+    outline: none;
+    border: none !important;
+    box-shadow: none;
+    font-size: 17px;
+}
+
+.input-bar {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(233, 233, 241);
+    margin-left: 20px;
+    width: 265px;
+    color: black;
+    border: none !important;
+    border-radius: 8px;
+}
+
+.input-bar img {
+    height: 35px;
+    cursor: pointer;
+
+
+}
+
+.input-bar img:hover {
+    transform: scale(1.05);
+}

@@ -1,0 +1,295 @@
+@media (min-width: 970px) {
+    .hide-mainpage {
+        display: none;
+    }
+}
+
+@media (max-width: 1363px) {
+    .board-sub-menu {
+        padding-left: 0 !important;
+        text-align: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .form-field {
+        flex-direction: column;
+    }
+    .add-to-task-sub-menu {
+        text-align: center;
+        /* padding-top: 85px;
+        padding-bottom: 55px; */
+    }
+}
+
+@media (max-width: 1065px) {}
+
+@media (max-width: 720px) {
+    .welcome-text {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 970px) {
+    /* mobile-changes */
+    .hide-mobile {
+        display: none;
+    }
+    .nav-bar-mobile {
+        /* background-color: rgb(30, 30, 171); */
+        /* background-color: var(--col-blue1); */
+        background-color: rgb(3, 4, 94, 0.8);
+        box-shadow: 0 0 3px 1px rgb(128, 128, 128, 0.7);
+        position: fixed;
+        z-index: 100;
+        top: 0;
+        right: 0;
+        left: 0;
+    }
+    .nav-bar-mobile-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .mobile-menu {
+        height: 25px;
+        position: absolute;
+        top: 13px;
+        left: 15px;
+        cursor: pointer;
+    }
+    .mobile-x {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        cursor: pointer;
+    }
+    .mobile-logo {
+        height: 35px;
+        padding: 5px;
+    }
+    .navbar-container {
+        height: 90vh;
+        padding-top: 10vh;
+        position: absolute;
+        /* background-color: rgb(3, 4, 94, 0.5); */
+    }
+    /* start-page */
+    .welcome-text {
+        padding-top: 40px;
+        /* height: 28vh; */
+    }
+    .card {
+        height: 18vh;
+    }
+    .backlog-buttons {
+        display: flex;
+        flex-direction: column;
+        right: 0px;
+    }
+    .delete-backlog {
+        width: 25px;
+    }
+    .backlog-arrow {
+        width: 25px;
+        padding-bottom: 10px;
+    }
+    .backlog-titles {
+        padding-left: 8px;
+    }
+    .log h4 {
+        font-size: 12px;
+    }
+    .category {
+        padding-left: 8px;
+    }
+    /* adjust headline */
+    .board-sub-menu {
+        padding-top: 85px;
+        padding-left: 0 !important;
+        text-align: center;
+    }
+    .backlog-sub-menu {
+        padding-top: 85px;
+    }
+    /* .backlog-sub-menu h1, .backlog-sub-menu p {
+        text-align: center;
+    } */
+    .add-to-task-sub-menu {
+        text-align: center;
+        padding-top: 85px;
+        padding-bottom: 55px;
+    }
+    .task-submit-success {
+        top: 50px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Add Task mobile view */
+    .form-field div {
+        padding-right: 0;
+    }
+    .form-field input {
+        width: 75vw;
+    }
+    .form-field select {
+        width: 78vw;
+    }
+    .form-field textarea {
+        width: 76vw;
+    }
+    .add-to-task-sub-menu {
+        padding: 80px 10px;
+    }
+    .task-input-wrap {
+        margin-top: -2em;
+    }
+    .board-sub-menu {
+        padding-left: 0 !important;
+        text-align: center;
+    }
+    /* overflow hidden while opening mobile-menu */
+    .board-container {
+        overflow: hidden;
+    }
+    .backlog-sub-menu {
+        overflow: hidden;
+    }
+    .add-task-container {
+        overflow: hidden;
+    }
+    .help-container {
+        overflow: hidden;
+        margin-left: 1em;
+        margin-top: 4em;
+    }
+    .impressum-container {
+        overflow: hidden;
+    }
+    .datenschutz-container {
+        overflow: hidden;
+    }
+    /* help-section respnsive */
+    .help-header {
+        margin-right: 1em;
+    }
+    .help-list-container {
+        margin-left: 2em;
+        margin-right: 2em;
+        margin-top: 3em;
+    }
+    .help-subheadlines {
+        margin-left: 1.5em;
+    }
+    .help-sublist {
+        margin-left: 4em;
+    }
+    /* Backlog responsive */
+    h2 {
+        font-size: 1em;
+    }
+    .backlog-sub-menu {
+        padding-left: 5px;
+        padding-right: 42px;
+    }
+    .hide-long-text {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden !important;
+    }
+    /* impressum */
+    .impressum-sub-menu {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .impressum {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    /* datenschutz */
+    .datenschutz-sub-menu {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .datenschutz {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .task-description-text {
+        padding-bottom: 10px;
+    }
+    .move-to-btn {
+        margin-bottom: 20px;
+    }
+    .move-to {
+        display: unset;
+        padding-top: 50px;
+    }
+    .move-to img {
+        width: 24px;
+    }
+    .move-to img:hover {
+        transform: scale(1.05);
+    }
+    .move-button-box {
+        /* padding-top: 0px; */
+        margin-top: -24px;
+        margin-bottom: 32px;
+    }
+    .move-button {
+        font-weight: bold;
+        height: 20px;
+        width: 70%;
+        border-radius: 12px;
+        background-color: rgb(208, 233, 255);
+        border: none;
+    }
+    .move-button:hover {
+        cursor: pointer;
+        transform: scale(1.02);
+    }
+    .move-button-box-transition-in {
+        animation: trans-in 600ms;
+    }
+    @keyframes trans-in {
+        0% {
+            transform: translateY(150px)
+        }
+        70% {
+            transform: translateY(0px);
+        }
+    }
+    .move-button-box-transition-out {
+        animation: trans-out 600ms;
+    }
+    @keyframes trans-out {
+        0% {
+            transform: translateY(0px)
+        }
+        70% {
+            transform: translateY(-150px);
+        }
+    }
+    /* Scrollbar */
+    .scroll-bar::-webkit-scrollbar {
+        width: 0px;
+        height: 0px;
+    }
+    .welcome-text {
+        font-size: 14px;
+    }
+    .welcome {
+        padding-top: 3vh;
+    }
+    .scroll-bar {
+        overflow-y: auto;
+        max-height: 500px;
+    }
+    .board-task-container {
+        min-height: 200px;
+    }
+    .members {
+        margin-bottom: 5px;
+    }
+}
