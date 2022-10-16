@@ -240,6 +240,12 @@ footer {
     margin-bottom: 60px;
 }
 
+.join-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 a {
     text-decoration: none;
 }
