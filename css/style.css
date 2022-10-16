@@ -206,15 +206,20 @@ footer {
 }
 
 
+.navbar-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
 /* Board mainpage */
 
 .nav-bar {
     position: sticky;
     top: 0;
     z-index: 99;
-    padding: 66px 20px;
-    gap: 103px;
-    width: 30%;
+    padding: 66px 20px;   
+    width: 50%;
     height: 100%;
     left: 0px;
     top: 0px;
