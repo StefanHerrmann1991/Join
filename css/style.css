@@ -168,8 +168,8 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 3rem;
-    box-sizing: border-box;
+    height: 1rem;
+
 }
 
 .footer {
@@ -201,8 +201,8 @@ footer {
 
 .footer-content {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column;   
+    justify-content: flex-start;
 }
 
 
@@ -229,6 +229,10 @@ footer {
     border-radius: 0px;
 }
 
+.footer-content img {
+    height: 22px;
+    width: 22px;
+}
 
 .navbar-header {
     width: 50px;
