@@ -11,7 +11,6 @@
     <!-- 2. Own stylesheets -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/backlog.css">
-    <link rel="stylesheet" href="css/add-task.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/add-task.css">
     <link rel="stylesheet" href="css/board.css">
@@ -24,7 +23,6 @@
     <script src="js/templates.js"></script>
     <script src="js/script.js"></script>
     <script src="js/includeHTML.js"></script>
-    <script src="js/board.js"></script>
     <!-- serverBackend for saving and loading tasks on the server -->
     <script src="js/mini_backend.js"></script>
 
@@ -34,30 +32,43 @@
             setURL('https://gruppe-228.developerakademie.net/smallest_backend_ever');
             await downloadFromServer();
             tasks = JSON.parse(backend.getItem('tasks')) || [];
-            boards = JSON.parse(backend.getItem('boards')) || [];
         }
     </script>
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js?thirdparty=1&always=1&noGeoIp=1&blocking=1"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js?thirdparty=1&always=1&noGeoIp=1&blocking=1"></script>
 
     <title>Join</title>
     <!-- favicon -->
     <link rel="icon" type="image/x-icon" href="img/logo.png">
 </head>
 
-<body onload="initSummary()">
+<body onload="initBacklog()">
 
-    <div id="overlay" class="d-none" onclick="hide('overlay'); show('nav-bar')"></div>
+    <div id="overlay" class="d-none" onclick="hide('overlay')"></div>
+
     <div class="menu">
         <div w3-include-html="navbar.html"></div>
-        <div class="summary-menu" id="summaryMenu">
-            
+        <div class="backlog-sub-menu">
+            <h1>Backlog</h1>
+            <p>Learning Management System Project</p>
+
+            <div class="backlog-titles">
+                <div class="">
+                    <h2>Assigned To</h2>
+                </div>
+                <div class="category">
+                    <h2>Category</h2>
+                </div>
+                <div class="details">
+                    <h2>Details</h2>
+                </div>
+            </div>
+            <div id="logs" class="backlog-tasks-container">
+            </div>
         </div>
-    </div>
 
 
-    <!-- <div class=""> -->
-    <!-- </div> -->
+        <!-- <div class=""> -->
+        <!-- </div> -->
 
     </div>
 

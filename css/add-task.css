@@ -67,7 +67,7 @@
 }
 
 .form-field h2 {
-    color: rgb(0, 0, 116);
+    color: #2A3647;
     font-size: 16px;
     padding-top: 20px;
     padding-bottom: 5px;
@@ -174,11 +174,11 @@
 
 .assign-button {
     cursor: pointer;
-    height: 50px;
+    height: 40px;
     width: 130px;
     color: white;
     font-weight: bold;
-    background-color: rgb(34, 49, 139);
+    background-color: #2A3647;
     border-radius: 8px;
     border-style: none;
 }
@@ -190,7 +190,7 @@
 
 .cancel-button {
     cursor: pointer;
-    height: 50px;
+    height: 40px;
     width: 130px;
     color: rgb(34, 49, 139);
     font-weight: bold;

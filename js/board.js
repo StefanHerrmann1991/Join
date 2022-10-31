@@ -1,5 +1,5 @@
 
-let boards = [];
+let boards = ['BACKLOG', 'SPRINT', 'TODO', 'INPROGRESS', 'DONE'];
 
 /**
  * This Function used  for rendering the boards with filters
@@ -13,14 +13,13 @@ function renderBoards() {
         boardTitle = boards[i]['boardTitle'];
         boardsContent.innerHTML += `
         <div>
-        <div>
+        <div>        
         <h2>${boardTitle}</h2>
         <button></button>
         </div>
-        <div class="scroll-bar" id="scroll-bar">
+        <div class="scroll-bar">
             <div id="${boardId}" class="board-task-container" ondrop="moveTo('${boardId}')" ondragover="allowDrop(event)"></div>
-        </div>
-           `  
+        </div>`  
         renderEachBoard(boardTitle, boardId);   
     } 
 }
