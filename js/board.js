@@ -24,8 +24,6 @@ function renderBoards() {
         renderEachBoard(boardTitle, boardId);   
     } 
 }
-/* Was fehlt input mit Knopf, ordentlicher json, style für das zeug. */
-/* boardId = todo boardName = todoBoard */
 
 function addNewBoard() {
 
@@ -47,7 +45,7 @@ function processBoardInputs() {
     return board;
 }
 
-
+/* TODO */
 function moreLettersRequired() {
 
 }

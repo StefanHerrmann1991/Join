@@ -18,7 +18,7 @@
     <!-- normalization css has been added to style.css: -->
     <!-- Scripts -->
     <script src="js/data.js"></script>
-    <script src="js/backlog.js"></script>
+    <script src="js/summary.js"></script>
     <script src="js/task.js"></script>
     <script src="js/assign.js"></script>
     <script src="js/templates.js"></script>
@@ -45,20 +45,14 @@
     <link rel="icon" type="image/x-icon" href="img/logo.png">
 </head>
 
-<body onload="initBacklog()">
+<body onload="initSummary()">
 
-    <div id="overlay" class="d-none" onclick="hide('overlay'); show('nav-bar')"></div>
     <div class="menu">
-        <div w3-include-html="navbar.html"></div>
-        <div class="summary-menu" id="summaryMenu">
-            
+        <div class="menu whole-page">
+            <div w3-include-html="navbar.html"></div>
         </div>
-    </div>
-
-
-    <!-- <div class=""> -->
-    <!-- </div> -->
-
+        <div class="summary-menu" id="summaryMenu">
+        </div>
     </div>
 
 </body>

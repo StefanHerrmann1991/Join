@@ -34,6 +34,11 @@ async function initBacklog() {
     renderLogs();
 }
 
+async function initSummary() {
+    await initTasksAndIncludeHTML();
+    await renderSummary();
+}
+
 
 /**
  * This function initTasksAndIncludeHTML() executes on load of html body
