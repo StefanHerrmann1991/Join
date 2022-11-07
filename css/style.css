@@ -54,9 +54,8 @@ body {
     /* color: var(--col-main); */
     color: white;
     font-family: var(--font-main);
-    line-height: 1.5;
     margin: 0;
-    min-height: 100vh;
+    height: 100vh;
     position: relative;
     /* background-color: rgba(211, 222, 220,0.9); */
     /* background-color: rgba(200, 198, 198); */
@@ -182,12 +181,10 @@ footer {
     font-weight: bold;
     color: white;
     cursor: pointer;
-    background: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255) 50%, rgb(153, 153, 153) 50%);
+    background: linear-gradient(to right, rgb(210, 169, 169), rgb(255, 255, 255) 50%, rgb(153, 153, 153) 50%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-size: 200% 100%;
-    background-position: 100%;
     transition: background-position 350ms ease;
     text-decoration: none;
 }
@@ -210,6 +207,8 @@ footer {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    margin-left: 3vw;
+    margin-right: 1vw;
 }
 
 /* Board mainpage */
@@ -217,10 +216,8 @@ footer {
 .nav-bar {
     position: sticky;
     top: 0;
-    padding-right: 20px;
-    padding-left: 20px;
-    z-index: 99;
-    width: 100%;
+    z-index: 99;  
+    width: 15vw;
     height: 100vh;
     left: 0px;
     top: 0px;
@@ -340,11 +337,13 @@ a {
     height: 100vh;
 }
 
+
 .welcome-text {
+    padding-top: 2.5vh;
     text-align: center;
     box-sizing: border-box;
     /* color: darkslategray; */
-    padding-bottom: 24px;
+   height: 20vh;
     outline-offset: -8px;
     /* outline: 1px solid rgba(255, 255, 255, 0.25); */
     /* background-color: rgba(211, 222, 220, 0.9); */
@@ -354,11 +353,10 @@ a {
     background-color: rgba(0, 0, 0, 0.3);
     /* border-bottom: 2px solid gray; */
     /* height: 20vh; */
+ 
 }
 
-.welcome {
-    padding-top: 4vh;
-}
+
 
 .links-wrap {
     overflow: hidden;

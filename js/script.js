@@ -22,16 +22,8 @@ async function initBoard() {
     renderBoards();
 }
 
-/**
- * This function initializes the tasks generated in the addToTask() function, the include HTML function
- * and load the backend with the init function.
- * Then the tasks are rendered in the backlog.
- * 
- */
-async function initBacklog() {
-    await initTasksAndIncludeHTML();
-    await init();
-    renderLogs();
+async function initSummary() {
+
 }
 
 async function initSummary() {
@@ -40,16 +32,7 @@ async function initSummary() {
 }
 
 
-/**
- * This function initTasksAndIncludeHTML() executes on load of html body
- */
-function initTasksAndIncludeHTML() {
-    //loadServerData(); // get data from ftp server
-    loadBoards()
-    loadTasks();
-    // Todo: get all local data additionally or only if there is no data on the server? 
-    includeHTML();
-}
+
 
 function splitID(id, separator) {
     let arrayOfStrings = id.split(separator);

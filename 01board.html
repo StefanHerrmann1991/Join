@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 1. Libraries -->
+    <!-- fonts -->
+    <link rel="stylesheet" href="css/fonts.css">
+    <!-- 2. Own stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/add-task.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- normalization css has been added to style.css: -->
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/board.js"></script>
+    <script src="js/task.js"></script>
+    <script src="js/templates.js"></script>
+    <script src="js/assign.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/includeHTML.js"></script>
+    <!-- serverBackend for saving and loading tasks on the server -->
+    <script src="js/mini_backend.js"></script>
+
+    <script>
+        async function init() {
+            setURL('https://gruppe-228.developerakademie.net/smallest_backend_ever');
+            await downloadFromServer();
+            tasks = JSON.parse(backend.getItem('tasks')) || [];
+        }
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js?thirdparty=1&always=1&noGeoIp=1&blocking=1"></script>
+    <title>Join</title>
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+</head>
+
+<body onload="initBoard()">
+    <div id="overlay" class="d-none" onclick="hide('overlay')"></div>
+    <div class="menu">
+        <div w3-include-html="navbar.html"></div>
+        <div class="board-container" id="boardContainer">
+            <div class="board-sub-menu">
+                <h1>Board</h1>
+                <p>Learning Management System Project</p>
+            </div>
+            <div class="board-content">
+                <div>
+                    <h2>TO DO</h2>
+                    <div class="scroll-bar" id="scroll-bar">
+                        <div id="todoBoard" class="board-task-container" ondrop="moveTo('todo')" ondragover="allowDrop(event)"></div>
+                    </div>
+                </div>
+                <div>
+                    <h2>IN PROGRESS</h2>
+                    <div class="scroll-bar" id="scroll-bar">
+                        <div id="inProgressBoard" class="board-task-container" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)"></div>
+                    </div>
+                </div>
+                <div>
+                    <h2>TESTING</h2>
+                    <div class="scroll-bar" id="scroll-bar">
+                        <div id="testingBoard" class="board-task-container" ondrop="moveTo('testing')" ondragover="allowDrop(event)"></div>
+                    </div>
+                </div>
+                <div>
+                    <h2>DONE</h2>
+                    <div class="scroll-bar" id="scroll-bar">
+                        <div id="doneBoard" class="board-task-container" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

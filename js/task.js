@@ -57,6 +57,19 @@ function processTaskInputs() {
     return task;
 }
 
+
+/**
+ * This function initTasksAndIncludeHTML() executes on load of html body
+ */
+ function initTasksAndIncludeHTML() {
+    //loadServerData(); // get data from ftp server
+    loadBoards()
+    loadTasks();
+    // Todo: get all local data additionally or only if there is no data on the server? 
+    includeHTML();
+}
+
+
 /**
  * Deletes an element from an array, updates the data on the server,  and renders boards.
  * @param {dataArray} @type {Array}
