@@ -1,0 +1,40 @@
+*
+    padding: 0px
+    margin: 0px
+    margin-block-end: 0px
+    margin-block-start: 0px
+
+$main-theme: #2A3647
+
+#navbar
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    align-items: center
+    position: absolute
+    padding-left: 2%
+    padding-right: 2%
+    width: 232px
+    height: 100vh
+    left: 0px
+    top: 0px
+    background: $main-theme
+    border-radius: 0px
+
+#logo
+    width: 100px
+    height: 122px
+
+.nav-item
+    display: flex
+    align-items: center
+    cursor: pointer
+    & img
+        width: 26px
+        height: 26px
+    & .nav-title
+        font-size: 18px
+
+@media screen and (max-width: 1920px)
+#navbar
+    width: calc(232px * 0.8)

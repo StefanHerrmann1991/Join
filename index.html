@@ -2,112 +2,60 @@
 <html lang="en">
 
 <head>
+
+    <!-- script data -->
+    <script src="includeHTML.js"></script>
+    <script src="main/00login-register/login.js"></script>
+    <script src="main/01summary/summary.js"></script>
+    <script src="main/02board/board.js"></script>
+    <script src="main/03addTasks/addTasks.js"></script>
+    <script src="main/04contacts/contacts.js"></script>
+    <!-- css data -->
+    <link rel="stylesheet" href="main/00login-register/login.css">
+    <link rel="stylesheet" href="main/01summary/summary.css">
+    <link rel="stylesheet" href="main/02board/board.css">
+    <link rel="stylesheet" href="main/03addTasks/addTasks.css">
+    <link rel="stylesheet" href="main/04contacts/contacts.css">
+    <link rel="stylesheet" href="main/05legal-notice/legal-notice.css">
+    <link rel="stylesheet" href="styles.css">
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 1. Libraries -->
-    <!-- fonts -->
-    <link rel="stylesheet" href="css/fonts.css">
-    <!-- 2. Own stylesheets -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            margin-block-start: 0;
-            margin-block-end: 0;
-        }
-    </style>
-    <!-- Scripts -->
-    <script src="js/script.js"></script>
-    <script src="js/includeHTML.js"></script>
     <title>Join</title>
-    <script>
-        async function init() {
-            setURL('https://228.developerakademie.net/smallest_backend_ever');
-            await downloadFromServer();
-            users = JSON.parse(backend.getItem('tasks')) || [];
-        }
-    </script>
-
-    <!-- favicon -->
-    <link rel="icon" type="image/x-icon" href="img/newJoinButtons/join.png">
 </head>
 
-<body onload="includeHTML()">
-
-    <!-- <div class="content-wrap"> -->
-
-    <!-- site-content -->
+<body>
     <main>
-        <div class="mainpage-start">
-            <div w3-include-html="navbar.html"></div>
-            <div class="main-wrap">
-                <div class="welcome-text ">
-                    <h2 class="welcome">Wilkommen</h2>
-                    <span>Dieses Kanban-Projekt ist in Teamarbeit entstanden.</span> <br>
-                    <span>Hier können Sie Aufgaben Anlegen, diese nach Dringlichkeit Sortieren und bestimmten
-                        Mitarbeitern zuteilen. </span> <br>
-                    <span> Unter dem Reiter <b>Help</b> finden Sie alle wichtigen Informationen um die Seite optimal
-                        nutzen zu können.</span>
+        <nav id="navbar">
+            <img id="logo" src="assets/img/navbar/logo.png">
+            <div>
+                <div class="nav-item">
+                    <img src="assets/img/navbar/summary.png">
+                    <div class="nav-title">Summary</div>
                 </div>
-
-                <div class="links-wrap">
-
-
-
-                    <a href="./01summary.html">
-                        <div class="card">
-                            <div class="card-center">
-                                <img class="card-image" src="./img/summary.jpg" alt="">
-                                <h3 class="card-title">Summary</h3>
-                            </div>
-
-                        </div>
-                    </a>
-
-
-                    <a href="./02board.html">
-                        <div class="card">
-                            <div class="card-center">
-                                <img class="card-image" src="./img/board.jpg" alt="">
-                                <h3 class="card-title">Board</h3>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="./03addToTask.html">
-                        <div class="card">
-                            <div class="card-center">
-                                <img class="card-image" src="./img/create.jpg" alt="">
-                                <h3 class="card-title">Add Task</h3>
-                            </div>
-
-                        </div>
-                    </a>
-
-
-                    <a href="./04contacts.html">
-                        <div class="card">
-                            <div class="card-center">
-                                <img class="card-image" src="./img/contacts.jpg" alt="">
-                                <h3 class="card-title">Contacts</h3>
-                            </div>
-
-                        </div>
-                    </a>
-
+                <div class="nav-item">
+                    <img src="assets/img/navbar/board.png">
+                    <div class="nav-title">Board</div>
                 </div>
-                </a>
+                <div class="nav-item">
+                    <img src="assets/img/navbar/addTasks.png">
+                    <div class="nav-title">Add Task</div>
+                </div>
+                <div class="nav-item">
+                    <img src="assets/img/navbar/contacts.png">
+                    <div class="nav-title">Contacts</div>
+                </div>
             </div>
-        </div>
-        </div>
+            <div id="legalNotice" class="nav-item">
+                <img src="assets/img/navbar/legalnotice.png">
+                <div class="nav-title">Legal notice</div>
+            </div>
+        </nav>
+
+        <div id="content"></div>
+
     </main>
-
-    <!-- </div> -->
-    <!-- end: content-wrap -->
-    <!-- <footer></footer> -->
-
 </body>
 
 </html>
