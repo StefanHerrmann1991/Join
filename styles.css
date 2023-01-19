@@ -7,6 +7,10 @@
           margin-block-start: 0px;
 }
 
+.main-menu .nav-item {
+  padding-top: 40px;
+}
+
 #navbar {
   display: flex;
   flex-direction: column;
@@ -29,9 +33,13 @@
 }
 
 .nav-item {
+  color: #FFFFFF;
   display: flex;
   align-items: center;
   cursor: pointer;
+}
+.nav-item img {
+  margin-right: 20px;
 }
 .nav-item img {
   width: 26px;
