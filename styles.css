@@ -26,6 +26,10 @@
   background: #2A3647;
   border-radius: 0px;
 }
+#navbar a {
+  color: white;
+  text-decoration: none;
+}
 
 #logo {
   width: 100px;

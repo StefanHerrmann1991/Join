@@ -4,20 +4,21 @@
 <head>
 
     <!-- script data -->
-    <script src="includeHTML.js"></script>
-    <script src="main/00login-register/login.js"></script>
-    <script src="main/01summary/summary.js"></script>
-    <script src="main/02board/board.js"></script>
-    <script src="main/03addTasks/addTasks.js"></script>
-    <script src="main/04contacts/contacts.js"></script>
+    <script src="/includeHTML.js"></script>
+    <script src="/script.js"></script>
+    <script src="/main/00login-register/login.js"></script>
+    <script src="/main/01summary/summary.js"></script>
+    <script src="/main/02board/board.js"></script>
+    <script src="/main/03addTasks/addTasks.js"></script>
+    <script src="/main/04contacts/contacts.js"></script>
     <!-- css data -->
-    <link rel="stylesheet" href="main/00login-register/login.css">
-    <link rel="stylesheet" href="main/01summary/summary.css">
-    <link rel="stylesheet" href="main/02board/board.css">
-    <link rel="stylesheet" href="main/03addTasks/addTasks.css">
-    <link rel="stylesheet" href="main/04contacts/contacts.css">
-    <link rel="stylesheet" href="main/05legal-notice/legal-notice.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/main/00login-register/login.css">
+    <link rel="stylesheet" href="/main/01summary/summary.css">
+    <link rel="stylesheet" href="/main/02board/board.css">
+    <link rel="stylesheet" href="/main/03addTasks/addTasks.css">
+    <link rel="stylesheet" href="/main/04contacts/contacts.css">
+    <link rel="stylesheet" href="/main/05legal-notice/legal-notice.css">
+    <link rel="stylesheet" href="/styles.css">
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,33 +29,33 @@
 <body>
     <main>
         <nav id="navbar">
-            <img id="logo" src="assets/img/navbar/logo.png">
+            <a src="index.html">
+                <img id="logo" src="/assets/img/navbar/logo.png">
+            </a>
             <div class="main-menu">
                 <div class="nav-item">
-                    <img src="assets/img/navbar/summary.png">
-                    <div class="nav-title">Summary</div>
+                    <img src="/assets/img/navbar/summary.png">
+                    <a class="nav-title" href="/main/01summary/summary.html">Summary</a>
                 </div>
                 <div class="nav-item">
-                    <img src="assets/img/navbar/board.png">
-                    <div class="nav-title">Board</div>
+                    <img src="/assets/img/navbar/board.png">
+                    <a class="nav-title" href="/main/02board/board.html">Board</a>
                 </div>
                 <div class="nav-item">
-                    <img src="assets/img/navbar/addTasks.png">
-                    <div class="nav-title">Add Task</div>
+                    <img src="/assets/img/navbar/addTasks.png">
+                    <a class="nav-title" href="/main/03addTasks/addTasks.html">Add Task</a>
                 </div>
                 <div class="nav-item">
-                    <img src="assets/img/navbar/contacts.png">
-                    <div class="nav-title">Contacts</div>
+                    <img src="/assets/img/navbar/contacts.png">
+                    <a class="nav-title" href="/main/04contacts/contacts.html">Contacts</a>
                 </div>
             </div>
             <div id="legalNotice" class="nav-item">
-                <img src="assets/img/navbar/legalnotice.png">
-                <div class="nav-title">Legal notice</div>
+                <img src="/assets/img/navbar/legalnotice.png">
+                <div class="nav-title" href="/main/05legal-notice/legal-notice.html">Legal notice</div>
             </div>
         </nav>
-
         <div id="content"></div>
-
     </main>
 </body>
 
