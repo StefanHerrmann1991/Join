@@ -40,6 +40,11 @@ function openContactDialog() {
   document.getElementById('addContactDialog').classList.remove('d-none');
 }
 
+
+function closeContactDialog() {
+  document.getElementById('addContactDialog').classList.add('d-none');
+  }
+
 function renderAddContact() {
   content.innerHTML = `
   <div>  
