@@ -14,4 +14,28 @@
 
 <body onload="includeHTML()">
     <div w3-include-html="../../index.html"></div>
+    <button class="add-contact-btn" onclick="openContactDialog()">New Contact<img
+            src="/assets/img/addContact.png"></button>
+
+    <div class="add-contact-dialog" id="addContactDialog">
+        <div class="add-contact" id="addContact">
+            <div class="add-contact-menu">
+                <div class="add-contact-description">
+                    <img src="/assets/img/logo.png">
+                    <h2>Add contact</h2>
+                    <p>Tasks are better with a team!</p>
+                </div>
+                <div class="add-contact-submenu">
+                    <img src="/assets/img/addContactBig.png">
+                    <form>
+                        <input type="text" id="name" name="name" required placeholder="Name">
+                        <input type="email" id="email" name="email" required placeholder="Email">
+                        <input type="tel" id="phone" name="phone" required placeholder="Phone">
+                        <button type=submit></button>
+                        <button onclick="cancelNewContact()"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
