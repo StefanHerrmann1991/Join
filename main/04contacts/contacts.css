@@ -66,6 +66,10 @@
   font-size: 18px;
 }
 
+button, a {
+  cursor: pointer;
+}
+
 #navbar {
   width: 185.6px;
 }
@@ -116,7 +120,7 @@
   justify-content: center;
   align-items: center;
   width: 90%;
-  height: 50%;
+  height: 70%;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-description {
   display: flex;
@@ -143,18 +147,83 @@
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-around;
   width: 60%;
   height: 100%;
   border-radius: 0px 30px 30px 0px;
   background-color: #FFFFFF;
+}
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu button img {
+  height: 24px;
+  width: 24px;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu img {
   height: 120px;
   width: 120px;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form {
+  width: 65%;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: space-evenly;
+}
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nthchild() {
+  margin-left: 12px;
+}
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nth-child(1) {
+  background-image: url(/assets/img/contacts/person.png);
+}
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nth-child(2) {
+  background-image: url(/assets/img/contacts/mail.png);
+}
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nth-child(3) {
+  background-image: url(/assets/img/contacts/phone-line.png);
+}
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu input {
+  font-size: 21px;
+  width: 100%;
+  margin-top: 8%;
+  margin-right: 10%;
+  margin-bottom: 8%;
+  border: 1px solid #D1D1D1;
+  border-radius: 10px;
+  padding: 13px 21px;
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: 95%;
+}
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn {
+  display: flex;
+  justify-content: flex-start;
+}
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn button {
+  margin-top: 8%;
+  margin-right: 10%;
+  margin-bottom: 8%;
+  display: flex;
+  align-items: center;
+  padding: 18px 10px;
+  border-radius: 10px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 120%;
+}
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn button img {
+  width: 24px;
+  height: 24px;
+  margin-left: 2px;
+}
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn button:first-child {
+  color: #2A3647;
+  border: 1px solid #2A3647;
+}
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn button:last-child {
+  background-color: #2A3647;
+  color: white;
+  margin-left: 10%;
+  border: none;
 }/*# sourceMappingURL=contacts.css.map */

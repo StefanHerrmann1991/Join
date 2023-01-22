@@ -46,7 +46,7 @@
         .add-contact-menu
             @include flex-center
             width: 90%
-            height: 50%
+            height: 70%
             .add-contact-description
                 display: flex
                 justify-content: center
@@ -67,14 +67,71 @@
                     height: 66px
                     width: 55px
             .add-contact-submenu
-                @include flex-center
+                display: flex
+                align-items: center
+                justify-content: space-around
                 width: 60%
                 height: 100%
                 border-radius: 0px 30px 30px 0px
                 background-color: #FFFFFF
+                button
+                    img
+                        height: 24px
+                        width: 24px
                 img
                     height: 120px
                     width: 120px
                 form
+                    width: 65%
                     display: flex
                     flex-direction: column
+                    justify-content: space-around
+                    align-items: space-evenly
+                    input:nthchild()
+                        margin-left: 12px
+                    input:nth-child(1)
+                        background-image: url(/assets/img/contacts/person.png)
+                    input:nth-child(2)
+                        background-image: url(/assets/img/contacts/mail.png)
+                    input:nth-child(3)
+                        background-image: url(/assets/img/contacts/phone-line.png)
+                input
+                    font-size: 21px
+                    width: 100%
+                    margin-top: 8%
+                    margin-right: 10%
+                    margin-bottom: 8%
+                    border: 1px solid #D1D1D1
+                    border-radius: 10px
+                    padding: 13px 21px
+                    background-size: 24px
+                    background-repeat: no-repeat
+                    background-position: 95%
+                .menu-btn
+                    display: flex
+                    justify-content: flex-start
+                    button
+                        margin-top: 8%
+                        margin-right: 10%
+                        margin-bottom: 8%
+                        display: flex
+                        align-items: center
+                        padding: 18px 10px
+                        border-radius: 10px
+                        font-family: 'Inter'
+                        font-style: normal
+                        font-weight: 700
+                        font-size: 21px
+                        line-height: 120%
+                        img
+                            width: 24px
+                            height: 24px
+                            margin-left: 2px
+                        &:first-child
+                            color: #2A3647
+                            border: 1px solid #2A3647
+                        &:last-child
+                            background-color: $main-theme
+                            color: white
+                            margin-left: 10%
+                            border: none

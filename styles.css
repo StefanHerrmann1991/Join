@@ -66,6 +66,10 @@
   font-size: 18px;
 }
 
+button, a {
+  cursor: pointer;
+}
+
 #navbar {
   width: 185.6px;
 }/*# sourceMappingURL=styles.css.map */
