@@ -1,23 +1,39 @@
 <head>
 
     <!-- script data -->
-    <script src="includeHTML.js"></script>
-    <script src="main/00login-register/login.js"></script>
-    <script src="main/01summary/summary.js"></script>
-    <script src="main/02board/board.js"></script>
-    <script src="main/03addTasks/addTasks.js"></script>
-    <script src="main/04contacts/contacts.js"></script>
+    <script src="../../includeHTML.js"></script>
+    <script src="login.js"></script>
     <!-- css data -->
-    <link rel="stylesheet" href="main/00login-register/login.css">
-    <link rel="stylesheet" href="main/01summary/summary.css">
-    <link rel="stylesheet" href="main/02board/board.css">
-    <link rel="stylesheet" href="main/03addTasks/addTasks.css">
-    <link rel="stylesheet" href="main/04contacts/contacts.css">
-    <link rel="stylesheet" href="main/05legal-notice/legal-notice.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="/assets/fonts.css">
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
 </head>
+
+<body>
+    <main>
+        <div class="login">
+            <img src="/assets/img/login/logo.png">
+            <div class="sign-up-container">
+                <div class="sign-up">
+                    <h2>Sign up</h2>
+                 
+                    <form onsubmit="createUser(event)">
+                        <input type="text" id="name" name="name" required placeholder="Name">
+                        <input type="email" id="email" name="email" required placeholder="Email">
+                        <input type="password" id="Password" name="Password" required placeholder="Password">
+                        <div class="menu-btn">
+                            <button type=submit>Sign up</button>
+                            <button>Back</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>

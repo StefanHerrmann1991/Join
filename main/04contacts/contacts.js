@@ -51,6 +51,7 @@ function createContact(event) {
   const email = document.getElementById('email').value;
   const phone = document.getElementById('phone').value;
   contactBook.addContact(name, email, phone, initials);
+  contactBook.sortContacts();
   closeContactDialog();
   console.log(contactBook.contacts);
 }

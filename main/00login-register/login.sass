@@ -1,0 +1,92 @@
+@import '../../styles.sass'
+
+.login
+    position: absolute
+    display: flex
+    justify-content: center
+    align-items: center
+    background: #F6F7F8
+    height: 100vh
+    width: 100vw
+    top: 0
+    left: 0
+    .sign-up-container
+        border-radius: 30px
+        position: relative
+        height: 60%
+        width: 60%
+        background-color: #FFFFFF
+
+    h2
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 700
+        font-size: 61px
+        line-height: 120%
+        text-align: center
+        color: #000000
+        border-bottom: 3px solid #29ABE2
+        padding-bottom: 2%
+    img
+        width: 100px
+        height: 122px
+        position: absolute
+        left: 5.35%
+        top: 7.81%
+    .sign-up
+        width: 100%
+        height: 100%
+        position: relative
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        form
+            width: 65%
+            display: flex
+            flex-direction: column
+            justify-content: space-around
+            align-items: space-evenly
+            input:nthchild()
+                margin-left: 12px
+            input:nth-child(1)
+                background-image: url(/assets/img/contacts/person.png)
+            input:nth-child(2)
+                background-image: url(/assets/img/contacts/mail.png)
+            input:nth-child(3)
+                background-image: url(/assets/img/login/lock.png)
+            input
+                font-size: 21px
+                width: 100%
+                margin-top: 8%
+                margin-right: 10%              
+                border: 1px solid #D1D1D1
+                border-radius: 10px
+                padding: 13px 21px
+                background-size: 24px
+                background-repeat: no-repeat
+                background-position: 95%
+.menu-btn
+    display: flex
+    justify-content: center
+    align-items: center
+    button
+        margin-top: 8%
+        margin-right: 10%
+        display: flex
+        align-items: center
+        padding: 18px 10px
+        border-radius: 10px
+        font-family: 'Inter'
+        font-style: normal
+        font-weight: 700
+        font-size: 21px
+        line-height: 120%
+        &:first-child
+            color: #2A3647
+            border: 1px solid #2A3647
+        &:last-child
+            background-color: $main-theme
+            color: white
+            margin-left: 10%
+            border: none
