@@ -1,6 +1,7 @@
 
 let contactBookId;
 let contact = [];
+let contactBooks = [{'userName' : contact}];
 
 
 class Contact {
@@ -8,6 +9,7 @@ class Contact {
     this.name = name;
     this.email = email;
     this.phone = phone;
+    this.initials = initials;
   }
 }
 
@@ -16,8 +18,8 @@ class ContactBook {
     this.contacts = [];
   }
 
-  addContact(name, email, phone) {
-    this.contacts.push(new Contact(name, email, phone));
+  addContact(name, email, phone, initials) {
+    this.contacts.push(new Contact(name, email, phone, initials));
   }
 
   sortContacts() {
@@ -48,7 +50,6 @@ function createContact(event) {
   const initials = getInitials(name);
   const email = document.getElementById('email').value;
   const phone = document.getElementById('phone').value;
-  
   contactBook.addContact(name, email, phone, initials);
   closeContactDialog();
   console.log(contactBook.contacts);
@@ -57,20 +58,27 @@ function createContact(event) {
 function getInitials(name) {
   const nameArray = name.split(' ');
   const firstNameInitial = nameArray.shift().substring(0,1);
-  const lastNameInitial = nameArray.pop().substring(0,1);
+  let lastNameInitial = "";
+  if (nameArray.length > 0) {
+    lastNameInitial = nameArray.pop().substring(0,1);
+  }
   const initials = firstNameInitial + lastNameInitial;
   return initials
 }
 
 
+function saveContacts() { };
+function loadContacts() { };
+function editContacts() { };
+
 function initContactBook() {
-  renderAddContact();
+  renderContacts();
 }
 
 
-function renderAddContact() {
+function renderContacts() {
   contactBookId = document.getElementById('contactBookId');
-  contactBookId.innerHTML += `
+  contactBookId.innerHTML = `
   <div>  
       Hallo
   </div>
