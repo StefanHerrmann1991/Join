@@ -1,22 +1,23 @@
 
-let content = document.getElementById('content');
-let contacts = [];
+let contactBookId;
+let contact = [];
 
 
 class Contact {
-  constructor(name) {
+  constructor(name, email, phone, initials) {
     this.name = name;
+    this.email = email;
+    this.phone = phone;
   }
 }
 
 class ContactBook {
   constructor() {
     this.contacts = [];
-    console.log(this.contacts);
   }
 
-  addContact(name) {
-    this.contacts.push(new Contact(name));
+  addContact(name, email, phone) {
+    this.contacts.push(new Contact(name, email, phone));
   }
 
   sortContacts() {
@@ -29,11 +30,6 @@ class ContactBook {
 }
 
 const contactBook = new ContactBook();
-contactBook.addContact("Stefan Herrmann");
-
-
-// Sort the contacts by name
-contactBook.sortContacts();
 
 
 function openContactDialog() {
@@ -43,16 +39,40 @@ function openContactDialog() {
 
 function closeContactDialog() {
   document.getElementById('addContactDialog').classList.add('d-none');
-  }
+}
+
+
+function createContact(event) {
+  event.preventDefault();
+  const name = document.getElementById('name').value;
+  const initials = getInitials(name);
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  
+  contactBook.addContact(name, email, phone, initials);
+  closeContactDialog();
+  console.log(contactBook.contacts);
+}
+
+function getInitials(name) {
+  const nameArray = name.split(' ');
+  const firstNameInitial = nameArray.shift().substring(0,1);
+  const lastNameInitial = nameArray.pop().substring(0,1);
+  const initials = firstNameInitial + lastNameInitial;
+  return initials
+}
+
+
+function initContactBook() {
+  renderAddContact();
+}
+
 
 function renderAddContact() {
-  content.innerHTML = `
+  contactBookId = document.getElementById('contactBookId');
+  contactBookId.innerHTML += `
   <div>  
-  <div>
-  <img src="assets/img/navbar/logo.png"
-  
-  
-  </div>
+      Hallo
   </div>
   `;
 
