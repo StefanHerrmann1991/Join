@@ -1,6 +1,6 @@
 @import '../../styles.sass'
 
-.login
+.register
     position: absolute
     display: flex
     justify-content: center
@@ -25,8 +25,18 @@
         line-height: 120%
         text-align: center
         color: #000000
-        border-bottom: 3px solid #29ABE2
         padding-bottom: 2%
+        position: relative
+        &:after
+            border-bottom: 3px solid #29ABE2
+            content: ""
+            width: 150px
+            height: 3px
+            position: absolute
+            bottom: 0
+            left: 50%
+            transform: translateX(-50%)
+
     img
         width: 100px
         height: 122px
@@ -59,7 +69,7 @@
                 font-size: 21px
                 width: 100%
                 margin-top: 8%
-                margin-right: 10%              
+                margin-right: 10%
                 border: 1px solid #D1D1D1
                 border-radius: 10px
                 padding: 13px 21px
@@ -74,6 +84,7 @@
         margin-top: 8%
         margin-right: 10%
         display: flex
+        justify-content: center
         align-items: center
         padding: 18px 10px
         border-radius: 10px
@@ -82,11 +93,52 @@
         font-weight: 700
         font-size: 21px
         line-height: 120%
+        width: 57%
         &:first-child
-            color: #2A3647
-            border: 1px solid #2A3647
-        &:last-child
             background-color: $main-theme
             color: white
             margin-left: 10%
             border: none
+        &:last-child
+            color: #2A3647
+            border: 1px solid #2A3647
+
+.login-option
+    margin-top: 8%
+    display: flex
+    align-items: center
+    justify-content: space-between
+    width: 100%
+    input
+        padding: 0px !important
+        margin: 0px !important
+
+.to-register
+    display: flex
+    align-items: center
+    position: absolute
+    position: absolute
+    right: 5.35%
+    top: 7.81%
+    button
+        background-color: $main-theme
+        display: flex
+        justify-content: center
+        align-items: center
+        padding: 4px 16px
+        width: 91px
+        height: 51px
+        border-radius: 8px
+        color: white
+        border: none
+        margin-left: 20px
+
+.highlight-blue
+    color: #29ABE2
+    cursor: pointer
+
+.remember-me
+    display: flex
+    nobr
+    padding-left: 10px
+    margin-left: 10px

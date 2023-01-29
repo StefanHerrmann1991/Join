@@ -14,26 +14,8 @@
     <title>Join</title>
 </head>
 
-<body>
+<body onload="initAuthentification()">
     <main>
-        <div class="login">
-            <img src="/assets/img/login/logo.png">
-            <div class="sign-up-container">
-                <div class="sign-up">
-                    <h2>Sign up</h2>
-                 
-                    <form onsubmit="createUser(event)">
-                        <input type="text" id="name" name="name" required placeholder="Name">
-                        <input type="email" id="email" name="email" required placeholder="Email">
-                        <input type="password" id="Password" name="Password" required placeholder="Password">
-                        <div class="menu-btn">
-                            <button type=submit>Sign up</button>
-                            <button>Back</button>
-                        </div>
-
-                    </form>
-                </div>
-            </div>
-        </div>
+        <div id="authentification">                  
     </main>
 </body>

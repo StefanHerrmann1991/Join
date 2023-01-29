@@ -221,12 +221,15 @@ button, a {
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn button:first-child {
   color: #2A3647;
   border: 1px solid #2A3647;
+  background-color: white;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn button:last-child {
   background-color: #2A3647;
   color: white;
-  margin-left: 10%;
+  margin-left: 5%;
   border: none;
+  width: 100%;
+  color: #FFFFFF;
 }
 
 .close-upper-right {

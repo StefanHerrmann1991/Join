@@ -74,7 +74,7 @@ button, a {
   width: 185.6px;
 }
 
-.login {
+.register {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -85,14 +85,14 @@ button, a {
   top: 0;
   left: 0;
 }
-.login .sign-up-container {
+.register .sign-up-container {
   border-radius: 30px;
   position: relative;
   height: 60%;
   width: 60%;
   background-color: #FFFFFF;
 }
-.login h2 {
+.register h2 {
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
@@ -100,17 +100,27 @@ button, a {
   line-height: 120%;
   text-align: center;
   color: #000000;
-  border-bottom: 3px solid #29ABE2;
   padding-bottom: 2%;
+  position: relative;
 }
-.login img {
+.register h2:after {
+  border-bottom: 3px solid #29ABE2;
+  content: "";
+  width: 150px;
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.register img {
   width: 100px;
   height: 122px;
   position: absolute;
   left: 5.35%;
   top: 7.81%;
 }
-.login .sign-up {
+.register .sign-up {
   width: 100%;
   height: 100%;
   position: relative;
@@ -119,26 +129,26 @@ button, a {
   justify-content: center;
   align-items: center;
 }
-.login .sign-up form {
+.register .sign-up form {
   width: 65%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: space-evenly;
 }
-.login .sign-up form input:nthchild() {
+.register .sign-up form input:nthchild() {
   margin-left: 12px;
 }
-.login .sign-up form input:nth-child(1) {
+.register .sign-up form input:nth-child(1) {
   background-image: url(/assets/img/contacts/person.png);
 }
-.login .sign-up form input:nth-child(2) {
+.register .sign-up form input:nth-child(2) {
   background-image: url(/assets/img/contacts/mail.png);
 }
-.login .sign-up form input:nth-child(3) {
+.register .sign-up form input:nth-child(3) {
   background-image: url(/assets/img/login/lock.png);
 }
-.login .sign-up form input {
+.register .sign-up form input {
   font-size: 21px;
   width: 100%;
   margin-top: 8%;
@@ -160,6 +170,7 @@ button, a {
   margin-top: 8%;
   margin-right: 10%;
   display: flex;
+  justify-content: center;
   align-items: center;
   padding: 18px 10px;
   border-radius: 10px;
@@ -168,14 +179,60 @@ button, a {
   font-weight: 700;
   font-size: 21px;
   line-height: 120%;
+  width: 57%;
 }
 .menu-btn button:first-child {
-  color: #2A3647;
-  border: 1px solid #2A3647;
-}
-.menu-btn button:last-child {
   background-color: #2A3647;
   color: white;
   margin-left: 10%;
   border: none;
+}
+.menu-btn button:last-child {
+  color: #2A3647;
+  border: 1px solid #2A3647;
+}
+
+.login-option {
+  margin-top: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.login-option input {
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.to-register {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  position: absolute;
+  right: 5.35%;
+  top: 7.81%;
+}
+.to-register button {
+  background-color: #2A3647;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 16px;
+  width: 91px;
+  height: 51px;
+  border-radius: 8px;
+  color: white;
+  border: none;
+  margin-left: 20px;
+}
+
+.highlight-blue {
+  color: #29ABE2;
+  cursor: pointer;
+}
+
+.remember-me {
+  display: flex;
+  padding-left: 10px;
+  margin-left: 10px;
 }/*# sourceMappingURL=login.css.map */
