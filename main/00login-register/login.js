@@ -21,6 +21,7 @@ function renderSignUp() {
 <div class="register">
 <img src="/assets/img/login/logo.png">
 <div class="sign-up-container">
+<img onclick="initAuthentification('login')" class="arrow-back" src="/assets/img/login/arrow-left-line.png">
     <div class="sign-up">
         <h2>Sign up</h2>
         <form onsubmit="createUser(event)">
@@ -75,6 +76,7 @@ function renderForgotPassword() {
     <div class="register">
     <img src="/assets/img/login/logo.png">
     <div class="forgot-password-container">
+        <img onclick="initAuthentification('login')" class="arrow-back" src="/assets/img/login/arrow-left-line.png">
         <div class="forgot-password">
             <h2>I forgot my password</h2>
             <div> Don't worry! We will send you an email with the instructions to reset your password.
@@ -95,19 +97,25 @@ function renderResetPassword() {
     <div class="register">
     <img src="/assets/img/login/logo.png">
     <div class="forgot-password-container">
-        <div class="forgot-password">
-            <h2>I forgot my password</h2>
-            <div> Don't worry! We will send you an email with the instructions to reset your password.
+        <img onclick="initAuthentification('login')" class="arrow-back" src="/assets/img/login/arrow-left-line.png">
+        <div class="reset-password">
+            <h2>Reset your password</h2>
+            <div> Change your account password
             </div>
             <form onsubmit="createUser(event)">
-                <input type="email" id="email" name="email" required placeholder="Email">
+                <input type="password" id="password" name="Password" required placeholder="Password">
+                <input type="password" id="passwordValidation" name="PasswordValidaton" required
+                    placeholder="Confirm password">
                 <div class="menu-btn color-white">
-                    <button type="submit"><nobr>Send me the email</nobr></button>
+                    <button type="submit">
+                        <nobr>Continue</nobr>
+                    </button>
                 </div>
             </form>
         </div>
     </div>
-</div>` }
+</div>
+` }
 
 
 
