@@ -1,8 +1,8 @@
 
-document.querySelector('form')?.addEventListener('submit', function(event) {
+document.querySelector('form')?.addEventListener('submit', function (event) {
     event.preventDefault();
     // Your code to handle the form submission
-  });
+});
 
 
 async function initAuthentification() { await renderAuth('login') }
@@ -11,7 +11,7 @@ async function initAuthentification() { await renderAuth('login') }
 function renderAuth(status) {
     let auth = document.getElementById('authentification');
     if (status === 'login') auth.innerHTML = renderLogin()
-    if (status === 'forgetPassword') auth.innerHTML = renderForgetPassword()
+    if (status === 'forgetPassword') auth.innerHTML = renderForgotPassword()
     if (status === 'resetPassword') auth.innerHTML = renderResetPassword()
     if (status === 'signUp') auth.innerHTML = renderSignUp()
 }
@@ -26,7 +26,8 @@ function renderSignUp() {
         <form onsubmit="createUser(event)">
             <input type="text" id="name" name="name" required placeholder="Name">
             <input type="email" id="email" name="email" required placeholder="Email">
-            <input type="password" id="Password" name="Password" required placeholder="Password">
+            <input type="password" id="password" name="Password" required placeholder="Password">
+            <input type="password" id="passwordValidation" name="PasswordValidaton" required placeholder="Confirm password">
             <div class="menu-btn">
                 <button type="submit">Sign up</button>
                 <button onclick="renderAuth('login')">Back</button>
@@ -69,33 +70,50 @@ function renderLogin() {
 </div>
 </div>` }
 
-function renderForgetPassword() {
+function renderForgotPassword() {
     return `
-<div class="register">
-<img src="/assets/img/login/logo.png">
-</div>
-<div class="sign-up-container">
-    <div class="sign-up">
-    <h2>I forgot my password</h2>
-    <div> Don't worry! We will send you an email with the instructions to reset your password. 
-    </div>
-        <form onsubmit="createUser(event)">  
-            <input type="email" id="email" name="email" required placeholder="Email">
-            <nobr>Forgot my password</nobr></a>
+    <div class="register">
+    <img src="/assets/img/login/logo.png">
+    <div class="forgot-password-container">
+        <div class="forgot-password">
+            <h2>I forgot my password</h2>
+            <div> Don't worry! We will send you an email with the instructions to reset your password.
             </div>
-            <div class="menu-btn">
-                <button type="submit">Send me the email</button>          
-            </div>            
-        </form>
+            <form onsubmit="createUser(event)">
+                <input type="email" id="email" name="email" required placeholder="Email">
+                <div class="menu-btn color-white">
+                    <button type="submit"><nobr>Send me the email</nobr></button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-</div>
 </div>
 ` }
+
 function renderResetPassword() {
     return `
-<div>
-
+    <div class="register">
+    <img src="/assets/img/login/logo.png">
+    <div class="forgot-password-container">
+        <div class="forgot-password">
+            <h2>I forgot my password</h2>
+            <div> Don't worry! We will send you an email with the instructions to reset your password.
+            </div>
+            <form onsubmit="createUser(event)">
+                <input type="email" id="email" name="email" required placeholder="Email">
+                <div class="menu-btn color-white">
+                    <button type="submit"><nobr>Send me the email</nobr></button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>` }
 
+
+
 function cretateUser() { };
+function rememberUser() { };
+function forgetPassword() { };
+function registerUser() { };
+function resetPassword() { };
+function guestLogin() { };
