@@ -1,7 +1,7 @@
 
 document.querySelector('form')?.addEventListener('submit', function (event) {
     event.preventDefault();
-    // Your code to handle the form submission
+
 });
 
 
@@ -28,9 +28,8 @@ function renderSignUp() {
             <input type="text" id="name" name="name" required placeholder="Name">
             <input type="email" id="email" name="email" required placeholder="Email">
             <input type="password" id="password" name="Password" required placeholder="Password">
-            <input type="password" id="passwordValidation" name="PasswordValidaton" required placeholder="Confirm password">
-            <div class="menu-btn">
-                <button type="submit">Sign up</button>
+                       <div class="menu-btn">
+                <button type="submit"><nobr>Sign up</nobr></button>
                 <button onclick="renderAuth('login')">Back</button>
             </div>
         </form>
@@ -45,7 +44,7 @@ function renderLogin() {
 <div class="register">
 <img src="/assets/img/login/logo.png">
 <div class="to-register">Not a Join user?
-<button onclick="renderAuth('signUp')">Sign Up</button>
+<button onclick="renderAuth('signUp')"><nobr>Sign up</nobr></button>
 </div>
 <div class="sign-up-container">
     <div class="sign-up">

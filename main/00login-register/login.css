@@ -88,8 +88,8 @@ button, a {
 .register .sign-up-container {
   border-radius: 30px;
   position: relative;
-  height: 60%;
-  width: 60%;
+  height: 70%;
+  width: 65%;
   background-color: #FFFFFF;
 }
 .register h2 {
@@ -170,7 +170,7 @@ button, a {
   border-radius: 30px;
   position: relative;
   height: 55%;
-  width: 80%;
+  width: 76%;
   background-color: #FFFFFF;
   margin-left: 5%;
   margin-right: 5%;
@@ -314,9 +314,12 @@ button, a {
 
 .remember-me {
   display: flex;
-  padding-left: 10px;
-  margin-left: 10px;
 }
+.remember-me nobr {
+  padding-left: 5%;
+  margin-left: 5%;
+}
+
 .arrow-back {
   position: absolute;
   left: 16.67%;
