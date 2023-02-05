@@ -18,10 +18,10 @@ class ContactBook {
     this.contacts = [];
   }
 
-  addContact(name, email, phone, initials) {
+  addContact(name, email, phone) {
+    const initials = this.getInitials(name);
     this.contacts.push(new Contact(name, email, phone, initials));
   }
-
   sortContacts() {
     this.contacts.sort((a, b) => {
       if (a.name < b.name) return -1;
@@ -60,9 +60,7 @@ function getInitials(name) {
   const nameArray = name.split(' ');
   const firstNameInitial = nameArray.shift().substring(0,1);
   let lastNameInitial = "";
-  if (nameArray.length > 0) {
-    lastNameInitial = nameArray.pop().substring(0,1);
-  }
+  if (nameArray.length > 0) lastNameInitial = nameArray.pop().substring(0,1);
   const initials = firstNameInitial + lastNameInitial;
   return initials
 }

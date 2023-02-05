@@ -13,15 +13,16 @@
 }
 
 #header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-left: calc(232px - 4%);
   height: 90px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   background: #FFFFFF;
   font-weight: 400;
   font-size: 21px;
+  margin-left: 232px;
 }
 
 #navbar {
@@ -30,8 +31,6 @@
   justify-content: space-around;
   align-items: center;
   position: absolute;
-  padding-left: 2%;
-  padding-right: 2%;
   width: 232px;
   height: 100vh;
   left: 0px;
@@ -68,10 +67,6 @@
 
 button, a {
   cursor: pointer;
-}
-
-#navbar {
-  width: 185.6px;
 }
 
 .add-contact-btn {
@@ -241,8 +236,7 @@ button, a {
 }
 
 .contact-book {
-  margin-left: 235px;
+  margin-left: 240px;
   margin-top: 12px;
   display: flex;
-  width: 50%;
 }/*# sourceMappingURL=contacts.css.map */

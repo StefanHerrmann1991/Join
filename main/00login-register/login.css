@@ -13,10 +13,10 @@
 }
 
 #header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-left: calc(232px - 4%);
   height: 90px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   background: #FFFFFF;
@@ -30,8 +30,6 @@
   justify-content: space-around;
   align-items: center;
   position: absolute;
-  padding-left: 2%;
-  padding-right: 2%;
   width: 232px;
   height: 100vh;
   left: 0px;
@@ -68,10 +66,6 @@
 
 button, a {
   cursor: pointer;
-}
-
-#navbar {
-  width: 185.6px;
 }
 
 .register {
@@ -113,7 +107,7 @@ button, a {
   left: 50%;
   transform: translateX(-50%);
 }
-.register img {
+.register .logo {
   width: 100px;
   height: 122px;
   position: absolute;
@@ -332,4 +326,52 @@ button, a {
   width: 37px !important;
   height: 37px !important;
   z-index: 100;
+}
+
+@media (max-width: 767px) {
+  h2 {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 47px !important;
+  }
+}
+@media (max-width: 520px) {
+  .logo {
+    height: 78px !important;
+    width: 64px !important;
+  }
+  .sign-up-container {
+    height: 572px !important;
+    width: 372px !important;
+  }
+  .menu-btn {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .menu-btn button {
+    width: 181px !important;
+    margin: 8% !important;
+    font-size: 17px;
+  }
+  .menu-btn:nth-child(1) {
+    margin-left: 0 !important;
+  }
+}
+@media (max-width: 420px) {
+  .login-option {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+  .login-option div {
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+  .login-option nobr {
+    margin: 0px;
+  }
+  .to-register {
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }/*# sourceMappingURL=login.css.map */
