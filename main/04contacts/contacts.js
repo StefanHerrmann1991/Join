@@ -1,7 +1,6 @@
 
 let contactBookId;
-let contact = [];
-let contactBooks = [{'userName' : contact}];
+let sortByLastName = false;
 
 
 class Contact {
@@ -14,13 +13,18 @@ class Contact {
 }
 
 class ContactBook {
+  contacts;
+  initialList;
+
+
   constructor() {
     this.contacts = [];
+    this.initialList = [];
   }
 
-  addContact(name, email, phone) {
-    const initials = this.getInitials(name);
+  addContact(name, email, phone, initials) {
     this.contacts.push(new Contact(name, email, phone, initials));
+
   }
   sortContacts() {
     this.contacts.sort((a, b) => {
@@ -47,24 +51,29 @@ function closeContactDialog() {
 function createContact(event) {
   event.preventDefault();
   const name = document.getElementById('name').value;
-  const initials = getInitials(name);
+  [firstNameInitial, initials] = getInitials(name);
   const email = document.getElementById('email').value;
   const phone = document.getElementById('phone').value;
   contactBook.addContact(name, email, phone, initials);
   contactBook.sortContacts();
+  sortInitials(firstNameInitial);
   closeContactDialog();
-  console.log(contactBook.contacts);
+  renderContacts();
 }
 
 function getInitials(name) {
   const nameArray = name.split(' ');
-  const firstNameInitial = nameArray.shift().substring(0,1);
+  const firstNameInitial = nameArray.shift().substring(0, 1);
   let lastNameInitial = "";
-  if (nameArray.length > 0) lastNameInitial = nameArray.pop().substring(0,1);
+  if (nameArray.length > 0) lastNameInitial = nameArray.pop().substring(0, 1);
   const initials = firstNameInitial + lastNameInitial;
-  return initials
+  return [firstNameInitial, initials]
 }
 
+function sortInitials(initial) {
+  if (!contactBook.initialList.includes(initial)) contactBook.initialList.push(initial);
+  return contactBook.initialList.sort();
+}
 
 function saveContacts() { };
 function loadContacts() { };
@@ -77,10 +86,13 @@ function initContactBook() {
 
 function renderContacts() {
   contactBookId = document.getElementById('contactBookId');
-  contactBookId.innerHTML = `
-  <div>  
-      Hallo
-  </div>
-  `;
+  for (let i = 0; i < contactBook.initialList.length; i++) {
+    letter = contactBook.initialList[i];
+    contactBookId.innerHTML = `
+      <h2>${letter}<h2>
+    `;
+
+  }
+
 
 }
