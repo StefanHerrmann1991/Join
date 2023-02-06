@@ -12,20 +12,45 @@ class Contact {
   }
 }
 
+class Initials {
+  constructor(firstNameInitial, contact) {
+    this.contact = contact;
+    this.firstNameInitial = firstNameInitial;
+    this.contactGroup = {
+      'initial': firstNameInitial,
+      'contact': contact
+    };
+  }
+}
+
 class ContactBook {
   contacts;
   initialList;
-
 
   constructor() {
     this.contacts = [];
     this.initialList = [];
   }
 
-  addContact(name, email, phone, initials) {
-    this.contacts.push(new Contact(name, email, phone, initials));
+  addContact(name, email, phone) {
+    let [firstNameInitial, initials] = this.getInitials(name);
+    if (!this.initialList.includes(firstNameInitial)) this.initialList.push(firstNameInitial);
+    let contact = new Contact(name, email, phone, initials);
+    let initial = new Initials(firstNameInitial, contact);
+    this.contacts.push(initial);
 
+    console.log(this);
   }
+
+  getInitials(name) {
+    const nameArray = name.split(' ');
+    const firstNameInitial = nameArray.shift().substring(0, 1);
+    let lastNameInitial = "";
+    if (nameArray.length > 0) lastNameInitial = nameArray.pop().substring(0, 1);
+    const initials = firstNameInitial + lastNameInitial;
+    return [firstNameInitial, initials]
+  }
+
   sortContacts() {
     this.contacts.sort((a, b) => {
       if (a.name < b.name) return -1;
@@ -51,29 +76,16 @@ function closeContactDialog() {
 function createContact(event) {
   event.preventDefault();
   const name = document.getElementById('name').value;
-  [firstNameInitial, initials] = getInitials(name);
   const email = document.getElementById('email').value;
   const phone = document.getElementById('phone').value;
-  contactBook.addContact(name, email, phone, initials);
+  contactBook.addContact(name, email, phone);
   contactBook.sortContacts();
-  sortInitials(firstNameInitial);
+  console.log(contactBook);
   closeContactDialog();
   renderContacts();
 }
 
-function getInitials(name) {
-  const nameArray = name.split(' ');
-  const firstNameInitial = nameArray.shift().substring(0, 1);
-  let lastNameInitial = "";
-  if (nameArray.length > 0) lastNameInitial = nameArray.pop().substring(0, 1);
-  const initials = firstNameInitial + lastNameInitial;
-  return [firstNameInitial, initials]
-}
 
-function sortInitials(initial) {
-  if (!contactBook.initialList.includes(initial)) contactBook.initialList.push(initial);
-  return contactBook.initialList.sort();
-}
 
 function saveContacts() { };
 function loadContacts() { };
