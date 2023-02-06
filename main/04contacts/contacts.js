@@ -46,7 +46,7 @@ class ContactBook {
 
   getInitials(name) {
     const nameArray = name.split(' ');
-    const firstNameInitial = nameArray.shift().substring(0, 1);
+    const firstNameInitial = nameArray.shift().substring(0, 1).toUpperCase();
     let lastNameInitial = "";
     if (nameArray.length > 0) lastNameInitial = nameArray.pop().substring(0, 1);
     const initials = firstNameInitial + lastNameInitial;
@@ -111,13 +111,22 @@ function initContactBook() {
 
 function renderContacts() {
   contactBookId = document.getElementById('contactBookId');
+
   for (let i = 0; i < contactBook.contacts.length; i++) {
-    letter = contactBook.initialList[i];
-    contactBookId.innerHTML = `
-      <h2>${letter}<h2>
-    `;
-
+    let letter = contactBook.contacts[i];
+    for (const initial in letter) {
+      let contactGroup = letter[initial];
+      contactBookId.innerHTML = `<h3 id="initial${initial}">${initial}</h3>`
+      for (let j = 0; j < contactGroup.length; j++) {
+        let sortedContacts = document?.getElementById(`initial${initial}`);
+        let contact = contactGroup[j];
+        sortedContacts.innerHTML = `
+           <div>${contact.name}</div>
+           <div>${contact.email}</div>
+           <div>${contact.phone}</div>   
+           `
+      }
+    }
   }
-
-
 }
+
