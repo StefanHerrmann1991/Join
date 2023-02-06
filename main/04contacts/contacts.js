@@ -13,13 +13,8 @@ class Contact {
 }
 
 class Initials {
-  constructor(firstNameInitial, contact) {
-    this.contact = contact;
-    this.firstNameInitial = firstNameInitial;
-    this.contactGroup = {
-      'initial': firstNameInitial,
-      'contact': contact
-    };
+  constructor(firstNameInitial, contactGroup) {
+    this[firstNameInitial] = contactGroup;
   }
 }
 
@@ -34,12 +29,19 @@ class ContactBook {
 
   addContact(name, email, phone) {
     let [firstNameInitial, initials] = this.getInitials(name);
-    if (!this.initialList.includes(firstNameInitial)) this.initialList.push(firstNameInitial);
-    let contact = new Contact(name, email, phone, initials);
-    let initial = new Initials(firstNameInitial, contact);
-    this.contacts.push(initial);
 
-    console.log(this);
+    let contact = new Contact(name, email, phone, initials);
+
+    let initialsObject = this.contacts.find(i => i.hasOwnProperty(firstNameInitial));
+    if (initialsObject) {
+      initialsObject[firstNameInitial].push(contact);
+    } else {
+      this.initialList.push(firstNameInitial);
+      this.contacts.push(new Initials(firstNameInitial, [contact]));
+    }
+    this.sortContacts();
+
+    console.log(contactBook);
   }
 
   getInitials(name) {
@@ -53,9 +55,21 @@ class ContactBook {
 
   sortContacts() {
     this.contacts.sort((a, b) => {
-      if (a.name < b.name) return -1;
-      if (a.name > b.name) return 1;
+      let initialA = Object.keys(a)[0];
+      let initialB = Object.keys(b)[0];
+      if (initialA < initialB) return -1;
+      if (initialA > initialB) return 1;
       return 0;
+    });
+
+    this.contacts.forEach(initials => {
+      for (const initial in initials) {
+        initials[initial].sort((a, b) => {
+          if (a.name < b.name) return -1;
+          if (a.name > b.name) return 1;
+          return 0;
+        });
+      }
     });
   }
 }
@@ -80,7 +94,6 @@ function createContact(event) {
   const phone = document.getElementById('phone').value;
   contactBook.addContact(name, email, phone);
   contactBook.sortContacts();
-  console.log(contactBook);
   closeContactDialog();
   renderContacts();
 }
@@ -98,7 +111,7 @@ function initContactBook() {
 
 function renderContacts() {
   contactBookId = document.getElementById('contactBookId');
-  for (let i = 0; i < contactBook.initialList.length; i++) {
+  for (let i = 0; i < contactBook.contacts.length; i++) {
     letter = contactBook.initialList[i];
     contactBookId.innerHTML = `
       <h2>${letter}<h2>
