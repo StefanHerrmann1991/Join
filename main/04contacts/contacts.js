@@ -38,7 +38,7 @@ class ContactBook {
         if (element.hasOwnProperty(firstNameInitial)) {
           element[firstNameInitial].push(contact);
           break;
-        }       
+        }
       }
     }
   }
@@ -96,11 +96,16 @@ function initContactBook() {
 
 
 function renderContacts() {
+ 
   contactBookId = document.getElementById('contactBookId');
-
-  for (let i = 0; i < contactBook.contacts.length; i++) {
-    let letter = contactBook.contacts[i];
-
-  }
+  contactBook.contacts.forEach((element, index) => {
+    let initial = Object.keys(element)[0];
+    contactBookId.innerHTML = ''
+    contactBookId.innerHTML += `<h3>${initial}</h3><div id="${initial + index}"></div>`;
+    let initialID = document?.getElementById(`${initial + index}`);
+    element[initial].forEach(contact => {
+      initialID.innerHTML += `<li>${contact.name}</li>`;
+    });
+  });
 }
 
