@@ -3,20 +3,17 @@ let contactBookId;
 let sortByLastName = false;
 
 
-class Contact {
-  constructor(name, email, phone, initials) {
-    this.name = name;
-    this.email = email;
-    this.phone = phone;
-    this.initials = initials;
+function newContact(name, email, phone, initial) {
+  let contact = {
+    'name': name,
+    'email': email,
+    'phone': phone,
+    'initial': initial
   }
+  return contact;
 }
 
-class Initials {
-  constructor(firstNameInitial, contactGroup) {
-    this[firstNameInitial] = contactGroup;
-  }
-}
+
 
 class ContactBook {
   contacts;
@@ -29,20 +26,25 @@ class ContactBook {
 
   addContact(name, email, phone) {
     let [firstNameInitial, initials] = this.getInitials(name);
-
-    let contact = new Contact(name, email, phone, initials);
-
-    let initialsObject = this.contacts.find(i => i.hasOwnProperty(firstNameInitial));
-    if (initialsObject) {
-      initialsObject[firstNameInitial].push(contact);
-    } else {
+    let contact = newContact(name, email, phone, initials);
+    console.log(contact)
+    if (!this.initialList.includes(firstNameInitial)) {
       this.initialList.push(firstNameInitial);
-      this.contacts.push(new Initials(firstNameInitial, [contact]));
+      this.contacts.push({ [firstNameInitial]: [contact] });
     }
-    this.sortContacts();
-
-    console.log(contactBook);
+    else {
+      for (let i = 0; i < this.contacts.length; i++) {
+        const element = this.contacts[i];
+        if (element.hasOwnProperty(firstNameInitial)) {
+          element[firstNameInitial].push(contact);
+          break;
+        }       
+      }
+    }
   }
+
+
+
 
   getInitials(name) {
     const nameArray = name.split(' ');
@@ -53,25 +55,8 @@ class ContactBook {
     return [firstNameInitial, initials]
   }
 
-  sortContacts() {
-    this.contacts.sort((a, b) => {
-      let initialA = Object.keys(a)[0];
-      let initialB = Object.keys(b)[0];
-      if (initialA < initialB) return -1;
-      if (initialA > initialB) return 1;
-      return 0;
-    });
+  sortContacts() { }
 
-    this.contacts.forEach(initials => {
-      for (const initial in initials) {
-        initials[initial].sort((a, b) => {
-          if (a.name < b.name) return -1;
-          if (a.name > b.name) return 1;
-          return 0;
-        });
-      }
-    });
-  }
 }
 
 const contactBook = new ContactBook();
@@ -96,6 +81,7 @@ function createContact(event) {
   contactBook.sortContacts();
   closeContactDialog();
   renderContacts();
+  console.log(contactBook)
 }
 
 
@@ -114,19 +100,7 @@ function renderContacts() {
 
   for (let i = 0; i < contactBook.contacts.length; i++) {
     let letter = contactBook.contacts[i];
-    for (const initial in letter) {
-      let contactGroup = letter[initial];
-      contactBookId.innerHTML = `<h3 id="initial${initial}">${initial}</h3>`
-      for (let j = 0; j < contactGroup.length; j++) {
-        let sortedContacts = document?.getElementById(`initial${initial}`);
-        let contact = contactGroup[j];
-        sortedContacts.innerHTML = `
-           <div>${contact.name}</div>
-           <div>${contact.email}</div>
-           <div>${contact.phone}</div>   
-           `
-      }
-    }
+
   }
 }
 
