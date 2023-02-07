@@ -27,19 +27,13 @@ class ContactBook {
   addContact(name, email, phone) {
     let [firstNameInitial, initials] = this.getInitials(name);
     let contact = newContact(name, email, phone, initials);
-    console.log(contact)
+
     if (!this.initialList.includes(firstNameInitial)) {
       this.initialList.push(firstNameInitial);
       this.contacts.push({ [firstNameInitial]: [contact] });
-    }
-    else {
-      for (let i = 0; i < this.contacts.length; i++) {
-        const element = this.contacts[i];
-        if (element.hasOwnProperty(firstNameInitial)) {
-          element[firstNameInitial].push(contact);
-          break;
-        }
-      }
+    } else {
+      let index = this.contacts.findIndex(element => element.hasOwnProperty(firstNameInitial));
+      this.contacts[index][firstNameInitial].push(contact);
     }
   }
 
