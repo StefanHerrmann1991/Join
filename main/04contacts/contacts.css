@@ -8,11 +8,16 @@
   font-family: "Inter", sans-serif;
 }
 
+main {
+  display: flex;
+}
+
 .main-menu .nav-item {
   padding-top: 40px;
 }
 
 #header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -21,6 +26,7 @@
   background: #FFFFFF;
   font-weight: 400;
   font-size: 21px;
+  width: calc(100% - 233px);
 }
 
 #navbar {

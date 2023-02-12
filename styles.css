@@ -8,7 +8,7 @@
   font-family: "Inter", sans-serif;
 }
 
-main {
+.navbar-header {
   display: flex;
 }
 
@@ -25,7 +25,6 @@ main {
   background: #FFFFFF;
   font-weight: 400;
   font-size: 21px;
-  width: calc(100% - 233px);
 }
 
 #navbar {
