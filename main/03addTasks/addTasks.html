@@ -14,14 +14,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
+    <script>
+        async function init() {
+            setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
+            await downloadFromServer();
+            tasks = JSON.parse(backend.getItem('tasks')) || [];
+        }
+    </script>
+
+
 </head>
 
 <body onload="includeHTML()">
-    
     <div class="menu">
-        <div w3-include-html="../../index.html"></div>
+        <div class="navbar" w3-include-html="../../index.html"></div>
         <div class="add-task-container">
-            <div class="add-to-task-sub-wrap">
+
+            <form class="add-task-formfield" onsubmit="addToTasks(); clearAssignments()">
+                <h2>Add Task</h2>
+                <div>
+                    <h3>Title</h3>
+                    <input required id="title" placeholder="Enter a title" oninput="init();loadTasks()">
+                    <h3>Discription</h3>
+                    <textarea required id="description" placeholder="Enter a description"></textarea>
+                    <h3>Category</h3>
+                    <select required id="category">
+                        <option value="Management"> Management</option>
+                        <option value="Software Developement">Software Developement</option>
+                        <option value="UX/UI Design">UX/UI Design</option>
+                        <option value="Human Resources">Human Resources</option>
+                    </select>
+                    <h3>Assigned to</h3>
+                    <select multiple id="assignUser" class=""></select>
+                    <div class="assignment-container">
+                        <div id="iconsContainer" class="assignment-button-container">
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3>Due date</h3>
+                    <input required id="date" type="date" name="setTodaysDate">
+                    <h3>Prio</h3>
+                    <select required id="urgency">
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+                <div class="submit-btns">
+                    <button type="reset" class="clear-btn" onclick="clearAssignments()">Clear</button>
+                    <button type="submit" class="assign-btn">Create Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+
+<!--  <div class="add-to-task-sub-wrap">
                 <div class="add-to-task-sub-menu">
                     <div class="task-submit-success d-none" id="taskSubmitSuccessful"></div>
                     <h1>Add Task</h1>
@@ -32,7 +83,7 @@
                 <div class="task-input-container">
                     <form class="form-field" onsubmit="addToTasks(); clearAssignments()">
                         <div>
-                            <!-- <div id="assignmentBox" class="assignment-box d-none"></div> -->
+                            <div id="assignmentBox" class="assignment-box d-none"></div>
                             <h2>TITLE</h2>
                             <input required id="title" placeholder="Enter a title" oninput="init();loadTasks()">
                             <h2>CATEGORY</h2>
@@ -67,12 +118,10 @@
                                     <button type="reset" class="cancel-button" onclick="clearAssignments()">CANCEL</button>
                                     <button type="submit" class="assign-button">CREATE TASK</button>
                                 </div>
-                                <!-- <div class="task-submit-success d-none" id="taskSubmitSuccessful"></div> -->
+                              <div class="task-submit-success d-none" id="taskSubmitSuccessful"></div> 
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
-</body>
+        </div>  -->

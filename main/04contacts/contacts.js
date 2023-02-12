@@ -74,7 +74,6 @@ function createContact(event) {
   closeContactDialog();
   renderContacts();
   console.log(contactBook)
-  checkFile();
 }
 
 
@@ -84,15 +83,14 @@ function newVariable(paramAsText) {
   let objectName;
   if (typeof paramAsText === 'object') objectName = paramAsText.constructor.name;
   else objectName = paramAsText;
-  return objectName + 'AsText';
+  return `${objectName}`;
 }
 
 
 async function saveDataToBackend(dataObject) {
   let wordAsText = newVariable(dataObject);
-  wordAsText = JSON.stringify(dataObject);
-  await backend.setItem(`${wordAsText}`, wordAsText);
-  console.log(dataObject + 'is saved')
+  let stringifyDataObject = JSON.stringify(dataObject);
+  await backend.setItem(`${wordAsText}`, stringifyDataObject);  
 };
 
 
