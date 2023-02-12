@@ -13,8 +13,6 @@ function newContact(name, email, phone, initial) {
   return contact;
 }
 
-
-
 class ContactBook {
   contacts;
   initialList;
@@ -76,19 +74,25 @@ function createContact(event) {
   closeContactDialog();
   renderContacts();
   console.log(contactBook)
+  checkFile();
 }
+
 
 
 
 function newVariable(paramAsText) {
-  let wordAsText = paramAsText + 'AsText';
-  return wordAsText;
+  let objectName;
+  if (typeof paramAsText === 'object') objectName = paramAsText.constructor.name;
+  else objectName = paramAsText;
+  return objectName + 'AsText';
 }
 
+
 async function saveDataToBackend(dataObject) {
-  let name = newVariable(dataObject);
-  name = JSON.stringify(dataObject);
-  await backend.setItem(`${dataObject}`, name);
+  let wordAsText = newVariable(dataObject);
+  wordAsText = JSON.stringify(dataObject);
+  await backend.setItem(`${wordAsText}`, wordAsText);
+  console.log(dataObject + 'is saved')
 };
 
 
@@ -99,20 +103,27 @@ async function loadDataFromBackend(dataObject) {
 };
 
 
-
-
-async function editDataInBackend(dataArray, i) {
+async function editDataInBackend(dataObject, i) {
   // check: async no diff
   let task = await processTaskInputs();
-  task.board = dataArray[i].board; // keep the right board
-  dataArray[i] = task;
+  task.board = dataObject[i].board; // keep the right board
+  dataObject[i] = task;
   saveTasks();
   hide('overlay');
   // check if sent from boards page or backlog page and render content
-  if (getId('todoBoard')) renderBoards() 
+  if (getId('todoBoard')) renderBoards()
 };
 
-async function deleteDataFromBackend() { };
+/**
+ * Deletes an element from an array, updates the data on the server,  and renders boards.
+ * @param {dataArray} @type {Array}
+ * @param {i} @type {Number}
+ */
+
+async function deleteDataFromBackend(dataObject, i) {
+  dataObject.splice(i, 1);
+  saveTasks();
+};
 
 function initContactBook() {
   renderContacts();

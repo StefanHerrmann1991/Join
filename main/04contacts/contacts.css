@@ -13,7 +13,7 @@
 }
 
 #header {
-  position: relative;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -67,6 +67,13 @@
 
 button, a {
   cursor: pointer;
+}
+
+.menu {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  background-color: black;
 }
 
 .add-contact-btn {

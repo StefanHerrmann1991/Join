@@ -1,8 +1,9 @@
 <head>
     <!-- script data -->
     <script src="../../includeHTML.js"></script>
+    <script src="../../mini_backend.js"></script>
+    <script src="../../script.js"></script>
     <script src="contacts.js"></script>
-
     <!-- css data -->
     <link rel="stylesheet" href="contacts.css">
     <link rel="stylesheet" href="../../styles.css">
@@ -10,6 +11,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
+    <script>
+        async function init() {
+            setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
+            await downloadFromServer();
+            users = JSON.parse(backend.getItem('tasks')) || [];
+        }
+    </script>
+
+
+
 </head>
 
 <body onload="includeHTML(); initContactBook()">
@@ -31,7 +42,7 @@
                         <img src="/assets/img/contacts/cancel.png">
                     </button>
                     <img src="/assets/img/addContactBig.png">
-                    <form onsubmit="createContact(event)">
+                    <form onsubmit="createContact(event); saveDataToBackend(contactBook)">
                         <input type="text" id="name" name="name" required placeholder="Name">
                         <input type="email" id="email" name="email" required placeholder="Email">
                         <input type="tel" id="phone" name="phone" required placeholder="Phone">
