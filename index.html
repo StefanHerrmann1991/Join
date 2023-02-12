@@ -25,6 +25,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
+    <script>
+        async function init() {
+            setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
+            await downloadFromServer();
+            tasks = JSON.parse(backend.getItem('tasks')) || [];
+        }
+    </script>
 </head>
 
 <body>
@@ -42,7 +49,7 @@
             </a>
             <div class="main-menu">
                 <div class="nav-item">
-                    <img src="/assets/img/navbar/summary.png">
+                    <img src="/assets/img/navbar/summary.png">                   
                     <a class="nav-title" href="/main/01summary/summary.html">Summary</a>
                 </div>
                 <div class="nav-item">

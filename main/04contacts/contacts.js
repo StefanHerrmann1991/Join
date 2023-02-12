@@ -80,9 +80,39 @@ function createContact(event) {
 
 
 
-function saveContacts() { };
-function loadContacts() { };
-function editContacts() { };
+function newVariable(paramAsText) {
+  let wordAsText = paramAsText + 'AsText';
+  return wordAsText;
+}
+
+async function saveDataToBackend(dataObject) {
+  let name = newVariable(dataObject);
+  name = JSON.stringify(dataObject);
+  await backend.setItem(`${dataObject}`, name);
+};
+
+
+async function loadDataFromBackend(dataObject) {
+  let name = newVariable(dataObject);
+  name = await backend.getItem(`${dataObject}`);
+  if (name) dataObject = JSON.parse(name);
+};
+
+
+
+
+async function editDataInBackend(dataArray, i) {
+  // check: async no diff
+  let task = await processTaskInputs();
+  task.board = dataArray[i].board; // keep the right board
+  dataArray[i] = task;
+  saveTasks();
+  hide('overlay');
+  // check if sent from boards page or backlog page and render content
+  if (getId('todoBoard')) renderBoards() 
+};
+
+async function deleteDataFromBackend() { };
 
 function initContactBook() {
   renderContacts();
@@ -90,7 +120,7 @@ function initContactBook() {
 
 
 function renderContacts() {
- 
+
   contactBookId = document.getElementById('contactBookId');
   contactBook.contacts.forEach((element, index) => {
     let initial = Object.keys(element)[0];
