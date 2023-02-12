@@ -31,27 +31,20 @@
             console.log('ok')
             setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
             await downloadFromServer();
-            tasks = JSON.parse(backend.getItem('tasks')) || [];          
+            tasks = JSON.parse(backend.getItem('tasks')) || [];
         }
     </script>
 </head>
 
 <body onload="init()">
     <main>
-        <header id="header">
-            <div>Kanban Project Management Tool</div>
-            <div>
-                <img src="/assets/img/help.png">
-                <img src="/assets/img/contacts/person.png">
-            </div>
-        </header>
         <nav id="navbar">
             <a src="index.html">
                 <img id="logo" src="/assets/img/logo.png">
             </a>
             <div class="main-menu">
                 <div class="nav-item">
-                    <img src="/assets/img/navbar/summary.png">                   
+                    <img src="/assets/img/navbar/summary.png">
                     <a class="nav-title" href="/main/01summary/summary.html">Summary</a>
                 </div>
                 <div class="nav-item">
@@ -72,6 +65,13 @@
                 <div class="nav-title" href="/main/05legal-notice/legal-notice.html">Legal notice</div>
             </div>
         </nav>
+        <header id="header">
+            <div>Kanban Project Management Tool</div>
+            <div>
+                <img src="/assets/img/help.png">
+                <img src="/assets/img/contacts/person.png">
+            </div>
+        </header>
     </main>
 </body>
 

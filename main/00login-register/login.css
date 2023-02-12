@@ -13,7 +13,6 @@
 }
 
 #header {
-  position: absolute;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -22,7 +21,6 @@
   background: #FFFFFF;
   font-weight: 400;
   font-size: 21px;
-  margin-left: 232px;
 }
 
 #navbar {
@@ -30,11 +28,8 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  position: absolute;
   width: 232px;
   height: 100vh;
-  left: 0px;
-  top: 0px;
   background: #2A3647;
   border-radius: 0px;
 }
@@ -67,13 +62,6 @@
 
 button, a {
   cursor: pointer;
-}
-
-.menu {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  background-color: black;
 }
 
 .register {
