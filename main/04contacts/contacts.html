@@ -15,46 +15,49 @@
         async function init() {
             await setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
             await downloadFromServer();
-            users = JSON.parse(backend.getItem('tasks')) || [];
+            let newContactBook = loadDataFromBackend('ContactBook');
+            console.log('newContactBook' + newContactBook);
         }
     </script>
 </head>
 
-<body onload="init(); includeHTML(); initContactBook() ">    
+<body onload="init(); includeHTML(); initContactBook() ">
+    <div class="dashboard">
         <div w3-include-html="../../index.html"></div>
         <div id="contactBookId" class="contact-book"></div>
         <button class="add-contact-btn" onclick="openContactDialog()">New Contact<img
                 src="/assets/img/addContact.png"></button>
-        <div class="add-contact-dialog d-none" id="addContactDialog">
-            <div class="add-contact" id="addContact">
-                <div class="add-contact-menu">
-                    <div class="add-contact-description">
-                        <img src="/assets/img/logo.png">
-                        <h2>Add contact</h2>
-                        <p>Tasks are better with a team!</p>
-                    </div>
-                    <div class="add-contact-submenu">
-                        <button class="close-upper-right" onclick="closeContactDialog()">
-                            <img src="/assets/img/contacts/cancel.png">
-                        </button>
-                        <img src="/assets/img/addContactBig.png">
-                        <form onsubmit="createContact(event); saveDataToBackend(contactBook)">
-                            <input type="text" id="name" name="name" required placeholder="Name">
-                            <input type="email" id="email" name="email" required placeholder="Email">
-                            <input type="tel" id="phone" name="phone" required placeholder="Phone">
-                            <div class="menu-btn">
-                                <button onclick="closeContactDialog()">Cancel
-                                    <img src="/assets/img/contacts/cancel.png">
-                                </button>
-                                <button type=submit>Create contact
-                                    <img src="/assets/img/contacts/check.png">
-                                </button>
+    </div>
+    <div class="add-contact-dialog d-none" id="addContactDialog">
+        <div class="add-contact" id="addContact">
+            <div class="add-contact-menu">
+                <div class="add-contact-description">
+                    <img src="/assets/img/logo.png">
+                    <h2>Add contact</h2>
+                    <p>Tasks are better with a team!</p>
+                </div>
+                <div class="add-contact-submenu">
+                    <button class="close-upper-right" onclick="closeContactDialog()">
+                        <img src="/assets/img/contacts/cancel.png">
+                    </button>
+                    <img src="/assets/img/addContactBig.png">
+                    <form onsubmit="createContact(event); saveDataToBackend(contactBook)">
+                        <input type="text" id="name" name="name" required placeholder="Name">
+                        <input type="email" id="email" name="email" required placeholder="Email">
+                        <input type="tel" id="phone" name="phone" required placeholder="Phone">
+                        <div class="menu-btn">
+                            <button onclick="closeContactDialog()">Cancel
+                                <img src="/assets/img/contacts/cancel.png">
+                            </button>
+                            <button type=submit>Create contact
+                                <img src="/assets/img/contacts/check.png">
+                            </button>
 
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
 </body>

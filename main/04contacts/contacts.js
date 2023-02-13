@@ -50,8 +50,7 @@ class ContactBook {
   sortContacts() { }
 
 }
-
-const contactBook = new ContactBook();
+let contactBook = new ContactBook();
 
 
 function openContactDialog() {
@@ -71,6 +70,7 @@ function createContact(event) {
   const phone = document.getElementById('phone').value;
   contactBook.addContact(name, email, phone);
   contactBook.sortContacts();
+  saveDataToBackend(contactBook)
   closeContactDialog();
   renderContacts();
   console.log(contactBook)
@@ -90,14 +90,25 @@ function newVariable(paramAsText) {
 async function saveDataToBackend(dataObject) {
   let wordAsText = newVariable(dataObject);
   let stringifyDataObject = JSON.stringify(dataObject);
-  await backend.setItem(`${wordAsText}`, stringifyDataObject);  
+  await backend.setItem(`${wordAsText}`, stringifyDataObject);
 };
 
 
+function loadContactBook() {
+  if (event) {
+    event.preventDefault();
+  }
+  let contactBookAsText = backend.getItem('ContactBook');
+  if (contactBookAsText ) {
+    contactBook = JSON.parse(contactBookAsText);
+    console.log(contactBook);
+  }
+}
+
 async function loadDataFromBackend(dataObject) {
-  let name = newVariable(dataObject);
-  name = await backend.getItem(`${dataObject}`);
-  if (name) dataObject = JSON.parse(name);
+  let dataObjectAsText = await backend.getItem(`${dataObject}`);
+  if (dataObjectAsText) dataObject = JSON.parse(dataObjectAsText);
+  return dataObject;
 };
 
 
@@ -129,15 +140,14 @@ function initContactBook() {
 
 
 function renderContacts() {
-
   contactBookId = document.getElementById('contactBookId');
   contactBook.contacts.forEach((element, index) => {
     let initial = Object.keys(element)[0];
     contactBookId.innerHTML = ''
-    contactBookId.innerHTML += `<h3>${initial}</h3><div id="${initial + index}"></div>`;
+    contactBookId.innerHTML += `<div class="contacts"><h3>${initial}</h3><div id="${initial + index}"></div>`;
     let initialID = document?.getElementById(`${initial + index}`);
     element[initial].forEach(contact => {
-      initialID.innerHTML += `<li>${contact.name}</li>`;
+      initialID.innerHTML += `<li>${contact.name}</li></div>`;
     });
   });
 }

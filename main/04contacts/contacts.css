@@ -8,7 +8,7 @@
   font-family: "Inter", sans-serif;
 }
 
-main {
+.navbar-header {
   display: flex;
 }
 
@@ -16,11 +16,17 @@ main {
   padding-top: 40px;
 }
 
-#header {
+.dashboard {
+  width: 100vw;
   position: relative;
+}
+
+#header {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding-left: 5%;
+  padding-right: 5%;
   height: 90px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   background: #FFFFFF;
@@ -237,6 +243,14 @@ button, a {
 }
 
 .contact-book {
-  margin-left: 240px;
+  position: absolute;
+  top: 90px;
+  left: 233px;
   display: flex;
+  justify-content: flex-start;
+  width: calc(100% - 233px);
+  height: calc(100% - 90px);
+}
+.contact-book h3 {
+  margin-top: 5%;
 }/*# sourceMappingURL=contacts.css.map */
