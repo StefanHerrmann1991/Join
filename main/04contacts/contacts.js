@@ -1,7 +1,8 @@
 
 let contactBookId;
 let sortByLastName = false;
-
+let contacts
+let ContactBookAsText = []
 
 function newContact(name, email, phone, initial) {
   let contact = {
@@ -17,9 +18,11 @@ class ContactBook {
   contacts;
   initialList;
 
-  constructor() {
-    this.contacts = [];
-    this.initialList = [];
+  constructor(contacts, initialList) {
+    if (contacts) this.contacts = contacts
+    else this.contacts = [];
+    if (initialList) this.initialList = initialList
+    else this.initialList = [];
   }
 
   addContact(name, email, phone) {
@@ -70,7 +73,7 @@ function createContact(event) {
   const phone = document.getElementById('phone').value;
   contactBook.addContact(name, email, phone);
   contactBook.sortContacts();
-  saveDataToBackend(contactBook)
+  saveDataToBackend(contactBook);
   closeContactDialog();
   renderContacts();
   console.log(contactBook)
@@ -87,8 +90,9 @@ function newVariable(paramAsText) {
 }
 
 
+
 async function saveDataToBackend(dataObject) {
-  let wordAsText = newVariable(dataObject);
+  let wordAsText = newVariable(dataObject) + `AsText`;
   let stringifyDataObject = JSON.stringify(dataObject);
   await backend.setItem(`${wordAsText}`, stringifyDataObject);
 };
@@ -99,15 +103,23 @@ function loadContactBook() {
     event.preventDefault();
   }
   let contactBookAsText = backend.getItem('ContactBook');
-  if (contactBookAsText ) {
+  if (contactBookAsText) {
     contactBook = JSON.parse(contactBookAsText);
     console.log(contactBook);
   }
 }
 
+function getDataFromBackend() {
+  ContactBook = JSON.parse(backend.getItem('ContactBook')) || [];
+  console.log(contacts);
+}
+
 async function loadDataFromBackend(dataObject) {
   let dataObjectAsText = await backend.getItem(`${dataObject}`);
   if (dataObjectAsText) dataObject = JSON.parse(dataObjectAsText);
+  console.log(`from Server:${Object.keys(dataObject)}`)
+  dataObject = new ContactBook(dataObject.contacs, dataObject.initialList)
+  console.log(dataObject);
   return dataObject;
 };
 

@@ -12,12 +12,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
     <script>
+        
         async function init() {
             await setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
             await downloadFromServer();
-            let newContactBook = loadDataFromBackend('ContactBook');
-            console.log('newContactBook' + newContactBook);
-        }
+            ContactBookAsText = JSON.parse(backend.getItem('ContactBookAsText')) || [];
+            contactBook = new ContactBook(ContactBookAsText.contacts, ContactBookAsText.initialList)} 
     </script>
 </head>
 
