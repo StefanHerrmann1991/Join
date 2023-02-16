@@ -56,6 +56,20 @@ class ContactBook {
 let contactBook = new ContactBook();
 
 
+async function init() {
+  await initBackend();
+  includeHTML();
+  await renderContacts();
+}
+
+async function initBackend() {
+  await setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
+  await downloadFromServer();
+  ContactBookAsText = JSON.parse(backend.getItem('ContactBookAsText')) || [];
+  contactBook = new ContactBook(ContactBookAsText.contacts, ContactBookAsText.initialList)
+}
+
+
 function openContactDialog() {
   document.getElementById('addContactDialog').classList.remove('d-none');
 }
@@ -79,9 +93,6 @@ function createContact(event) {
   console.log(contactBook)
 }
 
-
-
-
 function newVariable(paramAsText) {
   let objectName;
   if (typeof paramAsText === 'object') objectName = paramAsText.constructor.name;
@@ -89,38 +100,10 @@ function newVariable(paramAsText) {
   return `${objectName}`;
 }
 
-
-
 async function saveDataToBackend(dataObject) {
   let wordAsText = newVariable(dataObject) + `AsText`;
   let stringifyDataObject = JSON.stringify(dataObject);
   await backend.setItem(`${wordAsText}`, stringifyDataObject);
-};
-
-
-function loadContactBook() {
-  if (event) {
-    event.preventDefault();
-  }
-  let contactBookAsText = backend.getItem('ContactBook');
-  if (contactBookAsText) {
-    contactBook = JSON.parse(contactBookAsText);
-    console.log(contactBook);
-  }
-}
-
-function getDataFromBackend() {
-  ContactBook = JSON.parse(backend.getItem('ContactBook')) || [];
-  console.log(contacts);
-}
-
-async function loadDataFromBackend(dataObject) {
-  let dataObjectAsText = await backend.getItem(`${dataObject}`);
-  if (dataObjectAsText) dataObject = JSON.parse(dataObjectAsText);
-  console.log(`from Server:${Object.keys(dataObject)}`)
-  dataObject = new ContactBook(dataObject.contacs, dataObject.initialList)
-  console.log(dataObject);
-  return dataObject;
 };
 
 
@@ -146,21 +129,20 @@ async function deleteDataFromBackend(dataObject, i) {
   saveTasks();
 };
 
-function initContactBook() {
-  renderContacts();
-}
-
-
 function renderContacts() {
   contactBookId = document.getElementById('contactBookId');
+  contactBookId.innerHTML = ''; // move this line here
   contactBook.contacts.forEach((element, index) => {
     let initial = Object.keys(element)[0];
-    contactBookId.innerHTML = ''
     contactBookId.innerHTML += `<div class="contacts"><h3>${initial}</h3><div id="${initial + index}"></div>`;
     let initialID = document?.getElementById(`${initial + index}`);
     element[initial].forEach(contact => {
-      initialID.innerHTML += `<li>${contact.name}</li></div>`;
+      initialID.innerHTML += `
+      <div class="contact-name">${contact.name}</div>
+      <div class="contact-email">${contact.email}</div>
+      </div>`;
     });
   });
 }
+
 
