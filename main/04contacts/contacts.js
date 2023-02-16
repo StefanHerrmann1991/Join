@@ -138,9 +138,12 @@ function renderContacts() {
     let initialID = document?.getElementById(`${initial + index}`);
     element[initial].forEach(contact => {
       initialID.innerHTML += `
+      <div class="contact-name-email">
       <div class="contact-name">${contact.name}</div>
       <div class="contact-email">${contact.email}</div>
+      </div>
       </div>`;
+      
     });
   });
 }
