@@ -33,6 +33,7 @@
   font-weight: 400;
   font-size: 21px;
   width: calc(100% - 233px);
+  z-index: 100;
 }
 
 #navbar {
@@ -44,6 +45,7 @@
   height: 100vh;
   background: #2A3647;
   border-radius: 0px;
+  z-index: 100;
 }
 #navbar a {
   color: white;
