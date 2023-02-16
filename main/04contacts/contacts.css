@@ -33,6 +33,7 @@
   font-weight: 400;
   font-size: 21px;
   width: calc(100% - 233px);
+  z-index: 100;
 }
 
 #navbar {
@@ -44,6 +45,7 @@
   height: 100vh;
   background: #2A3647;
   border-radius: 0px;
+  z-index: 100;
 }
 #navbar a {
   color: white;
@@ -101,12 +103,17 @@ button, a {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 33%;
 }
 
 .edit-contact {
   width: 67%;
   background-color: #F5F5F5;
+}
+
+.contact-flex {
+  display: flex;
+  justify-content: center;
+  width: 33%;
 }
 
 .d-none {
