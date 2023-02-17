@@ -4,12 +4,13 @@ let sortByLastName = false;
 let contacts
 let ContactBookAsText = []
 
-function newContact(name, email, phone, initial) {
+function newContact(name, email, phone, initial, color) {
   let contact = {
     'name': name,
     'email': email,
     'phone': phone,
-    'initial': initial
+    'initial': initial,
+    'color': color
   }
   return contact;
 }
@@ -27,7 +28,8 @@ class ContactBook {
 
   addContact(name, email, phone) {
     let [firstNameInitial, initials] = this.getInitials(name);
-    let contact = newContact(name, email, phone, initials);
+    let color = getRandomColor(firstNameInitial)
+    let contact = newContact(name, email, phone, initials, color);
 
     if (!this.initialList.includes(firstNameInitial)) {
       this.initialList.push(firstNameInitial);
@@ -50,7 +52,16 @@ class ContactBook {
     return [firstNameInitial, initials]
   }
 
-  sortContacts() { }
+  sortContacts() {
+    this.initialList.sort();
+    this.contacts = this.initialList.map((initial) => {
+      const obj = {};
+      obj[initial] = this.contacts
+        .find((element) => element.hasOwnProperty(initial))[initial]
+        .sort((a, b) => a.name.localeCompare(b.name));
+      return obj;
+    });
+  }
 
 }
 let contactBook = new ContactBook();
@@ -66,7 +77,8 @@ async function initBackend() {
   await setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
   await downloadFromServer();
   ContactBookAsText = JSON.parse(backend.getItem('ContactBookAsText')) || [];
-  contactBook = new ContactBook(ContactBookAsText.contacts, ContactBookAsText.initialList)
+  contactBook = new ContactBook(ContactBookAsText.contacts, ContactBookAsText.initialList);
+  contactBook.sortContacts(); // Sort contacts after loading from server
 }
 
 
@@ -129,6 +141,27 @@ async function deleteDataFromBackend(dataObject, i) {
   saveTasks();
 };
 
+function getRandomColor(name) {
+  // get first alphabet in upper case
+  const firstAlphabet = name.charAt(0).toLowerCase();
+
+  // get the ASCII code of the character
+  const asciiCode = firstAlphabet.charCodeAt(0);
+
+  // number that contains 3 times ASCII value of character -- unique for every alphabet
+  const colorNum = asciiCode.toString() + asciiCode.toString() + asciiCode.toString();
+
+  var num = Math.round(0xffffff * parseInt(colorNum));
+  var r = num >> 16 & 255;
+  var g = num >> 8 & 255;
+  var b = num & 255;
+
+  return {
+    color: 'rgb(' + r + ', ' + g + ', ' + b + ', 0.3)',
+    character: firstAlphabet.toUpperCase()
+  };
+}
+
 function renderContacts() {
   contactBookId = document.getElementById('contactBookId');
   contactBookId.innerHTML = ''; // move this line here
@@ -139,11 +172,14 @@ function renderContacts() {
     element[initial].forEach(contact => {
       initialID.innerHTML += `
       <div class="contact-name-email">
+      <div style="background-color:${contact.color}">${contact.initial}</div>
+      <div>
       <div class="contact-name">${contact.name}</div>
       <div class="contact-email">${contact.email}</div>
       </div>
+      </div>
       </div>`;
-      
+
     });
   });
 }

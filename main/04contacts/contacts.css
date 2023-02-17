@@ -146,6 +146,10 @@ button, a {
   padding-top: 10%;
   padding-bottom: 10%;
 }
+.contact-book .contact-name-email {
+  display: flex;
+  justify-content: space-around;
+}
 .contact-book .contact-email {
   color: #007CEE;
   font-size: 16px;
@@ -154,11 +158,26 @@ button, a {
   font-size: 21px;
 }
 
-.edit-contact {
+.edit-contact-container {
   width: 67%;
   background-color: #F5F5F5;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  padding-top: 10%;
+}
+.edit-contact-container h2 {
+  border-right: 3px solid #29ABE2;
+  font-size: 61px;
+  padding-right: 8%;
+}
+.edit-contact-container nobr {
+  padding-left: 8%;
+}
+
+.edit-contact {
+  display: flex;
+  align-items: center;
 }
 
 .contact-flex {
@@ -189,6 +208,7 @@ button, a {
   align-items: center;
 }
 .add-contact-dialog .add-contact .add-contact-menu {
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -330,8 +350,4 @@ button, a {
 .contact-book-container .contact-name-email {
   margin-top: 5%;
   margin-bottom: 5%;
-}
-
-h2 {
-  font-size: 61px;
 }/*# sourceMappingURL=contacts.css.map */
