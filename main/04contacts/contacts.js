@@ -171,7 +171,7 @@ function renderContacts() {
     let initialID = document?.getElementById(`${'initial' + index}`);
     console.log(initial)
     element[initial].forEach((contact, index) => {
-      console.log([contact])
+      console.log(contact, element[initial])
       initialID.innerHTML += `
       <button id="contact-${index}" onclick="showContact('${contact.initial}', '${contact.email}', '${contact.phone}', '${contact.name}', '${contact.color}')" class="contact-container">
       <div class="contact-intial"  style="background-color:${contact.color}">
