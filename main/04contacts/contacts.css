@@ -146,9 +146,14 @@ button, a {
   padding-top: 10%;
   padding-bottom: 10%;
 }
-.contact-book .contact-name-email {
+.contact-book .contact-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+  padding-left: 20px;
+  align-items: center;
+}
+.contact-book .contact-name {
+  line-height: 120%;
 }
 .contact-book .contact-email {
   color: #007CEE;
@@ -193,6 +198,7 @@ button, a {
 
 .add-contact-dialog {
   position: absolute;
+  z-index: 100;
   background-color: rgba(0, 0, 0, 0.2);
   height: 100vh;
   width: 100vw;
@@ -346,8 +352,23 @@ button, a {
   margin-top: 5%;
   border-bottom: 1px solid #D1D1D1;
   border-radius: 3px;
+  padding-left: 20px;
 }
 .contact-book-container .contact-name-email {
-  margin-top: 5%;
+  margin-top: 8%;
   margin-bottom: 5%;
+}
+
+.contact-intial {
+  border: 1px solid #FFFFFF;
+  border-radius: 58px;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-name-email {
+  margin-left: 20px;
 }/*# sourceMappingURL=contacts.css.map */

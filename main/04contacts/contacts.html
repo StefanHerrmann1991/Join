@@ -23,6 +23,7 @@
             <div class="edit-contact">
                 <h2>Contacts</h2>
                 <nobr>Better with a Team</nobr>
+                <div class="edit-contact" id="editContact"></div>
             </div>
         </div>
     </div>
@@ -35,14 +36,15 @@
                     <img src="/assets/img/logo.png">
                     <h2>Add contact</h2>
                     <p>Tasks are better with a team!</p>
+
                 </div>
                 <div class="add-contact-submenu">
                     <button class="close-upper-right" onclick="closeContactDialog()">
                         <img src="/assets/img/contacts/cancel.png">
                     </button>
                     <img src="/assets/img/addContactBig.png">
-                    <form onsubmit="createContact(event); saveDataToBackend(contactBook)">
-                        <input type="text" id="name" name="name" required placeholder="Name">
+                    <form onsubmit="createContact(event); saveDataToBackend(contactBook)" id="contactFormfield">
+                        <input type="text" id="name" name="name" placeholder="Name">
                         <input type="email" id="email" name="email" required placeholder="Email">
                         <input type="tel" id="phone" name="phone" required placeholder="Phone">
                         <div class="menu-btn">

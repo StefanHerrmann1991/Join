@@ -3,6 +3,7 @@ let contactBookId;
 let sortByLastName = false;
 let contacts
 let ContactBookAsText = []
+let editContacts = document.getElementById('editContact')
 
 function newContact(name, email, phone, initial, color) {
   let contact = {
@@ -84,6 +85,7 @@ async function initBackend() {
 
 function openContactDialog() {
   document.getElementById('addContactDialog').classList.remove('d-none');
+
 }
 
 
@@ -156,32 +158,36 @@ function getRandomColor(name) {
   var g = num >> 8 & 255;
   var b = num & 255;
 
-  return {
-    color: 'rgb(' + r + ', ' + g + ', ' + b + ', 0.3)',
-    character: firstAlphabet.toUpperCase()
-  };
+  return 'rgb(' + r + ', ' + g + ', ' + b + ', 0.3)'
+
 }
 
 function renderContacts() {
   contactBookId = document.getElementById('contactBookId');
-  contactBookId.innerHTML = ''; // move this line here
+  contactBookId.innerHTML = '';
   contactBook.contacts.forEach((element, index) => {
     let initial = Object.keys(element)[0];
-    contactBookId.innerHTML += `<div class="contacts"><h3>${initial}</h3><div id="${initial + index}"></div>`;
-    let initialID = document?.getElementById(`${initial + index}`);
-    element[initial].forEach(contact => {
+    contactBookId.innerHTML += `<div class="contacts"><h3>${initial}</h3><div id="${'initial' + index}"></div>`;
+    let initialID = document?.getElementById(`${'initial' + index}`);
+    console.log(initial)
+    element[initial].forEach((contact, index) => {
+      console.log([contact])
       initialID.innerHTML += `
+      <button id="contact-${index}" onclick="showContact('${contact.initial}', '${contact.email}', '${contact.phone}', '${contact.name}', '${contact.color}')" class="contact-container">
+      <div class="contact-intial"  style="background-color:${contact.color}">
+      <div>${contact.initial}</div>
+      </div>
       <div class="contact-name-email">
-      <div style="background-color:${contact.color}">${contact.initial}</div>
-      <div>
-      <div class="contact-name">${contact.name}</div>
+      <div class="contact-name"><nobr>${contact.name}</nobr></div>
       <div class="contact-email">${contact.email}</div>
       </div>
       </div>
-      </div>`;
-
+      </button>`;
     });
   });
 }
 
 
+function showContact(initial, email, phone, name, color) {
+ 
+} 
