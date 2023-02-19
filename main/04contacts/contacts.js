@@ -68,6 +68,35 @@ class ContactBook {
 let contactBook = new ContactBook();
 
 
+function getRandomColor(name) {
+  // get first alphabet in upper case
+  const firstAlphabet = name.charAt(0).toLowerCase();
+  // get the ASCII code of the character
+  const asciiCode = firstAlphabet.charCodeAt(0);
+  // number that contains 3 times ASCII value of character -- unique for every alphabet
+  const colorNum = asciiCode.toString() + asciiCode.toString() + asciiCode.toString();
+  var num = Math.round(0xffffff * parseInt(colorNum));
+  var r = num >> 16 & 255;
+  var g = num >> 8 & 255;
+  var b = num & 255;
+  return 'rgb(' + r + ', ' + g + ', ' + b + ', 0.3)'
+}
+
+function createContact(event) {
+  event.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  contactBook.addContact(name, email, phone);
+  contactBook.sortContacts();
+  saveDataToBackend(contactBook);
+  closeContactDialog();
+  renderContacts();
+  console.log(contactBook)
+}
+
+/* 
+
 async function init() {
   await initBackend();
   includeHTML();
@@ -94,18 +123,7 @@ function closeContactDialog() {
 }
 
 
-function createContact(event) {
-  event.preventDefault();
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const phone = document.getElementById('phone').value;
-  contactBook.addContact(name, email, phone);
-  contactBook.sortContacts();
-  saveDataToBackend(contactBook);
-  closeContactDialog();
-  renderContacts();
-  console.log(contactBook)
-}
+
 
 function newVariable(paramAsText) {
   let objectName;
@@ -121,41 +139,10 @@ async function saveDataToBackend(dataObject) {
 };
 
 
-async function editDataInBackend(dataObject, i) {
-  // check: async no diff
-  let task = await processTaskInputs();
-  task.board = dataObject[i].board; // keep the right board
-  dataObject[i] = task;
-  saveTasks();
-  hide('overlay');
-  // check if sent from boards page or backlog page and render content
-  if (getId('todoBoard')) renderBoards()
-};
 
-/**
- * Deletes an element from an array, updates the data on the server,  and renders boards.
- * @param {dataArray} @type {Array}
- * @param {i} @type {Number}
- */
 
-async function deleteDataFromBackend(dataObject, i) {
-  dataObject.splice(i, 1);
-  saveTasks();
-};
 
-function getRandomColor(name) {
-  // get first alphabet in upper case
-  const firstAlphabet = name.charAt(0).toLowerCase();
-  // get the ASCII code of the character
-  const asciiCode = firstAlphabet.charCodeAt(0);
-  // number that contains 3 times ASCII value of character -- unique for every alphabet
-  const colorNum = asciiCode.toString() + asciiCode.toString() + asciiCode.toString();
-  var num = Math.round(0xffffff * parseInt(colorNum));
-  var r = num >> 16 & 255;
-  var g = num >> 8 & 255;
-  var b = num & 255;
-  return 'rgb(' + r + ', ' + g + ', ' + b + ', 0.3)'
-}
+
 
 function renderContacts() {
   contactBookId = document.getElementById('contactBookId');
@@ -205,3 +192,4 @@ function showContact(index, initial, email, phone, name, color) {
     `
 
 }
+ */
