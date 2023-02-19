@@ -3,7 +3,7 @@ let contactBookId;
 let sortByLastName = false;
 let contacts
 let ContactBookAsText = []
-let editContacts = document.getElementById('editContact')
+
 
 function newContact(name, email, phone, initial, color) {
   let contact = {
@@ -146,20 +146,15 @@ async function deleteDataFromBackend(dataObject, i) {
 function getRandomColor(name) {
   // get first alphabet in upper case
   const firstAlphabet = name.charAt(0).toLowerCase();
-
   // get the ASCII code of the character
   const asciiCode = firstAlphabet.charCodeAt(0);
-
   // number that contains 3 times ASCII value of character -- unique for every alphabet
   const colorNum = asciiCode.toString() + asciiCode.toString() + asciiCode.toString();
-
   var num = Math.round(0xffffff * parseInt(colorNum));
   var r = num >> 16 & 255;
   var g = num >> 8 & 255;
   var b = num & 255;
-
   return 'rgb(' + r + ', ' + g + ', ' + b + ', 0.3)'
-
 }
 
 function renderContacts() {
@@ -170,10 +165,9 @@ function renderContacts() {
     contactBookId.innerHTML += `<div class="contacts"><h3>${initial}</h3><div id="${'initial' + index}"></div>`;
     let initialID = document?.getElementById(`${'initial' + index}`);
     console.log(initial)
-    element[initial].forEach((contact, index) => {
-      console.log(contact, element[initial])
+    element[initial].forEach((contact, innerIndex) => {
       initialID.innerHTML += `
-      <button id="contact-${index}" onclick="showContact('${contact.initial}', '${contact.email}', '${contact.phone}', '${contact.name}', '${contact.color}')" class="contact-container">
+      <button id="contact-${initial}${innerIndex}" onclick="showContact('${initial}${innerIndex}', '${contact.initial}', '${contact.email}', '${contact.phone}', '${contact.name}', '${contact.color}')" class="contact-container">
       <div class="contact-intial"  style="background-color:${contact.color}">
       <div>${contact.initial}</div>
       </div>
@@ -188,6 +182,26 @@ function renderContacts() {
 }
 
 
-function showContact(initial, email, phone, name, color) {
- 
-} 
+function showContact(index, initial, email, phone, name, color) {  
+  console.log(index)
+  let editContact = document?.getElementById('editContact');
+  document?.getElementById(`contact-${index}`).classList.toggle('clicked-contact');
+  editContact.innerHTML = `
+  <div class="edit-name-initial-con">
+  <div class="edit-initial" style="background-color:${color}">${initial}</div>
+  <div>
+  <div class="edit-name">${name}</div>
+  <button class="add-task-btn" onclick="addTask()"><img src="/assets/img/addTaskBlue.png">Add Tasks</button>
+  </div>
+  </div>
+  <div class="edit-information">
+  <div class="contact-name">Contact Information</div>
+  <button onclick="editContact()"><img src="/assets/img/edit.png"></button>
+  </div>
+  <h4>Email</h4>
+  <div>${email}</div>
+  <h4>Phone</h4>
+  <div>${phone}</div>
+    `
+
+}

@@ -33,7 +33,9 @@
         justify-content: flex-start
         padding-left: 20px
         align-items: center
-       
+        border: none
+        background-color: transparent
+        width: 100%
 
     .contact-name
         line-height: 120%
@@ -43,14 +45,18 @@
 
     .contact-name
         font-size: 21px
+        display: flex
+        justify-content: flex-start
 
 .edit-contact-container
     width: 67%
     background-color: #F5F5F5
     display: flex
-    justify-content: center
+    justify-content: flex-start
     align-items: flex-start
     padding-top: 10%
+    flex-direction: column
+
     h2
         border-right: 3px solid #29ABE2
         font-size: 61px
@@ -58,9 +64,13 @@
     nobr
         padding-left: 8%
 
-.edit-contact
+.edit-contact-headline
     display: flex
     align-items: center
+
+.edit-contact
+    display: flex
+    align-self: flex-start
 
 .contact-flex
     display: flex
@@ -206,6 +216,9 @@
     .contact-name-email
         margin-top: 8%
         margin-bottom: 5%
+        display: flex
+        align-items: flex-start
+        flex-direction: column
 
 .contact-intial
     border: 1px solid #FFFFFF
@@ -216,5 +229,44 @@
     align-items: center
     justify-content: center
 
+.edit-contact-popup
+    width: 100%
 .contact-name-email
     margin-left: 20px
+
+.edit-name-initial-con
+    display: flex
+    flex-direction: row
+    width: 100%
+    align-items: center
+    justify-content: space-between
+    .edit-name
+        font-size: 47px
+
+.edit-information
+    display: flex
+
+.add-task-btn
+    border: none
+    background-color: transparent
+    color: #29ABE2
+    display: flex
+    align-items: center
+    img
+        width: 15px
+        height: 15px
+        margin-right: 5px
+
+.edit-initial
+    width: 120px
+    height: 120px
+    font-size: 47px
+    border-radius: 70px
+    border: 3px solid #FFFFFF
+    display: flex
+    justify-content: center
+    align-items: center
+
+
+.clicked-contact
+    background-color: #2A3647 !important
