@@ -81,19 +81,20 @@ function createContact(event) {
   contactBook.sortInitials();
   contactBook.sortContacts();
   /*   saveDataToBackend(contactBook); */
-  closeContactDialog();
+  closeContactDialog('addContactDialog');
   /*   renderContacts(); */
   console.log(contactBook)
 }
 
-function openContactDialog() {
-  document.getElementById('addContactDialog').classList.remove('d-none');
+function openContactDialog(id) {
+
+  document.getElementById(`${id}`).classList.remove('d-none');
 
 }
 
 
-function closeContactDialog() {
-  document.getElementById('addContactDialog').classList.add('d-none');
+function closeContactDialog(id) {
+  document.getElementById(`${id}`).classList.add('d-none');
 }
 
 
@@ -176,8 +177,11 @@ function showContact(index) {
   <h4>Phone</h4>
   <div>${actualContact.phone}</div>  
   `
-
 }
+
+
+
+
 
 /* 
 

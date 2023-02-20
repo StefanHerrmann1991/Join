@@ -9,7 +9,7 @@
 }
 
 .navbar-header {
-  display: flex;
+  width: 100vw;
 }
 
 .main-menu .nav-item {
@@ -62,14 +62,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 5%;
-  padding-right: 5%;
   height: 90px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   background: #FFFFFF;
   font-weight: 400;
-  font-size: 21px;
   width: calc(100% - 233px);
+  font-size: 21px;
   z-index: 100;
 }
 
@@ -87,6 +85,9 @@
 #navbar a {
   color: white;
   text-decoration: none;
+}
+#navbar .main-menu {
+  width: 100%;
 }
 
 #logo {

@@ -22,12 +22,12 @@
         <div class="edit-contact-container">
             <div class="edit-contact-headline">
                 <h2>Contacts</h2>
-                <nobr>Better with a Team</nobr>                
+                <nobr>Better with a Team</nobr>
             </div>
             <div class="edit-contact-popup" id="editContact"></div>
         </div>
     </div>
-    <button class="add-contact-btn" onclick="openContactDialog()">New Contact<img
+    <button class="add-contact-btn" onclick="openContactDialog('addContactDialog')">New Contact<img
             src="/assets/img/addContact.png"></button>
     <div class="add-contact-dialog d-none" id="addContactDialog">
         <div class="add-contact" id="addContact">
@@ -39,16 +39,16 @@
 
                 </div>
                 <div class="add-contact-submenu">
-                    <button class="close-upper-right" onclick="closeContactDialog()">
+                    <button class="close-upper-right" onclick="closeContactDialog('addContactDialog')">
                         <img src="/assets/img/contacts/cancel.png">
                     </button>
                     <img src="/assets/img/addContactBig.png">
                     <form onsubmit="createContact(event);  saveDataToBackend(contactBook)" id="contactFormfield">
-                        <input type="text" id="name" name="name" placeholder="Name">
+                        <input type="text" id="name" name="name" required placeholder="Name">
                         <input type="email" id="email" name="email" required placeholder="Email">
                         <input type="tel" id="phone" name="phone" required placeholder="Phone">
                         <div class="menu-btn">
-                            <button onclick="closeContactDialog()">Cancel
+                            <button type="button" onclick="closeContactDialog('addContactDialog')">Cancel
                                 <img src="/assets/img/contacts/cancel.png">
                             </button>
                             <button type=submit>Create contact
@@ -56,6 +56,7 @@
                             </button>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>
