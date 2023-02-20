@@ -34,7 +34,6 @@ class ContactBook {
     let contact = newContact(name, email, phone, initials, color, firstNameInitial);
     if (!this.initialList.includes(firstNameInitial)) this.initialList.push(firstNameInitial);
     this.contacts.push(contact);
-
   }
 
   getInitials(name) {
@@ -138,7 +137,7 @@ function renderContacts() {
   contactBookId.innerHTML = '';
   for (let i = 0; i < contactBook.initialList.length; i++) {
     const initial = contactBook.initialList[i];
-    contactBookId.innerHTML += `<div>${initial}</div><div id="${initial}"></div>`
+    contactBookId.innerHTML += `<h3 class="contact-intial">${initial}</h3><div id="${initial}"></div>`
     contactBook.contacts.forEach((element, index) => {
       if (contactBook.initialList[i] == contactBook.contacts[index].firstNameInitial) {
         document.getElementById(`${initial}`).innerHTML += `
@@ -170,7 +169,7 @@ function showContact(index) {
   </div>
   <div class="edit-information">
   <div class="contact-name">Contact Information</div>
-  <button onclick="editContact()"><img src="/assets/img/edit.png"></button>
+  <button onclick="editContact(${index})"><img src="/assets/img/edit.png"></button>
   </div>
   <h4>Email</h4>
   <div>${actualContact.email}</div>
@@ -179,33 +178,61 @@ function showContact(index) {
   `
 }
 
-
-
-
-
-/* 
-
-function showContact(index, initial, email, phone, name, color) {  
-  console.log(index)
-  let editContact = document?.getElementById('editContact');
-  document?.getElementById(`contact-${index}`).classList.toggle('clicked-contact');
-  editContact.innerHTML = `
-  <div class="edit-name-initial-con">
-  <div class="edit-initial" style="background-color:${color}">${initial}</div>
-  <div>
-  <div class="edit-name">${name}</div>
-  <button class="add-task-btn" onclick="addTask()"><img src="/assets/img/addTaskBlue.png">Add Tasks</button>
-  </div>
-  </div>
-  <div class="edit-information">
-  <div class="contact-name">Contact Information</div>
-  <button onclick="editContact()"><img src="/assets/img/edit.png"></button>
-  </div>
-  <h4>Email</h4>
-  <div>${email}</div>
-  <h4>Phone</h4>
-  <div>${phone}</div>
-    `
-
+function editContact(index) {
+  let actualContact = contactBook.contacts[index];
+  renderEditContact(index);
+  openContactDialog('editContactDialog');
+  document.getElementById('editName').value = actualContact.name;
+  document.getElementById('editEmail').value = actualContact.email;
+  document.getElementById('editPhone').value = actualContact.phone;
+  // Re-render the contacts list
+  
 }
- */
+
+function saveEditedContact(event, index) {
+  let actualContact = contactBook.contacts[index];
+  event.preventDefault();
+  actualContact.name = document.getElementById('editName').value;
+  actualContact.email = document.getElementById('editEmail').value;
+  actualContact.phone = document.getElementById('editPhone').value;
+  renderContacts();
+}
+
+
+
+
+function renderEditContact(actualContact) {
+  document.getElementById('editContactDialog').innerHTML =
+    `  
+  <div class="add-contact" id="editContact">
+    <div class="add-contact-menu">
+      <div class="add-contact-description">
+        <img src="/assets/img/logo.png">
+          <h2>Edit contact</h2>
+          <p>Tasks are better with a team!</p>
+      </div>
+      <div class="add-contact-submenu">
+        <button class="close-upper-right" onclick="closeContactDialog('editContactDialog')">
+          <img src="/assets/img/contacts/cancel.png">
+        </button>
+        <img src="/assets/img/addContactBig.png">
+          <form onsubmit="saveEditedContact(event, ${actualContact});  saveDataToBackend(contactBook)" id="editContactFormfield">
+            <input type="text" id="editName" name="editName" required placeholder="${actualContact.name}" >
+              <input type="email" id="editEmail" name="editEmail" required placeholder="${actualContact.email}" >
+                <input type="tel" id="editPhone" name="editPhone" required placeholder="${actualContact.phone}" >
+                  <div class="menu-btn">
+                    <button type="button" onclick="closeContactDialog('editContactDialog')">Cancel
+                      <img src="/assets/img/contacts/cancel.png">
+                    </button>
+                    <button type=submit>Edit contact
+                      <img src="/assets/img/contacts/check.png">
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+      `
+}
+
+
