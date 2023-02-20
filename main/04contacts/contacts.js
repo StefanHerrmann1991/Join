@@ -5,13 +5,14 @@ let contacts
 let ContactBookAsText = []
 
 
-function newContact(name, email, phone, initial, color) {
+function newContact(name, email, phone, initial, color, firstNameInitial) {
   let contact = {
     'name': name,
     'email': email,
     'phone': phone,
     'initial': initial,
-    'color': color
+    'color': color,
+    'firstNameInitial': firstNameInitial
   }
   return contact;
 }
@@ -30,19 +31,11 @@ class ContactBook {
   addContact(name, email, phone) {
     let [firstNameInitial, initials] = this.getInitials(name);
     let color = getRandomColor(firstNameInitial)
-    let contact = newContact(name, email, phone, initials, color);
+    let contact = newContact(name, email, phone, initials, color, firstNameInitial);
+    if (!this.initialList.includes(firstNameInitial)) this.initialList.push(firstNameInitial);
+    this.contacts.push(contact);
 
-    if (!this.initialList.includes(firstNameInitial)) {
-      this.initialList.push(firstNameInitial);
-      this.contacts.push({ [firstNameInitial]: [contact] });
-    } else {
-      let index = this.contacts.findIndex(element => element.hasOwnProperty(firstNameInitial));
-      this.contacts[index][firstNameInitial].push(contact);
-    }
   }
-
-
-
 
   getInitials(name) {
     const nameArray = name.split(' ');
@@ -54,16 +47,12 @@ class ContactBook {
   }
 
   sortContacts() {
-    this.initialList.sort();
-    this.contacts = this.initialList.map((initial) => {
-      const obj = {};
-      obj[initial] = this.contacts
-        .find((element) => element.hasOwnProperty(initial))[initial]
-        .sort((a, b) => a.name.localeCompare(b.name));
-      return obj;
-    });
+    this.contacts.sort((a, b) => a.name.localeCompare(b.name));
   }
 
+  sortInitials() {
+    this.initialList.sort();
+  }
 }
 let contactBook = new ContactBook();
 
@@ -88,29 +77,14 @@ function createContact(event) {
   const email = document.getElementById('email').value;
   const phone = document.getElementById('phone').value;
   contactBook.addContact(name, email, phone);
+  console.log(contactBook)
+  contactBook.sortInitials();
   contactBook.sortContacts();
-  saveDataToBackend(contactBook);
+  /*   saveDataToBackend(contactBook); */
   closeContactDialog();
-  renderContacts();
+  /*   renderContacts(); */
   console.log(contactBook)
 }
-
-/* 
-
-async function init() {
-  await initBackend();
-  includeHTML();
-  await renderContacts();
-}
-
-async function initBackend() {
-  await setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
-  await downloadFromServer();
-  ContactBookAsText = JSON.parse(backend.getItem('ContactBookAsText')) || [];
-  contactBook = new ContactBook(ContactBookAsText.contacts, ContactBookAsText.initialList);
-  contactBook.sortContacts(); // Sort contacts after loading from server
-}
-
 
 function openContactDialog() {
   document.getElementById('addContactDialog').classList.remove('d-none');
@@ -125,12 +99,30 @@ function closeContactDialog() {
 
 
 
+
+async function init() {
+  await initBackend();
+  includeHTML();
+  await renderContacts();
+}
+
+async function initBackend() {
+  await setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
+  await downloadFromServer();
+  ContactBookAsText = JSON.parse(backend.getItem('ContactBookAsText')) || [];
+  contactBook = new ContactBook(ContactBookAsText.contacts, ContactBookAsText.initialList);
+  contactBook.sortInitials();
+  contactBook.sortContacts(); // Sort contacts after loading from server
+}
+
+
 function newVariable(paramAsText) {
   let objectName;
   if (typeof paramAsText === 'object') objectName = paramAsText.constructor.name;
   else objectName = paramAsText;
   return `${objectName}`;
 }
+
 
 async function saveDataToBackend(dataObject) {
   let wordAsText = newVariable(dataObject) + `AsText`;
@@ -140,34 +132,31 @@ async function saveDataToBackend(dataObject) {
 
 
 
-
-
-
-
 function renderContacts() {
   contactBookId = document.getElementById('contactBookId');
   contactBookId.innerHTML = '';
-  contactBook.contacts.forEach((element, index) => {
-    let initial = Object.keys(element)[0];
-    contactBookId.innerHTML += `<div class="contacts"><h3>${initial}</h3><div id="${'initial' + index}"></div>`;
-    let initialID = document?.getElementById(`${'initial' + index}`);
-    console.log(initial)
-    element[initial].forEach((contact, innerIndex) => {
-      initialID.innerHTML += `
-      <button id="contact-${initial}${innerIndex}" onclick="showContact('${initial}${innerIndex}', '${contact.initial}', '${contact.email}', '${contact.phone}', '${contact.name}', '${contact.color}')" class="contact-container">
-      <div class="contact-intial"  style="background-color:${contact.color}">
-      <div>${contact.initial}</div>
+  for (let i = 0; i < contactBook.initialList.length; i++) {
+    const initial = contactBook.initialList[i];
+    contactBookId.innerHTML += `<div>${initial}</div><div id="${initial}"></div>`
+    contactBook.contacts.forEach((element, index) => {
+      if (contactBook.initialList[i] == contactBook.contacts[index].firstNameInitial) {
+        document.getElementById(`${initial}`).innerHTML += `
+      <button id="contact-${index}" class="contact-container">
+      <div class="contact-intial"  style="background-color:${element.color}">
+      <div>${element.initial}</div>
       </div>
       <div class="contact-name-email">
-      <div class="contact-name"><nobr>${contact.name}</nobr></div>
-      <div class="contact-email">${contact.email}</div>
+      <div class="contact-name"><nobr>${element.name}</nobr></div>
+      <div class="contact-email">${element.email}</div>
       </div>
       </div>
       </button>`;
+      }
     });
-  });
+  }
 }
 
+/* 
 
 function showContact(index, initial, email, phone, name, color) {  
   console.log(index)
