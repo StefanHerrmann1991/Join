@@ -141,7 +141,8 @@ function renderContacts() {
     contactBook.contacts.forEach((element, index) => {
       if (contactBook.initialList[i] == contactBook.contacts[index].firstNameInitial) {
         document.getElementById(`${initial}`).innerHTML += `
-      <button id="contact-${index}" class="contact-container">
+      <button onclick="showContact(${index})" id="contact-${index}" class="contact-container">
+
       <div class="contact-intial"  style="background-color:${element.color}">
       <div>${element.initial}</div>
       </div>
@@ -154,6 +155,28 @@ function renderContacts() {
       }
     });
   }
+}
+
+function showContact(index) {
+  let actualContact = contactBook.contacts[index];
+  document.getElementById('editContact').innerHTML = `
+  <div class="edit-name-initial-con">
+  <div class="edit-initial" style="background-color:${actualContact.color}">${actualContact.initial}</div>
+  <div>
+  <div class="edit-name">${actualContact.name}</div>
+  <button class="add-task-btn" onclick="addTask()"><img src="/assets/img/addTaskBlue.png">Add Tasks</button>
+  </div>
+  </div>
+  <div class="edit-information">
+  <div class="contact-name">Contact Information</div>
+  <button onclick="editContact()"><img src="/assets/img/edit.png"></button>
+  </div>
+  <h4>Email</h4>
+  <div>${actualContact.email}</div>
+  <h4>Phone</h4>
+  <div>${actualContact.phone}</div>  
+  `
+
 }
 
 /* 
