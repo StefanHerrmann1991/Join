@@ -36,6 +36,38 @@ class ContactBook {
     this.contacts.push(contact);
   }
 
+
+  editContact(index, name, email, phone) {
+    let actualContact = this.contacts[index]
+    let oldInitial = this.contacts[index].firstNameInitial
+    let [newInitial, initials] = this.getInitials(name);
+    if(oldInitial !== newInitial) this.checkInitials(oldInitial)
+    actualContact.name = name;
+    actualContact.email = email;
+    actualContact.phone = phone;
+    actualContact.firstNameInitial = newInitial;
+    actualContact.initial = initials;   
+    if (!this.initialList.includes(newInitial)) this.initialList.push(newInitial);
+  }
+
+  checkInitials(firstNameInitial) {
+    const firstNameInitials = this.contacts.map(contact => contact.firstNameInitial);
+    const count = this.countOccurrence(firstNameInitials, firstNameInitial);   
+    console.log(count)
+    if (count == 1) {
+      const index = this.initialList.indexOf(firstNameInitial);
+      if (index > -1) this.initialList.splice(index, 1);      
+    }
+  }
+
+  countOccurrence(arr, element) {
+    let count = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr.indexOf(element, i) !== -1) count++;
+    }
+    return count;
+  }
+
   getInitials(name) {
     const nameArray = name.split(' ');
     const firstNameInitial = nameArray.shift().substring(0, 1).toUpperCase();
@@ -76,13 +108,11 @@ function createContact(event) {
   const email = document.getElementById('email').value;
   const phone = document.getElementById('phone').value;
   contactBook.addContact(name, email, phone);
-  console.log(contactBook)
   contactBook.sortInitials();
   contactBook.sortContacts();
-  /*   saveDataToBackend(contactBook); */
   closeContactDialog('addContactDialog');
-  /*   renderContacts(); */
-  console.log(contactBook)
+  renderContacts(); 
+ 
 }
 
 function openContactDialog(id) {
@@ -185,17 +215,16 @@ function editContact(index) {
   document.getElementById('editName').value = actualContact.name;
   document.getElementById('editEmail').value = actualContact.email;
   document.getElementById('editPhone').value = actualContact.phone;
-  // Re-render the contacts list
-  
 }
 
-function saveEditedContact(event, index) {
-  let actualContact = contactBook.contacts[index];
+function saveEditedContact(event, index) { 
   event.preventDefault();
-  actualContact.name = document.getElementById('editName').value;
-  actualContact.email = document.getElementById('editEmail').value;
-  actualContact.phone = document.getElementById('editPhone').value;
+  contactName = document.getElementById('editName').value;
+  contactEmail = document.getElementById('editEmail').value;
+  contactPhone = document.getElementById('editPhone').value;
+  contactBook.editContact(index, contactName, contactEmail, contactPhone);
   renderContacts();
+  closeContactDialog('editContactDialog');
 }
 
 
