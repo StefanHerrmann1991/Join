@@ -98,8 +98,8 @@ class ContactBook {
     this.initialList.sort();
   }
 }
-let contactBook = new ContactBook();
 
+let contactBook = new ContactBook();
 
 function getRandomColor(name) {
   // get first alphabet in upper case
@@ -129,19 +129,12 @@ function createContact(event) {
 }
 
 function openContactDialog(id) {
-
   document.getElementById(`${id}`).classList.remove('d-none');
-
 }
-
 
 function closeContactDialog(id) {
   document.getElementById(`${id}`).classList.add('d-none');
 }
-
-
-
-
 
 async function init() {
   await initBackend();
@@ -158,7 +151,6 @@ async function initBackend() {
   contactBook.sortContacts(); // Sort contacts after loading from server
 }
 
-
 function newVariable(paramAsText) {
   let objectName;
   if (typeof paramAsText === 'object') objectName = paramAsText.constructor.name;
@@ -166,14 +158,11 @@ function newVariable(paramAsText) {
   return `${objectName}`;
 }
 
-
 async function saveDataToBackend(dataObject) {
   let wordAsText = newVariable(dataObject) + `AsText`;
   let stringifyDataObject = JSON.stringify(dataObject);
   await backend.setItem(`${wordAsText}`, stringifyDataObject);
 };
-
-
 
 function renderContacts() {
   contactBookId = document.getElementById('contactBookId');
@@ -222,7 +211,6 @@ function showContact(index) {
   `
 }
 
-
 function deleteContact(index) {
   contactBook.deleteContact(index);
   renderContacts();
@@ -246,9 +234,6 @@ function saveEditedContact(event, index) {
   renderContacts();
   closeContactDialog('editContactDialog');
 }
-
-
-
 
 function renderEditContact(actualContact) {
   document.getElementById('editContactDialog').innerHTML =
