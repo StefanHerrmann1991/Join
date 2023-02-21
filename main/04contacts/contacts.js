@@ -36,27 +36,40 @@ class ContactBook {
     this.contacts.push(contact);
   }
 
+  deleteContact(index) {
+    const contactToDelete = this.contacts[index];
+    const firstNameInitial = contactToDelete.firstNameInitial;
+    this.contacts.splice(index, 1);
+    const count = this.countOccurrence(this.contacts.map(contact => contact.firstNameInitial), firstNameInitial);
+    if (count === 0) {
+      const indexToDelete = this.initialList.indexOf(firstNameInitial);
+      if (indexToDelete > -1) {
+        this.initialList.splice(indexToDelete, 1);
+      }
+    }
+  }
+
 
   editContact(index, name, email, phone) {
     let actualContact = this.contacts[index]
     let oldInitial = this.contacts[index].firstNameInitial
     let [newInitial, initials] = this.getInitials(name);
-    if(oldInitial !== newInitial) this.checkInitials(oldInitial)
+    if (oldInitial !== newInitial) this.checkInitials(oldInitial)
     actualContact.name = name;
     actualContact.email = email;
     actualContact.phone = phone;
     actualContact.firstNameInitial = newInitial;
-    actualContact.initial = initials;   
+    actualContact.initial = initials;
     if (!this.initialList.includes(newInitial)) this.initialList.push(newInitial);
   }
 
   checkInitials(firstNameInitial) {
     const firstNameInitials = this.contacts.map(contact => contact.firstNameInitial);
-    const count = this.countOccurrence(firstNameInitials, firstNameInitial);   
+    const count = this.countOccurrence(firstNameInitials, firstNameInitial);
     console.log(count)
     if (count == 1) {
       const index = this.initialList.indexOf(firstNameInitial);
-      if (index > -1) this.initialList.splice(index, 1);      
+      if (index > -1) this.initialList.splice(index, 1);
     }
   }
 
@@ -99,7 +112,7 @@ function getRandomColor(name) {
   var r = num >> 16 & 255;
   var g = num >> 8 & 255;
   var b = num & 255;
-  return 'rgb(' + r + ', ' + g + ', ' + b + ', 0.3)'
+  return 'rgb(' + r + ', ' + g + ', ' + b + ', 0.6)'
 }
 
 function createContact(event) {
@@ -111,8 +124,8 @@ function createContact(event) {
   contactBook.sortInitials();
   contactBook.sortContacts();
   closeContactDialog('addContactDialog');
-  renderContacts(); 
- 
+  renderContacts();
+
 }
 
 function openContactDialog(id) {
@@ -199,13 +212,20 @@ function showContact(index) {
   </div>
   <div class="edit-information">
   <div class="contact-name">Contact Information</div>
-  <button onclick="editContact(${index})"><img src="/assets/img/edit.png"></button>
+  <button onclick="editContact(${index})"><img src="/assets/img/edit.png">Edit Contact</button>
+  <button onclick="deleteContact(${index})">Delete</button>
   </div>
   <h4>Email</h4>
   <div>${actualContact.email}</div>
   <h4>Phone</h4>
   <div>${actualContact.phone}</div>  
   `
+}
+
+
+function deleteContact(index) {
+  contactBook.deleteContact(index);
+  renderContacts();
 }
 
 function editContact(index) {
@@ -217,7 +237,7 @@ function editContact(index) {
   document.getElementById('editPhone').value = actualContact.phone;
 }
 
-function saveEditedContact(event, index) { 
+function saveEditedContact(event, index) {
   event.preventDefault();
   contactName = document.getElementById('editName').value;
   contactEmail = document.getElementById('editEmail').value;
@@ -242,8 +262,8 @@ function renderEditContact(actualContact) {
       </div>
       <div class="add-contact-submenu">
         <button class="close-upper-right" onclick="closeContactDialog('editContactDialog')">
-          <img src="/assets/img/contacts/cancel.png">
-        </button>
+          <img src="/assets/img/contacts/cancel.png"><div> Edit Contact</div>
+        </button>    
         <img src="/assets/img/addContactBig.png">
           <form onsubmit="saveEditedContact(event, ${actualContact});  saveDataToBackend(contactBook)" id="editContactFormfield">
             <input type="text" id="editName" name="editName" required placeholder="${actualContact.name}" >
