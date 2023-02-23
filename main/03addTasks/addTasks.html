@@ -4,8 +4,7 @@
     <script src="../../mini_backend.js"></script>
     <script src="../../script.js"></script>
     <script src="addTasks.js"></script>
-    <script src="../02board/board.js"></script>
-    <script src="../03addTasks/addTasks.js"></script>
+    <script src="../02board/board.js"></script>  
     <script src="../04contacts/contacts.js"></script>
     <!-- css data -->
     <link rel="stylesheet" href="addTasks.css">
@@ -14,25 +13,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
-    <script>
-        async function init() {
-            setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
-            await downloadFromServer();
-            tasks = JSON.parse(backend.getItem('tasks')) || [];
-        }
-    </script>
+  </head>
 
-
-</head>
-
-<body onload="includeHTML()">
+<body onload="initTasks()">
     <div class="dashboard">
         <div w3-include-html="../../index.html"></div>
         <div class="add-task-container">
-            <form class="add-task-formfield" onsubmit="addToTasks(); clearAssignments()">
-                <div>
-                    <h2>Add Task</h2>
-                    <div class="add-task">
+            <div class="inner-add-task-container">
+                <h2>Add Task</h2>
+                <form class="add-task-formfield" onsubmit="addToTasks(); clearAssignments()">
+                    <div class="add-task-left">
                         <h3>Title</h3>
                         <input required id="title" placeholder="Enter a title" oninput="init();loadTasks()">
                         <h3>Discription</h3>
@@ -52,22 +42,22 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div>
-                    <h3>Due date</h3>
-                    <input required id="date" type="date" name="setTodaysDate">
-                    <h3>Prio</h3>
-                    <select required id="urgency">
-                        <option value="High">High</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Low">Low</option>
-                    </select>
-                    <div>
-                        <button type="reset" class="clear-btn" onclick="clearAssignments()">Clear</button>
-                        <button type="submit" class="assign-btn">Create Task</button>
+                    <div class="add-task-right">
+                        <h3>Due date</h3>
+                        <input required id="date" type="date" name="setTodaysDate">
+                        <h3>Prio</h3>
+                        <select required id="urgency">
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                        <div class="btn-container">
+                            <button class="clear-btn" type="reset" class="clear-btn" onclick="clearAssignments()">Clear</button>
+                            <button class="create-task-btn" type="submit" class="assign-btn"><img src="/assets/img/addTasks/">Create Task</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </body>

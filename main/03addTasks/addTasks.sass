@@ -1,15 +1,67 @@
 
-
 .add-task-container
     position: absolute
     top: 90px
     left: 233px
     display: flex
     justify-content: center
-    align-items: center
+    align-items: flex-start
     width: calc( 100% - 233px )
     height: calc( 100% - 90px )
+    flex-direction: column
     .add-task-formfield
         display: flex
-        justify-content: center
-       
+    h2
+        font-weight: 700
+        font-size: 61px
+        padding-bottom: 5%
+    .inner-add-task-container
+        margin-left: 5%
+    h3
+        padding-top: 5%
+        padding-bottom: 5%
+    .add-task-left
+        padding-right: 5%
+        border-right: 1px solid #D1D1D1
+    .add-task-right
+        padding-left: 5%
+
+.btn-container
+    display: flex
+    justify-content: flex-end
+    align-items: flex-end
+    height: 55%
+    button
+        border-radius: 10px
+        font-weight: 700
+        font-size: 21px
+        line-height: 120%
+    .clear-btn
+        color: #2A3647
+        border: 1px solid #2A3647
+        background-color: white
+        width: 136px
+        height: 61px
+        border-radius: 10px
+    .create-task-btn
+        background-color: #2A3647
+        color: white
+        margin-left: 5%
+        border: none
+        color: #FFFFFF
+        width: 177px
+        height: 61px
+
+input, select, textarea
+    display: flex
+    flex-direction: row
+    align-items: center
+    padding: 13px 21px
+    width: 422px
+    background: #FFFFFF
+    border: 1px solid #D1D1D1
+    border-radius: 10px
+textarea
+    height: 119px
+input, select
+    height: 51px

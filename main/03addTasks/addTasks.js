@@ -1,9 +1,26 @@
+let urgencies = ['High', 'Medium', 'Low'];
+let categories = ['Management', 'Software Developement', 'UX/UI Design', 'Human Resources'];
+let users
+
+async function initTasks() {
+    await includeHTML();
+    await initBackend();
+    await initAddTasks();
+    await renderForm();
+}
+
+async function initAddTasks() {
+    setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
+    await downloadFromServer();
+    tasks = JSON.parse(backend.getItem('tasks')) || [];
+}
+
+
 /** addToTaskJS 
  * This function is meant to enable the add of tasks to a json array.
  * It also generates a certain ID for new tasks and sends them to the backlog board.
  */
 function addToTasks() {
-
     let task = processTaskInputs();
     taskSubmitSuccessful();
     tasks.push(task);
@@ -14,6 +31,17 @@ function addToTasks() {
     clearAssignments(); // clear assigned users icons
 }
 
+
+/**
+ * Renders HTML option fields from the users array into addToTask.html form select-field
+ */
+function renderForm() {
+    let userSelect = getId('assignUser');
+    userSelect.innerHTML = '';
+    userSelect.innerHTML = renderUserOptionFields();
+}
+
+
 /**
  * This function renders a notification after successfully submitting a new task
  */
@@ -22,8 +50,8 @@ function taskSubmitSuccessful() {
     let taskName = processTaskInputs();
     taskSuccess.innerHTML = `The Task '${taskName['title']}' was successfully submitted to the <a href="02backlog.html" class="backlog-link"> Backlog</a>`;
     show('taskSubmitSuccessful')
-        //window.setTimeout(hide('taskSubmitSuccessful'), 5000);
-    window.setTimeout(function() {
+    //window.setTimeout(hide('taskSubmitSuccessful'), 5000);
+    window.setTimeout(function () {
         hide('taskSubmitSuccessful')
     }, 2000);
 }
@@ -39,11 +67,8 @@ function clearInputs() {
  * @returns {Object} - task object
  */
 function processTaskInputs() {
-
     let [title, description, category, urgency, date] = getIds('title', 'description', 'category', 'urgency', 'date');
-
     let assignedUsers = getAssignedUsers();
-
     let task = {
         //'id' : id,
         'title': title.value,
@@ -55,6 +80,26 @@ function processTaskInputs() {
         'assignedTo': assignedUsers,
     };
     return task;
+}
+
+/** This function gets all selected user values from an HTML multiple select field and returns the values in an array
+ * @returns {string[]} - selected users
+ */
+function getAssignedUsers() {
+    let assignedUsers = [];
+    let selectOptions = getId('assignUser').options;
+    for (let i = 0; i < selectOptions.length; i++) {
+        if (selectOptions[i].selected) assignedUsers.push(selectOptions[i].value);
+    }
+    return assignedUsers;
+}
+
+
+/**
+ * This function Clears user icons when resetting the addToTask.html form
+ */
+function clearAssignments() {
+    getId('iconsContainer').innerHTML = renderAssignedUsers([]);
 }
 
 /**
@@ -90,11 +135,9 @@ async function saveEdit(dataArray, i) { // check: async no diff
     saveTasks();
     hide('overlay');
     // check if sent from boards page or backlog page and render content
-    if (getId('todoBoard')) {
-        renderBoards()
-    } else {
-        renderLogs();
-    }
+    if (getId('todoBoard')) renderBoards()
+    else renderLogs();
+
 }
 
 function showAssignBox() {
@@ -115,7 +158,6 @@ function compareDate() {
 function renderUsers() {
     let assignmentBox = getId('assignmentBox');
     assignmentBox.innerHTML = '';
-
     for (let j = 0; j < users.length; j++) {
         const showUser = users[j];
         assignmentBox.innerHTML += showUsersHTML(showUser);
@@ -166,6 +208,25 @@ function renderUserOptionFields(selectedUsers = undefined) { // default undefine
     return str;
 }
 
+/**assignUser
+ * This function gets all selected users from a select field and shows their user icons
+ */
+function showSelectedUserIcon() { // ...iconS !
+    let selectedUsersArr = getAssignedUsers();
+    //if(selectedUsersArr){
+    getId('iconsContainer').innerHTML = renderAssignedUsers(selectedUsersArr);
+    //}
+}
+
+/**
+ * Renders HTML option fields from the users array into addToTask.html form select-field
+ */
+function renderForm() {
+    let userSelect = getId('assignUser');
+    userSelect.innerHTML = '';
+    userSelect.innerHTML = renderUserOptionFields();
+}
+
 /**
  * This function compares the value of a given element against the current value of a select field and returns the attribut 'selected' if they match (comparison is case-insensitive)
  * @param {string} option 
@@ -174,9 +235,7 @@ function renderUserOptionFields(selectedUsers = undefined) { // default undefine
  */
 function renderSelected(option, value) {
     if (option != undefined) {
-        if (option.toLowerCase() == value.toLowerCase()) {
-            return 'selected';
-        }
+        if (option.toLowerCase() == value.toLowerCase()) return 'selected';
     }
 }
 // TODO: maybe include in function above (one fkt?)
@@ -190,15 +249,14 @@ function renderMultipleSelected(optionsArr, value) {
     if (optionsArr != undefined) {
         for (let i = 0; i < optionsArr.length; i++) {
             let el = optionsArr[i];
-            if (el.toLowerCase() == value.toLowerCase()) {
-                return 'selected';
-            }
+            if (el.toLowerCase() == value.toLowerCase()) return 'selected';
+
         }
     }
 }
 
 /* Backend Folder */
-window.onload = async function() {
+window.onload = async function () {
     downloadFromServer();
 }
 
@@ -206,9 +264,7 @@ window.onload = async function() {
 /**
  * Saves tasks in the backend in form of an JSON string */
 async function saveTasks() { //check async: no diff
-    if(event){
-        event.preventDefault(); 
-    }
+    if (event)  event.preventDefault();  
     let tasksAsText = JSON.stringify(tasks);
     await backend.setItem('tasks', tasksAsText);
 }
@@ -218,32 +274,19 @@ async function saveTasks() { //check async: no diff
  *  The preventDefault() function is necessary to prevent the page from reloading when adding a new task.
  */
 function loadTasks() {
-    if (event) {
-        event.preventDefault();
-    }
+    if (event) event.preventDefault();   
     let tasksAsText = backend.getItem('tasks');
-    if (tasksAsText) {
-        tasks = JSON.parse(tasksAsText);
+    if (tasksAsText) tasks = JSON.parse(tasksAsText);
     }
-}
 
 /**
  *  The function is used to show the description of the clicked task
  */
 function showDescription(i) {
-    let description = document.getElementById('showDescription' + i);
-    let descriptionPlaceholder = document.getElementById('clickMe' + i);
-    let taskBox = document.getElementById('task' + i);
-    description.classList.remove('description-transition-in')
+}
 
-    if (description.classList.contains('d-none')) {
-        description.classList.remove('d-none')
-        description.classList.add('description-transition-in')
-        taskBox.classList.add('hide-scrollbar');
-        descriptionPlaceholder.innerHTML = `Description:`;
-    } else {
-        description.classList.add('d-none')
-        descriptionPlaceholder.classList.remove('d-none')
-        descriptionPlaceholder.innerHTML = `Click to show description`;
-    }
+/** The function disables selection of a date before the current day */
+function compareDate() {
+    let today = new Date().toISOString().split('T')[0];
+    document.getElementById('date').setAttribute('min', today);
 }

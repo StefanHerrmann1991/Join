@@ -136,7 +136,7 @@ function closeContactDialog(id) {
   document.getElementById(`${id}`).classList.add('d-none');
 }
 
-async function init() {
+async function initContacts() {
   await initBackend();
   includeHTML();
   await renderContacts();
@@ -149,6 +149,8 @@ async function initBackend() {
   contactBook = new ContactBook(ContactBookAsText.contacts, ContactBookAsText.initialList);
   contactBook.sortInitials();
   contactBook.sortContacts(); // Sort contacts after loading from server
+  users = contactBook.contacts;
+  console.log(users)
 }
 
 function newVariable(paramAsText) {
