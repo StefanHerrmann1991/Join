@@ -26,7 +26,7 @@ function randomHexColor() {
  * @returns {Object} - The corresponding HTML element
  */
 function getId(id) {
-    return document.getElementById(id);
+    return document?.getElementById(id);
 }
 
 /**

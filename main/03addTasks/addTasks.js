@@ -7,6 +7,7 @@ async function initTasks() {
     await initBackend();
     await initAddTasks();
     await renderForm();
+    compareDate();
 }
 
 async function initAddTasks() {
@@ -192,21 +193,20 @@ function renderOptionFields(selected, dataArray) {
     return str;
 }
 
-// TODO: maybe include in function above (one fkt?)
-
-/**
- * Renders option fields and shows preselected values for all users in an html select field
- * @param {(string[] | undefined)} selectedUsers 
- * @returns {string} - html that creates option fields
- */
-function renderUserOptionFields(selectedUsers = undefined) { // default undefined in case of adding a new task
-    str = '';
+function renderUserOptionFields(selectedUsers = undefined) {
+    let str = "";
     for (let i = 0; i < users.length; i++) {
-        let el = users[i].name;
-        str += /*html*/ `<option value="${el}" ${renderMultipleSelected(selectedUsers, el)} onclick="showSelectedUserIcon()">${el}</option>`;
+      let el = users[i].name;
+      const isChecked = selectedUsers && selectedUsers.includes(el);
+      str += /*html*/ `
+        <option>
+          <input type="checkbox" id="${el}" name="${el}" value="${el}" ${isChecked ? "checked" : ""} onclick="showSelectedUserIcon()">
+          <label for="${el}">${el}</label>
+        </option>
+      `;
     }
     return str;
-}
+  }
 
 /**assignUser
  * This function gets all selected users from a select field and shows their user icons
@@ -250,7 +250,6 @@ function renderMultipleSelected(optionsArr, value) {
         for (let i = 0; i < optionsArr.length; i++) {
             let el = optionsArr[i];
             if (el.toLowerCase() == value.toLowerCase()) return 'selected';
-
         }
     }
 }
@@ -264,7 +263,7 @@ window.onload = async function () {
 /**
  * Saves tasks in the backend in form of an JSON string */
 async function saveTasks() { //check async: no diff
-    if (event)  event.preventDefault();  
+    if (event) event.preventDefault();
     let tasksAsText = JSON.stringify(tasks);
     await backend.setItem('tasks', tasksAsText);
 }
@@ -274,10 +273,10 @@ async function saveTasks() { //check async: no diff
  *  The preventDefault() function is necessary to prevent the page from reloading when adding a new task.
  */
 function loadTasks() {
-    if (event) event.preventDefault();   
+    if (event) event.preventDefault();
     let tasksAsText = backend.getItem('tasks');
     if (tasksAsText) tasks = JSON.parse(tasksAsText);
-    }
+}
 
 /**
  *  The function is used to show the description of the clicked task
@@ -289,4 +288,25 @@ function showDescription(i) {
 function compareDate() {
     let today = new Date().toISOString().split('T')[0];
     document.getElementById('date').setAttribute('min', today);
+}
+
+/**
+ * Renders several user icons for all passed users in an array
+ * @param {string[]} usersArr - array with usernames
+ * @returns {(string | string)} - user-icon  HTML code for all passed users | replacement image
+ */
+function renderAssignedUsers(usersArr) {
+    let iconsHTML = '';
+    if (usersArr && usersArr.length > 0)
+        for (let i = 0; i < usersArr.length; i++) {
+            let user = usersArr[i];
+            iconsHTML += renderUserIcon(user);
+        }
+    else iconsHTML = '<img src="img/icon-plus.png" alt="" class="icon-replacement">';
+    return iconsHTML;
+}
+
+function renderUserIcon(userName) {
+    let user = users.filter(user => user.name == userName);
+    return /*html*/ `<span id="icon-${userName}" class="user-icon" alt="user icon" style="background-color: ${user[0].color}">${user[0].initial}</span>`;
 }

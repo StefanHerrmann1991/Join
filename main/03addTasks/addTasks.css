@@ -79,4 +79,41 @@ textarea {
 
 input, select {
   height: 51px;
+}
+
+.user-icon {
+  border-radius: 50%;
+  border: 1px solid rgb(192, 192, 192);
+  height: 45px;
+  width: 45px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  opacity: 0.75;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  transition: all 225ms linear;
+}
+
+.assignment-button-container {
+  display: flex;
+}
+
+.priority-btn {
+  display: flex;
+  align-items: center;
+}
+.priority-btn button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 136px;
+  height: 51px;
+  background: #FFFFFF;
+  border: none;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }/*# sourceMappingURL=addTasks.css.map */
