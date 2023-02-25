@@ -249,7 +249,7 @@ function renderEditContact(actualContact) {
       </div>
       <div class="add-contact-submenu">
         <button class="close-upper-right" onclick="closeContactDialog('editContactDialog')">
-          <img src="/assets/img/contacts/cancel.png"><div> Edit Contact</div>
+          <img src="/assets/img/cancel.png"><div> Edit Contact</div>
         </button>    
         <img src="/assets/img/addContactBig.png">
           <form onsubmit="saveEditedContact(event, ${actualContact});  saveDataToBackend(contactBook)" id="editContactFormfield">
@@ -258,10 +258,10 @@ function renderEditContact(actualContact) {
                 <input type="tel" id="editPhone" name="editPhone" required placeholder="${actualContact.phone}" >
                   <div class="menu-btn">
                     <button type="button" onclick="closeContactDialog('editContactDialog')">Cancel
-                      <img src="/assets/img/contacts/cancel.png">
+                      <img src="assets/img/cancel.png">
                     </button>
                     <button type=submit>Edit contact
-                      <img src="/assets/img/contacts/check.png">
+                      <img src="assets/img/check.png">
                     </button>
                   </div>
                 </form>

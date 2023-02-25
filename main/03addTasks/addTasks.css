@@ -116,4 +116,15 @@ input, select {
   border: none;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  margin-right: 8px;
+  font-size: 21px;
+}
+.priority-btn .medium-prio {
+  width: 20px;
+  height: 7.5px;
+}
+.priority-btn img {
+  padding-left: 10px;
+  width: 20px;
+  height: 14.5px;
 }/*# sourceMappingURL=addTasks.css.map */
