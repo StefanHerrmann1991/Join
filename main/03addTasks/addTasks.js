@@ -2,6 +2,7 @@ let urgencies = ['High', 'Medium', 'Low'];
 let categories = ['Management', 'Software Developement', 'UX/UI Design', 'Human Resources'];
 let users
 let invitedUsers = [];
+let assignedUsers = [];
 
 async function initTasks() {
     await includeHTML();
@@ -329,9 +330,16 @@ function renderUserList() {
  */
 
 function renderUserInitial(event, i) {
-    if (event.target.checked) getId('userInitialContainer').innerHTML += `
-    <div id="userIcon-${[i]}" class="user-icon" style="background-color : ${users[i].color}">${users[i].initial}</div>`;
-    else getId(`userIcon-${[i]}`).remove()
+    if (event.target.checked) {
+        getId('userInitialContainer').innerHTML += `
+        <div id="userIcon-${[i]}" class="user-icon" style="background-color : ${users[i].color}">${users[i].initial}</div>`;
+        assignedUsers.push(users[i]);
+    }
+    else {
+        assignedUsers.splice(i, 1)
+        getId(`userIcon-${[i]}`).remove()       
+    }
+    console.log(assignedUsers)
 }
 
 
