@@ -332,7 +332,7 @@ function toggleMenu(id) {
 }
 
 function openAssignableContacts() {
-toggleMenu('userMenu')
+toggleMenu('userMenu');
 }
 
 function inviteUser() {
