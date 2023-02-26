@@ -180,82 +180,6 @@ function renderForm() {
     userSelect.innerHTML = renderUserOptionFields();
 }
 
-/* ****** render HTML option select fields ****** */
-
-/**
- * This function renders all options from a given array of values in an html select field
- * @param {string} selected - the pre-selected element/option
- * @param {string[]} dataArray - array with string values of all options
- * @returns {string} - html that creates option fields
- */
-function renderOptionFields(selected, dataArray) {
-    str = '';
-    for (let i = 0; i < dataArray.length; i++) {
-        let el = dataArray[i]; // if dataArray == 'users' el = dataArray[i].name
-        str += /*html*/ `<option value="${el}" ${renderSelected(selected, el)}>${el}</option>`;
-    }
-    return str;
-}
-
-function renderUserOptionFields(selectedUsers = undefined) {
-    let str = "";
-    for (let i = 0; i < users.length; i++) {
-        let el = users[i].name;
-        const isChecked = selectedUsers && selectedUsers.includes(el);
-        str += /*html*/ `
-        <div>
-          <input type="checkbox" id="${el}" name="${el}" value="${el}" ${isChecked ? "checked" : ""} onclick="showSelectedUserIcon()">
-        </div>
-      `;
-    }
-    return str;
-}
-
-/**assignUser
- * This function gets all selected users from a select field and shows their user icons
- */
-function showSelectedUserIcon() { // ...iconS !
-    let selectedUsersArr = getAssignedUsers();
-    //if(selectedUsersArr){
-    getId('iconsContainer').innerHTML = renderAssignedUsers(selectedUsersArr);
-    //}
-}
-
-/**
- * Renders HTML option fields from the users array into addToTask.html form select-field
- */
-/* function renderForm() {
-    let userSelect = getId('assignUser');
-    userSelect.innerHTML = '';
-    userSelect.innerHTML = renderUserOptionFields();
-} */
-
-/**
- * This function compares the value of a given element against the current value of a select field and returns the attribut 'selected' if they match (comparison is case-insensitive)
- * @param {string} option 
- * @param {string} value 
- * @returns {(string | undefined)} - returns 'selected' if true
- */
-function renderSelected(option, value) {
-    if (option != undefined) {
-        if (option.toLowerCase() == value.toLowerCase()) return 'selected';
-    }
-}
-// TODO: maybe include in function above (one fkt?)
-/**
- * This functions compares an array of passed options from a multiple select field with a given value and returns 'selected' if one of them matches the given value
- * @param {string[]} optionsArr 
- * @param {string} value 
- * @returns {(string | undefined )} - returns 'selected' if true
- */
-function renderMultipleSelected(optionsArr, value) {
-    if (optionsArr != undefined) {
-        for (let i = 0; i < optionsArr.length; i++) {
-            let el = optionsArr[i];
-            if (el.toLowerCase() == value.toLowerCase()) return 'selected';
-        }
-    }
-}
 
 /* Backend Folder */
 window.onload = async function () {
@@ -330,16 +254,18 @@ function renderUserList() {
  */
 
 function renderUserInitial(event, i) {
+    const user = users[i];
+    const userIndex = assignedUsers.indexOf(user);
+
     if (event.target.checked) {
         getId('userInitialContainer').innerHTML += `
-        <div id="userIcon-${[i]}" class="user-icon" style="background-color : ${users[i].color}">${users[i].initial}</div>`;
-        assignedUsers.push(users[i]);
+        <div id="userIcon-${[i]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
+        if (userIndex === -1) assignedUsers.push(user);        
+    } else {
+        if (userIndex !== -1) assignedUsers.splice(userIndex, 1);        
+        getId(`userIcon-${[i]}`).remove();
     }
-    else {
-        assignedUsers.splice(i, 1)
-        getId(`userIcon-${[i]}`).remove()       
-    }
-    console.log(assignedUsers)
+    console.log(assignedUsers);
 }
 
 
