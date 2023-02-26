@@ -326,8 +326,13 @@ function renderUserList() {
 
 }
 
-function openAssignableContacts() {
 
+function toggleMenu(id) {
+    getId(id).classList.toggle('d-none');
+}
+
+function openAssignableContacts() {
+toggleMenu('')
 
 }
 
