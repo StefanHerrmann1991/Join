@@ -280,12 +280,6 @@ function loadTasks() {
     if (tasksAsText) tasks = JSON.parse(tasksAsText);
 }
 
-/**
- *  The function is used to show the description of the clicked task
- */
-function showDescription(i) {
-}
-
 /** The function disables selection of a date before the current day */
 function compareDate() {
     let today = new Date().toISOString().split('T')[0];
@@ -314,16 +308,30 @@ function renderUserIcon(userName) {
 }
 
 function renderUserList() {
+    console.log(users)
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
         getId('userList').innerHTML += `
         <div class="user-list-container">
         <div>${user.name}</div>
-        <input type="checkbox" class="square-checkbox" value="${user.name}"> 
+        <input type="checkbox" class="square-checkbox" value="${user.name}" onclick="renderUserInitial(event, '${i}')"> 
         </div>
         `
     }
+}
 
+/**
+ * Renders a user icon in the userInitialContainer based on whether a checkbox is checked or unchecked.
+ *
+ * @param {Event} event - The event object that triggered the function call.
+ * @param {number} i - The index of the user in the users array.
+ * 
+ */
+
+function renderUserInitial(event, i) {
+    if (event.target.checked) getId('userInitialContainer').innerHTML += `
+    <div id="userIcon-${[i]}" class="user-icon" style="background-color : ${users[i].color}">${users[i].initial}</div>`;
+    else getId(`userIcon-${[i]}`).remove()
 }
 
 
@@ -332,7 +340,7 @@ function toggleMenu(id) {
 }
 
 function openAssignableContacts() {
-toggleMenu('userMenu');
+    toggleMenu('userMenu');
 }
 
 function inviteUser() {
