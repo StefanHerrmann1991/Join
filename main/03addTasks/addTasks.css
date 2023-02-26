@@ -1,3 +1,16 @@
+button {
+  border: none;
+  background-color: transparent;
+}
+
+input, textarea, select, div, h3 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 120%;
+}
+
 .add-task-container {
   position: absolute;
   top: 90px;
@@ -36,13 +49,16 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  height: 55%;
+  height: 30%;
 }
 .btn-container button {
   border-radius: 10px;
   font-weight: 700;
   font-size: 21px;
   line-height: 120%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .btn-container .clear-btn {
   color: #2A3647;
@@ -51,6 +67,11 @@
   width: 136px;
   height: 61px;
   border-radius: 10px;
+}
+.btn-container .clear-btn img {
+  width: 24px;
+  height: 24px;
+  margin-left: 2px;
 }
 .btn-container .create-task-btn {
   background-color: #2A3647;
@@ -61,8 +82,13 @@
   width: 177px;
   height: 61px;
 }
+.btn-container .create-task-btn img {
+  width: 24px;
+  height: 24px;
+  margin-left: 2px;
+}
 
-input, select, textarea {
+.title, select, textarea, .date {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -71,6 +97,8 @@ input, select, textarea {
   background: #FFFFFF;
   border: 1px solid #D1D1D1;
   border-radius: 10px;
+  resize: none;
+  overflow: auto;
 }
 
 textarea {
@@ -127,4 +155,128 @@ input, select {
   padding-left: 10px;
   width: 20px;
   height: 14.5px;
+}
+
+.subtasks-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 422px;
+  background: #FFFFFF;
+  border: 1px solid #D1D1D1;
+  border-radius: 10px;
+}
+.subtasks-container input {
+  border-radius: 10px;
+  border: none;
+  padding: 0px;
+  margin-left: 22px;
+}
+.subtasks-container input:focus {
+  outline: none;
+}
+.subtasks-container .button-container {
+  position: absolute;
+  right: 10;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.subtasks-container img {
+  width: 24px;
+  height: 24px;
+}
+.subtasks-container .cancel-button {
+  height: 31px;
+  border-right: 1px solid #D1D1D1;
+  padding-right: 12px;
+}
+.subtasks-container .add-button {
+  padding-left: 12px;
+}
+
+.subtasks-container:focus-within .button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.assign-btn-container {
+  display: flex;
+  flex-direction: column;
+  padding: 13px 21px;
+  width: 422px;
+  background: #FFFFFF;
+  border: 1px solid #D1D1D1;
+  border-radius: 10px;
+  position: relative;
+  align-items: flex-start;
+}
+.assign-btn-container .assign-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  overflow-y: scroll;
+  width: 100%;
+  height: 80px;
+}
+
+.user-list-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 20px);
+  height: 51px;
+}
+
+.invite-user-btn {
+  position: absolute;
+  bottom: 0;
+}
+
+.square-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 11px;
+  height: 11px;
+  vertical-align: middle;
+  outline: none;
+  position: relative;
+  background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
+  border: 1px solid #000000;
+  border-radius: 3px;
+}
+.square-checkbox::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+.square-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  background: #000000;
+  border-radius: 1px;
+  box-sizing: border-box;
+  height: 5px;
+  width: 5px;
 }/*# sourceMappingURL=addTasks.css.map */

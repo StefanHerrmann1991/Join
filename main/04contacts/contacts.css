@@ -299,13 +299,13 @@ button, a {
   margin-left: 12px;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nth-child(1), .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nth-child(1) {
-  background-image: url(/assets/img/contacts/person.png);
+  background-image: url(/assets/img/person.png);
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nth-child(2), .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nth-child(2) {
-  background-image: url(/assets/img/contacts/mail.png);
+  background-image: url(/assets/img/mail.png);
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nth-child(3), .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nth-child(3) {
-  background-image: url(/assets/img/contacts/phone-line.png);
+  background-image: url(/assets/img/phone-line.png);
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu input, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu input {
   font-size: 21px;

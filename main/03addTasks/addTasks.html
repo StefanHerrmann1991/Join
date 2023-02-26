@@ -4,7 +4,7 @@
     <script src="../../mini_backend.js"></script>
     <script src="../../script.js"></script>
     <script src="addTasks.js"></script>
-    <script src="../02board/board.js"></script>  
+    <script src="../02board/board.js"></script>
     <script src="../04contacts/contacts.js"></script>
     <!-- css data -->
     <link rel="stylesheet" href="addTasks.css">
@@ -13,9 +13,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
-  </head>
+</head>
 
-<body onload="initTasks()">
+<body onload="initTasks(); renderUserList()">
     <div class="dashboard">
         <div w3-include-html="../../index.html"></div>
         <div class="add-task-container">
@@ -24,9 +24,10 @@
                 <form class="add-task-formfield" onsubmit="addToTasks(); clearAssignments()">
                     <div class="add-task-left">
                         <h3>Title</h3>
-                        <input required id="title" placeholder="Enter a title" oninput="init();loadTasks()">
+                        <input required class="title" id="title" placeholder="Enter a title"
+                            oninput="init();loadTasks()">
                         <h3>Description</h3>
-                        <textarea required id="description" placeholder="Enter a description"></textarea>
+                        <textarea resize="none" required id="description" placeholder="Enter a description"></textarea>
                         <h3>Category</h3>
                         <select required id="category">
                             <option value="Management"> Management</option>
@@ -35,27 +36,42 @@
                             <option value="Human Resources">Human Resources</option>
                         </select>
                         <h3>Assigned to</h3>
-                        <select multiple id="assignUser" class=""></select>
-                        <div class="assignment-container">
-                            <div id="iconsContainer" class="assignment-button-container">
-                                <img src="" alt="">
+                        <button onclick="openAssignableContacts()" class="assign-btn-container">
+                            <div class="assign-btn">
+                                <div>Select contact to assign</div>
+                                <div><img src="/assets/img/open.png"></div>
                             </div>
-                        </div>
+                            <div class="user-list" id="userList"></div>
+                            <button class="invite-user-btn" onclick="inviteUsers()">Invite new contact<img
+                                    src="/assets/img/contactsBlack.png"></button>
+                        </button>
                     </div>
                     <div class="add-task-right">
                         <h3>Due date</h3>
-                        <input required id="date" type="date" name="setTodaysDate">
+                        <input required id="date" class="date" type="date" name="setTodaysDate">
                         <h3>Prio</h3>
                         <div required id="urgency" class="priority-btn">
                             <button value="Urgent">Urgent<img src="../../assets/img/prioHigh.png"></button>
-                            <button value="Medium">Medium<img class="medium-prio" src="../../assets/img/prioMedia.png"></button>
+                            <button value="Medium">Medium<img class="medium-prio"
+                                    src="../../assets/img/prioMedia.png"></button>
                             <button value="Low">Low<img src="../../assets/img/prioLow.png"></button>
                         </div>
                         <h3>Subtasks</h3>
-                        <div id="subtaks"></div>
+                        <div class="subtasks-container" id="subtasks">
+                            <input id="subtaskInput" type="text" id="my-input" placeholder="Click here">
+                            <div class="button-container">
+                                <button id="button2" class="cancel-button" onclick="cancelSubtask()"><img
+                                        src="/assets/img/cancelDark.png"></button>
+                                <button id="button1" class="add-button" onclick="newSubtask()"><img
+                                        src="/assets/img/checkDark.png"></button>
+                            </div>
+                        </div>
+
                         <div class="btn-container">
-                            <button class="clear-btn" type="reset" class="clear-btn" onclick="clearAssignments()">Clear</button>
-                            <button class="create-task-btn" type="submit" class="assign-btn"><img src="/assets/img/tik.png">Create Task</button>
+                            <button class="clear-btn" type="reset" class="clear-btn" onclick="clearAssignments()">
+                                Clear<img src="/assets/img/cancel.png"></button>
+                            <button class="create-task-btn" type="submit" class="assign-btn">
+                                Create Task<img src="/assets/img/check.png"></button>
                         </div>
                     </div>
                 </form>

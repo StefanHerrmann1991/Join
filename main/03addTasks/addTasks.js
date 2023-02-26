@@ -1,12 +1,14 @@
 let urgencies = ['High', 'Medium', 'Low'];
 let categories = ['Management', 'Software Developement', 'UX/UI Design', 'Human Resources'];
 let users
+let invitedUsers = [];
 
 async function initTasks() {
     await includeHTML();
     await initBackend();
     await initAddTasks();
-    await renderForm();
+    await renderUserList();
+    /*  await renderForm(); */
     compareDate();
 }
 
@@ -79,6 +81,7 @@ function processTaskInputs() {
         'date': date.value,
         'board': '',
         'assignedTo': assignedUsers,
+        'subtasks': {}
     };
     return task;
 }
@@ -196,17 +199,16 @@ function renderOptionFields(selected, dataArray) {
 function renderUserOptionFields(selectedUsers = undefined) {
     let str = "";
     for (let i = 0; i < users.length; i++) {
-      let el = users[i].name;
-      const isChecked = selectedUsers && selectedUsers.includes(el);
-      str += /*html*/ `
-        <option>
+        let el = users[i].name;
+        const isChecked = selectedUsers && selectedUsers.includes(el);
+        str += /*html*/ `
+        <div>
           <input type="checkbox" id="${el}" name="${el}" value="${el}" ${isChecked ? "checked" : ""} onclick="showSelectedUserIcon()">
-          <label for="${el}">${el}</label>
-        </option>
+        </div>
       `;
     }
     return str;
-  }
+}
 
 /**assignUser
  * This function gets all selected users from a select field and shows their user icons
@@ -221,11 +223,11 @@ function showSelectedUserIcon() { // ...iconS !
 /**
  * Renders HTML option fields from the users array into addToTask.html form select-field
  */
-function renderForm() {
+/* function renderForm() {
     let userSelect = getId('assignUser');
     userSelect.innerHTML = '';
     userSelect.innerHTML = renderUserOptionFields();
-}
+} */
 
 /**
  * This function compares the value of a given element against the current value of a select field and returns the attribut 'selected' if they match (comparison is case-insensitive)
@@ -310,3 +312,35 @@ function renderUserIcon(userName) {
     let user = users.filter(user => user.name == userName);
     return /*html*/ `<span id="icon-${userName}" class="user-icon" alt="user icon" style="background-color: ${user[0].color}">${user[0].initial}</span>`;
 }
+
+function renderUserList() {
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
+        getId('userList').innerHTML += `
+        <div class="user-list-container">
+        <div>${user.name}</div>
+        <input type="checkbox" class="square-checkbox" value="${user.name}"> 
+        </div>
+        `
+    }
+
+}
+
+function openAssignableContacts() {
+
+
+}
+
+function inviteUser() {
+
+}
+
+function newSubtask() {
+    getId('subtaskInput').value
+}
+
+function cancelSubtask() {
+
+}
+
+function newCategory() { }
