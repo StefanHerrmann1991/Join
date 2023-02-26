@@ -332,8 +332,7 @@ function toggleMenu(id) {
 }
 
 function openAssignableContacts() {
-toggleMenu('')
-
+toggleMenu('userMenu')
 }
 
 function inviteUser() {

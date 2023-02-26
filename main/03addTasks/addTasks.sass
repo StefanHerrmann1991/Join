@@ -12,13 +12,12 @@ input, textarea, select, div, h3, button
 
 .add-task-container
     position: absolute
-    top: 90px
+    top: 180px
     left: 233px
     display: flex
-    justify-content: center
     align-items: flex-start
     width: calc( 100% - 233px )
-    height: calc( 100% - 90px )
+    height: calc( 100% - 180px )
     flex-direction: column
     .add-task-formfield
         display: flex
@@ -41,7 +40,7 @@ input, textarea, select, div, h3, button
     display: flex
     justify-content: flex-end
     align-items: flex-end
-    height: 30%
+    height: 180px
     button
         border-radius: 10px
         font-weight: 700
@@ -172,7 +171,10 @@ input, select
 .assign-btn-container
     display: flex
     flex-direction: column
-    padding: 13px 21px
+   
+    padding-top: 13px 
+    padding-left: 21px
+    padding-right: 21px
     width: calc( 422px - 42px )
     background: #FFFFFF
     border: 1px solid #D1D1D1
@@ -180,6 +182,7 @@ input, select
     position: relative
     align-items: flex-start
     .assign-btn
+        margin-bottom: 13px
         width: 98%
         display: flex
         justify-content: space-between
@@ -192,20 +195,27 @@ input, select
     overflow-y: scroll
     width: 100%
     height: 80px
-    margin-bottom: 46px
-    padding-right: 12px
+    margin-bottom: 60px
+    padding-right: 13px
+    div    
+        display: flex
+        align-items: center
+.user-menu
+    width: 100%
 
 .user-list-container
     display: flex
     flex-direction: row
     justify-content: space-between
-    align-items: center
+    align-items: baseline
     width: 100%
     height: 51px
+    div
+        height: 51px
 
 .invite-user-btn
-    padding-left: 12px
-    padding-right: 12px
+    padding-left: 23px
+    padding-right: 23px
     width: 100%
     margin-left: -21px
     display: flex
