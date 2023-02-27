@@ -36,14 +36,14 @@
                             <option value="Human Resources">Human Resources</option>
                         </select>
                         <h3>Assigned to</h3>
-                        <div class="assign-btn-container">
+                        <div class="assign-btn-container" id="assignBtnContainer">
                             <button type="button" class="assign-btn" onclick="openAssignableContacts()">
                                 <div>Select contact to assign</div>
                                 <div><img src="/assets/img/open.png"></div>
                             </button>
                             <div class="user-menu" id="userMenu">
                                 <div class="user-list" id="userList"></div>
-                                <button class="invite-user-btn" onclick="inviteUsers()">Invite new contact<img
+                                <button id="inviteUserBtn" type="button" class="invite-user-btn" onclick="inviteUsers()">Invite new contact<img
                                         src="/assets/img/contactsBlack.png"></button>
                             </div>
                         </div>
@@ -54,18 +54,18 @@
                         <input required id="date" class="date" type="date" name="setTodaysDate">
                         <h3>Prio</h3>
                         <div required id="urgency" class="priority-btn">
-                            <button value="Urgent">Urgent<img src="../../assets/img/prioHigh.png"></button>
-                            <button value="Medium">Medium<img class="medium-prio"
+                            <button type="button" required onclick="getUrgency('urgent')">Urgent<img src="../../assets/img/prioHigh.png"></button>
+                            <button type="button" required onclick="getUrgency('medium')">Medium<img class="medium-prio"
                                     src="../../assets/img/prioMedia.png"></button>
-                            <button value="Low">Low<img src="../../assets/img/prioLow.png"></button>
+                            <button type="button" required onclick="getUrgency('low')">Low<img src="../../assets/img/prioLow.png"></button>
                         </div>
                         <h3>Subtasks</h3>
                         <div class="subtasks-container" id="subtasks">
                             <input id="subtaskInput" type="text" id="my-input" placeholder="Click here">
                             <div class="button-container">
-                                <button id="button2" class="cancel-button" onclick="cancelSubtask()"><img
+                                <button  class="cancel-button" onclick="cancelSubtask()"><img
                                         src="/assets/img/cancelDark.png"></button>
-                                <button id="button1" class="add-button" onclick="newSubtask()"><img
+                                <button  class="add-button" onclick="newSubtask()"><img
                                         src="/assets/img/checkDark.png"></button>
                             </div>
                         </div>
@@ -81,7 +81,10 @@
             </div>
         </div>
     </div>
+
+
 </body>
+
 
 
 <!--  <div class="add-to-task-sub-wrap">

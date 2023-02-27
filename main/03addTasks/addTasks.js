@@ -100,6 +100,16 @@ function getAssignedUsers() {
 }
 
 
+function getUrgency(urgency) {
+    switch (urgency) {
+        case 'low': return 'low';
+        case 'urgent': return 'urgent';
+        case 'medium': return 'medium';
+
+    }
+
+}
+
 /**
  * This function Clears user icons when resetting the addToTask.html form
  */
@@ -260,9 +270,9 @@ function renderUserInitial(event, i) {
     if (event.target.checked) {
         getId('userInitialContainer').innerHTML += `
         <div id="userIcon-${[i]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
-        if (userIndex === -1) assignedUsers.push(user);        
+        if (userIndex === -1) assignedUsers.push(user);
     } else {
-        if (userIndex !== -1) assignedUsers.splice(userIndex, 1);        
+        if (userIndex !== -1) assignedUsers.splice(userIndex, 1);
         getId(`userIcon-${[i]}`).remove();
     }
     console.log(assignedUsers);
@@ -277,8 +287,35 @@ function openAssignableContacts() {
     toggleMenu('userMenu');
 }
 
-function inviteUser() {
+function inviteUsers() {
+    let inviteContainer = getId('assignBtnContainer');
+    inviteContainer.classList.remove('assign-btn-container');
+    inviteContainer.innerHTML = `
+  
+    <div class="subtasks-container">
+        <input id="userSearchInput" type="text" id="my-input" placeholder="Contact email" onKeyUp="showResults(this.value.toLowerCase())">
+            <div class="button-container">
+        <button class="cancel-button" onclick="cancelContactInvitation()"><img
+                src="/assets/img/cancelDark.png"></button>
+        <button class="add-button" onclick="newContactInvitation()"><img
+                src="/assets/img/checkDark.png"></button>
+        <div id="userSearch"></div>
+        </div>
+    </div>  
+    `
+}
 
+function inviteContact() {
+
+}
+
+function cancelContactInvitation() { }
+
+function newContactInvitation() {
+    let newInvitation;
+    newInvitation = getId('invitationInput').value;
+    invitedUsers.push(newInvitation);
+    console.log(newInvitation)
 }
 
 function newSubtask() {
@@ -290,3 +327,32 @@ function cancelSubtask() {
 }
 
 function newCategory() { }
+
+
+/**
+ * The function matches the input in the search input field with the names and emails of the users array.
+ * @param {string} input A string containing a name or email.
+ * @returns An array of users with names or emails that match the input string.
+ */
+function autocompleteMatch(input) {
+    if (input == '') return [];
+    let reg = new RegExp(input);
+    return users.filter(function (user) {
+        if (user.name.match(reg) || user.email.match(reg)) return user;
+    });
+}
+
+/**
+ * Displays a list of users with names or emails that match the input string.
+ * @param {string} val The input string to match against.
+ */
+function showResults(val) {
+    const res = getId("userSearchInput");
+    res.innerHTML = '';
+    let list = '';
+    const usersList = autocompleteMatch(val);
+    for (let i = 0; i < usersList.length; i++) {
+        list += `<option value="${usersList[i].name}">${usersList[i].name} (${usersList[i].email})</option>`;
+    }
+    res.innerHTML = `<datalist id="usersSearch" name="user">${list}</datalist>`;
+}
