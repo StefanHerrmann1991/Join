@@ -290,32 +290,27 @@ function openAssignableContacts() {
 function inviteUsers() {
     let inviteContainer = getId('assignBtnContainer');
     inviteContainer.classList.remove('assign-btn-container');
-    inviteContainer.innerHTML = `
-  
+    
+    inviteContainer.innerHTML = `  
     <div class="subtasks-container">
-        <input id="userSearchInput" type="text" id="my-input" placeholder="Contact email" onKeyUp="showResults(this.value.toLowerCase())">
-            <div class="button-container">
-        <button class="cancel-button" onclick="cancelContactInvitation()"><img
-                src="/assets/img/cancelDark.png"></button>
-        <button class="add-button" onclick="newContactInvitation()"><img
-                src="/assets/img/checkDark.png"></button>
-        <div id="userSearch"></div>
+        <input id="userSearchInput" type="text" list="usersSearch" name="userList" placeholder="Contact email" onKeyUp="showResults(this.value)">
+        <div class="button-container">
+            <button class="cancel-button" onclick="cancelContactInvitation()"><img
+                src="/assets/img/cancelDark.png" type="button"></button>
+            <button class="add-button" onclick="newContactInvitation()"><img
+                src="/assets/img/checkDark.png" type="button"></button>
         </div>
     </div>  
     `
 }
 
-function inviteContact() {
-
-}
 
 function cancelContactInvitation() { }
 
 function newContactInvitation() {
     let newInvitation;
-    newInvitation = getId('invitationInput').value;
-    invitedUsers.push(newInvitation);
-    console.log(newInvitation)
+    newInvitation = getId('userSearchInput').value;
+    invitedUsers.push(newInvitation);   
 }
 
 function newSubtask() {
@@ -354,5 +349,5 @@ function showResults(val) {
     for (let i = 0; i < usersList.length; i++) {
         list += `<option value="${usersList[i].name}">${usersList[i].name} (${usersList[i].email})</option>`;
     }
-    res.innerHTML = `<datalist id="usersSearch" name="user">${list}</datalist>`;
+    res.innerHTML = `<datalist id="usersSearch" name="userList">${list}</datalist>`;
 }

@@ -306,4 +306,8 @@ input, select {
   box-sizing: border-box;
   height: 5px;
   width: 5px;
+}
+
+#userSearchInput {
+  width: 100%;
 }/*# sourceMappingURL=addTasks.css.map */
