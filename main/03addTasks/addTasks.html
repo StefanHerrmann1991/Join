@@ -29,12 +29,17 @@
                         <h3>Description</h3>
                         <textarea resize="none" required id="description" placeholder="Enter a description"></textarea>
                         <h3>Category</h3>
-                        <select required id="category">
-                            <option value="Management"> Management</option>
-                            <option value="Software Developement">Software Developement</option>
-                            <option value="UX/UI Design">UX/UI Design</option>
-                            <option value="Human Resources">Human Resources</option>
-                        </select>
+                        <div class="assign-btn-container" id="categoryContainer">
+                            <button type="button" class="assign-btn" onclick="openCategories()">
+                                <div >Select task category</div>
+                                <div id="imgArrow"><img src="/assets/img/open.png"></div>
+                            </button>
+                            <div class="user-menu" id="categoryMenu">
+                                <button id="newCategoryBtn" type="button" class="new-category-btn" 
+                                    onclick="newCategory()">New category</button>
+                                <div class="category-list" id="categoryList"></div>
+                            </div>
+                        </div>
                         <h3>Assigned to</h3>
                         <div class="assign-btn-container" id="assignBtnContainer">
                             <button type="button" class="assign-btn" onclick="openAssignableContacts()">

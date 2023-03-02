@@ -209,8 +209,6 @@ input, select {
   display: flex;
   flex-direction: column;
   padding-top: 13px;
-  padding-left: 21px;
-  padding-right: 21px;
   width: 380px;
   background: #FFFFFF;
   border: 1px solid #D1D1D1;
@@ -219,6 +217,8 @@ input, select {
   align-items: flex-start;
 }
 .assign-btn-container .assign-btn {
+  padding-left: 21px;
+  padding-right: 21px;
   margin-bottom: 13px;
   width: 98%;
   display: flex;
@@ -244,6 +244,8 @@ input, select {
 
 .user-menu {
   width: 100%;
+  padding-left: 21px;
+  padding-right: 21px;
 }
 
 .user-list-container {
@@ -318,6 +320,52 @@ input, select {
 
 #userSearchInput::-webkit-calendar-picker-indicator {
   opacity: 0;
+}
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.category-list .each-category-container {
+  width: calc(100% - 42px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 21px;
+  padding-right: 21px;
+}
+.category-list .each-category-container:hover {
+  background-color: #D1D1D1;
+}
+.category-list .each-category-container:hover:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.category-list .each-category-container .category {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 51px;
+}
+.category-list .each-category-container .category-color {
+  border: 2px solid #FFFFFF;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.new-category-btn {
+  padding-left: 21px;
+  padding-right: 21px;
+  width: 100%;
+  height: 51px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.new-category-btn:hover {
+  background-color: #D1D1D1;
 }
 
 .priority-btn {

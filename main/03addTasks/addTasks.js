@@ -1,5 +1,11 @@
 let urgencies = ['High', 'Medium', 'Low'];
-let categories = ['Management', 'Software Developement', 'UX/UI Design', 'Human Resources'];
+let categories = [{
+    'topic': 'Sales',
+    'color': 'FC71FF'
+}, {
+    'topic': 'Backoffice',
+    'color': '#1FD7C1'
+}];
 let users
 let invitedUsers = [];
 let assignedUsers = [];
@@ -9,6 +15,7 @@ async function initTasks() {
     await initBackend();
     await initAddTasks();
     await renderUserList();
+    await renderCategories();
     /*  await renderForm(); */
     compareDate();
 }
@@ -99,24 +106,45 @@ function getAssignedUsers() {
     return assignedUsers;
 }
 
+function newCategory() {
+
+}
+
+function openCategories() {
+
+}
+
+function renderCategories() {
+    let categoryOption = getId('categoryList')
+    for (let i = 0; i < categories.length; i++) {
+        const category = categories[i];
+        categoryOption.innerHTML += `
+        <div class="each-category-container">
+        <div class="category" value="${category.topic}">${category.topic}</div>
+        <div class="category-color" style="background-color: ${category.color}"></div>
+        </div>
+        `
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  let selectedValue = null;
+    let selectedValue = null;
 
-  const buttonEls = document.querySelectorAll('.priority-btn');
+    const buttonEls = document.querySelectorAll('.priority-btn');
 
-  buttonEls.forEach(buttonEl => {
-    buttonEl.addEventListener('click', () => {
-      // Remove selected class from all buttons
-      buttonEls.forEach(b => b.classList.remove('selected'));
+    buttonEls.forEach(buttonEl => {
+        buttonEl.addEventListener('click', () => {
+            // Remove selected class from all buttons
+            buttonEls.forEach(b => b.classList.remove('selected'));
 
-      // Add selected class to the clicked button
-      buttonEl.classList.add('selected');
+            // Add selected class to the clicked button
+            buttonEl.classList.add('selected');
 
-      // Store the selected value
-      selectedValue = buttonEl.getAttribute('data-value');
-      console.log(selectedValue)
+            // Store the selected value
+            selectedValue = buttonEl.getAttribute('data-value');
+            console.log(selectedValue)
+        });
     });
-  });
 });
 
 
@@ -136,7 +164,7 @@ buttonEls.forEach(buttonEl => {
     selectedValue = buttonEl.getAttribute('data-value');
   });
 }); */
- 
+
 
 function getUrgency(urgency) {
     switch (urgency) {
@@ -327,7 +355,7 @@ function openAssignableContacts() {
 
 function inviteUsers() {
     let inviteContainer = getId('assignBtnContainer');
-    inviteContainer.classList.remove('assign-btn-container');    
+    inviteContainer.classList.remove('assign-btn-container');
     inviteContainer.innerHTML = `  
     <div class="subtasks-container">
         <input class="costom-datalist" id="userSearchInput" type="text" list="usersSearch" name="userList" placeholder="Contact email" onKeyUp="showResults(this.value)">
@@ -347,7 +375,7 @@ function cancelContactInvitation() { }
 function newContactInvitation() {
     let newInvitation;
     newInvitation = getId('userSearchInput').value;
-    invitedUsers.push(newInvitation);   
+    invitedUsers.push(newInvitation);
 }
 
 function newSubtask() {
