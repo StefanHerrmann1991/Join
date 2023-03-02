@@ -281,5 +281,16 @@ input, select
     cursor: pointer
 
 .priority-btn.selected
-    background-color: #2A3647
-    color: #fff
+    color: white
+.priority-btn.selected.low
+    background-color: #7AE229
+    img
+        filter: invert(1%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(101%) contrast(200%)
+.priority-btn.selected.urgent
+    background-color: #FF3D00
+    img
+        filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%)
+.priority-btn.selected.medium
+    background-color: #FFA800
+    img
+        filter: invert(50%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%)
