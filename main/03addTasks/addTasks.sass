@@ -107,10 +107,10 @@ input, select
 .assignment-button-container
     display: flex
 
-.priority-btn
+.priority-btns
     display: flex
     align-items: center
-    button
+    .priority-btn
         display: flex
         justify-content: center
         align-items: center
@@ -121,6 +121,9 @@ input, select
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1)
         border-radius: 10px
         margin-right: 8px
+        .priority-btn.selected
+            background-color: #2A3647
+            color: #fff
     .medium-prio
         width: 20px
         height: 7.5px
@@ -265,3 +268,18 @@ input, select
 
 #userSearchInput
     width: 100%
+
+#userSearchInput::-webkit-calendar-picker-indicator
+    opacity: 0
+
+.priority-btn
+    border: none
+    background-color: #ddd
+    color: #333
+    padding: 10px
+    border-radius: 5px
+    cursor: pointer
+
+.priority-btn.selected
+    background-color: #2A3647
+    color: #fff

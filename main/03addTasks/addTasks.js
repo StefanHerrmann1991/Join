@@ -99,6 +99,44 @@ function getAssignedUsers() {
     return assignedUsers;
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  let selectedValue = null;
+
+  const buttonEls = document.querySelectorAll('.priority-btn');
+
+  buttonEls.forEach(buttonEl => {
+    buttonEl.addEventListener('click', () => {
+      // Remove selected class from all buttons
+      buttonEls.forEach(b => b.classList.remove('selected'));
+
+      // Add selected class to the clicked button
+      buttonEl.classList.add('selected');
+
+      // Store the selected value
+      selectedValue = buttonEl.getAttribute('data-value');
+      console.log(selectedValue)
+    });
+  });
+});
+
+
+/* let selectedValue = null;
+
+const buttonEls = document.querySelectorAll('.priority-btn');
+
+buttonEls.forEach(buttonEl => {
+  buttonEl.addEventListener('click', () => {
+    // Remove selected class from all buttons
+    buttonEls.forEach(b => b.classList.remove('selected'));
+
+    // Add selected class to the clicked button
+    buttonEl.classList.add('selected');
+
+    // Store the selected value
+    selectedValue = buttonEl.getAttribute('data-value');
+  });
+}); */
+ 
 
 function getUrgency(urgency) {
     switch (urgency) {
@@ -289,16 +327,15 @@ function openAssignableContacts() {
 
 function inviteUsers() {
     let inviteContainer = getId('assignBtnContainer');
-    inviteContainer.classList.remove('assign-btn-container');
-    
+    inviteContainer.classList.remove('assign-btn-container');    
     inviteContainer.innerHTML = `  
     <div class="subtasks-container">
-        <input id="userSearchInput" type="text" list="usersSearch" name="userList" placeholder="Contact email" onKeyUp="showResults(this.value)">
+        <input class="costom-datalist" id="userSearchInput" type="text" list="usersSearch" name="userList" placeholder="Contact email" onKeyUp="showResults(this.value)">
         <div class="button-container">
-            <button class="cancel-button" onclick="cancelContactInvitation()"><img
-                src="/assets/img/cancelDark.png" type="button"></button>
-            <button class="add-button" onclick="newContactInvitation()"><img
-                src="/assets/img/checkDark.png" type="button"></button>
+            <button type="button" class="cancel-button" onclick="cancelContactInvitation()"><img
+                src="/assets/img/cancelDark.png" ></button>
+            <button type="button" class="add-button" onclick="newContactInvitation()"><img
+                src="/assets/img/checkDark.png" ></button>
         </div>
     </div>  
     `
@@ -349,5 +386,5 @@ function showResults(val) {
     for (let i = 0; i < usersList.length; i++) {
         list += `<option value="${usersList[i].name}">${usersList[i].name} (${usersList[i].email})</option>`;
     }
-    res.innerHTML = `<datalist id="usersSearch" name="userList">${list}</datalist>`;
+    res.innerHTML = `<datalist class="custom-datalist" id="usersSearch" name="userList">${list}</datalist>`;
 }
