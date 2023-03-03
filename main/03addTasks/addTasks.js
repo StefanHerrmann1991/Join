@@ -105,10 +105,11 @@ function newCategory() {
     <div class="subtasks-container">
     <input class="costom-datalist" id="categoryInput" type="text"
         placeholder="New category name">
+        <div class="chosen-color" id="chosenColor"></div> 
     <div class="button-container">
         <button type="button" class="cancel-button" onclick="cancelNewCategory()"><img
                 src="/assets/img/cancelDark.png"></button>
-        <button type="button" class="add-button" onclick="addCategory"><img
+        <button type="button" class="add-button" onclick="addCategory()"><img
                 src="/assets/img/checkDark.png"></button>
     </div>
     </div>
@@ -138,13 +139,14 @@ function renderColorPicker() {
     let pickColor = getId('colorPicker');
     for (let i = 0; i < colorPicker.length; i++) {
         const color = colorPicker[i];
-        pickColor.innerHTML += `<button onclick="chooseCategoryColor(${i})" class="category-color" style="background-color: ${color}"></button>`
+        pickColor.innerHTML += `<button type="button" onclick="chooseCategoryColor(${i})" class="category-color" style="background-color: ${color}"></button>`
     }
 }
 
 function chooseCategoryColor(index) {
-   let choosenColor =  colorPicker[index]
-   console.log(choosenColor)
+   let colorId = document.getElementById('chosenColor')
+   let chosenColor =  colorPicker[index]
+   colorId.innerHTML = `<div style="background-color: ${chosenColor}" class="category-color"></div>`
 }
 
 function openCategories() {
@@ -170,7 +172,7 @@ function renderCategories() {
 }
 
 function saveNewCategory()  {
-    
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {
