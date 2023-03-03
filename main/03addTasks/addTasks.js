@@ -9,6 +9,7 @@ let categories = [{
 let users
 let invitedUsers = [];
 let assignedUsers = [];
+let colorPicker = ['#8AA4FF', '#FF0000', '#2AD300', '#FF8A00', '#E200BE', '#0038FF']
 
 async function initTasks() {
     await includeHTML();
@@ -26,7 +27,6 @@ async function initAddTasks() {
     tasks = JSON.parse(backend.getItem('tasks')) || [];
 }
 
-
 /** addToTaskJS 
  * This function is meant to enable the add of tasks to a json array.
  * It also generates a certain ID for new tasks and sends them to the backlog board.
@@ -40,37 +40,6 @@ function addToTasks() {
     saveTasks();
     clearInputValues(title, date, category, urgency, description);
     clearAssignments(); // clear assigned users icons
-}
-
-
-/**
- * Renders HTML option fields from the users array into addToTask.html form select-field
- */
-function renderForm() {
-    let userSelect = getId('assignUser');
-    userSelect.innerHTML = '';
-    userSelect.innerHTML = renderUserOptionFields();
-}
-
-
-/**
- * This function renders a notification after successfully submitting a new task
- */
-function taskSubmitSuccessful() {
-    let taskSuccess = getId('taskSubmitSuccessful');
-    let taskName = processTaskInputs();
-    taskSuccess.innerHTML = `The Task '${taskName['title']}' was successfully submitted to the <a href="02backlog.html" class="backlog-link"> Backlog</a>`;
-    show('taskSubmitSuccessful')
-    //window.setTimeout(hide('taskSubmitSuccessful'), 5000);
-    window.setTimeout(function () {
-        hide('taskSubmitSuccessful')
-    }, 2000);
-}
-
-/**
- * Empties the input fields in the task forms*/
-function clearInputs() {
-    clearInputValues(title, date, category, urgency, description);
 }
 
 /**
@@ -92,6 +61,28 @@ function processTaskInputs() {
     };
     return task;
 }
+
+/**
+ * This function renders a notification after successfully submitting a new task
+ */
+function taskSubmitSuccessful() {
+    let taskSuccess = getId('taskSubmitSuccessful');
+    let taskName = processTaskInputs();
+    taskSuccess.innerHTML = `The Task '${taskName['title']}' was successfully submitted to the <a href="02backlog.html" class="backlog-link"> Backlog</a>`;
+    show('taskSubmitSuccessful')
+    //window.setTimeout(hide('taskSubmitSuccessful'), 5000);
+    window.setTimeout(function () {
+        hide('taskSubmitSuccessful')
+    }, 2000);
+}
+
+/**
+ * Empties the input fields in the task forms*/
+function clearInputs() {
+    clearInputValues(title, date, category, urgency, description);
+}
+
+
 
 
 
@@ -120,17 +111,49 @@ function newCategory() {
         <button type="button" class="add-button" onclick="addCategory"><img
                 src="/assets/img/checkDark.png"></button>
     </div>
-    </div>`
+    </div>
+    <div id="colorPicker" class="color-picker"></div>`
+    renderColorPicker();
 }
 
-
-function addCategory() {
-
+function cancelNewCategory() {
+    let newCategory = getId('categoryContainer')
+    newCategory.classList.add('assign-btn-container');
+    newCategory.innerHTML = `
+        <button type="button" class="assign-btn" onclick="openCategories()">
+            <div>Select task category</div>
+            <div id="imgArrow"><img src="/assets/img/open.png"></div>
+        </button>
+        <div class="user-menu" id="categoryMenu">
+            <button id="newCategoryBtn" type="button" class="new-category-btn"
+            onclick="newCategory()">New category</button>
+            <div class="category-list" id="categoryList"></div>
+        </div>            
+ 
+`
+    renderCategories();    
 }
 
+function renderColorPicker() {
+    let pickColor = getId('colorPicker');
+    for (let i = 0; i < colorPicker.length; i++) {
+        const color = colorPicker[i];
+        pickColor.innerHTML += `<button onclick="chooseCategoryColor(${i})" class="category-color" style="background-color: ${color}"></button>`
+    }
+}
+
+function chooseCategoryColor(index) {
+   let choosenColor =  colorPicker[index]
+   console.log(choosenColor)
+}
 
 function openCategories() {
     toggleMenu('categoryMenu');
+}
+
+function addCategory() {
+    let topic = getId('categoryInput').value
+    let color = categories
 }
 
 function renderCategories() {
@@ -139,11 +162,15 @@ function renderCategories() {
         const category = categories[i];
         categoryOption.innerHTML += `
         <div class="each-category-container">
-        <div class="category" value="${category.topic}">${category.topic}</div>
+        <div class="category" id="category-${i}" value="${category.topic}">${category.topic}</div>
         <div class="category-color" style="background-color: ${category.color}"></div>
         </div>
         `
     }
+}
+
+function saveNewCategory()  {
+    
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -161,39 +188,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Store the selected value
             selectedValue = buttonEl.getAttribute('data-value');
-            console.log(selectedValue)
         });
     });
 });
-
-
-/* let selectedValue = null;
-
-const buttonEls = document.querySelectorAll('.priority-btn');
-
-buttonEls.forEach(buttonEl => {
-  buttonEl.addEventListener('click', () => {
-    // Remove selected class from all buttons
-    buttonEls.forEach(b => b.classList.remove('selected'));
-
-    // Add selected class to the clicked button
-    buttonEl.classList.add('selected');
-
-    // Store the selected value
-    selectedValue = buttonEl.getAttribute('data-value');
-  });
-}); */
-
-
-function getUrgency(urgency) {
-    switch (urgency) {
-        case 'low': return 'low';
-        case 'urgent': return 'urgent';
-        case 'medium': return 'medium';
-
-    }
-
-}
 
 /**
  * This function Clears user icons when resetting the addToTask.html form
@@ -240,10 +237,7 @@ async function saveEdit(dataArray, i) { // check: async no diff
 
 }
 
-function showAssignBox() {
-    toggle('assignmentBox');
-    renderUsers();
-}
+
 
 /** The function disables selection of a date before the current day */
 function compareDate() {
@@ -254,7 +248,6 @@ function compareDate() {
 /**
  * this function is rendering the users 
  */
-
 function renderUsers() {
     let assignmentBox = getId('assignmentBox');
     assignmentBox.innerHTML = '';
@@ -264,7 +257,6 @@ function renderUsers() {
     }
 }
 
-/* ****** render add-to-task form fields ****** */
 
 /**
  * Renders HTML option fields from the users array into addToTask.html form select-field
@@ -328,7 +320,6 @@ function renderUserIcon(userName) {
 }
 
 function renderUserList() {
-    console.log(users)
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
         getId('userList').innerHTML += `
@@ -360,7 +351,6 @@ function renderUserInitial(event, i) {
         if (userIndex !== -1) assignedUsers.splice(userIndex, 1);
         getId(`userIcon-${[i]}`).remove();
     }
-    console.log(assignedUsers);
 }
 
 
@@ -388,25 +378,29 @@ function inviteUsers() {
     `
 }
 
-
-function cancelContactInvitation() { }
+function cancelContactInvitation() {
+    let inviteContainer = getId('assignBtnContainer');
+    inviteContainer.classList.add('assign-btn-container');
+    inviteContainer.innerHTML = `
+    <button type="button" class="assign-btn" onclick="openAssignableContacts()">
+        <div>Select contact to assign</div>
+        <div id="imgArrow"><img src="/assets/img/open.png"></div>
+    </button>
+    <div class="user-menu" id="userMenu">
+        <div class="user-list" id="userList"></div>
+        <button id="inviteUserBtn" type="button" class="invite-user-btn"
+        onclick="inviteUsers()">Invite new contact<img src="/assets/img/contactsBlack.png">
+        </button>   
+    </div>
+    `
+    renderUserList();
+}
 
 function newContactInvitation() {
     let newInvitation;
     newInvitation = getId('userSearchInput').value;
     invitedUsers.push(newInvitation);
 }
-
-function newSubtask() {
-    getId('subtaskInput').value
-}
-
-function cancelSubtask() {
-
-}
-
-
-
 
 /**
  * The function matches the input in the search input field with the names and emails of the users array.
@@ -434,4 +428,13 @@ function showResults(val) {
         list += `<option value="${usersList[i].name}">${usersList[i].name} (${usersList[i].email})</option>`;
     }
     res.innerHTML = `<datalist class="custom-datalist" id="usersSearch" name="userList">${list}</datalist>`;
+}
+
+
+function newSubtask() {
+    getId('subtaskInput').value
+}
+
+function cancelSubtask() {
+
 }
