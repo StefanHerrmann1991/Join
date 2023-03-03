@@ -79,7 +79,6 @@ function clearInputs() {
  */
 function processTaskInputs() {
     let [title, description, category, urgency, date] = getIds('title', 'description', 'category', 'urgency', 'date');
-    let assignedUsers = getAssignedUsers();
     let task = {
         //'id' : id,
         'title': title.value,
@@ -94,6 +93,8 @@ function processTaskInputs() {
     return task;
 }
 
+
+
 /** This function gets all selected user values from an HTML multiple select field and returns the values in an array
  * @returns {string[]} - selected users
  */
@@ -107,11 +108,29 @@ function getAssignedUsers() {
 }
 
 function newCategory() {
+    let newCategory = getId('categoryContainer')
+    newCategory.classList.remove('assign-btn-container');
+    newCategory.innerHTML = `
+    <div class="subtasks-container">
+    <input class="costom-datalist" id="categoryInput" type="text"
+        placeholder="New category name">
+    <div class="button-container">
+        <button type="button" class="cancel-button" onclick="cancelNewCategory()"><img
+                src="/assets/img/cancelDark.png"></button>
+        <button type="button" class="add-button" onclick="addCategory"><img
+                src="/assets/img/checkDark.png"></button>
+    </div>
+    </div>`
+}
+
+
+function addCategory() {
 
 }
 
-function openCategories() {
 
+function openCategories() {
+    toggleMenu('categoryMenu');
 }
 
 function renderCategories() {
@@ -386,7 +405,7 @@ function cancelSubtask() {
 
 }
 
-function newCategory() { }
+
 
 
 /**

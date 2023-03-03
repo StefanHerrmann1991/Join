@@ -208,8 +208,7 @@ input, select {
 .assign-btn-container {
   display: flex;
   flex-direction: column;
-  padding-top: 13px;
-  width: 380px;
+  width: 422px;
   background: #FFFFFF;
   border: 1px solid #D1D1D1;
   border-radius: 10px;
@@ -217,9 +216,9 @@ input, select {
   align-items: flex-start;
 }
 .assign-btn-container .assign-btn {
+  height: 51px;
   padding-left: 21px;
   padding-right: 21px;
-  margin-bottom: 13px;
   width: 98%;
   display: flex;
   justify-content: space-between;
@@ -235,7 +234,6 @@ input, select {
   width: 100%;
   height: 80px;
   margin-bottom: 60px;
-  padding-right: 13px;
 }
 .user-list div {
   display: flex;
@@ -244,8 +242,6 @@ input, select {
 
 .user-menu {
   width: 100%;
-  padding-left: 21px;
-  padding-right: 21px;
 }
 
 .user-list-container {
@@ -253,18 +249,22 @@ input, select {
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
-  width: 100%;
+  width: calc(100% - 42px);
   height: 51px;
+  padding-left: 21px;
+  padding-right: 21px;
 }
 .user-list-container div {
   height: 51px;
+}
+.user-list-container:hover {
+  background-color: #D1D1D1;
 }
 
 .invite-user-btn {
   padding-left: 23px;
   padding-right: 23px;
   width: 100%;
-  margin-left: -21px;
   display: flex;
   justify-content: space-between;
   position: absolute;
@@ -277,6 +277,11 @@ input, select {
 .invite-user-btn img {
   width: 30px;
   height: 30px;
+}
+.invite-user-btn:hover {
+  background-color: #D1D1D1;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .square-checkbox {
