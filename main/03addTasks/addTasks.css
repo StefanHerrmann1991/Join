@@ -210,7 +210,7 @@ input, select {
   padding-left: 12px;
 }
 
-.subtasks-container:focus-within .button-container {
+.subtasks-container .button-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -271,6 +271,18 @@ input, select {
 }
 .user-list-container:hover {
   background-color: #D1D1D1;
+}
+
+.chosen-color {
+  margin-left: 12px;
+}
+
+.color-picker {
+  width: 100%;
+  margin-top: 15.5px;
+}
+.color-picker button {
+  margin-left: 21px;
 }
 
 .invite-user-btn {

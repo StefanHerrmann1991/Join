@@ -10,6 +10,8 @@ let users
 let invitedUsers = [];
 let assignedUsers = [];
 let colorPicker = ['#8AA4FF', '#FF0000', '#2AD300', '#FF8A00', '#E200BE', '#0038FF']
+let chosenColor;
+
 
 async function initTasks() {
     await includeHTML();
@@ -150,7 +152,7 @@ function renderColorPicker() {
 
 function chooseCategoryColor(index) {
     let colorId = document.getElementById('chosenColor')
-    let chosenColor = colorPicker[index]
+    chosenColor = colorPicker[index]
     colorId.innerHTML = `<div style="background-color: ${chosenColor}" class="category-color"></div>`
 }
 
@@ -160,7 +162,15 @@ function openCategories() {
 
 function addCategory() {
     let topic = getId('categoryInput').value
-    let color = categories
+    let color = chosenColor
+    let newCategory = {
+        'topic': topic,
+        'color': color
+    }
+    categories.push(newCategory)
+    console.log(categories)
+
+
 }
 
 function renderCategories() {
