@@ -51,6 +51,10 @@ input:-webkit-autofill:active {
   padding-left: 5%;
 }
 
+.category-input-color {
+  display: flex;
+}
+
 .btn-container {
   display: flex;
   justify-content: flex-end;
@@ -366,6 +370,12 @@ input, select {
 #category-input {
   width: 100%;
   background-color: white;
+}
+
+.category-input-color {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .category-color {

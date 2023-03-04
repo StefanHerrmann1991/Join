@@ -103,20 +103,23 @@ function newCategory() {
     newCategory.classList.remove('assign-btn-container');
     newCategory.innerHTML = `
     <div class="subtasks-container">
-       <input id="categoryInput" type="text"
-        placeholder="New category name">
-    <div class="chosen-color" id="chosenColor"></div> 
-    <div class="button-container">
-        <button type="button" class="cancel-button" onclick="cancelNewCategory()"><img
-                src="/assets/img/cancelDark.png"></button>
-        <button type="button" class="add-button" onclick="addCategory()"><img
-                src="/assets/img/checkDark.png"></button>
+        <div class="category-input-color">           
+                <input id="categoryInput" type="text" placeholder="New category name"
+                onkeyup="this.style.width = ((this.value.length + 1) * 12) + (this.value.length == 0 ? 268 : 0) + 'px';">
+                <div class="chosen-color" id="chosenColor"></div>
+        </div>
+        <div class="button-container">
+            <button type="button" class="cancel-button" onclick="cancelNewCategory()"><img
+                    src="/assets/img/cancelDark.png"></button>
+            <button type="button" class="add-button" onclick="addCategory()"><img
+                    src="/assets/img/checkDark.png"></button>
+        </div>                
     </div>
-    </div>
-    <div id="colorPicker" class="color-picker"></div>`
+    <div id="colorPicker" class="color-picker"></div>   
+    
+    `
     renderColorPicker();
 }
-
 
 
 function cancelNewCategory() {
@@ -134,7 +137,7 @@ function cancelNewCategory() {
         </div>            
  
 `
-    renderCategories();    
+    renderCategories();
 }
 
 function renderColorPicker() {
@@ -146,9 +149,9 @@ function renderColorPicker() {
 }
 
 function chooseCategoryColor(index) {
-   let colorId = document.getElementById('chosenColor')
-   let chosenColor =  colorPicker[index]
-   colorId.innerHTML = `<div style="background-color: ${chosenColor}" class="category-color"></div>`
+    let colorId = document.getElementById('chosenColor')
+    let chosenColor = colorPicker[index]
+    colorId.innerHTML = `<div style="background-color: ${chosenColor}" class="category-color"></div>`
 }
 
 function openCategories() {
@@ -173,7 +176,7 @@ function renderCategories() {
     }
 }
 
-function saveNewCategory()  {
+function saveNewCategory() {
 
 }
 
