@@ -10,6 +10,14 @@ input, textarea, select, div, h3, button
     font-size: 21px
     line-height: 120%
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active
+    -webkit-box-shadow: 0 0 0 30px white inset !important
+
+
+    
 .add-task-container
     position: absolute
     top: 180px
@@ -299,9 +307,13 @@ input, select
                 border-bottom-right-radius: 10px
         .category
             display: flex
-            align-items: center           
+            align-items: center
             height: 51px
             margin-right: 10px
+
+#category-input
+    width: 100%
+    background-color: white
 
 .category-color
     border: 2px solid #FFFFFF

@@ -103,9 +103,9 @@ function newCategory() {
     newCategory.classList.remove('assign-btn-container');
     newCategory.innerHTML = `
     <div class="subtasks-container">
-    <input class="costom-datalist" id="categoryInput" type="text"
+       <input id="categoryInput" type="text"
         placeholder="New category name">
-        <div class="chosen-color" id="chosenColor"></div> 
+    <div class="chosen-color" id="chosenColor"></div> 
     <div class="button-container">
         <button type="button" class="cancel-button" onclick="cancelNewCategory()"><img
                 src="/assets/img/cancelDark.png"></button>
@@ -116,6 +116,8 @@ function newCategory() {
     <div id="colorPicker" class="color-picker"></div>`
     renderColorPicker();
 }
+
+
 
 function cancelNewCategory() {
     let newCategory = getId('categoryContainer')
