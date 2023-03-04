@@ -117,8 +117,7 @@ function newCategory() {
                     src="/assets/img/checkDark.png"></button>
         </div>                
     </div>
-    <div id="colorPicker" class="color-picker"></div>   
-    
+    <div id="colorPicker" class="color-picker"></div>       
     `
     renderColorPicker();
 }
@@ -163,14 +162,13 @@ function openCategories() {
 function addCategory() {
     let topic = getId('categoryInput').value
     let color = chosenColor
+    if(chosenColor == undefined) color =  '#E200BE'
     let newCategory = {
         'topic': topic,
         'color': color
     }
     categories.push(newCategory)
-    console.log(categories)
-
-
+    cancelNewCategory();
 }
 
 function renderCategories() {
