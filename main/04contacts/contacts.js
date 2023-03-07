@@ -176,7 +176,6 @@ function renderContacts() {
       if (contactBook.initialList[i] == contactBook.contacts[index].firstNameInitial) {
         document.getElementById(`${initial}`).innerHTML += `
       <button onclick="showContact(${index})" id="contact-${index}" class="contact-container">
-
       <div class="contact-intial"  style="background-color:${element.color}">
       <div>${element.initial}</div>
       </div>
@@ -239,36 +238,37 @@ function saveEditedContact(event, index) {
 
 function renderEditContact(actualContact) {
   document.getElementById('editContactDialog').innerHTML =
-    `  
-  <div class="add-contact" id="editContact">
-    <div class="add-contact-menu">
-      <div class="add-contact-description">
-        <img src="/assets/img/logo.png">
-          <h2>Edit contact</h2>
-          <p>Tasks are better with a team!</p>
-      </div>
-      <div class="add-contact-submenu">
-        <button class="close-upper-right" onclick="closeContactDialog('editContactDialog')">
-          <img src="/assets/img/cancel.png"><div> Edit Contact</div>
-        </button>    
-        <img src="/assets/img/addContactBig.png">
-          <form onsubmit="saveEditedContact(event, ${actualContact});  saveDataToBackend(contactBook)" id="editContactFormfield">
-            <input type="text" id="editName" name="editName" required placeholder="${actualContact.name}" >
-              <input type="email" id="editEmail" name="editEmail" required placeholder="${actualContact.email}" >
-                <input type="tel" id="editPhone" name="editPhone" required placeholder="${actualContact.phone}" >
-                  <div class="menu-btn">
-                    <button type="button" onclick="closeContactDialog('editContactDialog')">Cancel
-                      <img src="assets/img/cancel.png">
-                    </button>
-                    <button type=submit>Edit contact
-                      <img src="assets/img/check.png">
-                    </button>
-                  </div>
-                </form>
-              </div>
+`  
+    <div class="add-contact" id="editContact">
+        <div class="add-contact-menu">
+            <div class="add-contact-description">
+                <img src="/assets/img/logo.png">
+                <h2>Edit contact</h2>
+                <p>Tasks are better with a team!</p>
             </div>
-          </div>
-      `
+            <div class="add-contact-submenu">
+                <button class="close-upper-right" onclick="closeContactDialog('editContactDialog')">
+                    <img src="/assets/img/cancel.png">                   
+                </button>
+                <img src="/assets/img/addContactBig.png">
+                <form onsubmit="saveEditedContact(event, ${actualContact});  saveDataToBackend(contactBook)"
+                    id="editContactFormfield">
+                    <input type="text" id="editName" name="editName" required placeholder="${actualContact.name}">
+                    <input type="email" id="editEmail" name="editEmail" required placeholder="${actualContact.email}">
+                    <input type="tel" id="editPhone" name="editPhone" required placeholder="${actualContact.phone}">
+                    <div class="menu-btn">
+                        <button type="button" onclick="closeContactDialog('editContactDialog')">Cancel
+                            <img src="/assets/img/cancel.png">
+                        </button>
+                        <button type=submit>Edit contact
+                            <img src="/assets/img/check.png">
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+`
 }
 
 

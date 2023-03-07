@@ -201,7 +201,6 @@ button, a {
 .edit-contact-headline {
   display: flex;
   align-items: center;
-  margin-left: 55px;
 }
 
 .edit-contact {
@@ -397,8 +396,19 @@ button, a {
   justify-content: center;
 }
 
+.edit-contact-menu {
+  width: calc(100% - 55px);
+  height: 100%;
+  margin-left: 55px;
+  display: flex;
+  flex-direction: column;
+}
+
 .edit-contact-popup {
-  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .contact-name-email {
@@ -408,9 +418,10 @@ button, a {
 .edit-name-initial-con {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: calc(100% - 55px);
   align-items: center;
   justify-content: space-between;
+  padding-right: 55px;
 }
 .edit-name-initial-con .edit-name {
   font-size: 47px;

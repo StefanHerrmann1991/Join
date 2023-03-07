@@ -20,11 +20,14 @@
             <div id="contactBookId" class="contact-book"></div>
         </div>
         <div class="edit-contact-container">
-            <div class="edit-contact-headline">
-                <h2>Contacts</h2>
-                <nobr>Better with a Team</nobr>
+            <div class="edit-contact-menu">
+
+                <div class="edit-contact-headline">
+                    <h2>Contacts</h2>
+                    <nobr>Better with a Team</nobr>
+                </div>
+                <div class="edit-contact-popup" id="editContact"></div>
             </div>
-            <div class="edit-contact-popup" id="editContact"></div>
         </div>
     </div>
     <button class="add-contact-btn" onclick="openContactDialog('addContactDialog')">New Contact<img
@@ -43,7 +46,8 @@
                         <img src="/assets/img/cancel.png">
                     </button>
                     <img src="/assets/img/addContactBig.png">
-                    <form onsubmit="createContact(event);  saveDataToBackend(contactBook); renderContacts()" id="contactFormfield">
+                    <form onsubmit="createContact(event);  saveDataToBackend(contactBook); renderContacts()"
+                        id="contactFormfield">
                         <input type="text" id="name" name="name" required placeholder="Name">
                         <input type="email" id="email" name="email" required placeholder="Email">
                         <input type="tel" id="phone" name="phone" required placeholder="Phone">
@@ -51,7 +55,8 @@
                             <button type="button" onclick="closeContactDialog('addContactDialog')">Cancel
                                 <img src="/assets/img/cancel.png">
                             </button>
-                            <button type=submit><nobr>Create contact</nobr>
+                            <button type=submit>
+                                <nobr>Create contact</nobr>
                                 <img src="/assets/img/check.png">
                             </button>
                         </div>
@@ -62,6 +67,4 @@
         </div>
     </div>
     <div class="edit-contact-dialog d-none" id="editContactDialog"></div>
-
-
 </body>

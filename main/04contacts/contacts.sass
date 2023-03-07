@@ -35,7 +35,7 @@
         align-items: center
         border: none
         background-color: transparent
-        width: 100%   
+        width: 100%
     .contact-email
         color: #007CEE
         font-size: 16px
@@ -64,7 +64,6 @@
 .edit-contact-headline
     display: flex
     align-items: center
-    margin-left: 55px
 
 .edit-contact
     display: flex
@@ -113,7 +112,7 @@
                 h2, p
                     color: white
                 h2
-                    font-size: 61px                    
+                    font-size: 61px
                 img
                     height: 66px
                     width: 55px
@@ -173,7 +172,7 @@
                         font-family: 'Inter'
                         font-style: normal
                         font-weight: 700
-                        font-size: 21px         
+                        font-size: 21px
                         img
                             width: 24px
                             height: 24px
@@ -228,17 +227,29 @@
     align-items: center
     justify-content: center
 
+.edit-contact-menu
+    width: calc( 100% - 55px )
+    height: 100%
+    margin-left: 55px
+    display: flex
+    flex-direction: column
+
 .edit-contact-popup
-    width: 100%
+    height: 50%
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+
 .contact-name-email
     margin-left: 20px
 
 .edit-name-initial-con
     display: flex
     flex-direction: row
-    width: 100%
+    width: calc( 100% - 55px )
     align-items: center
     justify-content: space-between
+    padding-right: 55px
     .edit-name
         font-size: 47px
 
@@ -265,7 +276,6 @@
     display: flex
     justify-content: center
     align-items: center
-
 
 .clicked-contact
     background-color: #2A3647 !important
