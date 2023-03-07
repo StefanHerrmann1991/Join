@@ -170,9 +170,6 @@ button, a {
   background-color: transparent;
   width: 100%;
 }
-.contact-book .contact-name {
-  line-height: 120%;
-}
 .contact-book .contact-email {
   color: #007CEE;
   font-size: 16px;
@@ -204,6 +201,7 @@ button, a {
 .edit-contact-headline {
   display: flex;
   align-items: center;
+  margin-left: 55px;
 }
 
 .edit-contact {
@@ -264,7 +262,6 @@ button, a {
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-description h2, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description h2 {
   font-size: 61px;
-  line-height: 120%;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-description img, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description img {
   height: 66px;
@@ -336,7 +333,6 @@ button, a {
   font-style: normal;
   font-weight: 700;
   font-size: 21px;
-  line-height: 120%;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn button img, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn button img {
   width: 24px;

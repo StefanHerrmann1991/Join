@@ -7,6 +7,7 @@ let categories = [{
     'color': '#1FD7C1'
 }];
 let users
+let subtasks = [];
 let invitedUsers = [];
 let assignedUsers = [];
 let colorPicker = ['#8AA4FF', '#FF0000', '#2AD300', '#FF8A00', '#E200BE', '#0038FF']
@@ -17,6 +18,7 @@ async function initTasks() {
     await includeHTML();
     await initBackend();
     await initAddTasks();
+    await initGetCategories();
     await renderUserList();
     await renderCategories();
     /*  await renderForm(); */
@@ -59,7 +61,7 @@ function processTaskInputs() {
         'date': date.value,
         'board': '',
         'assignedTo': assignedUsers,
-        'subtasks': {}
+        'subtasks': subtasks
     };
     return task;
 }
@@ -85,7 +87,9 @@ function clearInputs() {
 }
 
 
+function initGetCategories() {
 
+}
 
 
 /** This function gets all selected user values from an HTML multiple select field and returns the values in an array
@@ -162,7 +166,7 @@ function openCategories() {
 function addCategory() {
     let topic = getId('categoryInput').value
     let color = chosenColor
-    if(chosenColor == undefined) color =  '#E200BE'
+    if (chosenColor == undefined) color = '#E200BE'
     let newCategory = {
         'topic': topic,
         'color': color
@@ -446,10 +450,32 @@ function showResults(val) {
 }
 
 
-function newSubtask() {
-    getId('subtaskInput').value
+function renderSubtasks() {
+    let subtask = getId('subtaskMenu')
+    subtask.innerHTML = `
+    <button type="button" class="cancel-button" onclick = "cancelSubtask()"><img
+    src="/assets/img/cancelDark.png"></button>
+    <button type="button" class="add-button" onclick="newSubtask()"><img
+    src="/assets/img/checkDark.png"></button>`
+}
+
+function addInputValue(id, html) {
+    let openableInput = getId(id)
+    openableInput.innerHTML = `${html}`
+}
+
+function cancelInputValue(id) {
+    let openableInput = getId(id)
+    openableInput.innerHTML = `${html}`
 }
 
 function cancelSubtask() {
-
+    let subtask = getId('subtaskMenu')
+    subtask.innerHTML = `<button type="button" onclick="renderSubtasks()"><img src="/assets/img/addIcon.png"></button>`
 }
+
+function newSubtask() {
+    let subtask = getId('subtaskInput').value
+    subtasks.push(subtask);
+}
+

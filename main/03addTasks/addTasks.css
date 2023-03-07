@@ -8,7 +8,6 @@ input, textarea, select, div, h3, button {
   font-style: normal;
   font-weight: 400;
   font-size: 21px;
-  line-height: 120%;
 }
 
 input:-webkit-autofill,
@@ -116,23 +115,6 @@ textarea {
 
 input, select {
   height: 51px;
-}
-
-.user-icon {
-  border-radius: 50%;
-  border: 1px solid rgb(192, 192, 192);
-  height: 45px;
-  width: 45px;
-  color: white;
-  font-weight: bold;
-  text-transform: uppercase;
-  opacity: 0.75;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  box-sizing: border-box;
-  transition: all 225ms linear;
 }
 
 .assignment-button-container {
@@ -256,6 +238,13 @@ input, select {
   width: 100%;
 }
 
+.user-initial-container {
+  display: flex;
+  margin-top: 22px;
+  margin-left: 11px;
+  margin-right: 11px;
+}
+
 .user-list-container {
   display: flex;
   flex-direction: row;
@@ -341,6 +330,25 @@ input, select {
   box-sizing: border-box;
   height: 5px;
   width: 5px;
+}
+
+.user-icon {
+  border-radius: 50%;
+  border: 1px solid rgb(192, 192, 192);
+  height: 45px;
+  width: 45px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  opacity: 0.75;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  transition: all 225ms linear;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 #userSearchInput {

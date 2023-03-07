@@ -8,7 +8,6 @@ input, textarea, select, div, h3, button
     font-style: normal
     font-weight: 400
     font-size: 21px
-    line-height: 120%
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -97,21 +96,6 @@ textarea
 input, select
     height: 51px
 
-.user-icon
-    border-radius: 50%
-    border: 1px solid rgb(192, 192, 192)
-    height: 45px
-    width: 45px
-    color: white
-    font-weight: bold
-    text-transform: uppercase
-    opacity: 0.75
-    display: flex
-    justify-content: center
-    align-items: center
-    flex-wrap: wrap
-    box-sizing: border-box
-    transition: all 225ms linear
 
 .assignment-button-container
     display: flex
@@ -213,6 +197,11 @@ input, select
 .user-menu
     width: 100%
 
+.user-initial-container
+    display: flex
+    margin-top: 22px
+    margin-left: 11px
+    margin-right: 11px
 .user-list-container
     display: flex
     flex-direction: row
@@ -240,7 +229,6 @@ input, select
     padding-left: 23px
     padding-right: 23px
     width: 100%
-
     display: flex
     justify-content: space-between
     position: absolute
@@ -290,6 +278,25 @@ input, select
         box-sizing: border-box
         height: 5px
         width: 5px
+
+.user-icon
+    border-radius: 50%
+    border: 1px solid rgb(192, 192, 192)
+    height: 45px
+    width: 45px
+    color: white
+    font-weight: bold
+    text-transform: uppercase
+    opacity: 0.75
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-wrap: wrap
+    box-sizing: border-box
+    transition: all 225ms linear
+    margin-left: 8px
+    margin-right: 8px
+
 
 #userSearchInput
     width: 100%
@@ -369,3 +376,5 @@ input, select
     background-color: #FFA800
     img
         filter: invert(50%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%)
+
+

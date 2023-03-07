@@ -53,7 +53,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div id="userInitialContainer"></div>
+                        <div id="userInitialContainer" class="user-initial-container"></div>
                     </div>
                     <div class="add-task-right">
                         <h3>Due date</h3>
@@ -69,14 +69,12 @@
                         </div>
                         <h3>Subtasks</h3>
                         <div class="subtasks-container" id="subtasks">
-                            <input id="subtaskInput" type="text" id="my-input" placeholder="Click here">
-                            <div class="button-container">
-                                <button class="cancel-button" onclick="cancelSubtask()"><img
-                                        src="/assets/img/cancelDark.png"></button>
-                                <button class="add-button" onclick="newSubtask()"><img
-                                        src="/assets/img/checkDark.png"></button>
+                            <input id="subtaskInput" type="text" id="my-input" placeholder="Add new subtask">
+                            <div class="button-container" id="subtaskMenu">
+                            <button onclick="renderSubtasks()"><img src="/assets/img/addIcon.png"></button>
                             </div>
                         </div>
+                        <div id=""></div>
 
                         <div class="btn-container">
                             <button class="clear-btn" type="reset" class="clear-btn" onclick="clearAssignments()">
@@ -90,4 +88,3 @@
         </div>
     </div>
 </body>
-
