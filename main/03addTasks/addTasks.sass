@@ -16,6 +16,7 @@ input:-webkit-autofill:active
     -webkit-box-shadow: 0 0 0 30px white inset !important
 
 .add-task-container
+    overflow: hidden
     position: absolute
     top: 180px
     left: 233px
@@ -95,7 +96,6 @@ textarea
     height: 119px
 input, select
     height: 51px
-
 
 .assignment-button-container
     display: flex
@@ -216,7 +216,6 @@ input, select
     &:hover
         background-color: #D1D1D1
 
-
 .chosen-color
     margin-left: 12px
 .color-picker
@@ -297,7 +296,6 @@ input, select
     margin-left: 8px
     margin-right: 8px
 
-
 #userSearchInput
     width: 100%
 
@@ -377,4 +375,31 @@ input, select
     img
         filter: invert(50%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%)
 
+input.subtask-checkbox[type="checkbox"]
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+    width: 16px
+    height: 16px
+    background-color: #fff
+    border: 1px solid #ccc
+    border-radius: 3px
+    cursor: pointer
+    position: relative
+    margin-right: 10px
 
+input.subtask-checkbox[type="checkbox"]:checked:after
+    content: "\2714"
+    display: block
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    font-size: 16px
+    color: #000
+
+input.subtask-checkbox[type="checkbox"]:focus
+    outline: none
+
+input.subtask-checkbox[type="checkbox"]:checked
+    background-color: #fff

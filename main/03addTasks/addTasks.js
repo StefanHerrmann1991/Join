@@ -482,7 +482,7 @@ function newSubtask() {
     subtasks.forEach((subtask, index) => {
         renderedSubtasks.innerHTML += `
             <label>
-                <input type="checkbox" 
+                <input class="subtask-checkbox" type="checkbox" 
                     value="${index}" 
                     ${subtask.checked ? 'checked' : ''} 
                     onchange="updateSubtask(${index})">
@@ -494,6 +494,10 @@ function newSubtask() {
 
 function updateSubtask(index) {
     subtasks[index].checked = !subtasks[index].checked;
-    console.log(subtasks[index]);
+
 }
 
+/* function renderFunction(array, id, htmlPart) {
+    let idForRendering =  getId(id);
+    array.forEach((element) => idForRendering.innerHTML += htmlPart)
+}  */
