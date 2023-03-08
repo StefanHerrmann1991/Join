@@ -475,7 +475,25 @@ function cancelSubtask() {
 }
 
 function newSubtask() {
-    let subtask = getId('subtaskInput').value
-    subtasks.push(subtask);
+    let subtaskInput = getId('subtaskInput').value;
+    let renderedSubtasks = getId('renderedSubtasks');
+    subtasks.push({ title: subtaskInput, checked: false });
+    renderedSubtasks.innerHTML = "";
+    subtasks.forEach((subtask, index) => {
+        renderedSubtasks.innerHTML += `
+            <label>
+                <input type="checkbox" 
+                    value="${index}" 
+                    ${subtask.checked ? 'checked' : ''} 
+                    onchange="updateSubtask(${index})">
+                ${subtask.title}
+            </label><br>
+        `;
+    });
+}
+
+function updateSubtask(index) {
+    subtasks[index].checked = !subtasks[index].checked;
+    console.log(subtasks[index]);
 }
 
