@@ -451,12 +451,19 @@ function showResults(val) {
 
 
 function renderSubtasks() {
-    let subtask = getId('subtaskMenu')
+    let subtask = getId('subtasks')
+    subtask.classList.remove('assign-btn-container')
     subtask.innerHTML = `
-    <button type="button" class="cancel-button" onclick = "cancelSubtask()"><img
+    <div class="subtasks-container">
+    <input id="subtaskInput" placeholder="Add new subtask">
+    <div class="button-container">
+    <button type="button" class="cancel-button" onclick ="cancelSubtask()"><img
     src="/assets/img/cancelDark.png"></button>
     <button type="button" class="add-button" onclick="newSubtask()"><img
-    src="/assets/img/checkDark.png"></button>`
+    src="/assets/img/checkDark.png"></button>
+    </div>
+    </div>
+    `
 }
 
 function addInputValue(id, html) {
@@ -481,14 +488,14 @@ function newSubtask() {
     renderedSubtasks.innerHTML = "";
     subtasks.forEach((subtask, index) => {
         renderedSubtasks.innerHTML += `
-            <label>
-                <input class="subtask-checkbox" type="checkbox" 
-                    value="${index}" 
+        <div class="subtask-checkbox-container"> 
+        <input class="subtask-checkbox" type="checkbox" 
+                value="${index}" 
                     ${subtask.checked ? 'checked' : ''} 
                     onchange="updateSubtask(${index})">
-                ${subtask.title}
-            </label><br>
-        `;
+            ${subtask.title}
+            </div>            
+    `;
     });
 }
 
