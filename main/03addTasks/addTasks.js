@@ -477,8 +477,13 @@ function cancelInputValue(id) {
 }
 
 function cancelSubtask() {
-    let subtask = getId('subtaskMenu')
-    subtask.innerHTML = `<button type="button" onclick="renderSubtasks()"><img src="/assets/img/addIcon.png"></button>`
+    let subtask = getId('subtasks');  
+    subtask.classList.add('assign-btn-container')
+    subtask.innerHTML = `
+    <button onclick="renderSubtasks()" type="button" class="assign-btn"  type="text">
+    <div id="subtaskMenu">Add new subtask</div><img  class="add-subtask" src="/assets/img/addIcon.png">
+    </button>  
+    `
 }
 
 function newSubtask() {
