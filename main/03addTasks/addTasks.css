@@ -364,7 +364,7 @@ input, select {
   display: flex;
   align-items: center;
 }
-.chosen-category-container div {
+.chosen-category-container button {
   margin-right: 10px;
 }
 

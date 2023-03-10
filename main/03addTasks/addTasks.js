@@ -36,11 +36,13 @@ async function initAddTasks() {
  * It also generates a certain ID for new tasks and sends them to the backlog board.
  */
 function addToTasks() {
+    event.preventDefault();
+    debugger
     let task = processTaskInputs();
-    taskSubmitSuccessful();
+    console.log(task)
     tasks.push(task);
     task.id = tasks.length; // set id when creating the task
-    task.board = 'backlog'; // default-board on task creation
+    task.board = 'todoBoard'; // default-board on task creation
     saveTasks();
     clearInputValues(title, date, category, urgency, description);
     clearAssignments(); // clear assigned users icons
@@ -51,13 +53,20 @@ function addToTasks() {
  * @returns {Object} - task object
  */
 function processTaskInputs() {
-    let [title, description, category, urgency, date] = getIds('title', 'description', 'category', 'urgency', 'date');
+    let [title, description, category,  date] = getIds('title', 'description', 'category',  'date');
+    let urgencyButtons = document.querySelectorAll('#urgency button');
+    let urgency = '';
+    urgencyButtons.forEach(button => {
+        if (button.classList.contains('selected')) {
+            urgency = button.getAttribute('data-value');
+        }
+    });
     let task = {
         //'id' : id,
         'title': title.value,
         'description': description.value,
         'category': categories[category.value],
-        'urgency': urgency.value,
+        'urgency': urgency,
         'date': date.value,
         'board': 'todoBoard',
         'assignedTo': assignedUsers,
@@ -140,8 +149,7 @@ function cancelNewCategory() {
             onclick="newCategory()">New category</button>
             <div class="category-list" id="categoryList"></div>
         </div>            
- 
-`
+ `
     renderCategories();
 }
 
@@ -192,7 +200,7 @@ function saveNewCategory(index) {
     let chosenCategoryOption = getId('categorySelect');
     let category = categories[index]
     chosenCategoryOption.innerHTML = ` 
-    <div class="category" value="${category.topic}">${category.topic}</div>
+    <button id="category" class="category" value="${index}">${category.topic}</button>
     <div class="category-color" style="background-color: ${category.color}"></div>   
       `
     toggleMenu('categoryMenu');
