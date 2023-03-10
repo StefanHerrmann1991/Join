@@ -56,10 +56,10 @@ function processTaskInputs() {
         //'id' : id,
         'title': title.value,
         'description': description.value,
-        'category': category.value,
+        'category': categories[category.value],
         'urgency': urgency.value,
         'date': date.value,
-        'board': '',
+        'board': 'todoBoard',
         'assignedTo': assignedUsers,
         'subtasks': subtasks
     };
@@ -131,10 +131,10 @@ function cancelNewCategory() {
     let newCategory = getId('categoryContainer')
     newCategory.classList.add('assign-btn-container');
     newCategory.innerHTML = `
-        <button type="button" class="assign-btn" onclick="openCategories()">
-            <div>Select task category</div>
-            <div id="imgArrow"><img src="/assets/img/open.png"></div>
-        </button>
+    <button type="button" class="assign-btn" onclick="openCategories()">
+    <div class="chosen-category-container" id="categorySelect">Select task category</div>
+    <div id="imgArrow"><img src="/assets/img/open.png"></div>
+</button>
         <div class="user-menu" id="categoryMenu">
             <button id="newCategoryBtn" type="button" class="new-category-btn"
             onclick="newCategory()">New category</button>
@@ -180,31 +180,33 @@ function renderCategories() {
     for (let i = 0; i < categories.length; i++) {
         const category = categories[i];
         categoryOption.innerHTML += `
-        <div class="each-category-container">
-        <div class="category" id="category-${i}" value="${category.topic}">${category.topic}</div>
+        <button type="button" onclick="saveNewCategory(${i})" class="each-category-container">
+        <div class="category" id="category-${i}">${category.topic}</div>
         <div class="category-color" style="background-color: ${category.color}"></div>
-        </div>
+        </button>
         `
     }
 }
 
-function saveNewCategory() {
-
+function saveNewCategory(index) {
+    let chosenCategoryOption = getId('categorySelect');
+    let category = categories[index]
+    chosenCategoryOption.innerHTML = ` 
+    <div class="category" value="${category.topic}">${category.topic}</div>
+    <div class="category-color" style="background-color: ${category.color}"></div>   
+      `
+    toggleMenu('categoryMenu');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     let selectedValue = null;
-
     const buttonEls = document.querySelectorAll('.priority-btn');
-
     buttonEls.forEach(buttonEl => {
         buttonEl.addEventListener('click', () => {
             // Remove selected class from all buttons
             buttonEls.forEach(b => b.classList.remove('selected'));
-
             // Add selected class to the clicked button
             buttonEl.classList.add('selected');
-
             // Store the selected value
             selectedValue = buttonEl.getAttribute('data-value');
         });
@@ -256,8 +258,6 @@ async function saveEdit(dataArray, i) { // check: async no diff
 
 }
 
-
-
 /** The function disables selection of a date before the current day */
 function compareDate() {
     let today = new Date().toISOString().split('T')[0];
@@ -275,7 +275,6 @@ function renderUsers() {
         assignmentBox.innerHTML += showUsersHTML(showUser);
     }
 }
-
 
 /**
  * Renders HTML option fields from the users array into addToTask.html form select-field
@@ -449,7 +448,6 @@ function showResults(val) {
     res.innerHTML = `<datalist class="custom-datalist" id="usersSearch" name="userList">${list}</datalist>`;
 }
 
-
 function renderSubtasks() {
     let subtask = getId('subtasks')
     subtask.classList.remove('assign-btn-container')
@@ -477,7 +475,7 @@ function cancelInputValue(id) {
 }
 
 function cancelSubtask() {
-    let subtask = getId('subtasks');  
+    let subtask = getId('subtasks');
     subtask.classList.add('assign-btn-container')
     subtask.innerHTML = `
     <button onclick="renderSubtasks()" type="button" class="assign-btn"  type="text">
@@ -506,7 +504,6 @@ function newSubtask() {
 
 function updateSubtask(index) {
     subtasks[index].checked = !subtasks[index].checked;
-
 }
 
 /* function renderFunction(array, id, htmlPart) {

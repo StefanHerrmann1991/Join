@@ -25,16 +25,16 @@
                     <div class="add-task-left">
                         <h3>Title</h3>
                         <input required class="title" id="title" placeholder="Enter a title"
-                            oninput="init();loadTasks()">
+                            oninput="loadTasks()">
                         <h3>Description</h3>
                         <textarea resize="none" required id="description" placeholder="Enter a description"></textarea>
                         <h3>Category</h3>
                         <div class="assign-btn-container" id="categoryContainer">
                             <button type="button" class="assign-btn" onclick="openCategories()">
-                                <div>Select task category</div>
+                                <div class="chosen-category-container" id="categorySelect">Select task category</div>
                                 <div id="imgArrow"><img src="/assets/img/open.png"></div>
                             </button>
-                            <div class="user-menu" id="categoryMenu">
+                            <div class="user-menu d-none" id="categoryMenu">
                                 <button id="newCategoryBtn" type="button" class="new-category-btn"
                                     onclick="newCategory()">New category</button>
                                 <div class="category-list" id="categoryList"></div>
@@ -46,7 +46,7 @@
                                 <div>Select contact to assign</div>
                                 <div id="imgArrow"><img src="/assets/img/open.png"></div>
                             </button>
-                            <div class="user-menu" id="userMenu">
+                            <div class="user-menu d-none" id="userMenu">
                                 <div class="user-list" id="userList"></div>
                                 <button id="inviteUserBtn" type="button" class="invite-user-btn"
                                     onclick="inviteUsers()">Invite new contact<img src="/assets/img/contactsBlack.png">
