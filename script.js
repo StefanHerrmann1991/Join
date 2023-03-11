@@ -94,6 +94,12 @@ function clearInputValues(...elements) {
     }
 }
 
+function lowerFirstLetter(str) {
+    return str[0].toLowerCase() + str.slice(1);
+}
+
+
+
 /* ****** Navbar ****** */
 /**
  * This function shows the navbar on responsive view

@@ -17,19 +17,14 @@ let chosenColor;
 async function initTasks() {
     await includeHTML();
     await initBackend();
-    await initAddTasks();
+    await initAddTasks(); 
     await initGetCategories();
     await renderUserList();
     await renderCategories();
-    /*  await renderForm(); */
     compareDate();
 }
 
-async function initAddTasks() {
-    setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
-    await downloadFromServer();
-    tasks = JSON.parse(backend.getItem('tasks')) || [];
-}
+
 
 /** addToTaskJS 
  * This function is meant to enable the add of tasks to a json array.
@@ -37,16 +32,16 @@ async function initAddTasks() {
  */
 function addToTasks() {
     event.preventDefault();
-    debugger
     let task = processTaskInputs();
     console.log(task)
     tasks.push(task);
     task.id = tasks.length; // set id when creating the task
-    task.board = 'todoBoard'; // default-board on task creation
-    saveTasks();
-    clearInputValues(title, date, category, urgency, description);
-    clearAssignments(); // clear assigned users icons
+    task.board = 'board-0'; // default-board on task creation
+    saveTasks(); 
 }
+
+
+
 
 /**
  * This function gets input values and returns them as task objects.
@@ -62,7 +57,6 @@ function processTaskInputs() {
         }
     });
     let task = {
-        //'id' : id,
         'title': title.value,
         'description': description.value,
         'category': categories[category.value],

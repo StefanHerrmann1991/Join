@@ -13,8 +13,25 @@
     <title>Join</title>
 </head>
 
-<body onload="init(); includeHTML() ">
+<body onload="initBoards()">
 
     <div w3-include-html="../../index.html"></div>
+    <div class="add-task-container">
+        <div class="boards-header">
+            <h2>Board</h2>
+            <div>
+                <button class="add-task" onclick="addTaskAnywhere()">Add task<img
+                        src="/assets/img/addTaskWhite.png"></button>
+                <div class="assign-btn-container" id="addBoard">
+                    <button onclick="renderNewBoardBtn()" type="button" class="assign-btn" type="text">
+                        <div id="boardMenu">Add new Board</div><img class="add-subtask"
+                            src="/assets/img/addIcon.png">
+                    </button>
+                </div>                
+                <input id="taskSearchBar" placeholder="Find Task">
+            </div>
+        </div>
+        <div id="boards"></div>
     </div>
+
 </body>
