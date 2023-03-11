@@ -54,4 +54,30 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.board-task-container {
+  position: relative;
+  /* margin-right: 20px; */
+  padding: 5px;
+  min-width: 265px;
+  max-width: 265px;
+  min-height: 550px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(233, 233, 241);
+  box-shadow: 0.5px 0.5px 4px 0.5px #b9b9b9;
+}
+
+h3 {
+  color: #2A3647;
+  font-weight: 700;
+  font-size: 21px;
+}
+
+.boards {
+  display: flex;
+  align-items: flex-start;
 }/*# sourceMappingURL=board.css.map */

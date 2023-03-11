@@ -1,5 +1,8 @@
 let boards = [
-    {boardTitle: 'To do', boardId: 'board-0', boardName: 'todoBoard'}
+    {boardTitle: 'To do', boardId: 'board-0', boardName: 'todoBoard'},
+    {boardTitle: 'In progress', boardId: 'board-1', boardName: 'progressBoard'},
+    {boardTitle: 'Awaiting Feedback', boardId: 'board-2', boardName: 'awaitingFeedbackBoard'},
+    {boardTitle: 'Done', boardId: 'board-3', boardName: 'doneBoard'}
 ]
 
 
@@ -63,7 +66,7 @@ function renderBoards() {
         boardName = boards[i]['boardName'];
         boardsContent.innerHTML += `
         <div>
-        <h2>${boardTitle}</h2>
+        <h3>${boardTitle}</h3>
         <div class="scroll-bar">
             <div id="${boardId}" class="board-task-container" ondrop="moveTo('${boardId}')" ondragover="allowDrop(event)"></div>
         </div>
@@ -190,7 +193,7 @@ function moveToBoard(i, targetBoard) {
  * @returns {(string | string)} - user-icon  HTML code for all passed users | replacement image
  */
 function renderAssignedUsers(usersArr) {
-    debugger
+    
     let iconsHTML = '';
 
     if (usersArr && usersArr.length > 0) {
@@ -208,7 +211,7 @@ function renderAssignedUsers(usersArr) {
 function boardTaskHTML(element, i) {
     return /*html*/ `
         <div  draggable="true" ondragstart="startDragging(${i})" id="task${i}" class="scroll-bar-small background-urgency-${(element['urgency']).toLowerCase()} task">
-            <h4 class="task-headline-text">${capitalizeFirst(element['title'])}</h4>
+            <h3 class="task-headline-text">${capitalizeFirst(element['title'])}</h3>
             <span class="light-text">
                 Priority: <b>${element['urgency']}</b><br>
                 Category: <b>${element['category']['topic']}</b><br>
@@ -243,46 +246,14 @@ function boardTaskHTML(element, i) {
 
 function editFormHTML(i) {
     return /*html*/ `
-        <div class="task-input container" onclick="event.stopPropagation()">
-            <h2 class="edit-task-headline">UPDATE TASK</h2>
-            <form class="form-field edit-form" onsubmit="saveEdit(tasks, ${i})">
-                <div class="form-section">
-                    <!-- <div id="assignmentBox" class="assignment-box d-none"></div> -->
-                    <h2>TITLE</h2>
-                    <input required id="title" placeholder="Enter a title" value="${tasks[i].title}">
-                    <h2>CATEGORY</h2>
-                    <select id="category" placeholder="Management">
-                        ${renderOptionFields(tasks[i].category, categories)}
-                    </select>
-                    <h2>DESCRIPTION</h2>
-                    <textarea required id="description">${tasks[i].description}</textarea>
-                </div>
-                <div class="form-section">
-                    <h2>DUE DATE</h2>
-                    <input id="date" type="date" value="${tasks[i].date}" onclick="compareDate()">
-                    <h2>URCENCY</h2>
-                    <select id="urgency">
-                        ${renderOptionFields(tasks[i].urgency, urgencies)}
-                    </select>
-                    <h2>ASSIGN TO</h2>
-                    <select multiple id="assignUser" class="">
-                        ${renderUserOptionFields(tasks[i].assignedTo)}
-                    </select>
-                    <div class="assignment-container">
-                        <div id="iconsContainer" class="assignment-button-container">
-                            ${renderAssignedUsers(tasks[i].assignedTo)}                           
-                        </div>
-                    </div>
-                    <div class="btn-box">
-                        <button class="cancel-button" onclick="hide('overlay')" type="reset">
-                            CANCEL
-                        </button>
-                        <button class="assign-button" type="submit">
-                            UPDATE TASK
-                        </button>
-                    </div>
-            </div>
-        </form>
-    </div>
-    `;
+ `
+}
+
+
+/**
+ * Saves tasks in the backend in form of an JSON string */
+async function saveTasks() { //check async: no diff
+    if (event) event.preventDefault();
+    let tasksAsText = JSON.stringify(tasks);
+    await backend.setItem('tasks', tasksAsText);
 }
