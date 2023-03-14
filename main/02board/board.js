@@ -53,7 +53,6 @@ async function saveEdit(dataArray, i) { // check: async no diff
     console.log(tasks);
 }
 
-
 /**
  * This Function used  for rendering the boards with filters
  */
@@ -77,7 +76,6 @@ function renderBoards() {
     } 
 }
 
-
 function addNewBoard() {
     let board = processBoardInputs();
     boards.push(board);
@@ -97,7 +95,6 @@ function processBoardInputs() {
     return board;
 }
 
-
 function clearInputsBoard() {
     clearInputValues();
 }
@@ -115,7 +112,6 @@ function renderEachBoard(boardTaskArray, boardId) {
         getId(`${boardId}`).innerHTML += boardTaskHTML(element, taskIndex);
     }
 }
-
 
 async function saveBoards() { //check async: no diff
     if (event) {
@@ -138,7 +134,6 @@ async function loadBoards() {
         boards = JSON.parse(boardsAsText);
     }
 }
-
 
 /**
  * This function saves the current id of the dragged task 
@@ -187,6 +182,21 @@ function moveToBoard(i, targetBoard) {
 }
 
 
+
+function boardTaskHTML(element, i) {
+    return /*html*/ `
+        <div draggable="true" ondragstart="startDragging(${i})" id="task${i}" class="task" onclick="openDetailedTask()">
+        <div class="task-container">
+        <div class="category-icon" style="background-color: ${element.category.color}">${element.category.topic}</div>
+        <h3 class="task-headline-text"><b>${capitalizeFirst(element['title'])}</b></h3> 
+        <div class="description">${element.description}</div>                      
+        <div class="assigned-users">
+                ${renderAssignedUsers(element.assignedTo)}
+        </div>      
+        </div>    
+    `;
+}
+
 /**
  * Renders several user icons for all passed users in an array
  * @param {string[]} usersArr - array with usernames
@@ -198,25 +208,12 @@ function renderAssignedUsers(usersArr) {
         for (let i = 0; i < usersArr.length; i++) {
             let user = usersArr[i];
             console.log(user)
-            iconsHTML += `<span id="icon-${user.name}" class="user-icon" alt="user icon" style="background-color: ${user.color}">${user.initial}</span>`;
+            iconsHTML += `<span id="iconUser-${i}" class="user-icon" alt="user icon" style="background-color: ${user.color}">${user.initial}</span>`;
         }
     } else {
         iconsHTML = '<img src="img/icon-plus.png" alt="" class="icon-replacement">';
     }
     return iconsHTML;
-}
-
-function boardTaskHTML(element, i) {
-    return /*html*/ `
-        <div draggable="true" ondragstart="startDragging(${i})" id="task${i}" class="task" onclick="openDetailedTask()">
-        <div class="task-container">
-        <div class="category-icon" style="background-color: ${element.category.color}">${element.category.topic}</div>
-        <h3 class="task-headline-text">${capitalizeFirst(element['title'])}</h3>                       
-        <div class="assigned-users">
-                ${renderAssignedUsers(element.assignedTo)}
-        </div>      
-        </div>    
-    `;
 }
 
 function openDetailedTask() {}
@@ -234,7 +231,7 @@ function renderMobile() {
 <div class="task-links">
    <img class="delete-task" src="/assets/img/deleteWhite.png" 
    onclick="deleteTask(tasks, ${i})" alt="delete icon">
-   <img class="edit-task"  onclick="renderEditForm(${i})" alt="edit icon">
+   <img class="edit-task" onclick="renderEditForm(${i})" alt="edit icon">
 </div>
 </div>`
 }
@@ -244,7 +241,6 @@ function editFormHTML(i) {
  `
 }
 
-
 /**
  * Saves tasks in the backend in form of an JSON string */
 async function saveTasks() { //check async: no diff
@@ -252,8 +248,6 @@ async function saveTasks() { //check async: no diff
     let tasksAsText = JSON.stringify(tasks);
     await backend.setItem('tasks', tasksAsText);
 }
-
-
 
 /**
  * Displays a list of users with names or emails that match the input string.

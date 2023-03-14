@@ -1,4 +1,150 @@
 @charset "UTF-8";
+* {
+  padding: 0px;
+  margin: 0px;
+  -webkit-margin-after: 0px;
+          margin-block-end: 0px;
+  -webkit-margin-before: 0px;
+          margin-block-start: 0px;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #F6F7F8;
+}
+
+.navbar-header {
+  display: flex;
+  width: 100vw;
+}
+
+.main-menu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.main-menu .nav-item {
+  padding-top: 40px;
+}
+
+.dashboard {
+  width: 100vw;
+  position: relative;
+}
+
+/* Thin scrollbar for all browsers */
+/* Webkit-based browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #f5f5f5;
+}
+
+/* Internet Explorer/Edge */
+*::-ms-scrollbar {
+  width: 8px;
+}
+
+*::-ms-thumb {
+  background-color: #ccc;
+  border-radius: 8px;
+}
+
+*::-ms-track {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 90px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  background: #FFFFFF;
+  font-weight: 400;
+  width: 80%;
+  font-size: 21px;
+  z-index: 100;
+}
+#header .inner-header {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+
+#navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 20%;
+  height: 100vh;
+  background: #2A3647;
+  border-radius: 0px;
+  z-index: 100;
+}
+#navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+#logo {
+  width: 100px;
+  height: 122px;
+}
+
+.nav-item {
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.nav-item img {
+  margin-right: 20px;
+}
+.nav-item img {
+  width: 26px;
+  height: 26px;
+}
+.nav-item .nav-title {
+  font-size: 18px;
+}
+
+button, a {
+  cursor: pointer;
+}
+
+.main-container {
+  position: absolute;
+  top: 8%;
+  left: 20%;
+  display: flex;
+  justify-content: flex-start;
+  width: 80%;
+  height: 92%;
+  overflow: hidden;
+}
+
 button {
   border: none;
   background-color: transparent;
@@ -336,7 +482,6 @@ input, select {
   color: white;
   font-weight: bold;
   text-transform: uppercase;
-  opacity: 0.75;
   display: flex;
   justify-content: center;
   align-items: center;

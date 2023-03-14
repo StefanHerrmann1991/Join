@@ -405,9 +405,9 @@ button, a {
 }
 
 .edit-contact-menu {
-  width: calc(100% - 55px);
+  width: 90%;
   height: 100%;
-  margin-left: 55px;
+  margin: auto;
   display: flex;
   flex-direction: column;
 }
@@ -426,10 +426,10 @@ button, a {
 .edit-name-initial-con {
   display: flex;
   flex-direction: row;
-  width: calc(100% - 55px);
+  width: 90%;
   align-items: center;
   justify-content: space-between;
-  padding-right: 55px;
+  margin: auto;
 }
 .edit-name-initial-con .edit-name {
   font-size: 47px;
