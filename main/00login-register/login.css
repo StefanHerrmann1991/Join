@@ -8,6 +8,10 @@
   font-family: "Inter", sans-serif;
 }
 
+body {
+  background-color: #F6F7F8;
+}
+
 .navbar-header {
   display: flex;
   width: 100vw;

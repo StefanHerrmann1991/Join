@@ -65,18 +65,18 @@ function renderBoards() {
         boardTitle = boards[i]['boardTitle'];
         boardName = boards[i]['boardName'];
         boardsContent.innerHTML += `
-        <div>
+        <div class="board">
+        <div class="boards-header">
         <h3>${boardTitle}</h3>
-        <div class="scroll-bar">
-            <div id="${boardId}" class="board-task-container" ondrop="moveTo('${boardId}')" ondragover="allowDrop(event)"></div>
+        <button><img src="/assets/img/plusButton.png"</button> 
         </div>
+        <div id="${boardId}" class="board-task-container" ondrop="moveTo('${boardId}')" ondragover="allowDrop(event)"></div>
         </div>
            `  
         renderEachBoard(boardTitle, boardId);   
     } 
 }
-/* Was fehlt input mit Knopf, ordentlicher json, style für das zeug. */
-/* boardId = todo boardName = todoBoard */
+
 
 function addNewBoard() {
     let board = processBoardInputs();
@@ -192,10 +192,8 @@ function moveToBoard(i, targetBoard) {
  * @param {string[]} usersArr - array with usernames
  * @returns {(string | string)} - user-icon  HTML code for all passed users | replacement image
  */
-function renderAssignedUsers(usersArr) {
-    
+function renderAssignedUsers(usersArr) {    
     let iconsHTML = '';
-
     if (usersArr && usersArr.length > 0) {
         for (let i = 0; i < usersArr.length; i++) {
             let user = usersArr[i];
@@ -210,39 +208,36 @@ function renderAssignedUsers(usersArr) {
 
 function boardTaskHTML(element, i) {
     return /*html*/ `
-        <div  draggable="true" ondragstart="startDragging(${i})" id="task${i}" class="scroll-bar-small background-urgency-${(element['urgency']).toLowerCase()} task">
-            <h3 class="task-headline-text">${capitalizeFirst(element['title'])}</h3>
-            <span class="light-text">
-                Priority: <b>${element['urgency']}</b><br>
-                Category: <b>${element['category']['topic']}</b><br>
-                Due date: <span>${element['date']}</span>
-            </span>
-            <!-- TODO show description on click -->
-            <div>
-                <span onclick="showDescription(${i})" class="show-more"><b id="clickMe${i}">Click to show description</b></span>
-                <p class="task-description-text d-none" id="showDescription${i}">${capitalizeFirst(element['description'])}</p>
-            </div>
-            <div class="members">
+        <div draggable="true" ondragstart="startDragging(${i})" id="task${i}" class="task" onclick="openDetailedTask()">
+        <div class="task-container">
+        <div class="category-icon" style="background-color: ${element.category.color}">${element.category.topic}</div>
+        <h3 class="task-headline-text">${capitalizeFirst(element['title'])}</h3>                       
+        <div class="assigned-users">
                 ${renderAssignedUsers(element.assignedTo)}
-            </div>
-            <div class="move-to">
-                <img onclick="showMoveButtons(${i})" class="move-to-btn" src="img/arrow-204-48.png" alt="">
-                <div id="moveButtonBox${i}" class="move-button-box d-none">
-                    <div><button onclick="moveToBoard(${i},'todo')" class="move-button">Todo</button></div>
-                    <div><button onclick="moveToBoard(${i},'inProgress')" class="move-button">In Progress</button></div>
-                    <div><button onclick="moveToBoard(${i},'testing')" class="move-button">Testing</button></div>
-                    <div><button onclick="moveToBoard(${i},'done')" class="move-button">Done</button></div>
-                </div>
-            </div>
-            <div class="task-links">
-                <img class="delete-task" src="img/delete-24.png" 
-                onclick="deleteTask(tasks, ${i})" alt="delete icon">
-                <img class="edit-task" src="img/edit-24.png" onclick="renderEditForm(${i})" alt="edit icon">
-            </div>
-        </div>
+        </div>      
+        </div>    
     `;
 }
 
+function openDetailedTask() {}
+
+function renderMobile() {
+   return ` <div class="move-to">
+   <img onclick="showMoveButtons(${i})" class="move-to-btn" alt="">
+   <div id="moveButtonBox${i}" class="move-button-box d-none">
+       <div><button onclick="moveToBoard(${i},'todo')" class="move-button">Todo</button></div>
+       <div><button onclick="moveToBoard(${i},'inProgress')" class="move-button">In Progress</button></div>
+       <div><button onclick="moveToBoard(${i},'testing')" class="move-button">Testing</button></div>
+       <div><button onclick="moveToBoard(${i},'done')" class="move-button">Done</button></div>
+   </div>
+</div>
+<div class="task-links">
+   <img class="delete-task" src="/assets/img/deleteWhite.png" 
+   onclick="deleteTask(tasks, ${i})" alt="delete icon">
+   <img class="edit-task"  onclick="renderEditForm(${i})" alt="edit icon">
+</div>
+</div>`
+}
 
 function editFormHTML(i) {
     return /*html*/ `
@@ -256,4 +251,49 @@ async function saveTasks() { //check async: no diff
     if (event) event.preventDefault();
     let tasksAsText = JSON.stringify(tasks);
     await backend.setItem('tasks', tasksAsText);
+}
+
+
+
+/**
+ * Displays a list of users with names or emails that match the input string.
+ * @param {string} val The input string to match against.
+ */
+function showResultsTasks(val) {
+    const res = getId("taskSearchInput");
+    res.innerHTML = '';
+    let list = '';
+    const tasksList = autocompleteMatchTask(val);
+    for (let i = 0; i < tasks.length; i++) {
+        list += `<option value="${tasksList[i].title}">${tasksList[i].title} (${tasksList[i].email})</option>`;
+    }
+    res.innerHTML = `<datalist class="custom-datalist" id="usersSearch" name="userList">${list}</datalist>`;
+}
+
+function openTask(index) {
+    tasks[index]
+    console.log(tasks[index])
+    renderEditTask();
+}
+
+function renderEditTaskPopup() {
+    
+
+}
+
+/* Need to write function to show the editTask  */
+
+/**
+ * The function matches the input in the search input field with the names and emails of the users array.
+ * @param {string} input A string containing a name or email.
+ * @returns An array of users with names or emails that match the input string.
+ */
+function autocompleteMatchTask(input) {
+    if (input == '') return [];
+    let reg = new RegExp(input);
+    
+    return tasks.filter(function (task) {
+        console.log(task)
+        if (task.title.match(reg) || task.urgency.match(reg) || task.date.match(reg) || task.category.topic.match(reg)) return task;
+    });
 }
