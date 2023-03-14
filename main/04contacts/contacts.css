@@ -84,12 +84,11 @@ body {
   z-index: 100;
 }
 #header .inner-header {
-  width: 80%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin: auto;
 }
 
 #navbar {
@@ -184,6 +183,9 @@ button, a {
   border: none;
   background-color: transparent;
   width: 100%;
+}
+.contact-book .icon-initial {
+  color: white;
 }
 .contact-book .contact-email {
   color: #007CEE;

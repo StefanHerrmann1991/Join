@@ -177,7 +177,7 @@ function renderContacts() {
         document.getElementById(`${initial}`).innerHTML += `
       <button onclick="showContact(${index})" id="contact-${index}" class="contact-container">
       <div class="contact-intial"  style="background-color:${element.color}">
-      <div>${element.initial}</div>
+      <div class="icon-initial">${element.initial}</div>
       </div>
       <div class="contact-name-email">
       <div class="contact-name"><nobr>${element.name}</nobr></div>

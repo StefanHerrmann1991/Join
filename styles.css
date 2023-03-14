@@ -84,12 +84,11 @@ body {
   z-index: 100;
 }
 #header .inner-header {
-  width: 80%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin: auto;
 }
 
 #navbar {

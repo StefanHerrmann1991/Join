@@ -17,29 +17,32 @@
 
     <div w3-include-html="../../index.html"></div>
     <div class="main-container">
-        <div class="boards-header">
-            <h2>Board</h2>
-            <div class="menu">
-                <div class="board-input">                   
-                    <div class="subtasks-container">
-                        <input class="costom-datalist" id="taskSearchInput" type="text" list="tasks" name="tasksList" placeholder="Find task" onKeyUp="showResultsTasks(this.value)">
-                        <div class="button-container">                           
-                            <button type="button" class="add-button" onclick="newContactInvitation()"><img
-                                src="/assets/img/search.png" ></button>
+        <div class="board-main">
+            <div class="boards-title-menu">
+                <h2>Board</h2>
+                <div class="menu">
+                    <div class="board-input">
+                        <div class="subtasks-container">
+                            <input class="costom-datalist" id="taskSearchInput" type="text" list="tasks"
+                                name="tasksList" placeholder="Find task" onKeyUp="showResultsTasks(this.value)">
+                            <div class="button-container">
+                                <button type="button" class="add-button" onclick="newContactInvitation()"><img
+                                        src="/assets/img/search.png"></button>
+                            </div>
                         </div>
-                    </div>  
-               <!--      <div class="assign-btn-container" id="addBoard">
+                        <!--      <div class="assign-btn-container" id="addBoard">
                         <button onclick="renderNewBoardBtn()" type="button" class="assign-btn" type="text">
                             <div id="boardMenu">Add new Board</div><img class="add-subtask"
                                 src="/assets/img/addIcon.png">
                         </button>
                     </div> -->
+                    </div>
+                    <button class="add-task" onclick="addTaskAnywhere()">
+                        <nobr>Add task</nobr><img src="/assets/img/addTaskWhite.png">
+                    </button>
                 </div>
-                <button class="add-task" onclick="addTaskAnywhere()"><nobr>Add task</nobr><img
-                        src="/assets/img/addTaskWhite.png"></button>
             </div>
+            <div id="boards" class="boards"></div>
         </div>
-        <div id="boards" class="boards"></div>
     </div>
-
 </body>

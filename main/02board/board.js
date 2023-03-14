@@ -66,7 +66,7 @@ function renderBoards() {
         boardName = boards[i]['boardName'];
         boardsContent.innerHTML += `
         <div class="board">
-        <div class="boards-header">
+        <div class="board-header">
         <h3>${boardTitle}</h3>
         <button><img src="/assets/img/plusButton.png"</button> 
         </div>
