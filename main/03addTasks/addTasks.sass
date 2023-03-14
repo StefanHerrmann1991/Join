@@ -1,6 +1,4 @@
 
-
-
 button
     border: none
     background-color: transparent
@@ -17,24 +15,22 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active
     -webkit-box-shadow: 0 0 0 30px white inset !important
 
-.add-task-container
-    overflow: hidden
-    position: absolute
-    top: 180px
-    left: 233px
-    display: flex
-    align-items: flex-start
-    width: calc( 100% - 233px )
-    height: calc( 100% - 180px )
-    flex-direction: column
+.center
+    height: 100%
+    width: 100%
+    display: flex !important
+    flex-direction: column !important
+    align-items: center !important
+    justify-content: center !important
+
+.main-container
     .add-task-formfield
         display: flex
     h2
         font-weight: 700
         font-size: 61px
         padding-bottom: 5%
-    .inner-add-task-container
-        margin-left: 5%
+
     h3
         padding-top: 5%
         padding-bottom: 5%
@@ -92,7 +88,7 @@ input:-webkit-autofill:active
     background: #FFFFFF
     border: 1px solid #D1D1D1
     border-radius: 10px
-    resize: none   
+    resize: none
 textarea
     height: 119px
 input, select
@@ -417,4 +413,3 @@ input.subtask-checkbox[type="checkbox"]:checked
 .add-subtask
     height: 24px
     width: 24px
-

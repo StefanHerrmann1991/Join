@@ -18,37 +18,32 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
-.add-task-container {
-  overflow: hidden;
-  position: absolute;
-  top: 180px;
-  left: 233px;
-  display: flex;
-  align-items: flex-start;
-  width: calc(100% - 233px);
-  height: calc(100% - 180px);
-  flex-direction: column;
+.center {
+  height: 100%;
+  width: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
-.add-task-container .add-task-formfield {
+
+.main-container .add-task-formfield {
   display: flex;
 }
-.add-task-container h2 {
+.main-container h2 {
   font-weight: 700;
   font-size: 61px;
   padding-bottom: 5%;
 }
-.add-task-container .inner-add-task-container {
-  margin-left: 5%;
-}
-.add-task-container h3 {
+.main-container h3 {
   padding-top: 5%;
   padding-bottom: 5%;
 }
-.add-task-container .add-task-left {
+.main-container .add-task-left {
   padding-right: 5%;
   border-right: 1px solid #D1D1D1;
 }
-.add-task-container .add-task-right {
+.main-container .add-task-right {
   padding-left: 5%;
 }
 

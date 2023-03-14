@@ -79,7 +79,7 @@ body {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   background: #FFFFFF;
   font-weight: 400;
-  width: calc(100% - 233px);
+  width: 80%;
   font-size: 21px;
   z-index: 100;
 }
@@ -97,7 +97,7 @@ body {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 232px;
+  width: 20%;
   height: 100vh;
   background: #2A3647;
   border-radius: 0px;
@@ -132,4 +132,15 @@ body {
 
 button, a {
   cursor: pointer;
+}
+
+.main-container {
+  position: absolute;
+  top: 8%;
+  left: 20%;
+  display: flex;
+  justify-content: flex-start;
+  width: 80%;
+  height: 92%;
+  overflow: hidden;
 }/*# sourceMappingURL=styles.css.map */

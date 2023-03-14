@@ -18,8 +18,8 @@
 <body onload="initTasks()">
 
     <div w3-include-html="../../index.html"></div>
-    <div class="add-task-container">
-        <div class="inner-add-task-container">
+    <div class="center main-container">
+        <div class="title-form">
             <h2>Add Task</h2>
             <form class="add-task-formfield" onsubmit="addToTasks()">
                 <div class="add-task-left">
@@ -35,7 +35,8 @@
                         </button>
                         <div class="user-menu d-none" id="categoryMenu">
                             <button id="newCategoryBtn" type="button" class="new-category-btn"
-                                onclick="newCategory()">New category</button>
+                                onclick="newCategory()">New
+                                category</button>
                             <div class="category-list" id="categoryList"></div>
                         </div>
                     </div>
@@ -48,7 +49,8 @@
                         <div class="user-menu d-none" id="userMenu">
                             <div class="user-list" id="userList"></div>
                             <button id="inviteUserBtn" type="button" class="invite-user-btn"
-                                onclick="inviteUsers()">Invite new contact<img src="/assets/img/contactsBlack.png">
+                                onclick="inviteUsers()">Invite
+                                new contact<img src="/assets/img/contactsBlack.png">
                             </button>
                         </div>
                     </div>
@@ -74,7 +76,6 @@
                         </button>
                     </div>
                     <div id="renderedSubtasks"></div>
-
                     <div class="btn-container">
                         <button class="clear-btn" type="reset" class="clear-btn" onclick="clearAssignments()">
                             Clear<img src="/assets/img/cancel.png"></button>
@@ -84,6 +85,8 @@
                 </div>
             </form>
         </div>
+    </div>
+
     </div>
 
 </body>
