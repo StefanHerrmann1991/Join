@@ -1,10 +1,5 @@
 @import '../../styles.sass'
 
-h2
-    font-weight: 700
-    font-size: 61px
-    padding: 0px
-
 .board-main
     display: flex
     justify-content: center
@@ -16,10 +11,14 @@ h2
         margin-bottom: 35px
         display: flex
         justify-content: space-between
-        align-items: flex-start
+        align-items: center
         flex-direction: row
         width: 90%
         margin: auto
+    h2
+        font-weight: 700
+        font-size: 61px
+        padding: 0px !important
     img
         width: 30px
         height: 30px
@@ -27,13 +26,45 @@ h2
         display: flex
         justify-content: flex-end
         width: 100%
-    .board-input
+
 
 .delete-task
     width: 24px
     height: 24px
 
+.board-input
+
+    .search-container
+        position: relative
+        display: flex
+        flex-direction: row
+        align-items: center
+        width: 100%
+        background: #FFFFFF
+        border: 1px solid #D1D1D1
+        border-radius: 10px
+    input
+        border-radius: 10px
+        border: none
+        padding: 0px
+        margin-left: 22px
+        &:focus
+            outline: none
+    .button-container
+        position: absolute
+        right: 10
+        height: 100%
+        display: flex
+        justify-content: center
+        align-items: center     
+    .search-btn
+        border-left: 1px solid #D1D1D1
+        padding-left: 15px
+
+        
+
 .add-task
+    margin-left: 35px
     height: 51px
     display: flex
     align-items: center
@@ -80,6 +111,7 @@ h2
         padding-top: 23px
 
 .task
+
     display: flex
     flex-direction: column
     justify-content: center
@@ -90,16 +122,29 @@ h2
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04)
     border-radius: 30px
     margin-top: 35px
+    cursor: pointer
     .category-icon
         display: inline-block
         padding: 4px 25px
         border-radius: 8px
         color: white
     .task-container
-        width: 90%
+        width: 95%
+        div, h3
+            font-size: 16px
 
     .description
         color: #A8A8A8
+
+.user-urgency
+    display: flex
+    align-items: center
+    justify-content: space-between
+    margin-top: 10%
+    .urgency
+        width: 22px
+        height: 15.4px
+        padding: 10px 18px
 .boards
     display: flex
     align-items: flex-start
@@ -121,7 +166,6 @@ h2
 
 .assigned-users
     display: flex
-    margin-top: 10%
     .user-icon
         margin-left: -18px
     .user-icon:nth-child(1)
@@ -129,6 +173,3 @@ h2
 
 .edit-task-dialog
     @include popup
-   
-
-

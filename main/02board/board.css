@@ -144,12 +144,6 @@ button, a {
   overflow: hidden;
 }
 
-h2 {
-  font-weight: 700;
-  font-size: 61px;
-  padding: 0px;
-}
-
 .board-main {
   display: flex;
   justify-content: center;
@@ -162,10 +156,15 @@ h2 {
   margin-bottom: 35px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: row;
   width: 90%;
   margin: auto;
+}
+.board-main h2 {
+  font-weight: 700;
+  font-size: 61px;
+  padding: 0px !important;
 }
 .board-main img {
   width: 30px;
@@ -176,12 +175,46 @@ h2 {
   justify-content: flex-end;
   width: 100%;
 }
+
 .delete-task {
   width: 24px;
   height: 24px;
 }
 
+.board-input .search-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #D1D1D1;
+  border-radius: 10px;
+}
+.board-input input {
+  border-radius: 10px;
+  border: none;
+  padding: 0px;
+  margin-left: 22px;
+}
+.board-input input:focus {
+  outline: none;
+}
+.board-input .button-container {
+  position: absolute;
+  right: 10;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.board-input .search-btn {
+  border-left: 1px solid #D1D1D1;
+  padding-left: 15px;
+}
+
 .add-task {
+  margin-left: 35px;
   height: 51px;
   display: flex;
   align-items: center;
@@ -244,6 +277,7 @@ h2 {
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
   border-radius: 30px;
   margin-top: 35px;
+  cursor: pointer;
 }
 .task .category-icon {
   display: inline-block;
@@ -252,10 +286,25 @@ h2 {
   color: white;
 }
 .task .task-container {
-  width: 90%;
+  width: 95%;
+}
+.task .task-container div, .task .task-container h3 {
+  font-size: 16px;
 }
 .task .description {
   color: #A8A8A8;
+}
+
+.user-urgency {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10%;
+}
+.user-urgency .urgency {
+  width: 22px;
+  height: 15.4px;
+  padding: 10px 18px;
 }
 
 .boards {
@@ -283,7 +332,6 @@ h2 {
 
 .assigned-users {
   display: flex;
-  margin-top: 10%;
 }
 .assigned-users .user-icon {
   margin-left: -18px;

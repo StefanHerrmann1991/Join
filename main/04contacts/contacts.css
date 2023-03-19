@@ -386,7 +386,8 @@ button, a {
   display: flex;
   justify-content: flex-start;
 }
-.close-upper-right .contact-name-email {
+
+.contact-name-email {
   margin-top: 8%;
   margin-bottom: 5%;
   display: flex;

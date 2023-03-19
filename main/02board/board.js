@@ -1,8 +1,8 @@
 let boards = [
-    {boardTitle: 'To do', boardId: 'board-0', boardName: 'todoBoard'},
-    {boardTitle: 'In progress', boardId: 'board-1', boardName: 'progressBoard'},
-    {boardTitle: 'Awaiting Feedback', boardId: 'board-2', boardName: 'awaitingFeedbackBoard'},
-    {boardTitle: 'Done', boardId: 'board-3', boardName: 'doneBoard'}
+    { boardTitle: 'To do', boardId: 'board-0', boardName: 'todoBoard' },
+    { boardTitle: 'In progress', boardId: 'board-1', boardName: 'progressBoard' },
+    { boardTitle: 'Awaiting Feedback', boardId: 'board-2', boardName: 'awaitingFeedbackBoard' },
+    { boardTitle: 'Done', boardId: 'board-3', boardName: 'doneBoard' }
 ]
 
 
@@ -12,7 +12,7 @@ async function initBoards() {
     await renderBoards();
 }
 
-function addTaskAnywhere() {}
+function addTaskAnywhere() { }
 
 function renderNewBoardBtn() {
     let subtask = getId('addBoard')
@@ -23,9 +23,9 @@ function renderNewBoardBtn() {
     <div class="button-container">
     <button type="button" class="cancel-button" onclick ="cancelBoardCreation()"><img
     src="/assets/img/cancelDark.png"></button>
-    <button type="button" class="add-button" onclick="addNewBoard()"><img
-    src="/assets/img/checkDark.png"></button>
-    </div>
+        <button type="button" class="add-button" onclick="addNewBoard()"><img
+            src="/assets/img/checkDark.png"></button>
+        </div>
     </div>
     `
 }
@@ -42,11 +42,11 @@ async function saveEdit(dataArray, i) { // check: async no diff
     saveTasks();
     hide('overlay');
     // check if sent from boards page or backlog page and render content
-    if (getId('todoBoard')) renderBoards()   
+    if (getId('todoBoard')) renderBoards()
 }
 
 
- async function initAddTasks() {
+async function initAddTasks() {
     setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
     tasks = JSON.parse(backend.getItem('tasks')) || [];
@@ -56,9 +56,9 @@ async function saveEdit(dataArray, i) { // check: async no diff
 /**
  * This Function used  for rendering the boards with filters
  */
-function renderBoards() {  
- let boardsContent = getId('boards');
-     boardsContent.innerHTML = '';
+function renderBoards() {
+    let boardsContent = getId('boards');
+    boardsContent.innerHTML = '';
     for (let i = 0; i < boards.length; i++) {
         boardId = boards[i]['boardId'];
         boardTitle = boards[i]['boardTitle'];
@@ -71,9 +71,9 @@ function renderBoards() {
         </div>
         <div id="${boardId}" class="board-task-container" ondrop="moveTo('${boardId}')" ondragover="allowDrop(event)"></div>
         </div>
-           `  
-        renderEachBoard(boardTitle, boardId);   
-    } 
+           `
+        renderEachBoard(boardTitle, boardId);
+    }
 }
 
 function addNewBoard() {
@@ -86,7 +86,7 @@ function addNewBoard() {
 function processBoardInputs() {
     let boardInput = getId('newBoardInput').value
     let boardTitle = boardInput.toUpperCase();
-      /* `${boardName}Board`;  boardInput.split(" ").join("")*/
+    /* `${boardName}Board`;  boardInput.split(" ").join("")*/
     let boardId = 'board-' + boards.length
     let board = {
         'boardTitle': boardTitle,
@@ -104,6 +104,7 @@ function clearInputsBoard() {
  */
 
 function renderEachBoard(boardTaskArray, boardId) {
+
     boardTaskArray = tasks.filter(t => t['board'] == `${boardId}`);
     getId(`${boardId}`).innerHTML = '';
     for (let i = 0; i < boardTaskArray.length; i++) {
@@ -113,10 +114,10 @@ function renderEachBoard(boardTaskArray, boardId) {
     }
 }
 
+
+
 async function saveBoards() { //check async: no diff
-    if (event) {
-        event.preventDefault();
-    }
+    if (event) event.preventDefault();
     let boardsAsText = JSON.stringify(boards);
     await backend.setItem('boards', boardsAsText);
 }
@@ -126,13 +127,9 @@ async function saveBoards() { //check async: no diff
  *  The preventDefault() function is necessary to prevent the page from reloading when adding a new board.
  */
 async function loadBoards() {
-    if (event) {
-        event.preventDefault();
-    }
+    if (event) event.preventDefault();
     let boardsAsText = await backend.getItem('boards');
-    if (boardsAsText) {
-        boards = JSON.parse(boardsAsText);
-    }
+    if (boardsAsText) boards = JSON.parse(boardsAsText);
 }
 
 /**
@@ -185,15 +182,19 @@ function moveToBoard(i, targetBoard) {
 
 function boardTaskHTML(element, i) {
     return /*html*/ `
-        <div draggable="true" ondragstart="startDragging(${i})" id="task${i}" class="task" onclick="openDetailedTask()">
+    <div draggable="true" ondragstart="startDragging(${i})" id="task-${i}" class="task" onclick="openDetailedTask()">
         <div class="task-container">
-        <div class="category-icon" style="background-color: ${element.category.color}">${element.category.topic}</div>
-        <h3 class="task-headline-text"><b>${capitalizeFirst(element['title'])}</b></h3> 
-        <div class="description">${element.description}</div>                      
-        <div class="assigned-users">
-                ${renderAssignedUsers(element.assignedTo)}
-        </div>      
-        </div>    
+            <div class="category-icon" style="background-color: ${element.category.color}">${element.category.topic}</div>
+            <h3 class="task-headline-text"><b>${capitalizeFirst(element['title'])}</b></h3>
+            <div class="description">${element.description}</div>
+            <div class="user-urgency">
+            <div class="assigned-users">
+            ${renderAssignedUsers(element.assignedTo)}
+            </div>
+            <img class="urgency" src="/assets/img/prio${capitalizeFirst(element.urgency)}.png">
+            </div>
+        </div>
+    </div>
     `;
 }
 
@@ -202,7 +203,7 @@ function boardTaskHTML(element, i) {
  * @param {string[]} usersArr - array with usernames
  * @returns {(string | string)} - user-icon  HTML code for all passed users | replacement image
  */
-function renderAssignedUsers(usersArr) {    
+function renderAssignedUsers(usersArr) {
     let iconsHTML = '';
     if (usersArr && usersArr.length > 0) {
         for (let i = 0; i < usersArr.length; i++) {
@@ -210,16 +211,15 @@ function renderAssignedUsers(usersArr) {
             console.log(user)
             iconsHTML += `<span id="iconUser-${i}" class="user-icon" alt="user icon" style="background-color: ${user.color}">${user.initial}</span>`;
         }
-    } else {
-        iconsHTML = '<img src="img/icon-plus.png" alt="" class="icon-replacement">';
     }
+    else iconsHTML = '<img src="img/icon-plus.png" alt="" class="icon-replacement">';
     return iconsHTML;
 }
 
-function openDetailedTask() {}
+function openDetailedTask() { }
 
 function renderMobile() {
-   return ` <div class="move-to">
+    return ` <div class="move-to">
    <img onclick="showMoveButtons(${i})" class="move-to-btn" alt="">
    <div id="moveButtonBox${i}" class="move-button-box d-none">
        <div><button onclick="moveToBoard(${i},'todo')" class="move-button">Todo</button></div>
@@ -249,29 +249,32 @@ async function saveTasks() { //check async: no diff
     await backend.setItem('tasks', tasksAsText);
 }
 
+//Todo render tasks here which are in the search field
+
 /**
  * Displays a list of users with names or emails that match the input string.
  * @param {string} val The input string to match against.
  */
 function showResultsTasks(val) {
+   
     const res = getId("taskSearchInput");
     res.innerHTML = '';
     let list = '';
     const tasksList = autocompleteMatchTask(val);
-    for (let i = 0; i < tasks.length; i++) {
-        list += `<option value="${tasksList[i].title}">${tasksList[i].title} (${tasksList[i].email})</option>`;
+    renderEachBoard(tasksList, )
+    for (let i = 0; i < tasksList.length; i++) {
+        list += `<option value="${tasksList[i].title}">${tasksList[i].title}</option>`;
     }
-    res.innerHTML = `<datalist class="custom-datalist" id="usersSearch" name="userList">${list}</datalist>`;
+    res.innerHTML = `<datalist class="custom-datalist" id="tasksSearch" name="tasksList">${list}</datalist>`;
 }
 
 function openTask(index) {
     tasks[index]
-    console.log(tasks[index])
     renderEditTask();
 }
 
 function renderEditTaskPopup() {
-    
+
 
 }
 
@@ -285,9 +288,13 @@ function renderEditTaskPopup() {
 function autocompleteMatchTask(input) {
     if (input == '') return [];
     let reg = new RegExp(input);
-    
+
     return tasks.filter(function (task) {
-        console.log(task)
-        if (task.title.match(reg) || task.urgency.match(reg) || task.date.match(reg) || task.category.topic.match(reg)) return task;
+        /*       renderEachBoard(tasks.title, tasks.board)  */
+
+        if (task.title.match(reg) || task.description.match(reg) || task.category.topic.match(reg)) {
+            return task;
+        }
+        /* else getId(`task-${task.id}`).classList.add('d-none')  */
     });
 }

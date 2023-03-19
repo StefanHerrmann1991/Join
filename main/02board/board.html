@@ -22,12 +22,12 @@
                 <h2>Board</h2>
                 <div class="menu">
                     <div class="board-input">
-                        <div class="subtasks-container">
-                            <input class="costom-datalist" id="taskSearchInput" type="text" list="tasks"
+                        <div class="search-container">
+                            <input class="costom-datalist" id="taskSearchInput" type="text" list="tasksSearch"
                                 name="tasksList" placeholder="Find task" onKeyUp="showResultsTasks(this.value)">
                             <div class="button-container">
-                                <button type="button" class="add-button" onclick="newContactInvitation()"><img
-                                        src="/assets/img/search.png"></button>
+                                <button type="button" class="add-button" onclick="openSearchedTask()"><img
+                                        class="search-btn" src="/assets/img/search.png"></button>
                             </div>
                         </div>
                         <!--      <div class="assign-btn-container" id="addBoard">
