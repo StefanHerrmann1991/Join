@@ -279,12 +279,6 @@ button, a {
   margin-top: 35px;
   cursor: pointer;
 }
-.task .category-icon {
-  display: inline-block;
-  padding: 4px 25px;
-  border-radius: 8px;
-  color: white;
-}
 .task .task-container {
   width: 95%;
 }
@@ -348,4 +342,11 @@ button, a {
   width: 100vw;
   top: 0;
   left: 0;
+}
+
+.category-icon {
+  display: inline-block;
+  padding: 4px 25px;
+  border-radius: 8px;
+  color: white;
 }/*# sourceMappingURL=board.css.map */

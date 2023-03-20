@@ -9,7 +9,7 @@ let boards = [
 async function initBoards() {
     includeHTML();
     await initAddTasks();
-    await renderBoards();
+    await renderBoards(tasks);
 }
 
 function addTaskAnywhere() { }
@@ -42,7 +42,7 @@ async function saveEdit(dataArray, i) { // check: async no diff
     saveTasks();
     hide('overlay');
     // check if sent from boards page or backlog page and render content
-    if (getId('todoBoard')) renderBoards()
+    if (getId('todoBoard')) renderBoards(tasks)
 }
 
 
@@ -56,7 +56,7 @@ async function initAddTasks() {
 /**
  * This Function used  for rendering the boards with filters
  */
-function renderBoards() {
+function renderBoards(array) {
     let boardsContent = getId('boards');
     boardsContent.innerHTML = '';
     for (let i = 0; i < boards.length; i++) {
@@ -72,7 +72,7 @@ function renderBoards() {
         <div id="${boardId}" class="board-task-container" ondrop="moveTo('${boardId}')" ondragover="allowDrop(event)"></div>
         </div>
            `
-        renderEachBoard(boardTitle, boardId);
+        renderEachBoard(boardTitle, boardId, array);
     }
 }
 
@@ -80,7 +80,7 @@ function addNewBoard() {
     let board = processBoardInputs();
     boards.push(board);
     saveBoards();
-    renderBoards();
+    renderBoards(tasks);
 }
 
 function processBoardInputs() {
@@ -103,13 +103,13 @@ function clearInputsBoard() {
  * This Function shows/refreshes all boards filtered with categorys and also allow drag and drop 
  */
 
-function renderEachBoard(boardTaskArray, boardId) {
+function renderEachBoard(boardTaskArray, boardId, array) {
 
-    boardTaskArray = tasks.filter(t => t['board'] == `${boardId}`);
+    boardTaskArray = array.filter(t => t['board'] == `${boardId}`);
     getId(`${boardId}`).innerHTML = '';
     for (let i = 0; i < boardTaskArray.length; i++) {
         const element = boardTaskArray[i];
-        const taskIndex = tasks.indexOf(element);
+        const taskIndex = array.indexOf(element);
         getId(`${boardId}`).innerHTML += boardTaskHTML(element, taskIndex);
     }
 }
@@ -150,7 +150,7 @@ function allowDrop(ev) {
 function moveTo(board) {
     tasks[currentDraggedElement]['board'] = board;
     saveTasks();
-    renderBoards()
+    renderBoards(tasks)
 }
 /**
  * This function shows move buttons on responsive view when arrow image is clicked 
@@ -172,17 +172,16 @@ function showMoveButtons(i) {
  * @param {string} targetBoard - name of board
  */
 function moveToBoard(i, targetBoard) {
-    console.log(targetBoard);
     tasks[i]['board'] = targetBoard;
     saveTasks();
-    renderBoards();
+    renderBoards(tasks);
 }
 
 
 
 function boardTaskHTML(element, i) {
     return /*html*/ `
-    <div draggable="true" ondragstart="startDragging(${i})" id="task-${i}" class="task" onclick="openDetailedTask()">
+    <div draggable="true" ondragstart="startDragging(${i})" id="task-${i}" class="task" onclick="openDetailedTask(${i})">
         <div class="task-container">
             <div class="category-icon" style="background-color: ${element.category.color}">${element.category.topic}</div>
             <h3 class="task-headline-text"><b>${capitalizeFirst(element['title'])}</b></h3>
@@ -216,10 +215,11 @@ function renderAssignedUsers(usersArr) {
     return iconsHTML;
 }
 
-function openDetailedTask() { }
+
 
 function renderMobile() {
-    return ` <div class="move-to">
+    return ` 
+    <div class="move-to">
    <img onclick="showMoveButtons(${i})" class="move-to-btn" alt="">
    <div id="moveButtonBox${i}" class="move-button-box d-none">
        <div><button onclick="moveToBoard(${i},'todo')" class="move-button">Todo</button></div>
@@ -256,12 +256,13 @@ async function saveTasks() { //check async: no diff
  * @param {string} val The input string to match against.
  */
 function showResultsTasks(val) {
-   
+
     const res = getId("taskSearchInput");
     res.innerHTML = '';
     let list = '';
     const tasksList = autocompleteMatchTask(val);
-    renderEachBoard(tasksList, )
+    if (tasksList.length !== 0) renderBoards(tasksList);
+    else renderBoards(tasks)
     for (let i = 0; i < tasksList.length; i++) {
         list += `<option value="${tasksList[i].title}">${tasksList[i].title}</option>`;
     }
@@ -278,7 +279,24 @@ function renderEditTaskPopup() {
 
 }
 
-/* Need to write function to show the editTask  */
+function openDetailedTask(index) {
+    let task = tasks[index]
+    let editTask = getId('editTaskDialog')
+    editTask.classList.toggle('d-none')
+    editTask.innerHTML = `
+<div class="edit-task-dialog center" id="editTaskContainer">
+<div>
+<div class="" style="background-color: ${task.category.color}">${task.category.topic}</div>
+<div>${task.title}</div>
+<div>${task.description}</div>
+<div>${task.date}</div>
+</div>
+</div>
+`
+}
+
+/* <div>${}</div
+<div>${}</div */
 
 /**
  * The function matches the input in the search input field with the names and emails of the users array.
