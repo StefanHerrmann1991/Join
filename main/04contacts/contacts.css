@@ -372,10 +372,14 @@ button, a {
 
 .close-upper-right {
   position: absolute;
-  top: 5%;
-  right: 5%;
+  top: 35px;
+  right: 35px;
   border: none;
   background: transparent;
+}
+.close-upper-right img {
+  width: 22px;
+  height: 22px;
 }
 .close-upper-right h3 {
   margin-top: 5%;

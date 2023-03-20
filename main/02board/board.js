@@ -12,21 +12,24 @@ async function initBoards() {
     await renderBoards(tasks);
 }
 
-function addTaskAnywhere() { }
+function addTaskAtBoard(boardId) {
+
+
+
+}
 
 function renderNewBoardBtn() {
     let subtask = getId('addBoard')
     subtask.classList.remove('assign-btn-container')
     subtask.innerHTML = `
-    <div class="subtasks-container">
-    <input id="newBoardInput" placeholder="Add new Board">
-    <div class="button-container">
-    <button type="button" class="cancel-button" onclick ="cancelBoardCreation()"><img
-    src="/assets/img/cancelDark.png"></button>
-        <button type="button" class="add-button" onclick="addNewBoard()"><img
-            src="/assets/img/checkDark.png"></button>
+        <div class="subtasks-container">
+            <input id="newBoardInput" placeholder="Add new Board">
+            <div class="button-container">
+                <button type="button" class="cancel-button" onclick="cancelBoardCreation()"><img
+                        src="/assets/img/cancelDark.png"></button>
+                <button type="button" class="add-button" onclick="addNewBoard()"><img src="/assets/img/checkDark.png"></button>
+            </div>
         </div>
-    </div>
     `
 }
 
@@ -99,10 +102,12 @@ function clearInputsBoard() {
     clearInputValues();
 }
 
-/** renderEachBoard
- * This Function shows/refreshes all boards filtered with categorys and also allow drag and drop 
+/**
+ * 
+ * @param {*} boardTaskArray 
+ * @param {*} boardId 
+ * @param {*} array 
  */
-
 function renderEachBoard(boardTaskArray, boardId, array) {
 
     boardTaskArray = array.filter(t => t['board'] == `${boardId}`);
@@ -131,6 +136,12 @@ async function loadBoards() {
     let boardsAsText = await backend.getItem('boards');
     if (boardsAsText) boards = JSON.parse(boardsAsText);
 }
+
+/* async function loadData(id) {
+    if (event) event.preventDefault();
+    let boardsAsText = await backend.getItem(`${id}`);
+    if (boardsAsText) boards = JSON.parse(boardsAsText);
+} */
 
 /**
  * This function saves the current id of the dragged task 
@@ -181,7 +192,7 @@ function moveToBoard(i, targetBoard) {
 
 function boardTaskHTML(element, i) {
     return /*html*/ `
-    <div draggable="true" ondragstart="startDragging(${i})" id="task-${i}" class="task" onclick="openDetailedTask(${i})">
+    <div draggable="true" ondragstart="startDragging(${i})" id="task-${i}" class="task" onclick="renderDetailedTask(${i})">
         <div class="task-container">
             <div class="category-icon" style="background-color: ${element.category.color}">${element.category.topic}</div>
             <h3 class="task-headline-text"><b>${capitalizeFirst(element['title'])}</b></h3>
@@ -219,21 +230,22 @@ function renderAssignedUsers(usersArr) {
 
 function renderMobile() {
     return ` 
-    <div class="move-to">
-   <img onclick="showMoveButtons(${i})" class="move-to-btn" alt="">
-   <div id="moveButtonBox${i}" class="move-button-box d-none">
-       <div><button onclick="moveToBoard(${i},'todo')" class="move-button">Todo</button></div>
-       <div><button onclick="moveToBoard(${i},'inProgress')" class="move-button">In Progress</button></div>
-       <div><button onclick="moveToBoard(${i},'testing')" class="move-button">Testing</button></div>
-       <div><button onclick="moveToBoard(${i},'done')" class="move-button">Done</button></div>
-   </div>
-</div>
-<div class="task-links">
-   <img class="delete-task" src="/assets/img/deleteWhite.png" 
-   onclick="deleteTask(tasks, ${i})" alt="delete icon">
-   <img class="edit-task" onclick="renderEditForm(${i})" alt="edit icon">
-</div>
-</div>`
+    <div>
+        <div class="move-to">
+            <img onclick="showMoveButtons(${i})" class="move-to-btn" alt="">
+            <div id="moveButtonBox${i}" class="move-button-box d-none">
+                <div><button onclick="moveToBoard(${i},'todo')" class="move-button">Todo</button></div>
+                <div><button onclick="moveToBoard(${i},'inProgress')" class="move-button">In Progress</button></div>
+                <div><button onclick="moveToBoard(${i},'testing')" class="move-button">Testing</button></div>
+                <div><button onclick="moveToBoard(${i},'done')" class="move-button">Done</button></div>
+            </div>
+        </div>
+        <div class="task-links">
+            <img class="delete-task" src="/assets/img/deleteWhite.png" onclick="deleteTask(tasks, ${i})" alt="delete icon">
+            <img class="edit-task" onclick="renderEditForm(${i})" alt="edit icon">
+        </div>
+    </div>
+    `
 }
 
 function editFormHTML(i) {
@@ -251,23 +263,7 @@ async function saveTasks() { //check async: no diff
 
 //Todo render tasks here which are in the search field
 
-/**
- * Displays a list of users with names or emails that match the input string.
- * @param {string} val The input string to match against.
- */
-function showResultsTasks(val) {
 
-    const res = getId("taskSearchInput");
-    res.innerHTML = '';
-    let list = '';
-    const tasksList = autocompleteMatchTask(val);
-    if (tasksList.length !== 0) renderBoards(tasksList);
-    else renderBoards(tasks)
-    for (let i = 0; i < tasksList.length; i++) {
-        list += `<option value="${tasksList[i].title}">${tasksList[i].title}</option>`;
-    }
-    res.innerHTML = `<datalist class="custom-datalist" id="tasksSearch" name="tasksList">${list}</datalist>`;
-}
 
 function openTask(index) {
     tasks[index]
@@ -279,24 +275,41 @@ function renderEditTaskPopup() {
 
 }
 
-function openDetailedTask(index) {
+function renderDetailedTask(index) {
     let task = tasks[index]
     let editTask = getId('editTaskDialog')
-    editTask.classList.toggle('d-none')
+    openContainer('editTaskDialog')
     editTask.innerHTML = `
-<div class="edit-task-dialog center" id="editTaskContainer">
-<div>
-<div class="" style="background-color: ${task.category.color}">${task.category.topic}</div>
-<div>${task.title}</div>
-<div>${task.description}</div>
-<div>${task.date}</div>
-</div>
-</div>
+    <div class="edit-task-dialog center" id="editTaskContainer">
+        <div class="edit-task-container">
+            <div class="task-details">
+            <div class="category-icon" style="background-color: ${task.category.color}">${task.category.topic}</div>
+            <button class="close-upper-right" onclick="closeContainer('editTaskDialog')"><img src="/assets/img/cancel.png"></button>
+            <h2>${task.title}</h2>
+            <div>${task.description}</div>
+            <div class="row"><h3>Due date: </h3><div>${task.date}</div></div>
+            <div class="row"><h3>Priority: </h3><div>${task.urgency}</div></div>
+            <div>${renderAssignedUsers(task.assignedTo)}</div>
+            </div>
+        </div>
+    </div>
 `
 }
 
-/* <div>${}</div
-<div>${}</div */
+
+function renderEditTask(index) {
+
+}
+
+/**
+ * Displays a list of users with names or emails that match the input string.
+ * @param {string} val The input string to match against.
+ */
+function showResultsTasks(val) {
+    const tasksList = autocompleteMatchTask(val);
+    if (tasksList.length !== 0) renderBoards(tasksList);
+    else renderBoards(tasks)
+}
 
 /**
  * The function matches the input in the search input field with the names and emails of the users array.
@@ -306,13 +319,7 @@ function openDetailedTask(index) {
 function autocompleteMatchTask(input) {
     if (input == '') return [];
     let reg = new RegExp(input);
-
     return tasks.filter(function (task) {
-        /*       renderEachBoard(tasks.title, tasks.board)  */
-
-        if (task.title.match(reg) || task.description.match(reg) || task.category.topic.match(reg)) {
-            return task;
-        }
-        /* else getId(`task-${task.id}`).classList.add('d-none')  */
+        if (task.title.match(reg) || task.description.match(reg) || task.category.topic.match(reg)) return task;
     });
 }

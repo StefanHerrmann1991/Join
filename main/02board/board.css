@@ -349,4 +349,45 @@ button, a {
   padding: 4px 25px;
   border-radius: 8px;
   color: white;
+}
+
+.edit-task-container {
+  position: relative;
+  background-color: white;
+  width: 30%;
+  height: 70%;
+  margin: auto;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+}
+.edit-task-container div, .edit-task-container h3 {
+  margin-top: 3%;
+  margin-button: 3%;
+}
+.edit-task-container h2 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 61px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.edit-task-container .task-details {
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  margin-top: 10%;
+}
+.edit-task-container h3 {
+  color: #000000;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 21px;
+}
+.edit-task-container .row {
+  display: flex;
+}
+.edit-task-container .row h3 {
+  margin-right: 5%;
 }/*# sourceMappingURL=board.css.map */

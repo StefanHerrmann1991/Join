@@ -46,23 +46,18 @@ function getIds(...idsArr) { // rest-operator
  * This function Hides all passed HTML elements
  * @param  {...string} ids - The id of one or several HTML elements
  */
-function hide(...ids) {
-    for (let i = 0; i < ids.length; i++) {
-        getId(ids[i]).classList.add('d-none');
-    }
-}
+function closeContainer(...ids) {
+    if (ids.length == 1) getId(ids[0]).classList.add('d-none');
+    ids.forEach(id => getId(id).classList.add('d-none'));
+  }
 
 /**
  * This function Displays all passed HTML elements
  * @param  {...string} ids - The id of one or several HTML elements
  */
-function show(...ids) {
-    for (let i = 0; i < ids.length; i++) {
-        let element = getId(ids[i]);
-        //if (element.classList.contains('d-none')){
-        element.classList.remove('d-none');
-        //}
-    }
+function openContainer(...ids) {
+    if (ids.length == 1) getId(ids[0]).classList.remove('d-none');
+    ids.forEach(id => getId(id).classList.remove('d-none'));
 }
 
 /**
