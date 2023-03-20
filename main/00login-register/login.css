@@ -144,6 +144,11 @@ button, a {
   overflow: hidden;
 }
 
+.subtask-progress {
+  display: flex;
+  width: 100%;
+}
+
 .register {
   position: absolute;
   display: flex;

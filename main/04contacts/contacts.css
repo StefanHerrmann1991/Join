@@ -144,6 +144,11 @@ button, a {
   overflow: hidden;
 }
 
+.subtask-progress {
+  display: flex;
+  width: 100%;
+}
+
 .add-contact-btn {
   position: absolute;
   bottom: 5%;

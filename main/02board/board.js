@@ -191,22 +191,31 @@ function moveToBoard(i, targetBoard) {
 
 
 function boardTaskHTML(element, i) {
+    let doneSubtask = element.subtasks.filter(function (subtask) { return subtask.checked }).length
+    if (doneSubtask > 0) {openContainer('subtaskProgressBar')}
     return /*html*/ `
     <div draggable="true" ondragstart="startDragging(${i})" id="task-${i}" class="task" onclick="renderDetailedTask(${i})">
         <div class="task-container">
             <div class="category-icon" style="background-color: ${element.category.color}">${element.category.topic}</div>
             <h3 class="task-headline-text"><b>${capitalizeFirst(element['title'])}</b></h3>
             <div class="description">${element.description}</div>
-            <div class="user-urgency">
-            <div class="assigned-users">
-            ${renderAssignedUsers(element.assignedTo)}
+            <div id="subtaskProgressBar" class="subtask-progress d-none">
+                <progress value="${doneSubtask}" max="${element.subtasks.length}"></progress>
+                <div>${doneSubtask}/${element.subtasks.length}</div>
             </div>
-            <img class="urgency" src="/assets/img/prio${capitalizeFirst(element.urgency)}.png">
+            <div class="user-urgency">
+                <div class="assigned-users">
+                    ${renderAssignedUsers(element.assignedTo)}
+                </div>
+                <img class="urgency" src="/assets/img/prio${capitalizeFirst(element.urgency)}.png">
             </div>
         </div>
     </div>
     `;
 }
+
+
+
 
 /**
  * Renders several user icons for all passed users in an array

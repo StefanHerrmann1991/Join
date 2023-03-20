@@ -144,6 +144,11 @@ button, a {
   overflow: hidden;
 }
 
+.subtask-progress {
+  display: flex;
+  width: 100%;
+}
+
 .board-main {
   display: flex;
   justify-content: center;
@@ -390,4 +395,17 @@ button, a {
 }
 .edit-task-container .row h3 {
   margin-right: 5%;
+}
+
+.subtask-progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 10%;
+  font-size: 12px;
+}
+
+progress {
+  color: #29ABE2;
 }/*# sourceMappingURL=board.css.map */
