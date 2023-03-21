@@ -298,7 +298,7 @@ button, a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 10%;
+  margin-top: 6%;
 }
 .user-urgency .urgency {
   width: 22px;
@@ -390,10 +390,30 @@ button, a {
   font-weight: 700;
   font-size: 21px;
 }
-.edit-task-container .row {
+.edit-task-container .details-priority-btn {
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 18px;
+  color: white;
+}
+.edit-task-container .low {
+  background-color: #7AE229;
+}
+.edit-task-container .medium {
+  background-color: #FFA800;
+}
+.edit-task-container .urgent {
+  background-color: #FF3D00;
+}
+
+.row {
   display: flex;
 }
-.edit-task-container .row h3 {
+.row h3 {
   margin-right: 5%;
 }
 
@@ -402,7 +422,7 @@ button, a {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 10%;
+  margin-top: 6%;
   font-size: 12px;
 }
 

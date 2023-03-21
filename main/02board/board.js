@@ -297,7 +297,11 @@ function renderDetailedTask(index) {
             <h2>${task.title}</h2>
             <div>${task.description}</div>
             <div class="row"><h3>Due date: </h3><div>${task.date}</div></div>
-            <div class="row"><h3>Priority: </h3><div>${task.urgency}</div></div>
+            <div class="details-priority row">
+            <h3>Priority: </h3>
+            <div class="${task.urgency} details-priority-btn ">${task.urgency}</div>
+            </div>
+            <h3>Assignes to:</h3>
             <div>${renderAssignedUsers(task.assignedTo)}</div>
             </div>
         </div>
