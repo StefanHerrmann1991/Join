@@ -339,6 +339,11 @@ button, a {
   margin-left: 0px !important;
 }
 
+.details-assigned-users span {
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+
 .edit-task-dialog {
   position: absolute;
   z-index: 100;
@@ -365,6 +370,19 @@ button, a {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
 }
+.edit-task-container .edit-task-btn {
+  position: absolute;
+  width: 57px;
+  height: 57px;
+  bottom: 5%;
+  right: 5%;
+  background: #2A3647;
+  border-radius: 10px;
+}
+.edit-task-container .edit-task-btn img {
+  width: 22px;
+  height: 30px;
+}
 .edit-task-container div, .edit-task-container h3 {
   margin-top: 3%;
   margin-button: 3%;
@@ -377,7 +395,7 @@ button, a {
   margin-top: 5%;
   margin-bottom: 5%;
 }
-.edit-task-container .task-details {
+.edit-task-container .task-details, .edit-task-container .edit-task-form {
   width: 90%;
   height: 90%;
   margin: auto;
@@ -428,4 +446,37 @@ button, a {
 
 progress {
   color: #29ABE2;
+}
+
+.priority-btn {
+  border: none;
+  background-color: #ddd;
+  color: #333;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.priority-btn.selected {
+  color: white;
+}
+
+.priority-btn.selected.low {
+  background-color: #7AE229;
+}
+.priority-btn.selected.low img {
+  filter: invert(1%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(101%) contrast(200%);
+}
+
+.priority-btn.selected.urgent {
+  background-color: #FF3D00;
+}
+.priority-btn.selected.urgent img {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%);
+}
+
+.priority-btn.selected.medium {
+  background-color: #FFA800;
+}
+.priority-btn.selected.medium img {
+  filter: invert(50%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%);
 }/*# sourceMappingURL=board.css.map */

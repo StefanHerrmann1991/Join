@@ -33,6 +33,8 @@ function renderNewBoardBtn() {
     `
 }
 
+
+
 /**
  * Updates an element with given index i in the given array
  * @param {Array} dataArray
@@ -191,28 +193,29 @@ function moveToBoard(i, targetBoard) {
 
 
 function boardTaskHTML(element, i) {
-    let doneSubtask = element.subtasks.filter(function (subtask) { return subtask.checked }).length
-    if (doneSubtask > 0) {openContainer('subtaskProgressBar')}
+    let doneSubtask = element.subtasks.filter(function (subtask) { return subtask.checked }).length;
+    let subtaskProgressBarClass = element.subtasks.length === 0 ? 'd-none' : '';
     return /*html*/ `
-    <div draggable="true" ondragstart="startDragging(${i})" id="task-${i}" class="task" onclick="renderDetailedTask(${i})">
-        <div class="task-container">
-            <div class="category-icon" style="background-color: ${element.category.color}">${element.category.topic}</div>
-            <h3 class="task-headline-text"><b>${capitalizeFirst(element['title'])}</b></h3>
-            <div class="description">${element.description}</div>
-            <div id="subtaskProgressBar" class="subtask-progress d-none">
-                <progress value="${doneSubtask}" max="${element.subtasks.length}"></progress>
-                <div>${doneSubtask}/${element.subtasks.length}</div>
-            </div>
-            <div class="user-urgency">
-                <div class="assigned-users">
-                    ${renderAssignedUsers(element.assignedTo)}
-                </div>
-                <img class="urgency" src="/assets/img/prio${capitalizeFirst(element.urgency)}.png">
-            </div>
-        </div>
-    </div>
+      <div draggable="true" ondragstart="startDragging(${i})" id="task-${i}" class="task" onclick="renderDetailedTask(${i})">
+          <div class="task-container">
+              <div class="category-icon" style="background-color: ${element.category.color}">${element.category.topic}</div>
+              <h3 class="task-headline-text"><b>${capitalizeFirst(element['title'])}</b></h3>
+              <div class="description">${element.description}</div>
+              <div id="subtaskProgressBar" class="subtask-progress ${subtaskProgressBarClass}">
+                  <progress value="${doneSubtask}" max="${element.subtasks.length}"></progress>
+                  <div>${doneSubtask}/${element.subtasks.length}</div>
+              </div>
+              <div class="user-urgency">
+                  <div class="assigned-users">
+                      ${renderAssignedUsers(element.assignedTo)}
+                  </div>
+                  <img class="urgency" src="/assets/img/prio${capitalizeFirst(element.urgency)}.png">
+              </div>
+          </div>
+      </div>
     `;
 }
+
 
 
 
@@ -223,19 +226,21 @@ function boardTaskHTML(element, i) {
  * @returns {(string | string)} - user-icon  HTML code for all passed users | replacement image
  */
 function renderAssignedUsers(usersArr) {
+
     let iconsHTML = '';
     if (usersArr && usersArr.length > 0) {
-        for (let i = 0; i < usersArr.length; i++) {
-            let user = usersArr[i];
-            console.log(user)
-            iconsHTML += `<span id="iconUser-${i}" class="user-icon" alt="user icon" style="background-color: ${user.color}">${user.initial}</span>`;
+        for (let index = 0; index < usersArr.length; index++) {
+            const user = usersArr[index];
+            if (index == 3) {
+                iconsHTML += `<span class="user-icon" alt="user icon" style="background-color: #2A3647">${usersArr.length - 2}+</span>`
+                break;
+            }
+            iconsHTML += `<span id="iconUser-${index}" class="user-icon" alt="user icon" style="background-color: ${user.color}">${user.initial}</span>`;
         }
+        return iconsHTML;
     }
-    else iconsHTML = '<img src="img/icon-plus.png" alt="" class="icon-replacement">';
-    return iconsHTML;
+
 }
-
-
 
 function renderMobile() {
     return ` 
@@ -289,30 +294,83 @@ function renderDetailedTask(index) {
     let editTask = getId('editTaskDialog')
     openContainer('editTaskDialog')
     editTask.innerHTML = `
-    <div class="edit-task-dialog center" id="editTaskContainer">
-        <div class="edit-task-container">
-            <div class="task-details">
-            <div class="category-icon" style="background-color: ${task.category.color}">${task.category.topic}</div>
-            <button class="close-upper-right" onclick="closeContainer('editTaskDialog')"><img src="/assets/img/cancel.png"></button>
-            <h2>${task.title}</h2>
-            <div>${task.description}</div>
-            <div class="row"><h3>Due date: </h3><div>${task.date}</div></div>
-            <div class="details-priority row">
-            <h3>Priority: </h3>
-            <div class="${task.urgency} details-priority-btn ">${task.urgency}</div>
-            </div>
-            <h3>Assignes to:</h3>
-            <div>${renderAssignedUsers(task.assignedTo)}</div>
+        <div class="edit-task-dialog center" id="editTaskContainer">
+            <div class="edit-task-container">
+                <div class="task-details">
+                    <div class="category-icon" style="background-color: ${task.category.color}">${task.category.topic}</div>
+                    <button class="close-upper-right" onclick="closeContainer('editTaskDialog')"><img
+                            src="/assets/img/cancel.png"></button>
+                    <h2>${task.title}</h2>
+                    <div>${task.description}</div>
+                    <div class="row">
+                        <h3>Due date: </h3>
+                        <div>${task.date}</div>
+                    </div>
+                    <div class="details-priority row">
+                        <h3>Priority: </h3>
+                        <div class="${task.urgency} details-priority-btn ">${task.urgency}</div>
+                    </div>
+                    <div>
+                        <h3>Assignes to:</h3>
+                        <div class="details-assigned-users">${renderAssignedUsers(task.assignedTo)}</div>
+                    </div>
+                    <button class="edit-task-btn" onclick="renderEditTask(${index})"><img src="/assets/img/editBtnWhite.png"></button>
+                </div>
             </div>
         </div>
-    </div>
 `
 }
 
 
 function renderEditTask(index) {
-
+    let editTask = getId('editTaskDialog');
+    let task = tasks[index];
+    editTask.innerHTML = `
+    <div class="edit-task-dialog center" id="editTaskContainer">
+        <div class="edit-task-container">
+            <form class="edit-task-form" onsubmit="changeTask()">
+                <h3>Title</h3>
+                <input value="${task.title}">
+                <h3>Description</h3>
+                <h3>Due date</h3>
+                <h3>Prio</h3>
+                <div required id="details-urgency" class="priority-btns">
+                    <button class="urgent priority-btn" data-value="urgent" type="button">Urgent<img
+                            src="../../assets/img/prioUrgent.png"></button>
+                    <button class="medium priority-btn" data-value="medium" type="button">Medium<img class="medium-prio"
+                            src="../../assets/img/prioMedium.png"></button>
+                    <button class="low priority-btn" data-value="low" type="button">Low<img
+                            src="../../assets/img/prioLow.png"></button>
+                </div>
+                <h3>Assigned to</h3>
+            </form>
+        </div>
+    </div>
+    `
+    startPriorityEventListener()
 }
+
+function startPriorityEventListener() {
+    let selectedValue = null;
+    const buttonEls = document.querySelectorAll('.priority-btn');
+    console.log(buttonEls)
+    buttonEls.forEach(buttonEl => {
+        buttonEl.addEventListener('click', () => {
+            // Remove selected class from all buttons
+            buttonEls.forEach(b => b.classList.remove('selected'));
+            // Add selected class to the clicked button
+            buttonEl.classList.add('selected');
+            // Store the selected value
+            selectedValue = buttonEl.getAttribute('data-value');
+        });
+    });
+}
+
+
+
+
+
+
 
 /**
  * Displays a list of users with names or emails that match the input string.

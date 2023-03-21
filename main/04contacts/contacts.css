@@ -149,6 +149,10 @@ button, a {
   width: 100%;
 }
 
+.d-none {
+  display: none;
+}
+
 .add-contact-btn {
   position: absolute;
   bottom: 5%;
@@ -236,10 +240,6 @@ button, a {
   width: 33%;
   background-color: white;
   overflow-y: scroll;
-}
-
-.d-none {
-  display: none;
 }
 
 .add-contact-dialog, .edit-contact-dialog {

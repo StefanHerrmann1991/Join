@@ -163,6 +163,11 @@
     .user-icon:nth-child(1)
         margin-left: 0px !important
 
+.details-assigned-users
+    span
+        margin-bottom: 5%
+        margin-top: 5%
+
 .edit-task-dialog
     @include popup
 
@@ -180,6 +185,17 @@
     margin: auto
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1)
     border-radius: 30px
+    .edit-task-btn
+        position: absolute
+        width: 57px
+        height: 57px
+        bottom: 5%
+        right: 5%
+        background: #2A3647
+        border-radius: 10px
+        img
+            width: 22px
+            height: 30px
     div, h3
         margin-top: 3%
         margin-button: 3%
@@ -190,7 +206,7 @@
         font-size: 61px
         margin-top: 5%
         margin-bottom: 5%
-    .task-details
+    .task-details, .edit-task-form
         width: 90%
         height: 90%
         margin: auto
@@ -222,6 +238,9 @@
     h3
         margin-right: 5%
 
+.edit-task-form
+    h3
+
 .subtask-progress
     display: flex
     justify-content: space-between
@@ -232,3 +251,28 @@
 
 progress
     color: #29ABE2
+
+.priority-btn
+    border: none
+    background-color: #ddd
+    color: #333
+    padding: 10px
+    border-radius: 5px
+
+.priority-btn.selected
+    color: white
+.priority-btn.selected.low
+    background-color: #7AE229
+    img
+        filter: invert(1%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(101%) contrast(200%)
+.priority-btn.selected.urgent
+    background-color: #FF3D00
+    img
+        filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%)
+.priority-btn.selected.medium
+    background-color: #FFA800
+    img
+        filter: invert(50%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%)
+
+
+

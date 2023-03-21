@@ -156,7 +156,7 @@ function renderColorPicker() {
 }
 
 function chooseCategoryColor(index) {
-    let colorId = document.getElementById('chosenColor')
+    let colorId = getId('chosenColor')
     chosenColor = colorPicker[index]
     colorId.innerHTML = `<div style="background-color: ${chosenColor}" class="category-color"></div>`
 }
@@ -200,9 +200,10 @@ function saveNewCategory(index) {
     toggleMenu('categoryMenu');
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document?.addEventListener('DOMContentLoaded', () => {
     let selectedValue = null;
     const buttonEls = document.querySelectorAll('.priority-btn');
+    console.log(buttonEls)
     buttonEls.forEach(buttonEl => {
         buttonEl.addEventListener('click', () => {
             // Remove selected class from all buttons
@@ -494,12 +495,12 @@ function newSubtask() {
     subtasks.forEach((subtask, index) => {
         renderedSubtasks.innerHTML += `
         <div class="subtask-checkbox-container"> 
-        <input class="subtask-checkbox" type="checkbox" 
+            <input class="subtask-checkbox" type="checkbox" 
                 value="${index}" 
                     ${subtask.checked ? 'checked' : ''} 
                     onchange="updateSubtask(${index})">
             ${subtask.title}
-            </div>            
+        </div>            
     `;
     });
 }
@@ -508,7 +509,3 @@ function updateSubtask(index) {
     subtasks[index].checked = !subtasks[index].checked;
 }
 
-/* function renderFunction(array, id, htmlPart) {
-    let idForRendering =  getId(id);
-    array.forEach((element) => idForRendering.innerHTML += htmlPart)
-}  */
