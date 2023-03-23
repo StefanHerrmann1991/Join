@@ -217,7 +217,7 @@ function boardTaskHTML(element, i) {
 }
 
 
-
+let editTask = false
 
 
 /**
@@ -231,7 +231,7 @@ function renderAssignedUsers(usersArr) {
     if (usersArr && usersArr.length > 0) {
         for (let index = 0; index < usersArr.length; index++) {
             const user = usersArr[index];
-            if (index == 3) {
+            if (index == 2) {
                 iconsHTML += `<span class="user-icon" alt="user icon" style="background-color: #2A3647">${usersArr.length - 2}+</span>`
                 break;
             }
@@ -343,6 +343,19 @@ function renderEditTask(index) {
                             src="../../assets/img/prioLow.png"></button>
                 </div>
                 <h3>Assigned to</h3>
+                <div class="assign-btn-container" id="assignBtnContainer">
+                <button type="button" class="assign-btn" onclick="openAssignableContacts()">
+                    <div>Select contact to assign</div>
+                    <div id="imgArrow"><img src="/assets/img/open.png"></div>
+                </button>
+                <div class="user-menu d-none" id="userMenu">
+                    <div class="user-list" id="userList"></div>
+                    <button id="inviteUserBtn" type="button" class="invite-user-btn"
+                        onclick="inviteUsers()">Invite
+                        new contact<img src="/assets/img/contactsBlack.png">
+                    </button>
+                </div>
+            </div>
             </form>
         </div>
     </div>
