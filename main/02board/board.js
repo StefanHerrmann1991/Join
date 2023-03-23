@@ -5,16 +5,29 @@ let boards = [
     { boardTitle: 'Done', boardId: 'board-3', boardName: 'doneBoard' }
 ]
 
+let detailsAreOpen = false;
 
 async function initBoards() {
     includeHTML();
     await initAddTasks();
+    await initBackend();
+    debugger
     await renderBoards(tasks);
 }
 
+function renderUserList() {
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
+        getId('userList').innerHTML += `
+        <div class="user-list-container">
+        <div>${user.name}</div>
+        <input type="checkbox" class="square-checkbox" value="${user.name}" onclick="renderUserInitial(event, '${i}')"> 
+        </div>
+        `
+    }
+}
+
 function addTaskAtBoard(boardId) {
-
-
 
 }
 
@@ -32,8 +45,6 @@ function renderNewBoardBtn() {
         </div>
     `
 }
-
-
 
 /**
  * Updates an element with given index i in the given array
@@ -121,8 +132,6 @@ function renderEachBoard(boardTaskArray, boardId, array) {
     }
 }
 
-
-
 async function saveBoards() { //check async: no diff
     if (event) event.preventDefault();
     let boardsAsText = JSON.stringify(boards);
@@ -139,24 +148,20 @@ async function loadBoards() {
     if (boardsAsText) boards = JSON.parse(boardsAsText);
 }
 
-/* async function loadData(id) {
-    if (event) event.preventDefault();
-    let boardsAsText = await backend.getItem(`${id}`);
-    if (boardsAsText) boards = JSON.parse(boardsAsText);
-} */
-
 /**
  * This function saves the current id of the dragged task 
  */
 function startDragging(id) { // i only for testing purposes
     currentDraggedElement = id;
 }
+
 /**
  * This function makes the div container droppable
  */
 function allowDrop(ev) {
     ev.preventDefault();
 }
+
 /**
  * This function gives the task the new category. The category depends on the dropped board 
  */
@@ -190,8 +195,6 @@ function moveToBoard(i, targetBoard) {
     renderBoards(tasks);
 }
 
-
-
 function boardTaskHTML(element, i) {
     let doneSubtask = element.subtasks.filter(function (subtask) { return subtask.checked }).length;
     let subtaskProgressBarClass = element.subtasks.length === 0 ? 'd-none' : '';
@@ -216,10 +219,6 @@ function boardTaskHTML(element, i) {
     `;
 }
 
-
-let editTask = false
-
-
 /**
  * Renders several user icons for all passed users in an array
  * @param {string[]} usersArr - array with usernames
@@ -231,7 +230,7 @@ function renderAssignedUsers(usersArr) {
     if (usersArr && usersArr.length > 0) {
         for (let index = 0; index < usersArr.length; index++) {
             const user = usersArr[index];
-            if (index == 2) {
+            if (index == 2 && !detailsAreOpen) {
                 iconsHTML += `<span class="user-icon" alt="user icon" style="background-color: #2A3647">${usersArr.length - 2}+</span>`
                 break;
             }
@@ -284,11 +283,6 @@ function openTask(index) {
     renderEditTask();
 }
 
-function renderEditTaskPopup() {
-
-
-}
-
 function renderDetailedTask(index) {
     let task = tasks[index]
     let editTask = getId('editTaskDialog')
@@ -311,7 +305,7 @@ function renderDetailedTask(index) {
                         <div class="${task.urgency} details-priority-btn ">${task.urgency}</div>
                     </div>
                     <div>
-                        <h3>Assignes to:</h3>
+                        <h3>Assigned to:</h3>
                         <div class="details-assigned-users">${renderAssignedUsers(task.assignedTo)}</div>
                     </div>
                     <button class="edit-task-btn" onclick="renderEditTask(${index})"><img src="/assets/img/editBtnWhite.png"></button>
@@ -321,13 +315,14 @@ function renderDetailedTask(index) {
 `
 }
 
-
 function renderEditTask(index) {
     let editTask = getId('editTaskDialog');
     let task = tasks[index];
     editTask.innerHTML = `
-    <div class="edit-task-dialog center" id="editTaskContainer">
+    <div class="edit-task-dialog center" id="edit-task-container">
         <div class="edit-task-container">
+        <button class="close-upper-right" onclick="closeContainer('editTaskDialog')"><img
+        src="/assets/img/cancel.png"></button>
             <form class="edit-task-form" onsubmit="changeTask()">
                 <h3>Title</h3>
                 <input value="${task.title}">
@@ -344,11 +339,11 @@ function renderEditTask(index) {
                 </div>
                 <h3>Assigned to</h3>
                 <div class="assign-btn-container" id="assignBtnContainer">
-                <button type="button" class="assign-btn" onclick="openAssignableContacts()">
+                <button type="button" class="assign-btn" onclick="toggleContainer('detailsUserMenu')">
                     <div>Select contact to assign</div>
                     <div id="imgArrow"><img src="/assets/img/open.png"></div>
                 </button>
-                <div class="user-menu d-none" id="userMenu">
+                <div class="user-menu" id="detailsUserMenu">
                     <div class="user-list" id="userList"></div>
                     <button id="inviteUserBtn" type="button" class="invite-user-btn"
                         onclick="inviteUsers()">Invite

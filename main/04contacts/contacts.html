@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <button class="add-contact-btn" onclick="openContactDialog('addContactDialog')">New Contact<img
+    <button class="add-contact-btn" onclick="openContainer('addContactDialog')">New Contact<img
             src="/assets/img/addContact.png"></button>
     <div class="add-contact-dialog d-none" id="addContactDialog">
         <div class="add-contact" id="addContact">
@@ -41,7 +41,7 @@
                     <p>Tasks are better with a team!</p>
                 </div>
                 <div class="add-contact-submenu">
-                    <button class="close-upper-right" onclick="closeContactDialog('addContactDialog')">
+                    <button class="close-upper-right" onclick="closeContainer('addContactDialog')">
                         <img src="/assets/img/cancel.png">
                     </button>
                     <img src="/assets/img/addContactBig.png">
@@ -51,7 +51,7 @@
                         <input type="email" id="email" name="email" required placeholder="Email">
                         <input type="tel" id="phone" name="phone" required placeholder="Phone">
                         <div class="menu-btn">
-                            <button type="button" onclick="closeContactDialog('addContactDialog')">Cancel
+                            <button type="button" onclick="closeContainer('addContactDialog')">Cancel
                                 <img src="/assets/img/cancel.png">
                             </button>
                             <button type=submit>

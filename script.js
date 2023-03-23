@@ -1,4 +1,7 @@
 
+
+
+
 function splitID(id, separator) {
     let arrayOfStrings = id.split(separator);
     return arrayOfStrings;
@@ -28,6 +31,20 @@ function randomHexColor() {
 function getId(id) {
     return document?.getElementById(id);
 }
+
+function newVariable(paramAsText) {
+    let objectName;
+    if (typeof paramAsText === 'object') objectName = paramAsText.constructor.name;
+    else objectName = paramAsText;
+    return `${objectName}`;
+  }
+  
+  async function saveDataToBackend(dataObject) {
+    let wordAsText = newVariable(dataObject) + `AsText`;
+    let stringifyDataObject = JSON.stringify(dataObject);
+    await backend.setItem(`${wordAsText}`, stringifyDataObject);
+  };
+
 
 /**
  * This function Returns an array with one or several HTML elements
@@ -64,10 +81,8 @@ function openContainer(...ids) {
  * This function Toggles the view of all passed HTML elements
  * @param  {...string} ids - The id of one or several HTML elements
  */
-function toggle(...ids) {
-    for (let i = 0; i < ids.length; i++) {
-        getId(ids[i]).classList.toggle('d-none');
-    }
+function toggleContainer(...ids) {
+    ids.forEach(id => getId(id).classList.toggle('d-none'));
 }
 
 /**

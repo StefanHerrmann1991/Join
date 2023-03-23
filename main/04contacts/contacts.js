@@ -3,7 +3,7 @@ let contactBookId;
 let sortByLastName = false;
 let contacts
 let ContactBookAsText = []
-
+let contactBook 
 
 function newContact(name, email, phone, initial, color, firstNameInitial) {
   let contact = {
@@ -99,7 +99,7 @@ class ContactBook {
   }
 }
 
-let contactBook = new ContactBook();
+contactBook = new ContactBook();
 
 function getRandomColor(name) {
   // get first alphabet in upper case
@@ -128,14 +128,6 @@ function createContact(event) {
 
 }
 
-function openContactDialog(id) {
-  document.getElementById(`${id}`).classList.remove('d-none');
-}
-
-function closeContactDialog(id) {
-  document.getElementById(`${id}`).classList.add('d-none');
-}
-
 async function initContacts() {
   await initBackend();
   includeHTML();
@@ -150,21 +142,9 @@ async function initBackend() {
   contactBook.sortInitials();
   contactBook.sortContacts(); // Sort contacts after loading from server
   users = contactBook.contacts;
-  console.log(users)
 }
 
-function newVariable(paramAsText) {
-  let objectName;
-  if (typeof paramAsText === 'object') objectName = paramAsText.constructor.name;
-  else objectName = paramAsText;
-  return `${objectName}`;
-}
 
-async function saveDataToBackend(dataObject) {
-  let wordAsText = newVariable(dataObject) + `AsText`;
-  let stringifyDataObject = JSON.stringify(dataObject);
-  await backend.setItem(`${wordAsText}`, stringifyDataObject);
-};
 
 function renderContacts() {
   contactBookId = document.getElementById('contactBookId');

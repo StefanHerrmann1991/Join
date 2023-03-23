@@ -5,6 +5,7 @@
     <script src="../../script.js"></script>
     <script src="addTasks.js"></script>
     <script src="../02board/board.js"></script>
+    
     <script src="../04contacts/contacts.js"></script>
     <!-- css data -->
     <link rel="stylesheet" href="addTasks.css">
@@ -29,7 +30,7 @@
                     <textarea resize="none" required id="description" placeholder="Enter a description"></textarea>
                     <h3>Category</h3>
                     <div class="assign-btn-container" id="categoryContainer">
-                        <button type="button" class="assign-btn" onclick="openCategories()">
+                        <button type="button" class="assign-btn" onclick="toggleContainer('categoryMenu')">
                             <div class="chosen-category-container" id="categorySelect">Select task category</div>
                             <div id="imgArrow"><img src="/assets/img/open.png"></div>
                         </button>
@@ -42,7 +43,7 @@
                     </div>
                     <h3>Assigned to</h3>
                     <div class="assign-btn-container" id="assignBtnContainer">
-                        <button type="button" class="assign-btn" onclick="openAssignableContacts()">
+                        <button type="button" class="assign-btn" onclick="toggleContainer('userMenu')">
                             <div>Select contact to assign</div>
                             <div id="imgArrow"><img src="/assets/img/open.png"></div>
                         </button>

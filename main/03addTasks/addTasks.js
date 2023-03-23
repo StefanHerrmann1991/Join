@@ -33,7 +33,6 @@ async function initTasks() {
 function addToTasks() {
     event.preventDefault();
     let task = processTaskInputs();
-    console.log(task)
     tasks.push(task);
     task.id = tasks.length; // set id when creating the task
     task.board = 'board-0'; // default-board on task creation
@@ -324,7 +323,7 @@ function compareDate() {
  * @param {string[]} usersArr - array with usernames
  * @returns {(string | string)} - user-icon  HTML code for all passed users | replacement image
  */
-function renderAssignedUsers(usersArr) {
+/* function renderAssignedUsers(usersArr) {
     let iconsHTML = '';
     if (usersArr && usersArr.length > 0)
         for (let i = 0; i < usersArr.length; i++) {
@@ -333,7 +332,7 @@ function renderAssignedUsers(usersArr) {
         }
     else iconsHTML = '<img src="img/icon-plus.png" alt="" class="icon-replacement">';
     return iconsHTML;
-}
+} */
 
 function renderUserIcon(userName) {
     let user = users.filter(user => user.name == userName);
@@ -374,15 +373,6 @@ function renderUserInitial(event, i) {
     }
 }
 
-
-function toggleMenu(id) {
-    getId(id).classList.toggle('d-none');
-}
-
-function openAssignableContacts() {
-    toggleMenu('userMenu');
-}
-
 function inviteUsers() {
     let inviteContainer = getId('assignBtnContainer');
     inviteContainer.classList.remove('assign-btn-container');
@@ -403,7 +393,7 @@ function cancelContactInvitation() {
     let inviteContainer = getId('assignBtnContainer');
     inviteContainer.classList.add('assign-btn-container');
     inviteContainer.innerHTML = `
-    <button type="button" class="assign-btn" onclick="openAssignableContacts()">
+    <button type="button" class="assign-btn" onclick="toggleContainer('userMenu')">
         <div>Select contact to assign</div>
         <div id="imgArrow"><img src="/assets/img/open.png"></div>
     </button>
