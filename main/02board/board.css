@@ -391,10 +391,6 @@ button, a {
   width: 22px;
   height: 30px;
 }
-.edit-task-container div, .edit-task-container h3 {
-  margin-top: 3%;
-  margin-button: 3%;
-}
 .edit-task-container h2 {
   font-family: "Inter";
   font-style: normal;

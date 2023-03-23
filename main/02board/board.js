@@ -12,6 +12,7 @@ async function initBoards() {
     await initAddTasks();
     await initBackend();
     await renderBoards(tasks);
+
 }
 
 function renderUserList() {
@@ -237,7 +238,6 @@ function renderAssignedUsers(usersArr) {
         }
         return iconsHTML;
     }
-
 }
 
 function renderMobile() {
@@ -324,9 +324,11 @@ function renderEditTask(index) {
         src="/assets/img/cancel.png"></button>
             <form class="edit-task-form" onsubmit="changeTask()">
                 <h3>Title</h3>
-                <input value="${task.title}">
+                <input required class="title" id="title" value="${task.title}" placeholder="Enter a title" oninput="loadTasks()">
                 <h3>Description</h3>
+                <textarea resize="none" required id="description" placeholder="Enter a description">${task.description}</textarea>
                 <h3>Due date</h3>
+                <input value="${task.date}" required id="date" class="date" type="date" name="setTodaysDate">
                 <h3>Prio</h3>
                 <div required id="details-urgency" class="priority-btns">
                     <button class="urgent priority-btn" data-value="urgent" type="button">Urgent<img
@@ -354,14 +356,19 @@ function renderEditTask(index) {
         </div>
     </div>
     `
-    startPriorityEventListener()
+    renderUserList();
+    startPriorityEventListener(task.urgency)
 }
 
-function startPriorityEventListener() {
-    let selectedValue = null;
+function startPriorityEventListener(selectedValue) {
     const buttonEls = document.querySelectorAll('.priority-btn');
     console.log(buttonEls)
     buttonEls.forEach(buttonEl => {
+        const buttonValue = buttonEl.getAttribute('data-value');
+        if (buttonValue === selectedValue) {
+            // If the button value matches the selectedValue, add the 'selected' class
+            buttonEl.classList.add('selected');
+        }
         buttonEl.addEventListener('click', () => {
             // Remove selected class from all buttons
             buttonEls.forEach(b => b.classList.remove('selected'));
@@ -372,7 +379,6 @@ function startPriorityEventListener() {
         });
     });
 }
-
 
 
 
