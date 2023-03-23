@@ -133,7 +133,7 @@ function cancelNewCategory() {
     let newCategory = getId('categoryContainer')
     newCategory.classList.add('assign-btn-container');
     newCategory.innerHTML = `
-    <button type="button" class="assign-btn" onclick="openCategories()">
+    <button type="button" class="assign-btn" onclick="openContainer('categoryMenu')">
     <div class="chosen-category-container" id="categorySelect">Select task category</div>
     <div id="imgArrow"><img src="/assets/img/open.png"></div>
 </button>
@@ -158,10 +158,6 @@ function chooseCategoryColor(index) {
     let colorId = getId('chosenColor')
     chosenColor = colorPicker[index]
     colorId.innerHTML = `<div style="background-color: ${chosenColor}" class="category-color"></div>`
-}
-
-function openCategories() {
-    toggleMenu('categoryMenu');
 }
 
 function addCategory() {
@@ -196,7 +192,7 @@ function saveNewCategory(index) {
     <button id="category" class="category" value="${index}">${category.topic}</button>
     <div class="category-color" style="background-color: ${category.color}"></div>   
       `
-    toggleMenu('categoryMenu');
+    closeContainer('categoryMenu');
 }
 
 document?.addEventListener('DOMContentLoaded', () => {
@@ -317,22 +313,6 @@ function compareDate() {
     let today = new Date().toISOString().split('T')[0];
     document.getElementById('date').setAttribute('min', today);
 }
-
-/**
- * Renders several user icons for all passed users in an array
- * @param {string[]} usersArr - array with usernames
- * @returns {(string | string)} - user-icon  HTML code for all passed users | replacement image
- */
-/* function renderAssignedUsers(usersArr) {
-    let iconsHTML = '';
-    if (usersArr && usersArr.length > 0)
-        for (let i = 0; i < usersArr.length; i++) {
-            let user = usersArr[i];
-            iconsHTML += renderUserIcon(user);
-        }
-    else iconsHTML = '<img src="img/icon-plus.png" alt="" class="icon-replacement">';
-    return iconsHTML;
-} */
 
 function renderUserIcon(userName) {
     let user = users.filter(user => user.name == userName);

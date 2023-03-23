@@ -149,6 +149,10 @@ button, a {
   width: 100%;
 }
 
+.d-none {
+  display: none;
+}
+
 .board-main {
   display: flex;
   justify-content: center;
@@ -259,15 +263,16 @@ button, a {
 }
 
 .board-task-container {
+  margin-top: 15%;
   position: relative;
-  padding: 5px;
   min-height: 550px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 400px;
+  overflow-y: scroll;
 }
 .board-task-container .board {
-  padding-right: 46px;
   padding-top: 23px;
 }
 
@@ -277,12 +282,15 @@ button, a {
   justify-content: center;
   align-items: center;
   padding: 18px 19px;
-  width: 100%;
+  width: calc(100% - 38px);
   background: #FFFFFF;
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
   border-radius: 30px;
   margin-top: 35px;
   cursor: pointer;
+}
+.task:first-child {
+  margin-top: 0px;
 }
 .task .task-container {
   width: 95%;
@@ -313,8 +321,8 @@ button, a {
   margin: auto;
 }
 .boards .board {
-  width: 100%;
-  margin-left: 5%;
+  width: 95%;
+  margin-left: 2.5%;
 }
 .boards .board-header {
   display: flex;

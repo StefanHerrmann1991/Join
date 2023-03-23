@@ -149,6 +149,10 @@ button, a {
   width: 100%;
 }
 
+.d-none {
+  display: none;
+}
+
 .register {
   position: absolute;
   display: flex;

@@ -150,6 +150,10 @@ button, a {
   width: 100%;
 }
 
+.d-none {
+  display: none;
+}
+
 button {
   border: none;
   background-color: transparent;

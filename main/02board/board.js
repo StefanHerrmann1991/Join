@@ -11,7 +11,6 @@ async function initBoards() {
     includeHTML();
     await initAddTasks();
     await initBackend();
-    debugger
     await renderBoards(tasks);
 }
 

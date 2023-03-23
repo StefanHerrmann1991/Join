@@ -97,14 +97,15 @@
         align-items: center
 
 .board-task-container
+    margin-top: 15%
     position: relative
-    padding: 5px
     min-height: 550px
     display: flex
     flex-direction: column
     align-items: center
+    height: 400px
+    overflow-y: scroll
     .board
-        padding-right: 46px
         padding-top: 23px
 
 .task
@@ -114,12 +115,14 @@
     justify-content: center
     align-items: center
     padding: 18px 19px
-    width: 100%
+    width: calc( 100% - 38px )
     background: #FFFFFF
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04)
     border-radius: 30px
     margin-top: 35px
     cursor: pointer
+    &:first-child
+        margin-top: 0px
     .task-container
         width: 95%
         div, h3
@@ -143,8 +146,9 @@
     width: 95%
     margin: auto
     .board
-        width: 100%
-        margin-left: 5%
+        width: 95%
+        margin-left: 2.5%        
+
     .board-header
         display: flex
         justify-content: space-between
@@ -273,6 +277,3 @@ progress
     background-color: #FFA800
     img
         filter: invert(50%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%)
-
-
-
