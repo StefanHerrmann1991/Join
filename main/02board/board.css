@@ -153,6 +153,29 @@ button, a {
   display: none;
 }
 
+h1 {
+  font-weight: 700;
+  font-size: 61px;
+}
+
+h2 {
+  color: #2A3647;
+  font-size: 21px;
+  font-weight: 700;
+  padding: 0 !important;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+h3 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+}
+
 .board-main {
   display: flex;
   justify-content: center;
@@ -169,11 +192,6 @@ button, a {
   flex-direction: row;
   width: 90%;
   margin: auto;
-}
-.board-main h2 {
-  font-weight: 700;
-  font-size: 61px;
-  padding: 0px !important;
 }
 .board-main img {
   width: 30px;
@@ -348,8 +366,8 @@ button, a {
 }
 
 .details-assigned-users span {
-  margin-bottom: 5%;
-  margin-top: 5%;
+  margin-bottom: 2.5%;
+  margin-top: 2.5%;
 }
 
 .edit-task-dialog {
@@ -378,6 +396,9 @@ button, a {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
 }
+.edit-task-container h2 {
+  margin: 0px;
+}
 .edit-task-container .edit-task-btn {
   position: absolute;
   width: 57px;
@@ -391,26 +412,11 @@ button, a {
   width: 22px;
   height: 30px;
 }
-.edit-task-container h2 {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 61px;
-  margin-top: 5%;
-  margin-bottom: 5%;
-}
 .edit-task-container .task-details, .edit-task-container .edit-task-form {
   width: 90%;
   height: 90%;
   margin: auto;
   margin-top: 10%;
-}
-.edit-task-container h3 {
-  color: #000000;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 21px;
 }
 .edit-task-container .details-priority-btn {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
@@ -434,9 +440,6 @@ button, a {
 
 .row {
   display: flex;
-}
-.row h3 {
-  margin-right: 5%;
 }
 
 .subtask-progress {

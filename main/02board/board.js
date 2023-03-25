@@ -11,8 +11,7 @@ async function initBoards() {
     includeHTML();
     await initAddTasks();
     await initBackend();
-    await renderBoards(tasks);
-
+    await renderBoards(tasks);   
 }
 
 function renderUserList() {
@@ -82,7 +81,7 @@ function renderBoards(array) {
         boardsContent.innerHTML += `
         <div class="board">
         <div class="board-header">
-        <h3>${boardTitle}</h3>
+        <h2>${boardTitle}</h2>
         <button><img src="/assets/img/plusButton.png"</button> 
         </div>
         <div id="${boardId}" class="board-task-container" ondrop="moveTo('${boardId}')" ondragover="allowDrop(event)"></div>
@@ -202,7 +201,7 @@ function boardTaskHTML(element, i) {
       <div draggable="true" ondragstart="startDragging(${i})" id="task-${i}" class="task" onclick="renderDetailedTask(${i})">
           <div class="task-container">
               <div class="category-icon" style="background-color: ${element.category.color}">${element.category.topic}</div>
-              <h3 class="task-headline-text"><b>${capitalizeFirst(element['title'])}</b></h3>
+              <h2 class="task-headline"><b>${capitalizeFirst(element['title'])}</b></h2>
               <div class="description">${element.description}</div>
               <div id="subtaskProgressBar" class="subtask-progress ${subtaskProgressBarClass}">
                   <progress value="${doneSubtask}" max="${element.subtasks.length}"></progress>
@@ -275,7 +274,20 @@ async function saveTasks() { //check async: no diff
 
 //Todo render tasks here which are in the search field
 
-
+/**
+ * Updates an element with given index i in the given array
+ * @param {Array} dataArray
+ * @param {integer} i - array index
+ */
+async function saveEditedTask(dataArray, i) { // check: async no diff
+    let task = await processTaskInputs();
+    task.board = dataArray[i].board; // keep the right board
+    dataArray[i] = task;
+    saveTasks();
+    hide('overlay');
+    // check if sent from boards page or backlog page and render content
+    renderBoards()
+}
 
 function openTask(index) {
     tasks[index]
@@ -296,15 +308,15 @@ function renderDetailedTask(index) {
                     <h2>${task.title}</h2>
                     <div>${task.description}</div>
                     <div class="row">
-                        <h3>Due date: </h3>
+                        <h2>Due date: </h2>
                         <div>${task.date}</div>
                     </div>
                     <div class="details-priority row">
-                        <h3>Priority: </h3>
+                        <h2>Priority: </h2>
                         <div class="${task.urgency} details-priority-btn ">${task.urgency}</div>
                     </div>
                     <div>
-                        <h3>Assigned to:</h3>
+                        <h2>Assigned to:</h2>
                         <div class="details-assigned-users">${renderAssignedUsers(task.assignedTo)}</div>
                     </div>
                     <button class="edit-task-btn" onclick="renderEditTask(${index})"><img src="/assets/img/editBtnWhite.png"></button>
@@ -344,7 +356,7 @@ function renderEditTask(index) {
                     <div>Select contact to assign</div>
                     <div id="imgArrow"><img src="/assets/img/open.png"></div>
                 </button>
-                <div class="user-menu" id="detailsUserMenu">
+                <div class="user-menu d-none" id="detailsUserMenu">
                     <div class="user-list" id="userList"></div>
                     <button id="inviteUserBtn" type="button" class="invite-user-btn"
                         onclick="inviteUsers()">Invite
@@ -357,6 +369,7 @@ function renderEditTask(index) {
     </div>
     `
     renderUserList();
+    compareDate();
     startPriorityEventListener(task.urgency)
 }
 

@@ -154,12 +154,35 @@ button, a {
   display: none;
 }
 
+h1 {
+  font-weight: 700;
+  font-size: 61px;
+}
+
+h2 {
+  color: #2A3647;
+  font-size: 21px;
+  font-weight: 700;
+  padding: 0 !important;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+h3 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+}
+
 button {
   border: none;
   background-color: transparent;
 }
 
-input, textarea, select, div, h3, button {
+input, textarea, select, div, button {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -184,15 +207,6 @@ input:-webkit-autofill:active {
 
 .main-container .add-task-formfield {
   display: flex;
-}
-.main-container h2 {
-  font-weight: 700;
-  font-size: 61px;
-  padding-bottom: 5%;
-}
-.main-container h3 {
-  padding-top: 5%;
-  padding-bottom: 5%;
 }
 .main-container .add-task-left {
   padding-right: 5%;
