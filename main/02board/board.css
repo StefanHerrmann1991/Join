@@ -486,4 +486,20 @@ progress {
 }
 .priority-btn.selected.medium img {
   filter: invert(50%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%);
+}
+
+.accept-edited-task-btn {
+  color: white;
+  background: #2A3647;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 83px;
+  height: 61px;
+  padding: 18px 10px;
+}
+.accept-edited-task-btn img {
+  width: 24px;
+  height: 24px;
 }/*# sourceMappingURL=board.css.map */

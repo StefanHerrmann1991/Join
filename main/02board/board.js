@@ -11,7 +11,7 @@ async function initBoards() {
     includeHTML();
     await initAddTasks();
     await initBackend();
-    await renderBoards(tasks);   
+    await renderBoards(tasks);
 }
 
 function renderUserList() {
@@ -334,7 +334,7 @@ function renderEditTask(index) {
         <div class="edit-task-container">
         <button class="close-upper-right" onclick="closeContainer('editTaskDialog')"><img
         src="/assets/img/cancel.png"></button>
-            <form class="edit-task-form" onsubmit="changeTask()">
+            <form class="edit-task-form" onsubmit="changeTask(${index})">
                 <h3>Title</h3>
                 <input required class="title" id="title" value="${task.title}" placeholder="Enter a title" oninput="loadTasks()">
                 <h3>Description</h3>
@@ -363,19 +363,28 @@ function renderEditTask(index) {
                         new contact<img src="/assets/img/contactsBlack.png">
                     </button>
                 </div>
-            </div>
+                </div>
+                <div id="userInitialContainer" class="user-initial-container"></div>
+            <button class="accept-edited-task-btn">Ok<img src="/assets/img/check.png"></button>
             </form>
         </div>
     </div>
     `
+    startPriorityEventListener(task.urgency);
     renderUserList();
-    compareDate();
-    startPriorityEventListener(task.urgency)
+    compareDate();   
+}
+
+function changeTask(index) {
+    task = tasks[index];
+    event.preventDefault();
+    task = processTaskInputs(task.category);
+    console.log(task.urgency)
+  /*   saveTasks(); */
 }
 
 function startPriorityEventListener(selectedValue) {
     const buttonEls = document.querySelectorAll('.priority-btn');
-    console.log(buttonEls)
     buttonEls.forEach(buttonEl => {
         const buttonValue = buttonEl.getAttribute('data-value');
         if (buttonValue === selectedValue) {

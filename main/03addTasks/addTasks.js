@@ -17,7 +17,7 @@ let chosenColor;
 async function initTasks() {
     await includeHTML();
     await initBackend();
-    await initAddTasks(); 
+    await initAddTasks();
     await initGetCategories();
     await renderUserList();
     await renderCategories();
@@ -36,7 +36,7 @@ function addToTasks() {
     tasks.push(task);
     task.id = tasks.length; // set id when creating the task
     task.board = 'board-0'; // default-board on task creation
-    saveTasks(); 
+    saveTasks();
 }
 
 
@@ -46,19 +46,16 @@ function addToTasks() {
  * This function gets input values and returns them as task objects.
  * @returns {Object} - task object
  */
-function processTaskInputs() {
-    let [title, description, category,  date] = getIds('title', 'description', 'category',  'date');
-    let urgencyButtons = document.querySelectorAll('#urgency button');
-    let urgency = '';
-    urgencyButtons.forEach(button => {
-        if (button.classList.contains('selected')) {
-            urgency = button.getAttribute('data-value');
-        }
-    });
+function processTaskInputs(oldCategory) { 
+    let categoryValue
+    if(oldCategory) categoryValue = oldCategory
+    else categoryValue = categories[category.value]
+    let [title, description, category, date] = getIds('title', 'description', 'category', 'date');
+    let urgency = getUrgency();
     let task = {
         'title': title.value,
         'description': description.value,
-        'category': categories[category.value],
+        'category': categoryValue,
         'urgency': urgency,
         'date': date.value,
         'board': 'todoBoard',
@@ -66,6 +63,17 @@ function processTaskInputs() {
         'subtasks': subtasks
     };
     return task;
+}
+
+function getUrgency() {
+    let urgency;
+    let urgencyButtons = document.querySelectorAll('#urgency button');
+    urgencyButtons.forEach(button => {
+        if (button.classList.contains('selected')) {
+            urgency = button.getAttribute('data-value');
+        }
+    });
+    return urgency;
 }
 
 /**

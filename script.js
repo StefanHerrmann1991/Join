@@ -37,13 +37,13 @@ function newVariable(paramAsText) {
     if (typeof paramAsText === 'object') objectName = paramAsText.constructor.name;
     else objectName = paramAsText;
     return `${objectName}`;
-  }
-  
-  async function saveDataToBackend(dataObject) {
+}
+
+async function saveDataToBackend(dataObject) {
     let wordAsText = newVariable(dataObject) + `AsText`;
     let stringifyDataObject = JSON.stringify(dataObject);
     await backend.setItem(`${wordAsText}`, stringifyDataObject);
-  };
+};
 
 
 /**
@@ -54,7 +54,7 @@ function newVariable(paramAsText) {
 function getIds(...idsArr) { // rest-operator
     elementArr = [];
     for (let i = 0; i < idsArr.length; i++) {
-        elementArr.push(document.getElementById(idsArr[i]));
+        elementArr.push(document?.getElementById(idsArr[i]));
     }
     return elementArr;
 }
@@ -66,7 +66,7 @@ function getIds(...idsArr) { // rest-operator
 function closeContainer(...ids) {
     if (ids.length == 1) getId(ids[0]).classList.add('d-none');
     ids.forEach(id => getId(id).classList.add('d-none'));
-  }
+}
 
 /**
  * This function Displays all passed HTML elements
@@ -99,9 +99,7 @@ function capitalizeFirst(str) {
  * @param  {...Object} elements - HTML elements
  */
 function clearInputValues(...elements) {
-    for (let i = 0; i < elements.length; i++) {
-        elements[i].value = '';
-    }
+    elements.forEach(elements[i].value = '')
 }
 
 function lowerFirstLetter(str) {
