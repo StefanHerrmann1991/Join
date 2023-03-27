@@ -101,19 +101,6 @@ function initGetCategories() {
 
 }
 
-
-/** This function gets all selected user values from an HTML multiple select field and returns the values in an array
- * @returns {string[]} - selected users
- */
-function getAssignedUsers() {
-    let assignedUsers = [];
-    let selectOptions = getId('assignUser').options;
-    for (let i = 0; i < selectOptions.length; i++) {
-        if (selectOptions[i].selected) assignedUsers.push(selectOptions[i].value);
-    }
-    return assignedUsers;
-}
-
 function newCategory() {
     let newCategory = getId('categoryContainer')
     newCategory.classList.remove('assign-btn-container');
@@ -326,23 +313,38 @@ function renderUserIcon(userName) {
  * Renders a list of users with checkboxes
  * @param {Object[]} assignedUsers - array of objects with usernames that are already assigned
  */
-function renderUserList() {    
+function renderUserList() {
+    
     const userListContainer = getId('userList');
     userListContainer.innerHTML = '';
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
-        let isChecked;
-        if (assignedUsers !== undefined) {
-            isChecked = assignedUsers.some(assignedUser => assignedUser.name === user.name) ? 'checked' : '';
-        }
+        let isChecked = assignedUsers.some(assignedUser => assignedUser.name === user.name) ? 'checked' : '';
         userListContainer.innerHTML += `
             <div class="user-list-container">
                 <div>${user.name}</div>
-                <input type="checkbox" class="square-checkbox" value="${user.name}" ${isChecked} onclick="renderUserInitial(event, '${i}')"> 
+                <input type="checkbox" id="checkbox-${i}" class="square-checkbox" value="${user.name}" ${isChecked} onclick="renderUserInitial(${i})">                 
             </div>
         `
     }
 }
+
+/* function getUsersList() {
+   
+    const checkboxes = document.querySelectorAll('.square-checkbox');
+    // Loop through the checkboxes and check which ones are checked
+    checkboxes.forEach((checkbox, index) => {
+        if (checkbox.checked) {
+            const user = users[index];
+            renderUserInitial(index);
+            console.log('Checkbox with value ' + checkbox.value + ' is checked.');
+
+            console.log(user)
+        } else {
+            console.log('Checkbox with value ' + checkbox.value + ' is not checked.');
+        }
+    });
+} */
 
 /**
  * Renders a user icon in the userInitialContainer based on whether a checkbox is checked or unchecked.
@@ -352,16 +354,17 @@ function renderUserList() {
  * 
  */
 
-function renderUserInitial(event, i) {
+function renderUserInitial(i) {
+    debugger
     const user = users[i];
-    const userIndex = assignedUsers.indexOf(user);   
-    console.log(assignedUsers, user) 
-    if (event.target.checked) {
-        getId('userInitialContainer').innerHTML += `
+    const userIndex = assignedUsers.indexOf(user);
+    checkbox = getId(`checkbox-${i}`)
+    if (checkbox.checked) {           
+        getId('userInitialContainer') .innerHTML += `
         <div id="userIcon-${[i]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
         assignedUsers.push(user);
     }
-    if (!event.target.checked) {
+    if (!checkbox.checked && userIndex > -1) {
         assignedUsers.splice(userIndex, 1);
         getId(`userIcon-${[i]}`).remove();
     }
@@ -381,6 +384,7 @@ function inviteUsers() {
         </div>
     </div>  
     `
+ 
 }
 
 function cancelContactInvitation() {
@@ -403,8 +407,13 @@ function cancelContactInvitation() {
 
 function newContactInvitation() {
     let newInvitation;
-    newInvitation = getId('userSearchInput').value;
+    userName = getId('userSearchInput').value;
+    newInvitation = users.filter(function (user) {
+        if (user.name.match(userName)) return user;
+    })
+    console.log(newInvitation);
     invitedUsers.push(newInvitation);
+    cancelContactInvitation();
 }
 
 /**

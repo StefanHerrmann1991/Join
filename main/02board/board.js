@@ -12,6 +12,7 @@ async function initBoards() {
     await initAddTasks();
     await initBackend();
     await renderBoards(tasks);
+   
 }
 
 
@@ -159,19 +160,6 @@ function moveTo(board) {
     saveTasks();
     renderBoards(tasks)
 }
-/**
- * This function shows move buttons on responsive view when arrow image is clicked 
- */
-function showMoveButtons(i) {
-    let moveButtonBox = document.getElementById('moveButtonBox' + i)
-
-    if (moveButtonBox.classList.contains('d-none')) {
-        moveButtonBox.classList.remove('d-none')
-        moveButtonBox.classList.add('move-button-box-transition-in')
-    } else {
-        moveButtonBox.classList.add('d-none')
-    }
-}
 
 /**
  * This function Moves a given task to the passed target-board
@@ -318,8 +306,10 @@ function renderDetailedTask(index) {
 }
 
 function renderEditTask(index) {
+
     let editTask = getId('editTaskDialog');
     let task = tasks[index];
+    assignedUsers = task.assignedTo;
     editTask.innerHTML = `
     <div class="edit-task-dialog center" id="edit-task-container">
         <div class="edit-task-container">
@@ -357,15 +347,15 @@ function renderEditTask(index) {
                 <input class="d-none" id="category" value="${task.category.index}">
                 </div>
                 <div id="userInitialContainer" class="user-initial-container"></div>
-                ${renderAssignedUsers(task.assignedTo)}
+                
             <button class="accept-edited-task-btn">Ok<img src="/assets/img/check.png"></button>
             </form>
         </div>
     </div>
     `
-    startPriorityEventListener(task.urgency);
-    assignedUsers = task.assignedTo
+    startPriorityEventListener(task.urgency);   
     renderUserList();
+    /* getUsersList(); */
     compareDate();
 }
 
