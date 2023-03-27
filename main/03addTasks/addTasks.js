@@ -1,10 +1,12 @@
 let urgencies = ['High', 'Medium', 'Low'];
 let categories = [{
     'topic': 'Sales',
-    'color': 'FC71FF'
+    'color': 'FC71FF',
+    'index': '0'
 }, {
     'topic': 'Backoffice',
-    'color': '#1FD7C1'
+    'color': '#1FD7C1',
+    'index': '1'
 }];
 let users
 let subtasks = [];
@@ -31,7 +33,7 @@ async function initTasks() {
  * It also generates a certain ID for new tasks and sends them to the backlog board.
  */
 function addToTasks() {
-    event.preventDefault();
+
     let task = processTaskInputs();
     tasks.push(task);
     task.id = tasks.length; // set id when creating the task
@@ -46,19 +48,17 @@ function addToTasks() {
  * This function gets input values and returns them as task objects.
  * @returns {Object} - task object
  */
-function processTaskInputs(oldCategory) { 
-    let categoryValue
-    if(oldCategory) categoryValue = oldCategory
-    else categoryValue = categories[category.value]
+function processTaskInputs(board) {
+    if (board == undefined) { board = 'board-0' }
     let [title, description, category, date] = getIds('title', 'description', 'category', 'date');
     let urgency = getUrgency();
     let task = {
         'title': title.value,
         'description': description.value,
-        'category': categoryValue,
+        'category': categories[category.value],
         'urgency': urgency,
         'date': date.value,
-        'board': 'todoBoard',
+        'board': board,
         'assignedTo': assignedUsers,
         'subtasks': subtasks
     };
@@ -174,7 +174,8 @@ function addCategory() {
     if (chosenColor == undefined) color = '#E200BE'
     let newCategory = {
         'topic': topic,
-        'color': color
+        'color': color,
+        'index': categories.length
     }
     categories.push(newCategory)
     cancelNewCategory();
@@ -197,7 +198,7 @@ function saveNewCategory(index) {
     let chosenCategoryOption = getId('categorySelect');
     let category = categories[index]
     chosenCategoryOption.innerHTML = ` 
-    <button id="category" class="category" value="${index}">${category.topic}</button>
+    <button id="category" class="category" value="${category.index}">${category.topic}</button>
     <div class="category-color" style="background-color: ${category.color}"></div>   
       `
     closeContainer('categoryMenu');
@@ -219,12 +220,6 @@ document?.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-/**
- * This function Clears user icons when resetting the addToTask.html form
- */
-function clearAssignments() {
-    getId('iconsContainer').innerHTML = renderAssignedUsers([]);
-}
 
 /**
  * Deletes an element from an array, updates the data on the server,  and renders boards.
@@ -327,14 +322,24 @@ function renderUserIcon(userName) {
     return /*html*/ `<span id="icon-${userName}" class="user-icon" alt="user icon" style="background-color: ${user[0].color}">${user[0].initial}</span>`;
 }
 
-function renderUserList() {
+/**
+ * Renders a list of users with checkboxes
+ * @param {Object[]} assignedUsers - array of objects with usernames that are already assigned
+ */
+function renderUserList() {    
+    const userListContainer = getId('userList');
+    userListContainer.innerHTML = '';
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
-        getId('userList').innerHTML += `
-        <div class="user-list-container">
-        <div>${user.name}</div>
-        <input type="checkbox" class="square-checkbox" value="${user.name}" onclick="renderUserInitial(event, '${i}')"> 
-        </div>
+        let isChecked;
+        if (assignedUsers !== undefined) {
+            isChecked = assignedUsers.some(assignedUser => assignedUser.name === user.name) ? 'checked' : '';
+        }
+        userListContainer.innerHTML += `
+            <div class="user-list-container">
+                <div>${user.name}</div>
+                <input type="checkbox" class="square-checkbox" value="${user.name}" ${isChecked} onclick="renderUserInitial(event, '${i}')"> 
+            </div>
         `
     }
 }
@@ -349,14 +354,15 @@ function renderUserList() {
 
 function renderUserInitial(event, i) {
     const user = users[i];
-    const userIndex = assignedUsers.indexOf(user);
-
+    const userIndex = assignedUsers.indexOf(user);   
+    console.log(assignedUsers, user) 
     if (event.target.checked) {
         getId('userInitialContainer').innerHTML += `
         <div id="userIcon-${[i]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
-        if (userIndex === -1) assignedUsers.push(user);
-    } else {
-        if (userIndex !== -1) assignedUsers.splice(userIndex, 1);
+        assignedUsers.push(user);
+    }
+    if (!event.target.checked) {
+        assignedUsers.splice(userIndex, 1);
         getId(`userIcon-${[i]}`).remove();
     }
 }

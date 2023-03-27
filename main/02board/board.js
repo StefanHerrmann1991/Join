@@ -14,17 +14,9 @@ async function initBoards() {
     await renderBoards(tasks);
 }
 
-function renderUserList() {
-    for (let i = 0; i < users.length; i++) {
-        const user = users[i];
-        getId('userList').innerHTML += `
-        <div class="user-list-container">
-        <div>${user.name}</div>
-        <input type="checkbox" class="square-checkbox" value="${user.name}" onclick="renderUserInitial(event, '${i}')"> 
-        </div>
-        `
-    }
-}
+
+
+
 
 function addTaskAtBoard(boardId) {
 
@@ -65,7 +57,6 @@ async function initAddTasks() {
     setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
     tasks = JSON.parse(backend.getItem('tasks')) || [];
-    console.log(tasks);
 }
 
 /**
@@ -121,7 +112,6 @@ function clearInputsBoard() {
  * @param {*} array 
  */
 function renderEachBoard(boardTaskArray, boardId, array) {
-
     boardTaskArray = array.filter(t => t['board'] == `${boardId}`);
     getId(`${boardId}`).innerHTML = '';
     for (let i = 0; i < boardTaskArray.length; i++) {
@@ -233,7 +223,7 @@ function renderAssignedUsers(usersArr) {
                 iconsHTML += `<span class="user-icon" alt="user icon" style="background-color: #2A3647">${usersArr.length - 2}+</span>`
                 break;
             }
-            iconsHTML += `<span id="iconUser-${index}" class="user-icon" alt="user icon" style="background-color: ${user.color}">${user.initial}</span>`;
+            iconsHTML += `<span id="userIcon-${index}" class="user-icon" alt="user icon" style="background-color: ${user.color}">${user.initial}</span>`;
         }
         return iconsHTML;
     }
@@ -321,6 +311,7 @@ function renderDetailedTask(index) {
                     </div>
                     <button class="edit-task-btn" onclick="renderEditTask(${index})"><img src="/assets/img/editBtnWhite.png"></button>
                 </div>
+                
             </div>
         </div>
 `
@@ -334,7 +325,7 @@ function renderEditTask(index) {
         <div class="edit-task-container">
         <button class="close-upper-right" onclick="closeContainer('editTaskDialog')"><img
         src="/assets/img/cancel.png"></button>
-            <form class="edit-task-form" onsubmit="changeTask(${index})">
+            <form class="edit-task-form" onsubmit="changeTask(${index}, '${task.board}')">
                 <h3>Title</h3>
                 <input required class="title" id="title" value="${task.title}" placeholder="Enter a title" oninput="loadTasks()">
                 <h3>Description</h3>
@@ -342,7 +333,7 @@ function renderEditTask(index) {
                 <h3>Due date</h3>
                 <input value="${task.date}" required id="date" class="date" type="date" name="setTodaysDate">
                 <h3>Prio</h3>
-                <div required id="details-urgency" class="priority-btns">
+                <div required id="urgency" class="priority-btns">
                     <button class="urgent priority-btn" data-value="urgent" type="button">Urgent<img
                             src="../../assets/img/prioUrgent.png"></button>
                     <button class="medium priority-btn" data-value="medium" type="button">Medium<img class="medium-prio"
@@ -363,24 +354,28 @@ function renderEditTask(index) {
                         new contact<img src="/assets/img/contactsBlack.png">
                     </button>
                 </div>
+                <input class="d-none" id="category" value="${task.category.index}">
                 </div>
                 <div id="userInitialContainer" class="user-initial-container"></div>
+                ${renderAssignedUsers(task.assignedTo)}
             <button class="accept-edited-task-btn">Ok<img src="/assets/img/check.png"></button>
             </form>
         </div>
     </div>
     `
     startPriorityEventListener(task.urgency);
+    assignedUsers = task.assignedTo
     renderUserList();
-    compareDate();   
+    compareDate();
 }
 
-function changeTask(index) {
-    task = tasks[index];
+
+async function changeTask(index, board) {
     event.preventDefault();
-    task = processTaskInputs(task.category);
-    console.log(task.urgency)
-  /*   saveTasks(); */
+    let task = processTaskInputs(board);
+    tasks[index] = task;
+    saveTasks();
+    renderBoards();
 }
 
 function startPriorityEventListener(selectedValue) {

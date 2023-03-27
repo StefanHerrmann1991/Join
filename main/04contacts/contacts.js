@@ -12,8 +12,8 @@ function newContact(name, email, phone, initial, color, firstNameInitial) {
     'phone': phone,
     'initial': initial,
     'color': color,
-    'firstNameInitial': firstNameInitial
-  }
+    'firstNameInitial': firstNameInitial,
+     }
   return contact;
 }
 
@@ -123,7 +123,7 @@ function createContact(event) {
   contactBook.addContact(name, email, phone);
   contactBook.sortInitials();
   contactBook.sortContacts();
-  closeContactDialog('addContactDialog');
+  closeContainer('addContactDialog');
   renderContacts();
 
 }
@@ -213,7 +213,7 @@ function saveEditedContact(event, index) {
   contactPhone = document.getElementById('editPhone').value;
   contactBook.editContact(index, contactName, contactEmail, contactPhone);
   renderContacts();
-  closeContactDialog('editContactDialog');
+  closeContainer('editContactDialog');
 }
 
 function renderEditContact(actualContact) {
@@ -227,17 +227,17 @@ function renderEditContact(actualContact) {
                 <p>Tasks are better with a team!</p>
             </div>
             <div class="add-contact-submenu">
-                <button class="close-upper-right" onclick="closeContactDialog('editContactDialog')">
+                <button class="close-upper-right" onclick="closeContainer('editContactDialog')">
                     <img src="/assets/img/cancel.png">                   
                 </button>
                 <img src="/assets/img/addContactBig.png">
-                <form onsubmit="saveEditedContact(event, ${actualContact});  saveDataToBackend(contactBook)"
+                <form onsubmit="saveEditedContact(event, ${actualContact});  saveBackendDataOf(contactBook)"
                     id="editContactFormfield">
                     <input type="text" id="editName" name="editName" required placeholder="${actualContact.name}">
                     <input type="email" id="editEmail" name="editEmail" required placeholder="${actualContact.email}">
                     <input type="tel" id="editPhone" name="editPhone" required placeholder="${actualContact.phone}">
                     <div class="menu-btn">
-                        <button type="button" onclick="closeContactDialog('editContactDialog')">Cancel
+                        <button type="button" onclick="closeContainer('editContactDialog')">Cancel
                             <img src="/assets/img/cancel.png">
                         </button>
                         <button type=submit>Edit contact

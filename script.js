@@ -39,7 +39,7 @@ function newVariable(paramAsText) {
     return `${objectName}`;
 }
 
-async function saveDataToBackend(dataObject) {
+async function saveBackendDataOf(dataObject) {
     let wordAsText = newVariable(dataObject) + `AsText`;
     let stringifyDataObject = JSON.stringify(dataObject);
     await backend.setItem(`${wordAsText}`, stringifyDataObject);
