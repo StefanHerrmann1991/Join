@@ -314,7 +314,7 @@ function renderUserIcon(userName) {
  * @param {Object[]} assignedUsers - array of objects with usernames that are already assigned
  */
 function renderUserList() {
-    
+
     const userListContainer = getId('userList');
     userListContainer.innerHTML = '';
     for (let i = 0; i < users.length; i++) {
@@ -329,23 +329,16 @@ function renderUserList() {
     }
 }
 
-/* function getUsersList() {
-   
+function getUsersList() {
+
     const checkboxes = document.querySelectorAll('.square-checkbox');
     // Loop through the checkboxes and check which ones are checked
     checkboxes.forEach((checkbox, index) => {
-        if (checkbox.checked) {
-            const user = users[index];
+        if (checkbox.checked) {           
             renderUserInitial(index);
-            console.log('Checkbox with value ' + checkbox.value + ' is checked.');
-
-            console.log(user)
-        } else {
-            console.log('Checkbox with value ' + checkbox.value + ' is not checked.');
         }
-    });
-} */
-
+    })
+}
 /**
  * Renders a user icon in the userInitialContainer based on whether a checkbox is checked or unchecked.
  *
@@ -359,8 +352,8 @@ function renderUserInitial(i) {
     const user = users[i];
     const userIndex = assignedUsers.indexOf(user);
     checkbox = getId(`checkbox-${i}`)
-    if (checkbox.checked) {           
-        getId('userInitialContainer') .innerHTML += `
+    if (checkbox.checked) {
+        getId('userInitialContainer').innerHTML += `
         <div id="userIcon-${[i]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
         assignedUsers.push(user);
     }
@@ -384,7 +377,7 @@ function inviteUsers() {
         </div>
     </div>  
     `
- 
+
 }
 
 function cancelContactInvitation() {

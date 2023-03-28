@@ -355,7 +355,7 @@ function renderEditTask(index) {
     `
     startPriorityEventListener(task.urgency);   
     renderUserList();
-    /* getUsersList(); */
+    getUsersList(); 
     compareDate();
 }
 
