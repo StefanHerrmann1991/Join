@@ -20,8 +20,7 @@ async function initTasks() {
     await includeHTML();
     await initBackend();
     await initAddTasks();
-    await initGetCategories();
-    await renderUserList(users);
+    await renderUserList();
     await renderCategories();
     compareDate();
 }
@@ -94,11 +93,6 @@ function taskSubmitSuccessful() {
  * Empties the input fields in the task forms*/
 function clearInputs() {
     clearInputValues(title, date, category, urgency, description);
-}
-
-
-function initGetCategories() {
-
 }
 
 function newCategory() {
@@ -243,7 +237,6 @@ async function saveEdit(dataArray, i) { // check: async no diff
     // check if sent from boards page or backlog page and render content
     if (getId('todoBoard')) renderBoards()
     else renderLogs();
-
 }
 
 /** The function disables selection of a date before the current day */
@@ -298,7 +291,7 @@ function renderUserIcon(userName) {
     return /*html*/ `<span id="icon-${userName}" class="user-icon" alt="user icon" style="background-color: ${user[0].color}">${user[0].initial}</span>`;
 }
 
-
+/* 
 function renderUserList() {
     const userListContainer = getId('userList');
     userListContainer.innerHTML = '';
@@ -310,23 +303,51 @@ function renderUserList() {
                     <input type="checkbox" id="checkbox-${i}" class="square-checkbox" value="${user.name}" onclick="renderUserInitial('${i}')"> 
                 </div>
             `
-
     }
 }
 
+ */
 
-function checkCheckboxes(i) {
-    const checkbox = getId(`checkbox-${i}`)
-    if (checkbox?.checked) {
-        getId('userInitialContainer').innerHTML += `
-        <div id="userIcon-${[i]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
-        assignedUsers.push(user);
+
+function renderUserList() {
+    const userListContainer = getId('userList');
+    userListContainer.innerHTML = '';
+    for (let i = 0; i < users.length; i++) {
+      const user = users[i];
+      let isChecked = '';
+      if (assignedUsers !== undefined) {
+        isChecked = assignedUsers.some(assignedUser => assignedUser.name === user.name) ? 'checked' : '';
+      }
+      userListContainer.innerHTML += `
+        <div class="user-list-container">
+          <div>${user.name}</div>
+          <input type="checkbox" id="checkbox-${i}" class="square-checkbox" ${isChecked} value="${user.name}" onclick="renderUserInitial(event, '${i}')"> 
+        </div>
+      `;
+      if (isChecked) {
+        renderDetailedUsers(i);
+      }
     }
+  }
 
+function renderDetailedUsers(index) {
+    let user = users[index]; 
+    getId('userInitialContainer').innerHTML += `<div id="userIcon-${[index]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
 }
 
-
-
+function renderUserInitial(event, index) {
+    const user = users[index];
+    const userIndex = assignedUsers.indexOf(user);
+    if (event.target.checked) {
+        user.assigned = true;
+        assignedUsers.push(user)
+        getId('userInitialContainer').innerHTML += `<div id="userIcon-${[index]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
+    }
+    if (!event.target.checked) {
+        assignedUsers.splice(userIndex, 1)
+        getId(`userIcon-${index}`).remove();
+    }
+}
 
 
 /**
@@ -374,7 +395,7 @@ function checkCheckboxes(i) {
     }
 } */
 
-
+/* 
 function renderUserInitial(i) {
     const user = users[i];
     const checkbox = getId(`checkbox-${i}`);
@@ -386,10 +407,10 @@ function renderUserInitial(i) {
         assignedUsers.push(user);
     } else {
         assignedUsers.splice(indexToRemove, 1);
-        getId(`userIcon-${[i]}`).remove();
-    }   
-} 
-
+        getId(`userIcon-${i}`).remove();
+    }
+}
+ */
 
 /*  function getUsersList() {
     const checkboxes = document.querySelectorAll('.square-checkbox');
@@ -449,8 +470,7 @@ function newContactInvitation() {
     userName = getId('userSearchInput').value;
     newInvitation = users.filter(function (user) {
         if (user.name.match(userName)) return user;
-    })
-    console.log(newInvitation);
+    })    
     invitedUsers.push(newInvitation);
     cancelContactInvitation();
 }

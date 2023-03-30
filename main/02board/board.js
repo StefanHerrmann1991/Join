@@ -79,7 +79,7 @@ function renderBoards(array) {
         <div id="${boardId}" class="board-task-container" ondrop="moveTo('${boardId}')" ondragover="allowDrop(event)"></div>
         </div>
            `
-        renderEachBoard(boardTitle, boardId, array);
+        renderEachBoard(boardTitle, boardId);
     }
 }
 
@@ -112,12 +112,12 @@ function clearInputsBoard() {
  * @param {*} boardId 
  * @param {*} array 
  */
-function renderEachBoard(boardTaskArray, boardId, array) {
-    boardTaskArray = array.filter(t => t['board'] == `${boardId}`);
+function renderEachBoard(boardTaskArray, boardId) {
+    boardTaskArray = tasks.filter(t => t['board'] == `${boardId}`);
     getId(`${boardId}`).innerHTML = '';
     for (let i = 0; i < boardTaskArray.length; i++) {
         const element = boardTaskArray[i];
-        const taskIndex = array.indexOf(element);
+        const taskIndex = tasks.indexOf(element);
         getId(`${boardId}`).innerHTML += boardTaskHTML(element, taskIndex);
     }
 }
@@ -211,7 +211,7 @@ function renderAssignedUsers(usersArr) {
                 iconsHTML += `<span class="user-icon" alt="user icon" style="background-color: #2A3647">${usersArr.length - 2}+</span>`
                 break;
             }
-            iconsHTML += `<span id="userIcon-${index}" class="user-icon" alt="user icon" style="background-color: ${user.color}">${user.initial}</span>`;
+            iconsHTML += `<span id="userIconBoard-${index}" class="user-icon" alt="user icon" style="background-color: ${user.color}">${user.initial}</span>`;
         }
         return iconsHTML;
     }
@@ -354,54 +354,57 @@ function renderEditTask(index) {
     </div>
     `
     startPriorityEventListener(task.urgency);
-    renderEditUserList(index);
+    renderUserList();
     compareDate();
 }
 
 
-function renderEditUserList(index) {
+/* function renderEditUserList(index) {
     const userListContainer = getId('userList');
     userListContainer.innerHTML = '';
     const assignedUserIds = tasks[index].assignedTo.map(user => user.id); // Collects an array of assigned user IDs
     for (let i = 0; i < users.length; i++) {
-      let isChecked = '';
-      const user = users[i];
-      const userIndex = assignedUserIds.indexOf(user.id);
-  
-      if (userIndex !== -1) {
-        getId('userInitialContainer').innerHTML += `
-        <div id="userIcon-${[i]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
-      }   
-      if (assignedUserIds.includes(user.id)) {
-        isChecked = 'checked';
-      }
-  
-      userListContainer.innerHTML += `
+        let isChecked = '';
+        const user = users[i];
+        const userIndex = assignedUserIds.indexOf(user.id);
+
+        if (userIndex !== -1) {
+            getId('userInitialContainer').innerHTML += `
+        <div id="detailsUserIcon-${i}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
+        }
+        if (assignedUserIds.includes(user.id)) {
+            isChecked = 'checked';
+        }
+        userListContainer.innerHTML += `
         <div class="user-list-container">
           <div>${user.name}</div>
           <input type="checkbox" id="checkbox-${i}" class="square-checkbox" ${isChecked} value="${user.name}" onclick="renderEditUserInitial(${i}, ${index})"> 
         </div>
       `;
     }
-  }
-
-  function renderEditUserInitial(usersIndex, currentTaskIndex) {
+}
+ */
+/* function renderEditUserInitial(usersIndex, currentTaskIndex) {
     const checkbox = getId(`checkbox-${usersIndex}`);
-    const userId = users[usersIndex].id;
+    const user = users[usersIndex];
+    const userId = user.id;
     const assignedTo = tasks[currentTaskIndex].assignedTo;
-    
-    if (checkbox.checked) {
-      if (!assignedTo.some(user => user.id === userId)) {
-        assignedTo.push(users[usersIndex]);
-      }
-    } else {
-      const userIndex = assignedTo.findIndex(user => user.id === userId);
-      if (userIndex !== -1) {
-        assignedTo.splice(userIndex, 1);
-      }
-    }
-  }
 
+    if (checkbox.checked) {
+        if (!assignedTo.some(user => user.id === userId)) {
+            assignedTo.push(users[usersIndex]);
+            getId('userInitialContainer').innerHTML += `
+        <div id="detailsUserIcon-${userId}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
+        }
+    } else {
+        const userIndex = assignedTo.findIndex(user => user.id === userId);
+        if (userIndex !== -1) {
+            assignedTo.splice(userIndex, 1);     
+            document.getElementById(`detailsUserIcon-${userId}`).remove();
+        }
+    }
+}
+ */
 
 
 async function changeTask(index, board) {
