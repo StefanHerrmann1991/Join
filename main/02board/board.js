@@ -12,7 +12,7 @@ async function initBoards() {
     await initAddTasks();
     await initBackend();
     await renderBoards(tasks);
-   
+
 }
 
 
@@ -306,7 +306,7 @@ function renderDetailedTask(index) {
 }
 
 function renderEditTask(index) {
-
+    detailsAreOpen = true;
     let editTask = getId('editTaskDialog');
     let task = tasks[index];
     assignedUsers = task.assignedTo;
@@ -347,17 +347,61 @@ function renderEditTask(index) {
                 <input class="d-none" id="category" value="${task.category.index}">
                 </div>
                 <div id="userInitialContainer" class="user-initial-container"></div>
-                
+               
             <button class="accept-edited-task-btn">Ok<img src="/assets/img/check.png"></button>
             </form>
         </div>
     </div>
     `
-    startPriorityEventListener(task.urgency);   
-    renderUserList();
-    getUsersList(); 
+    startPriorityEventListener(task.urgency);
+    renderEditUserList(index);
     compareDate();
 }
+
+
+function renderEditUserList(index) {
+    const userListContainer = getId('userList');
+    userListContainer.innerHTML = '';
+    const assignedUserIds = tasks[index].assignedTo.map(user => user.id); // Collects an array of assigned user IDs
+    for (let i = 0; i < users.length; i++) {
+      let isChecked = '';
+      const user = users[i];
+      const userIndex = assignedUserIds.indexOf(user.id);
+  
+      if (userIndex !== -1) {
+        getId('userInitialContainer').innerHTML += `
+        <div id="userIcon-${[i]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
+      }   
+      if (assignedUserIds.includes(user.id)) {
+        isChecked = 'checked';
+      }
+  
+      userListContainer.innerHTML += `
+        <div class="user-list-container">
+          <div>${user.name}</div>
+          <input type="checkbox" id="checkbox-${i}" class="square-checkbox" ${isChecked} value="${user.name}" onclick="renderEditUserInitial(${i}, ${index})"> 
+        </div>
+      `;
+    }
+  }
+
+  function renderEditUserInitial(usersIndex, currentTaskIndex) {
+    const checkbox = getId(`checkbox-${usersIndex}`);
+    const userId = users[usersIndex].id;
+    const assignedTo = tasks[currentTaskIndex].assignedTo;
+    
+    if (checkbox.checked) {
+      if (!assignedTo.some(user => user.id === userId)) {
+        assignedTo.push(users[usersIndex]);
+      }
+    } else {
+      const userIndex = assignedTo.findIndex(user => user.id === userId);
+      if (userIndex !== -1) {
+        assignedTo.splice(userIndex, 1);
+      }
+    }
+  }
+
 
 
 async function changeTask(index, board) {

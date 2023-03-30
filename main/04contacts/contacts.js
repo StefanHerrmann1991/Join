@@ -5,7 +5,7 @@ let contacts
 let ContactBookAsText = []
 let contactBook 
 
-function newContact(name, email, phone, initial, color, firstNameInitial) {
+function newContact(name, email, phone, initial, color, firstNameInitial, id) {
   let contact = {
     'name': name,
     'email': email,
@@ -13,6 +13,8 @@ function newContact(name, email, phone, initial, color, firstNameInitial) {
     'initial': initial,
     'color': color,
     'firstNameInitial': firstNameInitial,
+    'assigned': false,  
+    'id': id     
      }
   return contact;
 }
@@ -30,8 +32,9 @@ class ContactBook {
 
   addContact(name, email, phone) {
     let [firstNameInitial, initials] = this.getInitials(name);
-    let color = getRandomColor(firstNameInitial)
-    let contact = newContact(name, email, phone, initials, color, firstNameInitial);
+    let color = getRandomColor(firstNameInitial);
+    let id = this.contacts.length
+    let contact = newContact(name, email, phone, initials, color, firstNameInitial, id);
     if (!this.initialList.includes(firstNameInitial)) this.initialList.push(firstNameInitial);
     this.contacts.push(contact);
   }
