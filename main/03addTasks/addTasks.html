@@ -5,7 +5,7 @@
     <script src="../../script.js"></script>
     <script src="addTasks.js"></script>
     <script src="../02board/board.js"></script>
-    
+
     <script src="../04contacts/contacts.js"></script>
     <!-- css data -->
     <link rel="stylesheet" href="addTasks.css">
@@ -50,12 +50,13 @@
                         <div class="user-menu d-none" id="userMenu">
                             <div class="user-list" id="userList"></div>
                             <button id="inviteUserBtn" type="button" class="invite-user-btn"
-                                onclick="inviteUsers()">Invite
-                                new contact<img src="/assets/img/contactsBlack.png">
-                            </button>
+                                onclick="inviteUsers()">Invite new contact<img
+                                    src="/assets/img/contactsBlack.png"></button>
                         </div>
                     </div>
                     <div id="userInitialContainer" class="user-initial-container"></div>
+                    <div id="assignedUsersError" class="error-message" ></div>
+
                 </div>
                 <div class="add-task-right">
                     <h3>Due date</h3>
