@@ -299,7 +299,6 @@ function renderDetailedTask(index) {
                     </div>
                     <button class="edit-task-btn" onclick="renderEditTask(${index})"><img src="/assets/img/editBtnWhite.png"></button>
                 </div>
-                
             </div>
         </div>
 `

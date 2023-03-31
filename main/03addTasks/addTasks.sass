@@ -336,6 +336,7 @@ input, select
     border-radius: 50%
 
 .new-category-btn
+    height: 51px
     padding-left: 21px
     padding-right: 21px
     width: 100%
@@ -345,7 +346,11 @@ input, select
     &:hover
         background-color: #D1D1D1
 .priority-radio
-    display: none
+    opacity: 0
+    top: 100%
+    width: 1px
+    height: 1px
+    position: absolute
 
 .priority-btn
     border: none
@@ -353,6 +358,7 @@ input, select
     color: #333
     border-radius: 5px
     cursor: pointer
+    position: relative
 
     .priority-radio:checked + &
         color: white

@@ -41,36 +41,13 @@ function addToTasks() {
     
   }
 
-function usersValidation () {}
+function usersValidation () {
+    if(assignedUsers.length < 1)
+    {}
 
- /*   const isValid = handleCheckboxChange();
-    if (isValid) {  */
 
-/*   function handleCheckboxChange() {
-    const assignedCheckboxes = document.querySelectorAll('input[type="checkbox"][value][name="assignedUsers"]:checked');
-    const errorElement = document.getElementById('assignedUsersError');
-    const firstCheckbox = document.querySelector('input[type="checkbox"][value][name="assignedUsers"]:first-of-type');
-    if (assignedCheckboxes.length === 0) {
-      firstCheckbox.required = true;
-      errorElement.style.display = 'block';
-    } else {
-      firstCheckbox.required = false;
-      errorElement.style.display = 'none';
-    }
-  }
+}
 
-function handleSubmit() {
-    event.preventDefault();
-    const assignedCheckboxes = document.querySelectorAll('input[type="checkbox"][value][name="assignedUsers"]:checked');
-    if (assignedCheckboxes.length === 0) {
-      const errorMessage = 'Please assign at least one user to this task';
-      const errorElement = document.getElementById('assignedUsersError');
-      errorElement.textContent = errorMessage;
-      errorElement.style.display = 'block';
-      return false;
-    }
-    return true;
-  } */
 
 
 /**
@@ -328,7 +305,7 @@ function renderUserList() {
         userListContainer.innerHTML += `
         <div class="user-list-container">
           <div>${user.name}</div>
-          <input name="assignedUsers" required type="checkbox" id="checkbox-${i}" class="square-checkbox" ${isChecked} value="${user.name}" onclick="renderUserInitial(event, '${i}')"> 
+          <input name="assignedUsers" type="checkbox" id="checkbox-${i}" class="square-checkbox" ${isChecked} value="${user.name}" onclick="renderUserInitial(event, '${i}')"> 
         </div>
       `;
         if (isChecked) renderDetailedUsers(i);        
