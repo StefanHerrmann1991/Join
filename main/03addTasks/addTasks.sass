@@ -97,8 +97,7 @@ input, select
         display: flex
         justify-content: center
         align-items: center
-        width: 136px
-        height: 51px
+        width: 115px
         background: #FFFFFF
         border: none
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1)
@@ -340,33 +339,40 @@ input, select
     padding-left: 21px
     padding-right: 21px
     width: 100%
-    height: 51px
     display: flex
     justify-content: flex-start
     align-items: center
     &:hover
         background-color: #D1D1D1
+.priority-radio
+    display: none
 
 .priority-btn
     border: none
     background-color: #ddd
     color: #333
-    padding: 10px
     border-radius: 5px
+    cursor: pointer
 
-.priority-btn.selected
-    color: white
-.priority-btn.selected.low
-    background-color: #7AE229
-    img
+    .priority-radio:checked + &
+        color: white
+
+    .priority-radio:checked + &.low
+        background-color: #7AE229
+
+    .priority-radio:checked + &.low img
         filter: invert(1%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(101%) contrast(200%)
-.priority-btn.selected.urgent
-    background-color: #FF3D00
-    img
+
+    .priority-radio:checked + &.urgent
+        background-color: #FF3D00
+
+    .priority-radio:checked + &.urgent img
         filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%)
-.priority-btn.selected.medium
-    background-color: #FFA800
-    img
+
+    .priority-radio:checked + &.medium
+        background-color: #FFA800
+
+    .priority-radio:checked + &.medium img
         filter: invert(50%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%)
 
 input.subtask-checkbox[type="checkbox"]
@@ -404,4 +410,3 @@ input.subtask-checkbox[type="checkbox"]:checked
 .add-subtask
     height: 24px
     width: 24px
-

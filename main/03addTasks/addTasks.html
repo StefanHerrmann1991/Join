@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div id="userInitialContainer" class="user-initial-container"></div>
-                    <div id="assignedUsersError" class="error-message" ></div>
+                    <div id="assignedUsersError" class="error-message"></div>
 
                 </div>
                 <div class="add-task-right">
@@ -63,13 +63,22 @@
                     <input required id="date" class="date" type="date" name="setTodaysDate">
                     <h3>Prio</h3>
                     <div required id="urgency" class="priority-btns">
-                        <button class="urgent priority-btn" data-value="urgent" type="button">Urgent<img
-                                src="../../assets/img/prioUrgent.png"></button>
-                        <button class="medium priority-btn" data-value="medium" type="button">Medium<img
-                                class="medium-prio" src="../../assets/img/prioMedium.png"></button>
-                        <button class="low priority-btn" data-value="low" type="button">Low<img
-                                src="../../assets/img/prioLow.png"></button>
+                        <input type="radio" id="urgent" name="priority" value="urgent" class="priority-radio">
+                        <label for="urgent" class="urgent priority-btn">
+                            Urgent<img src="../../assets/img/prioUrgent.png">
+                        </label>
+
+                        <input type="radio" id="medium" name="priority" value="medium" class="priority-radio">
+                        <label for="medium" class="medium priority-btn">
+                            Medium<img class="medium-prio" src="../../assets/img/prioMedium.png">
+                        </label>
+
+                        <input type="radio" id="low" name="priority" value="low" class="priority-radio">
+                        <label for="low" class="low priority-btn">
+                            Low<img src="../../assets/img/prioLow.png">
+                        </label>
                     </div>
+
                     <h3>Subtasks</h3>
                     <div class="assign-btn-container" id="subtasks">
                         <button onclick="renderSubtasks()" type="button" class="assign-btn" type="text">
