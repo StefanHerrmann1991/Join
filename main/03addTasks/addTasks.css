@@ -668,4 +668,11 @@ input.subtask-checkbox[type=checkbox]:checked {
 .add-subtask {
   height: 24px;
   width: 24px;
+}
+
+.hidden-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }/*# sourceMappingURL=addTasks.css.map */

@@ -22,7 +22,7 @@
     <div class="center main-container">
         <div class="title-form">
             <h1>Add Task</h1>
-            <form class="add-task-formfield" onsubmit="addToTasks()">
+            <form class="add-task-formfield" onsubmit="addToTasks();">
                 <div class="add-task-left">
                     <h3>Title</h3>
                     <input required class="title" id="title" placeholder="Enter a title" oninput="loadTasks()">
@@ -46,6 +46,7 @@
                         <button type="button" class="assign-btn" onclick="toggleContainer('userMenu')">
                             <div>Select contact to assign</div>
                             <div id="imgArrow"><img src="/assets/img/open.png"></div>
+                            <input id="validateAssignment" required class="hidden-input">
                         </button>
                         <div class="user-menu d-none" id="userMenu">
                             <div class="user-list" id="userList"></div>

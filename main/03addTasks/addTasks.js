@@ -31,21 +31,22 @@ async function initTasks() {
  * This function is meant to enable the add of tasks to a json array.
  * It also generates a certain ID for new tasks and sends them to the backlog board.
  */
-function addToTasks() {
-  
-      const task = processTaskInputs();
-      task.id = tasks.length + 1; // set id when creating the task
-      task.board = 'board-0'; // default-board on task creation
-      tasks.push(task);
-      saveTasks();
-    
-  }
-
-function usersValidation () {
-    if(assignedUsers.length < 1)
-    {}
+function addToTasks() { 
+    const task = processTaskInputs();
+    task.id = tasks.length + 1; // set id when creating the task
+    task.board = 'board-0'; // default-board on task creation
+    tasks.push(task);
+    saveTasks();
+}
 
 
+function usersValidation(id, array) {
+    let validateId = getId(id);
+    if (array.length === 0) {
+        validateId.setAttribute('required', '');
+    } else {
+        validateId.removeAttribute('required');
+    }
 }
 
 
@@ -308,7 +309,7 @@ function renderUserList() {
           <input name="assignedUsers" type="checkbox" id="checkbox-${i}" class="square-checkbox" ${isChecked} value="${user.name}" onclick="renderUserInitial(event, '${i}')"> 
         </div>
       `;
-        if (isChecked) renderDetailedUsers(i);        
+        if (isChecked) renderDetailedUsers(i);
     }
 }
 
@@ -323,11 +324,13 @@ function renderUserInitial(event, index) {
     if (event.target.checked) {
         user.assigned = true;
         assignedUsers.push(user)
+        usersValidation('validateAssignment', assignedUsers);
         getId('userInitialContainer').innerHTML += `<div id="userIcon-${[index]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
     }
     if (!event.target.checked) {
         assignedUsers.splice(userIndex, 1)
         getId(`userIcon-${index}`).remove();
+        usersValidation('validateAssignment', assignedUsers);
     }
 }
 
