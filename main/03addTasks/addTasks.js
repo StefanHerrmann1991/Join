@@ -31,7 +31,7 @@ async function initTasks() {
  * This function is meant to enable the add of tasks to a json array.
  * It also generates a certain ID for new tasks and sends them to the backlog board.
  */
-function addToTasks() { 
+function addToTasks() {
     const task = processTaskInputs();
     task.id = tasks.length + 1; // set id when creating the task
     task.board = 'board-0'; // default-board on task creation
@@ -40,13 +40,10 @@ function addToTasks() {
 }
 
 
-function usersValidation(id, array) {
+function validateData(id, array) {
     let validateId = getId(id);
-    if (array.length === 0) {
-        validateId.setAttribute('required', '');
-    } else {
-        validateId.removeAttribute('required');
-    }
+    if (array.length === 0) validateId.setAttribute('required', '');
+    else validateId.removeAttribute('required');
 }
 
 
@@ -133,7 +130,7 @@ function cancelNewCategory() {
     <button type="button" class="assign-btn" onclick="openContainer('categoryMenu')">
     <div class="chosen-category-container" id="categorySelect">Select task category</div>
     <div id="imgArrow"><img src="/assets/img/open.png"></div>
-</button>
+    </button>
         <div class="user-menu" id="categoryMenu">
             <button id="newCategoryBtn" type="button" class="new-category-btn"
             onclick="newCategory()">New category</button>
@@ -190,6 +187,8 @@ function saveNewCategory(index) {
     <button id="category" class="category" value="${category.index}">${category.topic}</button>
     <div class="category-color" style="background-color: ${category.color}"></div>   
       `
+      console.log(category)
+    validateData('validateCategory', category) 
     closeContainer('categoryMenu');
 }
 
@@ -324,13 +323,13 @@ function renderUserInitial(event, index) {
     if (event.target.checked) {
         user.assigned = true;
         assignedUsers.push(user)
-        usersValidation('validateAssignment', assignedUsers);
+        validateData('validateAssignment', assignedUsers);
         getId('userInitialContainer').innerHTML += `<div id="userIcon-${[index]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
     }
     if (!event.target.checked) {
         assignedUsers.splice(userIndex, 1)
         getId(`userIcon-${index}`).remove();
-        usersValidation('validateAssignment', assignedUsers);
+        validateData('validateAssignment', assignedUsers);
     }
 }
 
