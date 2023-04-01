@@ -71,12 +71,8 @@ function processTaskInputs(board) {
 
 function getUrgency() {
     let urgency;
-    let urgencyButtons = document.querySelectorAll('#urgency button');
-    urgencyButtons.forEach(button => {
-        if (button.classList.contains('selected')) {
-            urgency = button.getAttribute('data-value');
-        }
-    });
+    let selectedUrgency = document.querySelector('#urgency input.priority-radio:checked');
+    if (selectedUrgency)urgency = selectedUrgency.value;    
     return urgency;
 }
 
@@ -187,7 +183,6 @@ function saveNewCategory(index) {
     <button id="category" class="category" value="${category.index}">${category.topic}</button>
     <div class="category-color" style="background-color: ${category.color}"></div>   
       `
-      console.log(category)
     validateData('validateCategory', category) 
     closeContainer('categoryMenu');
 }

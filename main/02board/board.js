@@ -11,8 +11,8 @@ async function initBoards() {
     includeHTML();
     await initAddTasks();
     await initBackend();
-    await renderBoards(tasks);
-
+    debugger
+    await renderBoards();
 }
 
 
@@ -63,7 +63,7 @@ async function initAddTasks() {
 /**
  * This Function used  for rendering the boards with filters
  */
-function renderBoards(array) {
+function renderBoards() {
     let boardsContent = getId('boards');
     boardsContent.innerHTML = '';
     for (let i = 0; i < boards.length; i++) {

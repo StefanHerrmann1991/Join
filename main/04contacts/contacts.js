@@ -115,7 +115,7 @@ function getRandomColor(name) {
   var r = num >> 16 & 255;
   var g = num >> 8 & 255;
   var b = num & 255;
-  return 'rgb(' + r + ', ' + g + ', ' + b + ', 0.6)'
+  return 'rgb(' + r + ', ' + g + ', ' + b + ', 1.0)'
 }
 
 function createContact(event) {
@@ -128,7 +128,6 @@ function createContact(event) {
   contactBook.sortContacts();
   closeContainer('addContactDialog');
   renderContacts();
-
 }
 
 async function initContacts() {
