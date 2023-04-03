@@ -190,7 +190,6 @@ function saveNewCategory(index) {
 document?.addEventListener('DOMContentLoaded', () => {
     let selectedValue = null;
     const buttonEls = document.querySelectorAll('.priority-btn');
-    console.log(buttonEls)
     buttonEls.forEach(buttonEl => {
         buttonEl.addEventListener('click', () => {
             // Remove selected class from all buttons

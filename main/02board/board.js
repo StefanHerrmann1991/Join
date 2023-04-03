@@ -11,16 +11,7 @@ async function initBoards() {
     includeHTML();
     await initAddTasks();
     await initBackend();
-    debugger
     await renderBoards();
-}
-
-
-
-
-
-function addTaskAtBoard(boardId) {
-
 }
 
 function renderNewBoardBtn() {
@@ -322,13 +313,20 @@ function renderEditTask(index) {
                 <h3>Due date</h3>
                 <input value="${task.date}" required id="date" class="date" type="date" name="setTodaysDate">
                 <h3>Prio</h3>
-                <div required id="urgency" class="priority-btns">
-                    <button class="urgent priority-btn" data-value="urgent" type="button">Urgent<img
-                            src="../../assets/img/prioUrgent.png"></button>
-                    <button class="medium priority-btn" data-value="medium" type="button">Medium<img class="medium-prio"
-                            src="../../assets/img/prioMedium.png"></button>
-                    <button class="low priority-btn" data-value="low" type="button">Low<img
-                            src="../../assets/img/prioLow.png"></button>
+                <div id="urgency" class="priority-btns">
+                <label for="urgent" class="urgent priority-btn">
+                    <input type="radio" id="urgent" name="priority" value="urgent" class="priority-radio"
+                        required>
+                    Urgent<img src="../../assets/img/prioUrgent.png">
+                </label>
+                <label for="medium" class="medium priority-btn">
+                    <input type="radio" id="medium" name="priority" value="medium" class="priority-radio">
+                    Medium<img class="medium-prio" src="../../assets/img/prioMedium.png">
+                </label>
+                <label for="low" class="low priority-btn">
+                    <input type="radio" id="low" name="priority" value="low" class="priority-radio">
+                    Low<img src="../../assets/img/prioLow.png">
+                </label>
                 </div>
                 <h3>Assigned to</h3>
                 <div class="assign-btn-container" id="assignBtnContainer">
@@ -336,6 +334,7 @@ function renderEditTask(index) {
                     <div>Select contact to assign</div>
                     <div id="imgArrow"><img src="/assets/img/open.png"></div>
                 </button>
+                <input id="validateAssignment" required class="hidden-input">
                 <div class="user-menu d-none" id="detailsUserMenu">
                     <div class="user-list" id="userList"></div>
                     <button id="inviteUserBtn" type="button" class="invite-user-btn"
@@ -415,24 +414,23 @@ async function changeTask(index, board) {
 }
 
 function startPriorityEventListener(selectedValue) {
-    const buttonEls = document.querySelectorAll('.priority-btn');
-    buttonEls.forEach(buttonEl => {
-        const buttonValue = buttonEl.getAttribute('data-value');
-        if (buttonValue === selectedValue) {
-            // If the button value matches the selectedValue, add the 'selected' class
-            buttonEl.classList.add('selected');
+    const radioEls = document.querySelectorAll('.priority-radio');
+    radioEls.forEach(radioEl => {
+        const parentLabel = radioEl.parentElement;
+        if (radioEl.value === selectedValue) {
+            // If the radio value matches the selectedValue, set its parent label as 'selected'
+            parentLabel.classList.add('selected');
         }
-        buttonEl.addEventListener('click', () => {
-            // Remove selected class from all buttons
-            buttonEls.forEach(b => b.classList.remove('selected'));
-            // Add selected class to the clicked button
-            buttonEl.classList.add('selected');
+        radioEl.addEventListener('change', () => {
+            // Remove selected class from all parent labels
+            radioEls.forEach(r => r.parentElement.classList.remove('selected'));
+            // Add selected class to the clicked radio button's parent label
+            parentLabel.classList.add('selected');
             // Store the selected value
-            selectedValue = buttonEl.getAttribute('data-value');
+            selectedValue = radioEl.value;
         });
     });
 }
-
 
 
 
