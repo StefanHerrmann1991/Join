@@ -65,7 +65,7 @@ function renderBoards() {
         <div class="board">
         <div class="board-header">
         <h2>${boardTitle}</h2>
-        <button><img src="/assets/img/plusButton.png"</button> 
+        <button onclick="openContainer('addTaksPopup'); initTasks()"><img src="/assets/img/plusButton.png"</button> 
         </div>
         <div id="${boardId}" class="board-task-container" ondrop="moveTo('${boardId}')" ondragover="allowDrop(event)"></div>
         </div>
