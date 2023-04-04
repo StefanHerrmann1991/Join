@@ -436,6 +436,7 @@ function startPriorityEventListener(selectedValue) {
  * @param {string} val The input string to match against.
  */
 function showResultsTasks(val) {
+    debugger
     const tasksList = autocompleteMatchTask(val);
     if (tasksList.length !== 0) renderBoards(tasksList);
     else renderBoards(tasks)

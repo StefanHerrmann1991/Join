@@ -16,13 +16,14 @@ let colorPicker = ['#8AA4FF', '#FF0000', '#2AD300', '#FF8A00', '#E200BE', '#0038
 let chosenColor;
 
 
-async function initTasks() {
+async function initTasks() { 
     await includeHTML();
-    await initBackend();
-    await initAddTasks();
+    await initBackend();  
     await renderUserList();
     await renderCategories();
-    compareDate();
+    await loadTasks();
+    startPriorityEventListener();
+    compareDate(); 
 }
 
 
@@ -32,6 +33,8 @@ async function initTasks() {
  * It also generates a certain ID for new tasks and sends them to the backlog board.
  */
 function addToTasks() {
+    event.preventDefault();
+    debugger
     const task = processTaskInputs();
     task.id = tasks.length + 1; // set id when creating the task
     task.board = 'board-0'; // default-board on task creation
@@ -192,20 +195,24 @@ function saveNewCategory(index) {
     closeContainer('categoryMenu');
 }
 
-document?.addEventListener('DOMContentLoaded', () => {
-    let selectedValue = null;
-    const buttonEls = document.querySelectorAll('.priority-btn');
-    buttonEls.forEach(buttonEl => {
-        buttonEl.addEventListener('click', () => {
-            // Remove selected class from all buttons
-            buttonEls.forEach(b => b.classList.remove('selected'));
-            // Add selected class to the clicked button
-            buttonEl.classList.add('selected');
-            // Store the selected value
-            selectedValue = buttonEl.getAttribute('data-value');
-        });
+function startPriorityEventListener(selectedValue) {
+    const radioEls = document.querySelectorAll('.priority-radio');
+    radioEls.forEach(radioEl => {
+      const parentLabel = radioEl.parentElement;
+      if (selectedValue && radioEl.value === selectedValue) {
+        // If the radio value matches the selectedValue, set its parent label as 'selected'
+        parentLabel.classList.add('selected');
+      }
+      radioEl.addEventListener('change', () => {
+        // Remove selected class from all parent labels
+        radioEls.forEach(r => r.parentElement.classList.remove('selected'));
+        // Add selected class to the clicked radio button's parent label
+        parentLabel.classList.add('selected');
+        // Store the selected value
+        selectedValue = radioEl.value;
+      });
     });
-});
+  }
 
 
 /**

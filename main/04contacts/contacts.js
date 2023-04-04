@@ -179,7 +179,7 @@ function showContact(index) {
   <div class="edit-initial" style="background-color:${actualContact.color}">${actualContact.initial}</div>
   <div>
   <div class="edit-name">${actualContact.name}</div>
-  <button class="add-task-btn" onclick="openContainer('addTaksPopup')"><img src="/assets/img/addTaskBlue.png">Add Tasks</button>
+  <button class="add-task-btn" onclick="openContainer('addTaksPopup'); initTasks()"><img src="/assets/img/addTaskBlue.png">Add Tasks</button>
   </div>
   </div>
   <div class="edit-information">
