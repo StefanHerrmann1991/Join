@@ -37,6 +37,11 @@ function addToTasks() {
     task.board = 'board-0'; // default-board on task creation
     tasks.push(task);
     saveTasks();
+    openContainer('successfulSubmit');
+    setTimeout(function () {
+        closeContainer('successfulSubmit');
+        window.location.href = '/main/02board/board.html';
+    }, 2500);
 }
 
 
@@ -72,7 +77,7 @@ function processTaskInputs(board) {
 function getUrgency() {
     let urgency;
     let selectedUrgency = document.querySelector('#urgency input.priority-radio:checked');
-    if (selectedUrgency)urgency = selectedUrgency.value;    
+    if (selectedUrgency) urgency = selectedUrgency.value;
     return urgency;
 }
 
@@ -183,7 +188,7 @@ function saveNewCategory(index) {
     <button id="category" class="category" value="${category.index}">${category.topic}</button>
     <div class="category-color" style="background-color: ${category.color}"></div>   
       `
-    validateData('validateCategory', category) 
+    validateData('validateCategory', category)
     closeContainer('categoryMenu');
 }
 

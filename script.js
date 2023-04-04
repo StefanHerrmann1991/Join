@@ -46,7 +46,6 @@ function getIds(...idsArr) { // rest-operator
  * @param  {...string} ids - The id of one or several HTML elements
  */
 function closeContainer(...ids) {
-    debugger
     if (ids.length == 1) getId(ids[0]).classList.add('d-none');
     ids.forEach(id => getId(id).classList.add('d-none'));
 }
