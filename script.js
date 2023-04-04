@@ -1,24 +1,6 @@
-
-
-
-
 function splitID(id, separator) {
     let arrayOfStrings = id.split(separator);
     return arrayOfStrings;
-}
-
-/**
- * This function generates a random hex color code.
- * @returns {string} - the string value for a random hex color code
- */
-function randomHexColor() {
-    let hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
-    let hexColorStr = '#';
-    for (let i = 0; i < 6; i++) {
-        let randNr = Math.floor(Math.random() * hex.length); //random number between [0, hex.length[
-        hexColorStr += hex[randNr];
-    }
-    return hexColorStr;
 }
 
 /* ********* generic functions ********* */
@@ -64,6 +46,7 @@ function getIds(...idsArr) { // rest-operator
  * @param  {...string} ids - The id of one or several HTML elements
  */
 function closeContainer(...ids) {
+    debugger
     if (ids.length == 1) getId(ids[0]).classList.add('d-none');
     ids.forEach(id => getId(id).classList.add('d-none'));
 }
@@ -106,30 +89,6 @@ function lowerFirstLetter(str) {
     return str[0].toLowerCase() + str.slice(1);
 }
 
-
-
-/* ****** Navbar ****** */
-/**
- * This function shows the navbar on responsive view
- */
-function showNavbar() {
-    getId('mobile-onclick-navbar').classList.remove('hide-mobile');
-    hide('mobile-menu');
-    show('mobile-x');
-    // getId('mobile-x').classList.remove('d-none');
-    // getId('mobile-menu').classList.add('d-none')
-}
-/**
- * This function hides the navbar on responsive view
- */
-function closeNavbar() {
-    getId('mobile-onclick-navbar').classList.add('hide-mobile');
-    hide('mobile-x');
-    show('mobile-menu');
-    // getId('mobile-x').classList.add('d-none');
-    // getId('mobile-menu').classList.remove('d-none')
-}
-
 /* ****** ****** */
 
 /**
@@ -141,11 +100,8 @@ function displayStringsArr(stringsArray) {
     let strings = '';
     for (let i = 0; i < stringsArray.length; i++) {
         let element = stringsArray[i];
-        if (i == stringsArray.length - 1) {
-            strings += stringsArray[i];
-        } else {
-            strings += stringsArray[i] + ', ';
-        }
+        if (i == stringsArray.length - 1) strings += stringsArray[i];
+        else strings += stringsArray[i] + ', ';
     }
     return strings;
 }

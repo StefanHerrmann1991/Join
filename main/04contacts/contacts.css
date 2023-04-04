@@ -150,7 +150,7 @@ button, a {
 }
 
 .d-none {
-  display: none;
+  display: none !important;
 }
 
 h1 {
@@ -174,6 +174,52 @@ h3 {
   font-size: 21px;
   margin-top: 2.5%;
   margin-bottom: 2.5%;
+}
+
+.add-task-popup {
+  position: absolute;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+  height: 85%;
+  overflow: hidden;
+  position: relative;
+  width: 1116px;
+  height: 914px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+}
+.task-main .add-task-formfield {
+  display: flex;
+}
+.task-main .add-task-left {
+  padding-right: 5%;
+  border-right: 1px solid #D1D1D1;
+}
+.task-main .add-task-right {
+  padding-left: 5%;
+}
+
+.close-upper-right {
+  position: absolute;
+  top: 35px;
+  right: 35px;
+  border: none;
+  background: transparent;
 }
 
 .add-contact-btn {
@@ -493,6 +539,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
 .clicked-contact {

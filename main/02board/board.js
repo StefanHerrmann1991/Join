@@ -228,11 +228,6 @@ function renderMobile() {
     `
 }
 
-function editFormHTML(i) {
-    return /*html*/ `
- `
-}
-
 /**
  * Saves tasks in the backend in form of an JSON string */
 async function saveTasks() { //check async: no diff
