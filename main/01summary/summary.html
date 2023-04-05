@@ -1,10 +1,9 @@
 <head>
     <!-- script data -->
+    <script src="../../script.js"></script>
     <script src="../../includeHTML.js"></script>
+    <script src="../../mini_backend.js"></script>
     <script src="summary.js"></script>
-    <script src="../02board/board.js"></script>
-    <script src="../03addTasks/addTasks.js"></script>
-    <script src="../04contacts/contacts.js"></script>
     <!-- css data -->
     <link rel="stylesheet" href="summary.css">
     <link rel="stylesheet" href="../../styles.css">
@@ -15,6 +14,7 @@
     <title>Join</title>
 </head>
 
-<body onload="includeHTML()">
+<body onload="initSummary()">
     <div w3-include-html="../../index.html"></div>
+    <div id="summaryMenu"></div>
 </body>

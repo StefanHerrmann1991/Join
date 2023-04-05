@@ -351,55 +351,6 @@ function renderEditTask(index) {
     compareDate();
 }
 
-
-/* function renderEditUserList(index) {
-    const userListContainer = getId('userList');
-    userListContainer.innerHTML = '';
-    const assignedUserIds = tasks[index].assignedTo.map(user => user.id); // Collects an array of assigned user IDs
-    for (let i = 0; i < users.length; i++) {
-        let isChecked = '';
-        const user = users[i];
-        const userIndex = assignedUserIds.indexOf(user.id);
-
-        if (userIndex !== -1) {
-            getId('userInitialContainer').innerHTML += `
-        <div id="detailsUserIcon-${i}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
-        }
-        if (assignedUserIds.includes(user.id)) {
-            isChecked = 'checked';
-        }
-        userListContainer.innerHTML += `
-        <div class="user-list-container">
-          <div>${user.name}</div>
-          <input type="checkbox" id="checkbox-${i}" class="square-checkbox" ${isChecked} value="${user.name}" onclick="renderEditUserInitial(${i}, ${index})"> 
-        </div>
-      `;
-    }
-}
- */
-/* function renderEditUserInitial(usersIndex, currentTaskIndex) {
-    const checkbox = getId(`checkbox-${usersIndex}`);
-    const user = users[usersIndex];
-    const userId = user.id;
-    const assignedTo = tasks[currentTaskIndex].assignedTo;
-
-    if (checkbox.checked) {
-        if (!assignedTo.some(user => user.id === userId)) {
-            assignedTo.push(users[usersIndex]);
-            getId('userInitialContainer').innerHTML += `
-        <div id="detailsUserIcon-${userId}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
-        }
-    } else {
-        const userIndex = assignedTo.findIndex(user => user.id === userId);
-        if (userIndex !== -1) {
-            assignedTo.splice(userIndex, 1);     
-            document.getElementById(`detailsUserIcon-${userId}`).remove();
-        }
-    }
-}
- */
-
-
 async function changeTask(index, board) {
     event.preventDefault();
     let task = processTaskInputs(board);
@@ -426,11 +377,6 @@ function startPriorityEventListener(selectedValue) {
         });
     });
 }
-
-
-
-
-
 /**
  * Displays a list of users with names or emails that match the input string.
  * @param {string} val The input string to match against.

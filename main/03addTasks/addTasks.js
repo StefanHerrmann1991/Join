@@ -1,20 +1,3 @@
-let urgencies = ['High', 'Medium', 'Low'];
-let categories = [{
-    'topic': 'Sales',
-    'color': 'FC71FF',
-    'index': '0'
-}, {
-    'topic': 'Backoffice',
-    'color': '#1FD7C1',
-    'index': '1'
-}];
-let users
-let subtasks = [];
-let invitedUsers = [];
-let assignedUsers = [];
-let colorPicker = ['#8AA4FF', '#FF0000', '#2AD300', '#FF8A00', '#E200BE', '#0038FF']
-let chosenColor;
-
 
 async function initTasks() { 
     await includeHTML();
