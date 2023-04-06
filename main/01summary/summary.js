@@ -5,8 +5,6 @@ const boards = [
   { boardTitle: 'Done', boardId: 'board-3', boardName: 'doneBoard' }
 ];
 
-
-
 let allTaskNumber = 0;
 
 async function initSummary() {
@@ -54,19 +52,6 @@ function filterTasks(boardId) {
  return tasks.filter(t => t['board'] == `${boardId}`).length;
 }
 
-function getEaliestTask(boardId) {
-  const currentDate = new Date();
-  const tasksInBoard = filterTasksByBoard(boardId);
-  const futureTasks = tasksInBoard.filter(task => new Date(task.date) > currentDate);
-  if (futureTasks.length === 0) {
-    return null;
-  }
-  
-  return futureTasks.reduce((earliestTask, currentTask) => {
-    const currentTaskDate = new Date(currentTask.date);
-    const earliestTaskDate = new Date(earliestTask.date);
-    return currentTaskDate < earliestTaskDate ? currentTask : earliestTask;
-  });
-}
+
 
 

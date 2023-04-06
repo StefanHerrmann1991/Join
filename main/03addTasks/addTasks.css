@@ -136,12 +136,12 @@ button, a {
 
 .main-container {
   position: absolute;
-  top: 8%;
-  left: 20%;
+  top: 15%;
+  left: 25%;
   display: flex;
   justify-content: flex-start;
-  width: 80%;
-  height: 92%;
+  width: 75%;
+  height: 85%;
   overflow: hidden;
 }
 
@@ -265,18 +265,6 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
-.center {
-  height: 100%;
-  width: 100%;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.main-container .add-task-formfield {
-  display: flex;
-}
 .main-container .add-task-left {
   padding-right: 5%;
   border-right: 1px solid #D1D1D1;
@@ -744,4 +732,12 @@ input.subtask-checkbox[type=checkbox]:checked {
   opacity: 0;
   width: 0;
   height: 0;
+}
+
+.relative {
+  position: relative;
+}
+
+.task-fields {
+  display: flex;
 }/*# sourceMappingURL=addTasks.css.map */

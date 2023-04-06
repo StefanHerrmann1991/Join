@@ -126,15 +126,21 @@ body
 button, a
     cursor: pointer
 
+
+
+$top: 15%
+$left: 25%
+
 .main-container
     position: absolute
-    top: 8%
-    left: 20%
+    top: $top
+    left: $left
     display: flex
     justify-content: flex-start
-    width: 80%
-    height: calc( 100% - 8% )
+    width: calc( 100% - $left)
+    height: calc( 100% - $top )
     overflow: hidden
+
 
 .subtask-progress
     display: flex

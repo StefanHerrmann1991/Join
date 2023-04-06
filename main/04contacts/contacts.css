@@ -135,12 +135,12 @@ button, a {
 
 .main-container {
   position: absolute;
-  top: 8%;
-  left: 20%;
+  top: 15%;
+  left: 25%;
   display: flex;
   justify-content: flex-start;
-  width: 80%;
-  height: 92%;
+  width: 75%;
+  height: 85%;
   overflow: hidden;
 }
 
@@ -243,6 +243,17 @@ h3 {
   height: 22;
   width: 26;
   margin-left: 30px;
+}
+
+.main-contact-container {
+  position: absolute;
+  top: 8%;
+  left: 20%;
+  display: flex;
+  justify-content: flex-start;
+  width: 80%;
+  height: 92%;
+  overflow: hidden;
 }
 
 .add-contact-btn {
