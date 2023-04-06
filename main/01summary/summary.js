@@ -12,7 +12,10 @@ async function initSummary() {
   await initAddTasks();
   const earliestTask = findEarliestTask();
   if (earliestTask !== null) {
-    console.log('Task with the earliest date:', earliestTask);
+    dateConverted = new Date(earliestTask)
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const outputDateStr = dateConverted.toLocaleDateString('en-US', options);
+    console.log(outputDateStr)
   } else {
     console.log('No tasks found in the future.');
   }
@@ -34,13 +37,13 @@ function filterBoards(boardTaskArray, boardId) {
   getId(boardId).innerHTML = boardTaskArray;
   allTaskNumber += boardTaskArray;
   getId('allTasks').innerHTML = allTaskNumber;
-  }
+}
 
-  function findEarliestTask() {
-    if (tasks.length === 0) return null; // No tasks found    
-    tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
-    return tasks[0].date;
-  }
+function findEarliestTask() {
+  if (tasks.length === 0) return null; // No tasks found    
+  tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
+  return tasks[0].date;
+}
 
 async function initAddTasks() {
   setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
@@ -49,7 +52,7 @@ async function initAddTasks() {
 }
 
 function filterTasks(boardId) {
- return tasks.filter(t => t['board'] == `${boardId}`).length;
+  return tasks.filter(t => t['board'] == `${boardId}`).length;
 }
 
 
