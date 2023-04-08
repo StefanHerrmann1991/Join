@@ -10,16 +10,29 @@ let allTaskNumber = 0;
 async function initSummary() {
   includeHTML();
   await initAddTasks();
-  const earliestTask = findEarliestTask();
+  let earliestTask;
+  [earliestTask, count] = findEarliestTask();
   if (earliestTask !== null) {
-    dateConverted = new Date(earliestTask)
+    dateConverted = new Date(earliestTask.date)
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const outputDateStr = dateConverted.toLocaleDateString('en-US', options);
-    console.log(outputDateStr)
+    let date = getId('nextDeadline')
+    date.innerHTML = `<img src="/assets/img/prio${earliestTask.urgency.toUpperCase()}.png"</div><div>${outputDateStr}</div>`;
   } else {
     console.log('No tasks found in the future.');
   }
   await renderSummary();
+}
+
+function findEarliestTask() {
+  if (tasks.length === 0) {
+    return null; // No tasks found
+  }
+  tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
+  const earliestTask = tasks[0];
+  const tasksWithEarliestDate = tasks.filter(task => task.date === earliestTask.date);
+  const count = tasksWithEarliestDate.length;
+  return [earliestTask, count];
 }
 
 async function renderSummary() {
@@ -27,7 +40,12 @@ async function renderSummary() {
     boardId = boards[index]['boardId'];
     boardTitle = boards[index]['boardTitle'];
     boardName = boards[index]['boardName'];
-    getId('summaryMenu').innerHTML += `<div>${boardTitle}</div><div id="${boardId}"></div>`;
+    getId('summaryMenu').innerHTML += `
+    <div class="board-summary">
+      <div class="big-number" id="${boardId}"></div>
+      <div>${boardTitle}</div>
+    </div>
+    `;
     filterBoards(board, boardId);
   })
 }
@@ -36,14 +54,12 @@ function filterBoards(boardTaskArray, boardId) {
   boardTaskArray = filterTasks(boardId);
   getId(boardId).innerHTML = boardTaskArray;
   allTaskNumber += boardTaskArray;
-  getId('allTasks').innerHTML = allTaskNumber;
+  getId('allTasks').innerHTML = `<div class="board-summary">
+  <div class="big-number"> ${allTaskNumber}</div>
+  <div> Tasks in Board</div>
+ </div>`;
 }
 
-function findEarliestTask() {
-  if (tasks.length === 0) return null; // No tasks found    
-  tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
-  return tasks[0].date;
-}
 
 async function initAddTasks() {
   setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
