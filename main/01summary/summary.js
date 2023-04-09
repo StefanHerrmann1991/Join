@@ -47,15 +47,15 @@ async function renderSummary() {
       getId('upperSummary').innerHTML +=`
       <div class="board-summary">
         <div class="big-number" id="${boardId}-number"></div>
-        <div>${boardTitle}</div>
+        <div class="board-title-summary">Tasks ${boardTitle}</div>
       </div>
       `;
     }
     if (i >= 2) {
       getId('lowerSummary').innerHTML +=`
       <div class="board-summary">
-      <div class="big-number" id="${boardId}-number"></div>
-      <div>${boardTitle}</div>
+        <div class="big-number" id="${boardId}-number"></div>
+        <div>${boardTitle}</div>
       </div>
     `;
     }
@@ -68,8 +68,8 @@ function getNumberOfTasks() {
   let summary = getId('upperSummary')
   let text = `
   <div class="board-summary">
-  <div class="big-number"> ${allTaskNumber}</div>
-  <div> Tasks in Board</div>
+    <div class="big-number">${allTaskNumber}</div>
+    <div class="board-title-summary"><div>Tasks</div> in Board</div>
   </div>
   `;
   summary.insertAdjacentHTML('afterbegin', text);
