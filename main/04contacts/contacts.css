@@ -136,10 +136,10 @@ button, a {
 .main-container {
   position: absolute;
   top: 15%;
-  left: 25%;
+  left: 20%;
   display: flex;
   justify-content: flex-start;
-  width: 75%;
+  width: 80%;
   height: 85%;
   overflow: hidden;
 }
@@ -247,12 +247,12 @@ h3 {
 
 .main-contact-container {
   position: absolute;
-  top: 8%;
+  top: 9%;
   left: 20%;
   display: flex;
   justify-content: flex-start;
   width: 80%;
-  height: 92%;
+  height: 91%;
   overflow: hidden;
 }
 
@@ -314,16 +314,20 @@ h3 {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  padding-top: 10%;
   flex-direction: column;
 }
 .edit-contact-container h2 {
-  border-right: 3px solid #29ABE2;
   font-size: 61px;
-  padding-right: 8%;
+  padding-right: 8% !important;
+  border-right: 3px solid #29ABE2;
 }
 .edit-contact-container nobr {
   padding-left: 8%;
+}
+
+.title-additive {
+  padding-left: 8%;
+  text-align: center;
 }
 
 .edit-contact-headline {

@@ -19,10 +19,13 @@ async function initSummary() {
     let date = getId('nextDeadline');
     let urgency = capitalizeFirst(earliestTask.urgency)
     date.innerHTML = `
-    <div class="urgency-icon ${urgency.toLowerCase()}">
-    <img src="/assets/img/prio${urgency}.png">
+    <div class="next-tasks-counter">        
+        <div class="urgency-icon ${urgency.toLowerCase()}"><img src="/assets/img/prio${urgency}.png"></div>
+        <div>
+            <div class="deadline-number">${count}</div>
+            <div>${urgency}</div>
+        </div>
     </div>
-    <div>${urgency}</div>
     <div>${outputDateStr}</div>`;
   }
   await renderSummary();
@@ -46,7 +49,7 @@ async function renderSummary() {
     boardTitle = board['boardTitle'];
     boardName = board['boardName'];
     if (i < 2) {
-      getId('upperSummary').innerHTML +=`
+      getId('upperSummary').innerHTML += `
       <div class="board-summary">
         <div class="big-number" id="${boardId}-number"></div>
         <div class="board-title-summary">Tasks ${boardTitle}</div>
@@ -55,12 +58,12 @@ async function renderSummary() {
     }
     if (i >= 2) {
       let picture = (boardTitle === "To do") ? "check" : (boardTitle === "Done") ? "editBtnWhite" : null;
-      getId('lowerSummary').innerHTML +=`
+      getId('lowerSummary').innerHTML += `
       <div class="lower-board-summary">
       <div class="icon">
       <img class="deko-img ${picture}" src="/assets/img/${picture}.png">
       </div>
-      <div>
+      <div class="number-container">
         <div class="big-number" id="${boardId}-number"></div>
         <div>${boardTitle}</div>
       </div>

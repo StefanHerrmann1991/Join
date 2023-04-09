@@ -136,10 +136,10 @@ button, a {
 .main-container {
   position: absolute;
   top: 15%;
-  left: 25%;
+  left: 20%;
   display: flex;
   justify-content: flex-start;
-  width: 75%;
+  width: 80%;
   height: 85%;
   overflow: hidden;
 }

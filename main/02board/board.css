@@ -136,10 +136,10 @@ button, a {
 .main-container {
   position: absolute;
   top: 15%;
-  left: 25%;
+  left: 20%;
   display: flex;
   justify-content: flex-start;
-  width: 75%;
+  width: 80%;
   height: 85%;
   overflow: hidden;
 }
@@ -250,7 +250,8 @@ h3 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: 90%;
+  margin: auto;
   height: 100%;
 }
 .board-main .boards-title-menu {
@@ -259,8 +260,7 @@ h3 {
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  width: 90%;
-  margin: auto;
+  width: 100%;
 }
 .board-main img {
   width: 30px;
@@ -380,7 +380,7 @@ h3 {
   margin-top: 0px;
 }
 .task .task-container {
-  width: 95%;
+  width: 100%;
 }
 .task .task-container div, .task .task-container h3 {
   font-size: 16px;

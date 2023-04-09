@@ -20,17 +20,40 @@
 
 .summary-task {
   width: 60%;
-  margin: auto;
 }
 
 .summary-main {
-  width: 100%;
+  width: 90%;
   height: 100%;
+  margin: auto;
+}
+
+.urgency-container {
+  width: 100%;
 }
 
 .deadline {
   display: flex;
-  width: 100%;
+  justify-content: space-around;
+}
+
+.deadline-number {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 47px;
+}
+
+.next-tasks-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.next-tasks-counter img {
+  width: 40px;
+  height: 40px;
+  filter: brightness(0) invert(1);
 }
 
 .summary-title {
@@ -45,6 +68,13 @@
   gap: 5%;
 }
 
+.number-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .lower-board-summary {
   display: flex;
   justify-content: center;
@@ -54,7 +84,7 @@
   border-radius: 30px;
   width: 50%;
   display: flex;
-  gap: 18px;
+  gap: 25px;
   height: 170px;
 }
 .lower-board-summary .big-number {
