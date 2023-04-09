@@ -19,7 +19,9 @@ async function initSummary() {
     let date = getId('nextDeadline');
     let urgency = capitalizeFirst(earliestTask.urgency)
     date.innerHTML = `
-    <img src="/assets/img/prio${urgency}.png"</div>
+    <div class="urgency-icon ${urgency.toLowerCase()}">
+    <img src="/assets/img/prio${urgency}.png">
+    </div>
     <div>${urgency}</div>
     <div>${outputDateStr}</div>`;
   }

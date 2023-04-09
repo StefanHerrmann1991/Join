@@ -14,6 +14,11 @@
   font-size: 64px;
 }
 
+.summary-task {
+  width: 90%;
+  margin: auto;
+}
+
 .summary-main {
   width: 100%;
   height: 100%;
@@ -38,4 +43,35 @@
 .board-title-summary {
   text-align: center;
   width: 100%;
+}
+
+.summary-container {
+  display: flex;
+}
+
+.deadline {
+  height: 150px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+}
+.deadline .urgency-icon {
+  border-radius: 50%;
+}
+.deadline .urgency-icon img {
+  padding: 15px;
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1);
+}
+.deadline .urgent {
+  background-color: #FF3D00;
+}
+.deadline .medium {
+  background-color: #FFA800;
+}
+.deadline .low {
+  background-color: #7AE229;
 }/*# sourceMappingURL=summary.css.map */
