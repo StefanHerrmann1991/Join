@@ -16,35 +16,22 @@
 
 <body onload="initSummary()">
     <div w3-include-html="../../index.html"></div>
-    <div class="center main-container">
-        <div>
-            <h1>Summary</h1>
-            <div class="">Everything in a nutstell!</div>
-        </div>
-        <div>
-            <div>
-                <div></div>
-                <div></div>
-                <div></div>
+    <div class="main-container">
+        <div class="summary-main">
+            <div class="summary-title">
+                <h1>Summary</h1>
+                <nobr class="">Everything in a nutstell!</nobr>
             </div>
-            <div id="nextDeadline"></div>
-            <div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <div id="allTasks"></div>
-                <div id="nextTask"></div>
-                <div id="summaryMenu"></div>
-            </div>
+
+            
+            <div id="upperSummary" class="upper-summary"></div>
+            <div class="deadline" id="nextDeadline"></div>
+            <div id="lowerSummary" class="lowerSummary"></div>
 
             <div>
                 <div>Good Morning,</div>
                 <div id="userGreating"></div>
             </div>
         </div>
-
     </div>
 </body>

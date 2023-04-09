@@ -1,7 +1,7 @@
 const boards = [
-  { boardTitle: 'To do', boardId: 'board-0', boardName: 'todoBoard' },
   { boardTitle: 'In progress', boardId: 'board-1', boardName: 'progressBoard' },
   { boardTitle: 'Awaiting Feedback', boardId: 'board-2', boardName: 'awaitingFeedbackBoard' },
+  { boardTitle: 'To do', boardId: 'board-0', boardName: 'todoBoard' },
   { boardTitle: 'Done', boardId: 'board-3', boardName: 'doneBoard' }
 ];
 
@@ -16,10 +16,12 @@ async function initSummary() {
     dateConverted = new Date(earliestTask.date)
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const outputDateStr = dateConverted.toLocaleDateString('en-US', options);
-    let date = getId('nextDeadline')
-    date.innerHTML = `<img src="/assets/img/prio${earliestTask.urgency.toUpperCase()}.png"</div><div>${outputDateStr}</div>`;
-  } else {
-    console.log('No tasks found in the future.');
+    let date = getId('nextDeadline');
+    let urgency = capitalizeFirst(earliestTask.urgency)
+    date.innerHTML = `
+    <img src="/assets/img/prio${urgency}.png"</div>
+    <div>${urgency}</div>
+    <div>${outputDateStr}</div>`;
   }
   await renderSummary();
 }
@@ -36,29 +38,49 @@ function findEarliestTask() {
 }
 
 async function renderSummary() {
-  boards.forEach((board, index) => {
-    boardId = boards[index]['boardId'];
-    boardTitle = boards[index]['boardTitle'];
-    boardName = boards[index]['boardName'];
-    getId('summaryMenu').innerHTML += `
-    <div class="board-summary">
-      <div class="big-number" id="${boardId}"></div>
+  for (let i = 0; i < boards.length; i++) {
+    const board = boards[i];
+    boardId = board['boardId'];
+    boardTitle = board['boardTitle'];
+    boardName = board['boardName'];
+    if (i < 2) {
+      getId('upperSummary').innerHTML +=`
+      <div class="board-summary">
+        <div class="big-number" id="${boardId}-number"></div>
+        <div>${boardTitle}</div>
+      </div>
+      `;
+    }
+    if (i >= 2) {
+      getId('lowerSummary').innerHTML +=`
+      <div class="board-summary">
+      <div class="big-number" id="${boardId}-number"></div>
       <div>${boardTitle}</div>
-    </div>
+      </div>
     `;
+    }
     filterBoards(board, boardId);
-  })
+  }
+  getNumberOfTasks();
+}
+
+function getNumberOfTasks() {
+  let summary = getId('upperSummary')
+  let text = `
+  <div class="board-summary">
+  <div class="big-number"> ${allTaskNumber}</div>
+  <div> Tasks in Board</div>
+  </div>
+  `;
+  summary.insertAdjacentHTML('afterbegin', text);
 }
 
 function filterBoards(boardTaskArray, boardId) {
   boardTaskArray = filterTasks(boardId);
-  getId(boardId).innerHTML = boardTaskArray;
+  getId(boardId + '-number').innerHTML = boardTaskArray;
   allTaskNumber += boardTaskArray;
-  getId('allTasks').innerHTML = `<div class="board-summary">
-  <div class="big-number"> ${allTaskNumber}</div>
-  <div> Tasks in Board</div>
- </div>`;
 }
+
 
 
 async function initAddTasks() {
