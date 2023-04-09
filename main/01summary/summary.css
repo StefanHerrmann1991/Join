@@ -1,3 +1,7 @@
+.upper-summary {
+  width: 100%;
+}
+
 .board-summary {
   display: flex;
   justify-content: center;
@@ -6,7 +10,7 @@
   background: #FFFFFF;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
-  width: 170px;
+  width: 30%;
   height: 170px;
 }
 .board-summary .big-number {
@@ -15,7 +19,7 @@
 }
 
 .summary-task {
-  width: 90%;
+  width: 60%;
   margin: auto;
 }
 
@@ -33,6 +37,7 @@
   display: flex;
   align-items: center;
   width: 100%;
+  padding-bottom: 10%;
 }
 
 .upper-summary, .lower-summary {
@@ -50,6 +55,9 @@
 }
 
 .deadline {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 100%;
   height: 150px;
   background: #FFFFFF;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
