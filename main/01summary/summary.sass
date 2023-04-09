@@ -1,18 +1,23 @@
-.upper-summary
-    width: 100%
-.board-summary
+
+@mixin summary
     display: flex
     justify-content: center
     align-items: center
-    flex-direction: column
+
     background: #FFFFFF
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1)
     border-radius: 30px
-    width: 30%
-    height: 170px
     .big-number
         font-weight: 600
         font-size: 64px
+
+.upper-summary
+    width: 100%
+.board-summary
+    @include summary
+    flex-direction: column
+    width: 30%
+    height: 170px
 
 .summary-task
     width: 60%
@@ -34,7 +39,30 @@
 
 .upper-summary, .lower-summary
     display: flex
-    gap: 30px
+    gap: 5%
+
+.lower-board-summary
+    @include summary
+    width: 50%
+    display: flex
+    gap: 18px
+    height: 170px
+
+.icon
+    border-radius: 50%
+    padding: 10px
+    background-color: #2A3647
+    width: 69px
+    height: 69px
+    display: flex
+    justify-content: center
+    align-items: center
+    .check
+        width: 50px
+        height: 50px
+    .editBtnWhite
+        width: 33.5px
+        height: 50px
 
 .board-title-summary
     text-align: center

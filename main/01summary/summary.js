@@ -54,10 +54,16 @@ async function renderSummary() {
       `;
     }
     if (i >= 2) {
+      let picture = (boardTitle === "To do") ? "check" : (boardTitle === "Done") ? "editBtnWhite" : null;
       getId('lowerSummary').innerHTML +=`
-      <div class="board-summary">
+      <div class="lower-board-summary">
+      <div class="icon">
+      <img class="deko-img ${picture}" src="/assets/img/${picture}.png">
+      </div>
+      <div>
         <div class="big-number" id="${boardId}-number"></div>
         <div>${boardTitle}</div>
+      </div>
       </div>
     `;
     }
@@ -76,6 +82,8 @@ function getNumberOfTasks() {
   `;
   summary.insertAdjacentHTML('afterbegin', text);
 }
+
+
 
 function filterBoards(boardTaskArray, boardId) {
   boardTaskArray = filterTasks(boardId);
