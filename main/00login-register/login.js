@@ -1,7 +1,8 @@
 
+let registeredUsers = []
+
 document.querySelector('form')?.addEventListener('submit', function (event) {
     event.preventDefault();
-
 });
 
 
@@ -19,12 +20,12 @@ function renderAuth(status) {
 function renderSignUp() {
     return `
 <div class="register">
-<img class="logo" src="/assets/img/login/logo.png">
+<img class="logo" src="/assets/img/logo2.png">
 <div class="sign-up-container">
-<img onclick="initAuthentification('login')" class="arrow-back" src="/assets/img/login/arrow-left-line.png">
+<img onclick="initAuthentification('login')" class="arrow-back" src="/assets/img/backArrow.png">
     <div class="sign-up">
         <h2>Sign up</h2>
-        <form onsubmit="createUser(event)">
+        <form onsubmit="registerUser(event); return false">
             <input type="text" id="name" name="name" required placeholder="Name">
             <input type="email" id="email" name="email" required placeholder="Email">
             <input type="password" id="password" name="Password" required placeholder="Password">
@@ -42,7 +43,7 @@ function renderSignUp() {
 function renderLogin() {
     return `
 <div class="register">
-<img class="logo" src="/assets/img/login/logo.png">
+<img class="logo" src="/assets/img/logo2.png">
 <div class="to-register">Not a Join user?
 <button onclick="renderAuth('signUp')"><nobr>Sign up</nobr></button>
 </div>
@@ -73,9 +74,9 @@ function renderLogin() {
 function renderForgotPassword() {
     return `
     <div class="register">
-    <img class="logo" src="/assets/img/login/logo.png">
+    <img class="logo" src="/assets/img/logo2.png">
     <div class="forgot-password-container">
-        <img onclick="initAuthentification('login')" class="arrow-back" src="/assets/img/login/arrow-left-line.png">
+        <img onclick="initAuthentification('login')" class="arrow-back" src="/assets/img/backArrow.png">
         <div class="forgot-password">
             <h2>I forgot my password</h2>
             <div> Don't worry! We will send you an email with the instructions to reset your password.
@@ -96,7 +97,7 @@ function renderResetPassword() {
     <div class="register">
     <img class="logo" src="/assets/img/login/logo.png">
     <div class="forgot-password-container">
-        <img onclick="initAuthentification('login')" class="arrow-back" src="/assets/img/login/arrow-left-line.png">
+        <img onclick="initAuthentification('login')" class="arrow-back" src="/assets/img/backArrow.png">
         <div class="reset-password">
             <h2>Reset your password</h2>
             <div> Change your account password
@@ -118,9 +119,22 @@ function renderResetPassword() {
 
 
 
+function registerUser(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    registeredUsers.push({'name': name, 'email': email, 'password': password})   
+    debugger
+    saveBackendDataOf(registeredUsers);
+    renderAuth('login');
+};
+
+
+
+function checkLogin() {}
 function cretateUser() { };
 function rememberUser() { };
 function forgetPassword() { };
-function registerUser() { };
 function resetPassword() { };
 function guestLogin() { };

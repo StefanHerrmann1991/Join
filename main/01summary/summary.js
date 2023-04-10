@@ -22,11 +22,12 @@ async function initSummary() {
     <div class="next-tasks-counter">        
         <div class="urgency-icon ${urgency.toLowerCase()}"><img src="/assets/img/prio${urgency}.png"></div>
         <div>
-            <div class="deadline-number">${count}</div>
-            <div>${urgency}</div>
+        <div class="deadline-number">${count}</div>
+        <div>${urgency}</div>
         </div>
-    </div>
-    <div>${outputDateStr}</div>`;
+        </div>
+        <div class="middle-line"></div>
+        <div>${outputDateStr}</div>`;
   }
   await renderSummary();
 }
