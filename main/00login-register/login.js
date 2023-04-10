@@ -14,7 +14,7 @@ async function initAuthentification() {
 
 async function initLogin() {
     await setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
-    await downloadFromServer(); 
+    await downloadFromServer();
 }
 
 
@@ -38,7 +38,7 @@ function renderSignUp() {
         <form onsubmit="registerUser();">
             <input type="text" id="name" name="name" required placeholder="Name">
             <input type="email" id="email" name="email" required placeholder="Email">
-            <input type="password" id="password" name="Password" required placeholder="Password">
+            <input minlength="6" maxlength="20" type="password" id="password" name="Password" required placeholder="Password">
                        <div class="menu-btn">
                 <button type="submit"><nobr>Sign up</nobr></button>
                 <button onclick="renderAuth('login')">Back</button>
@@ -60,9 +60,9 @@ function renderLogin() {
 <div class="sign-up-container">
     <div class="sign-up">
         <h2>Log in</h2>
-        <form onsubmit="createUser(event);">  
+        <form onsubmit="usersLogin()">  
             <input type="email" id="email" name="email" required placeholder="Email">
-            <input type="password" id="Password" name="Password" required placeholder="Password">
+            <input type="password" minlength="6" maxlength="20"  id="password" name="password" required placeholder="Password">
             <div class="login-option">
             <div class="remember-me">
             <input type="checkbox">
@@ -113,8 +113,8 @@ function renderResetPassword() {
             <div> Change your account password
             </div>
             <form onsubmit="createUser(event)">
-                <input type="password" id="password" name="Password" required placeholder="Password">
-                <input type="password" id="passwordValidation" name="PasswordValidaton" required
+                <input type="password" minlength="6" maxlength="20" id="password" name="Password" required placeholder="Password">
+                <input type="password" id="passwordValidation" name="passwordValidaton" required
                     placeholder="Confirm password">
                 <div class="menu-btn color-white">
                     <button type="submit">
@@ -134,11 +134,23 @@ function registerUser() {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    debugger
-    registeredUsers.push({ 'name': name, 'email': email, 'password': password })       
+    passwordValidation();
+    registeredUsers.push({ 'name': name, 'email': email, 'password': password });
     addUsers();
     renderAuth('login');
 };
+
+function passwordValidation() {
+    for (let i = 0; i < registeredUsers.length; i++) {
+        if (registerUser.value == registeredUsers[i]['email']) {
+            alert('That username already exists please choose another one');
+            return;
+        } else if (registerPassword.value.length < 3) {
+            alert('That password is too short, include more than three characters');
+            return;
+        }
+    }
+}
 
 /**
  * Saves tasks in the backend in form of an JSON string */
@@ -150,23 +162,45 @@ async function addUsers() { //check async: no diff
 
 function loadRegisterdUsers() {
     if (event) event.preventDefault();
-    let registeredUsersAsText = backend.getItem('registeredUsersAsTExt');
+    let registeredUsersAsText = backend.getItem('registeredUsers');
     if (registeredUsersAsText) registeredUsers = JSON.parse(registeredUsersAsText);
 }
 
-/**
- *  This function loads and converts the tasks from text-format to a JSON-array. 
- *  The preventDefault() function is necessary to prevent the page from reloading when adding a new task.
- */
-function loadTasks() {
-    if (event) event.preventDefault();
-    let tasksAsText = backend.getItem('tasks');
-    if (tasksAsText) tasks = JSON.parse(tasksAsText);
+
+function usersLogin() {
+    event.preventDefault();
+    checkLogin();    
 }
 
-function checkLogin() { }
-function cretateUser() { };
+function checkLogin() {
+    let email = document.getElementById('email');
+    let password = document.getElementById('password');
+    for (let i = 0; i < registeredUsers.length; i++) {
+        let element = registeredUsers[i];
+        if (email.value == element['email'] &&
+            password.value == element['password']) {
+            window.open('/../../main/01summary/summary.html');
+            email.value = '';
+            password.value = '';
+            return
+        }
+    }
+    alert('Username or Password is not correct!');
+}
+
 function rememberUser() { };
 function forgetPassword() { };
 function resetPassword() { };
 function guestLogin() { };
+
+
+
+function generateRandomToken() {
+    const tokenLength = 20;
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < tokenLength; i++) {
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+}
