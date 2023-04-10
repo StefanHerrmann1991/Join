@@ -1,12 +1,22 @@
 
 let registeredUsers = []
 
-document.querySelector('form')?.addEventListener('submit', function (event) {
+/* document.querySelector('form')?.addEventListener('submit', function (event) {
     event.preventDefault();
-});
+}); */
 
 
-async function initAuthentification() { await renderAuth('login') }
+async function initAuthentification() {
+    await initLogin();
+    await loadRegisterdUsers();
+    await renderAuth('login');
+}
+
+async function initLogin() {
+    await setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
+    await downloadFromServer(); 
+}
+
 
 
 function renderAuth(status) {
@@ -25,7 +35,7 @@ function renderSignUp() {
 <img onclick="initAuthentification('login')" class="arrow-back" src="/assets/img/backArrow.png">
     <div class="sign-up">
         <h2>Sign up</h2>
-        <form onsubmit="registerUser(event); return false">
+        <form onsubmit="registerUser();">
             <input type="text" id="name" name="name" required placeholder="Name">
             <input type="email" id="email" name="email" required placeholder="Email">
             <input type="password" id="password" name="Password" required placeholder="Password">
@@ -50,7 +60,7 @@ function renderLogin() {
 <div class="sign-up-container">
     <div class="sign-up">
         <h2>Log in</h2>
-        <form onsubmit="createUser(event)">  
+        <form onsubmit="createUser(event);">  
             <input type="email" id="email" name="email" required placeholder="Email">
             <input type="password" id="Password" name="Password" required placeholder="Password">
             <div class="login-option">
@@ -119,20 +129,42 @@ function renderResetPassword() {
 
 
 
-function registerUser(event) {
+function registerUser() {
     event.preventDefault();
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    registeredUsers.push({'name': name, 'email': email, 'password': password})   
     debugger
-    saveBackendDataOf(registeredUsers);
+    registeredUsers.push({ 'name': name, 'email': email, 'password': password })       
+    addUsers();
     renderAuth('login');
 };
 
+/**
+ * Saves tasks in the backend in form of an JSON string */
+async function addUsers() { //check async: no diff
+    if (event) event.preventDefault();
+    let registerdUsersAsText = JSON.stringify(registeredUsers);
+    await backend.setItem('registeredUsers', registerdUsersAsText);
+}
 
+function loadRegisterdUsers() {
+    if (event) event.preventDefault();
+    let registeredUsersAsText = backend.getItem('registeredUsersAsTExt');
+    if (registeredUsersAsText) registeredUsers = JSON.parse(registeredUsersAsText);
+}
 
-function checkLogin() {}
+/**
+ *  This function loads and converts the tasks from text-format to a JSON-array. 
+ *  The preventDefault() function is necessary to prevent the page from reloading when adding a new task.
+ */
+function loadTasks() {
+    if (event) event.preventDefault();
+    let tasksAsText = backend.getItem('tasks');
+    if (tasksAsText) tasks = JSON.parse(tasksAsText);
+}
+
+function checkLogin() { }
 function cretateUser() { };
 function rememberUser() { };
 function forgetPassword() { };

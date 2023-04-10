@@ -17,7 +17,6 @@ async function initTasks() {
  */
 function addToTasks() {
     event.preventDefault();
-    debugger
     const task = processTaskInputs();
     task.id = tasks.length + 1; // set id when creating the task
     task.board = 'board-0'; // default-board on task creation
@@ -265,6 +264,8 @@ async function saveTasks() { //check async: no diff
     let tasksAsText = JSON.stringify(tasks);
     await backend.setItem('tasks', tasksAsText);
 }
+
+
 
 /**
  *  This function loads and converts the tasks from text-format to a JSON-array. 

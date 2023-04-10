@@ -17,6 +17,7 @@ let colorPicker = ['#8AA4FF', '#FF0000', '#2AD300', '#FF8A00', '#E200BE', '#0038
 let chosenColor;
 
 
+
 function splitID(id, separator) {
     let arrayOfStrings = id.split(separator);
     return arrayOfStrings;
