@@ -65,8 +65,8 @@ function renderLogin() {
             <input type="password" minlength="6" maxlength="20"  id="password" name="password" required placeholder="Password">
             <div class="login-option">
             <div class="remember-me">
-            <input type="checkbox">
-            <nobr>Remember me</nobr>
+            <input type="checkbox" >
+            <nobr class="mgn-l">Remember me</nobr>
             </div>
             <a class="highlight-blue" onclick="renderAuth('forgetPassword')">
             <nobr>Forgot my password</nobr></a>
@@ -127,7 +127,7 @@ function renderResetPassword() {
 </div>
 ` }
 
-/* <form class="contact" action="https://stefan-herrmann.developerakademie.net/send_mail/send_mail.php" method="POST"> */
+
 
 
 function registerUser() {
@@ -208,7 +208,6 @@ async function forgotPassword(event) {
 async function sendForgotPasswordEmail(email, token) {
     const resetUrl = window.location.origin + '/reset-password.html?token=' + token;
     const message = `Click the following link to reset your password: ${resetUrl}`;
-
     const formData = new FormData();
     formData.append('email', email);
     formData.append('name', 'Password Reset');
