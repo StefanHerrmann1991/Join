@@ -154,7 +154,6 @@
             font-size: 21px
             font-weight: 700
             padding: 0 !important
-            margin: 0 !important
 
 .assigned-users
     display: flex
@@ -198,11 +197,22 @@
         img
             width: 22px
             height: 30px
-    .task-details, .edit-task-form
+    .task-details
         width: 90%
         height: 90%
         margin: auto
         margin-top: 10%
+  
+    .edit-task-form
+        width: 90%
+        display: flex
+        justify-content: center
+        flex-direction: column
+        align-items: center
+        margin: auto
+        height: 100%
+        .mgn-b
+            margin-bottom: 8%
 
     .details-priority-btn
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1)
@@ -222,9 +232,6 @@
 
 .row
     display: flex
-
-.edit-task-form
-    h3
 
 .subtask-progress
     display: flex

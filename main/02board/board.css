@@ -430,7 +430,6 @@ h3 {
   font-size: 21px;
   font-weight: 700;
   padding: 0 !important;
-  margin: 0 !important;
 }
 
 .assigned-users {
@@ -490,11 +489,23 @@ h3 {
   width: 22px;
   height: 30px;
 }
-.edit-task-container .task-details, .edit-task-container .edit-task-form {
+.edit-task-container .task-details {
   width: 90%;
   height: 90%;
   margin: auto;
   margin-top: 10%;
+}
+.edit-task-container .edit-task-form {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  height: 100%;
+}
+.edit-task-container .edit-task-form .mgn-b {
+  margin-bottom: 8%;
 }
 .edit-task-container .details-priority-btn {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
