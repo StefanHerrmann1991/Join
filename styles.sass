@@ -126,8 +126,6 @@ body
 button, a
     cursor: pointer
 
-
-
 $top: 15%
 $left: 20%
 
@@ -141,13 +139,11 @@ $left: 20%
     height: calc( 100% - $top )
     overflow: hidden
 
-
 .mgn-r
     padding-right: 12px
 
 .mgn-l
     padding-left: 12px
-
 
 .subtask-progress
     display: flex
@@ -178,13 +174,9 @@ h3
 
 .add-task-popup
     @include popup
-    display: flex
-    justify-content: center
-    align-items: center
+    @include flex-center
 .task-main
-    display: flex
-    justify-content: center
-    align-items: center
+    @include flex-center
     width: 85%
     height: 85%
     overflow: hidden
@@ -210,10 +202,8 @@ h3
     background: transparent
 
 .task-submit-successful
-    display: flex
+    @include flex-center
     flex-direction: row
-    justify-content: center
-    align-items: center
     padding: 0px
     width: 326px
     height: 74px

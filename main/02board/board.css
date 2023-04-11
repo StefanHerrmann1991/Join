@@ -232,9 +232,9 @@ h3 {
 
 .task-submit-successful {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
   padding: 0px;
   width: 326px;
   height: 74px;
@@ -340,12 +340,12 @@ h3 {
 .assign-btn-container {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   width: 281px;
   background: #FFFFFF;
   border: 1px solid #D1D1D1;
   border-radius: 10px;
   position: relative;
-  align-items: flex-start;
 }
 .assign-btn-container .assign-btn {
   height: 51px;
@@ -373,9 +373,9 @@ h3 {
 
 .task {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   padding: 18px 19px;
   width: calc(100% - 38px);
   background: #FFFFFF;
@@ -412,8 +412,7 @@ h3 {
 .boards {
   display: flex;
   align-items: flex-start;
-  width: 95%;
-  margin: auto;
+  width: 100%;
 }
 .boards .board {
   width: 95%;
@@ -430,6 +429,7 @@ h3 {
   font-size: 21px;
   font-weight: 700;
   padding: 0 !important;
+  margin: 0 !important;
 }
 
 .assigned-users {
@@ -468,8 +468,6 @@ h3 {
   position: relative;
   background-color: white;
   width: 55%;
-  height: 90%;
-  margin: auto;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
 }
@@ -499,8 +497,8 @@ h3 {
   width: 90%;
   display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   margin: auto;
   height: 100%;
 }
@@ -511,9 +509,9 @@ h3 {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
   padding: 4px 18px;
   color: white;
 }

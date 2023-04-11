@@ -232,9 +232,9 @@ h3 {
 
 .task-submit-successful {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
   padding: 0px;
   width: 326px;
   height: 74px;

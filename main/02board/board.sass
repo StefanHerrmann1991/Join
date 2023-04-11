@@ -1,9 +1,7 @@
 @import '../../styles.sass'
 
 .board-main
-    display: flex
-    justify-content: center
-    align-items: center
+    @include flex-center
     flex-direction: column
     width: 90%
     margin: auto
@@ -49,9 +47,7 @@
         position: absolute
         right: 10
         height: 100%
-        display: flex
-        justify-content: center
-        align-items: center
+        @include flex-center
     .search-btn
         border-left: 1px solid #D1D1D1
         padding-left: 15px
@@ -77,12 +73,12 @@
 .assign-btn-container
     display: flex
     flex-direction: column
+    align-items: flex-start
     width: 281px
     background: #FFFFFF
     border: 1px solid #D1D1D1
     border-radius: 10px
     position: relative
-    align-items: flex-start
     .assign-btn
         height: 51px
         padding-left: 21px
@@ -105,10 +101,8 @@
         padding-top: 23px
 
 .task
-    display: flex
+    @include flex-center
     flex-direction: column
-    justify-content: center
-    align-items: center
     padding: 18px 19px
     width: calc( 100% - 38px )
     background: #FFFFFF
@@ -138,8 +132,8 @@
 .boards
     display: flex
     align-items: flex-start
-    width: 95%
-    margin: auto
+    width: 100%
+
     .board
         width: 95%
         margin-left: 2.5%
@@ -154,6 +148,7 @@
             font-size: 21px
             font-weight: 700
             padding: 0 !important
+            margin: 0 !important
 
 .assigned-users
     display: flex
@@ -180,8 +175,6 @@
     position: relative
     background-color: white
     width: 55%
-    height: 90%
-    margin: auto
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1)
     border-radius: 30px
     h2
@@ -202,13 +195,11 @@
         height: 90%
         margin: auto
         margin-top: 10%
-  
+
     .edit-task-form
         width: 90%
-        display: flex
-        justify-content: center
+        @include flex-center
         flex-direction: column
-        align-items: center
         margin: auto
         height: 100%
         .mgn-b
@@ -217,10 +208,8 @@
     .details-priority-btn
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1)
         border-radius: 10px
-        display: flex
+        @include flex-center
         flex-direction: row
-        justify-content: center
-        align-items: center
         padding: 4px 18px
         color: white
     .low
@@ -272,9 +261,7 @@ progress
     background: #2A3647
     border-radius: 10px
     position: absolute
-    display: flex
-    justify-content: center
-    align-items: center
+    @include flex-center
     bottom: 35px
     right: 35px
     width: 83px
