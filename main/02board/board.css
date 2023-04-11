@@ -144,6 +144,14 @@ button, a {
   overflow: hidden;
 }
 
+.mgn-r {
+  padding-right: 12px;
+}
+
+.mgn-l {
+  padding-left: 12px;
+}
+
 .subtask-progress {
   display: flex;
   width: 100%;
@@ -414,14 +422,15 @@ h3 {
 .boards .board-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
-.boards .board-header h3 {
+.boards .board-header h2 {
   color: #2A3647;
   font-weight: 700;
   font-size: 21px;
   font-weight: 700;
   padding: 0 !important;
+  margin: 0 !important;
 }
 
 .assigned-users {
