@@ -91,9 +91,10 @@ function cancelNewCategory() {
     let newCategory = getId('categoryContainer')
     newCategory.classList.add('assign-btn-container');
     newCategory.innerHTML = `
-    <button type="button" class="assign-btn" onclick="openContainer('categoryMenu')">
+    <button type="button" class="assign-btn" onclick="toggleContainer('categoryMenu')">
     <div class="chosen-category-container" id="categorySelect">Select task category</div>
     <div id="imgArrow"><img src="/assets/img/open.png"></div>
+    <input id="validateCategory" required class="hidden-input">
     </button>
         <div class="user-menu" id="categoryMenu">
             <button id="newCategoryBtn" type="button" class="new-category-btn"
@@ -178,7 +179,7 @@ function startPriorityEventListener(selectedValue) {
 
 
 function clearInputValues() {
-    
+
 }
 
 
