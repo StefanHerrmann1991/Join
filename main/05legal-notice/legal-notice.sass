@@ -1,0 +1,22 @@
+.margin-container
+    width: 90%
+    height: 100%
+    margin: auto
+    overflow-y: scroll
+
+p
+    margin-top: 6%
+    margin-bottom:  6%
+
+
+ul
+    counter-reset: item 0
+    list-style-type: none
+    li
+        margin-top: 2%
+
+    li:before
+        content: counter(item) "."
+        font-weight: bold
+        margin-right: 5px
+        counter-increment: item

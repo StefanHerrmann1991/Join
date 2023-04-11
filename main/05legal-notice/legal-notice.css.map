@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"legal-notice.css"}
+{"version":3,"sources":["legal-notice.sass","legal-notice.css"],"names":[],"mappings":"AAAA;EACI,UAAA;EACA,YAAA;EACA,YAAA;EACA,kBAAA;ACCJ;;ADCA;EACI,cAAA;EACA,iBAAA;ACEJ;;ADCA;EACI,qBAAA;EACA,qBAAA;ACEJ;ADDI;EACI,cAAA;ACGR;ADDI;EACI,0BAAA;EACA,iBAAA;EACA,iBAAA;EACA,uBAAA;ACGR","file":"legal-notice.css"}

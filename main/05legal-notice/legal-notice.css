@@ -1,1 +1,25 @@
-/*# sourceMappingURL=legal-notice.css.map */
+.margin-container {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  overflow-y: scroll;
+}
+
+p {
+  margin-top: 6%;
+  margin-bottom: 6%;
+}
+
+ul {
+  counter-reset: item 0;
+  list-style-type: none;
+}
+ul li {
+  margin-top: 2%;
+}
+ul li:before {
+  content: counter(item) ".";
+  font-weight: bold;
+  margin-right: 5px;
+  counter-increment: item;
+}/*# sourceMappingURL=legal-notice.css.map */
