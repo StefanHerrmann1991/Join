@@ -222,6 +222,12 @@ h3 {
   padding-left: 5%;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .close-upper-right {
   position: absolute;
   top: 35px;

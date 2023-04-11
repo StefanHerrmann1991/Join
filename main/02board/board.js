@@ -395,3 +395,14 @@ function autocompleteMatchTask(input) {
         if (task.title.match(reg) || task.description.match(reg) || task.category.topic.match(reg)) return task;
     });
 }
+
+/**
+ * Deletes an element from an array, updates the data on the server,  and renders boards.
+ * @param {dataArray} @type {Array}
+ * @param {i} @type {Number}
+ */
+function deleteTask(dataArray, i) {
+    dataArray.splice(i, 1);
+    renderBoards()
+    saveTasks();
+}

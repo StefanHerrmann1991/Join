@@ -10,7 +10,6 @@ async function initTasks() {
 }
 
 
-
 /** addToTaskJS 
  * This function is meant to enable the add of tasks to a json array.
  * It also generates a certain ID for new tasks and sends them to the backlog board.
@@ -35,7 +34,6 @@ function validateData(id, array) {
     if (array.length === 0) validateId.setAttribute('required', '');
     else validateId.removeAttribute('required');
 }
-
 
 
 /**
@@ -64,26 +62,6 @@ function getUrgency() {
     let selectedUrgency = document.querySelector('#urgency input.priority-radio:checked');
     if (selectedUrgency) urgency = selectedUrgency.value;
     return urgency;
-}
-
-/**
- * This function renders a notification after successfully submitting a new task
- */
-function taskSubmitSuccessful() {
-    let taskSuccess = getId('taskSubmitSuccessful');
-    let taskName = processTaskInputs();
-    taskSuccess.innerHTML = `The Task '${taskName['title']}' was successfully submitted to the <a href="02backlog.html" class="backlog-link"> Backlog</a>`;
-    show('taskSubmitSuccessful')
-    //window.setTimeout(hide('taskSubmitSuccessful'), 5000);
-    window.setTimeout(function () {
-        hide('taskSubmitSuccessful')
-    }, 2000);
-}
-
-/**
- * Empties the input fields in the task forms*/
-function clearInputs() {
-    clearInputValues(title, date, category, urgency, description);
 }
 
 function newCategory() {
@@ -199,16 +177,10 @@ function startPriorityEventListener(selectedValue) {
 }
 
 
-/**
- * Deletes an element from an array, updates the data on the server,  and renders boards.
- * @param {dataArray} @type {Array}
- * @param {i} @type {Number}
- */
-function deleteTask(dataArray, i) {
-    dataArray.splice(i, 1);
-    renderBoards()
-    saveTasks();
+function clearInputValues() {
+    
 }
+
 
 /**
  * Renders the edit form in an overlay modal field
@@ -412,15 +384,6 @@ function renderSubtasks() {
     `
 }
 
-function addInputValue(id, html) {
-    let openableInput = getId(id)
-    openableInput.innerHTML = `${html}`
-}
-
-function cancelInputValue(id) {
-    let openableInput = getId(id)
-    openableInput.innerHTML = `${html}`
-}
 
 function cancelSubtask() {
     let subtask = getId('subtasks');

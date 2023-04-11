@@ -222,6 +222,12 @@ h3 {
   padding-left: 5%;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .close-upper-right {
   position: absolute;
   top: 35px;
@@ -472,7 +478,6 @@ h3 {
 .to-register {
   display: flex;
   align-items: center;
-  position: absolute;
   position: absolute;
   right: 5.35%;
   top: 7.81%;
