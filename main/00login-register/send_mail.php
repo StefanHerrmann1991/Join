@@ -2,8 +2,8 @@
 
 ########### CONFIG ###############
 
-$recipient = 'info@primecar.eu';
-$redirect = 'success.html';
+
+$redirect = 'resetPassword.html';
 
 ########### CONFIG END ###########
 
@@ -39,8 +39,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
     case ("POST"): //Send the email;
         header("Access-Control-Allow-Origin: *");
 
+        $recipient = $_POST['email'];
         $subject = "Contact From " . $_POST['name'];
-        $headers = "From:  noreply@developerakademie.com";
+        $headers = "From: noreply@developerakademie.com";
 
         mail($recipient, $subject, $_POST['message'], $headers);
         header("Location: " . $redirect); 

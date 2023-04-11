@@ -91,7 +91,7 @@ function renderForgotPassword() {
             <h2>I forgot my password</h2>
             <div> Don't worry! We will send you an email with the instructions to reset your password.
             </div>
-            <form onsubmit="createUser(event)">
+            <form onsubmit="forgotPassword(event)">
                 <input type="email" id="email" name="email" required placeholder="Email">
                 <div class="menu-btn color-white">
                     <button type="submit"><nobr>Send me the email</nobr></button>
@@ -127,6 +127,7 @@ function renderResetPassword() {
 </div>
 ` }
 
+/* <form class="contact" action="https://stefan-herrmann.developerakademie.net/send_mail/send_mail.php" method="POST"> */
 
 
 function registerUser() {
@@ -145,12 +146,9 @@ function passwordValidation() {
         if (registerUser.value == registeredUsers[i]['email']) {
             alert('That username already exists please choose another one');
             return;
-        } else if (registerPassword.value.length < 3) {
-            alert('That password is too short, include more than three characters');
-            return;
-        }
+        
     }
-}
+}}
 
 /**
  * Saves tasks in the backend in form of an JSON string */
@@ -169,7 +167,7 @@ function loadRegisterdUsers() {
 
 function usersLogin() {
     event.preventDefault();
-    checkLogin();    
+    checkLogin();
 }
 
 function checkLogin() {
@@ -188,12 +186,43 @@ function checkLogin() {
     alert('Username or Password is not correct!');
 }
 
-function rememberUser() { };
-function forgetPassword() { };
-function resetPassword() { };
-function guestLogin() { };
+async function forgotPassword(event) {
+    event.preventDefault();
+    const email = getId('email').value;
+    const user = registeredUsers.find(user => user.email === email);
+    if (user) {
+        const token = generateRandomToken();
+        user.resetToken = token;
+        try {
+            await sendForgotPasswordEmail(email, token);
+            alert('Password reset link has been sent to your email');
+        } catch (error) {
+            console.error(error);
+            alert('Error sending the email. Please try again later.');
+        }
+    } else {
+        alert('No user found with this email');
+    }
+};
 
+async function sendForgotPasswordEmail(email, token) {
+    const resetUrl = window.location.origin + '/reset-password.html?token=' + token;
+    const message = `Click the following link to reset your password: ${resetUrl}`;
 
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('name', 'Password Reset');
+    formData.append('message', message);
+
+    const response = await fetch('https://stefan-herrmann.developerakademie.net/send_mail/send_mail.php', {
+        method: 'POST',
+        body: formData
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to send email');
+    }
+}
 
 function generateRandomToken() {
     const tokenLength = 20;
@@ -204,3 +233,7 @@ function generateRandomToken() {
     }
     return result;
 }
+function resetPassword() { };
+function guestLogin() { };
+
+
