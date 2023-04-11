@@ -97,6 +97,7 @@ function clearInputsBoard() {
     clearInputValues();
 }
 
+
 /**
  * 
  * @param {*} boardTaskArray 
@@ -206,6 +207,7 @@ function renderAssignedUsers(usersArr) {
         }
         return iconsHTML;
     }
+    else return iconsHTML = `<div>No user assigned</div>`
 }
 
 function renderMobile() {
@@ -329,7 +331,6 @@ function renderEditTask(index) {
                     <div>Select contact to assign</div>
                     <div id="imgArrow"><img src="/assets/img/open.png"></div>
                 </button>
-                <input id="validateAssignment" required class="hidden-input">
                 <div class="user-menu d-none" id="detailsUserMenu">
                     <div class="user-list" id="userList"></div>
                     <button id="inviteUserBtn" type="button" class="invite-user-btn"

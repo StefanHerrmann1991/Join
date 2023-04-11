@@ -312,14 +312,12 @@ function renderUserInitial(event, index) {
     const userIndex = assignedUsers.indexOf(user);
     if (event.target.checked) {
         user.assigned = true;
-        assignedUsers.push(user)
-        validateData('validateAssignment', assignedUsers);
+        assignedUsers.push(user)      
         getId('userInitialContainer').innerHTML += `<div id="userIcon-${[index]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
     }
     if (!event.target.checked) {
         assignedUsers.splice(userIndex, 1)
-        getId(`userIcon-${index}`).remove();
-        validateData('validateAssignment', assignedUsers);
+        getId(`userIcon-${index}`).remove();       
     }
 }
 
