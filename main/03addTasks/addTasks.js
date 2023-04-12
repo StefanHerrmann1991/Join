@@ -251,13 +251,6 @@ async function saveTasks() { //check async: no diff
 }
 
 
-/**
- * Saves tasks in the backend in form of an JSON string */
-async function saveTasks() { //check async: no diff
-    if (event) event.preventDefault();
-    let tasksAsText = JSON.stringify(tasks);
-    await backend.setItem('tasks', tasksAsText);
-}
 
 
 /**

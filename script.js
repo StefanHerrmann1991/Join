@@ -127,6 +127,3 @@ function displayStringsArr(stringsArray) {
     return strings;
 }
 
-function openHelp() {
-    
-}
