@@ -41,7 +41,7 @@ function validateData(id, array) {
  * @returns {Object} - task object
  */
 function processTaskInputs(board) {
-    if (board == undefined) { board = 'board-0' }
+    if (board == undefined) { board = 'board-0' };
     let [title, description, category, date] = getIds('title', 'description', 'category', 'date');
     let urgency = getUrgency();
     let task = {
@@ -65,7 +65,7 @@ function getUrgency() {
 }
 
 function newCategory() {
-    let newCategory = getId('categoryContainer')
+    let newCategory = getId('categoryContainer');
     newCategory.classList.remove('assign-btn-container');
     newCategory.innerHTML = `
     <div class="subtasks-container">
@@ -96,7 +96,7 @@ function cancelNewCategory() {
     <div id="imgArrow"><img src="/assets/img/open.png"></div>
     <input id="validateCategory" required class="hidden-input">
     </button>
-        <div class="user-menu" id="categoryMenu">
+        <div class="user-menu d-none" id="categoryMenu">
             <button id="newCategoryBtn" type="button" class="new-category-btn"
             onclick="newCategory()">New category</button>
             <div class="category-list" id="categoryList"></div>
@@ -114,45 +114,46 @@ function renderColorPicker() {
 }
 
 function chooseCategoryColor(index) {
-    let colorId = getId('chosenColor')
-    chosenColor = colorPicker[index]
-    colorId.innerHTML = `<div style="background-color: ${chosenColor}" class="category-color"></div>`
+    let colorId = getId('chosenColor');
+    chosenColor = colorPicker[index];
+    colorId.innerHTML = `<div style="background-color: ${chosenColor}" class="category-color"></div>`;
 }
 
 function addCategory() {
-    let topic = getId('categoryInput').value
-    let color = chosenColor
-    if (chosenColor == undefined) color = '#E200BE'
+    let topic = getId('categoryInput').value;
+    let color = chosenColor;
+    if (chosenColor == undefined) color = '#E200BE';
     let newCategory = {
         'topic': topic,
         'color': color,
         'index': categories.length
     }
-    categories.push(newCategory)
+    categories.push(newCategory);
     cancelNewCategory();
 }
 
 function renderCategories() {
-    let categoryOption = getId('categoryList')
+    let categoryOption = getId('categoryList');
     for (let i = 0; i < categories.length; i++) {
         const category = categories[i];
         categoryOption.innerHTML += `
-        <button type="button" onclick="saveNewCategory(${i})" class="each-category-container">
+        <button type="button" onclick="saveCategory(${i})" class="each-category-container">
         <div class="category" id="category-${i}">${category.topic}</div>
         <div class="category-color" style="background-color: ${category.color}"></div>
         </button>
         `
-    }
-}
+    };
+};
 
-function saveNewCategory(index) {
+function saveCategory(index) {
+    console.log(categories[index])
     let chosenCategoryOption = getId('categorySelect');
-    let category = categories[index]
+    let category = categories[index];
     chosenCategoryOption.innerHTML = ` 
     <button id="category" class="category" value="${category.index}">${category.topic}</button>
     <div class="category-color" style="background-color: ${category.color}"></div>   
       `
-    validateData('validateCategory', category)
+    validateData('validateCategory', category);
     closeContainer('categoryMenu');
 }
 
@@ -178,8 +179,18 @@ function startPriorityEventListener(selectedValue) {
 }
 
 
-function clearInputValues() {
-
+function clearInputTasks () {
+    let taksIds = getIds('title', 'description', 'category', 'date');
+    clearInputValues(taksIds);
+    const radioEls = document.querySelectorAll('.priority-radio');
+    radioEls.forEach(r => r.parentElement.classList.remove('selected')); 
+    getId('renderedSubtasks').innerHTML = '';  
+    getId('userInitialContainer').innerHTML = '';
+    getId('validateCategory').required = true;
+    closeContainer('categoryMenu');
+    cancelNewCategory();
+    subtasks = [];
+    assignedUsers = [];
 }
 
 
@@ -231,6 +242,14 @@ window.onload = async function () {
     downloadFromServer();
 }
 
+/**
+ * Saves tasks in the backend in form of an JSON string */
+async function saveTasks() { //check async: no diff
+    if (event) event.preventDefault();
+    let categoriesAsText = JSON.stringify(categories);
+    await backend.setItem('categories', categoriesAsText);
+}
+
 
 /**
  * Saves tasks in the backend in form of an JSON string */
@@ -239,7 +258,6 @@ async function saveTasks() { //check async: no diff
     let tasksAsText = JSON.stringify(tasks);
     await backend.setItem('tasks', tasksAsText);
 }
-
 
 
 /**

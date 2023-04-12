@@ -101,7 +101,9 @@ function capitalizeFirst(str) {
  * @param  {...Object} elements - HTML elements
  */
 function clearInputValues(...elements) {
-    elements.forEach(elements[i].value = '')
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].value = '';
+    }
 }
 
 function lowerFirstLetter(str) {
