@@ -11,7 +11,7 @@ async function initBoards() {
     includeHTML();
     await initAddTasks();
     await initBackend();
-    await renderBoards();
+    await renderBoards(tasks);
 }
 
 function renderNewBoardBtn() {
@@ -54,7 +54,7 @@ async function initAddTasks() {
 /**
  * This Function used  for rendering the boards with filters
  */
-function renderBoards() {
+function renderBoards(array) {
     let boardsContent = getId('boards');
     boardsContent.innerHTML = '';
     for (let i = 0; i < boards.length; i++) {
@@ -70,7 +70,7 @@ function renderBoards() {
         <div id="${boardId}" class="board-task-container" ondrop="moveTo('${boardId}')" ondragover="allowDrop(event)"></div>
         </div>
            `
-        renderEachBoard(boardTitle, boardId);
+        renderEachBoard(boardTitle, boardId, array);
     }
 }
 
@@ -93,23 +93,18 @@ function processBoardInputs() {
     return board;
 }
 
-function clearInputsBoard() {
-    clearInputValues();
-}
-
-
 /**
  * 
  * @param {*} boardTaskArray 
  * @param {*} boardId 
  * @param {*} array 
  */
-function renderEachBoard(boardTaskArray, boardId) {
-    boardTaskArray = tasks.filter(t => t['board'] == `${boardId}`);
+function renderEachBoard(boardTaskArray, boardId, array) {
+    boardTaskArray = array.filter(t => t['board'] == `${boardId}`);
     getId(`${boardId}`).innerHTML = '';
     for (let i = 0; i < boardTaskArray.length; i++) {
         const element = boardTaskArray[i];
-        const taskIndex = tasks.indexOf(element);
+        const taskIndex = array.indexOf(element);
         getId(`${boardId}`).innerHTML += boardTaskHTML(element, taskIndex);
     }
 }
@@ -378,6 +373,7 @@ async function changeTask(index, board) {
  * @param {string} val The input string to match against.
  */
 function showResultsTasks(val) {
+    debugger
     const tasksList = autocompleteMatchTask(val);
     if (tasksList.length !== 0) renderBoards(tasksList);
     else renderBoards(tasks)
