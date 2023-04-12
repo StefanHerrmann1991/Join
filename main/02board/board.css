@@ -418,7 +418,15 @@ h3 {
 }
 .boards .board {
   width: 95%;
-  margin-left: 2.5%;
+  display: flex;
+  flex-wrap: wrap;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+.boards .board > * {
+  flex: 1 1 200px;
+  margin: 10px;
+  box-sizing: border-box;
 }
 .boards .board-header {
   display: flex;

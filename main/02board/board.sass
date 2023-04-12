@@ -134,7 +134,14 @@
 
     .board
         width: 95%
-        margin-left: 2.5%
+        display: flex
+        flex-wrap: wrap
+        column-gap: 20px
+
+    .board > *
+        flex: 1 1 200px
+        margin: 10px
+        box-sizing: border-box
 
     .board-header
         display: flex
