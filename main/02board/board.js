@@ -5,6 +5,7 @@ let boards = [
     { boardTitle: 'Done', boardId: 'board-3', boardName: 'doneBoard' }
 ]
 
+let chosenBoard;
 let detailsAreOpen = false;
 
 async function initBoards() {
@@ -13,6 +14,7 @@ async function initBoards() {
     await initBackend();
     await renderBoards(tasks);
 }
+
 
 function renderNewBoardBtn() {
     let subtask = getId('addBoard')
@@ -29,27 +31,13 @@ function renderNewBoardBtn() {
     `
 }
 
-/**
- * Updates an element with given index i in the given array
- * @param {Array} dataArray
- * @param {integer} i - array index
- */
-async function saveEdit(dataArray, i) { // check: async no diff
-    let task = await processTaskInputs();
-    task.board = dataArray[i].board; // keep the right board
-    dataArray[i] = task;
-    saveTasks();
-    hide('overlay');
-    // check if sent from boards page or backlog page and render content
-    if (getId('todoBoard')) renderBoards(tasks)
-}
-
 
 async function initAddTasks() {
     setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
     tasks = JSON.parse(backend.getItem('tasks')) || [];
 }
+
 
 /**
  * This Function used  for rendering the boards with filters
@@ -65,7 +53,7 @@ function renderBoards(array) {
         <div class="board">
         <div class="board-header">
         <h2>${boardTitle}</h2>
-        <button onclick="openContainer('addTaksPopup')"><img src="/assets/img/plusButton.png"</button> 
+        <button value="${boardId}" onclick="openContainer('addTaksPopup'); setBoard(this.value); initTasks()"><img src="/assets/img/plusButton.png"</button> 
         </div>
         <div id="${boardId}" class="board-task-container" ondrop="moveTo('${boardId}')" ondragover="allowDrop(event)"></div>
         </div>
@@ -74,12 +62,33 @@ function renderBoards(array) {
     }
 }
 
+
+function setBoard(boardName) {
+    chosenBoard = boardName
+}
+
+
+function addTaskToBoard(board) {
+    event.preventDefault();
+    task.board = 'board-0'; // default-board on task creation
+    const task = processTaskInputs();
+    task.id = tasks.length + 1; // set id when creating the task
+    tasks.push(task);
+    saveTasks();
+    openContainer('successfulSubmit');
+    setTimeout(function () {
+        closeContainer('successfulSubmit');
+        window.location.href = '/main/02board/board.html';
+    }, 2500);
+}
+
 function addNewBoard() {
     let board = processBoardInputs();
     boards.push(board);
     saveBoards();
     renderBoards(tasks);
 }
+
 
 function processBoardInputs() {
     let boardInput = getId('newBoardInput').value
@@ -92,6 +101,7 @@ function processBoardInputs() {
     };
     return board;
 }
+
 
 /**
  * 
@@ -109,11 +119,12 @@ function renderEachBoard(boardTaskArray, boardId, array) {
     }
 }
 
-async function saveBoards() { //check async: no diff
+async function saveBoards() { 
     if (event) event.preventDefault();
     let boardsAsText = JSON.stringify(boards);
     await backend.setItem('boards', boardsAsText);
 }
+
 
 /**
  *  This function loads and converts boards from text-format to a JSON-array. 
@@ -125,6 +136,7 @@ async function loadBoards() {
     if (boardsAsText) boards = JSON.parse(boardsAsText);
 }
 
+
 /**
  * This function saves the current id of the dragged task 
  */
@@ -132,12 +144,14 @@ function startDragging(id) { // i only for testing purposes
     currentDraggedElement = id;
 }
 
+
 /**
  * This function makes the div container droppable
  */
 function allowDrop(ev) {
     ev.preventDefault();
 }
+
 
 /**
  * This function gives the task the new category. The category depends on the dropped board 
@@ -147,6 +161,7 @@ function moveTo(board) {
     saveTasks();
     renderBoards(tasks)
 }
+
 
 /**
  * This function Moves a given task to the passed target-board
@@ -357,13 +372,16 @@ function renderEditTask(index) {
     renderUserList();
     compareDate();
 }
+//TODO
 
 async function changeTask(index, board) {
+    debugger
     event.preventDefault();
+    chosenBoard = board
     let task = processTaskInputs(board);
     tasks[index] = task;
     saveTasks();
-    renderBoards();
+    renderBoards(tasks);
     closeContainer('editTaskDialog');
 }
 

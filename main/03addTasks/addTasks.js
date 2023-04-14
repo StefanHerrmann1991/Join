@@ -15,9 +15,9 @@ async function initTasks() {
  * It also generates a certain ID for new tasks and sends them to the backlog board.
  */
 function addToTasks(board) {
+    debugger
     event.preventDefault();
-    if(board == undefined) task.board = 'board-0'; // default-board on task creation
-    const task = processTaskInputs();
+    const task = processTaskInputs(board);
     task.id = tasks.length + 1; // set id when creating the task
     tasks.push(task);
     saveTasks();
@@ -26,6 +26,8 @@ function addToTasks(board) {
         closeContainer('successfulSubmit');
         window.location.href = '/main/02board/board.html';
     }, 2500);
+    if (typeof myFunction === 'function') renderBoards(tasks);
+    console.log(task)
 }
 
 
@@ -41,7 +43,8 @@ function validateData(id, array) {
  * @returns {Object} - task object
  */
 function processTaskInputs(board) {
-    if (board == undefined) { board = 'board-0' };
+    if (board == undefined)  board = 'board-0' ;
+    else board = chosenBoard
     let [title, description, category, date] = getIds('title', 'description', 'category', 'date');
     let urgency = getUrgency();
     let task = {
@@ -129,6 +132,7 @@ function addCategory() {
         'index': categories.length
     }
     categories.push(newCategory);
+    saveCategories();
     cancelNewCategory();
 }
 
@@ -166,7 +170,6 @@ function startPriorityEventListener(selectedValue) {
             parentLabel.classList.add('selected');
             radioEl.checked = true; // Set the radio button as checked
         }
-
         radioEl.addEventListener('change', () => {
             // Remove selected class from all parent labels
             radioEls.forEach(r => r.parentElement.classList.remove('selected'));
@@ -194,46 +197,11 @@ function clearInputTasks () {
 }
 
 
-/**
- * Renders the edit form in an overlay modal field
- * @param {integer} i - index of an element of the tasks array
- */
-function renderEditForm(i) {
-    let overlay = getId('overlay');
-    show('overlay');
-    overlay.innerHTML = editFormHTML(i);
-}
-
-/**
- * Updates an element with given index i in the given array
- * @param {Array} dataArray
- * @param {integer} i - array index
- */
-async function saveEdit(dataArray, i) { // check: async no diff
-    let task = await processTaskInputs();
-    task.board = dataArray[i].board; // keep the right board
-    dataArray[i] = task;
-    saveTasks();
-    hide('overlay');
-    // check if sent from boards page or backlog page and render content
-    if (getId('todoBoard')) renderBoards()
-    else renderLogs();
-}
 
 /** The function disables selection of a date before the current day */
 function compareDate() {
     let today = new Date().toISOString().split('T')[0];
     document.getElementById('date').setAttribute('min', today);
-}
-
-
-/**
- * Renders HTML option fields from the users array into addToTask.html form select-field
- */
-function renderForm() {
-    let userSelect = getId('assignUser');
-    userSelect.innerHTML = '';
-    userSelect.innerHTML = renderUserOptionFields();
 }
 
 
@@ -246,11 +214,26 @@ window.onload = async function () {
  * Saves tasks in the backend in form of an JSON string */
 async function saveTasks() { //check async: no diff
     if (event) event.preventDefault();
+    let tasksAsText = JSON.stringify(tasks);
+    await backend.setItem('tasks', tasksAsText);
+}
+/**
+ * Saves tasks in the backend in form of an JSON string */
+async function saveCategories() { //check async: no diff
+    if (event) event.preventDefault();
     let categoriesAsText = JSON.stringify(categories);
     await backend.setItem('categories', categoriesAsText);
 }
 
-
+/**
+ *  This function loads and converts the tasks from text-format to a JSON-array. 
+ *  The preventDefault() function is necessary to prevent the page from reloading when adding a new task.
+ */
+function loadCategories() {
+    if (event) event.preventDefault();
+    let categoriesAsText = backend.getItem('categories');
+    if (categoriesAsText) categories = JSON.parse(categoriesAsText);
+}
 
 
 /**
