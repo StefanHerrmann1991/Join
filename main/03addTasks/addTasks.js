@@ -14,11 +14,11 @@ async function initTasks() {
  * This function is meant to enable the add of tasks to a json array.
  * It also generates a certain ID for new tasks and sends them to the backlog board.
  */
-function addToTasks() {
+function addToTasks(board) {
     event.preventDefault();
+    if(board == undefined) task.board = 'board-0'; // default-board on task creation
     const task = processTaskInputs();
     task.id = tasks.length + 1; // set id when creating the task
-    task.board = 'board-0'; // default-board on task creation
     tasks.push(task);
     saveTasks();
     openContainer('successfulSubmit');

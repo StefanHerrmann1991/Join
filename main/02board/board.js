@@ -65,7 +65,7 @@ function renderBoards(array) {
         <div class="board">
         <div class="board-header">
         <h2>${boardTitle}</h2>
-        <button onclick="openContainer('addTaksPopup'); initTasks()"><img src="/assets/img/plusButton.png"</button> 
+        <button onclick="openContainer('addTaksPopup')"><img src="/assets/img/plusButton.png"</button> 
         </div>
         <div id="${boardId}" class="board-task-container" ondrop="moveTo('${boardId}')" ondragover="allowDrop(event)"></div>
         </div>
@@ -373,8 +373,8 @@ async function changeTask(index, board) {
  * @param {string} val The input string to match against.
  */
 function showResultsTasks(val) {
-    debugger
-    const tasksList = autocompleteMatchTask(val);
+    
+    const tasksList = autocompleteMatchTask(val.toLowerCase());
     if (tasksList.length !== 0) renderBoards(tasksList);
     else renderBoards(tasks)
 }
@@ -386,7 +386,7 @@ function showResultsTasks(val) {
  */
 function autocompleteMatchTask(input) {
     if (input == '') return [];
-    let reg = new RegExp(input);
+    let reg = new RegExp(input, 'i');
     return tasks.filter(function (task) {
         if (task.title.match(reg) || task.description.match(reg) || task.category.topic.match(reg)) return task;
     });

@@ -228,6 +228,15 @@ h3 {
   align-items: center;
 }
 
+.width-100 {
+  width: 100%;
+}
+
+.margin-auto {
+  width: 90%;
+  margin: auto;
+}
+
 .close-upper-right {
   position: absolute;
   top: 35px;
