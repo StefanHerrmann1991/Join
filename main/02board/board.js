@@ -12,6 +12,7 @@ async function initBoards() {
     includeHTML();
     await initAddTasks();
     await initBackend();
+    await initTasks()
     await renderBoards(tasks);
 }
 
@@ -53,7 +54,7 @@ function renderBoards(array) {
         <div class="board">
         <div class="board-header">
         <h2>${boardTitle}</h2>
-        <button value="${boardId}" onclick="openContainer('addTaksPopup'); setBoard(this.value); initTasks()"><img src="/assets/img/plusButton.png"</button> 
+        <button value="${boardId}" onclick="openContainer('addTaksPopup'); setBoard(this.value)"><img src="/assets/img/plusButton.png"</button> 
         </div>
         <div id="${boardId}" class="board-task-container" ondrop="moveTo('${boardId}')" ondragover="allowDrop(event)"></div>
         </div>
@@ -67,20 +68,6 @@ function setBoard(boardName) {
     chosenBoard = boardName
 }
 
-
-function addTaskToBoard(board) {
-    event.preventDefault();
-    task.board = 'board-0'; // default-board on task creation
-    const task = processTaskInputs();
-    task.id = tasks.length + 1; // set id when creating the task
-    tasks.push(task);
-    saveTasks();
-    openContainer('successfulSubmit');
-    setTimeout(function () {
-        closeContainer('successfulSubmit');
-        window.location.href = '/main/02board/board.html';
-    }, 2500);
-}
 
 function addNewBoard() {
     let board = processBoardInputs();
