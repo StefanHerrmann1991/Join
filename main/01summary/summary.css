@@ -228,6 +228,20 @@ h3 {
   align-items: center;
 }
 
+.width-100 {
+  width: 100%;
+}
+
+.profile-icon {
+  border-radius: 50%;
+  border: solid 1px #A;
+}
+
+.margin-auto {
+  width: 90%;
+  margin: auto;
+}
+
 .close-upper-right {
   position: absolute;
   top: 35px;
@@ -257,6 +271,11 @@ h3 {
   height: 22;
   width: 26;
   margin-left: 30px;
+}
+
+.greeting {
+  font-size: 47px;
+  color: #2A3647;
 }
 
 .upper-summary {
@@ -385,6 +404,8 @@ h3 {
 
 .summary-container {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .deadline {

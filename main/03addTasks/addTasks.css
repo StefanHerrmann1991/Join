@@ -229,6 +229,20 @@ h3 {
   align-items: center;
 }
 
+.width-100 {
+  width: 100%;
+}
+
+.profile-icon {
+  border-radius: 50%;
+  border: solid 1px #A;
+}
+
+.margin-auto {
+  width: 90%;
+  margin: auto;
+}
+
 .close-upper-right {
   position: absolute;
   top: 35px;
@@ -277,14 +291,6 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
-}
-
-.main-container .add-task-left {
-  padding-right: 5%;
-  border-right: 1px solid #D1D1D1;
-}
-.main-container .add-task-right {
-  padding-left: 5%;
 }
 
 .category-input-color {
@@ -754,10 +760,19 @@ input.subtask-checkbox[type=checkbox]:checked {
 
 .task-fields {
   display: flex;
+  justify-content: space-between;
+}
+.task-fields .border {
+  border: 1px solid #D1D1D1;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .title-form {
-  width: 90%;
+  width: 80%;
   height: 100%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }/*# sourceMappingURL=addTasks.css.map */

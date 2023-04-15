@@ -162,7 +162,7 @@ function renderContacts() {
       <div class="icon-initial">${element.initial}</div>
       </div>
       <div class="contact-name-email">
-      <div class="contact-name"><nobr>${element.name}</nobr></div>
+      <div class="contact-name">${element.name}</div>
       <div class="contact-email">${element.email}</div>
       </div>
       </div>

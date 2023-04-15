@@ -127,3 +127,8 @@ function displayStringsArr(stringsArray) {
     return strings;
 }
 
+function showLogout()
+{
+    openContainer('logout');
+    console.log('working')
+}

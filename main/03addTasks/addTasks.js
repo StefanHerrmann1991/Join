@@ -1,3 +1,5 @@
+const popup = document?.querySelector('.popup');
+
 
 async function initTasks() { 
     await includeHTML();
@@ -88,7 +90,6 @@ function newCategory() {
     `
     renderColorPicker();
 }
-
 
 function cancelNewCategory() {
     let newCategory = getId('categoryContainer')

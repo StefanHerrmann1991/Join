@@ -232,6 +232,11 @@ h3 {
   width: 100%;
 }
 
+.profile-icon {
+  border-radius: 50%;
+  border: solid 1px #A;
+}
+
 .margin-auto {
   width: 90%;
   margin: auto;

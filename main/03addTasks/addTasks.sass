@@ -15,13 +15,6 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active
     -webkit-box-shadow: 0 0 0 30px white inset !important
 
-.main-container
-    .add-task-left
-        padding-right: 5%
-        border-right: 1px solid #D1D1D1
-    .add-task-right
-        padding-left: 5%
-
 .category-input-color
     display: flex
 
@@ -418,10 +411,16 @@ input.subtask-checkbox[type="checkbox"]:checked
 
 .task-fields
     display: flex
+    justify-content: space-between
+    .border
+        border: 1px solid #D1D1D1
+        margin-left: 5%
+        margin-right: 5%
 
 .title-form
-    width: 90%
+    width: 80%
     height: 100%
     margin: auto
-
-
+    display: flex
+    flex-direction: column
+    justify-content: space-between
