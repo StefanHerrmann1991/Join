@@ -3,7 +3,7 @@
     <script src="../../includeHTML.js"></script>
     <script src="../../mini_backend.js" defer></script>
     <script src="../../script.js"></script>
-    <script src="contacts.js"></script>    
+    <script src="contacts.js"></script>
     <script src="../03addTasks/addTasks.js"></script>
     <!-- css data -->
     <link rel="stylesheet" href="contacts.css">
@@ -17,6 +17,7 @@
 </head>
 
 <body onload="initContacts()">
+
     <div w3-include-html="../../index.html"></div>
     <div class="main-contact-container">
         <div class="contact-flex">
@@ -36,7 +37,7 @@
     <button class="add-contact-btn" onclick="openContainer('addContactDialog')">New Contact<img
             src="/assets/img/addContact.png"></button>
     <div class="add-contact-dialog d-none" id="addContactDialog">
-       
+
         <div class="add-contact" id="addContact">
             <div class="add-contact-menu">
                 <div class="add-contact-description">
@@ -70,4 +71,5 @@
     </div>
     <div class="edit-contact-dialog d-none" id="editContactDialog"></div>
     <div class="add-task-popup d-none" id="addTaksPopup" w3-include-html="/main/03addTasks/taskPopup.html"></div>
+
 </body>

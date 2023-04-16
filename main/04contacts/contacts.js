@@ -4,6 +4,7 @@ let sortByLastName = false;
 let contacts
 let ContactBookAsText = []
 let contactBook 
+let mobile = false;
 
 function newContact(name, email, phone, initial, color, firstNameInitial, id) {
   let contact = {
