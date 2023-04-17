@@ -8,6 +8,10 @@
   font-family: "Inter", sans-serif;
 }
 
+.main {
+  position: relative;
+}
+
 body {
   background-color: #F6F7F8;
 }
@@ -234,7 +238,7 @@ h3 {
 
 .profile-icon {
   border-radius: 50%;
-  border: solid 1px #A;
+  border: solid 1px #2A3647;
 }
 
 .margin-auto {
@@ -291,12 +295,9 @@ h3 {
   #logo {
     display: none;
   }
-  #navbar {
-    height: 15%;
+  #navbar, #header {
     width: 100%;
-  }
-  #header {
-    width: 100%;
+    height: min(74px, 15%);
   }
   .nav-item {
     display: flex;
@@ -309,7 +310,7 @@ h3 {
     font-weight: 400 !important;
     font-size: 16px !important;
     color: #CDCDCD;
-    margin-top: 20%;
+    margin-top: 14px;
   }
   .nav-item img {
     margin: 0px;
@@ -330,9 +331,6 @@ h3 {
   }
   .mobile-logo {
     display: block;
-  }
-  .kanban-description, #helpBtn {
-    display: none;
   }
 }
 .greeting {

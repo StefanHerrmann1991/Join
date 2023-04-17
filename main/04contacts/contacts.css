@@ -238,7 +238,7 @@ h3 {
 
 .profile-icon {
   border-radius: 50%;
-  border: solid 1px #A;
+  border: solid 1px #2A3647;
 }
 
 .margin-auto {
@@ -296,8 +296,8 @@ h3 {
     display: none;
   }
   #navbar, #header {
-    height: 10%;
     width: 100%;
+    height: min(74px, 15%);
   }
   .nav-item {
     display: flex;
@@ -335,12 +335,12 @@ h3 {
 }
 .main-contact-container {
   position: absolute;
-  top: 9%;
+  top: 90px;
+  height: calc(100% - 90px);
   left: 20%;
   display: flex;
   justify-content: flex-start;
   width: 80%;
-  height: 91%;
   overflow: hidden;
 }
 
@@ -689,8 +689,7 @@ h3 {
   }
   .main-contact-container {
     left: 0%;
-    height: 80%;
-    top: 10%;
+    height: calc(100% - 148px);
   }
   .contact-flex {
     position: absolute;
