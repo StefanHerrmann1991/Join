@@ -4,7 +4,7 @@ let sortByLastName = false;
 let contacts
 let ContactBookAsText = []
 let contactBook
-let mobile = false;
+let isMobileDevice = false;
 
 function newContact(name, email, phone, initial, color, firstNameInitial, id) {
   let contact = {
@@ -175,6 +175,7 @@ function renderContacts() {
 
 function showContact(index) {
   let actualContact = contactBook.contacts[index];
+  openContainer('editContact')
   document.getElementById('editContact').innerHTML = `
   <div class="edit-contact-headline">
     <h2>Contacts</h2>
@@ -192,7 +193,7 @@ function showContact(index) {
   <div class="edit-information">
     <div class="contact-name">Contact Information</div>
     <button onclick="editContact(${index})"><img src="/assets/img/edit.png">Edit Contact</button>
-    <button onclick="deleteContact(${index})">Delete</button>
+    <button class="delete-btn" onclick="deleteContact(${index})"><img  src="/assets/img/deleteClose.png">Delete</button>
   </div>
   <h4>Email</h4>
   <div>${actualContact.email}</div>
@@ -210,7 +211,7 @@ function deleteContact(index) {
 function editContact(index) {
   let actualContact = contactBook.contacts[index];
   renderEditContact(index);
-  openContactDialog('editContactDialog');
+  openContainer('editContactDialog');
   document.getElementById('editName').value = actualContact.name;
   document.getElementById('editEmail').value = actualContact.email;
   document.getElementById('editPhone').value = actualContact.phone;
