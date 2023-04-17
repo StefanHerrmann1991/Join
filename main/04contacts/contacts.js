@@ -3,7 +3,7 @@ let contactBookId;
 let sortByLastName = false;
 let contacts
 let ContactBookAsText = []
-let contactBook 
+let contactBook
 let mobile = false;
 
 function newContact(name, email, phone, initial, color, firstNameInitial, id) {
@@ -14,9 +14,9 @@ function newContact(name, email, phone, initial, color, firstNameInitial, id) {
     'initial': initial,
     'color': color,
     'firstNameInitial': firstNameInitial,
-    'assigned': false,  
-    'id': id     
-     }
+    'assigned': false,
+    'id': id
+  }
   return contact;
 }
 
@@ -176,22 +176,29 @@ function renderContacts() {
 function showContact(index) {
   let actualContact = contactBook.contacts[index];
   document.getElementById('editContact').innerHTML = `
-  <div class="edit-name-initial-con">
-  <div class="edit-initial" style="background-color:${actualContact.color}">${actualContact.initial}</div>
-  <div>
-  <div class="edit-name">${actualContact.name}</div>
-  <button class="add-task-btn" onclick="openContainer('addTaksPopup'); initTasks()"><img src="/assets/img/addTaskBlue.png">Add Tasks</button>
+  <div class="edit-contact-headline">
+    <h2>Contacts</h2>
+    <div class="title-additive">Better with a Team</div>
   </div>
+  <div class="edit-contact-popup">
+  <div class="edit-name-initial-con">
+    <div class="edit-initial" style="background-color:${actualContact.color}">${actualContact.initial}</div>
+    <div>
+        <div class="edit-name">${actualContact.name}</div>
+        <button class="add-task-btn" onclick="openContainer('addTaksPopup'); initTasks()"><img
+                src="/assets/img/addTaskBlue.png">Add Tasks</button>
+    </div>
   </div>
   <div class="edit-information">
-  <div class="contact-name">Contact Information</div>
-  <button onclick="editContact(${index})"><img src="/assets/img/edit.png">Edit Contact</button>
-  <button onclick="deleteContact(${index})">Delete</button>
+    <div class="contact-name">Contact Information</div>
+    <button onclick="editContact(${index})"><img src="/assets/img/edit.png">Edit Contact</button>
+    <button onclick="deleteContact(${index})">Delete</button>
   </div>
   <h4>Email</h4>
   <div>${actualContact.email}</div>
   <h4>Phone</h4>
-  <div>${actualContact.phone}</div>  
+  <div>${actualContact.phone}</div>
+  </div>
   `
 }
 
@@ -221,8 +228,8 @@ function saveEditedContact(event, index) {
 
 function renderEditContact(actualContact) {
   document.getElementById('editContactDialog').innerHTML =
-`  
-    <div class="add-contact" id="editContact">
+    `  
+    <div class="add-contact" >
         <div class="add-contact-menu">
             <div class="add-contact-description">
                 <img src="/assets/img/logo.png">

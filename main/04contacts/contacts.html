@@ -28,13 +28,13 @@
             <div id="contactBookId" class="contact-book"></div>
         </div>
         <div class="edit-contact-container">
-            <div class="edit-contact-menu">
+            <div class="edit-contact-menu" id="editContact">
 
                 <div class="edit-contact-headline">
                     <h2>Contacts</h2>
                     <div class="title-additive">Better with a Team</div>
                 </div>
-                <div class="edit-contact-popup" id="editContact"></div>
+                <div class="edit-contact-popup"></div>
             </div>
         </div>
     </div>
@@ -52,7 +52,7 @@
                         <img src="/assets/img/cancel.png">
                     </button>
                     <img src="/assets/img/addContactBig.png">
-                    <form onsubmit="createContact(event);  saveBackendDataOf(contactBook); renderContacts()"
+                    <form onsubmit="createContact(event); saveBackendDataOf(contactBook); renderContacts()"
                         id="contactFormfield">
                         <input type="text" id="name" name="name" required placeholder="Name">
                         <input type="email" id="email" name="email" required placeholder="Email">
@@ -75,3 +75,4 @@
     <div class="add-task-popup d-none" id="addTaksPopup" w3-include-html="/main/03addTasks/taskPopup.html"></div>
 
 </body>
+
