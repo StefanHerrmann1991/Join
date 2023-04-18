@@ -1,10 +1,6 @@
 
 let registeredUsers = []
 
-/* document.querySelector('form')?.addEventListener('submit', function (event) {
-    event.preventDefault();
-}); */
-
 
 async function initAuthentification() {
     await initLogin();
@@ -12,11 +8,11 @@ async function initAuthentification() {
     await renderAuth('login');
 }
 
+
 async function initLogin() {
     await setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
 }
-
 
 
 function renderAuth(status) {
@@ -73,7 +69,7 @@ function renderLogin() {
             </div>
             <div class="menu-btn">
                 <button type="submit">Log in</button>
-                <button><nobr>Guest Log in</nobr></button>
+                <button type="button" onclick="loginAsGuest()"><nobr>Guest Log in</nobr></button>
             </div>            
         </form>
     </div>
@@ -128,7 +124,9 @@ function renderResetPassword() {
 ` }
 
 
-
+function loginAsGuest() {
+    window.open('/../../main/01summary/summary.html');
+}
 
 function registerUser() {
     event.preventDefault();
@@ -145,9 +143,10 @@ function passwordValidation() {
     for (let i = 0; i < registeredUsers.length; i++) {
         if (registerUser.value == registeredUsers[i]['email']) {
             alert('That username already exists please choose another one');
-            return;        
+            return;
+        }
     }
-}}
+}
 
 /**
  * Saves tasks in the backend in form of an JSON string */
@@ -231,6 +230,6 @@ function generateRandomToken() {
     return result;
 }
 function resetPassword() { };
-function guestLogin() { };
+
 
 

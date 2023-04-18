@@ -86,6 +86,13 @@
         justify-content: space-between
         align-items: center
 
+.details-assigned-users
+    max-height: 300px
+    overflow-y: auto
+    .user-details
+        display: flex
+        align-items: center
+
 .board-task-container
     margin-top: 15%
     position: relative
@@ -95,6 +102,7 @@
     align-items: center
     height: 400px
     overflow-y: scroll
+    overflow-x: hidden
     .board
         padding-top: 23px
 
@@ -178,6 +186,7 @@
     padding: 4px 25px
     border-radius: 8px
     color: white
+    margin-top: 50px
 
 .edit-task-container
     position: relative
@@ -202,7 +211,8 @@
         width: 90%
         height: 90%
         margin: auto
-        margin-top: 10%
+
+  
 
     .edit-task-form
         @include flex-center
@@ -225,9 +235,18 @@
         background-color: #FFA800
     .urgent
         background-color: #FF3D00
+.assigned-to-container
+    padding-top: 12.5px
+    h2
+        margin-bottom: 25px
 
-.row
+.details-container
     display: flex
+    align-items: center
+    padding-top: 12.5px
+    padding-bottom: 12.5px
+    h2
+        margin-right: 25px
 
 .subtask-progress
     display: flex

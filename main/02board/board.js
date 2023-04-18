@@ -200,8 +200,15 @@ function renderAssignedUsers(usersArr) {
                 iconsHTML += `<span class="user-icon" alt="user icon" style="background-color: #2A3647">${usersArr.length - 2}+</span>`
                 break;
             }
-            iconsHTML += `<span id="userIconBoard-${index}" class="user-icon" alt="user icon" style="background-color: ${user.color}">${user.initial}</span>`;
-        }
+            if(!detailsAreOpen)  iconsHTML += `
+            <span class="user-icon" alt="user icon" style="background-color: ${user.color}">${user.initial}</span>`;
+            if (detailsAreOpen) iconsHTML += `
+            <div class="user-details">
+            <span class="user-icon" alt="user icon" style="background-color: ${user.color}">${user.initial}</span>
+            <div>${user.name}</div>
+            </div>
+            `;
+            }
         return iconsHTML;
     }
     else return iconsHTML = `<div>No user assigned</div>`
@@ -258,6 +265,7 @@ function openTask(index) {
 }
 
 function renderDetailedTask(index) {
+    detailsAreOpen= true;
     let task = tasks[index]
     let editTask = getId('editTaskDialog')
     openContainer('editTaskDialog')
@@ -268,17 +276,17 @@ function renderDetailedTask(index) {
                     <div class="category-icon" style="background-color: ${task.category.color}">${task.category.topic}</div>
                     <button class="close-upper-right" onclick="closeContainer('editTaskDialog')"><img
                             src="/assets/img/cancel.png"></button>
-                    <h2>${task.title}</h2>
-                    <div>${task.description}</div>
-                    <div class="row">
+                    <h1>${task.title}</h1>
+                    <div class="details-container">${task.description}</div>
+                    <div class="details-container">
                         <h2>Due date: </h2>
                         <div>${task.date}</div>
                     </div>
-                    <div class="details-priority row">
+                    <div class="details-container">
                         <h2>Priority: </h2>
                         <div class="${task.urgency} details-priority-btn ">${task.urgency}</div>
                     </div>
-                    <div>
+                    <div class="assigned-to-container">
                         <h2>Assigned to:</h2>
                         <div class="details-assigned-users">${renderAssignedUsers(task.assignedTo)}</div>
                     </div>
@@ -359,10 +367,8 @@ function renderEditTask(index) {
     renderUserList();
     compareDate();
 }
-//TODO
 
-async function changeTask(index, board) {
-    debugger
+async function changeTask(index, board) {  
     event.preventDefault();
     chosenBoard = board
     let task = processTaskInputs(board);
