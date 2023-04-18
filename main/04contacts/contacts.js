@@ -175,7 +175,8 @@ function renderContacts() {
 
 function showContact(index) {
   let actualContact = contactBook.contacts[index];
-  openContainer('editContact')
+  selectUser(index);
+  openContainer('editContact');
   document.getElementById('editContact').innerHTML = `
   <div class="edit-contact-menu" >
   <div class="edit-contact-headline">
@@ -205,6 +206,12 @@ function showContact(index) {
   </div>
   </div>
   `
+}
+
+
+function selectUser(index) {
+  document.querySelectorAll('.contact-container').forEach(contact => contact.classList.remove('selected-user'));
+  getId('contact-' + index).classList.add('selected-user');
 }
 
 function deleteContact(index) {
