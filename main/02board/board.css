@@ -577,7 +577,6 @@ h3 {
   padding: 4px 25px;
   border-radius: 8px;
   color: white;
-  margin-top: 50px;
 }
 
 .edit-task-container {
@@ -590,23 +589,43 @@ h3 {
 .edit-task-container h2 {
   margin: 0px;
 }
-.edit-task-container .edit-task-btn {
+.edit-task-container .change-tasks {
   position: absolute;
-  width: 57px;
-  height: 57px;
   bottom: 5%;
   right: 5%;
-  background: #2A3647;
-  border-radius: 10px;
+  display: flex;
+  justify-content: center;
 }
-.edit-task-container .edit-task-btn img {
-  width: 22px;
+.edit-task-container .change-tasks .delete-task-btn {
+  width: 57px;
+  height: 57px;
+  border: 1px solid #2A3647;
+  border-radius: 10px 0px 0px 10px;
+}
+.edit-task-container .change-tasks .delete-task-btn img {
+  width: 22.3px;
+  height: 24px;
+}
+.edit-task-container .change-tasks .edit-task-btn {
+  width: 57px;
+  height: 57px;
+  background: #2A3647;
+  background: #2A3647;
+  border-radius: 0px 10px 10px 0px;
+}
+.edit-task-container .change-tasks .edit-task-btn img {
+  width: 17.44px;
   height: 30px;
 }
 .edit-task-container .task-details {
   width: 90%;
-  height: 90%;
+  height: calc(90% - 50px);
   margin: auto;
+  padding-top: 50px;
+}
+.edit-task-container .task-details h1 {
+  padding-bottom: 12.5px;
+  padding-top: 25px;
 }
 .edit-task-container .edit-task-form {
   display: flex;

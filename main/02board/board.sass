@@ -186,7 +186,6 @@
     padding: 4px 25px
     border-radius: 8px
     color: white
-    margin-top: 50px
 
 .edit-task-container
     position: relative
@@ -196,23 +195,37 @@
     border-radius: 30px
     h2
         margin: 0px
-    .edit-task-btn
+    .change-tasks
         position: absolute
-        width: 57px
-        height: 57px
         bottom: 5%
         right: 5%
-        background: #2A3647
-        border-radius: 10px
-        img
-            width: 22px
-            height: 30px
+        display: flex
+        justify-content: center
+        .delete-task-btn
+            width: 57px
+            height: 57px
+            border: 1px solid #2A3647
+            border-radius: 10px 0px 0px 10px
+            img
+                width: 22.3px
+                height: 24px
+        .edit-task-btn
+            width: 57px
+            height: 57px
+            background: #2A3647
+            background: #2A3647
+            border-radius: 0px 10px 10px 0px
+            img
+                width: 17.44px
+                height: 30px
     .task-details
         width: 90%
-        height: 90%
+        height: calc( 90% - 50px )
         margin: auto
-
-  
+        padding-top: 50px
+        h1
+            padding-bottom: 12.5px
+            padding-top: 25px
 
     .edit-task-form
         @include flex-center

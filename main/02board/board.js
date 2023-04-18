@@ -290,7 +290,10 @@ function renderDetailedTask(index) {
                         <h2>Assigned to:</h2>
                         <div class="details-assigned-users">${renderAssignedUsers(task.assignedTo)}</div>
                     </div>
+                    <div class="change-tasks">
+                    <button class="delete-task-btn" onclick="deleteTask(${index})"><img src="/assets/img/deleteDark.png"></button>
                     <button class="edit-task-btn" onclick="renderEditTask(${index})"><img src="/assets/img/editBtnWhite.png"></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -374,9 +377,15 @@ async function changeTask(index, board) {
     let task = processTaskInputs(board);
     tasks[index] = task;
     saveTasks();
+    closeTaskDialog();
     renderBoards(tasks);
+}
+
+function closeTaskDialog() {
+    detailsAreOpen = false;
     closeContainer('editTaskDialog');
 }
+
 
 
 /**
@@ -405,11 +414,11 @@ function autocompleteMatchTask(input) {
 
 /**
  * Deletes an element from an array, updates the data on the server,  and renders boards.
- * @param {dataArray} @type {Array}
  * @param {i} @type {Number}
  */
-function deleteTask(dataArray, i) {
-    dataArray.splice(i, 1);
-    renderBoards()
+function deleteTask(i) {    
+    tasks.splice(i, 1);
     saveTasks();
+    closeTaskDialog();
+    renderBoards(tasks)
 }
