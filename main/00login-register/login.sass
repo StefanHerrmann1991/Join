@@ -159,7 +159,7 @@
         font-size: 21px
         line-height: 120%
         &:nth-child(1)
-            background-color: $main-theme
+            background-color: $main
             color: white
             margin-left: 10%
             border: none
@@ -184,7 +184,7 @@
     right: 5.35%
     top: 7.81%
     button
-        background-color: $main-theme
+        background-color: $main
         @include flex-center
         padding: 4px 16px
         width: 91px
@@ -214,13 +214,13 @@
     z-index: 100
 
 @media (max-width: 767px)
-    h2
-        margin-top: 40px
-        margin-bottom: 40px
-        font-size: 47px !important
+    .sign-up
+        h2
+            margin-top: 40px
+            margin-bottom: 40px
+            font-size: 47px !important
 
 @media (max-width: 520px)
-
     .logo
         height: 78px !important
         width: 64px !important
@@ -249,9 +249,11 @@
         nobr
             margin: 0px
 
+    .sign-up
+        width: 90%
+
     .to-register
         top: 90%
         left: 50%
         transform: translate(-50%, -50%)
 
-@media (max-height: 900)

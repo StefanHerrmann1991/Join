@@ -843,7 +843,13 @@ input.subtask-checkbox[type=checkbox]:checked {
   margin-right: 5%;
 }
 
-.title-form {
+.task-main .title-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-container .title-form {
   width: 80%;
   height: 100%;
   margin: auto;
