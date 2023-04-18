@@ -201,31 +201,6 @@ h3 {
   align-items: center;
 }
 
-.task-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 85%;
-  height: 85%;
-  overflow: hidden;
-  position: relative;
-  width: 1116px;
-  height: 914px;
-  background: #FFFFFF;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 30px;
-}
-.task-main .add-task-formfield {
-  display: flex;
-}
-.task-main .add-task-left {
-  padding-right: 5%;
-  border-right: 1px solid #D1D1D1;
-}
-.task-main .add-task-right {
-  padding-left: 5%;
-}
-
 .center {
   display: flex;
   justify-content: center;

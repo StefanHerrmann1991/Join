@@ -202,31 +202,6 @@ h3 {
   align-items: center;
 }
 
-.task-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 85%;
-  height: 85%;
-  overflow: hidden;
-  position: relative;
-  width: 1116px;
-  height: 914px;
-  background: #FFFFFF;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 30px;
-}
-.task-main .add-task-formfield {
-  display: flex;
-}
-.task-main .add-task-left {
-  padding-right: 5%;
-  border-right: 1px solid #D1D1D1;
-}
-.task-main .add-task-right {
-  padding-left: 5%;
-}
-
 .center {
   display: flex;
   justify-content: center;
@@ -372,13 +347,16 @@ input:-webkit-autofill:active {
   display: flex;
 }
 
+.add-task-right {
+  position: relative;
+}
+
 .btn-container {
-  width: 100%;
+  position: absolute;
   display: flex;
   align-items: center;
-  height: 180px;
-  justify-content: flex-end;
-  height: 180px;
+  bottom: 20%;
+  right: 5%;
 }
 .btn-container button {
   border-radius: 10px;
@@ -843,17 +821,29 @@ input.subtask-checkbox[type=checkbox]:checked {
   margin-right: 5%;
 }
 
-.task-main .title-form {
+.task-main {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+  height: 85%;
+  overflow: hidden;
+  position: relative;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+}
+.task-main .title-form {
+  position: absolute;
+  top: 10%;
+  left: 10%;
 }
 
 .main-container .title-form {
-  width: 80%;
+  width: 90%;
   height: 100%;
   margin: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }/*# sourceMappingURL=addTasks.css.map */
