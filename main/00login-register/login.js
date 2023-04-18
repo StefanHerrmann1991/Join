@@ -145,8 +145,7 @@ function passwordValidation() {
     for (let i = 0; i < registeredUsers.length; i++) {
         if (registerUser.value == registeredUsers[i]['email']) {
             alert('That username already exists please choose another one');
-            return;
-        
+            return;        
     }
 }}
 
@@ -212,7 +211,6 @@ async function sendForgotPasswordEmail(email, token) {
     formData.append('email', email);
     formData.append('name', 'Password Reset');
     formData.append('message', message);
-
     const response = await fetch('https://stefan-herrmann.developerakademie.net/send_mail/send_mail.php', {
         method: 'POST',
         body: formData

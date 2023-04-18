@@ -56,7 +56,7 @@
                 </div>
                 <a href="/main/04contacts/contacts.html" class="nav-item">
                     <img src="/assets/img/contacts.png">
-                    <div class="nav-title" >Contacts</div>
+                    <div class="nav-title">Contacts</div>
                 </a>
             </div>
             <div id="legalNotice" class="nav-item">
@@ -70,9 +70,13 @@
                 <img class="mobile-logo" src="/assets/img/logo2.png">
                 <div>
                     <a id="helpBtn" href="/main/05legal-notice/help.html"><img src="/assets/img/help.png"></a>
-
-                    <button class="profile-icon" onclick="showLogout()"><img src="/assets/img/person.png"></button>
+                    <button id="profileIcon" class="profile-icon" onclick="toggleContainer('logoutBtn')"><img
+                            src="/assets/img/person.png"></button>
+                    <div>
+                        <button class="logout-btn d-none" id="logoutBtn" onclick="logout()">Logout</button>
+                    </div>
                 </div>
+
             </div>
         </header>
     </div>

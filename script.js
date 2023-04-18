@@ -127,8 +127,8 @@ function displayStringsArr(stringsArray) {
     return strings;
 }
 
-function showLogout()
+function logout()
 {
-    openContainer('logout');
-    console.log('working')
+    window.open('/main/00login-register/login.html');
+   
 }

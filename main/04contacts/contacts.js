@@ -177,6 +177,7 @@ function showContact(index) {
   let actualContact = contactBook.contacts[index];
   openContainer('editContact')
   document.getElementById('editContact').innerHTML = `
+  <div class="edit-contact-menu" >
   <div class="edit-contact-headline">
     <h2>Contacts</h2>
     <div class="title-additive">Better with a Team</div>
@@ -193,12 +194,15 @@ function showContact(index) {
   <div class="edit-information">
     <div class="contact-name">Contact Information</div>
     <button onclick="editContact(${index})"><img src="/assets/img/edit.png">Edit Contact</button>
-    <button class="delete-btn" onclick="deleteContact(${index})"><img  src="/assets/img/deleteClose.png">Delete</button>
+    <button class="delete-btn" onclick="deleteContact(${index})"><img  src="/assets/img/deleteDark.png">Delete</button>
   </div>
+  <div class="contact-information">
   <h4>Email</h4>
   <div>${actualContact.email}</div>
   <h4>Phone</h4>
   <div>${actualContact.phone}</div>
+  </div>
+  </div>
   </div>
   `
 }
