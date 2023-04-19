@@ -178,34 +178,42 @@ function showContact(index) {
   selectUser(index);
   openContainer('editContact');
   document.getElementById('editContact').innerHTML = `
-  <div class="edit-contact-menu" >
+  <div class="edit-contact-menu">
   <div class="edit-contact-headline">
-    <h1>Contacts</h1>   
-    <div class="border-big"></div>                 
-    <div class="title-additive desktop">Better with a Team</div>
+      <h1>Contacts</h1>
+      <div class="border-big"></div>
+      <div class="title-additive desktop">Better with a Team</div>
+      <button class="mobile" onclick="closeContainer('editContact')">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                  d="M3.828 6.99968H15C15.5523 6.99968 16 7.44739 16 7.99968C16 8.55196 15.5523 8.99968 15 8.99968H3.828L8.485 13.6567C8.87547 14.0471 8.87547 14.6802 8.485 15.0707C8.09453 15.4611 7.46147 15.4611 7.071 15.0707L0.707106 8.70679C0.316582 8.31626 0.316582 7.6831 0.707107 7.29257L7.071 0.92868C7.46147 0.538214 8.09453 0.538214 8.485 0.92868C8.87547 1.31914 8.87547 1.95221 8.485 2.34268L3.828 6.99968Z"
+                  fill="black" />
+          </svg>
+      </button>
   </div>
   <div class="edit-contact-popup">
-  <div class="edit-name-initial-con">
-    <div class="edit-initial" style="background-color:${actualContact.color}">${actualContact.initial}</div>
-    <div>
-        <div class="edit-name">${actualContact.name}</div>
-        <button class="add-task-btn" onclick="openContainer('addTaksPopup'); initTasks()"><img
-                src="/assets/img/addTaskBlue.png">Add Tasks</button>
-    </div>
+      <div class="edit-name-initial-con">
+          <div class="edit-initial" style="background-color:${actualContact.color}">${actualContact.initial}</div>
+          <div>
+              <div class="edit-name">${actualContact.name}</div>
+              <button class="add-task-btn" onclick="openContainer('addTaksPopup'); initTasks()"><img
+                      src="/assets/img/addTaskBlue.png">Add Tasks</button>
+          </div>
+      </div>
+      <div class="edit-information">
+          <div class="contact-name">Contact Information</div>
+          <button onclick="editContact(${index})"><img src="/assets/img/edit.png">Edit Contact</button>
+          <button class="delete-btn" onclick="deleteContact(${index})"><img
+                  src="/assets/img/deleteDark.png">Delete</button>
+      </div>
+      <div class="contact-information">
+          <h4>Email</h4>
+          <div>${actualContact.email}</div>
+          <h4>Phone</h4>
+          <div>${actualContact.phone}</div>
+      </div>
   </div>
-  <div class="edit-information">
-    <div class="contact-name">Contact Information</div>
-    <button onclick="editContact(${index})"><img src="/assets/img/edit.png">Edit Contact</button>
-    <button class="delete-btn" onclick="deleteContact(${index})"><img  src="/assets/img/deleteDark.png">Delete</button>
-  </div>
-  <div class="contact-information">
-  <h4>Email</h4>
-  <div>${actualContact.email}</div>
-  <h4>Phone</h4>
-  <div>${actualContact.phone}</div>
-  </div>
-  </div>
-  </div>
+</div>
   `
 }
 

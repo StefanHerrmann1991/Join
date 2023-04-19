@@ -212,6 +212,7 @@ h3 {
 }
 
 .profile-icon {
+  margin-left: 12px;
   border-radius: 50%;
   border: 3px solid #2A3647;
   width: 49px;
@@ -280,7 +281,17 @@ h3 {
   margin-right: 5%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 992px) {
+  .edit-initial {
+    height: 80px;
+    width: 80px;
+    font-size: 36px;
+  }
+}
+@media (max-width: 640px) {
+  .border-big {
+    display: none;
+  }
   .logout-btn {
     top: 76px;
   }
@@ -713,7 +724,11 @@ h3 {
   border-radius: 10px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
+  .edit-contact-headline {
+    display: flex;
+    justify-content: space-between;
+  }
   .mobile {
     display: block;
   }

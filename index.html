@@ -42,18 +42,18 @@
                 <img id="logo" src="/assets/img/logo.png">
             </a>
             <div class="main-menu">
-                <div class="nav-item">
+                <a href="/main/01summary/summary.html" class="nav-item">
                     <img src="/assets/img/summary.png">
-                    <a class="nav-title" href="/main/01summary/summary.html">Summary</a>
-                </div>
-                <div class="nav-item">
+                    <div class="nav-title">Summary</div>
+                </a>
+                <a href="/main/02board/board.html" class="nav-item">
                     <img src="/assets/img/board.png">
-                    <a class="nav-title" href="/main/02board/board.html">Board</a>
-                </div>
-                <div class="nav-item">
+                    <div class="nav-title">Board</div>
+                </a>
+                <a href="/main/03addTasks/addTasks.html" class="nav-item">
                     <img src="/assets/img/addTasks.png">
-                    <a class="nav-title" href="/main/03addTasks/addTasks.html">Add Task</a>
-                </div>
+                    <div class="nav-title">Add Task</div>
+                </a>
                 <a href="/main/04contacts/contacts.html" class="nav-item">
                     <img src="/assets/img/contacts.png">
                     <div class="nav-title">Contacts</div>
@@ -70,13 +70,14 @@
                 <img class="mobile-logo" src="/assets/img/logo2.png">
                 <div>
                     <a id="helpBtn" href="/main/05legal-notice/help.html"><img src="/assets/img/help.png"></a>
-                    <button id="profileIcon" class="profile-icon" onclick="toggleContainer('logoutBtn')"><img
+                    <button id="profileIcon" class="profile-icon" onclick="toggleContainer('optionContainer')"><img
                             src="/assets/img/person.png"></button>
-                    <div>
-                        <button class="logout-btn d-none" id="logoutBtn" onclick="logout()">Logout</button>
+                    <div id="optionContainer" class="d-none logout-btn"">
+                        <button onclick=" logout()">Logout</button>
+                        <a class="mobile" href="/main/05legal-notice/help.html">Help</a>
+                        <a class="mobile" href="/main/05legal-notice/legal-notice.html">Imprint</a>
                     </div>
                 </div>
-
             </div>
         </header>
     </div>
