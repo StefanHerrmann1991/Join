@@ -180,8 +180,9 @@ function showContact(index) {
   document.getElementById('editContact').innerHTML = `
   <div class="edit-contact-menu" >
   <div class="edit-contact-headline">
-    <h1>Contacts</h1>
-    <div class="title-additive">Better with a Team</div>
+    <h1>Contacts</h1>   
+    <div class="border-big"></div>                 
+    <div class="title-additive desktop">Better with a Team</div>
   </div>
   <div class="edit-contact-popup">
   <div class="edit-name-initial-con">

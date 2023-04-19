@@ -274,6 +274,13 @@ h3 {
   height: 39px;
 }
 
+.border-big {
+  border: 3px solid #29ABE2;
+  height: 59px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
 @media (max-width: 600px) {
   .logout-btn {
     top: 76px;

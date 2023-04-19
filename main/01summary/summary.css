@@ -273,6 +273,13 @@ h3 {
   height: 39px;
 }
 
+.border-big {
+  border: 3px solid #29ABE2;
+  height: 59px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
 @media (max-width: 600px) {
   .logout-btn {
     top: 76px;
@@ -489,4 +496,16 @@ h3 {
 }
 .deadline .low {
   background-color: #7AE229;
+}
+
+.border-big {
+  border: 3px solid #29ABE2;
+  height: 100%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.name {
+  font-size: 64px !important;
+  color: #29abe2;
 }/*# sourceMappingURL=summary.css.map */

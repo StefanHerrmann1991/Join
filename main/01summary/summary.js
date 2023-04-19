@@ -10,6 +10,7 @@ let allTaskNumber = 0;
 async function initSummary() {
   includeHTML();
   await initAddTasks();
+  await showUserName();
   let earliestTask;
   [earliestTask, count] = findEarliestTask();
   if (earliestTask !== null) {
@@ -107,6 +108,23 @@ function filterTasks(boardId) {
   return tasks.filter(t => t['board'] == `${boardId}`).length;
 }
 
+function showUserName() {
+if (loggedInUser == undefined) loggedInUser = { name: 'Guest' };
+getId('userGreating').innerHTML = `${loggedInUser.name}`;  
+}
 
 
+function getQueryParameter(name) {
+  var queryString = window.location.search.substring(1);
+  var parameters = queryString.split('&');
+  for (var i = 0; i < parameters.length; i++) {
+    var parameter = parameters[i].split('=');
+    if (parameter[0] === name) {
+      return decodeURIComponent(parameter[1]);
+    }
+  }
+  return null;
+}
 
+loggedInUser = JSON.parse(getQueryParameter('loggedInUser'));
+console.log(loggedInUser); // Output: {'name': '<name of logged in user>'}

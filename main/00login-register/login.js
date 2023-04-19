@@ -1,7 +1,4 @@
 
-let registeredUsers = []
-
-
 async function initAuthentification() {
     await initLogin();
     await loadRegisterdUsers();
@@ -22,6 +19,7 @@ function renderAuth(status) {
     if (status === 'resetPassword') auth.innerHTML = renderResetPassword()
     if (status === 'signUp') auth.innerHTML = renderSignUp()
 }
+
 
 function renderSignUp() {
     return `
@@ -77,6 +75,7 @@ function renderLogin() {
 </div>
 </div>` }
 
+
 function renderForgotPassword() {
     return `
     <div class="register">
@@ -97,6 +96,7 @@ function renderForgotPassword() {
     </div>
 </div>
 ` }
+
 
 function renderResetPassword() {
     return `
@@ -125,8 +125,10 @@ function renderResetPassword() {
 
 
 function loginAsGuest() {
-    window.open('/../../main/01summary/summary.html');
+    window.open('/../../main/01summary/summary.html');    
+   
 }
+
 
 function registerUser() {
     event.preventDefault();
@@ -139,6 +141,7 @@ function registerUser() {
     renderAuth('login');
 };
 
+
 function passwordValidation() {
     for (let i = 0; i < registeredUsers.length; i++) {
         if (registerUser.value == registeredUsers[i]['email']) {
@@ -147,6 +150,7 @@ function passwordValidation() {
         }
     }
 }
+
 
 /**
  * Saves tasks in the backend in form of an JSON string */
@@ -168,6 +172,7 @@ function usersLogin() {
     checkLogin();
 }
 
+
 function checkLogin() {
     let email = document.getElementById('email');
     let password = document.getElementById('password');
@@ -175,14 +180,17 @@ function checkLogin() {
         let element = registeredUsers[i];
         if (email.value == element['email'] &&
             password.value == element['password']) {
-            window.open('/../../main/01summary/summary.html');
+            loggedInUser = element // create loggedInUser object
+            let url = '/../../main/01summary/summary.html?loggedInUser=' + encodeURIComponent(JSON.stringify(loggedInUser));
+            window.open(url);
             email.value = '';
             password.value = '';
-            return
+            return;
         }
     }
     alert('Username or Password is not correct!');
 }
+
 
 async function forgotPassword(event) {
     event.preventDefault();
@@ -203,6 +211,7 @@ async function forgotPassword(event) {
     }
 };
 
+
 async function sendForgotPasswordEmail(email, token) {
     const resetUrl = window.location.origin + '/reset-password.html?token=' + token;
     const message = `Click the following link to reset your password: ${resetUrl}`;
@@ -220,6 +229,7 @@ async function sendForgotPasswordEmail(email, token) {
     }
 }
 
+
 function generateRandomToken() {
     const tokenLength = 20;
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -229,7 +239,7 @@ function generateRandomToken() {
     }
     return result;
 }
-function resetPassword() { };
+
 
 
 
