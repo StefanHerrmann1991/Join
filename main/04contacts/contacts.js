@@ -177,13 +177,14 @@ function showContact(index) {
   let actualContact = contactBook.contacts[index];
   selectUser(index);
   openContainer('editContact');
+  getId('editContact').classList.remove('desktop');
   document.getElementById('editContact').innerHTML = `
   <div class="edit-contact-menu">
   <div class="edit-contact-headline">
       <h1>Contacts</h1>
-      <div class="border-big"></div>
+      <div class="border-big desktop"></div>
       <div class="title-additive desktop">Better with a Team</div>
-      <button class="mobile" onclick="closeContainer('editContact')">
+      <button class="mobile" onclick="closeContactMobile()">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                   d="M3.828 6.99968H15C15.5523 6.99968 16 7.44739 16 7.99968C16 8.55196 15.5523 8.99968 15 8.99968H3.828L8.485 13.6567C8.87547 14.0471 8.87547 14.6802 8.485 15.0707C8.09453 15.4611 7.46147 15.4611 7.071 15.0707L0.707106 8.70679C0.316582 8.31626 0.316582 7.6831 0.707107 7.29257L7.071 0.92868C7.46147 0.538214 8.09453 0.538214 8.485 0.92868C8.87547 1.31914 8.87547 1.95221 8.485 2.34268L3.828 6.99968Z"
@@ -218,6 +219,11 @@ function showContact(index) {
 }
 
 
+function closeContactMobile() {
+  getId('editContact').classList.add('desktop');
+  closeContainer('editContact');
+}
+
 function selectUser(index) {
   document.querySelectorAll('.contact-container').forEach(contact => contact.classList.remove('selected-user'));
   getId('contact-' + index).classList.add('selected-user');
@@ -228,6 +234,7 @@ function deleteContact(index) {
   renderContacts();
 }
 
+
 function editContact(index) {
   let actualContact = contactBook.contacts[index];
   renderEditContact(index);
@@ -236,6 +243,7 @@ function editContact(index) {
   document.getElementById('editEmail').value = actualContact.email;
   document.getElementById('editPhone').value = actualContact.phone;
 }
+
 
 function saveEditedContact(event, index) {
   event.preventDefault();
@@ -246,6 +254,7 @@ function saveEditedContact(event, index) {
   renderContacts();
   closeContainer('editContactDialog');
 }
+
 
 function renderEditContact(actualContact) {
   document.getElementById('editContactDialog').innerHTML =

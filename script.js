@@ -111,6 +111,9 @@ function lowerFirstLetter(str) {
     return str[0].toLowerCase() + str.slice(1);
 }
 
+function removeClass(element, className) { getId(`${element}`).classList.remove(className); }
+function addClass(element, className) { getId(`${element}`).classList.add(className); }
+
 /* ****** ****** */
 
 /**
@@ -128,8 +131,7 @@ function displayStringsArr(stringsArray) {
     return strings;
 }
 
-function logout()
-{
+function logout() {
     window.open('/main/00login-register/login.html');
-   
+
 }
