@@ -274,6 +274,9 @@ h3 {
 }
 
 @media (max-width: 600px) {
+  .logout-btn {
+    top: 76px;
+  }
   .navbar-header {
     display: flex;
     width: 100svw;
@@ -332,6 +335,13 @@ h3 {
   justify-content: flex-start;
   width: 80%;
   overflow: hidden;
+}
+
+.border-big {
+  border: 3px solid #29ABE2;
+  height: 100%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .add-contact-btn {
@@ -394,6 +404,7 @@ h3 {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+  position: relative;
 }
 .edit-contact-container h2 {
   font-size: 61px;
@@ -405,7 +416,6 @@ h3 {
 }
 
 .title-additive {
-  padding-left: 8%;
   text-align: center;
 }
 
@@ -425,6 +435,7 @@ h3 {
   width: 33%;
   background-color: white;
   overflow-y: scroll;
+  position: relative;
 }
 
 .add-contact-dialog, .edit-contact-dialog {
@@ -605,6 +616,10 @@ h3 {
   margin: auto;
   display: flex;
   flex-direction: column;
+}
+.edit-contact-menu .edit-contact-headline {
+  padding-top: 5%;
+  margin-bottom: 5%;
 }
 
 .edit-contact-popup {

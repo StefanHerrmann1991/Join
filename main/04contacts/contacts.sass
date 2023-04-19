@@ -10,6 +10,11 @@
     width: 80%
     overflow: hidden
 
+.border-big
+    border: 3px solid #29ABE2
+    height: 100%
+    margin-left: 5%
+    margin-right: 5%
 .add-contact-btn
     position: absolute
     bottom: 5%
@@ -64,6 +69,7 @@
     display: flex
     justify-content: flex-start
     flex-direction: column
+    position: relative
 
     h2
         font-size: 61px
@@ -73,7 +79,7 @@
         padding-left: 8%
 
 .title-additive
-    padding-left: 8%
+  
     text-align: center
 
 .edit-contact-headline
@@ -90,6 +96,7 @@
     width: 33%
     background-color: white
     overflow-y: scroll
+    position: relative
 
 .add-contact-dialog, .edit-contact-dialog
     @include popup
@@ -235,6 +242,9 @@
     margin: auto
     display: flex
     flex-direction: column
+    .edit-contact-headline
+        padding-top: 5%
+        margin-bottom: 5%
 
 .edit-contact-popup
     height: 50%
@@ -310,7 +320,7 @@
 
 .selected-user
     background-color: $main !important
-    color: white   
+    color: white
     border-radius: 10px
 
 @media (max-width: 600px)
