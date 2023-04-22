@@ -295,10 +295,11 @@ h3 {
 }
 
 @media (max-width: 992px) {
-  .edit-initial {
-    height: 80px;
-    width: 80px;
-    font-size: 36px;
+  #navbar {
+    width: 30%;
+  }
+  #header {
+    width: 70%;
   }
 }
 @media (max-width: 640px) {

@@ -182,8 +182,8 @@ function showContact(index) {
   <div class="edit-contact-menu">
   <div class="edit-contact-headline">
       <h1>Contacts</h1>
-      <div class="border-big desktop"></div>
-      <div class="title-additive desktop">Better with a Team</div>
+      <div class="border-big"></div>
+      <div class="title-additive">Better with a Team</div>
       <button class="mobile" onclick="closeContactMobile()">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -209,7 +209,7 @@ function showContact(index) {
       </div>
       <div class="contact-information">
           <h4>Email</h4>
-          <div>${actualContact.email}</div>
+          <div class="contact-email">${actualContact.email}</div>
           <h4>Phone</h4>
           <div>${actualContact.phone}</div>
       </div>

@@ -214,16 +214,16 @@ function renderAssignedUsers(usersArr) {
     else return iconsHTML = `<div>No user assigned</div>`
 }
 
-function renderMobile() {
+function renderMobile(i) {
     return ` 
     <div>
         <div class="move-to">
             <img onclick="showMoveButtons(${i})" class="move-to-btn" alt="">
             <div id="moveButtonBox${i}" class="move-button-box d-none">
-                <div><button onclick="moveToBoard(${i},'todo')" class="move-button">Todo</button></div>
-                <div><button onclick="moveToBoard(${i},'inProgress')" class="move-button">In Progress</button></div>
-                <div><button onclick="moveToBoard(${i},'testing')" class="move-button">Testing</button></div>
-                <div><button onclick="moveToBoard(${i},'done')" class="move-button">Done</button></div>
+                <div><button onclick="moveToBoard(${i},'board-0')" class="move-button">Todo</button></div>
+                <div><button onclick="moveToBoard(${i},'board-1')" class="move-button">In Progress</button></div>
+                <div><button onclick="moveToBoard(${i},'board-2')" class="move-button">Testing</button></div>
+                <div><button onclick="moveToBoard(${i},'board-3')" class="move-button">Done</button></div>
             </div>
         </div>
         <div class="task-links">

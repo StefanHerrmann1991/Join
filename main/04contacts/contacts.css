@@ -293,9 +293,12 @@ h3 {
   margin-right: 5%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   #navbar {
-    width: 33%;
+    width: 30%;
+  }
+  #header {
+    width: 70%;
   }
 }
 @media (max-width: 640px) {
@@ -391,6 +394,8 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  overflow-y: scroll;
+  padding-bottom: 10%;
 }
 .contact-book h3 {
   padding-top: 10%;
@@ -428,11 +433,6 @@ h3 {
   flex-direction: column;
   position: relative;
 }
-.edit-contact-container h2 {
-  font-size: 61px;
-  padding-right: 8% !important;
-  border-right: 3px solid #29ABE2;
-}
 .edit-contact-container nobr {
   padding-left: 8%;
 }
@@ -456,7 +456,6 @@ h3 {
   justify-content: center;
   width: 33%;
   background-color: white;
-  overflow-y: scroll;
   position: relative;
 }
 
@@ -735,10 +734,65 @@ h3 {
   border-radius: 10px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
+  .border-big {
+    border: 1px solid #29ABE2;
+  }
+  .contact-information {
+    font-size: 16px;
+  }
+  .contact-name {
+    font-size: 21px !important;
+  }
+  .main-contact-container {
+    left: 30%;
+    width: 70%;
+  }
+  .main-contact-container .contact-flex {
+    width: 100%;
+  }
+  .main-contact-container h1 {
+    font-size: 47px !important;
+  }
+  .title-additive {
+    font-size: 16px;
+  }
+  .mobile {
+    display: block;
+  }
   .desktop {
     display: none;
   }
+  .edit-contact-headline {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+  }
+  .edit-contact-container {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+  }
+  .edit-initial {
+    width: 80px;
+    height: 80px;
+    font-size: 27px;
+  }
+  .edit-name-initial-con {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .edit-name-initial-con .edit-name {
+    font-size: 36px;
+  }
+  .edit-contact-popup {
+    overflow-y: scroll;
+    padding-right: 12px;
+  }
+}
+@media (max-width: 768px) {
   .main-contact-container {
     left: 30%;
     width: 70%;
@@ -760,9 +814,6 @@ h3 {
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
-  }
-  .mobile {
-    display: block;
   }
   .add-contact-btn {
     top: 15%;
@@ -791,11 +842,6 @@ h3 {
     height: 100%;
     width: 100%;
   }
-  .edit-contact-container {
-    width: 100%;
-    position: absolute;
-    height: 100%;
-  }
   .contact-container {
     padding: 0px;
   }
@@ -810,8 +856,5 @@ h3 {
   .contact-btn-container .add-contact-btn {
     position: static;
     margin-right: 12px;
-  }
-  .edit-contact-popup {
-    z-index: 100;
   }
 }/*# sourceMappingURL=contacts.css.map */
