@@ -182,7 +182,7 @@ function showContact(index) {
   <div class="edit-contact-headline">
       <h1>Contacts</h1>
       <div class="border-big"></div>
-      <div class="title-additive">Better with a Team</div>
+      <div class="title-additive desktop">Better with a Team</div>
       <button class="mobile back-btn" onclick="closeContactMobile()">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -236,8 +236,6 @@ function deleteContact(index) {
 
 function editContact(index) {
   let actualContact = contactBook.contacts[index];
-  let actualInitial = actualContact.initial;
-  console.log(actualContact);
   renderEditContact(index);
   openContainer('editContactDialog');
   getId('editName').value = actualContact.name;
@@ -259,15 +257,15 @@ function saveEditedContact(event, index) {
 
 
 function renderEditContact(actualContact) {
-  console.log(actualContact)
+
   document.getElementById('editContactDialog').innerHTML =
     `  
     <div class="add-contact" >
         <div class="add-contact-menu">
             <div class="add-contact-description">
-                <img src="/assets/img/logo.png">
-                <h2>Edit contact</h2>
-                <p>Tasks are better with a team!</p>
+                <img class="desktop" src="/assets/img/logo.png">
+                <h2>Add contact</h2>
+                <p class="desktop">Tasks are better with a team!</p>
             </div>
             <div class="add-contact-submenu">
                 <button class="close-upper-right" onclick="closeContainer('editContactDialog')">
@@ -276,17 +274,24 @@ function renderEditContact(actualContact) {
                 <div id="editInitial"></div>
                 <form onsubmit="saveEditedContact(event, ${actualContact});  saveBackendDataOf(contactBook)"
                     id="editContactFormfield">
-                    <input type="text" id="editName" name="editName" required placeholder="${actualContact.name}">
-                    <input type="email" id="editEmail" name="editEmail" required placeholder="${actualContact.email}">
-                    <input type="tel" id="editPhone" name="editPhone" required placeholder="${actualContact.phone}">
-                    <div class="create-contact-btns">
-                        <button type="button" onclick="closeContainer('editContactDialog')">Cancel
-                            <img src="/assets/img/cancel.png">
-                        </button>
-                        <button type=submit>Edit contact
-                            <img src="/assets/img/check.png">
-                        </button>
-                    </div>
+                    <input type="text" id="editName" name="editName" required>
+                    <input type="email" id="editEmail" name="editEmail" required>
+                    <input type="tel" id="editPhone" name="editPhone" required>
+              <div class="create-contact-btns desktop">
+                    <button type="button" onclick="closeContainer('editContactDialog')">Cancel
+                        <img src="/assets/img/cancel.png">
+                    </button>
+                    <button type=submit>
+                        <nobr>Create contact</nobr>
+                        <img src="/assets/img/check.png">
+                    </button>                            
+                </div>
+                <div class="create-contact-btns mobile">
+                    <button type="button" onclick="deleteContact(${actualContact})">
+                        Delete
+                    </button>
+                    <button type=submit>Save</button>                            
+                </div>
                 </form>
             </div>
         </div>

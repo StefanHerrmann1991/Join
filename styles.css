@@ -251,8 +251,8 @@ h3 {
 
 .close-upper-right {
   position: absolute;
-  top: 35px;
-  right: 35px;
+  top: 5%;
+  right: 5%;
   border: none;
   background: transparent;
 }
@@ -293,7 +293,20 @@ h3 {
   margin-right: 5%;
 }
 
+.mobile {
+  display: none !important;
+}
+
 @media (max-width: 992px) {
+  #helpBtn {
+    display: none;
+  }
+  .mobile {
+    display: flex !important;
+  }
+  .desktop {
+    display: none !important;
+  }
   #navbar {
     width: 30%;
   }

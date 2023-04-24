@@ -251,8 +251,8 @@ h3 {
 
 .close-upper-right {
   position: absolute;
-  top: 35px;
-  right: 35px;
+  top: 5%;
+  right: 5%;
   border: none;
   background: transparent;
 }
@@ -293,7 +293,20 @@ h3 {
   margin-right: 5%;
 }
 
+.mobile {
+  display: none !important;
+}
+
 @media (max-width: 992px) {
+  #helpBtn {
+    display: none;
+  }
+  .mobile {
+    display: flex !important;
+  }
+  .desktop {
+    display: none !important;
+  }
   #navbar {
     width: 30%;
   }
@@ -432,8 +445,11 @@ h3 {
   justify-content: flex-start;
   flex-direction: column;
   position: relative;
+}
+.edit-contact-container nobr {
   padding-left: 8%;
 }
+
 .title-additive {
   margin-top: 5%;
   text-align: center;
@@ -551,9 +567,9 @@ h3 {
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu input, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu input {
   font-size: 21px;
   width: 100%;
-  margin-top: 8%;
+  margin-top: 6%;
   margin-right: 10%;
-  margin-bottom: 8%;
+  margin-bottom: 6%;
   border: 1px solid #D1D1D1;
   border-radius: 10px;
   padding: 13px 21px;
@@ -728,10 +744,6 @@ h3 {
   padding-bottom: 15px;
 }
 
-.mobile {
-  display: none;
-}
-
 .selected-user {
   background-color: #2A3647 !important;
   color: white;
@@ -739,6 +751,20 @@ h3 {
 }
 
 @media (max-width: 992px) {
+  .add-contact-menu {
+    height: 100%;
+    width: 100%;
+  }
+  .add-contact-menu .add-contact-description {
+    padding: 0px;
+  }
+  .create-contact-btns {
+    display: flex;
+    flex-direction: row;
+  }
+  .create-contact-btns button {
+    padding: 8px 18px !important;
+  }
   .back-btn {
     display: block;
     position: absolute;
@@ -763,12 +789,6 @@ h3 {
   }
   .main-contact-container h1 {
     font-size: 47px !important;
-  }
-  .mobile {
-    display: block;
-  }
-  .desktop {
-    display: none;
   }
   .edit-contact-headline {
     padding-top: 5%;
@@ -812,6 +832,32 @@ h3 {
   }
 }
 @media (max-width: 768px) {
+  #editContactFormfield {
+    width: 90%;
+  }
+  h2 {
+    font-size: 41px !important;
+  }
+  .add-contact-menu {
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    height: 90% !important;
+  }
+  .add-contact-menu .add-contact-description {
+    width: 90% !important;
+    margin: auto !important;
+    height: 40% !important;
+    padding: 0px;
+    border-radius: 30px 30px 0px 0px !important;
+  }
+  .add-contact-menu .add-contact-submenu {
+    border-radius: 0px 0px 30px 30px !important;
+    width: 90% !important;
+    margin: auto !important;
+    padding: 0px;
+    flex-direction: column;
+  }
   .main-contact-container {
     left: 30%;
     width: 70%;
@@ -821,6 +867,33 @@ h3 {
   }
 }
 @media (max-width: 640px) {
+  form .input {
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .add-contact-menu {
+    height: 100% !important;
+    width: 100% !important;
+    flex-direction: column;
+    height: 90% !important;
+  }
+  .add-contact-menu .add-contact-description {
+    width: 95% !important;
+    margin: auto;
+    height: 40%;
+    padding: 0px !important;
+    border-radius: 30px 30px 0px 0px !important;
+  }
+  .add-contact-menu .add-contact-submenu {
+    width: 95% !important;
+  }
+  #editInitial {
+    margin-top: -15%;
+  }
+  .add-contact-menu {
+    height: 100%;
+    width: 100%;
+  }
   .edit-name-initial-con {
     display: flex;
     flex-direction: row;

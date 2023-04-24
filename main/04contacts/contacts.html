@@ -50,9 +50,9 @@
         <div class="add-contact" id="addContact">
             <div class="add-contact-menu">
                 <div class="add-contact-description">
-                    <img src="/assets/img/logo.png">
+                    <img class="mobile" src="/assets/img/logo.png">
                     <h2>Add contact</h2>
-                    <p>Tasks are better with a team!</p>
+                    <p class="mobile">Tasks are better with a team!</p>
                 </div>
                 <div class="add-contact-submenu">
                     <button class="close-upper-right" onclick="closeContainer('addContactDialog')">
@@ -64,15 +64,24 @@
                         <input type="text" id="name" name="name" required placeholder="Name">
                         <input type="email" id="email" name="email" required placeholder="Email">
                         <input type="tel" id="phone" name="phone" required placeholder="Phone">
-                        <div class="create-contact-btns">
+                        <div class="create-contact-btns desktop">
                             <button type="button" onclick="closeContainer('addContactDialog')">Cancel
                                 <img src="/assets/img/cancel.png">
                             </button>
                             <button type=submit>
                                 <nobr>Create contact</nobr>
                                 <img src="/assets/img/check.png">
-                            </button>
+                            </button>                            
                         </div>
+                        <div class="create-contact-btns mobile">
+                            <button type="button" onclick="deleteContact()">Cancel
+                                Delete
+                            </button>
+                            <button type=submit>
+                                Save
+                            </button>                            
+                        </div>
+
                     </form>
                 </div>
             </div>
