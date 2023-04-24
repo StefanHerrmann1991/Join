@@ -445,11 +445,8 @@ h3 {
   justify-content: flex-start;
   flex-direction: column;
   position: relative;
-}
-.edit-contact-container nobr {
   padding-left: 8%;
 }
-
 .title-additive {
   margin-top: 5%;
   text-align: center;
@@ -674,7 +671,7 @@ h3 {
 .edit-name-initial-con {
   display: flex;
   flex-direction: row;
-  width: 90%;
+  width: 100%;
   align-items: center;
   justify-content: flex-start;
   gap: 8%;
@@ -751,18 +748,20 @@ h3 {
 }
 
 @media (max-width: 992px) {
-  .add-contact-menu {
+  .add-contact-dialog .add-contact .add-contact-menu, .edit-contact-dialog .add-contact .add-contact-menu {
     height: 100%;
     width: 100%;
   }
-  .add-contact-menu .add-contact-description {
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-description, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description {
     padding: 0px;
+    display: flex;
+    justify-content: center;
   }
-  .create-contact-btns {
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns {
     display: flex;
     flex-direction: row;
   }
-  .create-contact-btns button {
+  .add-contact-dialog button, .edit-contact-dialog button {
     padding: 8px 18px !important;
   }
   .back-btn {
@@ -773,6 +772,9 @@ h3 {
   }
   .edit-contact-container {
     padding: 0px;
+    width: 100%;
+    position: absolute;
+    height: 100%;
   }
   .contact-information {
     font-size: 16px;
@@ -808,11 +810,6 @@ h3 {
     border-left: 3px solid #29ABE2;
     height: 100px;
   }
-  .edit-contact-container {
-    width: 100%;
-    position: absolute;
-    height: 100%;
-  }
   .edit-initial {
     width: 80px;
     height: 80px;
@@ -838,23 +835,23 @@ h3 {
   h2 {
     font-size: 41px !important;
   }
-  .add-contact-menu {
+  .add-contact-dialog .add-contact .add-contact-menu, .edit-contact-dialog .add-contact .add-contact-menu {
     height: 100%;
     width: 100%;
     flex-direction: column;
-    height: 90% !important;
+    height: 90%;
   }
-  .add-contact-menu .add-contact-description {
-    width: 90% !important;
-    margin: auto !important;
-    height: 40% !important;
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-description, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description {
+    width: 90%;
+    margin: auto;
+    height: 40%;
     padding: 0px;
-    border-radius: 30px 30px 0px 0px !important;
+    border-radius: 30px 30px 0px 0px;
   }
-  .add-contact-menu .add-contact-submenu {
-    border-radius: 0px 0px 30px 30px !important;
-    width: 90% !important;
-    margin: auto !important;
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu {
+    border-radius: 0px 0px 30px 30px;
+    width: 90%;
+    margin: auto;
     padding: 0px;
     flex-direction: column;
   }
@@ -871,24 +868,42 @@ h3 {
     margin-top: 2%;
     margin-bottom: 2%;
   }
-  .add-contact-menu {
-    height: 100% !important;
-    width: 100% !important;
+  .add-contact-dialog .add-contact .add-contact-menu, .edit-contact-dialog .add-contact .add-contact-menu {
+    height: 100%;
+    width: 100%;
     flex-direction: column;
-    height: 90% !important;
+    height: 90%;
   }
-  .add-contact-menu .add-contact-description {
-    width: 95% !important;
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-description, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
     margin: auto;
-    height: 40%;
-    padding: 0px !important;
-    border-radius: 30px 30px 0px 0px !important;
+    height: 30%;
+    padding: 0px;
+    border-radius: 30px 30px 0px 0px;
   }
-  .add-contact-menu .add-contact-submenu {
-    width: 95% !important;
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu {
+    border-radius: 0px 0px 30px 30px;
+    width: 90%;
+    margin: auto;
+    padding: 0px;
+    flex-direction: column;
   }
-  #editInitial {
-    margin-top: -15%;
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #editInitial, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #editInitial {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: absolute;
+    margin-top: -20%;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .add-contact-menu {
     height: 100%;

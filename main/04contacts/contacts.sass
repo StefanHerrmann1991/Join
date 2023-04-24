@@ -67,7 +67,7 @@
     flex-direction: column
     position: relative
     nobr
-        padding-left: 8%
+    padding-left: 8%
 
 .title-additive
     margin-top: 5%
@@ -250,7 +250,7 @@
 .edit-name-initial-con
     display: flex
     flex-direction: row
-    width: 90%
+    width: 100%
     align-items: center
     justify-content: flex-start
     gap: 8%
@@ -317,15 +317,20 @@
 
 @media (max-width: 992px)
 
-    .add-contact-menu
-        height: 100%
-        width: 100%
-        .add-contact-description
-            padding: 0px
+    .add-contact-dialog, .edit-contact-dialog
+        .add-contact
+            .add-contact-menu
+                height: 100%
+                width: 100%
+                .add-contact-description
+                    padding: 0px
+                    display: flex
+                    justify-content: center
 
-    .create-contact-btns
-        display: flex
-        flex-direction: row
+                .add-contact-submenu
+                    .create-contact-btns
+                        display: flex
+                        flex-direction: row
         button
             padding: 8px 18px !important
 
@@ -337,6 +342,9 @@
 
     .edit-contact-container
         padding: 0px
+        width: 100%
+        position: absolute
+        height: 100%
 
     .contact-information
         font-size: 16px
@@ -369,10 +377,6 @@
             border: none
             border-left: 3px solid #29ABE2
             height: 100px
-    .edit-contact-container
-        width: 100%
-        position: absolute
-        height: 100%
 
     .edit-initial
         width: 80px
@@ -397,23 +401,26 @@
 
     h2
         font-size: 41px !important
-    .add-contact-menu
-        height: 100%
-        width: 100%
-        flex-direction: column
-        height: 90% !important
-        .add-contact-description
-            width: 90% !important
-            margin: auto !important
-            height: 40% !important
-            padding: 0px
-            border-radius: 30px 30px 0px 0px !important
-        .add-contact-submenu
-            border-radius: 0px 0px 30px 30px !important
-            width: 90% !important
-            margin: auto !important
-            padding: 0px
-            flex-direction: column
+
+    .add-contact-dialog, .edit-contact-dialog
+        .add-contact
+            .add-contact-menu
+                height: 100%
+                width: 100%
+                flex-direction: column
+                height: 90%
+                .add-contact-description
+                    width: 90%
+                    margin: auto
+                    height: 40%
+                    padding: 0px
+                    border-radius: 30px 30px 0px 0px
+                .add-contact-submenu
+                    border-radius: 0px 0px 30px 30px
+                    width: 90%
+                    margin: auto
+                    padding: 0px
+                    flex-direction: column
 
     .main-contact-container
         left: 30%
@@ -428,22 +435,36 @@
             margin-top: 2%
             margin-bottom: 2%
 
-    .add-contact-menu
-        height: 100% !important
-        width: 100% !important
-        flex-direction: column
-        height: 90% !important
-        .add-contact-description
-            width: 95% !important
-            margin: auto
-            height: 40%
-            padding: 0px !important
-            border-radius: 30px 30px 0px 0px !important
-        .add-contact-submenu
-            width: 95% !important
-
-    #editInitial
-        margin-top: -15%
+    .add-contact-dialog, .edit-contact-dialog
+        .add-contact
+            .add-contact-menu
+                height: 100%
+                width: 100%
+                flex-direction: column
+                height: 90%
+                .add-contact-description
+                    @include flex-center
+                    width: 90%
+                    margin: auto
+                    height: 30%
+                    padding: 0px
+                    border-radius: 30px 30px 0px 0px
+                .add-contact-submenu
+                    border-radius: 0px 0px 30px 30px
+                    width: 90%
+                    margin: auto
+                    padding: 0px
+                    flex-direction: column
+                    #editInitial
+                        width: 100%
+                        height: 100%
+                        display: flex
+                        justify-content: center
+                        align-items: flex-start
+                        position: absolute
+                        margin-top: -20%                                        
+                    .create-contact-btns
+                        @include flex-center
 
     .add-contact-menu
         height: 100%
