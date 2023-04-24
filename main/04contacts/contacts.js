@@ -70,7 +70,6 @@ class ContactBook {
   checkInitials(firstNameInitial) {
     const firstNameInitials = this.contacts.map(contact => contact.firstNameInitial);
     const count = this.countOccurrence(firstNameInitials, firstNameInitial);
-    console.log(count)
     if (count == 1) {
       const index = this.initialList.indexOf(firstNameInitial);
       if (index > -1) this.initialList.splice(index, 1);
@@ -184,7 +183,7 @@ function showContact(index) {
       <h1>Contacts</h1>
       <div class="border-big"></div>
       <div class="title-additive">Better with a Team</div>
-      <button class="mobile" onclick="closeContactMobile()">
+      <button class="mobile back-btn" onclick="closeContactMobile()">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                   d="M3.828 6.99968H15C15.5523 6.99968 16 7.44739 16 7.99968C16 8.55196 15.5523 8.99968 15 8.99968H3.828L8.485 13.6567C8.87547 14.0471 8.87547 14.6802 8.485 15.0707C8.09453 15.4611 7.46147 15.4611 7.071 15.0707L0.707106 8.70679C0.316582 8.31626 0.316582 7.6831 0.707107 7.29257L7.071 0.92868C7.46147 0.538214 8.09453 0.538214 8.485 0.92868C8.87547 1.31914 8.87547 1.95221 8.485 2.34268L3.828 6.99968Z"
@@ -237,19 +236,22 @@ function deleteContact(index) {
 
 function editContact(index) {
   let actualContact = contactBook.contacts[index];
+  let actualInitial = actualContact.initial;
+  console.log(actualContact);
   renderEditContact(index);
   openContainer('editContactDialog');
-  document.getElementById('editName').value = actualContact.name;
-  document.getElementById('editEmail').value = actualContact.email;
-  document.getElementById('editPhone').value = actualContact.phone;
+  getId('editName').value = actualContact.name;
+  getId('editEmail').value = actualContact.email;
+  getId('editPhone').value = actualContact.phone;
+  getId('editInitial').innerHTML = `<div class="edit-initial" style="background-color: ${actualContact.color}">${actualContact.initial}</div>`
 }
 
 
 function saveEditedContact(event, index) {
   event.preventDefault();
-  contactName = document.getElementById('editName').value;
-  contactEmail = document.getElementById('editEmail').value;
-  contactPhone = document.getElementById('editPhone').value;
+  contactName = getId('editName').value;
+  contactEmail = getId('editEmail').value;
+  contactPhone = getId('editPhone').value;
   contactBook.editContact(index, contactName, contactEmail, contactPhone);
   renderContacts();
   closeContainer('editContactDialog');
@@ -257,6 +259,7 @@ function saveEditedContact(event, index) {
 
 
 function renderEditContact(actualContact) {
+  console.log(actualContact)
   document.getElementById('editContactDialog').innerHTML =
     `  
     <div class="add-contact" >
@@ -270,13 +273,13 @@ function renderEditContact(actualContact) {
                 <button class="close-upper-right" onclick="closeContainer('editContactDialog')">
                     <img src="/assets/img/cancel.png">                   
                 </button>
-                <img src="/assets/img/addContactBig.png">
+                <div id="editInitial"></div>
                 <form onsubmit="saveEditedContact(event, ${actualContact});  saveBackendDataOf(contactBook)"
                     id="editContactFormfield">
                     <input type="text" id="editName" name="editName" required placeholder="${actualContact.name}">
                     <input type="email" id="editEmail" name="editEmail" required placeholder="${actualContact.email}">
                     <input type="tel" id="editPhone" name="editPhone" required placeholder="${actualContact.phone}">
-                    <div class="menu-btn">
+                    <div class="create-contact-btns">
                         <button type="button" onclick="closeContainer('editContactDialog')">Cancel
                             <img src="/assets/img/cancel.png">
                         </button>

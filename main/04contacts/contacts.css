@@ -385,6 +385,7 @@ h3 {
   padding: 10px 10px;
   font-weight: 700;
   font-size: 16px;
+  z-index: 2;
 }
 .add-contact-btn img {
   margin-left: 10px;
@@ -394,7 +395,6 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  overflow-y: scroll;
   padding-bottom: 10%;
 }
 .contact-book h3 {
@@ -432,12 +432,10 @@ h3 {
   justify-content: flex-start;
   flex-direction: column;
   position: relative;
-}
-.edit-contact-container nobr {
   padding-left: 8%;
 }
-
 .title-additive {
+  margin-top: 5%;
   text-align: center;
 }
 
@@ -457,6 +455,11 @@ h3 {
   width: 33%;
   background-color: white;
   position: relative;
+  overflow-y: scroll;
+}
+
+.contact-book button:last-child {
+  margin-bottom: 25px;
 }
 
 .add-contact-dialog, .edit-contact-dialog {
@@ -477,12 +480,14 @@ h3 {
   align-items: center;
 }
 .add-contact-dialog .add-contact .add-contact-menu, .edit-contact-dialog .add-contact .add-contact-menu {
-  z-index: 1000;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 90%;
-  height: 70%;
+  height: 65%;
+  margin: auto;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-description, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description {
   display: flex;
@@ -556,15 +561,14 @@ h3 {
   background-repeat: no-repeat;
   background-position: 95%;
 }
-.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn {
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns {
+  margin-top: 8%;
   display: flex;
   justify-content: flex-start;
 }
-.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn button {
-  margin-top: 8%;
-  margin-right: 10%;
-  margin-bottom: 8%;
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button {
   display: flex;
+  justify-content: center;
   align-items: center;
   padding: 18px 10px;
   border-radius: 10px;
@@ -573,23 +577,23 @@ h3 {
   font-weight: 700;
   font-size: 21px;
 }
-.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn button img, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn button img {
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button img, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button img {
   width: 24px;
   height: 24px;
   margin-left: 2px;
 }
-.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn button:first-child, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn button:first-child {
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:first-child, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:first-child {
   color: #2A3647;
   border: 1px solid #2A3647;
   background-color: white;
+  margin-right: 4%;
 }
-.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn button:last-child, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .menu-btn button:last-child {
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:last-child, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:last-child {
   background-color: #2A3647;
   color: white;
-  margin-left: 5%;
   border: none;
-  width: 100%;
   color: #FFFFFF;
+  width: 222px;
 }
 
 .close-upper-right {
@@ -735,13 +739,14 @@ h3 {
 }
 
 @media (max-width: 992px) {
-  .add-contact-btn {
-    z-index: 2;
-    bottom: 5%;
-    right: 5%;
+  .back-btn {
+    display: block;
+    position: absolute;
+    top: 5%;
+    right: 10%;
   }
-  .border-big {
-    border: 1px solid #29ABE2;
+  .edit-contact-container {
+    padding: 0px;
   }
   .contact-information {
     font-size: 16px;
@@ -759,9 +764,6 @@ h3 {
   .main-contact-container h1 {
     font-size: 47px !important;
   }
-  .title-additive {
-    font-size: 16px;
-  }
   .mobile {
     display: block;
   }
@@ -769,10 +771,22 @@ h3 {
     display: none;
   }
   .edit-contact-headline {
+    padding-top: 5%;
+    margin-bottom: 5%;
     display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .edit-contact-headline .border-big {
+    order: 3;
+    transform: rotate(-90deg);
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+    margin-left: 10%;
+    border: none;
+    border-left: 3px solid #29ABE2;
+    height: 100px;
   }
   .edit-contact-container {
     width: 100%;
