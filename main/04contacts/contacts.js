@@ -5,6 +5,7 @@ let contacts
 let ContactBookAsText = []
 let contactBook
 let isMobileDevice = false;
+let addContactBtn = getId('addContactBtn');
 
 function newContact(name, email, phone, initial, color, firstNameInitial, id) {
   let contact = {
@@ -172,7 +173,20 @@ function renderContacts() {
   }
 }
 
+
+
+function isMobileView() {
+  return window.matchMedia('(max-width: 768px)').matches;
+}
+
+window.addEventListener('resize', function () {
+  // check if window is in mobile view
+  if (isMobileView()) closeContainer('addContactBtn');
+  else openContainer('addContactBtn');
+});
+
 function showContact(index) {
+
   let actualContact = contactBook.contacts[index];
   selectUser(index);
   openContainer('editContact');
@@ -182,7 +196,7 @@ function showContact(index) {
   <div class="edit-contact-headline">
       <h1>Contacts</h1>
       <div class="border-big"></div>
-      <div class="title-additive desktop">Better with a Team</div>
+      <div class="title-additive">Better with a Team</div>
       <button class="mobile back-btn" onclick="closeContactMobile()">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -286,7 +300,7 @@ function renderEditContact(actualContact) {
                         <img src="/assets/img/check.png">
                     </button>                            
                 </div>
-                <div class="create-contact-btns mobile">
+                <div class="create-contact-btns mobile-flex">
                     <button type="button" onclick="deleteContact(${actualContact})">
                         Delete
                     </button>

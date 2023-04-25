@@ -302,6 +302,9 @@ h3 {
     display: none;
   }
   .mobile {
+    display: block;
+  }
+  .mobile-flex {
     display: flex !important;
   }
   .desktop {

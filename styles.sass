@@ -226,7 +226,7 @@ h3
     right: 5%
     border: none
     background: transparent
-
+    z-index: 10
 .task-submit-successful
     @include flex-center
     flex-direction: row
@@ -259,6 +259,8 @@ h3
 
 .mobile
     display: none !important
+.mobile-flex
+    display: none !important
 
 @media (max-width: 992px)
 
@@ -266,8 +268,10 @@ h3
         display: none
 
     .mobile
-        display: flex !important
+        display: block !important
 
+    .mobile-flex
+        display: flex !important
     .desktop
         display: none !important
 
@@ -275,8 +279,6 @@ h3
         width: 30%
     #header
         width: 70%
-
-
 
 @media (max-width: 640px)
     $top: 10%
