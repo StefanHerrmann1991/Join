@@ -4,7 +4,7 @@ let sortByLastName = false;
 let contacts
 let ContactBookAsText = []
 let contactBook
-let isMobileDevice = false;
+let contactIsOpen = false;
 let addContactBtn = getId('addContactBtn');
 
 function newContact(name, email, phone, initial, color, firstNameInitial, id) {
@@ -176,17 +176,18 @@ function renderContacts() {
 
 
 function isMobileView() {
-  return window.matchMedia('(max-width: 768px)').matches;
+  return window.matchMedia('(max-width: 640px)').matches;
 }
 
 window.addEventListener('resize', function () {
   // check if window is in mobile view
-  if (isMobileView()) closeContainer('addContactBtn');
+  if (isMobileView() && contactIsOpen) closeContainer('addContactBtn');
   else openContainer('addContactBtn');
 });
 
 function showContact(index) {
-
+  contactIsOpen = true
+  if (isMobileView()) closeContainer('addContactBtn');
   let actualContact = contactBook.contacts[index];
   selectUser(index);
   openContainer('editContact');
@@ -208,7 +209,7 @@ function showContact(index) {
   <div class="edit-contact-popup">
       <div class="edit-name-initial-con">
           <div class="edit-initial" style="background-color:${actualContact.color}">${actualContact.initial}</div>
-          <div>
+          <div class="contact-task-container">
               <div class="edit-name">${actualContact.name}</div>
               <button class="add-task-btn" onclick="openContainer('addTaksPopup'); initTasks()"><img
                       src="/assets/img/addTaskBlue.png">Add Tasks</button>
@@ -235,6 +236,8 @@ function showContact(index) {
 function closeContactMobile() {
   getId('editContact').classList.add('desktop');
   closeContainer('editContact');
+  contactIsOpen = false
+  openContainer('addContactBtn');
 }
 
 function selectUser(index) {
