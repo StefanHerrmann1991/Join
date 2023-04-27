@@ -6,6 +6,7 @@
   -webkit-margin-before: 0px;
           margin-block-start: 0px;
   font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
 }
 
 .main {
@@ -305,6 +306,16 @@ h3 {
 }
 
 @media (max-width: 992px) {
+  .main-container {
+    position: absolute;
+    top: 15%;
+    left: 30%;
+    display: flex;
+    justify-content: flex-start;
+    width: 70%;
+    height: 85%;
+    overflow: hidden;
+  }
   #helpBtn {
     display: none;
   }
@@ -325,6 +336,17 @@ h3 {
   }
 }
 @media (max-width: 640px) {
+  .main-container {
+    width: 100%;
+    top: 74px;
+    left: 0;
+  }
+  h1 {
+    font-size: 47px;
+  }
+  div, button, input, textarea, h3 {
+    font-size: 16px;
+  }
   .logout-btn button, .logout-btn a {
     padding: 8px;
     color: #CDCDCD;

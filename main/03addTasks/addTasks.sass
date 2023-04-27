@@ -115,7 +115,7 @@ input, select
         width: 20px
         height: 10.5px
     img
-        padding-left: 10px
+        padding-left: 7.5%
         width: 20px
         height: 14.5px
 
@@ -464,3 +464,36 @@ input.subtask-checkbox[type="checkbox"]:checked
         justify-content: flex-start
         h1
             margin-bottom: 5%
+
+@media( max-width: 992px)
+
+    .add-task-formfield
+        overflow-y: scroll
+        padding-bottom: 30%
+
+    .task-fields
+        flex-direction: column
+        justify-content: center
+
+    .add-task-left, .add-task-right
+        width: 90%
+
+    .border
+        display: none
+
+@media ( max-width: 640px)
+    .main-container
+        .title-form
+            width: 95%
+            padding-top: 5%
+            margin-bottom: 5%
+    .btn-container
+        .clear-btn
+            display: none
+
+    .priority-btns
+        .priority-btn
+            font-size: 16px
+
+    .add-task-left, .add-task-right
+        width: 98%

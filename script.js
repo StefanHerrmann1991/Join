@@ -67,8 +67,8 @@ function getIds(...idsArr) { // rest-operator
  * @param  {...string} ids - The id of one or several HTML elements
  */
 function closeContainer(...ids) {
-    if (ids.length == 1) getId(ids[0]).classList.add('d-none');
-    ids.forEach(id => getId(id).classList.add('d-none'));
+    if (ids.length == 1) getId(ids[0])?.classList.add('d-none');
+    ids.forEach(id => getId(id)?.classList.add('d-none'));
 }
 
 /**
@@ -76,8 +76,8 @@ function closeContainer(...ids) {
  * @param  {...string} ids - The id of one or several HTML elements
  */
 function openContainer(...ids) {
-    if (ids.length == 1) getId(ids[0]).classList.remove('d-none');
-    ids.forEach(id => getId(id).classList.remove('d-none'));
+    if (ids.length == 1) getId(ids[0])?.classList.remove('d-none');
+    ids.forEach(id => getId(id)?.classList.remove('d-none'));
 }
 
 /**
@@ -85,7 +85,7 @@ function openContainer(...ids) {
  * @param  {...string} ids - The id of one or several HTML elements
  */
 function toggleContainer(...ids) {
-    ids.forEach(id => getId(id).classList.toggle('d-none'));
+    ids.forEach(id => getId(id)?.classList.toggle('d-none'));
 }
 
 /**
@@ -111,8 +111,12 @@ function lowerFirstLetter(str) {
     return str[0].toLowerCase() + str.slice(1);
 }
 
-function removeClass(element, className) { getId(`${element}`).classList.remove(className); }
-function addClass(element, className) { getId(`${element}`).classList.add(className); }
+function removeClass(element, className) {
+    getId(`${element}`).classList.remove(className);
+}
+function addClass(element, className) {
+    getId(`${element}`).classList.add(className);
+}
 
 /* ****** ****** */
 
@@ -133,5 +137,4 @@ function displayStringsArr(stringsArray) {
 
 function logout() {
     window.open('/main/00login-register/login.html');
-
 }
