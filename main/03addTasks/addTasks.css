@@ -387,11 +387,38 @@ button {
   background-color: transparent;
 }
 
-input, textarea, select, div, button {
+input, textarea, select, button, .priority-btn {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 21px;
+  line-height: 120%;
+}
+
+.assign-btn-container {
+  width: 100%;
+}
+
+.add-task-formfield {
+  width: 100%;
+}
+.add-task-formfield button {
+  width: 100%;
+}
+
+.task-fields {
+  width: 100%;
+}
+.task-fields button {
+  width: 100%;
+}
+
+.add-task-right {
+  width: 45%;
+}
+
+.add-task-left {
+  width: 45%;
 }
 
 input:-webkit-autofill,
@@ -454,7 +481,7 @@ input:-webkit-autofill:active {
 .title, select, textarea, .date, .standard {
   display: block;
   padding: 13px 21px;
-  width: 422px;
+  width: 100%;
   background: #FFFFFF;
   border: 1px solid #D1D1D1;
   border-radius: 10px;
@@ -476,18 +503,18 @@ input, select {
 .priority-btns {
   display: flex;
   align-items: center;
+  gap: 2%;
 }
 .priority-btns .priority-btn {
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 115px;
+  width: 29.3333333333%;
   background: #FFFFFF;
   border: none;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  margin-right: 8px;
 }
 .priority-btns .priority-btn .priority-btn.selected {
   background-color: #2A3647;
@@ -508,7 +535,6 @@ input, select {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 422px;
   background: #FFFFFF;
   border: 1px solid #D1D1D1;
   border-radius: 10px;
@@ -553,7 +579,6 @@ input, select {
 .assign-btn-container {
   display: flex;
   flex-direction: column;
-  width: 422px;
   background: #FFFFFF;
   border: 1px solid #D1D1D1;
   border-radius: 10px;
@@ -874,8 +899,6 @@ input.subtask-checkbox[type=checkbox]:checked {
 }
 .task-fields .border {
   border: 1px solid #D1D1D1;
-  margin-left: 5%;
-  margin-right: 5%;
 }
 
 .task-main {
