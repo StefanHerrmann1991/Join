@@ -465,6 +465,11 @@ input.subtask-checkbox[type="checkbox"]:checked
         h1
             margin-bottom: 5%
 
+.create-task-btn
+    position: relative
+    span
+        display: inline-block
+
 @media( max-width: 992px)
 
     .add-task-formfield
@@ -497,3 +502,27 @@ input.subtask-checkbox[type="checkbox"]:checked
 
     .add-task-left, .add-task-right
         width: 98%
+
+    .btn-container
+        position: fixed
+        top: 12.5px
+        right: 5%
+        bottom: unset
+        
+        z-index: 100
+        .create-task-btn
+            padding: 0px
+            height: 51px
+            span
+                display: none
+            img
+                position: absolute
+                right: 10%
+
+            &:before
+                font-size: 21px
+                content: "Create"
+                position: absolute
+                top: 50%
+                left: 40%
+                transform: translate(-50%, -50%)

@@ -962,6 +962,13 @@ input.subtask-checkbox[type=checkbox]:checked {
   margin-bottom: 5%;
 }
 
+.create-task-btn {
+  position: relative;
+}
+.create-task-btn span {
+  display: inline-block;
+}
+
 @media (max-width: 992px) {
   .add-task-formfield {
     overflow-y: scroll;
@@ -992,5 +999,31 @@ input.subtask-checkbox[type=checkbox]:checked {
   }
   .add-task-left, .add-task-right {
     width: 98%;
+  }
+  .btn-container {
+    position: fixed;
+    top: 12.5px;
+    right: 5%;
+    bottom: unset;
+    z-index: 100;
+  }
+  .btn-container .create-task-btn {
+    padding: 0px;
+    height: 51px;
+  }
+  .btn-container .create-task-btn span {
+    display: none;
+  }
+  .btn-container .create-task-btn img {
+    position: absolute;
+    right: 10%;
+  }
+  .btn-container .create-task-btn:before {
+    font-size: 21px;
+    content: "Create";
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
   }
 }/*# sourceMappingURL=addTasks.css.map */

@@ -336,6 +336,17 @@ h3 {
   }
 }
 @media (max-width: 640px) {
+  .main-container {
+    width: 100%;
+    top: 74px;
+    left: 0;
+  }
+  h1 {
+    font-size: 47px;
+  }
+  div, button, input, textarea, h3 {
+    font-size: 16px;
+  }
   .logout-btn button, .logout-btn a {
     padding: 8px;
     color: #CDCDCD;
