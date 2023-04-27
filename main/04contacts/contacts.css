@@ -889,10 +889,6 @@ h3 {
   }
 }
 @media (max-width: 640px) {
-  form .input {
-    margin-top: 2%;
-    margin-bottom: 2%;
-  }
   .edit-initial {
     height: 60px;
     width: 60px;
@@ -904,6 +900,7 @@ h3 {
     height: 90%;
   }
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-description, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -920,14 +917,25 @@ h3 {
     padding: 0px;
     flex-direction: column;
   }
-  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #editInitial, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #editInitial {
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #editInitial, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #newContactImg, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #editInitial, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #newContactImg {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     position: absolute;
-    margin-top: -20%;
+    padding-top: -20%;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #newContactImg .edit-initial, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #newContactImg .edit-initial {
+    border: none;
+    height: 80px;
+    width: 80px;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu input, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu input {
+    margin-top: 4%;
+    margin-bottom: 4%;
+    z-index: 100;
+    height: 41px;
   }
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns {
     display: flex;

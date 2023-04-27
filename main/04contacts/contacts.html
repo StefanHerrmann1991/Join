@@ -58,7 +58,9 @@
                     <button class="close-upper-right" onclick="closeContainer('addContactDialog')">
                         <img src="/assets/img/cancel.png">
                     </button>
-                    <img src="/assets/img/addContactBig.png">
+                    <div id="newContactImg" >
+                        <img  class="edit-initial" src="/assets/img/addContactBig.png">
+                    </div>
                     <form onsubmit="createContact(event); saveBackendDataOf(contactBook); renderContacts()"
                         id="contactFormfield">
                         <input type="text" id="name" name="name" required placeholder="Name">
@@ -71,7 +73,7 @@
                             <button type=submit>
                                 <nobr>Create contact</nobr>
                                 <img src="/assets/img/check.png">
-                            </button>                            
+                            </button>
                         </div>
                         <div class="create-contact-btns mobile-flex">
                             <button type="button" onclick="deleteContact()">
@@ -79,7 +81,7 @@
                             </button>
                             <button type=submit>
                                 Save
-                            </button>                            
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -90,5 +92,3 @@
     <div class="add-task-popup d-none" id="addTaksPopup" w3-include-html="/main/03addTasks/taskPopup.html"></div>
 
 </body>
-
-
