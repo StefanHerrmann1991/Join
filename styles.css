@@ -15,6 +15,7 @@
 
 a {
   text-decoration: none;
+  font-size: 18px;
 }
 
 body {
@@ -133,9 +134,6 @@ body {
 .nav-item img {
   width: 26px;
   height: 26px;
-}
-.nav-item .nav-title {
-  font-size: 18px;
 }
 
 button, a {
@@ -306,36 +304,20 @@ h3 {
 }
 
 @media (max-width: 992px) {
-  .main-container {
-    position: absolute;
-    top: 15%;
-    left: 30%;
-    display: flex;
-    justify-content: flex-start;
-    width: 70%;
-    height: 85%;
-    overflow: hidden;
-  }
-  #helpBtn {
-    display: none;
-  }
-  .mobile {
-    display: block !important;
-  }
-  .mobile-flex {
-    display: flex !important;
-  }
-  .desktop {
-    display: none !important;
-  }
-  #navbar {
-    width: 30%;
-  }
   #header {
-    width: 70%;
+    height: 76px;
+  }
+  h1 {
+    font-size: 47px;
+  }
+  h2 {
+    font-size: 41px;
+  }
+  div, button, input, textarea, h3, a {
+    font-size: 16px;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .main-container {
     width: 100%;
     top: 74px;
@@ -344,7 +326,7 @@ h3 {
   h1 {
     font-size: 47px;
   }
-  div, button, input, textarea, h3 {
+  div, button, input, textarea, h3, a {
     font-size: 16px;
   }
   .logout-btn button, .logout-btn a {

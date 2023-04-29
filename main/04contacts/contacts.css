@@ -15,6 +15,7 @@
 
 a {
   text-decoration: none;
+  font-size: 18px;
 }
 
 body {
@@ -133,9 +134,6 @@ body {
 .nav-item img {
   width: 26px;
   height: 26px;
-}
-.nav-item .nav-title {
-  font-size: 18px;
 }
 
 button, a {
@@ -306,36 +304,20 @@ h3 {
 }
 
 @media (max-width: 992px) {
-  .main-container {
-    position: absolute;
-    top: 15%;
-    left: 30%;
-    display: flex;
-    justify-content: flex-start;
-    width: 70%;
-    height: 85%;
-    overflow: hidden;
-  }
-  #helpBtn {
-    display: none;
-  }
-  .mobile {
-    display: block !important;
-  }
-  .mobile-flex {
-    display: flex !important;
-  }
-  .desktop {
-    display: none !important;
-  }
-  #navbar {
-    width: 30%;
-  }
   #header {
-    width: 70%;
+    height: 76px;
+  }
+  h1 {
+    font-size: 47px;
+  }
+  h2 {
+    font-size: 41px;
+  }
+  div, button, input, textarea, h3, a {
+    font-size: 16px;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .main-container {
     width: 100%;
     top: 74px;
@@ -344,7 +326,7 @@ h3 {
   h1 {
     font-size: 47px;
   }
-  div, button, input, textarea, h3 {
+  div, button, input, textarea, h3, a {
     font-size: 16px;
   }
   .logout-btn button, .logout-btn a {
@@ -367,7 +349,7 @@ h3 {
   }
   #navbar, #header {
     width: 100%;
-    height: min(74px, 15%);
+    height: 74px;
   }
   .nav-item {
     display: flex;
@@ -450,12 +432,12 @@ h3 {
 .contact-book .contact-container {
   display: flex;
   justify-content: flex-start;
-  padding-left: 20px;
-  padding-right: 20px;
   align-items: center;
   border: none;
   background-color: transparent;
   width: 100%;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 .contact-book .icon-initial {
   color: white;
@@ -472,7 +454,7 @@ h3 {
 }
 
 .edit-contact-container {
-  width: 67%;
+  width: 60%;
   background-color: #F5F5F5;
   display: flex;
   justify-content: flex-start;
@@ -501,7 +483,7 @@ h3 {
 .contact-flex {
   display: flex;
   justify-content: center;
-  width: 33%;
+  width: 40%;
   background-color: white;
   position: relative;
   overflow-y: scroll;
@@ -669,7 +651,7 @@ h3 {
 }
 
 .contact-name-email {
-  margin-top: 8%;
+  margin-top: 5%;
   margin-bottom: 5%;
   display: flex;
   align-items: flex-start;
@@ -786,90 +768,20 @@ h3 {
 }
 
 @media (max-width: 992px) {
-  .edit-contact-headline .title-additive {
-    margin-top: 5%;
-    margin-bottom: 5%;
-  }
-  .add-contact-dialog .add-contact .add-contact-menu, .edit-contact-dialog .add-contact .add-contact-menu {
-    height: 100%;
-    width: 100%;
-  }
-  .add-contact-dialog .add-contact .add-contact-menu .add-contact-description, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description {
-    padding: 0px;
-    display: flex;
-    justify-content: center;
-  }
-  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns {
-    display: flex;
-    flex-direction: row;
-  }
-  .add-contact-dialog button, .edit-contact-dialog button {
-    padding: 8px 18px !important;
-  }
-  .back-btn {
-    display: block;
-    position: absolute;
-    top: 5%;
-    right: 10%;
-  }
-  .edit-contact-container {
-    padding: 0px;
-    width: 100%;
-    position: absolute;
-    height: 100%;
-  }
-  .contact-information {
-    font-size: 16px;
-  }
-  .contact-name {
-    font-size: 21px !important;
-  }
   .main-contact-container {
-    left: 30%;
-    width: 70%;
-  }
-  .main-contact-container .contact-flex {
-    width: 100%;
-  }
-  .main-contact-container h1 {
-    font-size: 47px !important;
-  }
-  .edit-contact-headline {
-    padding-top: 5%;
-    margin-bottom: 5%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .edit-contact-headline .border-big {
-    order: 3;
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    margin-left: 2.5%;
-    border: none;
-    border-top: 3px solid #29ABE2;
-    width: 100px;
-    height: 0;
+    top: 76px;
+    height: calc(100% - 76px);
   }
   .edit-initial {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     font-size: 27px;
   }
-  .edit-name-initial-con {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
   .edit-name-initial-con .edit-name {
-    font-size: 36px;
+    font-size: 27px;
   }
-  .edit-contact-popup {
-    overflow-y: scroll;
-  }
-  .edit-information .delete-btn {
-    display: none;
+  .contact-book .contact-name {
+    font-size: 16px;
   }
 }
 @media (max-width: 768px) {
@@ -879,9 +791,6 @@ h3 {
   }
   #editContactFormfield {
     width: 90%;
-  }
-  h2 {
-    font-size: 41px !important;
   }
   .add-contact-dialog .add-contact .add-contact-menu, .edit-contact-dialog .add-contact .add-contact-menu {
     height: 100%;
