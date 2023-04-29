@@ -304,6 +304,9 @@ h3 {
 }
 
 @media (max-width: 992px) {
+  #header {
+    height: 76px;
+  }
   h1 {
     font-size: 47px;
   }
@@ -729,7 +732,6 @@ progress {
   border: none;
   background-color: #ddd;
   color: #333;
-  padding: 10px;
   border-radius: 5px;
 }
 

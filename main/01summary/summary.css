@@ -304,6 +304,9 @@ h3 {
 }
 
 @media (max-width: 992px) {
+  #header {
+    height: 76px;
+  }
   h1 {
     font-size: 47px;
   }
