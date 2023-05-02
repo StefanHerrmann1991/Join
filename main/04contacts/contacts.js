@@ -270,6 +270,7 @@ function saveEditedContact(event, index) {
   contactBook.editContact(index, contactName, contactEmail, contactPhone);
   renderContacts();
   closeContainer('editContactDialog');
+  showContact(index)
 }
 
 
@@ -281,7 +282,7 @@ function renderEditContact(actualContact) {
         <div class="add-contact-menu">
             <div class="add-contact-description">
                 <img class="desktop" src="/assets/img/logo.png">
-                <h2>Add contact</h2>
+                <h2>Edit contact</h2>
                 <p class="desktop">Tasks are better with a team!</p>
             </div>
             <div class="add-contact-submenu">
@@ -294,20 +295,11 @@ function renderEditContact(actualContact) {
                     <input type="text" id="editName" name="editName" required>
                     <input type="email" id="editEmail" name="editEmail" required>
                     <input type="tel" id="editPhone" name="editPhone" required>
-              <div class="create-contact-btns desktop">
-                    <button type="button" onclick="closeContainer('editContactDialog')">Cancel
-                        <img src="/assets/img/cancel.png">
-                    </button>
-                    <button type=submit>
-                        <nobr>Create contact</nobr>
-                        <img src="/assets/img/check.png">
-                    </button>                            
-                </div>
-                <div class="create-contact-btns mobile-flex">
+                <div class="create-contact-btns">
                     <button type="button" onclick="deleteContact(${actualContact})">
                         Delete
                     </button>
-                    <button type=submit>Save</button>                            
+                    <button class="save-btn" type=submit>Save</button>                            
                 </div>
                 </form>
             </div>

@@ -46,8 +46,8 @@
         border: none
         background-color: transparent
         width: 100%
-        padding-left: 12px 
-        padding-right: 12px 
+        padding-left: 12px
+        padding-right: 12px
     .icon-initial
         color: white
     .contact-email
@@ -108,8 +108,8 @@
             top: 50%
             transform: translate(-50%, -50%)
             display: flex
-            width: 90%
-            height: 65%
+            width: 85%
+            height: 60%
             margin: auto
             .add-contact-description
                 display: flex
@@ -175,6 +175,7 @@
                     margin-top: 8%
                     display: flex
                     justify-content: flex-start
+                    height: 55px
                     button
                         @include flex-center
                         padding: 18px 10px
@@ -318,6 +319,26 @@
 
 @media (max-width: 992px)
 
+    .add-contact-dialog, .edit-contact-dialog
+        .add-contact
+            .add-contact-menu
+                .add-contact-description
+                    h2
+                        font-size: 47px
+                .add-contact-submenu
+                    form
+                        width: 70%
+                    img
+                        height: 80px
+                        width: 80px
+                    .create-contact-btns
+                        height: 40px
+                        button
+                            font-size: 16px
+                        &:last-child
+                            width: 160px
+                 
+
     .main-contact-container
         top: 76px
         height: calc( 100% - 76px )
@@ -354,9 +375,11 @@
                 .add-contact-description
                     width: 90%
                     margin: auto
-                    height: 40%
+                    height: 90%
                     padding: 0px
                     border-radius: 30px 30px 0px 0px
+                    h2
+                        font-size: 41px
                 .add-contact-submenu
                     border-radius: 0px 0px 30px 30px
                     width: 90%

@@ -406,7 +406,6 @@ input, textarea, select, button, .priority-btn {
 .add-task-formfield {
   width: 100%;
   overflow-y: scroll;
-  overflow-x: hidden;
 }
 .add-task-formfield button {
   width: 100%;
@@ -909,12 +908,9 @@ input.subtask-checkbox[type=checkbox]:checked {
 }
 
 .task-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 85%;
   height: 85%;
-  overflow: hidden;
+  overflow-y: scroll;
   position: relative;
   background: #FFFFFF;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
