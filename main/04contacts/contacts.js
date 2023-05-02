@@ -211,7 +211,7 @@ function showContact(index) {
           <div class="edit-initial" style="background-color:${actualContact.color}">${actualContact.initial}</div>
           <div class="contact-task-container">
               <div class="edit-name">${actualContact.name}</div>
-              <button class="add-task-btn" onclick="openContainer('addTaksPopup'); initTasks()"><img
+              <button class="add-task-btn" onclick="openTask()"><img
                       src="/assets/img/addTaskBlue.png">Add Tasks</button>
           </div>
       </div>
@@ -230,6 +230,12 @@ function showContact(index) {
   `
 }
 
+
+function openTask() {
+  initTasks()
+  if (isMobileView()) window.location = "/main/03addTasks/addTasks.html";
+  else openContainer('addTaksPopup');
+}
 
 function closeContactMobile() {
   getId('editContact').classList.add('desktop');

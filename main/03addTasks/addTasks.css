@@ -292,8 +292,7 @@ h3 {
 .border-big {
   border: 3px solid #29ABE2;
   height: 59px;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin: 5%;
 }
 
 .mobile {
@@ -302,6 +301,10 @@ h3 {
 
 .mobile-flex {
   display: none !important;
+}
+
+.desktop {
+  display: block !important;
 }
 
 @media (max-width: 992px) {
@@ -319,6 +322,15 @@ h3 {
   }
 }
 @media (max-width: 768px) {
+  .mobile-flex {
+    display: flex !important;
+  }
+  .mobile {
+    display: block !important;
+  }
+  .desktop {
+    display: none !important;
+  }
   .main-container {
     width: 100%;
     top: 74px;
@@ -985,6 +997,20 @@ input.subtask-checkbox[type=checkbox]:checked {
   }
 }
 @media (max-width: 768px) {
+  .add-task-formfield {
+    overflow-y: scroll;
+    padding-bottom: 30%;
+  }
+  .task-fields {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .add-task-left, .add-task-right {
+    width: 90%;
+  }
+  .border {
+    display: none;
+  }
   .main-container .title-form {
     width: 95%;
     padding-top: 5%;

@@ -291,9 +291,7 @@ h3 {
 .border-big {
   border: 3px solid #29ABE2;
   height: 59px;
-  margin: unset;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin: 5%;
 }
 
 .mobile {
