@@ -218,8 +218,6 @@ function showContact(index) {
       <div class="edit-information">
           <div class="contact-name">Contact Information</div>
           <button onclick="editContact(${index})"><img src="/assets/img/edit.png">Edit Contact</button>
-          <button class="delete-btn" onclick="deleteContact(${index})"><img
-                  src="/assets/img/deleteDark.png">Delete</button>
       </div>
       <div class="contact-information">
           <h4>Email</h4>

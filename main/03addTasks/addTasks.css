@@ -405,7 +405,6 @@ input, textarea, select, button, .priority-btn {
 
 .add-task-formfield {
   width: 100%;
-  overflow-y: scroll;
 }
 .add-task-formfield button {
   width: 100%;
@@ -910,7 +909,7 @@ input.subtask-checkbox[type=checkbox]:checked {
 .task-main {
   width: 85%;
   height: 85%;
-  overflow-y: scroll;
+  overflow-y: hidden;
   position: relative;
   background: #FFFFFF;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
@@ -926,6 +925,8 @@ input.subtask-checkbox[type=checkbox]:checked {
   transform: translate(-50%, -50%);
   width: 95%;
   margin: auto;
+  overflow-y: auto;
+  height: 100%;
 }
 .task-main h1 {
   margin-bottom: 5%;
@@ -983,7 +984,7 @@ input.subtask-checkbox[type=checkbox]:checked {
     width: 140px;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .main-container .title-form {
     width: 95%;
     padding-top: 5%;

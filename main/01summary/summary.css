@@ -291,8 +291,9 @@ h3 {
 .border-big {
   border: 3px solid #29ABE2;
   height: 59px;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin: unset;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .mobile {
@@ -301,6 +302,10 @@ h3 {
 
 .mobile-flex {
   display: none !important;
+}
+
+.desktop {
+  display: block !important;
 }
 
 @media (max-width: 992px) {
@@ -318,6 +323,15 @@ h3 {
   }
 }
 @media (max-width: 768px) {
+  .mobile-flex {
+    display: flex !important;
+  }
+  .mobile {
+    display: block !important;
+  }
+  .desktop {
+    display: none !important;
+  }
   .main-container {
     width: 100%;
     top: 74px;
@@ -553,8 +567,7 @@ h3 {
 .border-big {
   border: 3px solid #29ABE2;
   height: 100%;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin: 5%;
 }
 
 .name {

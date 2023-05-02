@@ -135,8 +135,6 @@ body
     & img
         width: 26px
         height: 26px
-    
-        
 
 button, a
     cursor: pointer
@@ -258,13 +256,17 @@ h3
 .border-big
     border: 3px solid #29ABE2
     height: 59px
-    margin-left: 5%
-    margin-right: 5%
+    margin: 5%
+    
 
 .mobile
     display: none !important
+
 .mobile-flex
     display: none !important
+
+.desktop
+    display: block !important
 
 @media (max-width: 992px)
 
@@ -281,6 +283,15 @@ h3
         font-size: 16px
 
 @media (max-width: 768px)
+
+    .mobile-flex
+        display: flex !important
+
+    .mobile
+        display: block !important
+
+    .desktop
+        display: none !important
 
     .main-container
         width: 100%
