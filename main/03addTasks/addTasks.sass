@@ -35,8 +35,6 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active
     -webkit-box-shadow: 0 0 0 30px white inset !important
 
-.category-input-color
-    display: flex
 
 .add-task-right
     position: relative
@@ -150,9 +148,9 @@ input, select
     .cancel-button
         height: 31px
         border-right: 1px solid #D1D1D1
-        padding-right: 12px
+        padding-right: 2.5%
     .add-button
-        padding-left: 12px
+        padding-left: 2.5%
 
 .subtasks-container .button-container
     display: flex
@@ -190,6 +188,7 @@ input, select
         align-items: center
 .user-menu
     width: 100%
+    
 
 .user-initial-container
     display: flex
@@ -212,11 +211,14 @@ input, select
 
 .chosen-color
     margin-left: 12px
-.color-picker
+.color-picker    
+    display: flex
+    gap: 5%
     width: 100%
     margin-top: 15.5px
     button
-        margin-left: 21px
+        height: 20px
+        width: 20px
 
 .invite-user-btn
     padding-left: 23px
@@ -323,14 +325,12 @@ input, select
             height: 51px
             margin-right: 10px
 
-#category-input
-    width: 100%
-    background-color: white
-
 .category-input-color
     display: flex
     align-items: center
     justify-content: flex-start
+    #categoryInput
+        width: auto !important
 
 .category-color
     border: 2px solid #FFFFFF

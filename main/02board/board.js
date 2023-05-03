@@ -58,7 +58,7 @@ function renderBoards(array) {
         </div>
         <div id="${boardId}" class="board-task-container" ondrop="moveTo('${boardId}')" ondragover="allowDrop(event)"></div>
         </div>
-           `
+           `      
         renderEachBoard(boardTitle, boardId, array);
     }
 }
@@ -274,7 +274,7 @@ function renderDetailedTask(index) {
             <div class="edit-task-container">
                 <div class="task-details">
                     <div class="category-icon" style="background-color: ${task.category.color}">${task.category.topic}</div>
-                    <button class="close-upper-right" onclick="closeContainer('editTaskDialog')"><img
+                    <button class="close-upper-right" onclick="closeTaskDialog()"><img
                             src="/assets/img/cancel.png"></button>
                     <h1>${task.title}</h1>
                     <div class="details-container">${task.description}</div>
@@ -308,10 +308,10 @@ function renderEditTask(index) {
         editTask.innerHTML = `
     <div class="edit-task-dialog center">
         <div class="edit-task-container">
-            <button class="close-upper-right" onclick="closeContainer('editTaskDialog')"><img
+            <button class="close-upper-right" onclick="closeTaskDialog()"><img
                     src="/assets/img/cancel.png"></button>
             <form class="edit-task-form" onsubmit="changeTask(${index}, '${task.board}')">
-                <div>
+                <div class="edit-task-field">
                     <div class="mgn-b">
                         <h3>Title</h3>
                         <input required class="title" id="title" value="${task.title}" placeholder="Enter a title"

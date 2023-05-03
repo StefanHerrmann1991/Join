@@ -302,6 +302,10 @@ h3 {
   display: none !important;
 }
 
+.desktop-flex {
+  display: flex !important;
+}
+
 .desktop {
   display: block !important;
 }
@@ -404,6 +408,7 @@ h3 {
 }
 .board-main .boards-title-menu {
   margin-bottom: 5%;
+  gap: 2.5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -417,6 +422,7 @@ h3 {
 .board-main .menu {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   width: 100%;
 }
 
@@ -562,21 +568,22 @@ h3 {
 .boards {
   display: flex;
   align-items: flex-start;
-  width: 100%;
+  overflow-x: scroll;
 }
 .boards .board {
-  width: 95%;
+  min-width: 250px;
   display: flex;
   flex-wrap: wrap;
-  -moz-column-gap: 20px;
-       column-gap: 20px;
+  -moz-column-gap: 40px;
+       column-gap: 40px;
 }
 .boards .board > * {
-  flex: 1 1 200px;
   margin: 5%;
+  flex: 1 1 200px;
   box-sizing: border-box;
 }
 .boards .board-header {
+  height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -789,4 +796,33 @@ progress {
 .accept-edited-task-btn img {
   width: 24px;
   height: 24px;
+}
+
+@media (max-width: 992px) {
+  .task-headline {
+    font-size: 16px;
+  }
+  .add-task {
+    height: 40px;
+  }
+  .edit-task-container .task-details h1 {
+    font-size: 21px;
+  }
+  .edit-task-container .task-details h2 {
+    font-size: 16px;
+  }
+  .accept-edited-task-btn {
+    height: 40px;
+  }
+  .edit-task-field {
+    width: 75%;
+  }
+  .assigned-users .user-icon {
+    height: 35px;
+    width: 35px;
+  }
+  .board-main img {
+    height: 15px;
+    width: 15px;
+  }
 }/*# sourceMappingURL=board.css.map */

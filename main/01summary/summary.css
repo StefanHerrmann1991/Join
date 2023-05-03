@@ -302,6 +302,10 @@ h3 {
   display: none !important;
 }
 
+.desktop-flex {
+  display: flex !important;
+}
+
 .desktop {
   display: block !important;
 }

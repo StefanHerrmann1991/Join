@@ -303,6 +303,10 @@ h3 {
   display: none !important;
 }
 
+.desktop-flex {
+  display: flex !important;
+}
+
 .desktop {
   display: block !important;
 }
@@ -444,10 +448,6 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
-.category-input-color {
-  display: flex;
-}
-
 .add-task-right {
   position: relative;
 }
@@ -582,10 +582,10 @@ input, select {
 .subtasks-container .cancel-button {
   height: 31px;
   border-right: 1px solid #D1D1D1;
-  padding-right: 12px;
+  padding-right: 2.5%;
 }
 .subtasks-container .add-button {
-  padding-left: 12px;
+  padding-left: 2.5%;
 }
 
 .subtasks-container .button-container {
@@ -661,11 +661,14 @@ input, select {
 }
 
 .color-picker {
+  display: flex;
+  gap: 5%;
   width: 100%;
   margin-top: 15.5px;
 }
 .color-picker button {
-  margin-left: 21px;
+  height: 20px;
+  width: 20px;
 }
 
 .invite-user-btn {
@@ -788,15 +791,13 @@ input, select {
   margin-right: 10px;
 }
 
-#category-input {
-  width: 100%;
-  background-color: white;
-}
-
 .category-input-color {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+.category-input-color #categoryInput {
+  width: auto !important;
 }
 
 .category-color {

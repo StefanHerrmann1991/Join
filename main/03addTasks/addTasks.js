@@ -74,17 +74,14 @@ function newCategory() {
     newCategory.classList.remove('assign-btn-container');
     newCategory.innerHTML = `
     <div class="subtasks-container">
-        <div class="category-input-color">           
-                <input id="categoryInput" type="text" placeholder="New category name"
-                onkeyup="this.style.width = ((this.value.length + 1) * 12) + (this.value.length == 0 ? 268 : 0) + 'px';">
-                <div class="chosen-color" id="chosenColor"></div>
+        <div class="category-input-color">
+            <input id="categoryInput" type="text" placeholder="New category name">            
         </div>
         <div class="button-container">
             <button type="button" class="cancel-button" onclick="cancelNewCategory()"><img
                     src="/assets/img/cancelDark.png"></button>
-            <button type="button" class="add-button" onclick="addCategory()"><img
-                    src="/assets/img/checkDark.png"></button>
-        </div>                
+            <button type="button" class="add-button" onclick="addCategory()"><img src="/assets/img/checkDark.png"></button>
+        </div>
     </div>
     <div id="colorPicker" class="color-picker"></div>       
     `
@@ -118,9 +115,10 @@ function renderColorPicker() {
 }
 
 function chooseCategoryColor(index) {
-    let colorId = getId('chosenColor');
-    chosenColor = colorPicker[index];
-    colorId.innerHTML = `<div style="background-color: ${chosenColor}" class="category-color"></div>`;
+    let chosenColor = colorPicker[index];
+    let colorDiv = document.getElementById('categoryInput');
+    let html = `<div style="background-color: ${chosenColor}" class="category-color"></div>`;
+    colorDiv.insertAdjacentHTML('afterend', html);
 }
 
 function addCategory() {
