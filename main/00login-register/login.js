@@ -24,9 +24,9 @@ function renderAuth(status) {
 function renderSignUp() {
     return `
 <div class="register">
-<img class="logo" src="/assets/img/logo2.png">
+<img class="logo" src="../../assets/img/logo2.png">
 <div class="sign-up-container">
-<img onclick="initAuthentification('login')" class="arrow-back" src="/assets/img/backArrow.png">
+<img onclick="initAuthentification('login')" class="arrow-back" src="../../assets/img/backArrow.png">
     <div class="sign-up">
         <h2>Sign up</h2>
         <form onsubmit="registerUser();">
@@ -47,7 +47,7 @@ function renderSignUp() {
 function renderLogin() {
     return `
 <div class="register">
-<img class="logo" src="/assets/img/logo2.png">
+<img class="logo" src="../../assets/img/logo2.png">
 <div class="to-register">Not a Join user?
 <button onclick="renderAuth('signUp')"><nobr>Sign up</nobr></button>
 </div>
@@ -79,9 +79,9 @@ function renderLogin() {
 function renderForgotPassword() {
     return `
     <div class="register">
-    <img class="logo" src="/assets/img/logo2.png">
+    <img class="logo" src="../../assets/img/logo2.png">
     <div class="forgot-password-container">
-        <img onclick="initAuthentification('login')" class="arrow-back" src="/assets/img/backArrow.png">
+        <img onclick="initAuthentification('login')" class="arrow-back" src="../../assets/img/backArrow.png">
         <div class="forgot-password">
             <h2>I forgot my password</h2>
             <div> Don't worry! We will send you an email with the instructions to reset your password.
@@ -101,9 +101,9 @@ function renderForgotPassword() {
 function renderResetPassword() {
     return `
     <div class="register">
-    <img class="logo" src="/assets/img/login/logo.png">
+    <img class="logo" src="../../assets/img/login/logo.png">
     <div class="forgot-password-container">
-        <img onclick="initAuthentification('login')" class="arrow-back" src="/assets/img/backArrow.png">
+        <img onclick="initAuthentification('login')" class="arrow-back" src="../../assets/img/backArrow.png">
         <div class="reset-password">
             <h2>Reset your password</h2>
             <div> Change your account password
@@ -213,7 +213,7 @@ async function forgotPassword(event) {
 
 
 async function sendForgotPasswordEmail(email, token) {
-    const resetUrl = window.location.origin + '/reset-password.html?token=' + token;
+    const resetUrl = window.location.origin + '/Join/main/00login-register/resetPassword.html?token=' + token;
     const message = `Click the following link to reset your password: ${resetUrl}`;
     const formData = new FormData();
     formData.append('email', email);

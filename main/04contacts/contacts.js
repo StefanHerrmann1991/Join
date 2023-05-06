@@ -212,12 +212,12 @@ function showContact(index) {
           <div class="contact-task-container">
               <div class="edit-name">${actualContact.name}</div>
               <button class="add-task-btn" onclick="openTask()"><img
-                      src="/assets/img/addTaskBlue.png">Add Tasks</button>
+                      src="../../assets/img/addTaskBlue.png">Add Tasks</button>
           </div>
       </div>
       <div class="edit-information">
           <div class="contact-name">Contact Information</div>
-          <button onclick="editContact(${index})"><img src="/assets/img/edit.png">Edit Contact</button>
+          <button onclick="editContact(${index})"><img src="../../assets/img/edit.png">Edit Contact</button>
       </div>
       <div class="contact-information">
           <h4>Email</h4>
@@ -285,13 +285,13 @@ function renderEditContact(actualContact) {
     <div class="add-contact" >
         <div class="add-contact-menu">
             <div class="add-contact-description">
-                <img class="desktop" src="/assets/img/logo.png">
+                <img class="desktop" src="../../assets/img/logo.png">
                 <h2>Edit contact</h2>
                 <p class="desktop">Tasks are better with a team!</p>
             </div>
             <div class="add-contact-submenu">
                 <button class="close-upper-right" onclick="closeContainer('editContactDialog')">
-                    <img src="/assets/img/cancel.png">                   
+                    <img src="../../assets/img/cancel.png">                   
                 </button>
                 <div id="editInitial"></div>
                 <form onsubmit="saveEditedContact(event, ${actualContact});  saveBackendDataOf(contactBook)"

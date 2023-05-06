@@ -479,16 +479,16 @@ h3 {
   margin-left: 12px;
 }
 .register .sign-up form input:nth-child(1) {
-  background-image: url(/assets/img/person.png);
+  background-image: url(../../assets/img/person.png);
 }
 .register .sign-up form input:nth-child(2) {
-  background-image: url(/assets/img/mail.png);
+  background-image: url(../../assets/img/mail.png);
 }
 .register .sign-up form input:nth-child(3) {
-  background-image: url(/assets/img/lock.png);
+  background-image: url(../../assets/img/lock.png);
 }
 .register .sign-up form input:nth-child(4) {
-  background-image: url(/assets/img/lock.png);
+  background-image: url(../../assets/img/lock.png);
 }
 .register .sign-up form input {
   font-size: 21px;
@@ -541,7 +541,7 @@ h3 {
   margin-right: 10%;
 }
 .forgot-password-container .forgot-password input:nth-child(1) {
-  background-image: url(/assets/img/mail.png);
+  background-image: url(../../assets/img/mail.png);
 }
 .forgot-password-container .forgot-password input {
   font-size: 21px;
