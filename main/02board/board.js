@@ -54,7 +54,7 @@ function renderBoards(array) {
         <div class="board">
         <div class="board-header">
         <h2>${boardTitle}</h2>
-        <button value="${boardId}" onclick="openContainer('addTaksPopup'); setBoard(this.value)"><img src="/assets/img/plusButton.png"</button> 
+        <button value="${boardId}" onclick="openContainer('addTaksPopup'); setBoard(this.value)"><img src="../../assets/img/plusButton.png"</button> 
         </div>
         <div id="${boardId}" class="board-task-container" ondrop="moveTo('${boardId}')" ondragover="allowDrop(event)"></div>
         </div>
@@ -175,7 +175,7 @@ function boardTaskHTML(element, i) {
                   <div class="assigned-users">
                       ${renderAssignedUsers(element.assignedTo)}
                   </div>
-                  <img class="urgency" src="/assets/img/prio${capitalizeFirst(element.urgency)}.png">
+                  <img class="urgency" src="../../assets/img/prio${capitalizeFirst(element.urgency)}.png">
               </div>
           </div>
       </div>

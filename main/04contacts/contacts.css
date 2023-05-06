@@ -142,12 +142,12 @@ button, a {
 
 .main-container {
   position: absolute;
-  top: 15%;
+  top: clamp(120px, 15%, 100%);
   left: 20%;
   display: flex;
   justify-content: flex-start;
   width: 80%;
-  height: 85%;
+  height: calc(100% - clamp(120px, 15%, 100%));
   overflow: hidden;
 }
 
@@ -311,6 +311,16 @@ h3 {
 }
 
 @media (max-width: 992px) {
+  .main-container {
+    position: absolute;
+    top: clamp(90px, 15%, 100%);
+    left: 20%;
+    display: flex;
+    justify-content: flex-start;
+    width: 80%;
+    height: calc(100% - clamp(90px, 15%, 100%));
+    overflow: hidden;
+  }
   #header {
     height: 76px;
   }
@@ -590,13 +600,13 @@ h3 {
   margin-left: 12px;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nth-child(1), .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nth-child(1) {
-  background-image: url(/assets/img/person.png);
+  background-image: url(assets/img/person.png);
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nth-child(2), .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nth-child(2) {
-  background-image: url(/assets/img/mail.png);
+  background-image: url(assets/img/mail.png);
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nth-child(3), .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nth-child(3) {
-  background-image: url(/assets/img/phone-line.png);
+  background-image: url(assets/img/phone-line.png);
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu input, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu input {
   font-size: 21px;

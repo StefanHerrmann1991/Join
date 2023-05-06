@@ -143,12 +143,12 @@ button, a {
 
 .main-container {
   position: absolute;
-  top: 15%;
+  top: clamp(120px, 15%, 100%);
   left: 20%;
   display: flex;
   justify-content: flex-start;
   width: 80%;
-  height: 85%;
+  height: calc(100% - clamp(120px, 15%, 100%));
   overflow: hidden;
 }
 
@@ -312,6 +312,16 @@ h3 {
 }
 
 @media (max-width: 992px) {
+  .main-container {
+    position: absolute;
+    top: clamp(90px, 15%, 100%);
+    left: 20%;
+    display: flex;
+    justify-content: flex-start;
+    width: 80%;
+    height: calc(100% - clamp(90px, 15%, 100%));
+    overflow: hidden;
+  }
   #header {
     height: 76px;
   }

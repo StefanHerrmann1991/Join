@@ -7,9 +7,9 @@
     <script src="../03addTasks/addTasks.js"></script>
     <!-- css data -->
     <link rel="stylesheet" href="contacts.css">
-    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="../03addTasks/addTasks.css">
-    <link rel="icon" href="/assets/img/logo.png" type="image/x-icon">
+    <link rel="icon" href="../../assets/img/logo.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +22,7 @@
     <div class="main-contact-container">
         <div class="contact-btn-container" id="addContactBtn">
             <button class="add-contact-btn" onclick="openContainer('addContactDialog')">New Contact<img
-                    src="/assets/img/addContact.png"></button>
+                    src="../../assets/img/addContact.png"></button>
         </div>
         <div class="contact-flex">
             <div id="contactBookId" class="contact-book"></div>
@@ -50,16 +50,16 @@
         <div class="add-contact" id="addContact">
             <div class="add-contact-menu">
                 <div class="add-contact-description">
-                    <img class="desktop" src="/assets/img/logo.png">
+                    <img class="desktop" src="../../assets/img/logo.png">
                     <h2>Add contact</h2>
                     <p class="desktop">Tasks are better with a team!</p>
                 </div>
                 <div class="add-contact-submenu">
                     <button class="close-upper-right" onclick="closeContainer('addContactDialog')">
-                        <img src="/assets/img/cancel.png">
+                        <img src="../../assets/img/cancel.png">
                     </button>
                     <div id="newContactImg" >
-                        <img  class="edit-initial" src="/assets/img/addContactBig.png">
+                        <img  class="edit-initial" src="../../assets/img/addContactBig.png">
                     </div>
                     <form onsubmit="createContact(event); saveBackendDataOf(contactBook); renderContacts()"
                         id="contactFormfield">
@@ -68,11 +68,11 @@
                         <input type="tel" id="phone" name="phone" required placeholder="Phone">
                         <div class="create-contact-btns desktop-flex">
                             <button type="button" onclick="closeContainer('addContactDialog')">Cancel
-                                <img src="/assets/img/cancel.png">
+                                <img src="../../assets/img/cancel.png">
                             </button>
                             <button type=submit>
                                 <nobr>Create contact</nobr>
-                                <img src="/assets/img/check.png">
+                                <img src="../../assets/img/check.png">
                             </button>
                         </div>
                         <div class="create-contact-btns mobile-flex">

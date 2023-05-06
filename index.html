@@ -4,23 +4,23 @@
 <head>
 
     <!-- script data -->
-    <script src="/includeHTML.js"></script>
-    <script src="/script.js"></script>
-    <script src="/main/00login-register/login.js"></script>
-    <script src="/main/01summary/summary.js"></script>
-    <script src="/main/02board/board.js"></script>
-    <script src="/main/03addTasks/addTasks.js"></script>
-    <script src="/main/04contacts/contacts.js"></script>
+    <script src="includeHTML.js"></script>
+    <script src="script.js"></script>
+    <script src="../00login-register/login.js"></script>
+    <script src="../01summary/summary.js"></script>
+    <script src="../02board/board.js"></script>
+    <script src="../03addTasks/addTasks.js"></script>
+    <script src="../04contacts/contacts.js"></script>
     <script src="./mini_backend.js"></script>
-    <!-- css data -->
-    <link rel="stylesheet" href="/main/00login-register/login.css">
-    <link rel="stylesheet" href="/main/01summary/summary.css">
-    <link rel="stylesheet" href="/main/02board/board.css">
-    <link rel="stylesheet" href="/main/03addTasks/addTasks.css">
-    <link rel="stylesheet" href="/main/04contacts/contacts.css">
-    <link rel="stylesheet" href="/main/05legal-notice/legal-notice.css">
-    <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="/assets/fonts.css">
+    <!-- css files-->
+    <link rel="stylesheet" href="../00login-register/login.css">
+    <link rel="stylesheet" href="../01summary/summary.css">
+    <link rel="stylesheet" href="../02board/board.css">
+    <link rel="stylesheet" href="../03addTasks/addTasks.css">
+    <link rel="stylesheet" href="../04contacts/contacts.css">
+    <link rel="stylesheet" href="../05legal-notice/legal-notice.css">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../assets/fonts.css">
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,43 +39,43 @@
     <div class="navbar-header">
         <nav id="navbar">
             <a src="index.html">
-                <img id="logo" src="/assets/img/logo.png">
+                <img id="logo" src="../../assets/img/logo.png">
             </a>
             <div class="main-menu">
-                <a href="/main/01summary/summary.html" class="nav-item">
-                    <img src="/assets/img/summary.png">
+                <a href="../01summary/summary.html" class="nav-item">
+                    <img src="../../assets/img/summary.png">
                     <div class="nav-title">Summary</div>
                 </a>
-                <a href="/main/02board/board.html" class="nav-item">
-                    <img src="/assets/img/board.png">
+                <a href="../02board/board.html" class="nav-item">
+                    <img src="../../assets/img/board.png">
                     <div class="nav-title">Board</div>
                 </a>
-                <a href="/main/03addTasks/addTasks.html" class="nav-item">
-                    <img src="/assets/img/addTasks.png">
+                <a href="../03addTasks/addTasks.html" class="nav-item">
+                    <img src="../../assets/img/addTasks.png">
                     <div class="nav-title">Add Task</div>
                 </a>
-                <a href="/main/04contacts/contacts.html" class="nav-item">
-                    <img src="/assets/img/contacts.png">
+                <a href="../04contacts/contacts.html" class="nav-item">
+                    <img src="../../assets/img/contacts.png">
                     <div class="nav-title">Contacts</div>
                 </a>
             </div>
             <div id="legalNotice" class="nav-item">
-                <img src="/assets/img/legalnotice.png">
-                <a class="nav-title" href="/main/05legal-notice/legal-notice.html">Legal notice</a>
+                <img src="../../assets/img/legalnotice.png">
+                <a class="nav-title" href="../05legal-notice/legal-notice.html">Legal notice</a>
             </div>
         </nav>
         <header id="header">
             <div class="inner-header">
                 <div class="kanban-description">Kanban Project Management Tool</div>
-                <img class="mobile-logo" src="/assets/img/logo2.png">
+                <img class="mobile-logo" src="../../assets/img/logo2.png">
                 <div>
-                    <a id="helpBtn" href="/main/05legal-notice/help.html"><img src="/assets/img/help.png"></a>
+                    <a id="helpBtn" href="/05legal-notice/help.html"><img src="../../assets/img/help.png"></a>
                     <button id="profileIcon" class="profile-icon" onclick="toggleContainer('optionContainer')"><img
-                            src="/assets/img/person.png"></button>
+                            src="../../assets/img/person.png"></button>
                     <div id="optionContainer" class="d-none logout-btn"">
                         <button onclick=" logout()">Logout</button>
-                        <a class="mobile" href="/main/05legal-notice/help.html">Help</a>
-                        <a class="mobile" href="/main/05legal-notice/legal-notice.html">Imprint</a>
+                        <a class="mobile" href="/05legal-notice/help.html">Help</a>
+                        <a class="mobile" href="/05legal-notice/legal-notice.html">Imprint</a>
                     </div>
                 </div>
             </div>

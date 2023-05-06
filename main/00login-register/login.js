@@ -181,7 +181,7 @@ function checkLogin() {
         if (email.value == element['email'] &&
             password.value == element['password']) {
             loggedInUser = element // create loggedInUser object
-            let url = '/../../main/01summary/summary.html?loggedInUser=' + encodeURIComponent(JSON.stringify(loggedInUser));
+            let url = '../01summary/summary.html?loggedInUser=' + encodeURIComponent(JSON.stringify(loggedInUser));
             window.open(url);
             email.value = '';
             password.value = '';

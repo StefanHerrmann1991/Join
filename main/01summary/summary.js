@@ -21,7 +21,7 @@ async function initSummary() {
     let urgency = capitalizeFirst(earliestTask.urgency)
     date.innerHTML = `
     <div class="next-tasks-counter">        
-        <div class="urgency-icon ${urgency.toLowerCase()}"><img src="/assets/img/prio${urgency}.png"></div>
+        <div class="urgency-icon ${urgency.toLowerCase()}"><img src="../../assets/img/prio${urgency}.png"></div>
         <div>
         <div class="deadline-number">${count}</div>
         <div>${urgency}</div>
@@ -63,7 +63,7 @@ async function renderSummary() {
       getId('lowerSummary').innerHTML += `
       <div class="lower-board-summary">
       <div class="icon">
-      <img class="deko-img ${picture}" src="/assets/img/${picture}.png">
+      <img class="deko-img ${picture}" src="../../assets/img/${picture}.png">
       </div>
       <div class="number-container">
         <div class="big-number" id="${boardId}-number"></div>

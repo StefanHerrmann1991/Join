@@ -136,5 +136,5 @@ function displayStringsArr(stringsArray) {
 }
 
 function logout() {
-    window.open('/main/00login-register/login.html');
+    window.open('../00login-register/login.html');
 }

@@ -11,13 +11,13 @@
 <body>
     <div class="task-main">
         <div class="task-submit-successful d-none" id="successfulSubmit">Task added to board <img
-                src="/assets/img/board.png"></div>
+                src="../../assets/img/board.png"></div>
         <button class="close-upper-right" onclick="closeContainer('addTaksPopup')">
-            <img src="/assets/img/cancel.png">
+            <img src="../../assets/img/cancel.png">
         </button>
         <div class="title-form">
             <h1>Add Task</h1>
-            <form class="add-task-formfield" onsubmit="addToTasks();">
+            <form class="add-task-formfield" onsupbmit="addToTasks();">
                 <div class="task-fields">
                     <div class="add-task-left">
                         <h3>Title</h3>
@@ -28,7 +28,7 @@
                         <div class="assign-btn-container" id="categoryContainer">
                             <button type="button" class="assign-btn" onclick="toggleContainer('categoryMenu')">
                                 <div class="chosen-category-container" id="categorySelect">Select task category</div>
-                                <div id="imgArrow"><img src="/assets/img/open.png"></div>
+                                <div id="imgArrow"><img src="../../assets/img/open.png"></div>
                                 <input id="validateCategory" required class="hidden-input">
                             </button>
                             <div class="user-menu d-none" id="categoryMenu">
@@ -42,13 +42,13 @@
                         <div class="assign-btn-container" id="assignBtnContainer">
                             <button type="button" class="assign-btn" onclick="toggleContainer('userMenu')">
                                 <div>Select contact to assign</div>
-                                <div id="imgArrow"><img src="/assets/img/open.png"></div>
+                                <div id="imgArrow"><img src="../../assets/img/open.png"></div>
                             </button>
                             <div class="user-menu d-none" id="userMenu">
                                 <div class="user-list" id="userList"></div>
                                 <button id="inviteUserBtn" type="button" class="invite-user-btn"
                                     onclick="inviteUsers()">Invite new contact<img
-                                        src="/assets/img/contactsBlack.png"></button>
+                                        src="../../assets/img/contactsBlack.png"></button>
                             </div>
                         </div>
                         <div id="userInitialContainer" class="user-initial-container"></div>
@@ -79,7 +79,7 @@
                         <div class="assign-btn-container" id="subtasks">
                             <button onclick="renderSubtasks()" type="button" class="assign-btn" type="text">
                                 <div id="subtaskMenu">Add new subtask</div><img class="add-subtask"
-                                    src="/assets/img/addIcon.png">
+                                    src="../../assets/img/addIcon.png">
                             </button>
                         </div>
                         <div id="renderedSubtasks"></div>
@@ -89,9 +89,9 @@
         </div>
         <div class="btn-container">
             <button class="clear-btn" type="reset" class="clear-btn" onclick="clearInputTasks()">
-                Clear<img src="/assets/img/cancel.png"></button>
+                Clear<img src="../../assets/img/cancel.png"></button>
             <button class="create-task-btn assign-btn" id="createTaskBtn" type="submit">
-                Create Task<img src="/assets/img/check.png"></button>
+                Create Task<img src="../../assets/img/check.png"></button>
         </div>
 
 </body>
