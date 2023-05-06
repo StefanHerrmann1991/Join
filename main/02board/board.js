@@ -129,6 +129,7 @@ async function loadBoards() {
  */
 function startDragging(id) { // i only for testing purposes
     currentDraggedElement = id;
+    
 }
 
 
