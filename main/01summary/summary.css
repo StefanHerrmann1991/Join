@@ -9,6 +9,16 @@
   scroll-behavior: smooth;
 }
 
+.btn-1:hover {
+  background-color: #29ABE2 !important;
+  border: unset !important;
+}
+
+.btn-2:hover {
+  color: #29ABE2 !important;
+  border: solid 1px #29ABE2 !important;
+}
+
 .main {
   position: relative;
 }
@@ -435,6 +445,10 @@ h3 {
   font-weight: 600;
   font-size: 64px;
 }
+.board-summary:hover {
+  background-color: #2A3647;
+  color: white;
+}
 
 .summary-task {
   width: 60%;
@@ -515,6 +529,16 @@ h3 {
   font-weight: 600;
   font-size: 64px;
 }
+.lower-board-summary:hover {
+  background-color: #2A3647;
+  color: white;
+}
+.lower-board-summary:hover .icon {
+  background-color: white;
+}
+.lower-board-summary:hover .icon img {
+  filter: invert(83%) sepia(46%) saturate(423%) hue-rotate(175deg) brightness(95%) contrast(89%);
+}
 
 .icon {
   border-radius: 50%;
@@ -574,6 +598,10 @@ h3 {
 }
 .deadline .low {
   background-color: #7AE229;
+}
+.deadline:hover {
+  background-color: #2A3647;
+  color: white;
 }
 
 .border-big {

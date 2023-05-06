@@ -1,4 +1,9 @@
 @import '../../style.sass'
+
+@mixin hover
+    background-color: #2A3647
+    color: white
+
 @mixin summary
     @include flex-center
     background: #FFFFFF
@@ -19,6 +24,8 @@
     flex-direction: column
     width: 30%
     height: 170px
+    &:hover
+        @include hover
 
 .summary-task
     width: 60%
@@ -74,6 +81,12 @@
     display: flex
     gap: 25px
     height: 170px
+    &:hover
+        @include hover
+        .icon
+            background-color: white
+            img
+                filter: invert(83%) sepia(46%) saturate(423%) hue-rotate(175deg) brightness(95%) contrast(89%)
 
 .icon
     border-radius: 50%
@@ -122,6 +135,8 @@
     .low
         background-color: #7AE229
 
+    &:hover
+        @include hover
 
 .border-big
     border: 3px solid #29ABE2

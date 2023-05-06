@@ -34,8 +34,8 @@ function renderSignUp() {
             <input type="email" id="email" name="email" required placeholder="Email">
             <input minlength="6" maxlength="20" type="password" id="password" name="Password" required placeholder="Password">
                        <div class="menu-btn">
-                <button type="submit"><nobr>Sign up</nobr></button>
-                <button onclick="renderAuth('login')">Back</button>
+                <button class="btn-1" type="submit"><nobr>Sign up</nobr></button>
+                <button class="btn-2" onclick="renderAuth('login')">Back</button>
             </div>
         </form>
     </div>
@@ -49,7 +49,7 @@ function renderLogin() {
 <div class="register">
 <img class="logo" src="../../assets/img/logo2.png">
 <div class="to-register">Not a Join user?
-<button onclick="renderAuth('signUp')"><nobr>Sign up</nobr></button>
+<button class="btn-1" onclick="renderAuth('signUp')"><nobr>Sign up</nobr></button>
 </div>
 <div class="sign-up-container">
     <div class="sign-up">
@@ -66,8 +66,8 @@ function renderLogin() {
             <nobr>Forgot my password</nobr></a>
             </div>
             <div class="menu-btn">
-                <button type="submit">Log in</button>
-                <button type="button" onclick="loginAsGuest()"><nobr>Guest Log in</nobr></button>
+                <button class="btn-1" type="submit">Log in</button>
+                <button class="btn-2" type="button" onclick="loginAsGuest()"><nobr>Guest Log in</nobr></button>
             </div>            
         </form>
     </div>
@@ -89,7 +89,7 @@ function renderForgotPassword() {
             <form onsubmit="forgotPassword(event)">
                 <input type="email" id="email" name="email" required placeholder="Email">
                 <div class="menu-btn color-white">
-                    <button type="submit"><nobr>Send me the email</nobr></button>
+                    <button class="btn-1" type="submit"><nobr>Send me the email</nobr></button>
                 </div>
             </form>
         </div>
@@ -125,8 +125,7 @@ function renderResetPassword() {
 
 
 function loginAsGuest() {
-    window.open('/../../main/01summary/summary.html');    
-   
+    window.open('/../../main/01summary/summary.html');       
 }
 
 
@@ -190,6 +189,7 @@ function checkLogin() {
     }
     alert('Username or Password is not correct!');
 }
+
 
 
 async function forgotPassword(event) {

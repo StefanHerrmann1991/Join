@@ -21,7 +21,7 @@
     <div w3-include-html="../../index.html"></div>
     <div class="main-contact-container">
         <div class="contact-btn-container" id="addContactBtn">
-            <button class="add-contact-btn" onclick="openContainer('addContactDialog')">New Contact<img
+            <button class="add-contact-btn btn-1" onclick="openContainer('addContactDialog')">New Contact<img
                     src="../../assets/img/addContact.png"></button>
         </div>
         <div class="contact-flex">
@@ -58,8 +58,8 @@
                     <button class="close-upper-right" onclick="closeContainer('addContactDialog')">
                         <img src="../../assets/img/cancel.png">
                     </button>
-                    <div id="newContactImg" >
-                        <img  class="edit-initial" src="../../assets/img/addContactBig.png">
+                    <div id="newContactImg">
+                        <img class="edit-initial" src="../../assets/img/addContactBig.png">
                     </div>
                     <form onsubmit="createContact(event); saveBackendDataOf(contactBook); renderContacts()"
                         id="contactFormfield">
@@ -75,14 +75,6 @@
                                 <img src="../../assets/img/check.png">
                             </button>
                         </div>
-                        <div class="create-contact-btns mobile-flex">
-                            <button type="button" onclick="deleteContact()">
-                                Delete
-                            </button>
-                            <button type=submit>
-                                Save
-                            </button>
-                        </div>
                     </form>
                 </div>
             </div>
@@ -90,5 +82,5 @@
     </div>
     <div class="edit-contact-dialog d-none" id="editContactDialog"></div>
     <div class="add-task-popup d-none" id="addTaksPopup" w3-include-html="../03addTasks/taskPopup.html"></div>
-    
+
 </body>
