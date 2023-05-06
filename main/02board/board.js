@@ -58,7 +58,7 @@ function renderBoards(array) {
         </div>
         <div id="${boardId}" class="board-task-container" ondrop="moveTo('${boardId}')" ondragover="allowDrop(event)"></div>
         </div>
-           `      
+           `
         renderEachBoard(boardTitle, boardId, array);
     }
 }
@@ -106,7 +106,7 @@ function renderEachBoard(boardTaskArray, boardId, array) {
     }
 }
 
-async function saveBoards() { 
+async function saveBoards() {
     if (event) event.preventDefault();
     let boardsAsText = JSON.stringify(boards);
     await backend.setItem('boards', boardsAsText);
@@ -124,14 +124,10 @@ async function loadBoards() {
 }
 
 
-/**
- * This function saves the current id of the dragged task 
- */
-function startDragging(id) { // i only for testing purposes
+function startDragging(id) {
+    getId(`task-${id}`).style.transform = 'translateY(-25%)';
     currentDraggedElement = id;
-    
 }
-
 
 /**
  * This function makes the div container droppable
@@ -201,7 +197,7 @@ function renderAssignedUsers(usersArr) {
                 iconsHTML += `<span class="user-icon" alt="user icon" style="background-color: #2A3647">${usersArr.length - 2}+</span>`
                 break;
             }
-            if(!detailsAreOpen)  iconsHTML += `
+            if (!detailsAreOpen) iconsHTML += `
             <span class="user-icon" alt="user icon" style="background-color: ${user.color}">${user.initial}</span>`;
             if (detailsAreOpen) iconsHTML += `
             <div class="user-details">
@@ -209,7 +205,7 @@ function renderAssignedUsers(usersArr) {
             <div>${user.name}</div>
             </div>
             `;
-            }
+        }
         return iconsHTML;
     }
     else return iconsHTML = `<div>No user assigned</div>`
@@ -266,7 +262,7 @@ function openTask(index) {
 }
 
 function renderDetailedTask(index) {
-    detailsAreOpen= true;
+    detailsAreOpen = true;
     let task = tasks[index]
     let editTask = getId('editTaskDialog')
     openContainer('editTaskDialog')
@@ -306,7 +302,7 @@ function renderEditTask(index) {
     let editTask = getId('editTaskDialog');
     let task = tasks[index];
     assignedUsers = task.assignedTo;
-        editTask.innerHTML = `
+    editTask.innerHTML = `
     <div class="edit-task-dialog center">
         <div class="edit-task-container">
             <button class="close-upper-right" onclick="closeTaskDialog()"><img
@@ -372,7 +368,7 @@ function renderEditTask(index) {
     compareDate();
 }
 
-async function changeTask(index, board) {  
+async function changeTask(index, board) {
     event.preventDefault();
     chosenBoard = board
     let task = processTaskInputs(board);
@@ -394,7 +390,7 @@ function closeTaskDialog() {
  * @param {string} val The input string to match against.
  */
 function showResultsTasks(val) {
-    
+
     const tasksList = autocompleteMatchTask(val.toLowerCase());
     if (tasksList.length !== 0) renderBoards(tasksList);
     else renderBoards(tasks)
@@ -417,7 +413,7 @@ function autocompleteMatchTask(input) {
  * Deletes an element from an array, updates the data on the server,  and renders boards.
  * @param {i} @type {Number}
  */
-function deleteTask(i) {    
+function deleteTask(i) {
     tasks.splice(i, 1);
     saveTasks();
     closeTaskDialog();
