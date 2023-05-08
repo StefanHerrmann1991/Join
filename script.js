@@ -138,3 +138,8 @@ function displayStringsArr(stringsArray) {
 function logout() {
     window.open('../00login-register/login.html');
 }
+
+
+function isMobileView() {
+    return window.matchMedia('(max-width: 768px)').matches;
+  }

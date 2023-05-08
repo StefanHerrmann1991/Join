@@ -112,7 +112,7 @@
     @include flex-center
     flex-direction: column
     padding: 18px 19px
-    width: calc( 100% - 38px )
+    width: 180px
     background: #FFFFFF
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04)
     border-radius: 30px
@@ -141,19 +141,19 @@
     display: flex
     align-items: flex-start
     overflow-x: scroll
-
+    gap: 2.5%
     .board
-        min-width: 250px
+        width: 250px
         display: flex
         flex-wrap: wrap
-        column-gap: 40px
 
     .board > *
-        margin: 5%
-        flex: 1 1 200px
+
+        flex: 1 1 250px
         box-sizing: border-box
 
     .board-header
+        width: clac(25% - 2.5%)
         height: 50px
         display: flex
         justify-content: space-between
@@ -312,7 +312,12 @@ progress
         width: 24px
         height: 24px
 
+.empty
+    border: unset
+    display: inline-block
 
+.hovered
+    background-color: rgb(0,0,0,0.05)
 
 @media (max-width: 992px)
 

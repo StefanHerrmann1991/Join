@@ -25,8 +25,8 @@ function renderNewBoardBtn() {
             <input id="newBoardInput" placeholder="Add new Board">
             <div class="button-container">
                 <button type="button" class="cancel-button" onclick="cancelBoardCreation()"><img
-                        src="/assets/img/cancelDark.png"></button>
-                <button type="button" class="add-button" onclick="addNewBoard()"><img src="/assets/img/checkDark.png"></button>
+                        src="../../assets/img/cancelDark.png"></button>
+                <button type="button" class="add-button" onclick="addNewBoard()"><img src="../../assets/img/checkDark.png"></button>
             </div>
         </div>
     `
@@ -124,9 +124,21 @@ async function loadBoards() {
 }
 
 
+
 function startDragging(id) {
-    getId(`task-${id}`).style.transform = 'translateY(-25%)';
+    movedContainer = getId(`task-${id}`)
+    movedContainer.style = 'transform: rotate(3deg);';
     currentDraggedElement = id;
+
+    const dropZones = document?.querySelectorAll(".board-task-container");
+    dropZones.forEach(dropZone => {
+        dropZone.addEventListener("dragenter", function (dragEvent) {
+            dragEvent.target.classList.add("hovered");
+        });
+        dropZone.addEventListener("dragleave", function (dragEvent) {
+            dragEvent.target.classList.remove("hovered");
+        });
+    });
 }
 
 /**
@@ -219,12 +231,12 @@ function renderMobile(i) {
             <div id="moveButtonBox${i}" class="move-button-box d-none">
                 <div><button onclick="moveToBoard(${i},'board-0')" class="move-button">Todo</button></div>
                 <div><button onclick="moveToBoard(${i},'board-1')" class="move-button">In Progress</button></div>
-                <div><button onclick="moveToBoard(${i},'board-2')" class="move-button">Testing</button></div>
+                <div><button onclick="moveToBoard(${i},'board-2')" class="move-button">Awaiting Feedback</button></div>
                 <div><button onclick="moveToBoard(${i},'board-3')" class="move-button">Done</button></div>
             </div>
         </div>
         <div class="task-links">
-            <img class="delete-task" src="/assets/img/deleteWhite.png" onclick="deleteTask(tasks, ${i})" alt="delete icon">
+            <img class="delete-task" src="../../assets/img/deleteWhite.png" onclick="deleteTask(tasks, ${i})" alt="delete icon">
             <img class="edit-task" onclick="renderEditForm(${i})" alt="edit icon">
         </div>
     </div>
@@ -272,7 +284,7 @@ function renderDetailedTask(index) {
                 <div class="task-details">
                     <div class="category-icon" style="background-color: ${task.category.color}">${task.category.topic}</div>
                     <button class="close-upper-right" onclick="closeTaskDialog()"><img
-                            src="/assets/img/cancel.png"></button>
+                            src="../../assets/img/cancel.png"></button>
                     <h1>${task.title}</h1>
                     <div class="details-container">${task.description}</div>
                     <div class="details-container">
@@ -288,8 +300,8 @@ function renderDetailedTask(index) {
                         <div class="details-assigned-users">${renderAssignedUsers(task.assignedTo)}</div>
                     </div>
                     <div class="change-tasks">
-                    <button class="delete-task-btn" onclick="deleteTask(${index})"><img src="/assets/img/deleteDark.png"></button>
-                    <button class="edit-task-btn" onclick="renderEditTask(${index})"><img src="/assets/img/editBtnWhite.png"></button>
+                    <button class="delete-task-btn" onclick="deleteTask(${index})"><img src="../../assets/img/deleteDark.png"></button>
+                    <button class="edit-task-btn" onclick="renderEditTask(${index})"><img src="../../assets/img/editBtnWhite.png"></button>
                     </div>
                 </div>
             </div>
@@ -306,7 +318,7 @@ function renderEditTask(index) {
     <div class="edit-task-dialog center">
         <div class="edit-task-container">
             <button class="close-upper-right" onclick="closeTaskDialog()"><img
-                    src="/assets/img/cancel.png"></button>
+                    src="../../assets/img/cancel.png"></button>
             <form class="edit-task-form" onsubmit="changeTask(${index}, '${task.board}')">
                 <div class="edit-task-field">
                     <div class="mgn-b">
@@ -344,20 +356,20 @@ function renderEditTask(index) {
                         <div class="assign-btn-container" id="assignBtnContainer">
                             <button type="button" class="assign-btn" onclick="toggleContainer('detailsUserMenu')">
                                 <div>Select contact to assign</div>
-                                <div id="imgArrow"><img src="/assets/img/open.png"></div>
+                                <div id="imgArrow"><img src="../../assets/img/open.png"></div>
                             </button>
                             <div class="user-menu d-none" id="detailsUserMenu">
                                 <div class="user-list" id="userList"></div>
                                 <button id="inviteUserBtn" type="button" class="invite-user-btn"
                                     onclick="inviteUsers()">Invite
-                                    new contact<img src="/assets/img/contactsBlack.png">
+                                    new contact<img src="../../assets/img/contactsBlack.png">
                                 </button>
                             </div>
                         </div>
                         <input class="d-none" id="category" value="${task.category.index}">
                     </div>
                     <div id="userInitialContainer" class="user-initial-container"></div>
-                    <button class="accept-edited-task-btn">Ok<img src="/assets/img/check.png"></button>
+                    <button class="accept-edited-task-btn">Ok<img src="../../assets/img/check.png"></button>
                 </div>
             </form>
         </div>
@@ -382,6 +394,8 @@ function closeTaskDialog() {
     detailsAreOpen = false;
     closeContainer('editTaskDialog');
 }
+
+
 
 
 

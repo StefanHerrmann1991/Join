@@ -11,13 +11,13 @@
 }
 
 .btn-1:hover {
-  background-color: #29ABE2;
-  border: unset;
+  background-color: #29ABE2 !important;
+  border: unset !important;
 }
 
 .btn-2:hover {
-  color: #29ABE2;
-  border: solid 1px #29ABE2;
+  color: #29ABE2 !important;
+  border: solid 1px #29ABE2 !important;
 }
 
 .main {

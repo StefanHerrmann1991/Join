@@ -175,9 +175,7 @@ function renderContacts() {
 
 
 
-function isMobileView() {
-  return window.matchMedia('(max-width: 640px)').matches;
-}
+
 
 window.addEventListener('resize', function () {
   // check if window is in mobile view
