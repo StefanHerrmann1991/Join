@@ -189,20 +189,18 @@ function boardTaskHTML(element, i) {
                   <img class="urgency" src="../../assets/img/prio${capitalizeFirst(element.urgency)}.png">
               </div>
           </div>
-          <div>
-          <div class="move-to mobile-flex">
-              <img onclick="event.stopPropagation(); toggleContainer('boardBtns')" class="chevron" src="../../assets/img/chevron.png">
+          
+          <div class="move-to mobile-flex" onclick="event.stopPropagation(); toggleContainer('boardBtns')">
+              <img  class="chevron" src="../../assets/img/chevron.png">
               <div id="boardBtns" class="move-btn-box d-none">
-                  <div><button onclick="moveToBoard(${i},'board-0')" class="move-button">Todo</button></div>
-                  <div><button onclick="moveToBoard(${i},'board-1')" class="move-button">In Progress</button></div>
-                  <div><button onclick="moveToBoard(${i},'board-2')" class="move-button">Awaiting Feedback</button></div>
-                  <div><button onclick="moveToBoard(${i},'board-3')" class="move-button">Done</button></div>
-              </div>
-          </div>       
+                  <div><button onclick="event.stopPropagation(); moveToBoard(${i},'board-0')" class="move-button">Todo</button></div>
+                  <div><button onclick="event.stopPropagation(); moveToBoard(${i},'board-1')" class="move-button">In Progress</button></div>
+                  <div><button onclick="event.stopPropagation(); moveToBoard(${i},'board-2')" class="move-button">Awaiting Feedback</button></div>
+                  <div><button onclick="event.stopPropagation(); moveToBoard(${i},'board-3')" class="move-button">Done</button></div>
+              </div>                
       </div>
       </div>
     `;
-
 }
 
 

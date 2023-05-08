@@ -593,7 +593,7 @@ h3 {
   width: 100%;
 }
 .boards .board {
-  width: min(250px, 25%);
+  width: 250px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -826,20 +826,6 @@ progress {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.move-to {
-  z-index: 100;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-.move-to .move-btn-box {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
 @media (max-width: 992px) {
   .task-headline {
     font-size: 16px;
@@ -866,5 +852,39 @@ progress {
   .board-main img {
     height: 15px;
     width: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .move-to {
+    border-top: 1px solid #D1D1D1;
+    margin-top: 10%;
+    height: 100%;
+    padding-left: 19px;
+    padding-right: 19px;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 5%;
+    padding-top: 5%;
+  }
+  .move-btn-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .board-main .chevron {
+    height: 40px;
+    width: 40px;
+  }
+  .task {
+    padding: unset;
+    padding-left: 19px;
+    padding-right: 19px;
+    padding-top: 18px;
   }
 }/*# sourceMappingURL=board.css.map */
