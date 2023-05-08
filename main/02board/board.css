@@ -590,9 +590,10 @@ h3 {
   align-items: flex-start;
   overflow-x: scroll;
   gap: 2.5%;
+  width: 100%;
 }
 .boards .board {
-  width: 250px;
+  width: min(250px, 25%);
   display: flex;
   flex-wrap: wrap;
 }
@@ -601,7 +602,6 @@ h3 {
   box-sizing: border-box;
 }
 .boards .board-header {
-  width: clac(22.5%);
   height: 50px;
   display: flex;
   justify-content: space-between;
@@ -824,6 +824,20 @@ progress {
 
 .hovered {
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+.move-to {
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.move-to .move-btn-box {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media (max-width: 992px) {

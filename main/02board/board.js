@@ -129,7 +129,6 @@ function startDragging(id) {
     movedContainer = getId(`task-${id}`)
     movedContainer.style = 'transform: rotate(3deg);';
     currentDraggedElement = id;
-
     const dropZones = document?.querySelectorAll(".board-task-container");
     dropZones.forEach(dropZone => {
         dropZone.addEventListener("dragenter", function (dragEvent) {
@@ -190,9 +189,24 @@ function boardTaskHTML(element, i) {
                   <img class="urgency" src="../../assets/img/prio${capitalizeFirst(element.urgency)}.png">
               </div>
           </div>
+          <div>
+          <div class="move-to mobile-flex">
+              <img onclick="event.stopPropagation(); toggleContainer('boardBtns')" class="chevron" src="../../assets/img/chevron.png">
+              <div id="boardBtns" class="move-btn-box d-none">
+                  <div><button onclick="moveToBoard(${i},'board-0')" class="move-button">Todo</button></div>
+                  <div><button onclick="moveToBoard(${i},'board-1')" class="move-button">In Progress</button></div>
+                  <div><button onclick="moveToBoard(${i},'board-2')" class="move-button">Awaiting Feedback</button></div>
+                  <div><button onclick="moveToBoard(${i},'board-3')" class="move-button">Done</button></div>
+              </div>
+          </div>       
+      </div>
       </div>
     `;
+
 }
+
+
+
 
 /**
  * Renders several user icons for all passed users in an array
@@ -200,7 +214,6 @@ function boardTaskHTML(element, i) {
  * @returns {(string | string)} - user-icon  HTML code for all passed users | replacement image
  */
 function renderAssignedUsers(usersArr) {
-
     let iconsHTML = '';
     if (usersArr && usersArr.length > 0) {
         for (let index = 0; index < usersArr.length; index++) {
@@ -225,21 +238,7 @@ function renderAssignedUsers(usersArr) {
 
 function renderMobile(i) {
     return ` 
-    <div>
-        <div class="move-to">
-            <img onclick="showMoveButtons(${i})" class="move-to-btn" alt="">
-            <div id="moveButtonBox${i}" class="move-button-box d-none">
-                <div><button onclick="moveToBoard(${i},'board-0')" class="move-button">Todo</button></div>
-                <div><button onclick="moveToBoard(${i},'board-1')" class="move-button">In Progress</button></div>
-                <div><button onclick="moveToBoard(${i},'board-2')" class="move-button">Awaiting Feedback</button></div>
-                <div><button onclick="moveToBoard(${i},'board-3')" class="move-button">Done</button></div>
-            </div>
-        </div>
-        <div class="task-links">
-            <img class="delete-task" src="../../assets/img/deleteWhite.png" onclick="deleteTask(tasks, ${i})" alt="delete icon">
-            <img class="edit-task" onclick="renderEditForm(${i})" alt="edit icon">
-        </div>
-    </div>
+
     `
 }
 
