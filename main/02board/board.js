@@ -107,8 +107,8 @@ function renderEachBoard(boardTitle, boardId, array) {
     }
 }
 
-function renderEmptyBoard(boardName) {
-    return `<div class="empty-board">No tasks ${boardName.toLowerCase()}</div>`;
+function renderEmptyBoard(boardTitle) {
+    return `<div class="empty-board mobile">No tasks ${boardTitle.toLowerCase()}</div>`;
 }
 
 async function saveBoards() {

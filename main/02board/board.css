@@ -857,6 +857,19 @@ progress {
   }
 }
 @media (max-width: 768px) {
+  .task {
+    width: 90%;
+  }
+  .empty-board {
+    padding: 19px 18px;
+    width: calc(100% - 38px);
+    background-color: #D1D1D1;
+    border: 1px dashed #A8A8A8;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .board-input .search-container {
     margin-top: 15%;
   }

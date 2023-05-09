@@ -504,14 +504,14 @@ input.subtask-checkbox[type="checkbox"]:checked
             width: 140px
 @media (max-width: 768px)
 
-   
+    .btn-container
+        position: absolute
 
     .close-upper-right
         z-index: 700
     .task-main
         width: 100%
-        height: 100%
-        background-color: #f6f7f8
+        height: calc( 100% - 74px * 2 )
         border-radius: unset
     .add-task-formfield
         overflow-y: scroll
@@ -545,7 +545,7 @@ input.subtask-checkbox[type="checkbox"]:checked
         top: 12.5px
         right: 5%
         bottom: unset
-
+        height: 50px
         z-index: 100
         .create-task-btn
             padding: 0px
