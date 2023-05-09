@@ -1030,7 +1030,6 @@ input.subtask-checkbox[type=checkbox]:checked {
     border-radius: unset;
   }
   .add-task-formfield {
-    overflow-y: scroll;
     padding-bottom: 30%;
   }
   .task-fields {
