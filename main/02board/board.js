@@ -80,7 +80,6 @@ function addNewBoard() {
 function processBoardInputs() {
     let boardInput = getId('newBoardInput').value
     let boardTitle = boardInput.toUpperCase();
-    /* `${boardName}Board`;  boardInput.split(" ").join("")*/
     let boardId = 'board-' + boards.length
     let board = {
         'boardTitle': boardTitle,
@@ -103,7 +102,12 @@ function renderEachBoard(boardTaskArray, boardId, array) {
         const element = boardTaskArray[i];
         const taskIndex = array.indexOf(element);
         getId(`${boardId}`).innerHTML += boardTaskHTML(element, taskIndex);
+        if (boardTaskArray == 0) getId(`${boardId}`).innerHTML = renderEmptyBoard();
     }
+}
+
+function renderEmptyBoard() {
+
 }
 
 async function saveBoards() {

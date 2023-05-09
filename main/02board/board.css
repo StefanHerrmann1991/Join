@@ -356,7 +356,7 @@ h3 {
   }
   .main-container {
     width: 100%;
-    top: 74px;
+    top: 90px;
     left: 0;
   }
   h1 {
@@ -590,18 +590,17 @@ h3 {
   align-items: flex-start;
   overflow-x: scroll;
   gap: 2.5%;
-  width: 100%;
 }
 .boards .board {
   width: 250px;
   display: flex;
   flex-wrap: wrap;
 }
-.boards .board > * {
-  flex: 1 1 250px;
-  box-sizing: border-box;
+.boards .board .board-task-container {
+  width: 100%;
 }
 .boards .board-header {
+  width: 250px;
   height: 50px;
   display: flex;
   justify-content: space-between;
@@ -827,6 +826,9 @@ progress {
 }
 
 @media (max-width: 992px) {
+  .boards .board-header {
+    width: 200px;
+  }
   .task-headline {
     font-size: 16px;
   }
@@ -855,6 +857,69 @@ progress {
   }
 }
 @media (max-width: 768px) {
+  .board-input .search-container {
+    margin-top: 15%;
+  }
+  .board-task-container {
+    margin-top: 2.5%;
+    height: unset;
+    min-height: unset;
+  }
+  .board-main {
+    padding-right: 10px;
+    padding-left: 10px;
+    height: calc(100% - 76px);
+  }
+  .board-main .boards-title-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .board-main .menu {
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+  .board-main .boards {
+    width: 100%;
+    margin: auto;
+    align-items: flex-start;
+    padding-bottom: 5%;
+  }
+  .board-main .boards .board-header {
+    width: 100%;
+  }
+  .board-main .boards .board {
+    width: 100%;
+    height: auto;
+    margin-bottom: 5%;
+  }
+  .add-task {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    right: 5%;
+    top: 5%;
+  }
+  .add-task img {
+    margin: unset;
+  }
+  .board-main {
+    overflow-y: scroll;
+  }
+  .boards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .boards .board {
+    justify-content: center;
+  }
   .move-to {
     border-top: 1px solid #D1D1D1;
     margin-top: 10%;

@@ -1018,6 +1018,15 @@ input.subtask-checkbox[type=checkbox]:checked {
   }
 }
 @media (max-width: 768px) {
+  .close-upper-right {
+    z-index: 700;
+  }
+  .task-main {
+    width: 100%;
+    height: 100%;
+    background-color: #f6f7f8;
+    border-radius: unset;
+  }
   .add-task-formfield {
     overflow-y: scroll;
     padding-bottom: 30%;
