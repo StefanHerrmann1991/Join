@@ -95,19 +95,20 @@ function processBoardInputs() {
  * @param {*} boardId 
  * @param {*} array 
  */
-function renderEachBoard(boardTaskArray, boardId, array) {
-    boardTaskArray = array.filter(t => t['board'] == `${boardId}`);
+function renderEachBoard(boardTitle, boardId, array) {
+   
+    let boardTaskArray = array.filter(t => t['board'] == `${boardId}`);
     getId(`${boardId}`).innerHTML = '';
+    if (boardTaskArray.length == 0) getId(`${boardId}`).innerHTML = renderEmptyBoard(boardTitle);
     for (let i = 0; i < boardTaskArray.length; i++) {
         const element = boardTaskArray[i];
         const taskIndex = array.indexOf(element);
         getId(`${boardId}`).innerHTML += boardTaskHTML(element, taskIndex);
-        if (boardTaskArray == 0) getId(`${boardId}`).innerHTML = renderEmptyBoard();
     }
 }
 
-function renderEmptyBoard() {
-
+function renderEmptyBoard(boardName) {
+    return `<div class="empty-board">No tasks ${boardName.toLowerCase()}</div>`;
 }
 
 async function saveBoards() {
