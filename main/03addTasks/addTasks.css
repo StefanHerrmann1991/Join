@@ -974,6 +974,7 @@ input.subtask-checkbox[type=checkbox]:checked {
   height: 100%;
 }
 .task-main h1 {
+  margin-top: 5%;
   margin-bottom: 5%;
 }
 

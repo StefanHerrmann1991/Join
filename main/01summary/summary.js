@@ -52,16 +52,16 @@ async function renderSummary() {
     boardName = board['boardName'];
     if (i < 2) {
       getId('upperSummary').innerHTML += `
-      <div class="board-summary">
+      <a href="../02board/board.html" class="board-summary">
         <div class="big-number" id="${boardId}-number"></div>
         <div class="board-title-summary">Tasks ${boardTitle}</div>
-      </div>
+      </a>
       `;
     }
     if (i >= 2) {
       let picture = (boardTitle === "To do") ? "check" : (boardTitle === "Done") ? "editBtnWhite" : null;
       getId('lowerSummary').innerHTML += `
-      <div class="lower-board-summary">
+      <a href="../02board/board.html" class="lower-board-summary">
       <div class="icon">
       <img class="deko-img ${picture}" src="../../assets/img/${picture}.png">
       </div>
@@ -69,7 +69,7 @@ async function renderSummary() {
         <div class="big-number" id="${boardId}-number"></div>
         <div>${boardTitle}</div>
       </div>
-      </div>
+      </a>
     `;
     }
     filterBoards(board, boardId);
@@ -80,10 +80,10 @@ async function renderSummary() {
 function getNumberOfTasks() {
   let summary = getId('upperSummary')
   let text = `
-  <div class="board-summary">
+  <a href="../02board/board.html" class="board-summary">
     <div class="big-number">${allTaskNumber}</div>
     <div class="board-title-summary"><div>Tasks</div> in Board</div>
-  </div>
+  </a>
   `;
   summary.insertAdjacentHTML('afterbegin', text);
 }

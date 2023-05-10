@@ -494,6 +494,7 @@ h3 {
 }
 
 .edit-contact-container {
+  top: 30px;
   width: 60%;
   background-color: #F5F5F5;
   display: flex;
@@ -726,7 +727,6 @@ h3 {
   flex-direction: column;
 }
 .edit-contact-menu .edit-contact-headline {
-  padding-top: 5%;
   margin-bottom: 5%;
 }
 
