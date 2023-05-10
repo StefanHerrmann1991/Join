@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
+
 </head>
 
 <body>
@@ -17,7 +18,7 @@
         </button>
         <div class="title-form">
             <h1>Add Task</h1>
-            <form class="add-task-formfield" onsupbmit="addToTasks();">
+            <form class="add-task-formfield" onsubmit="addToTasks();">
                 <div class="task-fields">
                     <div class="add-task-left">
                         <h3>Title</h3>
@@ -85,13 +86,13 @@
                         <div id="renderedSubtasks"></div>
                     </div>
                 </div>
+                <div class="btn-container">
+                    <button class="clear-btn" type="reset" class="clear-btn" onclick="clearInputTasks()">
+                        Clear<img src="../../assets/img/cancel.png"></button>
+                    <button class="create-task-btn assign-btn" id="createTaskBtn" type="submit">
+                        <span>Create Task</span><img src="../../assets/img/check.png"></button>
+                </div>
             </form>
-        </div>
-        <div class="btn-container">
-            <button class="clear-btn" type="reset" class="clear-btn" onclick="clearInputTasks()">
-                Clear<img src="../../assets/img/cancel.png"></button>
-            <button class="create-task-btn assign-btn" id="createTaskBtn" type="submit">
-                <span>Create Task</span><img src="../../assets/img/check.png"></button>
         </div>
 
 </body>

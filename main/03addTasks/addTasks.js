@@ -1,14 +1,15 @@
 const popup = document?.querySelector('.popup');
 
 
-async function initTasks() { 
+async function initTasks() {
     await includeHTML();
-    await initBackend();  
+    await initBackend();
     await renderUserList();
-    await renderCategories();
     await loadTasks();
+    await loadCategories();
+    await renderCategories();
     startPriorityEventListener();
-    compareDate(); 
+    compareDate();
 }
 
 
@@ -17,7 +18,6 @@ async function initTasks() {
  * It also generates a certain ID for new tasks and sends them to the backlog board.
  */
 function addToTasks(board) {
-    debugger
     event.preventDefault();
     const task = processTaskInputs(board);
     task.id = tasks.length + 1; // set id when creating the task
@@ -45,7 +45,7 @@ function validateData(id, array) {
  * @returns {Object} - task object
  */
 function processTaskInputs(board) {
-    if (board == undefined)  board = 'board-0' ;
+    if (board == undefined) board = 'board-0';
     else board = chosenBoard
     let [title, description, category, date] = getIds('title', 'description', 'category', 'date');
     let urgency = getUrgency();
@@ -75,7 +75,8 @@ function newCategory() {
     newCategory.innerHTML = `
     <div class="subtasks-container">
         <div class="category-input-color">
-            <input id="categoryInput" type="text" placeholder="New category name">            
+            <input id="categoryInput" type="text" placeholder="New category name">     
+            <div class="chosen-color" id="chosenColor"></div>       
         </div>
         <div class="button-container">
             <button type="button" class="cancel-button" onclick="cancelNewCategory()"><img
@@ -92,7 +93,7 @@ function cancelNewCategory() {
     let newCategory = getId('categoryContainer')
     newCategory.classList.add('assign-btn-container');
     newCategory.innerHTML = `
-    <button type="button" class="assign-btn" onclick="toggleContainer('categoryMenu')">
+    <button type="button" class="assign-btn" onclick="toggleContainer('categoryMenu');">
     <div class="chosen-category-container" id="categorySelect">Select task category</div>
     <div id="imgArrow"><img src="/assets/img/open.png"></div>
     <input id="validateCategory" required class="hidden-input">
@@ -115,10 +116,9 @@ function renderColorPicker() {
 }
 
 function chooseCategoryColor(index) {
-    let chosenColor = colorPicker[index];
-    let colorDiv = document.getElementById('categoryInput');
-    let html = `<div style="background-color: ${chosenColor}" class="category-color"></div>`;
-    colorDiv.insertAdjacentHTML('afterend', html);
+    let colorId = getId('chosenColor');
+    chosenColor = colorPicker[index];
+    colorId.innerHTML = `<div style="background-color: ${chosenColor}" class="category-color"></div>`;
 }
 
 function addCategory() {
@@ -133,10 +133,12 @@ function addCategory() {
     categories.push(newCategory);
     saveCategories();
     cancelNewCategory();
+    renderCategories();
 }
 
 function renderCategories() {
     let categoryOption = getId('categoryList');
+    categoryOption.innerHTML = '';
     for (let i = 0; i < categories.length; i++) {
         const category = categories[i];
         categoryOption.innerHTML += `
@@ -149,18 +151,18 @@ function renderCategories() {
 };
 
 function saveCategory(index) {
-    console.log(categories[index])
     let chosenCategoryOption = getId('categorySelect');
     let category = categories[index];
     chosenCategoryOption.innerHTML = ` 
-    <button id="category" class="category" value="${category.index}">${category.topic}</button>
-    <div class="category-color" style="background-color: ${category.color}"></div>   
+    <button type="button" id="category" class="category" value="${category.index}">
+    <span>${category.topic}</span>
+    <div class="category-color" style="background-color: ${category.color}"></div></button>  
       `
     validateData('validateCategory', category);
     closeContainer('categoryMenu');
 }
 
-function startPriorityEventListener(selectedValue) {   
+function startPriorityEventListener(selectedValue) {
     const radioEls = document.querySelectorAll('.priority-radio');
     radioEls.forEach(radioEl => {
         const parentLabel = radioEl.parentElement;
@@ -181,12 +183,12 @@ function startPriorityEventListener(selectedValue) {
 }
 
 
-function clearInputTasks () {
+function clearInputTasks() {
     let taksIds = getIds('title', 'description', 'category', 'date');
     clearInputValues(taksIds);
     const radioEls = document.querySelectorAll('.priority-radio');
-    radioEls.forEach(r => r.parentElement.classList.remove('selected')); 
-    getId('renderedSubtasks').innerHTML = '';  
+    radioEls.forEach(r => r.parentElement.classList.remove('selected'));
+    getId('renderedSubtasks').innerHTML = '';
     getId('userInitialContainer').innerHTML = '';
     getId('validateCategory').required = true;
     closeContainer('categoryMenu');
@@ -280,12 +282,12 @@ function renderUserInitial(event, index) {
     const userIndex = assignedUsers.indexOf(user);
     if (event.target.checked) {
         user.assigned = true;
-        assignedUsers.push(user)      
+        assignedUsers.push(user)
         getId('userInitialContainer').innerHTML += `<div id="userIcon-${[index]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
     }
     if (!event.target.checked) {
         assignedUsers.splice(userIndex, 1)
-        getId(`userIcon-${index}`).remove();       
+        getId(`userIcon-${index}`).remove();
     }
 }
 
@@ -367,7 +369,7 @@ function renderSubtasks() {
     subtask.classList.remove('assign-btn-container')
     subtask.innerHTML = `
     <div class="subtasks-container">
-    <input id="subtaskInput" placeholder="Add new subtask">
+    <input maxlength="25" id="subtaskInput" placeholder="Add new subtask">
     <div class="button-container">
     <button type="button" class="cancel-button" onclick ="cancelSubtask()"><img
     src="/assets/img/cancelDark.png"></button>

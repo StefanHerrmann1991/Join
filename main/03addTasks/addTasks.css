@@ -346,6 +346,9 @@ h3 {
   }
 }
 @media (max-width: 768px) {
+  .add-task-popup {
+    background-color: transparent;
+  }
   .mobile-flex {
     display: flex !important;
   }
@@ -582,6 +585,7 @@ input, select {
   border: none;
   padding: 0px;
   margin-left: 22px;
+  width: 70%;
 }
 .subtasks-container input:focus {
   outline: none;
@@ -602,10 +606,10 @@ input, select {
 .subtasks-container .cancel-button {
   height: 31px;
   border-right: 1px solid #D1D1D1;
-  padding-right: 2.5%;
+  padding-right: 5%;
 }
 .subtasks-container .add-button {
-  padding-left: 2.5%;
+  padding-left: 5%;
 }
 
 .subtasks-container .button-container {
@@ -676,8 +680,8 @@ input, select {
   background-color: #D1D1D1;
 }
 
-.chosen-color {
-  margin-left: 12px;
+#category span {
+  margin-right: 10px;
 }
 
 .color-picker {
@@ -796,6 +800,7 @@ input, select {
   padding-left: 21px;
   padding-right: 21px;
   cursor: pointer;
+  gap: 10px;
 }
 .category-list .each-category-container:hover {
   background-color: #D1D1D1;
@@ -804,11 +809,11 @@ input, select {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-.category-list .each-category-container .category {
+
+.category {
   display: flex;
   align-items: center;
   height: 51px;
-  margin-right: 10px;
 }
 
 .category-input-color {
@@ -816,15 +821,17 @@ input, select {
   align-items: center;
   justify-content: flex-start;
 }
-.category-input-color #categoryInput {
-  width: auto !important;
-}
 
 .category-color {
   border: 2px solid #FFFFFF;
   width: 15px;
   height: 15px;
   border-radius: 50%;
+}
+
+.adjust-position {
+  position: absolute;
+  right: 20%;
 }
 
 .new-category-btn {

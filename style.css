@@ -345,6 +345,9 @@ h3 {
   }
 }
 @media (max-width: 768px) {
+  .add-task-popup {
+    background-color: transparent;
+  }
   .mobile-flex {
     display: flex !important;
   }

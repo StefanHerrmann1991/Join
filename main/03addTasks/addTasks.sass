@@ -131,6 +131,7 @@ input, select
         border: none
         padding: 0px
         margin-left: 22px
+        width: 70%
         &:focus
             outline: none
     .button-container
@@ -147,9 +148,9 @@ input, select
     .cancel-button
         height: 31px
         border-right: 1px solid #D1D1D1
-        padding-right: 2.5%
+        padding-right: 5%
     .add-button
-        padding-left: 2.5%
+        padding-left: 5%
 
 .subtasks-container .button-container
     display: flex
@@ -207,8 +208,10 @@ input, select
     &:hover
         background-color: #D1D1D1
 
-.chosen-color
-    margin-left: 12px
+#category
+    span
+        margin-right: 10px
+
 .color-picker
     display: flex
     gap: 5%
@@ -312,29 +315,31 @@ input, select
         padding-left: 21px
         padding-right: 21px
         cursor: pointer
+        gap: 10px
         &:hover
             background-color: #D1D1D1
             &:last-child
                 border-bottom-left-radius: 10px
                 border-bottom-right-radius: 10px
-        .category
-            display: flex
-            align-items: center
-            height: 51px
-            margin-right: 10px
+.category
+    display: flex
+    align-items: center
+    height: 51px
 
 .category-input-color
     display: flex
     align-items: center
     justify-content: flex-start
-    #categoryInput
-        width: auto !important
 
 .category-color
     border: 2px solid #FFFFFF
     width: 15px
     height: 15px
     border-radius: 50%
+
+.adjust-position
+    position: absolute
+    right: 20%
 
 .new-category-btn
     height: 51px

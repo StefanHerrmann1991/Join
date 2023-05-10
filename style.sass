@@ -306,9 +306,12 @@ h3
 
 @media (max-width: 768px)
 
+    @mixin popup
+        background-color: transparent
 
+    .add-task-popup
+        @include popup
 
-    
     .mobile-flex
         display: flex !important
 

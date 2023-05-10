@@ -345,6 +345,9 @@ h3 {
   }
 }
 @media (max-width: 768px) {
+  .add-task-popup {
+    background-color: transparent;
+  }
   .mobile-flex {
     display: flex !important;
   }
@@ -949,7 +952,7 @@ progress {
   }
   .move-to {
     border-top: 1px solid #D1D1D1;
-    margin-top: 10%;
+    margin-top: 5%;
     height: 100%;
     padding-left: 19px;
     padding-right: 19px;
@@ -959,8 +962,6 @@ progress {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 5%;
-    padding-top: 5%;
   }
   .move-btn-box {
     display: flex;
