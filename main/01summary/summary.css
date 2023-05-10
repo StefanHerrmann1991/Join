@@ -301,7 +301,8 @@ h3 {
 .border-big {
   border: 3px solid #29ABE2;
   height: 59px;
-  margin: 5%;
+  margin-right: 5%;
+  margin-left: 5%;
 }
 
 .mobile {
@@ -451,6 +452,7 @@ h3 {
 .board-summary:hover {
   background-color: #2A3647;
   color: white;
+  transform: scale(1.1);
 }
 
 .summary-task {
@@ -535,6 +537,7 @@ h3 {
 .lower-board-summary:hover {
   background-color: #2A3647;
   color: white;
+  transform: scale(1.1);
 }
 .lower-board-summary:hover .icon {
   background-color: white;
@@ -605,12 +608,7 @@ h3 {
 .deadline:hover {
   background-color: #2A3647;
   color: white;
-}
-
-.border-big {
-  border: 3px solid #29ABE2;
-  height: 100%;
-  margin: 5%;
+  transform: scale(1.1);
 }
 
 .name {

@@ -301,7 +301,8 @@ h3 {
 .border-big {
   border: 3px solid #29ABE2;
   height: 59px;
-  margin: 5%;
+  margin-right: 5%;
+  margin-left: 5%;
 }
 
 .mobile {
