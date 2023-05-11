@@ -1,12 +1,52 @@
-
+/**
+ * ID of the current contact book.
+ * @type {string}
+ */
 let contactBookId;
-let sortByLastName = false;
+
+/**
+ * Collection of contacts.
+ * @type {Array}
+ */
 let contacts
-let ContactBookAsText = []
-let contactBook
+
+/**
+ * Representation of the contact book in a textual format.
+ * @type {Array}
+ */
+let ContactBookAsText = [];
+
+/**
+ * Instance of the ContactBook class.
+ * @type {ContactBook}
+ */
+let contactBook;
+
+/**
+ * Flag to check if a contact is currently open.
+ * @type {boolean}
+ */
 let contactIsOpen = false;
+
+/**
+ * Reference to the 'Add Contact' button on the DOM.
+ * @type {HTMLElement}
+ */
 let addContactBtn = getId('addContactBtn');
 
+
+/**
+ * Creates a new contact object.
+ *
+ * @param {string} name - The full name of the contact.
+ * @param {string} email - The email address of the contact.
+ * @param {string} phone - The phone number of the contact.
+ * @param {string} initial - The initials of the contact.
+ * @param {string} color - The color associated with the contact (based on initials).
+ * @param {string} firstNameInitial - The initial of the contact's first name.
+ * @param {number} id - The ID of the contact.
+ * @returns {Object} The newly created contact object.
+ */
 function newContact(name, email, phone, initial, color, firstNameInitial, id) {
   let contact = {
     'name': name,
@@ -21,9 +61,18 @@ function newContact(name, email, phone, initial, color, firstNameInitial, id) {
   return contact;
 }
 
+
+
 class ContactBook {
   contacts;
   initialList;
+
+  /**
+   * Creates a new contact book.
+   *
+   * @param {Array} contacts - An array of contacts.
+   * @param {Array} initialList - A list of distinct first name initials.
+   */
 
   constructor(contacts, initialList) {
     if (contacts) this.contacts = contacts
@@ -31,6 +80,15 @@ class ContactBook {
     if (initialList) this.initialList = initialList
     else this.initialList = [];
   }
+
+
+  /**
+   * Adds a new contact to the contact book.
+   *
+   * @param {string} name - The full name of the contact.
+   * @param {string} email - The email address of the contact.
+   * @param {string} phone - The phone number of the contact.
+   */
 
   addContact(name, email, phone) {
     let [firstNameInitial, initials] = this.getInitials(name);
@@ -41,6 +99,12 @@ class ContactBook {
     this.contacts.push(contact);
   }
 
+
+  /**
+  * Deletes a contact from the contact book by index.
+  *
+  * @param {number} index - The index of the contact to delete.
+  */
   deleteContact(index) {
     const contactToDelete = this.contacts[index];
     const firstNameInitial = contactToDelete.firstNameInitial;
@@ -55,6 +119,14 @@ class ContactBook {
   }
 
 
+  /**
+    * Edits a contact in the contact book.
+    *
+    * @param {number} index - The index of the contact to edit.
+    * @param {string} name - The new full name of the contact.
+    * @param {string} email - The new email address of the contact.
+    * @param {string} phone - The new phone number of the contact.
+  */
   editContact(index, name, email, phone) {
     let actualContact = this.contacts[index]
     let oldInitial = this.contacts[index].firstNameInitial
@@ -105,12 +177,16 @@ class ContactBook {
 
 contactBook = new ContactBook();
 
+
+/**
+ * Generates an unique RGB color code based on the first character of a name.
+ *
+ * @param {string} name - The name to generate the color from.
+ * @returns {string} The generated RGB color code.
+ */
 function getRandomColor(name) {
-  // get first alphabet in upper case
   const firstAlphabet = name.charAt(0).toLowerCase();
-  // get the ASCII code of the character
   const asciiCode = firstAlphabet.charCodeAt(0);
-  // number that contains 3 times ASCII value of character -- unique for every alphabet
   const colorNum = asciiCode.toString() + asciiCode.toString() + asciiCode.toString();
   var num = Math.round(0xffffff * parseInt(colorNum));
   var r = num >> 16 & 255;
