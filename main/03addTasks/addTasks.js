@@ -18,6 +18,7 @@ async function initTasks() {
  * It also generates a certain ID for new tasks and sends them to the backlog board.
  */
 function addToTasks(board) {
+    debugger
     event.preventDefault();
     const task = processTaskInputs(board);
     task.id = tasks.length + 1; // set id when creating the task
@@ -29,7 +30,6 @@ function addToTasks(board) {
         window.location.href = '/main/02board/board.html';
     }, 2500);
     if (typeof myFunction === 'function') renderBoards(tasks);
-    console.log(task)
 }
 
 

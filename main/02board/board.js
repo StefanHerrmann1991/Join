@@ -5,7 +5,7 @@ let boards = [
     { boardTitle: 'Done', boardId: 'board-3', boardName: 'doneBoard' }
 ]
 
-let chosenBoard;
+
 let detailsAreOpen = false;
 
 async function initBoards() {
@@ -65,6 +65,7 @@ function renderBoards(array) {
 
 
 function setBoard(boardName) {
+    console.log(boardName)
     chosenBoard = boardName
 }
 

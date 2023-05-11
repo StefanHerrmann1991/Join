@@ -16,6 +16,7 @@ let assignedUsers = [];
 let colorPicker = ['#8AA4FF', '#FF0000', '#2AD300', '#FF8A00', '#E200BE', '#0038FF']
 let chosenColor;
 let loggedInUser;
+let chosenBoard;
 let registeredUsers = [];
 
 

@@ -444,8 +444,7 @@ input, textarea, select, button, .priority-btn {
 }
 
 .add-task-formfield {
-  width: 95%;
-  margin: auto;
+  width: 99%;
 }
 .add-task-formfield button {
   width: 100%;
