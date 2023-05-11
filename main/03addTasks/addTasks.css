@@ -444,7 +444,8 @@ input, textarea, select, button, .priority-btn {
 }
 
 .add-task-formfield {
-  width: 100%;
+  width: 95%;
+  margin: auto;
 }
 .add-task-formfield button {
   width: 100%;
@@ -611,10 +612,10 @@ input, select {
 .subtasks-container .cancel-button {
   height: 31px;
   border-right: 1px solid #D1D1D1;
-  padding-right: 5%;
+  padding-right: 10%;
 }
 .subtasks-container .add-button {
-  padding-left: 5%;
+  padding-left: 10%;
 }
 
 .subtasks-container .button-container {
