@@ -23,7 +23,7 @@
     @include summary
     flex-direction: column
     width: 30%
-    height: 170px    
+    height: 170px
     &:hover
         @include hover
         transform: scale(1.1)
@@ -33,7 +33,7 @@ a
     cursor: pointer
 
 .summary-task
-    width: 60%
+    width: 100%
 
 .summary-main
     width: 90%
@@ -46,7 +46,6 @@ a
 .deadline
     display: flex
     justify-content: space-around
-    
 
 .deadline-number
     display: flex
@@ -86,7 +85,7 @@ a
     width: 50%
     display: flex
     gap: 25px
-    height: 170px    
+    height: 170px
     &:hover
         @include hover
         transform: scale(1.1)
@@ -97,27 +96,27 @@ a
 
 .icon
     border-radius: 50%
-    padding: 10px
     background-color: #2A3647
     width: 69px
     height: 69px
     @include flex-center
     .check
-        width: 50px
-        height: 50px
+        width: 30px
+        height: 30px
     .editBtnWhite
-        width: 33.5px
-        height: 50px
+        width: 30.5px
+        height: 40px
 
 .board-title-summary
     text-align: center
     width: 100%
+    height: 28px
 
 .summary-container
     display: flex
     justify-content: space-between
     align-items: center
-
+    gap: 10%
 .deadline
     margin-top: 5%
     margin-bottom: 5%
@@ -129,6 +128,8 @@ a
     display: flex
     align-items: center
     .urgency-icon
+        height: 60px
+        width: 60px
         border-radius: 50%
         img
             padding: 15px
@@ -147,5 +148,53 @@ a
         transform: scale(1.1)
 
 .name
-    font-size: 64px !important
+    font-size: 64px
     color: #29abe2
+
+@media (max-width: 992px)
+    .board-summary
+
+        .big-number
+            font-size: 47px
+    .lower-board-summary
+        .big-number
+            font-size: 47px
+
+    .board-title-summary
+        height: 28px
+        font-size: 14px
+
+    .greeting
+        font-size: 36px
+    .name
+        font-size: 47px
+
+    .icon
+        width: 40px
+        height: 40px
+        .check
+            width: 19px
+            height: 19px
+        .editBtnWhite
+            width: 19.5px
+            height: 26px
+
+    .lower-board-summary, .board-summary, .deadline
+        height: 110px
+
+@media (max-width: 768px)
+
+    .summary-title
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        .border-big
+            order: 3
+            display: inline-block
+            border: none
+            border-top: 3px solid #29ABE2
+            width: 100px
+            height: 0
+            margin: unset
+            margin-top: 5%
+            margin-bottom: 5%

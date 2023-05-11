@@ -96,7 +96,7 @@ function processBoardInputs() {
  * @param {*} array 
  */
 function renderEachBoard(boardTitle, boardId, array) {
-   
+
     let boardTaskArray = array.filter(t => t['board'] == `${boardId}`);
     getId(`${boardId}`).innerHTML = '';
     if (boardTaskArray.length == 0) getId(`${boardId}`).innerHTML = renderEmptyBoard(boardTitle);
@@ -276,6 +276,7 @@ function openTask(index) {
 }
 
 function renderDetailedTask(index) {
+    debugger
     detailsAreOpen = true;
     let task = tasks[index]
     let editTask = getId('editTaskDialog')
@@ -297,6 +298,10 @@ function renderDetailedTask(index) {
                         <h2>Priority: </h2>
                         <div class="${task.urgency} details-priority-btn ">${task.urgency}</div>
                     </div>
+                    <div class="subtask-flex">
+                    <h2>Subtasks: </h2>
+                    <div id="subtask-${index}"></div>
+                    </div>
                     <div class="assigned-to-container">
                         <h2>Assigned to:</h2>
                         <div class="details-assigned-users">${renderAssignedUsers(task.assignedTo)}</div>
@@ -309,6 +314,26 @@ function renderDetailedTask(index) {
             </div>
         </div>
 `
+    renderSubtasksDetails(index);
+}
+
+function renderSubtasksDetails(index) {
+    
+    let subtaskId = getId(`subtask-${index}`)
+    let subtasks = tasks[index].subtasks
+    for (let i = 0; i < subtasks.length; i++) {
+        const subtask = subtasks[i];
+        let checkedValue = subtask.checked ? "checked" : "";
+        subtaskId.innerHTML += `<div class="subtask-checkbox-container">
+        <input class="subtask-checkbox" type="checkbox" value="0" onchange="updateEditSubtask(${index}, ${i})" ${checkedValue}>
+        ${subtask.title}
+      </div>`;     
+    }    
+}
+
+function updateEditSubtask(taskIndex, subtaskIndex) {
+    tasks[taskIndex].subtasks[subtaskIndex].checked = !tasks[taskIndex].subtasks[subtaskIndex].checked;
+    saveTasks();
 }
 
 function renderEditTask(index) {
@@ -395,6 +420,7 @@ async function changeTask(index, board) {
 function closeTaskDialog() {
     detailsAreOpen = false;
     closeContainer('editTaskDialog');
+    renderBoards(tasks);
 }
 
 

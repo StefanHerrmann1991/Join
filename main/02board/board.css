@@ -577,6 +577,11 @@ h3 {
   color: #A8A8A8;
 }
 
+.subtask-flex {
+  display: flex;
+  flex-direction: column;
+}
+
 .user-urgency {
   display: flex;
   align-items: center;
@@ -624,6 +629,9 @@ h3 {
 }
 .assigned-users .user-icon {
   margin-left: -18px;
+  width: 35px;
+  height: 35px;
+  font-size: 12px;
 }
 .assigned-users .user-icon:nth-child(1) {
   margin-left: 0px !important;

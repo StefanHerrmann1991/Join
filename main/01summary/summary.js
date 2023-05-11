@@ -50,11 +50,12 @@ async function renderSummary() {
     boardId = board['boardId'];
     boardTitle = board['boardTitle'];
     boardName = board['boardName'];
+    console.log(boards)
     if (i < 2) {
       getId('upperSummary').innerHTML += `
       <a href="../02board/board.html" class="board-summary">
         <div class="big-number" id="${boardId}-number"></div>
-        <div class="board-title-summary">Tasks ${boardTitle}</div>
+        <div class="board-title-summary">${boardTitle}</div>
       </a>
       `;
     }
