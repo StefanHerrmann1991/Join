@@ -17,8 +17,7 @@ async function initTasks() {
  * This function is meant to enable the add of tasks to a json array.
  * It also generates a certain ID for new tasks and sends them to the backlog board.
  */
-function addToTasks(board) {
-    debugger
+function addToTasks(board) {   
     event.preventDefault();
     const task = processTaskInputs(board);
     task.id = tasks.length + 1; // set id when creating the task

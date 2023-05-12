@@ -1034,6 +1034,10 @@ input.subtask-checkbox[type=checkbox]:checked {
   }
 }
 @media (max-width: 768px) {
+  .task-main {
+    background-color: #F6F7F8;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
+  }
   .task-main .title-form {
     display: block !important;
     position: static;
