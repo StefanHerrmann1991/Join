@@ -196,9 +196,9 @@ function boardTaskHTML(element, i) {
               </div>
           </div>
           
-          <div class="move-to mobile-flex" onclick="event.stopPropagation(); toggleContainer('boardBtns')">
+          <div class="move-to mobile-flex" onclick="event.stopPropagation(); toggleContainer('boardBtns-${i}')">
               <img  class="chevron" src="../../assets/img/chevron.png">
-              <div id="boardBtns" class="move-btn-box d-none">
+              <div id="boardBtns-${i}" class="move-btn-box d-none">
                   <div><button onclick="event.stopPropagation(); moveToBoard(${i},'board-0')" class="move-button">Todo</button></div>
                   <div><button onclick="event.stopPropagation(); moveToBoard(${i},'board-1')" class="move-button">In Progress</button></div>
                   <div><button onclick="event.stopPropagation(); moveToBoard(${i},'board-2')" class="move-button">Awaiting Feedback</button></div>
