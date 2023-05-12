@@ -10,6 +10,10 @@
   scroll-behavior: smooth;
 }
 
+.scroll {
+  overflow-y: scroll;
+}
+
 .btn-1:hover {
   background-color: #29ABE2 !important;
   border: unset !important;
@@ -159,7 +163,7 @@ button, a {
   justify-content: flex-start;
   width: 80%;
   height: calc(100% - clamp(120px, 15%, 100%));
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .mgn-r {
@@ -204,7 +208,7 @@ h3 {
 
 .add-task-popup {
   position: absolute;
-  z-index: 100;
+  z-index: 105;
   background-color: rgba(0, 0, 0, 0.2);
   height: 100svh;
   width: 100svw;
@@ -325,13 +329,12 @@ h3 {
 @media (max-width: 992px) {
   .main-container {
     position: absolute;
-    top: clamp(90px, 15%, 100%);
+    top: 90px;
     left: 20%;
     display: flex;
     justify-content: flex-start;
     width: 80%;
-    height: calc(100% - clamp(90px, 15%, 100%));
-    overflow: hidden;
+    height: calc(100% - 90px);
   }
   #header {
     height: 76px;
@@ -347,6 +350,9 @@ h3 {
   }
 }
 @media (max-width: 768px) {
+  #navbar {
+    z-index: 1000;
+  }
   .add-task-popup {
     background-color: transparent;
     z-index: 200;
@@ -1048,6 +1054,12 @@ input.subtask-checkbox[type=checkbox]:checked {
   }
   .close-upper-right {
     z-index: 700;
+    position: fixed;
+    top: 12.5%;
+    right: 12.5%;
+    border: none;
+    background: transparent;
+    z-index: 10;
   }
   .task-main {
     border-radius: unset;
@@ -1069,8 +1081,6 @@ input.subtask-checkbox[type=checkbox]:checked {
   }
   .main-container .title-form {
     width: 95%;
-    padding-top: 5%;
-    margin-bottom: 5%;
   }
   .btn-container .clear-btn {
     display: none;

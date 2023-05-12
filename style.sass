@@ -14,6 +14,11 @@ $large: 90px
 $hover: #29ABE2
 $hover-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 
+.scroll
+    overflow-y: scroll
+   
+    
+
 .btn-1
     &:hover
         background-color: $hover !important
@@ -33,7 +38,7 @@ a
 
 @mixin popup
     position: absolute
-    z-index: 100
+    z-index: 105
     background-color: rgba(0, 0, 0, 0.2)
     height: 100svh
     width: 100svw
@@ -157,7 +162,7 @@ button, a
     justify-content: flex-start
     width: calc( 100% - 20%)
     height: calc( 100% - clamp(120px, 15%, 100%))
-    overflow: hidden
+    overflow: scroll
 
 .mgn-r
     padding-right: 12px
@@ -285,13 +290,13 @@ h3
 
     .main-container
         position: absolute
-        top: clamp(90px, 15%, 100%)
+        top: 90px
         left: 20%
         display: flex
         justify-content: flex-start
         width: calc( 100% - 20%)
-        height: calc( 100% - clamp(90px, 15%, 100%))
-        overflow: hidden
+        height: calc( 100% - 90px )
+       
 
     #header
         height: 76px
@@ -313,7 +318,8 @@ h3
         height: calc( 100% - 148px )
         top: 74px
 
-        
+    #navbar
+        z-index: 1000
 
     .add-task-popup
         @include popup
