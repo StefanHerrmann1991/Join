@@ -348,6 +348,7 @@ h3 {
 @media (max-width: 768px) {
   .add-task-popup {
     background-color: transparent;
+    z-index: 200;
   }
   .mobile-flex {
     display: flex !important;

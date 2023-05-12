@@ -285,7 +285,7 @@ function showContact(index) {
           <div class="edit-initial" style="background-color:${actualContact.color}">${actualContact.initial}</div>
           <div class="contact-task-container">
               <div class="edit-name">${actualContact.name}</div>
-              <button class="add-task-btn" onclick="initTasks(); openContainer('addTaksPopup')"><img
+              <button class="add-task-btn" onclick="initTasks(); openContainer('addTasksPopup')"><img
                       src="../../assets/img/addTaskBlue.png">Add Tasks</button>
           </div>
       </div>
