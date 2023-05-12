@@ -155,6 +155,7 @@
                     align-items: space-evenly
                     input:nthchild()
                         margin-left: 12px
+                        margin-left: 12px
                     input:nth-child(1)
                         background-image: url(../../assets/img/person.png)
                     input:nth-child(2)
@@ -364,8 +365,6 @@
 
 @media (max-width: 768px)
 
-  
-
     .edit-contact-container
         top: 0px
 
@@ -377,28 +376,6 @@
         width: 90%
         z-index: 100
         height: 80%
-
-    .add-contact-dialog, .edit-contact-dialog
-        .add-contact
-            .add-contact-menu
-                height: 100%
-                width: 100%
-                flex-direction: column
-                height: 90%
-                .add-contact-description
-                    width: 90%
-                    margin: auto
-                    height: 90%
-                    padding: 0px
-                    border-radius: 30px 30px 0px 0px
-                    h2
-                        font-size: 41px
-                .add-contact-submenu
-                    border-radius: 0px 0px 30px 30px
-                    width: 90%
-                    margin: auto
-                    padding: 0px
-                    flex-direction: column
 
     .edit-information
         .delete-btn
@@ -437,11 +414,12 @@
 
     .add-contact-dialog, .edit-contact-dialog
         .add-contact
+            animation: none
             .add-contact-menu
-                height: 100%
                 width: 100%
+
                 flex-direction: column
-                height: 90%
+                height: calc( 100% - 148px )
                 .add-contact-description
                     position: relative
                     @include flex-center
@@ -450,12 +428,23 @@
                     height: 40%
                     padding: 0px
                     border-radius: 30px 30px 0px 0px
+                    h2
+                        font-size: 41px
                 .add-contact-submenu
                     border-radius: 0px 0px 30px 30px
                     width: 90%
                     margin: auto
                     padding: 0px
                     flex-direction: column
+
+                    form
+                        z-index: 400
+                        width: 90%
+                        margin: auto
+
+                        input
+                            padding-right: 40px
+
                     #editInitial, #newContactImg
                         width: 100%
                         height: 100%
@@ -478,8 +467,12 @@
                         height: 41px
                     .create-contact-btns
                         @include flex-center
+
                         button
                             height: 40px
+
+                        &:last-child
+                            width: 100%
 
     .add-contact-menu
         height: 100%
@@ -509,7 +502,6 @@
         left: 0%
         top: 74px
         height: calc( 100% - 148px)
-        margin-bottom: 74px
         display: flex
         flex-direction: column
         align-items: flex-end

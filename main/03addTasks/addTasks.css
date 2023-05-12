@@ -368,6 +368,9 @@ h3 {
   .desktop {
     display: none !important;
   }
+  .desktop-flex {
+    display: none !important;
+  }
   .main-container {
     width: 100%;
     top: 90px;

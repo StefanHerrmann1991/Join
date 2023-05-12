@@ -9,6 +9,10 @@
   scroll-behavior: smooth;
 }
 
+.scroll {
+  overflow-y: scroll;
+}
+
 .btn-1:hover {
   background-color: #29ABE2 !important;
   border: unset !important;
@@ -158,7 +162,7 @@ button, a {
   justify-content: flex-start;
   width: 80%;
   height: calc(100% - clamp(120px, 15%, 100%));
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .mgn-r {
@@ -203,7 +207,7 @@ h3 {
 
 .add-task-popup {
   position: absolute;
-  z-index: 100;
+  z-index: 105;
   background-color: rgba(0, 0, 0, 0.2);
   height: 100svh;
   width: 100svw;
@@ -330,7 +334,6 @@ h3 {
     justify-content: flex-start;
     width: 80%;
     height: calc(100% - 90px);
-    overflow: hidden;
   }
   #header {
     height: 76px;
@@ -362,6 +365,9 @@ h3 {
     display: block !important;
   }
   .desktop {
+    display: none !important;
+  }
+  .desktop-flex {
     display: none !important;
   }
   .main-container {
@@ -542,7 +548,7 @@ h3 {
 
 .add-contact-dialog, .edit-contact-dialog {
   position: absolute;
-  z-index: 100;
+  z-index: 105;
   background-color: rgba(0, 0, 0, 0.2);
   height: 100svh;
   width: 100svw;
@@ -618,6 +624,7 @@ h3 {
   align-items: space-evenly;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nthchild(), .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nthchild() {
+  margin-left: 12px;
   margin-left: 12px;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nth-child(1), .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input:nth-child(1) {
@@ -872,29 +879,6 @@ h3 {
     z-index: 100;
     height: 80%;
   }
-  .add-contact-dialog .add-contact .add-contact-menu, .edit-contact-dialog .add-contact .add-contact-menu {
-    height: 100%;
-    width: 100%;
-    flex-direction: column;
-    height: 90%;
-  }
-  .add-contact-dialog .add-contact .add-contact-menu .add-contact-description, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description {
-    width: 90%;
-    margin: auto;
-    height: 90%;
-    padding: 0px;
-    border-radius: 30px 30px 0px 0px;
-  }
-  .add-contact-dialog .add-contact .add-contact-menu .add-contact-description h2, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description h2 {
-    font-size: 41px;
-  }
-  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu {
-    border-radius: 0px 0px 30px 30px;
-    width: 90%;
-    margin: auto;
-    padding: 0px;
-    flex-direction: column;
-  }
   .edit-information .delete-btn {
     display: none;
   }
@@ -931,11 +915,13 @@ h3 {
     height: 60px;
     width: 60px;
   }
+  .add-contact-dialog .add-contact, .edit-contact-dialog .add-contact {
+    animation: none;
+  }
   .add-contact-dialog .add-contact .add-contact-menu, .edit-contact-dialog .add-contact .add-contact-menu {
-    height: 100%;
     width: 100%;
     flex-direction: column;
-    height: 90%;
+    height: calc(100% - 148px);
   }
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-description, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description {
     position: relative;
@@ -948,12 +934,23 @@ h3 {
     padding: 0px;
     border-radius: 30px 30px 0px 0px;
   }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-description h2, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description h2 {
+    font-size: 41px;
+  }
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu {
     border-radius: 0px 0px 30px 30px;
     width: 90%;
     margin: auto;
     padding: 0px;
     flex-direction: column;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form {
+    z-index: 400;
+    width: 90%;
+    margin: auto;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input {
+    padding-right: 40px;
   }
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #editInitial, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #newContactImg, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #editInitial, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #newContactImg {
     width: 100%;
@@ -983,6 +980,9 @@ h3 {
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button {
     height: 40px;
   }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns:last-child, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns:last-child {
+    width: 100%;
+  }
   .add-contact-menu {
     height: 100%;
     width: 100%;
@@ -1011,7 +1011,6 @@ h3 {
     left: 0%;
     top: 74px;
     height: calc(100% - 148px);
-    margin-bottom: 74px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
