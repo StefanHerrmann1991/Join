@@ -286,14 +286,25 @@ h3 {
   border-radius: 20px;
   color: white;
   position: absolute;
-  bottom: 20 !important;
+  bottom: 20px !important;
   left: 50%;
   transform: translateX(-50%);
+  animation: fly-in 0.8s ease-out forwards;
 }
 .task-submit-successful img {
-  height: 22;
-  width: 26;
+  height: 22px;
+  width: 26px;
   margin-left: 30px;
+}
+@keyframes fly-in {
+  0% {
+    margin-bottom: -200px;
+    opacity: 0;
+  }
+  100% {
+    margin-bottom: 0px;
+    opacity: 1;
+  }
 }
 
 .mobile-logo {
@@ -546,6 +557,16 @@ h3 {
   margin-bottom: 25px;
 }
 
+@keyframes fly-inside {
+  0% {
+    transform: translate(100%, -50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
 .add-contact-dialog, .edit-contact-dialog {
   position: absolute;
   z-index: 105;
@@ -556,6 +577,7 @@ h3 {
   width: 100vw;
   top: 0;
   left: 0;
+  overflow: hidden;
 }
 .add-contact-dialog .add-contact, .edit-contact-dialog .add-contact {
   width: 100%;
@@ -564,7 +586,6 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fly-in 0.25s ease-out forwards;
 }
 .add-contact-dialog .add-contact .add-contact-menu, .edit-contact-dialog .add-contact .add-contact-menu {
   position: absolute;
@@ -575,6 +596,7 @@ h3 {
   width: 85%;
   height: 60%;
   margin: auto;
+  animation: fly-inside 0.5s ease-out forwards;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-description, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description {
   display: flex;
@@ -593,6 +615,19 @@ h3 {
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-description h2, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description h2 {
   font-size: 61px;
+}
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-description p, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description p {
+  font-size: 27px;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+}
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-description .lower-border, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description .lower-border {
+  display: inline-block;
+  border: none;
+  border-top: 3px solid #29ABE2;
+  width: 120px;
+  height: 0;
+  margin: unset;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-description img, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description img {
   height: 66px;
@@ -685,14 +720,6 @@ h3 {
   width: 222px;
 }
 
-@keyframes fly-in {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
 .close-upper-right {
   position: absolute;
   top: 35px;

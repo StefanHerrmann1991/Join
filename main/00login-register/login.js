@@ -82,6 +82,10 @@ function renderLogin() {
 
 function renderForgotPassword() {
     return `
+    <div class="forget-password-popup" id="forgetPasswordPopup">
+    <img src="../../assets/img/sendCheck.png">
+    <div>An E-Mail has been sent to you</div>    
+    </div>
     <div class="register">
     <div class="logo-container">
     <img class="logo" src="../../assets/img/logo2.png">
@@ -103,6 +107,13 @@ function renderForgotPassword() {
 </div>
 ` }
 
+function openSendMail() {
+    let sendMail = getId('forgetPasswordPopup')
+    sendMail.classList.remove('d-none')
+    setTimeout(() => {
+        sendMail.classList.add('d-none')
+    }, 2000);
+}
 
 function renderResetPassword() {
     return `
@@ -134,7 +145,7 @@ function renderResetPassword() {
 
 
 function loginAsGuest() {
-    window.open('/../../main/01summary/summary.html');       
+    window.open('/../../main/01summary/summary.html');
 }
 
 
@@ -210,7 +221,8 @@ async function forgotPassword(event) {
         user.resetToken = token;
         try {
             await sendForgotPasswordEmail(email, token);
-            alert('Password reset link has been sent to your email');
+
+            openSendMail();
         } catch (error) {
             console.error(error);
             alert('Error sending the email. Please try again later.');

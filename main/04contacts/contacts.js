@@ -272,6 +272,7 @@ function showContact(index) {
       <h1>Contacts</h1>
       <div class="border-big"></div>
       <div class="title-additive">Better with a Team</div>
+      <div class="lower-border"></div>
       <button class="mobile back-btn" onclick="closeContactMobile()">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -355,6 +356,7 @@ function renderEditContact(actualContact) {
                 <img class="desktop" src="../../assets/img/logo.png">
                 <h2>Edit contact</h2>
                 <p class="desktop">Tasks are better with a team!</p>
+                <div class="lower-border"></div>
             </div>
             <div class="add-contact-submenu">
                 <button class="close-upper-right" onclick="closeContainer('editContactDialog')">
