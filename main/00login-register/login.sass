@@ -11,9 +11,54 @@
     .sign-up-container
         border-radius: 30px
         position: relative
-        width: 652px
-        height: 513px
         background-color: #FFFFFF
+        @include flex-center
+        flex-direction: column
+        box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04)
+        padding: 44px 85px
+        .sign-up
+            border-radius: 30px
+            width: 100%
+            height: 100%
+            position: relative
+
+        form
+            width: 100%
+            display: flex
+            flex-direction: column
+            justify-content: space-around
+            align-items: space-evenly
+            input:nthchild()
+                margin-left: 12px
+            input:nth-child(1)
+                background-image: url(../../assets/img/person.png)
+            input:nth-child(2)
+                background-image: url(../../assets/img/mail.png)
+            input:nth-child(3)
+                background-image: url(../../assets/img/lock.png)
+            input:nth-child(4)
+                background-image: url(../../assets/img/lock.png)
+            input
+                background-repeat: no-repeat
+
+                font-size: 21px
+                width: 100%
+                margin-top: 8%
+                border: 1px solid #D1D1D1
+                border-radius: 10px
+                padding: 13px 21px
+                background-size: 24px
+                background-repeat: no-repeat
+                background-position: 95%
+
+            .menu-btn
+                button
+                    height: 51px
+                button:nth-child(1)
+                    width: 145px
+                button:nth-child(2)
+                    width: 161px
+
     h2
         font-family: 'Inter'
         font-style: normal
@@ -67,67 +112,22 @@
         100%
             width: 100px
             height: 122px
-            top: 7.81%
-            left: 5.35%
-
-    .sign-up
-        box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04)
-        border-radius: 30px
-        width: 100%
-        height: 100%
-        position: relative
-        @include flex-center
-        flex-direction: column
-        form
-            width: 65%
-            display: flex
-            flex-direction: column
-            justify-content: space-around
-            align-items: space-evenly
-            input:nthchild()
-                margin-left: 12px
-            input:nth-child(1)
-                background-image: url(../../assets/img/person.png)
-            input:nth-child(2)
-                background-image: url(../../assets/img/mail.png)
-            input:nth-child(3)
-                background-image: url(../../assets/img/lock.png)
-            input:nth-child(4)
-                background-image: url(../../assets/img/lock.png)
-            input
-                font-size: 21px
-                width: 100%
-                margin-top: 8%
-                margin-right: 10%
-                border: 1px solid #D1D1D1
-                border-radius: 10px
-                padding: 13px 21px
-                background-size: 24px
-                background-repeat: no-repeat
-                background-position: 95%
-            .menu-btn
-                button
-                    height: 51px
-                button:nth-child(1)
-                    width: 145px
-                button:nth-child(2)
-                    width: 161px
+            top: 10%
+            left: 10%
 
 .forgot-password-container
     border-radius: 30px
     position: relative
-    width: 826px
-    height: 462px
     background-color: #FFFFFF
     margin-left: 5%
     margin-right: 5%
+
     h2
         margin-bottom: 5%
     .forgot-password
+        padding: 44px 85px
         box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04)
         border-radius: 30px
-        width: 100%
-        height: 100%
         position: relative
         flex-direction: column
         @include flex-center
@@ -177,21 +177,19 @@
 .sign-up-container
 .menu-btn
     @include flex-center
+    gap: 5%
     button
         margin-top: 8%
-        margin-right: 10%
+
         @include flex-center
         padding: 18px 10px
         border-radius: 10px
-        font-family: 'Inter'
-        font-style: normal
         font-weight: 700
         font-size: 21px
-        line-height: 120%
         &:nth-child(1)
             background-color: $main
             color: white
-            margin-left: 10%
+
             border: none
         &:nth-child(2)
             color: #2A3647
@@ -203,6 +201,7 @@
     align-items: center
     justify-content: space-between
     width: 90%
+    gap: 5%
     input
         padding: 0px !important
         margin: 0px !important
@@ -241,49 +240,41 @@
     cursor: pointer !important
     width: 37px !important
     height: 37px !important
-    z-index: 100
+    animation: hightenOpacity 1.2s linear forwards
+    opacity: 0
+    z-index: 0
+
+    @keyframes hightenOpacity
+        0%
+            opacity: 0
+            z-index: 0
+        90%
+            opacity: 0
+            z-index: 0
+        100%
+            opacity: 100
+            z-index: 100
+
+@media (max-width: 992px)
+
+    .register
+        .logo-container
+            @keyframes moveLogo
+                0%
+                    width: 274px
+                    height: 334.07px
+                    top: 50%
+                    left: 50%
+
+                100%
+                    width: 64px
+                    height: 78.03px
+                    top: 10%
+                    left: 10%
 
 @media (max-width: 768px)
     .sign-up
         h2
             margin-top: 40px
             margin-bottom: 40px
-            font-size: 47px !important
-
-@media (max-width: 520px)
-    .register
-        .logo
-            height: 78px
-            width: 64px
-
-    .sign-up-container
-        height: 572px !important
-        width: 372px !important
-
-    .menu-btn
-        flex-direction: column
-        justify-content: center
-        button
-            width: 181px !important
-            margin: 8% !important
-            font-size: 17px
-        &:nth-child(1)
-            margin-left: 0 !important
-
-@media (max-width: 420px)
-    .login-option
-        flex-direction: column-reverse
-        align-items: flex-start
-        div
-            margin-top: 10%
-            margin-bottom: 10%
-        nobr
-            margin: 0px
-
-    .sign-up
-        width: 90%
-
-    .to-register
-        top: 90%
-        left: 50%
-        transform: translate(-50%, -50%)
+            font-size: 47px
