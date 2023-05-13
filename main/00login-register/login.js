@@ -24,7 +24,9 @@ function renderAuth(status) {
 function renderSignUp() {
     return `
 <div class="register">
+<div class="logo-container">
 <img class="logo" src="../../assets/img/logo2.png">
+</div>
 <div class="sign-up-container">
 <img onclick="initAuthentification('login')" class="arrow-back" src="../../assets/img/backArrow.png">
     <div class="sign-up">
@@ -47,7 +49,9 @@ function renderSignUp() {
 function renderLogin() {
     return `
 <div class="register">
+<div class="logo-container">
 <img class="logo" src="../../assets/img/logo2.png">
+</div>
 <div class="to-register">Not a Join user?
 <button class="btn-1" onclick="renderAuth('signUp')"><nobr>Sign up</nobr></button>
 </div>
@@ -79,7 +83,9 @@ function renderLogin() {
 function renderForgotPassword() {
     return `
     <div class="register">
+    <div class="logo-container">
     <img class="logo" src="../../assets/img/logo2.png">
+    </div>
     <div class="forgot-password-container">
         <img onclick="initAuthentification('login')" class="arrow-back" src="../../assets/img/backArrow.png">
         <div class="forgot-password">
@@ -101,7 +107,10 @@ function renderForgotPassword() {
 function renderResetPassword() {
     return `
     <div class="register">
+    <div>
+    <div class="logo-container">
     <img class="logo" src="../../assets/img/login/logo.png">
+    </div>
     <div class="forgot-password-container">
         <img onclick="initAuthentification('login')" class="arrow-back" src="../../assets/img/backArrow.png">
         <div class="reset-password">
