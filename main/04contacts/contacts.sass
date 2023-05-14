@@ -448,14 +448,17 @@
                     padding: 0px
                     border-radius: 30px 30px 0px 0px
                     h2
-                        font-size: 41px
+                        margin-bottom: 2.5%
+                        margin-top: 2.5%
+                    p
+                        font-size: 21px
                 .add-contact-submenu
                     border-radius: 0px 0px 30px 30px
                     width: 90%
                     margin: auto
                     padding: 0px
                     flex-direction: column
-
+                    height: 60%
                     form
                         z-index: 400
                         width: 90%
@@ -466,12 +469,12 @@
 
                     #editInitial, #newContactImg
                         width: 100%
-                        height: 100%
                         display: flex
                         justify-content: center
                         align-items: flex-start
                         position: absolute
-                        margin-top: -20%
+                        margin-top: 0%
+                        top: -30
 
                     #newContactImg
                         .edit-initial
@@ -554,3 +557,20 @@
 
     .contact-information h4
         padding-top: 15px
+
+    @media (max-width: 480px)
+
+        .edit-contact-dialog, .add-contact-dialog
+            .add-contact
+                .add-contact-menu
+                    .add-contact-description
+                        width: 100%
+                        height: 20%
+                        p
+                            display: none
+                    .add-contact-submenu
+                        height: 80%
+                        width: 100%
+
+        .edit-initial
+            display: none

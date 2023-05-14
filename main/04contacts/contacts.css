@@ -962,7 +962,11 @@ h3 {
     border-radius: 30px 30px 0px 0px;
   }
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-description h2, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description h2 {
-    font-size: 41px;
+    margin-bottom: 2.5%;
+    margin-top: 2.5%;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-description p, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description p {
+    font-size: 21px;
   }
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu {
     border-radius: 0px 0px 30px 30px;
@@ -970,6 +974,7 @@ h3 {
     margin: auto;
     padding: 0px;
     flex-direction: column;
+    height: 60%;
   }
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form {
     z-index: 400;
@@ -981,12 +986,12 @@ h3 {
   }
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #editInitial, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #newContactImg, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #editInitial, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #newContactImg {
     width: 100%;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     position: absolute;
-    margin-top: -20%;
+    margin-top: 0%;
+    top: -30;
   }
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #newContactImg .edit-initial, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #newContactImg .edit-initial {
     border: none;
@@ -1073,5 +1078,21 @@ h3 {
   }
   .contact-information h4 {
     padding-top: 15px;
+  }
+}
+@media (max-width: 768px) and (max-width: 480px) {
+  .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description, .add-contact-dialog .add-contact .add-contact-menu .add-contact-description {
+    width: 100%;
+    height: 20%;
+  }
+  .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description p, .add-contact-dialog .add-contact .add-contact-menu .add-contact-description p {
+    display: none;
+  }
+  .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu {
+    height: 80%;
+    width: 100%;
+  }
+  .edit-initial {
+    display: none;
   }
 }/*# sourceMappingURL=contacts.css.map */

@@ -354,8 +354,7 @@ function renderEditContact(actualContact) {
         <div class="add-contact-menu">
             <div class="add-contact-description">
                 <img class="desktop" src="../../assets/img/logo.png">
-                <h2>Edit contact</h2>
-                <p class="desktop">Tasks are better with a team!</p>
+                <h2>Edit contact</h2>                
                 <div class="lower-border"></div>
             </div>
             <div class="add-contact-submenu">
