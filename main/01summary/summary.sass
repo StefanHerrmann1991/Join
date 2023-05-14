@@ -64,7 +64,7 @@ a
 
 .middle-line
     border: 2px solid #D1D1D1
-    height: 100px
+    height: 80%
 
 .summary-title
     display: flex
@@ -184,6 +184,9 @@ a
 
 @media (max-width: 768px)
 
+    .summary-task
+        z-index: 200
+
     .summary-title
         display: flex
         flex-direction: column
@@ -211,11 +214,23 @@ a
         top: 50%
         left: 50%
         transform: translate(-50%, -50%)
-        animation: fadeOut 2s ease-in-out forwards
+        animation: fadeOut 1.8s linear forwards
 
         @keyframes fadeOut
             0%
                 opacity: 1
+                z-index: 10000
 
+            90%
+                z-index: 0
+                
             100%
                 opacity: 0
+                z-index: 0
+@media (max-width: 480px)
+    .board-summary, .deadline-summary, .lower-board-summary
+        .big-number
+            font-size: 32px
+
+    .lower-board-summary, .board-summary, .deadline
+        height: 90px
