@@ -28,9 +28,9 @@
                 <div class="task-fields">
                     <div class="add-task-left">
                         <h3>Title</h3>
-                        <input required class="title" id="title" placeholder="Enter a title" oninput="loadTasks()">
+                        <input minlength="3" required class="title" id="title" placeholder="Enter a title" oninput="loadTasks()">
                         <h3>Description</h3>
-                        <textarea resize="none" required id="description" placeholder="Enter a description"></textarea>
+                        <textarea minlength="3" resize="none" required id="description" placeholder="Enter a description"></textarea>
                         <h3>Category</h3>
                         <div class="assign-btn-container" id="categoryContainer">
                             <button type="button" class="assign-btn" onclick="toggleContainer('categoryMenu'); renderCategories()">

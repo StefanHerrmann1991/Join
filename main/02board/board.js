@@ -178,12 +178,15 @@ function moveToBoard(i, targetBoard) {
 function boardTaskHTML(element, i) {
     let doneSubtask = element.subtasks.filter(function (subtask) { return subtask.checked }).length;
     let subtaskProgressBarClass = element.subtasks.length === 0 ? 'd-none' : '';
+    let firstWord = element.description.split(' ')[0];
+    let description = element.description.length > 10 ? `${firstWord}...` : element.description;
+
     return /*html*/ `
       <div draggable="true" ondragstart="startDragging(${i})" id="task-${i}" class="task" onclick="renderDetailedTask(${i})">
           <div class="task-container">
               <div class="category-icon" style="background-color: ${element.category.color}">${element.category.topic}</div>
               <h2 class="task-headline"><b>${capitalizeFirst(element['title'])}</b></h2>
-              <div class="description">${element.description}</div>
+              <div class="description">${description}</div>
               <div id="subtaskProgressBar" class="subtask-progress ${subtaskProgressBarClass}">
                   <progress value="${doneSubtask}" max="${element.subtasks.length}"></progress>
                   <div>${doneSubtask}/${element.subtasks.length}</div>
@@ -276,7 +279,7 @@ function openTask(index) {
     renderEditTask();
 }
 
-function renderDetailedTask(index) {    
+function renderDetailedTask(index) {
     detailsAreOpen = true;
     let task = tasks[index]
     let editTask = getId('editTaskDialog')
@@ -318,7 +321,7 @@ function renderDetailedTask(index) {
 }
 
 function renderSubtasksDetails(index) {
-    
+
     let subtaskId = getId(`subtask-${index}`)
     let subtasks = tasks[index].subtasks
     for (let i = 0; i < subtasks.length; i++) {
@@ -327,8 +330,8 @@ function renderSubtasksDetails(index) {
         subtaskId.innerHTML += `<div class="subtask-checkbox-container">
         <input class="subtask-checkbox" type="checkbox" value="0" onchange="updateEditSubtask(${index}, ${i})" ${checkedValue}>
         ${subtask.title}
-      </div>`;     
-    }    
+      </div>`;
+    }
 }
 
 function updateEditSubtask(taskIndex, subtaskIndex) {

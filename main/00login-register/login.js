@@ -32,8 +32,8 @@ function renderSignUp() {
     <div class="sign-up">
         <h2>Sign up</h2>
         <form onsubmit="registerUser();">
-            <input type="text" id="name" name="name" required placeholder="Name">
-            <input type="email" id="email" name="email" required placeholder="Email">
+            <input minlength="3" type="text" id="name" name="name" required placeholder="Name">
+            <input minlength="3" type="email" id="email" name="email" required placeholder="Email">
             <input minlength="6" maxlength="20" type="password" id="password" name="Password" required placeholder="Password">
                        <div class="menu-btn">
                 <button class="btn-1" type="submit"><nobr>Sign up</nobr></button>
@@ -59,8 +59,8 @@ function renderLogin() {
     <div class="sign-up">
         <h2>Log in</h2>
         <form onsubmit="usersLogin()">  
-            <input type="email" id="email" name="email" required placeholder="Email">
-            <input type="password" minlength="6" maxlength="20"  id="password" name="password" required placeholder="Password">
+            <input minlength="3" type="email" id="email" name="email" required placeholder="Email">
+            <input minlength="3" type="password" minlength="6" maxlength="20"  id="password" name="password" required placeholder="Password">
             <div class="login-option">
             <div class="remember-me">
             <input type="checkbox" >
@@ -97,7 +97,7 @@ function renderForgotPassword() {
             <div> Don't worry! We will send you an email with the instructions to reset your password.
             </div>
             <form onsubmit="forgotPassword(event)">
-                <input type="email" id="email" name="email" required placeholder="Email">
+                <input minlength="3" type="email" id="email" name="email" required placeholder="Email">
                 <div class="menu-btn color-white">
                     <button class="btn-1" type="submit"><nobr>Send me the email</nobr></button>
                 </div>
@@ -130,7 +130,7 @@ function renderResetPassword() {
             </div>
             <form onsubmit="createUser(event)">
                 <input type="password" minlength="6" maxlength="20" id="password" name="Password" required placeholder="Password">
-                <input type="password" id="passwordValidation" name="passwordValidaton" required
+                <input type="password" minlength="6" id="passwordValidation" name="passwordValidaton" required
                     placeholder="Confirm password">
                 <div class="menu-btn color-white">
                     <button type="submit">

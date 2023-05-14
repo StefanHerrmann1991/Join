@@ -74,7 +74,7 @@ function newCategory() {
     newCategory.innerHTML = `
     <div class="subtasks-container">
         <div class="category-input-color">
-            <input id="categoryInput" type="text" placeholder="New category name">     
+            <input minlength="3" id="categoryInput" type="text" placeholder="New category name">     
             <div class="chosen-color" id="chosenColor"></div>       
         </div>
         <div class="button-container">
@@ -368,7 +368,7 @@ function renderSubtasks() {
     subtask.classList.remove('assign-btn-container')
     subtask.innerHTML = `
     <div class="subtasks-container">
-    <input maxlength="25" id="subtaskInput" placeholder="Add new subtask">
+    <input minlength="3" id="subtaskInput" placeholder="Add new subtask">
     <div class="button-container">
     <button type="button" class="cancel-button" onclick ="cancelSubtask()"><img
     src="/assets/img/cancelDark.png"></button>

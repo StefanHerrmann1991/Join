@@ -730,8 +730,9 @@ h3 {
 }
 .edit-task-container .task-details {
   width: 90%;
-  height: calc(90% - 50px);
+  height: 80%;
   margin: auto;
+  overflow-y: auto;
   padding-top: 50px;
 }
 .edit-task-container .task-details h1 {
@@ -781,6 +782,12 @@ h3 {
   align-items: center;
   padding-top: 12.5px;
   padding-bottom: 12.5px;
+  word-break: break-all;
+  overflow-y: auto;
+  height: 5%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 5px;
 }
 .details-container h2 {
   margin-right: 25px;

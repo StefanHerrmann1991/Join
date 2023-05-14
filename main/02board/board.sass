@@ -128,7 +128,6 @@
     .description
         color: #A8A8A8
 
-
 .subtask-flex
     display: flex
     flex-direction: column
@@ -227,8 +226,10 @@
                 height: 30px
     .task-details
         width: 90%
-        height: calc( 90% - 50px )
+        height: 80%
         margin: auto
+        overflow-y: auto
+
         padding-top: 50px
         h1
             padding-bottom: 12.5px
@@ -260,11 +261,19 @@
     h2
         margin-bottom: 25px
 
+
 .details-container
     display: flex
     align-items: center
     padding-top: 12.5px
     padding-bottom: 12.5px
+    word-break: break-all
+    overflow-y: auto
+    height: 5%
+    padding-top: 5px
+    padding-bottom: 5px
+    padding-right: 5px
+
     h2
         margin-right: 25px
 
@@ -445,7 +454,7 @@ progress
         justify-content: center
         flex-direction: column
         align-items: center
-    
+
     .move-btn-box
         display: flex
         justify-content: center

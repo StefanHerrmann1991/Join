@@ -364,9 +364,9 @@ function renderEditContact(actualContact) {
                 <div id="editInitial"></div>
                 <form onsubmit="saveEditedContact(event, ${actualContact});  saveBackendDataOf(contactBook)"
                     id="editContactFormfield">
-                    <input type="text" id="editName" name="editName" required>
-                    <input type="email" id="editEmail" name="editEmail" required>
-                    <input type="tel" id="editPhone" name="editPhone" required>
+                    <input minlength="3" type="text" id="editName" name="editName" required>
+                    <input minlength="3" type="email" id="editEmail" name="editEmail" required>
+                    <input minlength="3" type="tel" id="editPhone" name="editPhone" required>
                 <div class="create-contact-btns">
                     <button type="button" onclick="deleteContact(${actualContact})">
                         Delete
