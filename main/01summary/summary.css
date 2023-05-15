@@ -346,9 +346,6 @@ h3 {
     width: 80%;
     height: calc(100% - 90px);
   }
-  #header {
-    height: 76px;
-  }
   h1 {
     font-size: 47px;
   }
@@ -360,6 +357,15 @@ h3 {
   }
 }
 @media (max-width: 768px) {
+  .main-container {
+    width: 100%;
+    top: 90px;
+    left: 0;
+    height: calc(100vh - 90px - 74px);
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+  }
   #navbar {
     z-index: 1000;
   }
@@ -380,11 +386,6 @@ h3 {
   }
   .desktop-flex {
     display: none !important;
-  }
-  .main-container {
-    width: 100%;
-    top: 90px;
-    left: 0;
   }
   h1 {
     font-size: 47px;
@@ -627,16 +628,19 @@ a {
   height: 30px;
   filter: brightness(0) invert(1);
 }
-.deadline .urgent {
+
+.urgent {
   background-color: #FF3D00;
 }
-.deadline .medium {
+
+.medium {
   background-color: #FFA800;
 }
-.deadline .low {
+
+.low {
   background-color: #7AE229;
 }
-.deadline:hover {
+.low:hover {
   background-color: #2A3647;
   color: white;
   transform: scale(1.1);
@@ -712,15 +716,16 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: fadeOut 1.8s linear forwards;
+    animation: fadeOut 2s ease-in-out forwards;
   }
   @keyframes fadeOut {
     0% {
       opacity: 1;
       z-index: 10000;
     }
-    90% {
+    99% {
       z-index: 0;
+      opacity: 0;
     }
     100% {
       opacity: 0;

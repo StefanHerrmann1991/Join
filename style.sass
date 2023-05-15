@@ -259,7 +259,7 @@ h3
     left: 50%
     transform: translateX(-50%)
     animation: fly-in 0.8s ease-out forwards
-    
+
     img
         height: 22px
         width: 26px
@@ -269,7 +269,6 @@ h3
         0%
             margin-bottom: -200px
             opacity: 0
-            
 
         100%
             margin-bottom: 0px
@@ -309,9 +308,6 @@ h3
         width: calc( 100% - 20%)
         height: calc( 100% - 90px )
 
-    #header
-        height: 76px
-
     h1
         font-size: 47px
 
@@ -322,6 +318,15 @@ h3
         font-size: 16px
 
 @media (max-width: 768px)
+
+    .main-container
+        width: 100%
+        top: 90px
+        left: 0
+        height: calc( 100vh - 90px - 74px)
+        padding: 0px
+        margin: 0px
+        overflow-x: hidden
 
     @mixin popup
         background-color: transparent
@@ -346,11 +351,6 @@ h3
 
     .desktop-flex
         display: none !important
-
-    .main-container
-        width: 100%
-        top: 90px
-        left: 0
 
     h1
         font-size: 47px

@@ -347,9 +347,6 @@ h3 {
     width: 80%;
     height: calc(100% - 90px);
   }
-  #header {
-    height: 76px;
-  }
   h1 {
     font-size: 47px;
   }
@@ -361,6 +358,15 @@ h3 {
   }
 }
 @media (max-width: 768px) {
+  .main-container {
+    width: 100%;
+    top: 90px;
+    left: 0;
+    height: calc(100vh - 90px - 74px);
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+  }
   #navbar {
     z-index: 1000;
   }
@@ -381,11 +387,6 @@ h3 {
   }
   .desktop-flex {
     display: none !important;
-  }
-  .main-container {
-    width: 100%;
-    top: 90px;
-    left: 0;
   }
   h1 {
     font-size: 47px;
@@ -588,10 +589,6 @@ input, select {
 .priority-btns .priority-btn .priority-btn.selected {
   background-color: #2A3647;
   color: #fff;
-}
-.priority-btns .medium-prio {
-  width: 20px;
-  height: 10.5px;
 }
 .priority-btns img {
   margin-left: 5px;

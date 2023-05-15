@@ -136,12 +136,12 @@ a
             width: 30px
             height: 30px
             filter: brightness(0) invert(1)
-    .urgent
-        background-color: #FF3D00
-    .medium
-        background-color: #FFA800
-    .low
-        background-color: #7AE229
+.urgent
+    background-color: #FF3D00
+.medium
+    background-color: #FFA800
+.low
+    background-color: #7AE229
 
     &:hover
         @include hover
@@ -214,16 +214,17 @@ a
         top: 50%
         left: 50%
         transform: translate(-50%, -50%)
-        animation: fadeOut 1.8s linear forwards
+        animation: fadeOut 2s ease-in-out forwards
 
         @keyframes fadeOut
             0%
                 opacity: 1
                 z-index: 10000
 
-            90%
+            99%
                 z-index: 0
-                
+                opacity: 0
+
             100%
                 opacity: 0
                 z-index: 0

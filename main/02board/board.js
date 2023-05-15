@@ -288,22 +288,26 @@ function renderDetailedTask(index) {
         <div class="edit-task-dialog center" id="editTaskContainer">
             <div class="edit-task-container">
                 <div class="task-details">
+                <div class="task-head">
                     <div class="category-icon" style="background-color: ${task.category.color}">${task.category.topic}</div>
+                    <button  onclick="closeTaskDialog()" class="mobile back-arrow"><img src="../../assets/img/backArrowBlack.png"</button>
+                </div>
                     <button class="close-upper-right" onclick="closeTaskDialog()"><img
-                            src="../../assets/img/cancel.png"></button>
+                            src="../../assets/img/cancel.png"></button>        
                     <h1>${task.title}</h1>
-                    <div class="details-container">${task.description}</div>
+                   
+                    <div class="long-text">${task.description}</div>
+             
                     <div class="details-container">
                         <h2>Due date: </h2>
                         <div>${task.date}</div>
                     </div>
                     <div class="details-container">
                         <h2>Priority: </h2>
-                        <div class="${task.urgency} details-priority-btn ">${task.urgency}</div>
+                        <div class="${task.urgency} details-priority-btn ">${task.urgency}<img class="filtered-img-${task.urgency}" src="../../assets/img/prio${task.urgency}.png"></div>
                     </div>
-                    <div class="subtask-flex">
-                    <h2>Subtasks: </h2>
-                    <div id="subtask-${index}"></div>
+                    <div class="subtask-flex" id="subtask-${index}">
+               
                     </div>
                     <div class="assigned-to-container">
                         <h2>Assigned to:</h2>
@@ -327,7 +331,8 @@ function renderSubtasksDetails(index) {
     for (let i = 0; i < subtasks.length; i++) {
         const subtask = subtasks[i];
         let checkedValue = subtask.checked ? "checked" : "";
-        subtaskId.innerHTML += `<div class="subtask-checkbox-container">
+        subtaskId.innerHTML += `
+        <h2>Subtasks: </h2><div class="subtask-checkbox-container">
         <input class="subtask-checkbox" type="checkbox" value="0" onchange="updateEditSubtask(${index}, ${i})" ${checkedValue}>
         ${subtask.title}
       </div>`;
