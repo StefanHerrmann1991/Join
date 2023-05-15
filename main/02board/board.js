@@ -352,64 +352,67 @@ function renderEditTask(index) {
     editTask.innerHTML = `
     <div class="edit-task-dialog center">
         <div class="edit-task-container">
-            <button class="close-upper-right" onclick="closeTaskDialog()"><img
+            <button class="close-upper-right desktop" onclick="closeTaskDialog()"><img
                     src="../../assets/img/cancel.png"></button>
             <form class="edit-task-form" onsubmit="changeTask(${index}, '${task.board}')">
-                <div class="edit-task-field">
-                    <div class="mgn-b">
-                        <h3>Title</h3>
+                <div class="edit-task-field">               
+                        <div class="title-button">
+                            <h3>Title</h3>
+                            <button class="close-upper-right mobile" onclick="closeTaskDialog()"><img
+                                    src="../../assets/img/cancel.png"></button>
+                        </div>
                         <input required class="title" id="title" value="${task.title}" placeholder="Enter a title"
                             oninput="loadTasks()">
-                    </div>
-                    <div class="mgn-b">
-                    <h3>Description</h3>
-                        <textarea resize="none" required id="description"
-                            placeholder="Enter a description">${task.description}</textarea>
-                        <h3>Due date</h3>
-                        <input value="${task.date}" required id="date" class="date" type="date" name="setTodaysDate">
-                    </div>
-                    <div class="mgn-b">                       
-                        <h3>Prio</h3>
-                        <div id="urgency" class="priority-btns">
-                            <label for="urgent" class="urgent priority-btn">
-                                <input type="radio" id="urgent" name="priority" value="urgent" class="priority-radio"
-                                    required>
-                                Urgent<img src="../../assets/img/prioUrgent.png">
-                            </label>
-                            <label for="medium" class="medium priority-btn">
-                                <input type="radio" id="medium" name="priority" value="medium" class="priority-radio">
-                                Medium<img class="medium-prio" src="../../assets/img/prioMedium.png">
-                            </label>
-                            <label for="low" class="low priority-btn">
-                                <input type="radio" id="low" name="priority" value="low" class="priority-radio">
-                                Low<img src="../../assets/img/prioLow.png">
-                            </label>
+                        <div class="mgn-b">
+                            <h3>Description</h3>
+                            <textarea resize="none" required id="description"
+                                placeholder="Enter a description">${task.description}</textarea>
+                            <h3>Due date</h3>
+                            <input value="${task.date}" required id="date" class="date" type="date" name="setTodaysDate">
                         </div>
-                    </div>
-                    <div class="mgn-b">
-                        <h3>Assigned to</h3>
-                                             <div class="assign-btn-container" id="assignBtnContainer">
-                            <button type="button" class="assign-btn" onclick="toggleContainer('detailsUserMenu'); toggleContainer('userInitialContainer')">
-                                <div>Select contact to assign</div>
-                                <div id="imgArrow"><img src="../../assets/img/open.png"></div>
-                            </button>
-                            <div class="user-menu d-none" id="detailsUserMenu">
-                                <div class="user-list" id="userList"></div>
-                                <button id="inviteUserBtn" type="button" class="invite-user-btn"
-                                    onclick="inviteUsers()">Invite
-                                    new contact<img src="../../assets/img/contactsBlack.png">
-                                </button>
+                        <div class="mgn-b">
+                            <h3>Prio</h3>
+                            <div id="urgency" class="priority-btns">
+                                <label for="urgent" class="urgent priority-btn">
+                                    <input type="radio" id="urgent" name="priority" value="urgent" class="priority-radio"
+                                        required>
+                                    Urgent<img src="../../assets/img/prioUrgent.png">
+                                </label>
+                                <label for="medium" class="medium priority-btn">
+                                    <input type="radio" id="medium" name="priority" value="medium" class="priority-radio">
+                                    Medium<img class="medium-prio" src="../../assets/img/prioMedium.png">
+                                </label>
+                                <label for="low" class="low priority-btn">
+                                    <input type="radio" id="low" name="priority" value="low" class="priority-radio">
+                                    Low<img src="../../assets/img/prioLow.png">
+                                </label>
                             </div>
                         </div>
-                        <input class="d-none" id="category" value="${task.category.index}">
+                        <div class="mgn-b">
+                            <h3>Assigned to</h3>
+                            <div class="assign-btn-container" id="assignBtnContainer">
+                                <button type="button" class="assign-btn"
+                                    onclick="toggleContainer('detailsUserMenu'); toggleContainer('userInitialContainer')">
+                                    <div>Select contact to assign</div>
+                                    <div id="imgArrow"><img src="../../assets/img/open.png"></div>
+                                </button>
+                                <div class="user-menu d-none" id="detailsUserMenu">
+                                    <div class="user-list" id="userList"></div>
+                                    <button id="inviteUserBtn" type="button" class="invite-user-btn"
+                                        onclick="inviteUsers()">Invite
+                                        new contact<img src="../../assets/img/contactsBlack.png">
+                                    </button>
+                                </div>
+                            </div>
+                            <input class="d-none" id="category" value="${task.category.index}">
+                        </div>
+                        <div id="userInitialContainer" class="user-initial-container"></div>
+                        <button class="accept-edited-task-btn">Ok<img src="../../assets/img/check.png"></button>
                     </div>
-                    <div id="userInitialContainer" class="user-initial-container"></div>
-                    <button class="accept-edited-task-btn">Ok<img src="../../assets/img/check.png"></button>
-                </div>
             </form>
         </div>
     </div>
-    `
+`
     startPriorityEventListener(task.urgency);
     renderUserList();
     compareDate();
