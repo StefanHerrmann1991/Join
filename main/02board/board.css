@@ -339,12 +339,12 @@ h3 {
 @media (max-width: 992px) {
   .main-container {
     position: absolute;
-    top: 90px;
+    top: 120px;
     left: 20%;
     display: flex;
     justify-content: flex-start;
     width: 80%;
-    height: calc(100% - 90px);
+    height: calc(100% - 120px);
   }
   h1 {
     font-size: 47px;
@@ -552,8 +552,11 @@ h3 {
 }
 
 .details-assigned-users {
+  display: flex;
+  flex-direction: column;
   max-height: 300px;
   overflow-y: auto;
+  gap: 10px;
 }
 .details-assigned-users .user-details {
   display: flex;
@@ -601,7 +604,7 @@ h3 {
   color: #A8A8A8;
 }
 
-.subtask-flex {
+.subtasks-in-details {
   display: flex;
   flex-direction: column;
   padding-top: 12.5px;
@@ -727,7 +730,7 @@ h3 {
   height: 30px;
 }
 .edit-task-container .task-details {
-  width: 90%;
+  width: 85%;
   height: 80%;
   margin: auto;
   overflow-y: auto;
@@ -737,16 +740,29 @@ h3 {
   padding-bottom: 12.5px;
   padding-top: 25px;
 }
+.edit-task-container .task-details .category-icon {
+  font-size: 27px;
+}
 .edit-task-container .edit-task-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  width: 85%;
   margin: auto;
-  height: 85%;
+  height: 80%;
+  padding-top: 10%;
+  padding-bottom: 10%;
 }
 .edit-task-container .edit-task-form .mgn-b {
-  margin-bottom: 8%;
+  margin-bottom: 5%;
+}
+.edit-task-container .edit-task-form .edit-task-field {
+  width: 80%;
+}
+.edit-task-container .edit-task-form .edit-task-field .user-assignment-container {
+  position: relative;
+}
+.edit-task-container .edit-task-form .edit-task-field .user-assignment-container .user-initial-container {
+  position: absolute;
+  display: flex;
+  overflow-x: auto;
 }
 .edit-task-container .details-priority-btn {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
@@ -862,8 +878,7 @@ progress {
   bottom: 35px;
   right: 35px;
   width: 83px;
-  height: 61px;
-  padding: 18px 10px;
+  height: 50px;
 }
 .accept-edited-task-btn img {
   width: 24px;
@@ -898,9 +913,6 @@ progress {
   .accept-edited-task-btn {
     height: 40px;
   }
-  .edit-task-field {
-    width: 75%;
-  }
   .assigned-users .user-icon {
     height: 35px;
     width: 35px;
@@ -908,15 +920,6 @@ progress {
   .board-main img {
     height: 15px;
     width: 15px;
-  }
-  .urgent img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%);
-  }
-  .medium img {
-    filter: invert(50%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%);
-  }
-  .low img {
-    filter: invert(1%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(101%) contrast(200%);
   }
 }
 @media (max-width: 768px) {

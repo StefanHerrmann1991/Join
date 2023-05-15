@@ -306,7 +306,7 @@ function renderDetailedTask(index) {
                         <h2>Priority: </h2>
                         <div class="${task.urgency} details-priority-btn ">${task.urgency}<img class="filtered-img-${task.urgency}" src="../../assets/img/prio${task.urgency}.png"></div>
                     </div>
-                    <div class="subtask-flex" id="subtask-${index}">
+                    <div class="subtasks-in-details" id="subtask-${index}">
                
                     </div>
                     <div class="assigned-to-container">
@@ -388,8 +388,8 @@ function renderEditTask(index) {
                     </div>
                     <div class="mgn-b">
                         <h3>Assigned to</h3>
-                        <div class="assign-btn-container" id="assignBtnContainer">
-                            <button type="button" class="assign-btn" onclick="toggleContainer('detailsUserMenu')">
+                                             <div class="assign-btn-container" id="assignBtnContainer">
+                            <button type="button" class="assign-btn" onclick="toggleContainer('detailsUserMenu'); toggleContainer('userInitialContainer')">
                                 <div>Select contact to assign</div>
                                 <div id="imgArrow"><img src="../../assets/img/open.png"></div>
                             </button>

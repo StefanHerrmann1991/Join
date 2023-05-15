@@ -89,8 +89,11 @@
         align-items: center
 
 .details-assigned-users
+    display: flex
+    flex-direction: column
     max-height: 300px
     overflow-y: auto
+    gap: 10px
     .user-details
         display: flex
         align-items: center
@@ -128,11 +131,12 @@
     .description
         color: #A8A8A8
 
-.subtask-flex
+.subtasks-in-details
     display: flex
     flex-direction: column
     padding-top: 12.5px
     padding-bottom: 12.5px
+
 .user-urgency
     display: flex
     align-items: center
@@ -222,23 +226,34 @@
                 width: 17.44px
                 height: 30px
     .task-details
-        width: 90%
+        width: 85%
         height: 80%
         margin: auto
         overflow-y: auto
-
         padding-top: 50px
         h1
             padding-bottom: 12.5px
             padding-top: 25px
 
+        .category-icon
+            font-size: 27px
+
     .edit-task-form
-        @include flex-center
-        flex-direction: column
+        width: 85%
         margin: auto
-        height: 85%
+        height: 80%
+        padding-top: 10%
+        padding-bottom: 10%
         .mgn-b
-            margin-bottom: 8%
+            margin-bottom: 5%
+        .edit-task-field
+            width: 80%
+            .user-assignment-container
+                position: relative
+                .user-initial-container
+                    position: absolute
+                    display: flex
+                    overflow-x: auto
 
     .details-priority-btn
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1)
@@ -325,8 +340,7 @@ progress
     bottom: 35px
     right: 35px
     width: 83px
-    height: 61px
-    padding: 18px 10px
+    height: 50px
     img
         width: 24px
         height: 24px
@@ -337,8 +351,6 @@ progress
 
 .hovered
     background-color: rgb(0,0,0,0.05)
-
-.edit-task-field
 
 @media (max-width: 992px)
 
@@ -361,9 +373,6 @@ progress
     .accept-edited-task-btn
         height: 40px
 
-    .edit-task-field
-        width: 75%
-
     .assigned-users
         .user-icon
             height: 35px
@@ -372,14 +381,6 @@ progress
     .board-main img
         height: 15px
         width: 15px
-    .urgent img
-        filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%)
-
-    .medium img
-        filter: invert(50%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%)
-
-    .low img
-        filter: invert(1%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(101%) contrast(200%)
 
 @media (max-width: 768px)
 
@@ -422,6 +423,7 @@ progress
             padding-top: 10%
             .mgn-b
                 margin: 0px
+
         .task-details
             background-color: $background
             padding-top: 0px

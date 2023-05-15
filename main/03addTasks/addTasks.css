@@ -488,6 +488,12 @@ input, textarea, select, button, .priority-btn {
 .add-task-left {
   width: 45%;
 }
+.add-task-left .user-initial-container {
+  display: flex;
+  margin-top: 22px;
+  margin-left: 11px;
+  margin-right: 11px;
+}
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -679,13 +685,6 @@ input, select {
 
 .user-menu {
   width: 100%;
-}
-
-.user-initial-container {
-  display: flex;
-  margin-top: 22px;
-  margin-left: 11px;
-  margin-right: 11px;
 }
 
 .user-list-container {
