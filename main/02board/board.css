@@ -757,12 +757,15 @@ h3 {
   width: 80%;
 }
 .edit-task-container .edit-task-form .edit-task-field .user-assignment-container {
+  padding-left: 20px;
   position: relative;
+  padding-top: 5%;
+  width: min(300px, 70%);
+  overflow-x: scroll;
 }
 .edit-task-container .edit-task-form .edit-task-field .user-assignment-container .user-initial-container {
   position: absolute;
   display: flex;
-  overflow-x: auto;
 }
 .edit-task-container .details-priority-btn {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
@@ -924,6 +927,15 @@ progress {
   }
 }
 @media (max-width: 768px) {
+  .edit-task-form .edit-task-field .user-assignment-container {
+    padding-top: 5%;
+    width: min(300px, 70%);
+    overflow-x: scroll;
+    height: 80px;
+  }
+  .edit-task-form .edit-task-field .user-assignment-container .user-icon {
+    margin-left: -20px;
+  }
   .accept-edited-task-btn {
     display: flex;
     position: static;
@@ -1004,6 +1016,10 @@ progress {
   }
   .edit-task-container .task-details h1 {
     padding: 0px;
+    padding-bottom: 2.5%;
+  }
+  .edit-task-container .task-details .category-icon {
+    font-size: 16px;
   }
   .edit-task-container .change-tasks {
     flex-direction: column;

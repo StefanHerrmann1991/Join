@@ -403,10 +403,13 @@ function renderEditTask(index) {
                                         new contact<img src="../../assets/img/contactsBlack.png">
                                     </button>
                                 </div>
-                            </div>
+                                </div>
+                                <div class="user-assignment-container">
+                                <div id="userInitialContainer" class="user-initial-container"></div>
+                                </div>
                             <input class="d-none" id="category" value="${task.category.index}">
                         </div>
-                        <div id="userInitialContainer" class="user-initial-container"></div>
+                        
                         <button class="accept-edited-task-btn">Ok<img src="../../assets/img/check.png"></button>
                     </div>
             </form>

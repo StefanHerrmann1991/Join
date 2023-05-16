@@ -82,9 +82,11 @@ function renderLogin() {
 
 function renderForgotPassword() {
     return `
-    <div class="forget-password-popup" id="forgetPasswordPopup">
+    <div class="forget-password-popup d-none" id="forgetPasswordPopup">
+    <div class="forget-password-message">
     <img src="../../assets/img/sendCheck.png">
     <div>An E-Mail has been sent to you</div>    
+    </div>
     </div>
     <div class="register">
     <div class="logo-container">
@@ -96,7 +98,7 @@ function renderForgotPassword() {
             <h2>I forgot my password</h2>
             <div> Don't worry! We will send you an email with the instructions to reset your password.
             </div>
-            <form onsubmit="forgotPassword(event)">
+            <form onsubmit="forgotPassword(event); openSendMail()">
                 <input minlength="3" type="email" id="email" name="email" required placeholder="Email">
                 <div class="menu-btn color-white">
                     <button class="btn-1" type="submit"><nobr>Send me the email</nobr></button>

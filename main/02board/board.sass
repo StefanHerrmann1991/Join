@@ -249,11 +249,15 @@
         .edit-task-field
             width: 80%
             .user-assignment-container
+                padding-left: 20px
                 position: relative
+                padding-top: 5%
+                width: min(300px, 70%)
+                overflow-x: scroll   
                 .user-initial-container
                     position: absolute
                     display: flex
-                    overflow-x: auto
+           
 
     .details-priority-btn
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1)
@@ -385,6 +389,16 @@ progress
 
 @media (max-width: 768px)
 
+    .edit-task-form
+        .edit-task-field
+            .user-assignment-container
+                padding-top: 5%
+                width: min(300px, 70%)
+                overflow-x: scroll
+                height: 80px
+                .user-icon
+                    margin-left: -20px
+
     .accept-edited-task-btn
         display: flex
         position: static
@@ -458,6 +472,9 @@ progress
                 display: none
             h1
                 padding: 0px
+                padding-bottom: 2.5%
+            .category-icon
+                font-size: 16px
 
         .change-tasks
             flex-direction: column
