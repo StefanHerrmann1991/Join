@@ -227,6 +227,11 @@
     justify-content: space-between
     width: 90%
     gap: 5%
+    .remember-me
+        display: flex
+    nobr
+        padding-left: 5%
+        margin-left: 5%
     input
         padding: 0px !important
         margin: 0px !important
@@ -251,12 +256,6 @@
 .highlight-blue
     color: #29ABE2
     cursor: pointer
-
-.remember-me
-    display: flex
-    nobr
-    padding-left: 5%
-    margin-left: 5%
 
 .arrow-back
     position: absolute
@@ -298,9 +297,30 @@
                     width: 64px
                     height: 78.03px
                     top: 10%
-                    left: 10%
+                    left: 20%
 
 @media (max-width: 768px)
+
+    .be-happy
+        text-align: center
+
+    .register h2
+        font-size: 47px
+
+    .login-option
+        flex-direction: column
+        justify-content: flex-start
+        align-items: flex-start
+
+        .remember-me, nobr
+            padding: 0px
+            margin: 0px
+
+        .remember-me
+            display: flex
+            margin-bottom: 5%
+            nobr
+            margin-left: 5%
     .sign-up
         h2
             margin-top: 0px
@@ -308,6 +328,22 @@
             font-size: 47px
     .register
         .sign-up-container
+            width: 95%
+            padding: 35px 0px 35px 0px
             form
+                width: 90%
+                margin: auto
                 .menu-btn button
                     height: 40px
+
+    .forgot-password-container
+        width: 95%
+        .forgot-password
+            width: 100%
+            padding: 35px 0px 35px 0px
+            input
+                font-size: 16px
+                width: 90%
+                margin: auto
+                display: flex
+                justify-content: center

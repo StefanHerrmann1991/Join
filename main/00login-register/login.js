@@ -96,7 +96,7 @@ function renderForgotPassword() {
         <img onclick="initAuthentification('login')" class="arrow-back" src="../../assets/img/backArrow.png">
         <div class="forgot-password">
             <h2>I forgot my password</h2>
-            <div> Don't worry! We will send you an email with the instructions to reset your password.
+            <div class="be-happy"> Don't worry! We will send you an email with the instructions to reset your password.
             </div>
             <form onsubmit="forgotPassword(event); openSendMail()">
                 <input minlength="3" type="email" id="email" name="email" required placeholder="Email">

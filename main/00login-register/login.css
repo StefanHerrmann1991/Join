@@ -714,6 +714,13 @@ h3 {
   width: 90%;
   gap: 5%;
 }
+.login-option .remember-me {
+  display: flex;
+}
+.login-option nobr {
+  padding-left: 5%;
+  margin-left: 5%;
+}
 .login-option input {
   padding: 0px !important;
   margin: 0px !important;
@@ -745,11 +752,6 @@ h3 {
   cursor: pointer;
 }
 
-.remember-me {
-  display: flex;
-  padding-left: 5%;
-  margin-left: 5%;
-}
 .arrow-back {
   position: absolute;
   left: 5%;
@@ -791,17 +793,59 @@ h3 {
       width: 64px;
       height: 78.03px;
       top: 10%;
-      left: 10%;
+      left: 20%;
     }
   }
 }
 @media (max-width: 768px) {
+  .be-happy {
+    text-align: center;
+  }
+  .register h2 {
+    font-size: 47px;
+  }
+  .login-option {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .login-option .remember-me, .login-option nobr {
+    padding: 0px;
+    margin: 0px;
+  }
+  .login-option .remember-me {
+    display: flex;
+    margin-bottom: 5%;
+    margin-left: 5%;
+  }
   .sign-up h2 {
     margin-top: 0px;
     margin-bottom: 10%;
     font-size: 47px;
   }
+  .register .sign-up-container {
+    width: 95%;
+    padding: 35px 0px 35px 0px;
+  }
+  .register .sign-up-container form {
+    width: 90%;
+    margin: auto;
+  }
   .register .sign-up-container form .menu-btn button {
     height: 40px;
+  }
+  .forgot-password-container {
+    width: 95%;
+  }
+  .forgot-password-container .forgot-password {
+    width: 100%;
+    padding: 35px 0px 35px 0px;
+  }
+  .forgot-password-container .forgot-password input {
+    font-size: 16px;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
   }
 }/*# sourceMappingURL=login.css.map */
