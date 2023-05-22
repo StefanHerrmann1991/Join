@@ -474,11 +474,6 @@ h3 {
   width: 100%;
 }
 
-.delete-task {
-  width: 24px;
-  height: 24px;
-}
-
 .board-input .search-container {
   position: relative;
   display: flex;
@@ -524,6 +519,10 @@ h3 {
   font-size: 21px;
   color: white;
   background-color: #2A3647;
+}
+.add-task:hover {
+  background-color: #29ABE2;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .add-task img {
   width: 15px;
@@ -652,6 +651,9 @@ h3 {
   padding: 0 !important;
   margin: 0 !important;
 }
+.boards .board-header img:hover {
+  filter: invert(47%) sepia(86%) saturate(463%) hue-rotate(153deg) brightness(106%) contrast(84%);
+}
 
 .assigned-users {
   display: flex;
@@ -715,8 +717,23 @@ h3 {
   border-radius: 10px 0px 0px 10px;
 }
 .edit-task-container .change-tasks .delete-task-btn img {
-  width: 22.3px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
+}
+.edit-task-container .change-tasks .delete-task-btn:hover {
+  border: 1px solid #29ABE2;
+  scale: 0.995;
+}
+.edit-task-container .change-tasks .delete-task-btn:hover img {
+  filter: invert(47%) sepia(86%) saturate(463%) hue-rotate(153deg) brightness(106%) contrast(84%);
+}
+.edit-task-container .change-tasks .edit-task-btn {
+  border-radius: 10px;
+}
+.edit-task-container .change-tasks .edit-task-btn:hover {
+  border: 1px solid #29ABE2;
+  background-color: #29ABE2;
+  scale: 0.995;
 }
 .edit-task-container .change-tasks .edit-task-btn {
   width: 57px;
@@ -882,6 +899,10 @@ progress {
   width: 83px;
   height: 50px;
 }
+.accept-edited-task-btn:hover {
+  background-color: #29ABE2;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 .accept-edited-task-btn img {
   margin-left: 8px;
   width: 24px;
@@ -1030,9 +1051,6 @@ progress {
     width: 40px;
     background-color: #D9D9D9;
     border: 1px solid #2A3647;
-    border-radius: 10px;
-  }
-  .edit-task-container .change-tasks .edit-task-btn {
     border-radius: 10px;
   }
   .task {

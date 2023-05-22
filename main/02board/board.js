@@ -82,7 +82,7 @@ function renderBoards(array) {
         <div class="board">
         <div class="board-header">
         <h2>${boardTitle}</h2>
-        <button value="${boardId}" onclick="openContainer('addTasksPopup'); setBoard(this.value)"><img src="../../assets/img/plusButton.png"</button> 
+        <button class="add-task-board-btn" value="${boardId}" onclick="openContainer('addTasksPopup'); setBoard(this.value)"><img src="../../assets/img/plusButton.png"</button> 
         </div>
         <div id="${boardId}" class="board-task-container" ondrop="moveTo('${boardId}')" ondragover="allowDrop(event)"></div>
         </div>
