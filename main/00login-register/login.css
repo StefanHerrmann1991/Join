@@ -853,4 +853,9 @@ h3 {
     display: flex;
     justify-content: center;
   }
+}
+@media (max-width: 480px) {
+  .arrow-back {
+    top: 2.5%;
+  }
 }/*# sourceMappingURL=login.css.map */

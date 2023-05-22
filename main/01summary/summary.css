@@ -628,6 +628,11 @@ a {
   height: 30px;
   filter: brightness(0) invert(1);
 }
+.deadline:hover {
+  background-color: #2A3647;
+  color: white;
+  transform: scale(1.1);
+}
 
 .urgent {
   background-color: #FF3D00;
