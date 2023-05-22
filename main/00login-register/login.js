@@ -1,17 +1,28 @@
-
+/**
+ * Initializes the authentication process.
+ * @returns {Promise<void>} A Promise that resolves when authentication initialization is complete.
+ */
 async function initAuthentification() {
-    /*  await initLogin();
-     await loadRegisterdUsers(); */
+    await initLogin();
+    await loadRegisterdUsers();
     await renderAuth('login');
 }
 
-/* 
+
+/**
+ * Initializes the login process.
+ * @returns {Promise<void>} A Promise that resolves when login initialization is complete.
+ */
 async function initLogin() {
     await setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
-}  */
+}
 
 
+/**
+ * Renders the authentication UI based on the given status.
+ * @param {string} status - The status of authentication ('login', 'forgetPassword', 'resetPassword', 'signUp').
+ */
 function renderAuth(status) {
     let auth = document.getElementById('authentification');
     if (status === 'login') auth.innerHTML = renderLogin()
@@ -21,6 +32,10 @@ function renderAuth(status) {
 }
 
 
+/**
+ * Renders the sign-up form.
+ * @returns {string} The HTML string for the sign-up form.
+ */
 function renderSignUp() {
     return `
 <div class="register">
@@ -46,6 +61,10 @@ function renderSignUp() {
 </div>` }
 
 
+/**
+ * Renders the login form.
+ * @returns {string} The HTML string for the login form.
+ */
 function renderLogin() {
     return `
 <div class="register">
@@ -80,6 +99,10 @@ function renderLogin() {
 </div>` }
 
 
+/**
+ * Renders the forget password form.
+ * @returns {string} The HTML string for the forget password form.
+ */
 function renderForgotPassword() {
     return `
     <div class="forget-password-popup d-none" id="forgetPasswordPopup">
@@ -109,14 +132,11 @@ function renderForgotPassword() {
 </div>
 ` }
 
-function openSendMail() {
-    let sendMail = getId('forgetPasswordPopup')
-    sendMail.classList.remove('d-none')
-    setTimeout(() => {
-        sendMail.classList.add('d-none')
-    }, 2000);
-}
 
+/**
+ * Renders the reset password form.
+ * @returns {string} The HTML string for the reset password form.
+ */
 function renderResetPassword() {
     return `
     <div class="register">
@@ -146,11 +166,30 @@ function renderResetPassword() {
 ` }
 
 
+/**
+ * Opens the send mail popup for password recovery.
+ */
+function openSendMail() {
+    let sendMail = getId('forgetPasswordPopup')
+    sendMail.classList.remove('d-none')
+    setTimeout(() => {
+        sendMail.classList.add('d-none')
+    }, 2000);
+}
+
+
+/**
+ * Opens the summary when a not registerd user wants to test the website.
+ */
 function loginAsGuest() {
     window.open('/../../main/01summary/summary.html');
 }
 
 
+/**
+ * Registers a new user.
+ * @param {Event} event - The event object from the form submission.
+ */
 function registerUser() {
     event.preventDefault();
     const name = document.getElementById('name').value;
@@ -163,6 +202,9 @@ function registerUser() {
 };
 
 
+/**
+ * Validates the username during user registration.
+ */
 function passwordValidation() {
     for (let i = 0; i < registeredUsers.length; i++) {
         if (registerUser.value == registeredUsers[i]['email']) {
@@ -174,13 +216,21 @@ function passwordValidation() {
 
 
 /**
- * Saves tasks in the backend in form of an JSON string */
+ * Adds the registered users to the backend storage.
+ * @param {Event} event - The event object from the form submission.
+ * @returns {Promise<void>} A Promise that resolves when the users are added to the backend.
+ */
 async function addUsers() { //check async: no diff
     if (event) event.preventDefault();
     let registerdUsersAsText = JSON.stringify(registeredUsers);
     await backend.setItem('registeredUsers', registerdUsersAsText);
 }
 
+
+/**
+ * Loads the registered users from the backend storage.
+ * @param {Event} event - The event object from the form submission.
+ */
 function loadRegisterdUsers() {
     if (event) event.preventDefault();
     let registeredUsersAsText = backend.getItem('registeredUsers');
@@ -188,12 +238,18 @@ function loadRegisterdUsers() {
 }
 
 
+/**
+ * Logs in the user.
+ */
 function usersLogin() {
     event.preventDefault();
     checkLogin();
 }
 
 
+/**
+ * Checks the login credentials like password and email and fowards to the summary side of the user.
+ */
 function checkLogin() {
     let email = document.getElementById('email');
     let password = document.getElementById('password');
@@ -213,7 +269,10 @@ function checkLogin() {
 }
 
 
-
+/**
+ * Sends a forgot password request.
+ * @param {Event} event - The event object from the form submission.
+ */
 async function forgotPassword(event) {
     event.preventDefault();
     const email = getId('email').value;
@@ -235,6 +294,13 @@ async function forgotPassword(event) {
 };
 
 
+
+/**
+ * Sends a forgot password email.
+ * @param {string} email - The email address of the user.
+ * @param {string} token - The reset token for password recovery.
+ * @returns {Promise<void>} A Promise that resolves when the email is sent successfully.
+ */
 async function sendForgotPasswordEmail(email, token) {
     const resetUrl = window.location.origin + '/Join/main/00login-register/resetPassword.html?token=' + token;
     const message = `Click the following link to reset your password: ${resetUrl}`;
@@ -253,6 +319,10 @@ async function sendForgotPasswordEmail(email, token) {
 }
 
 
+/**
+ * Generates a random token for password recovery.
+ * @returns {string} The generated random token.
+ */
 function generateRandomToken() {
     const tokenLength = 20;
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

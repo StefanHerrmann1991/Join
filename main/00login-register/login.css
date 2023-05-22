@@ -819,6 +819,8 @@ h3 {
   .login-option .remember-me {
     display: flex;
     margin-bottom: 5%;
+  }
+  .login-option .remember-me nobr {
     margin-left: 5%;
   }
   .sign-up h2 {
@@ -857,5 +859,8 @@ h3 {
 @media (max-width: 480px) {
   .arrow-back {
     top: 2.5%;
+  }
+  .to-register button {
+    height: 40px;
   }
 }/*# sourceMappingURL=login.css.map */
