@@ -239,7 +239,7 @@ function boardTaskHTML(element, i) {
     let subtaskProgressBarClass = element.subtasks.length === 0 ? 'd-none' : '';
     let firstWord = element.description.split(' ')[0];
     let description = element.description.length > 10 ? `${firstWord}...` : element.description;
-    return`
+    return `
       <div draggable="true" ondragstart="startDragging(${i})" id="task-${i}" class="task" onclick="renderDetailedTask(${i})">
           <div class="task-container">
               <div class="category-icon" style="background-color: ${element.category.color}">${element.category.topic}</div>
@@ -311,10 +311,17 @@ async function saveTasks() { //check async: no diff
 }
 
 
+/**
+ * This function opens a task for editing.
+ * 
+ * @param {Number} index - The index of the task in the tasks array.
+ */
 function openTask(index) {
     tasks[index]
     renderEditTask();
 }
+
+
 
 function renderDetailedTask(index) {
     detailsAreOpen = true;
@@ -392,14 +399,17 @@ function renderEditTask(index) {
             <button class="close-upper-right desktop" onclick="closeTaskDialog()"><img
                     src="../../assets/img/cancel.png"></button>
             <form class="edit-task-form" onsubmit="changeTask(${index}, '${task.board}')">
-                <div class="edit-task-field">               
-                        <div class="title-button">
+                <div class="edit-task-field">   
+                        <div class="mgn-b">            
+                        <div class="title-button">                        
                             <h3>Title</h3>
                             <button class="close-upper-right mobile" onclick="closeTaskDialog()"><img
                                     src="../../assets/img/cancel.png"></button>
                         </div>
                         <input required class="title" id="title" value="${task.title}" placeholder="Enter a title"
                             oninput="loadTasks()">
+                        </div>
+                        
                         <div class="mgn-b">
                             <h3>Description</h3>
                             <textarea resize="none" required id="description"
@@ -473,7 +483,6 @@ function closeTaskDialog() {
     closeContainer('editTaskDialog');
     renderBoards(tasks);
 }
-
 
 
 

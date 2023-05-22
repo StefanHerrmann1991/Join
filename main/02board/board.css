@@ -808,7 +808,7 @@ h3 {
 }
 
 .long-text {
-  overflow-y: scroll;
+  overflow-y: auto;
   min-height: 0px;
   word-break: break-all;
 }
