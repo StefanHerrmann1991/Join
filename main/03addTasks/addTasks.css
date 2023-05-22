@@ -583,7 +583,7 @@ input, select {
   justify-content: space-evenly;
   align-items: center;
   width: 33.3333333333%;
-  background: #FFFFFF;
+  background-color: #FFFFFF;
   border: 1px solid #D1D1D1;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
