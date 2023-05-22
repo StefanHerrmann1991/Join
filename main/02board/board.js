@@ -103,19 +103,6 @@ function setBoard(boardName) {
 
 
 /**
- * This function is used to add a new board to the list of boards. It processes board inputs, pushes
- * the new board into the boards array, saves the boards, and re-renders all the boards.
- */
-function addNewBoard() {
-    let board = processBoardInputs();
-    boards.push(board);
-    saveBoards();
-    renderBoards(tasks);
-}
-
-
-
-/**
  * This function is used to process inputs for a new board. It takes the value from the 'newBoardInput' field,
  * formats it to uppercase, generates a unique id, and returns an object representing the new board.
  *
@@ -134,10 +121,11 @@ function processBoardInputs() {
 
 
 /**
+ * This function is used to render each board with the provided task array.
  * 
- * @param {*} boardTaskArray 
- * @param {*} boardId 
- * @param {*} array 
+ * @param {String} boardTitle - The title of the board.
+ * @param {String} boardId - The id of the board.
+ * @param {Array} array - The array of tasks to be rendered on the board.
  */
 function renderEachBoard(boardTitle, boardId, array) {
 
@@ -151,10 +139,21 @@ function renderEachBoard(boardTitle, boardId, array) {
     }
 }
 
+
+/**
+ * This function renders an empty board with a provided board title.
+ * 
+ * @param {String} boardTitle - The title of the board.
+ * @return {String} - HTML string for an empty board.
+ */
 function renderEmptyBoard(boardTitle) {
     return `<div class="empty-board mobile">No tasks ${boardTitle.toLowerCase()}</div>`;
 }
 
+
+/**
+ * This function saves the current state of the boards in the backend in the form of a JSON string.
+ */
 async function saveBoards() {
     if (event) event.preventDefault();
     let boardsAsText = JSON.stringify(boards);
@@ -163,8 +162,7 @@ async function saveBoards() {
 
 
 /**
- *  This function loads and converts boards from text-format to a JSON-array. 
- *  The preventDefault() function is necessary to prevent the page from reloading when adding a new board.
+ * This function loads the current state of the boards from the backend and converts it from text to a JSON array.
  */
 async function loadBoards() {
     if (event) event.preventDefault();
@@ -173,7 +171,11 @@ async function loadBoards() {
 }
 
 
-
+/**
+ * This function prepares a container to be moved by setting up its style and listeners.
+ * 
+ * @param {Number} id - The id of the container to be moved.
+ */
 function startDragging(id) {
     movedContainer = getId(`task-${id}`)
     movedContainer.style = 'transform: rotate(3deg);';
@@ -189,8 +191,11 @@ function startDragging(id) {
     });
 }
 
+
 /**
- * This function makes the div container droppable
+ * This function allows a dragged item to be dropped into an element.
+ * 
+ * @param {Event} ev - The ondragover event.
  */
 function allowDrop(ev) {
     ev.preventDefault();
@@ -198,7 +203,9 @@ function allowDrop(ev) {
 
 
 /**
- * This function gives the task the new category. The category depends on the dropped board 
+ * This function moves a task to a new board and then saves and re-renders the tasks.
+ * 
+ * @param {String} board - The id of the board where the task will be moved.
  */
 function moveTo(board) {
     tasks[currentDraggedElement]['board'] = board;
@@ -208,9 +215,10 @@ function moveTo(board) {
 
 
 /**
- * This function Moves a given task to the passed target-board
- * @param {integer} i - tasks index
- * @param {string} targetBoard - name of board
+ * This function moves a task to a specified board, saves tasks, and renders the boards.
+ * 
+ * @param {Number} i - The index of the task in the tasks array.
+ * @param {String} targetBoard - The id of the board where the task will be moved.
  */
 function moveToBoard(i, targetBoard) {
     tasks[i]['board'] = targetBoard;
@@ -218,13 +226,20 @@ function moveToBoard(i, targetBoard) {
     renderBoards(tasks);
 }
 
+
+/**
+ * This function returns an HTML string for a task.
+ * 
+ * @param {Object} element - The task to be rendered.
+ * @param {Number} i - The index of the task in the tasks array.
+ * @return {String} - An HTML string for the task.
+ */
 function boardTaskHTML(element, i) {
     let doneSubtask = element.subtasks.filter(function (subtask) { return subtask.checked }).length;
     let subtaskProgressBarClass = element.subtasks.length === 0 ? 'd-none' : '';
     let firstWord = element.description.split(' ')[0];
     let description = element.description.length > 10 ? `${firstWord}...` : element.description;
-
-    return /*html*/ `
+    return`
       <div draggable="true" ondragstart="startDragging(${i})" id="task-${i}" class="task" onclick="renderDetailedTask(${i})">
           <div class="task-container">
               <div class="category-icon" style="background-color: ${element.category.color}">${element.category.topic}</div>
@@ -256,12 +271,11 @@ function boardTaskHTML(element, i) {
 }
 
 
-
-
 /**
- * Renders several user icons for all passed users in an array
- * @param {string[]} usersArr - array with usernames
- * @returns {(string | string)} - user-icon  HTML code for all passed users | replacement image
+ * This function renders the user icons for all users in a provided array.
+ * 
+ * @param {Array} usersArr - The array of users.
+ * @return {String} - HTML string of user icons.
  */
 function renderAssignedUsers(usersArr) {
     let iconsHTML = '';
@@ -286,36 +300,16 @@ function renderAssignedUsers(usersArr) {
     else return iconsHTML = `<div>No user assigned</div>`
 }
 
-function renderMobile(i) {
-    return ` 
-
-    `
-}
 
 /**
- * Saves tasks in the backend in form of an JSON string */
+ * This function saves the current state of the tasks in the backend in the form of a JSON string.
+ */
 async function saveTasks() { //check async: no diff
     if (event) event.preventDefault();
     let tasksAsText = JSON.stringify(tasks);
     await backend.setItem('tasks', tasksAsText);
 }
 
-//Todo render tasks here which are in the search field
-
-/**
- * Updates an element with given index i in the given array
- * @param {Array} dataArray
- * @param {integer} i - array index
- */
-async function saveEditedTask(dataArray, i) { // check: async no diff
-    let task = await processTaskInputs();
-    task.board = dataArray[i].board; // keep the right board
-    dataArray[i] = task;
-    saveTasks();
-    hide('overlay');
-    // check if sent from boards page or backlog page and render content
-    renderBoards()
-}
 
 function openTask(index) {
     tasks[index]
