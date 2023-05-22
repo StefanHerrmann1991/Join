@@ -1081,19 +1081,22 @@ h3 {
     padding-top: 15px;
   }
 }
-@media (max-width: 768px) and (max-width: 480px) {
-  .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description, .add-contact-dialog .add-contact .add-contact-menu .add-contact-description {
+@media (max-width: 480px) {
+  .add-contact-dialog .add-contact .add-contact-menu {
+    height: 100% !important;
+  }
+  .add-contact-dialog .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description, .add-contact-dialog .add-contact-dialog .add-contact .add-contact-menu .add-contact-description {
     width: 100%;
     height: 20%;
   }
-  .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description p, .add-contact-dialog .add-contact .add-contact-menu .add-contact-description p {
+  .add-contact-dialog .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description p, .add-contact-dialog .add-contact-dialog .add-contact .add-contact-menu .add-contact-description p {
     display: none;
   }
-  .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu {
+  .add-contact-dialog .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu, .add-contact-dialog .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu {
     height: 80%;
     width: 100%;
   }
-  .edit-initial {
+  .add-contact-dialog .edit-initial {
     display: none;
   }
 }/*# sourceMappingURL=contacts.css.map */

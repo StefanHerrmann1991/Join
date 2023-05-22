@@ -1,15 +1,15 @@
 
 async function initAuthentification() {
-    await initLogin();
-    await loadRegisterdUsers();
+    /*  await initLogin();
+     await loadRegisterdUsers(); */
     await renderAuth('login');
 }
 
-
+/* 
 async function initLogin() {
     await setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
-}
+}  */
 
 
 function renderAuth(status) {
@@ -52,7 +52,7 @@ function renderLogin() {
 <div class="logo-container">
 <img class="logo" src="../../assets/img/logo2.png">
 </div>
-<div class="to-register">Not a Join user?
+<div class="to-register"><div class="desktop">Not a Join user?</div>
 <button class="btn-1" onclick="renderAuth('signUp')"><nobr>Sign up</nobr></button>
 </div>
 <div class="sign-up-container">
