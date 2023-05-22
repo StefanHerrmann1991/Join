@@ -1,3 +1,10 @@
+/**
+ * An array of boards.
+ * @type {Object[]}
+ * @property {string} boardTitle - The title of the board.
+ * @property {string} boardId - The ID of the board.
+ * @property {string} boardName - The name of the board.
+ */
 let boards = [
     { boardTitle: 'To do', boardId: 'board-0', boardName: 'todoBoard' },
     { boardTitle: 'In progress', boardId: 'board-1', boardName: 'progressBoard' },
@@ -5,9 +12,18 @@ let boards = [
     { boardTitle: 'Done', boardId: 'board-3', boardName: 'doneBoard' }
 ]
 
-
+/**
+ * A boolean parameter that indicates an open or closed details window.
+ * @type {boolean}
+ */
 let detailsAreOpen = false;
 
+
+/**
+ * This asynchronous function initializes the state of the boards. It includes the necessary
+ * HTML, initializes the task adding process, connects to the backend, initializes tasks, 
+ * and finally renders the boards.
+ */
 async function initBoards() {
     includeHTML();
     await initAddTasks();
@@ -17,6 +33,10 @@ async function initBoards() {
 }
 
 
+/**
+ * This function renders a new board button in the 'addBoard' container. It dynamically creates 
+ * HTML for the button, allowing for board creation cancellation and confirmation.
+ */
 function renderNewBoardBtn() {
     let subtask = getId('addBoard')
     subtask.classList.remove('assign-btn-container')
@@ -33,6 +53,11 @@ function renderNewBoardBtn() {
 }
 
 
+/**
+ * This function is used to initiate the process of adding tasks. It sets the URL of the backend,
+ * and then downloads the tasks from the server. If there are no tasks, it initializes the tasks
+ * array as empty.
+ */
 async function initAddTasks() {
     setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
@@ -41,7 +66,10 @@ async function initAddTasks() {
 
 
 /**
- * This Function used  for rendering the boards with filters
+ * This function is used to render the boards with the provided task array. It generates the HTML for each 
+ * board and appends it to the 'boards' container. Each board gets a unique id and title.
+ *
+ * @param {Array} array - The array of tasks to be rendered on the boards.
  */
 function renderBoards(array) {
     let boardsContent = getId('boards');
@@ -64,12 +92,20 @@ function renderBoards(array) {
 }
 
 
+/**
+ * This function is used to set the current board. It's triggered by clicking on the plus button in the board header.
+ *
+ * @param {String} boardName - The name of the board to be set as the current board.
+ */
 function setBoard(boardName) {
-    console.log(boardName)
     chosenBoard = boardName
 }
 
 
+/**
+ * This function is used to add a new board to the list of boards. It processes board inputs, pushes
+ * the new board into the boards array, saves the boards, and re-renders all the boards.
+ */
 function addNewBoard() {
     let board = processBoardInputs();
     boards.push(board);
@@ -78,6 +114,13 @@ function addNewBoard() {
 }
 
 
+
+/**
+ * This function is used to process inputs for a new board. It takes the value from the 'newBoardInput' field,
+ * formats it to uppercase, generates a unique id, and returns an object representing the new board.
+ *
+ * @return {Object} - An object representing the new board.
+ */
 function processBoardInputs() {
     let boardInput = getId('newBoardInput').value
     let boardTitle = boardInput.toUpperCase();
