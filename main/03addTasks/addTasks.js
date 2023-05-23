@@ -255,8 +255,8 @@ function compareDate() {
 function renderUserList() {
     const userListContainer = getId('userList');
     userListContainer.innerHTML = '';
-    for (let i = 0; i < users.length; i++) {
-        const user = users[i];
+    for (let i = 0; i < invitedUsers.length; i++) {
+        const user = invitedUsers[i];
         let isChecked = '';
         if (assignedUsers !== undefined) {
             isChecked = assignedUsers.some(assignedUser => assignedUser.name === user.name) ? 'checked' : '';
@@ -272,19 +272,21 @@ function renderUserList() {
 }
 
 function renderDetailedUsers(index) {
-    let user = users[index];
+   
+    let user = invitedUsers[index];
     getId('userInitialContainer').innerHTML += `<div id="userIcon-${[index]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
 }
 
 function renderUserInitial(event, index) {
-    const user = users[index];
+    
+    const user = invitedUsers[index];
     const userIndex = assignedUsers.indexOf(user);
     if (event.target.checked) {
         user.assigned = true;
         assignedUsers.push(user)
         getId('userInitialContainer').innerHTML += `<div id="userIcon-${[index]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
     }
-    if (!event.target.checked) {
+    if (!event.target.checked) {    
         assignedUsers.splice(userIndex, 1)
         getId(`userIcon-${index}`).remove();
     }
@@ -307,11 +309,11 @@ function inviteUsers() {
 
 }
 
-function cancelContactInvitation(array) {
+function cancelContactInvitation() {
     let inviteContainer = getId('assignBtnContainer');
     inviteContainer.classList.add('assign-btn-container');
     inviteContainer.innerHTML = `
-    <button type="button" class="assign-btn" onclick="toggleContainer('userMenu')">
+    <button type="button" class="assign-btn" onclick="toggleContainer('userMenu'); toggleContainer('userInitialContainer')">
         <div>Select contact to assign</div>
         <div id="imgArrow"><img src="/assets/img/open.png"></div>
     </button>
@@ -322,16 +324,16 @@ function cancelContactInvitation(array) {
         </button>   
     </div>
     `
-    renderUserList(array);
+    renderUserList();
 }
 
-function newContactInvitation() {
+function newContactInvitation() {   
     let newInvitation;
     userName = getId('userSearchInput').value;
     newInvitation = users.filter(function (user) {
         if (user.name.match(userName)) return user;
     })
-    invitedUsers.push(newInvitation);
+    invitedUsers.push(newInvitation[0]);
     cancelContactInvitation();
 }
 
