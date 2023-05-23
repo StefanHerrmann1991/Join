@@ -9,6 +9,10 @@
   scroll-behavior: smooth;
 }
 
+.selected-menu {
+  background-color: #091931;
+}
+
 .scroll {
   overflow-y: scroll;
 }

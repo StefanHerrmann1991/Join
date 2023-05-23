@@ -20,6 +20,7 @@ let chosenBoard;
 let registeredUsers = [];
 
 
+
 function splitID(id, separator) {
     let arrayOfStrings = id.split(separator);
     return arrayOfStrings;
@@ -143,4 +144,4 @@ function logout() {
 
 function isMobileView() {
     return window.matchMedia('(max-width: 768px)').matches;
-  }
+}

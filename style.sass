@@ -16,6 +16,38 @@ $hover-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 $popup-color: rgba(0, 0, 0, 0.2)
 $background: #F6F7F8
 $inversion-color: invert(47%) sepia(86%) saturate(463%) hue-rotate(153deg) brightness(106%) contrast(84%)
+$dark-select: #091931
+
+@mixin hover-style-1
+    &:hover
+        border: 1px solid $hover
+        color: $hover
+        box-shadow: $hover-shadow
+        img
+            filter: $inversion-color
+@mixin hover-style-2
+    &:hover
+        background-color: $hover
+        box-shadow: $hover-shadow
+
+@mixin popup
+    position: absolute
+    z-index: 105
+    background-color: rgba(0, 0, 0, 0.2)
+    height: 100svh
+    width: 100svw
+    height: 100vh
+    width: 100vw
+    top: 0
+    left: 0
+
+@mixin flex-center
+    display: flex
+    justify-content: center
+    align-items: center
+
+.selected-menu
+    background-color: $dark-select
 
 .scroll
     overflow-y: scroll
@@ -37,24 +69,8 @@ a
     text-decoration: none
     font-size: 18px
 
-@mixin popup
-    position: absolute
-    z-index: 105
-    background-color: rgba(0, 0, 0, 0.2)
-    height: 100svh
-    width: 100svw
-    height: 100vh
-    width: 100vw
-    top: 0
-    left: 0
-
 body
     background-color: $background
-
-@mixin flex-center
-    display: flex
-    justify-content: center
-    align-items: center
 
 .navbar-header
     display: flex

@@ -568,6 +568,7 @@ input:-webkit-autofill:active {
   border: 1px solid #D1D1D1;
   border-radius: 10px;
   resize: none;
+  cursor: pointer;
 }
 
 textarea {
