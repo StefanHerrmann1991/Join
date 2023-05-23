@@ -67,6 +67,12 @@ input:-webkit-autofill:active
             width: 24px
             height: 24px
             margin-left: 2px
+        &:hover
+            border: 1px solid $hover
+            color: $hover
+            box-shadow: $hover-shadow
+            img
+                filter: $inversion-color
     .create-task-btn
         background-color: #2A3647
         color: white
@@ -79,6 +85,9 @@ input:-webkit-autofill:active
             width: 24px
             height: 24px
             margin-left: 2px
+        &:hover
+            background-color: $hover
+            box-shadow: $hover-shadow
 
 .title, select, textarea, .date, .standard
     display: block

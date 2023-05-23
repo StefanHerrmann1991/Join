@@ -479,9 +479,6 @@ h3 {
   font-size: 16px;
   z-index: 2;
 }
-.add-contact-btn img {
-  margin-left: 10px;
-}
 
 .contact-book {
   display: flex;
@@ -502,6 +499,10 @@ h3 {
   width: 100%;
   padding-left: 12px;
   padding-right: 12px;
+}
+.contact-book .contact-container:not(.selected-user):hover {
+  border-radius: 10px;
+  background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
 }
 .contact-book .icon-initial {
   color: white;

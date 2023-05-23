@@ -28,8 +28,6 @@
     font-weight: 700
     font-size: 16px
     z-index: 2
-    img
-        margin-left: 10px
 
 .contact-book
     display: flex
@@ -48,6 +46,9 @@
         width: 100%
         padding-left: 12px
         padding-right: 12px
+        &:not(.selected-user):hover
+            border-radius: 10px
+            background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%)
     .icon-initial
         color: white
     .contact-email
