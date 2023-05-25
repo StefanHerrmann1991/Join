@@ -51,6 +51,37 @@ async function saveBackendDataOf(dataObject) {
 };
 
 
+
+async function saveToBackend(key, value) {    
+    if (event) event.preventDefault();
+    keyAsText = JSON.stringify(value);
+    await backend.setItem(key, keyAsText);
+    console.log(key, value, keyAsText);
+}
+
+
+/**
+ *  This function loads and converts the tasks from text-format to a JSON-array. 
+ *  The preventDefault() function is necessary to prevent the page from reloading when adding a new task.
+ */
+function loadFromBackend(key, value) {
+    debugger
+    if (event) event.preventDefault();
+    let keyAsText = backend.getItem(key);
+    if (keyAsText) value = JSON.parse(keyAsText);
+}
+
+
+function loadCategories() {
+    if (event) event.preventDefault();
+    let categoriesAsText = backend.getItem('categories');
+    if (categoriesAsText) categories = JSON.parse(categoriesAsText);
+}
+
+
+
+
+
 /**
  * This function Returns an array with one or several HTML elements
  * @param {...string} idsArr - The id of one or several HTML elements

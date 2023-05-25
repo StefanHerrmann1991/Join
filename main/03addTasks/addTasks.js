@@ -6,7 +6,7 @@ async function initTasks() {
     await initBackend();
     await renderUserList();
     await loadTasks();
-    await loadCategories();
+    await loadFromBackend('categories', categories);
     await renderCategories();
     startPriorityEventListener();
     compareDate();
@@ -130,7 +130,7 @@ function addCategory() {
         'index': categories.length
     }
     categories.push(newCategory);
-    saveCategories();
+    saveToBackend('categories', categories);
     cancelNewCategory();
     renderCategories();
 }
@@ -306,7 +306,6 @@ function inviteUsers() {
         </div>
     </div>  
     `
-
 }
 
 function cancelContactInvitation() {
