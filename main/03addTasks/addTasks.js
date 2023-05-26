@@ -1,21 +1,37 @@
+/**
+ * Searches for the element with class 'popup' in the DOM tree.
+ * @constant
+ * @type {HTMLElement}
+ */
 const popup = document?.querySelector('.popup');
 
 
+/**
+ * Initialization of tasks including HTML inclusion, backend initialization, 
+ * user list rendering, task loading, categories loading and rendering.
+ * Also sets up the priority event listener and compares date.
+ * This function uses async/await syntax to ensure all these steps are done sequentially.
+ * @async
+ * @function
+ */
 async function initTasks() {
     await includeHTML();
     await initBackend();
     await renderUserList();
     await loadTasks();
-    await loadFromBackend('categories', categories);
+    categories = await loadFromBackend('categories', categories);
     await renderCategories();
     startPriorityEventListener();
     compareDate();
 }
 
 
-/** addToTaskJS 
- * This function is meant to enable the add of tasks to a json array.
- * It also generates a certain ID for new tasks and sends them to the backlog board.
+/**
+ * Adds a new task to the tasks array. It processes the task inputs, 
+ * assigns an id, saves the tasks and gives user a feedback on successful submission.
+ * If function 'myFunction' is defined, it also renders the boards with the new tasks.
+ * @param {string} board - The id of the board to which the task is to be added.
+ * @function
  */
 function addToTasks(board) {   
     event.preventDefault();
@@ -32,6 +48,13 @@ function addToTasks(board) {
 }
 
 
+/**
+ * Checks the data's validity. It sets 'required' attribute for the element if the array is empty.
+ * Otherwise, it removes 'required' attribute.
+ * @param {string} id - The id of the HTML element to be validated.
+ * @param {Array} array - The array to be checked for emptiness.
+ * @function
+ */
 function validateData(id, array) {
     let validateId = getId(id);
     if (array.length === 0) validateId.setAttribute('required', '');
@@ -40,8 +63,11 @@ function validateData(id, array) {
 
 
 /**
- * This function gets input values and returns them as task objects.
- * @returns {Object} - task object
+ * Processes and returns a task object from the inputs. 
+ * If no board is provided, 'board-0' is used by default.
+ * @param {string} [board='board-0'] - The id of the board to which the task is to be added.
+ * @returns {object} The task object.
+ * @function
  */
 function processTaskInputs(board) {
     if (board == undefined) board = 'board-0';
@@ -61,6 +87,12 @@ function processTaskInputs(board) {
     return task;
 }
 
+
+/**
+ * Gets the value of the checked priority radio button.
+ * @returns {string} The value of the checked radio button or undefined if no radio button is checked.
+ * @function
+ */
 function getUrgency() {
     let urgency;
     let selectedUrgency = document.querySelector('#urgency input.priority-radio:checked');
@@ -68,6 +100,11 @@ function getUrgency() {
     return urgency;
 }
 
+
+/**
+ * Changes the layout for a new category input, and renders a color picker.
+ * @function
+ */
 function newCategory() {
     let newCategory = getId('categoryContainer');
     newCategory.classList.remove('assign-btn-container');
@@ -88,6 +125,12 @@ function newCategory() {
     renderColorPicker();
 }
 
+
+/**
+ * Cancels the category creation process and reverts the layout changes made in newCategory function. 
+ * Then it re-renders the categories.
+ * @function
+ */
 function cancelNewCategory() {
     let newCategory = getId('categoryContainer')
     newCategory.classList.add('assign-btn-container');
@@ -106,6 +149,11 @@ function cancelNewCategory() {
     renderCategories();
 }
 
+
+/**
+ * Renders a color picker with colors fetched from the 'colorPicker' array.
+ * 
+ */
 function renderColorPicker() {
     let pickColor = getId('colorPicker');
     for (let i = 0; i < colorPicker.length; i++) {
@@ -114,12 +162,24 @@ function renderColorPicker() {
     }
 }
 
+
+/**
+ * Chooses a color for the new category to be added from the color picker.
+ * @param {number} index - The index of the chosen color in the 'colorPicker' array.
+ * 
+ */
 function chooseCategoryColor(index) {
     let colorId = getId('chosenColor');
     chosenColor = colorPicker[index];
     colorId.innerHTML = `<div style="background-color: ${chosenColor}" class="category-color"></div>`;
 }
 
+
+/**
+ * Adds a new category with the provided topic and color. 
+ * If no color is chosen, a default color '#E200BE' is assigned.
+ * It then saves the new categories to the backend, cancels the new category input layout and re-renders the categories.
+ */
 function addCategory() {
     let topic = getId('categoryInput').value;
     let color = chosenColor;
@@ -135,6 +195,11 @@ function addCategory() {
     renderCategories();
 }
 
+
+/**
+ * Renders categories to the HTML element with id 'categoryList'.
+ * Iterates through the 'categories' array and creates a button for each category.
+ */
 function renderCategories() {
     let categoryOption = getId('categoryList');
     categoryOption.innerHTML = '';
@@ -149,6 +214,11 @@ function renderCategories() {
     };
 };
 
+
+/**
+ * Saves a category from the categories list by its index. It then validates the category and closes the category menu.
+ * @param {number} index - The index of the category in the 'categories' array.
+ */
 function saveCategory(index) {
     let chosenCategoryOption = getId('categorySelect');
     let category = categories[index];
@@ -161,6 +231,12 @@ function saveCategory(index) {
     closeContainer('categoryMenu');
 }
 
+
+/**
+ * Starts an event listener for each priority radio button.
+ * It adds the 'selected' class to the label of the checked radio button and removes it when another radio button is selected.
+ * @param {string} [selectedValue] - The value of the radio button that is initially selected. 
+ */
 function startPriorityEventListener(selectedValue) {
     const radioEls = document.querySelectorAll('.priority-radio');
     radioEls.forEach(radioEl => {
@@ -182,6 +258,9 @@ function startPriorityEventListener(selectedValue) {
 }
 
 
+/**
+ * Clears the inputs for tasks, subtasks and assigned users. It also removes the 'selected' class from priority radio buttons.
+ */
 function clearInputTasks() {
     let taksIds = getIds('title', 'description', 'category', 'date');
     clearInputValues(taksIds);
@@ -197,42 +276,39 @@ function clearInputTasks() {
 }
 
 
-
-/** The function disables selection of a date before the current day */
+/**
+ * Disables the selection of a date before the current day on the HTML element with id 'date'.
+ */
 function compareDate() {
     let today = new Date().toISOString().split('T')[0];
     document.getElementById('date').setAttribute('min', today);
 }
 
 
-/* Backend Folder */
 window.onload = async function () {
     downloadFromServer();
 }
 
+
 /**
- * Saves tasks in the backend in form of an JSON string */
-async function saveTasks() { //check async: no diff
+ * Saves tasks to the backend after converting them to a JSON string.
+ * If the function is triggered by an event, it prevents the event's default action.
+ * @async
+ */
+async function saveTasks() { 
     if (event) event.preventDefault();
     let tasksAsText = JSON.stringify(tasks);
     await backend.setItem('tasks', tasksAsText);
 }
+
+
 /**
- * Saves tasks in the backend in form of an JSON string */
+ * Saves tasks in the backend in form of an JSON string 
+ * */
 async function saveCategories() { //check async: no diff
     if (event) event.preventDefault();
     let categoriesAsText = JSON.stringify(categories);
     await backend.setItem('categories', categoriesAsText);
-}
-
-/**
- *  This function loads and converts the tasks from text-format to a JSON-array. 
- *  The preventDefault() function is necessary to prevent the page from reloading when adding a new task.
- */
-function loadCategories() {
-    if (event) event.preventDefault();
-    let categoriesAsText = backend.getItem('categories');
-    if (categoriesAsText) categories = JSON.parse(categoriesAsText);
 }
 
 
@@ -246,12 +322,20 @@ function loadTasks() {
     if (tasksAsText) tasks = JSON.parse(tasksAsText);
 }
 
-/** The function disables selection of a date before the current day */
+
+/**
+ * Disables the selection of a date before the current day on the HTML element with id 'date'.
+ */
 function compareDate() {
     let today = new Date().toISOString().split('T')[0];
     document.getElementById('date').setAttribute('min', today);
 }
 
+
+/**
+ * Renders a list of users to the HTML element with id 'userList'.
+ * Iterates through the 'invitedUsers' array and creates an input checkbox for each user.
+ */
 function renderUserList() {
     const userListContainer = getId('userList');
     userListContainer.innerHTML = '';
@@ -271,14 +355,23 @@ function renderUserList() {
     }
 }
 
-function renderDetailedUsers(index) {
-   
+
+/**
+ * Renders the detailed view of a user.
+ * @param {number} index - The index of the user in the 'invitedUsers' array.
+ */
+function renderDetailedUsers(index) {  
     let user = invitedUsers[index];
     getId('userInitialContainer').innerHTML += `<div id="userIcon-${[index]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
 }
 
-function renderUserInitial(event, index) {
-    
+
+/**
+ * Renders the initial of a user when their checkbox is checked and removes it when unchecked.
+ * @param {Object} event - The triggering event.
+ * @param {number} index - The index of the user in the 'invitedUsers' array.
+ */
+function renderUserInitial(event, index) {    
     const user = invitedUsers[index];
     const userIndex = assignedUsers.indexOf(user);
     if (event.target.checked) {
@@ -292,6 +385,10 @@ function renderUserInitial(event, index) {
     }
 }
 
+
+/**
+ * Transforms the HTML element with id 'assignBtnContainer' into an window for the user invitation.
+ */
 function inviteUsers() {
     let inviteContainer = getId('assignBtnContainer');
     inviteContainer.classList.remove('assign-btn-container');
@@ -308,6 +405,10 @@ function inviteUsers() {
     `
 }
 
+
+/**
+ * Cancels the process of inviting a new user, reverts the HTML of 'assignBtnContainer' and renders the user list.
+ */
 function cancelContactInvitation() {
     let inviteContainer = getId('assignBtnContainer');
     inviteContainer.classList.add('assign-btn-container');
@@ -326,6 +427,10 @@ function cancelContactInvitation() {
     renderUserList();
 }
 
+
+/**
+ * Adds a new invitation based on the value inputted in 'userSearchInput' and cancels the invitation form after successful invitation.
+ */
 function newContactInvitation() {   
     let newInvitation;
     userName = getId('userSearchInput').value;
@@ -336,10 +441,11 @@ function newContactInvitation() {
     cancelContactInvitation();
 }
 
+
 /**
- * The function matches the input in the search input field with the names and emails of the users array.
- * @param {string} input A string containing a name or email.
- * @returns An array of users with names or emails that match the input string.
+ * Matches the input string with user names or emails and returns a list of matching users.
+ * @param {string} input - The input string to match against user names and emails.
+ * @returns {Array} An array of user objects whose names or emails match the input string.
  */
 function autocompleteMatch(input) {
     if (input == '') return [];
@@ -350,8 +456,8 @@ function autocompleteMatch(input) {
 }
 
 /**
- * Displays a list of users with names or emails that match the input string.
- * @param {string} val The input string to match against.
+ * Renders a dropdown list of user names and emails that match the input string in 'userSearchInput'.
+ * @param {string} val - The input string to match against user names and emails.
  */
 function showResults(val) {
     const res = getId("userSearchInput");
@@ -364,6 +470,10 @@ function showResults(val) {
     res.innerHTML = `<datalist class="custom-datalist" id="usersSearch" name="userList">${list}</datalist>`;
 }
 
+
+/**
+ * Transforms the HTML element with id 'subtasks' into a subtask input form where new subtasks could be added to the task.
+ */
 function renderSubtasks() {
     let subtask = getId('subtasks')
     subtask.classList.remove('assign-btn-container')

@@ -72,10 +72,10 @@ async function saveCategories() { //check async: no diff
  *  The preventDefault() function is necessary to prevent the page from reloading when adding a new task.
  */
 function loadFromBackend(key, value) {
-    debugger
     if (event) event.preventDefault();
     let keyAsText = backend.getItem(key);
     if (keyAsText) value = JSON.parse(keyAsText);
+    return value;
 }
 
 
