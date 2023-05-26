@@ -77,12 +77,15 @@ function renderLogin() {
 <div class="sign-up-container">
     <div class="sign-up">
         <h2>Log in</h2>
-        <form onsubmit="usersLogin()">  
+        <form onsubmit="usersLogin(); savePassword()">  
             <input minlength="3" type="email" id="email" name="email" required placeholder="Email">
-            <input minlength="3" type="password" minlength="6" maxlength="20"  id="password" name="password" required placeholder="Password">
+            <div class="password-btn">
+            <input class="password-input" minlength="3" type="password" minlength="6" maxlength="20"  id="password" name="password" required placeholder="Password">
+            <button type="button" onclick="togglePasswordVisibility()" id="toggleButton"><img src="../../assets/img/passwordShow.png"></button>
+            </div>
             <div class="login-option">
             <div class="remember-me">
-            <input type="checkbox" >
+            <input id="rememberMe" type="checkbox">
             <nobr class="mgn-l">Remember me</nobr>
             </div>
             <a class="highlight-blue" onclick="renderAuth('forgetPassword')">
@@ -96,7 +99,40 @@ function renderLogin() {
     </div>
 </div>
 </div>
-</div>` }
+</div>`}
+
+
+
+function togglePasswordVisibility() {
+    var passwordInput = document.getElementById("password");
+    var toggleButton = document.getElementById("toggleButton");
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";   
+        toggleButton.innerHTML = '<img src="../../assets/img/passwordHide.png">'            
+    } else {
+        passwordInput.type = "password";    
+        toggleButton.innerHTML = '<img src="../../assets/img/passwordShow.png">'     
+    }
+}
+
+
+function savePassword() {
+    let rememberMeCheckbox = document.getElementById("rememberMe");
+    if (rememberMeCheckbox.checked) {
+        let passwordInput = document.getElementById("password");
+        let password = passwordInput.value;
+        localStorage.setItem("savedPassword", password);
+        console.log("Password saved to local storage");
+    }
+}
+
+
+function showPassword() {
+    let passwordInput = document.getElementById("myInput");
+    if (passwordInput.type === "password") passwordInput.type = "text";
+    else passwordInput.type = "password";
+}
 
 
 /**
@@ -292,7 +328,6 @@ async function forgotPassword(event) {
         alert('No user found with this email');
     }
 };
-
 
 
 /**

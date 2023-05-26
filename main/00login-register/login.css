@@ -453,6 +453,42 @@ h3 {
     display: block;
   }
 }
+.password-btn {
+  font-size: 21px;
+  width: 100%;
+  margin-top: 8%;
+  border: 1px solid #D1D1D1;
+  border-radius: 10px;
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: 95%;
+  position: relative;
+  height: 51px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.password-btn .password-input {
+  padding: 0px;
+  margin: 0px !important;
+  border: none !important;
+  padding-left: 21px !important;
+  height: 100%;
+}
+.password-btn button {
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  height: 100%;
+  right: 21px;
+}
+.password-btn button img {
+  height: 24px;
+  width: 24px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .register {
   position: relative;
   display: flex;
@@ -816,15 +852,11 @@ h3 {
   .login-option .remember-me, .login-option nobr {
     padding: 0px;
     margin: 0px;
-  }
-  .login-option .remember-me nobr, .login-option nobr nobr {
     margin-left: 12px;
   }
   .login-option .remember-me {
     display: flex;
     margin-bottom: 5%;
-  }
-  .login-option .remember-me nobr {
     margin-left: 5%;
   }
   .sign-up h2 {

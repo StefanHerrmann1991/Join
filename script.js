@@ -59,13 +59,6 @@ async function saveToBackend(key, value) {
     console.log(key, value, keyAsText);
 }
 
-/**
- * Saves tasks in the backend in form of an JSON string */
-async function saveCategories() { //check async: no diff
-    if (event) event.preventDefault();
-    let categoriesAsText = JSON.stringify(categories);
-    await backend.setItem('categories', categoriesAsText);
-}
 
 /**
  *  This function loads and converts the tasks from text-format to a JSON-array. 
@@ -77,16 +70,6 @@ function loadFromBackend(key, value) {
     if (keyAsText) value = JSON.parse(keyAsText);
     return value;
 }
-
-
-function loadCategories() {
-    if (event) event.preventDefault();
-    let categoriesAsText = backend.getItem('categories');
-    if (categoriesAsText) categories = JSON.parse(categoriesAsText);
-}
-
-
-
 
 
 /**

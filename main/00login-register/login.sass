@@ -1,5 +1,36 @@
 @import '../../style.sass'
 
+.password-btn
+    font-size: 21px
+    width: 100%
+    margin-top: 8%
+    border: 1px solid #D1D1D1
+    border-radius: 10px
+    background-size: 24px
+    background-repeat: no-repeat
+    background-position: 95%
+    position: relative
+    height: 51px
+    @include flex-center
+    
+    .password-input
+        padding: 0px 
+        margin: 0px !important
+        border: none !important
+        padding-left: 21px !important
+        height: 100%
+    button
+        position: absolute
+        border: none
+        background-color: transparent
+        height: 100%
+        right: 21px
+
+        img
+            height: 24px
+            width: 24px
+            object-fit: contain
+
 .register
     position: relative
     @include flex-center
@@ -316,13 +347,13 @@
             padding: 0px
             margin: 0px
             nobr
-                margin-left: 12px
+            margin-left: 12px
 
         .remember-me
             display: flex
             margin-bottom: 5%
             nobr
-                margin-left: 5%
+            margin-left: 5%
     .sign-up
         h2
             margin-top: 0px
@@ -356,6 +387,6 @@
 
     .arrow-back
         top: 2.5%
-    
+
     .to-register button
         height: 40px

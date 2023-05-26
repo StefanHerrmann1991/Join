@@ -12,6 +12,7 @@ let boards = [
     { boardTitle: 'Done', boardId: 'board-3', boardName: 'doneBoard' }
 ]
 
+
 /**
  * A boolean parameter that indicates an open or closed details window.
  * @type {boolean}
@@ -152,26 +153,6 @@ function renderEmptyBoard(boardTitle) {
 
 
 /**
- * This function saves the current state of the boards in the backend in the form of a JSON string.
- */
-async function saveBoards() {
-    if (event) event.preventDefault();
-    let boardsAsText = JSON.stringify(boards);
-    await backend.setItem('boards', boardsAsText);
-}
-
-
-/**
- * This function loads the current state of the boards from the backend and converts it from text to a JSON array.
- */
-async function loadBoards() {
-    if (event) event.preventDefault();
-    let boardsAsText = await backend.getItem('boards');
-    if (boardsAsText) boards = JSON.parse(boardsAsText);
-}
-
-
-/**
  * This function prepares a container to be moved by setting up its style and listeners.
  * 
  * @param {Number} id - The id of the container to be moved.
@@ -209,8 +190,8 @@ function allowDrop(ev) {
  */
 function moveTo(board) {
     tasks[currentDraggedElement]['board'] = board;
-    saveTasks();
-    renderBoards(tasks)
+    saveToBackend('tasks', tasks);
+    renderBoards(tasks);
 }
 
 
@@ -222,7 +203,7 @@ function moveTo(board) {
  */
 function moveToBoard(i, targetBoard) {
     tasks[i]['board'] = targetBoard;
-    saveTasks();
+    saveToBackend('tasks', tasks);
     renderBoards(tasks);
 }
 
@@ -302,16 +283,6 @@ function renderAssignedUsers(usersArr) {
 
 
 /**
- * This function saves the current state of the tasks in the backend in the form of a JSON string.
- */
-async function saveTasks() { //check async: no diff
-    if (event) event.preventDefault();
-    let tasksAsText = JSON.stringify(tasks);
-    await backend.setItem('tasks', tasksAsText);
-}
-
-
-/**
  * This function opens a task for editing.
  * 
  * @param {Number} index - The index of the task in the tasks array.
@@ -322,7 +293,10 @@ function openTask(index) {
 }
 
 
-
+/**
+ * Renders the detailed view of a specific task.
+ * @param {number} index - The index of the task in the 'tasks' array.
+ */
 function renderDetailedTask(index) {
     detailsAreOpen = true;
     let task = tasks[index]
@@ -368,6 +342,11 @@ function renderDetailedTask(index) {
     renderSubtasksDetails(index);
 }
 
+
+/**
+ * Renders the subtasks for a specific task in the detailed view.
+ * @param {number} index - The index of the task in the 'tasks' array.
+ */
 function renderSubtasksDetails(index) {
 
     let subtaskId = getId(`subtask-${index}`)
@@ -383,11 +362,22 @@ function renderSubtasksDetails(index) {
     }
 }
 
+
+/**
+ * Toggles the checked status of a subtask in edit mode.
+ * @param {number} taskIndex - The index of the task in the 'tasks' array.
+ * @param {number} subtaskIndex - The index of the subtask in the 'subtasks' array of the task.
+ */
 function updateEditSubtask(taskIndex, subtaskIndex) {
     tasks[taskIndex].subtasks[subtaskIndex].checked = !tasks[taskIndex].subtasks[subtaskIndex].checked;
-    saveTasks();
+    saveToBackend('tasks', tasks)
 }
 
+
+/**
+ * Renders the task editing form for a specific task.
+ * @param {number} index - The index of the task in the 'tasks' array.
+ */
 function renderEditTask(index) {
     detailsAreOpen = true;
     let editTask = getId('editTaskDialog');
@@ -408,8 +398,7 @@ function renderEditTask(index) {
                         </div>
                         <input required class="title" id="title" value="${task.title}" placeholder="Enter a title"
                             oninput="loadTasks()">
-                        </div>
-                        
+                        </div>                        
                         <div class="mgn-b">
                             <h3>Description</h3>
                             <textarea resize="none" required id="description"
@@ -468,23 +457,40 @@ function renderEditTask(index) {
     compareDate();
 }
 
+
+/**
+ * Loads the tasks array from the backend.
+ */
+function loadTasks() {
+    tasks = loadFromBackend('tasks', tasks);
+}
+
+
+/**
+ * Changes the properties of a task based on the inputs in the task editing form, saves the updated 'tasks' array to the backend, 
+ * and re-renders the task boards.
+ * @param {number} index - The index of the task in the 'tasks' array.
+ * @param {string} board - The board to which the task belongs.
+ */
 async function changeTask(index, board) {
     event.preventDefault();
     chosenBoard = board
     let task = processTaskInputs(board);
     tasks[index] = task;
-    saveTasks();
+    saveToBackend('tasks', tasks)
     closeTaskDialog();
     renderBoards(tasks);
 }
 
+
+/**
+ * Closes the task editing dialog and re-renders the task boards.
+ */
 function closeTaskDialog() {
     detailsAreOpen = false;
     closeContainer('editTaskDialog');
     renderBoards(tasks);
 }
-
-
 
 
 /**
@@ -497,6 +503,7 @@ function showResultsTasks(val) {
     if (tasksList.length !== 0) renderBoards(tasksList);
     else renderBoards(tasks)
 }
+
 
 /**
  * The function matches the input in the search input field with the names and emails of the users array.
@@ -511,13 +518,14 @@ function autocompleteMatchTask(input) {
     });
 }
 
+
 /**
  * Deletes an element from an array, updates the data on the server,  and renders boards.
  * @param {i} @type {Number}
  */
 function deleteTask(i) {
     tasks.splice(i, 1);
-    saveTasks();
+    saveToBackend('tasks', tasks)
     closeTaskDialog();
     renderBoards(tasks)
 }

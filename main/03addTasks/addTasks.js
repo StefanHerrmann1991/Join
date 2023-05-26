@@ -1,6 +1,5 @@
 /**
  * Searches for the element with class 'popup' in the DOM tree.
- * @constant
  * @type {HTMLElement}
  */
 const popup = document?.querySelector('.popup');
@@ -12,14 +11,15 @@ const popup = document?.querySelector('.popup');
  * Also sets up the priority event listener and compares date.
  * This function uses async/await syntax to ensure all these steps are done sequentially.
  * @async
- * @function
  */
 async function initTasks() {
     await includeHTML();
     await initBackend();
     await renderUserList();
-    await loadTasks();
+    invitedUsers = await loadFromBackend('invitedUsers', invitedUsers);
+    tasks = await loadFromBackend('tasks', tasks);
     categories = await loadFromBackend('categories', categories);
+    console.log(invitedUsers, tasks, categories)
     await renderCategories();
     startPriorityEventListener();
     compareDate();
@@ -33,12 +33,12 @@ async function initTasks() {
  * @param {string} board - The id of the board to which the task is to be added.
  * @function
  */
-function addToTasks(board) {   
+function addToTasks(board) {
     event.preventDefault();
     const task = processTaskInputs(board);
     task.id = tasks.length + 1; // set id when creating the task
     tasks.push(task);
-    saveTasks();
+    saveToBackend('tasks', tasks)
     openContainer('successfulSubmit');
     setTimeout(function () {
         closeContainer('successfulSubmit');
@@ -67,7 +67,6 @@ function validateData(id, array) {
  * If no board is provided, 'board-0' is used by default.
  * @param {string} [board='board-0'] - The id of the board to which the task is to be added.
  * @returns {object} The task object.
- * @function
  */
 function processTaskInputs(board) {
     if (board == undefined) board = 'board-0';
@@ -91,7 +90,6 @@ function processTaskInputs(board) {
 /**
  * Gets the value of the checked priority radio button.
  * @returns {string} The value of the checked radio button or undefined if no radio button is checked.
- * @function
  */
 function getUrgency() {
     let urgency;
@@ -103,7 +101,6 @@ function getUrgency() {
 
 /**
  * Changes the layout for a new category input, and renders a color picker.
- * @function
  */
 function newCategory() {
     let newCategory = getId('categoryContainer');
@@ -129,7 +126,6 @@ function newCategory() {
 /**
  * Cancels the category creation process and reverts the layout changes made in newCategory function. 
  * Then it re-renders the categories.
- * @function
  */
 function cancelNewCategory() {
     let newCategory = getId('categoryContainer')
@@ -152,7 +148,6 @@ function cancelNewCategory() {
 
 /**
  * Renders a color picker with colors fetched from the 'colorPicker' array.
- * 
  */
 function renderColorPicker() {
     let pickColor = getId('colorPicker');
@@ -166,7 +161,6 @@ function renderColorPicker() {
 /**
  * Chooses a color for the new category to be added from the color picker.
  * @param {number} index - The index of the chosen color in the 'colorPicker' array.
- * 
  */
 function chooseCategoryColor(index) {
     let colorId = getId('chosenColor');
@@ -291,39 +285,6 @@ window.onload = async function () {
 
 
 /**
- * Saves tasks to the backend after converting them to a JSON string.
- * If the function is triggered by an event, it prevents the event's default action.
- * @async
- */
-async function saveTasks() { 
-    if (event) event.preventDefault();
-    let tasksAsText = JSON.stringify(tasks);
-    await backend.setItem('tasks', tasksAsText);
-}
-
-
-/**
- * Saves tasks in the backend in form of an JSON string 
- * */
-async function saveCategories() { //check async: no diff
-    if (event) event.preventDefault();
-    let categoriesAsText = JSON.stringify(categories);
-    await backend.setItem('categories', categoriesAsText);
-}
-
-
-/**
- *  This function loads and converts the tasks from text-format to a JSON-array. 
- *  The preventDefault() function is necessary to prevent the page from reloading when adding a new task.
- */
-function loadTasks() {
-    if (event) event.preventDefault();
-    let tasksAsText = backend.getItem('tasks');
-    if (tasksAsText) tasks = JSON.parse(tasksAsText);
-}
-
-
-/**
  * Disables the selection of a date before the current day on the HTML element with id 'date'.
  */
 function compareDate() {
@@ -360,7 +321,7 @@ function renderUserList() {
  * Renders the detailed view of a user.
  * @param {number} index - The index of the user in the 'invitedUsers' array.
  */
-function renderDetailedUsers(index) {  
+function renderDetailedUsers(index) {
     let user = invitedUsers[index];
     getId('userInitialContainer').innerHTML += `<div id="userIcon-${[index]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
 }
@@ -371,7 +332,7 @@ function renderDetailedUsers(index) {
  * @param {Object} event - The triggering event.
  * @param {number} index - The index of the user in the 'invitedUsers' array.
  */
-function renderUserInitial(event, index) {    
+function renderUserInitial(event, index) {
     const user = invitedUsers[index];
     const userIndex = assignedUsers.indexOf(user);
     if (event.target.checked) {
@@ -379,7 +340,7 @@ function renderUserInitial(event, index) {
         assignedUsers.push(user)
         getId('userInitialContainer').innerHTML += `<div id="userIcon-${[index]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
     }
-    if (!event.target.checked) {    
+    if (!event.target.checked) {
         assignedUsers.splice(userIndex, 1)
         getId(`userIcon-${index}`).remove();
     }
@@ -431,13 +392,14 @@ function cancelContactInvitation() {
 /**
  * Adds a new invitation based on the value inputted in 'userSearchInput' and cancels the invitation form after successful invitation.
  */
-function newContactInvitation() {   
+function newContactInvitation() {
     let newInvitation;
     userName = getId('userSearchInput').value;
     newInvitation = users.filter(function (user) {
         if (user.name.match(userName)) return user;
     })
     invitedUsers.push(newInvitation[0]);
+    saveToBackend('invitedUsers', invitedUsers)
     cancelContactInvitation();
 }
 
@@ -491,6 +453,9 @@ function renderSubtasks() {
 }
 
 
+/**
+ * Cancels the process of adding a new subtask, reverts the HTML of 'subtasks'.
+ */
 function cancelSubtask() {
     let subtask = getId('subtasks');
     subtask.classList.add('assign-btn-container')
@@ -501,6 +466,10 @@ function cancelSubtask() {
     `
 }
 
+
+/**
+ * Adds a new subtask based on the value inputted in 'subtaskInput' and updates the list of subtasks.
+ */
 function newSubtask() {
     let subtaskInput = getId('subtaskInput').value;
     let renderedSubtasks = getId('renderedSubtasks');
@@ -519,6 +488,11 @@ function newSubtask() {
     });
 }
 
+
+/**
+ * Toggles the checked status of a subtask.
+ * @param {number} index - The index of the subtask in the 'subtasks' array.
+ */
 function updateSubtask(index) {
     subtasks[index].checked = !subtasks[index].checked;
 }
