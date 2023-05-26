@@ -80,8 +80,8 @@ function renderLogin() {
         <form onsubmit="usersLogin(); savePassword()">  
             <input minlength="3" type="email" id="email" name="email" required placeholder="Email">
             <div class="password-btn">
-            <input class="password-input" minlength="3" type="password" minlength="6" maxlength="20"  id="password" name="password" required placeholder="Password">
-            <button type="button" onclick="togglePasswordVisibility()" id="toggleButton"><img src="../../assets/img/passwordShow.png"></button>
+            <input class="password-input" minlength="3"  type="password" oninput="changeImage()" minlength="6" maxlength="20"  id="password" name="password" required placeholder="Password">
+            <button type="button" onclick="togglePasswordVisibility()" id="toggleButton"><img src="../../assets/img/lock.png"></button>
             </div>
             <div class="login-option">
             <div class="remember-me">
@@ -103,20 +103,40 @@ function renderLogin() {
 
 
 
-function togglePasswordVisibility() {
-    var passwordInput = document.getElementById("password");
-    var toggleButton = document.getElementById("toggleButton");
-
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";   
-        toggleButton.innerHTML = '<img src="../../assets/img/passwordHide.png">'            
-    } else {
-        passwordInput.type = "password";    
-        toggleButton.innerHTML = '<img src="../../assets/img/passwordShow.png">'     
+function changeImage() {
+    let passwordInput = getId('password');
+    if (passwordInput.value.length === 0) {
+        toggleButton.disabled = true;
+        toggleButton.innerHTML = '<img src="../../assets/img/lock.png">';
+    }
+    else {
+        toggleButton.disabled = false;
+        passwordInput.type = "password";
+        toggleButton.innerHTML = '<img src="../../assets/img/passwordHide.png">'
     }
 }
 
 
+/**
+ * Toggles the visibility of the password input field. When the visibility is toggled on, the password input's type is changed to 'text', 
+ * and when it is toggled off, the type is changed back to 'password'. This also updates the image on the toggleButton to reflect the current state.
+ */
+function togglePasswordVisibility() {
+    let passwordInput = document.getElementById("password");
+    let toggleButton = document.getElementById("toggleButton");
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleButton.innerHTML = '<img src="../../assets/img/passwordShow.png">'
+    } else {
+        passwordInput.type = "password";
+        toggleButton.innerHTML = '<img src="../../assets/img/passwordHide.png">'
+    }
+}
+
+
+/**
+ * If the 'Remember Me' checkbox is checked, this function saves the password currently entered in the password input field to local storage.
+ */
 function savePassword() {
     let rememberMeCheckbox = document.getElementById("rememberMe");
     if (rememberMeCheckbox.checked) {
@@ -125,13 +145,6 @@ function savePassword() {
         localStorage.setItem("savedPassword", password);
         console.log("Password saved to local storage");
     }
-}
-
-
-function showPassword() {
-    let passwordInput = document.getElementById("myInput");
-    if (passwordInput.type === "password") passwordInput.type = "text";
-    else passwordInput.type = "password";
 }
 
 

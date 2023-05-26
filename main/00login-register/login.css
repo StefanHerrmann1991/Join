@@ -527,9 +527,6 @@ h3 {
 .register .sign-up-container form input:nthchild() {
   margin-left: 12px;
 }
-.register .sign-up-container form input:nth-child(1) {
-  background-image: url(../../assets/img/person.png);
-}
 .register .sign-up-container form input:nth-child(2) {
   background-image: url(../../assets/img/mail.png);
 }
