@@ -19,7 +19,6 @@ async function initTasks() {
     invitedUsers = await loadFromBackend('invitedUsers', invitedUsers);
     tasks = await loadFromBackend('tasks', tasks);
     categories = await loadFromBackend('categories', categories);
-    console.log(invitedUsers, tasks, categories)
     await renderCategories();
     startPriorityEventListener();
     compareDate();

@@ -62,7 +62,9 @@ function newContact(name, email, phone, initial, color, firstNameInitial, id) {
 }
 
 
-
+/**
+ * This class represents a contact book for the kanban board.
+ */
 class ContactBook {
   contacts;
   initialList;
@@ -83,13 +85,11 @@ class ContactBook {
 
 
   /**
-   * Adds a new contact to the contact book.
-   *
-   * @param {string} name - The full name of the contact.
-   * @param {string} email - The email address of the contact.
-   * @param {string} phone - The phone number of the contact.
-   */
-
+    * This method is used to add a new contact to the contact book.
+    * @param {string} name - The full name of the contact.
+    * @param {string} email - The email address of the contact.
+    * @param {string} phone - The phone number of the contact.
+    */
   addContact(name, email, phone) {
     let [firstNameInitial, initials] = this.getInitials(name);
     let color = getRandomColor(firstNameInitial);
@@ -140,6 +140,11 @@ class ContactBook {
     if (!this.initialList.includes(newInitial)) this.initialList.push(newInitial);
   }
 
+
+  /**
+  * This method checks if the first name initial is still in use by other contacts.
+  * @param {string} firstNameInitial - The first letter of the contact's first name.
+  */
   checkInitials(firstNameInitial) {
     const firstNameInitials = this.contacts.map(contact => contact.firstNameInitial);
     const count = this.countOccurrence(firstNameInitials, firstNameInitial);
@@ -149,6 +154,13 @@ class ContactBook {
     }
   }
 
+
+  /**
+ * This method counts the occurrence of an element in an array.
+ * @param {Array} arr - The array to be checked.
+ * @param {any} element - The element whose occurrence is to be counted.
+ * @returns {number} - The number of occurrences of the element.
+ */
   countOccurrence(arr, element) {
     let count = 0;
     for (let i = 0; i < arr.length; i++) {
@@ -157,6 +169,12 @@ class ContactBook {
     return count;
   }
 
+
+   /**
+   * This method gets the first name initial and the first name initial + last name initial (if any) of a name.
+   * @param {string} name - The full name to extract initials from.
+   * @returns {Array} - An array containing the first name initial and the combined initials.
+   */
   getInitials(name) {
     const nameArray = name.split(' ');
     const firstNameInitial = nameArray.shift().substring(0, 1).toUpperCase();
@@ -166,10 +184,18 @@ class ContactBook {
     return [firstNameInitial, initials]
   }
 
+
+   /**
+   * This method sorts the contacts in the contact book by name in ascending order.
+   */
   sortContacts() {
     this.contacts.sort((a, b) => a.name.localeCompare(b.name));
   }
 
+
+  /**
+   * This method sorts the initialList in ascending order.
+   */
   sortInitials() {
     this.initialList.sort();
   }
@@ -195,6 +221,11 @@ function getRandomColor(name) {
   return 'rgb(' + r + ', ' + g + ', ' + b + ', 1.0)'
 }
 
+
+/**
+ * Creates a contact, gets the contact from the input fields, sorts them and there initials, and renders the updated contact list.
+ * @param {Event} event - The event triggering this function.
+ */
 function createContact(event) {
   event.preventDefault();
   const name = document.getElementById('name').value;
@@ -207,24 +238,35 @@ function createContact(event) {
   renderContacts();
 }
 
+
+/**
+ * Initializes the contact list by setting up the backend and rendering the contacts.
+ */
 async function initContacts() {
   await initBackend();
   includeHTML();
   await renderContacts();
 }
 
+
+
+/**
+ * Sets up the backend, downloads data from the server, parses the contact list, and sorts contacts afterwards.
+ */
 async function initBackend() {
   await setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
   await downloadFromServer();
   ContactBookAsText = JSON.parse(backend.getItem('ContactBookAsText')) || [];
   contactBook = new ContactBook(ContactBookAsText.contacts, ContactBookAsText.initialList);
   contactBook.sortInitials();
-  contactBook.sortContacts(); // Sort contacts after loading from server
+  contactBook.sortContacts(); 
   users = contactBook.contacts;
 }
 
 
-
+/**
+ * Renders the contacts in the contact book by iterating through the initial list and displays the contacts under there initial.
+ */
 function renderContacts() {
   contactBookId = document.getElementById('contactBookId');
   contactBookId.innerHTML = '';
@@ -250,15 +292,20 @@ function renderContacts() {
 }
 
 
-
-
-
+/**
+ * Handles window resize events to toggle the contact container visibility based on whether the window is in mobile view.
+ */
 window.addEventListener('resize', function () {
   // check if window is in mobile view
   if (isMobileView() && contactIsOpen) closeContainer('addContactBtn');
   else openContainer('addContactBtn');
 });
 
+
+/**
+ * Displays a specific contact in a more detailed view. Closes the addContactBtn container in mobile view.
+ * @param {number} index - The index of the contact to display.
+ */
 function showContact(index) {
   contactIsOpen = true
   if (isMobileView()) closeContainer('addContactBtn');
@@ -306,6 +353,9 @@ function showContact(index) {
 }
 
 
+/**
+ * Closes the mobile contact view and reopens the addContactBtn container.
+ */
 function closeContactMobile() {
   getId('editContact').classList.add('desktop');
   closeContainer('editContact');
@@ -313,17 +363,31 @@ function closeContactMobile() {
   openContainer('addContactBtn');
 }
 
+
+/**
+ * Selects a user from the contact list and visually marks it as selected.
+ * @param {number} index - The index of the user to be selected.
+ */
 function selectUser(index) {
   document.querySelectorAll('.contact-container').forEach(contact => contact.classList.remove('selected-user'));
   getId('contact-' + index).classList.add('selected-user');
 }
 
+
+/**
+ * Deletes a contact from the contact book at a given index and re-renders the contact list.
+ * @param {number} index - The index of the contact to be deleted.
+ */
 function deleteContact(index) {
   contactBook.deleteContact(index);
   renderContacts();
 }
 
 
+/**
+ * Opens a dialog box to edit a contact's details.
+ * @param {number} index - The index of the contact to be edited.
+ */
 function editContact(index) {
   let actualContact = contactBook.contacts[index];
   renderEditContact(index);
@@ -335,6 +399,12 @@ function editContact(index) {
 }
 
 
+/**
+ * Saves the changes to a contact, updates the contact book, re-renders the contact list, 
+ * and closes the edit dialog box. Then, it shows the contact with the updated details.
+ * @param {Event} event - The event triggering this function.
+ * @param {number} index - The index of the contact to be updated.
+ */
 function saveEditedContact(event, index) {
   event.preventDefault();
   contactName = getId('editName').value;
@@ -347,6 +417,10 @@ function saveEditedContact(event, index) {
 }
 
 
+/**
+ * Renders the edit dialog box with a pre-populated form for editing a contact's details.
+ * @param {number} actualContact - The index of the contact to be edited.
+ */
 function renderEditContact(actualContact) {
   document.getElementById('editContactDialog').innerHTML =
     `  

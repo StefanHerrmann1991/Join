@@ -102,7 +102,9 @@ function renderLogin() {
 </div>`}
 
 
-
+/**
+ * Toggles the password field, when its empty a lock will displayed if not the hidden password is present.
+ */
 function changeImage() {
     let passwordInput = getId('password');
     if (passwordInput.value.length === 0) {

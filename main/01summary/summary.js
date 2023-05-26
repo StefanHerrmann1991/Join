@@ -124,7 +124,6 @@ function getNumberOfTasks() {
 }
 
 
-
 /**
  * This function is used to filter tasks of a specific board. It receives the tasks array
  * and the board id as parameters. The function replaces the current tasks array with a 
