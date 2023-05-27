@@ -328,7 +328,7 @@ function showContact(index) {
           </svg>
       </button>
   </div>
-  <div class="edit-contact-popup">
+  <div class="edit-contact-popup" id="contactPopup">
       <div class="edit-name-initial-con">
           <div class="edit-initial" style="background-color:${actualContact.color}">${actualContact.initial}</div>
           <div class="contact-task-container">
@@ -379,8 +379,12 @@ function selectUser(index) {
  * @param {number} index - The index of the contact to be deleted.
  */
 function deleteContact(index) {
+  console.log(contactBook)
   contactBook.deleteContact(index);
+  saveBackendDataOf(contactBook);
+  getId('contactPopup').innerHTML = ''
   renderContacts();
+  closeContainer('editContactDialog')
 }
 
 
@@ -413,7 +417,7 @@ function saveEditedContact(event, index) {
   contactBook.editContact(index, contactName, contactEmail, contactPhone);
   renderContacts();
   closeContainer('editContactDialog');
-  showContact(index)
+  showContact(index);
 }
 
 
