@@ -28,7 +28,7 @@ let users;
  * A list of tasks.
  * @type {Array<JSON>}
  */
-let tasks;
+let tasks = [];
 
 /**
  * A list of subtasks.
@@ -275,4 +275,12 @@ function logout() {
  */
 function isMobileView() {
     return window.matchMedia('(max-width: 768px)').matches;
+}
+
+
+/**
+ * Loads the tasks array from the backend.
+ */
+function loadTasks() {
+    tasks = loadFromBackend('tasks', tasks);
 }

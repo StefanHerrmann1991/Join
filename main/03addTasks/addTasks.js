@@ -15,10 +15,10 @@ const popup = document?.querySelector('.popup');
 async function initTasks() {
     await includeHTML();
     await initBackend();
-    await renderUserList();
     invitedUsers = await loadFromBackend('invitedUsers', invitedUsers);
     tasks = await loadFromBackend('tasks', tasks);
     categories = await loadFromBackend('categories', categories);
+    await renderUserList();
     await renderCategories();
     startPriorityEventListener();
     compareDate();
@@ -112,8 +112,8 @@ function newCategory() {
         </div>
         <div class="button-container">
             <button type="button" class="cancel-button" onclick="cancelNewCategory()"><img
-                    src="/assets/img/cancelDark.png"></button>
-            <button type="button" class="add-button" onclick="addCategory()"><img src="/assets/img/checkDark.png"></button>
+                    src="../../assets/img/cancelDark.png"></button>
+            <button type="button" class="add-button" onclick="addCategory()"><img src="../../assets/img/checkDark.png"></button>
         </div>
     </div>
     <div id="colorPicker" class="color-picker"></div>       
@@ -132,7 +132,7 @@ function cancelNewCategory() {
     newCategory.innerHTML = `
     <button type="button" class="assign-btn" onclick="toggleContainer('categoryMenu');">
     <div class="chosen-category-container" id="categorySelect">Select task category</div>
-    <div id="imgArrow"><img src="/assets/img/open.png"></div>
+    <div id="imgArrow"><img src="../../assets/img/open.png"></div>
     <input id="validateCategory" required class="hidden-input">
     </button>
         <div class="user-menu d-none" id="categoryMenu">
@@ -296,7 +296,7 @@ function compareDate() {
  * Renders a list of users to the HTML element with id 'userList'.
  * Iterates through the 'invitedUsers' array and creates an input checkbox for each user.
  */
-function renderUserList() {
+function renderUserList() {    
     const userListContainer = getId('userList');
     userListContainer.innerHTML = '';
     for (let i = 0; i < invitedUsers.length; i++) {
@@ -357,9 +357,9 @@ function inviteUsers() {
         <input class="costom-datalist" id="userSearchInput" type="text" list="usersSearch" name="userList" placeholder="Contact email" onKeyUp="showResults(this.value)">
         <div class="button-container">
             <button type="button" class="cancel-button" onclick="cancelContactInvitation()"><img
-                src="/assets/img/cancelDark.png" ></button>
+                src="../../assets/img/cancelDark.png" ></button>
             <button type="button" class="add-button" onclick="newContactInvitation()"><img
-                src="/assets/img/checkDark.png" ></button>
+                src="../../assets/img/checkDark.png" ></button>
         </div>
     </div>  
     `
@@ -375,12 +375,12 @@ function cancelContactInvitation() {
     inviteContainer.innerHTML = `
     <button type="button" class="assign-btn" onclick="toggleContainer('userMenu'); toggleContainer('userInitialContainer')">
         <div>Select contact to assign</div>
-        <div id="imgArrow"><img src="/assets/img/open.png"></div>
+        <div id="imgArrow"><img src="../../assets/img/open.png"></div>
     </button>
     <div class="user-menu" id="userMenu">
         <div class="user-list" id="userList"></div>
         <button id="inviteUserBtn" type="button" class="invite-user-btn"
-        onclick="inviteUsers()">Invite new contact<img src="/assets/img/contactsBlack.png">
+        onclick="inviteUsers()">Invite new contact<img src="../../assets/img/contactsBlack.png">
         </button>   
     </div>
     `
@@ -443,9 +443,9 @@ function renderSubtasks() {
     <input minlength="3" id="subtaskInput" placeholder="Add new subtask">
     <div class="button-container">
     <button type="button" class="cancel-button" onclick ="cancelSubtask()"><img
-    src="/assets/img/cancelDark.png"></button>
+    src="../../assets/img/cancelDark.png"></button>
     <button type="button" class="add-button" onclick="newSubtask()"><img
-    src="/assets/img/checkDark.png"></button>
+    src="../../assets/img/checkDark.png"></button>
     </div>
     </div>
     `
@@ -460,7 +460,7 @@ function cancelSubtask() {
     subtask.classList.add('assign-btn-container')
     subtask.innerHTML = `
     <button onclick="renderSubtasks()" type="button" class="assign-btn"  type="text">
-    <div id="subtaskMenu">Add new subtask</div><img  class="add-subtask" src="/assets/img/addIcon.png">
+    <div id="subtaskMenu">Add new subtask</div><img  class="add-subtask" src="../../assets/img/addIcon.png">
     </button>  
     `
 }

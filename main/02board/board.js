@@ -31,6 +31,7 @@ async function initBoards() {
     await initBackend();
     await initTasks()
     await renderBoards(tasks);
+    invitedUsers = await loadFromBackend('invitedUsers', invitedUsers);
 }
 
 
@@ -215,11 +216,12 @@ function moveToBoard(i, targetBoard) {
  * @param {Number} i - The index of the task in the tasks array.
  * @return {String} - An HTML string for the task.
  */
-function boardTaskHTML(element, i) {
+function boardTaskHTML(element, i) {   
     let doneSubtask = element.subtasks.filter(function (subtask) { return subtask.checked }).length;
     let subtaskProgressBarClass = element.subtasks.length === 0 ? 'd-none' : '';
     let firstWord = element.description.split(' ')[0];
-    let description = element.description.length > 10 ? `${firstWord}...` : element.description;
+    let trimmedFirstWord = firstWord.length > 10 ? firstWord.substring(0,10) + "..." : firstWord;
+    let description = element.description.length > 10 ? `${trimmedFirstWord}...` : element.description;
     return `
       <div draggable="true" ondragstart="startDragging(${i})" id="task-${i}" class="task" onclick="renderDetailedTask(${i})">
           <div class="task-container">
@@ -455,14 +457,6 @@ function renderEditTask(index) {
     startPriorityEventListener(task.urgency);
     renderUserList();
     compareDate();
-}
-
-
-/**
- * Loads the tasks array from the backend.
- */
-function loadTasks() {
-    tasks = loadFromBackend('tasks', tasks);
 }
 
 

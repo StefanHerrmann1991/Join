@@ -1057,6 +1057,9 @@ progress {
     border: 1px solid #2A3647;
     border-radius: 10px;
   }
+  .edit-task-container .change-tasks .edit-task-btn {
+    border-radius: 10px 10px 10px 10px;
+  }
   .task {
     width: 90%;
   }
