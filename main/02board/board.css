@@ -209,6 +209,18 @@ h3 {
   margin-bottom: 2.5%;
 }
 
+.popup-message {
+  position: absolute;
+  z-index: 105;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 100svh;
+  width: 100svw;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+}
+
 .add-task-popup {
   position: absolute;
   z-index: 105;
@@ -859,7 +871,7 @@ h3 {
 .long-text {
   overflow-y: auto;
   min-height: 0px;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 .details-container {

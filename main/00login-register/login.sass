@@ -12,9 +12,9 @@
     position: relative
     height: 51px
     @include flex-center
-    
+
     .password-input
-        padding: 0px 
+        padding: 0px
         margin: 0px !important
         border: none !important
         padding-left: 21px !important
@@ -228,7 +228,7 @@
 .color-white
     color: white !important
 
-.sign-up-container
+
 .menu-btn
     @include flex-center
     gap: 5%
@@ -257,7 +257,10 @@
     width: 90%
     gap: 5%
     .remember-me
-        display: flex
+        @include flex-center
+        #rememberMe
+            height: 25px
+            width: 25px
     nobr
         padding-left: 5%
         margin-left: 5%

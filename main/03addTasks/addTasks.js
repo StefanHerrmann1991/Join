@@ -42,7 +42,7 @@ function addToTasks(board) {
     setTimeout(function () {
         closeContainer('successfulSubmit');
         window.location.href = '/main/02board/board.html';
-    }, 2500);
+    }, 1500);
     if (typeof myFunction === 'function') renderBoards(tasks);
 }
 

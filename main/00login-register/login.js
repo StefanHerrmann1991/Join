@@ -247,9 +247,13 @@ function registerUser() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     passwordValidation();
-    registeredUsers.push({ 'name': name, 'email': email, 'password': password });
-    addUsers();
-    renderAuth('login');
+    const isEmailRegistered = registeredUsers.some(user => user.email === email);
+    if (!isEmailRegistered) {
+        registeredUsers.push({ 'name': name, 'email': email, 'password': password });
+        addUsers();
+        renderAuth('login');
+    }
+    else {closeContainerInTime(2500, 'alreadyRegistered');}
 };
 
 

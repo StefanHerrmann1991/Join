@@ -329,7 +329,7 @@ function renderDetailedTask(index) {
                     </div>
                     <div class="details-container">
                         <h2>Priority: </h2>
-                        <div class="${task.urgency} details-priority-btn ">${task.urgency}<img class="filtered-img-${task.urgency}" src="../../assets/img/prio${task.urgency}.png"></div>
+                        <div class="${task.urgency} details-priority-btn ">${task.urgency}<img class="filtered-img-${task.urgency}" src="../../assets/img/prio${capitalizeFirst(task.urgency)}.png"></div>
                     </div>
                     <div class="${subtask}">
                     <h2>Subtasks: </h2>
