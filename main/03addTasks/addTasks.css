@@ -282,10 +282,9 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   flex-direction: row;
   padding: 0px;
-  width: 326px;
-  height: 74px;
   background: #2A3647;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
@@ -465,6 +464,18 @@ input, textarea, select, button, .priority-btn {
   font-weight: 400;
   font-size: 21px;
   line-height: 120%;
+}
+
+.popup-message {
+  position: absolute;
+  z-index: 105;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 100svh;
+  width: 100svw;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
 }
 
 .assign-btn-container {

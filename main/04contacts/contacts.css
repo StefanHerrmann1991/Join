@@ -281,10 +281,9 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   flex-direction: row;
   padding: 0px;
-  width: 326px;
-  height: 74px;
   background: #2A3647;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
@@ -719,7 +718,7 @@ h3 {
   color: #2A3647;
   border: 1px solid #2A3647;
   background-color: white;
-  margin-right: 4%;
+  margin-right: 2%;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:first-child:hover:hover, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:first-child:hover:hover {
   border: 1px solid #29ABE2;

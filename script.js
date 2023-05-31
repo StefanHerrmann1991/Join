@@ -175,6 +175,15 @@ function closeContainer(...ids) {
 }
 
 
+function closeContainerInTime(timeout, ...ids) {
+    openContainer(...ids);
+    setTimeout(() => {
+        if (ids.length == 1) getId(ids[0])?.classList.add('d-none');
+        ids.forEach(id => getId(id)?.classList.add('d-none'));
+    }, timeout);
+}
+
+
 /**
  * This function Displays all passed HTML elements
  * @param  {...string} ids - The id of one or several HTML elements

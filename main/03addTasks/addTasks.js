@@ -42,7 +42,7 @@ function addToTasks(board) {
     setTimeout(function () {
         closeContainer('successfulSubmit');
         window.location.href = '/main/02board/board.html';
-    }, 2500);
+    }, 2000);
     if (typeof myFunction === 'function') renderBoards(tasks);
 }
 
@@ -296,7 +296,7 @@ function compareDate() {
  * Renders a list of users to the HTML element with id 'userList'.
  * Iterates through the 'invitedUsers' array and creates an input checkbox for each user.
  */
-function renderUserList() {    
+function renderUserList() {
     const userListContainer = getId('userList');
     userListContainer.innerHTML = '';
     for (let i = 0; i < invitedUsers.length; i++) {
@@ -356,10 +356,12 @@ function inviteUsers() {
     <div class="subtasks-container">
         <input class="costom-datalist" id="userSearchInput" type="text" list="usersSearch" name="userList" placeholder="Contact email" onKeyUp="showResults(this.value)">
         <div class="button-container">
-            <button type="button" class="cancel-button" onclick="cancelContactInvitation()"><img
-                src="../../assets/img/cancelDark.png" ></button>
-            <button type="button" class="add-button" onclick="newContactInvitation()"><img
-                src="../../assets/img/checkDark.png" ></button>
+            <button type="button" class="cancel-button" onclick="cancelContactInvitation()">
+                <img src="../../assets/img/cancelDark.png" >
+            </button>
+            <button type="button" class="add-button" onclick="newContactInvitation()">
+                <img src="../../assets/img/checkDark.png">
+            </button>
         </div>
     </div>  
     `
@@ -394,12 +396,15 @@ function cancelContactInvitation() {
 function newContactInvitation() {
     let newInvitation;
     userName = getId('userSearchInput').value;
-    newInvitation = users.filter(function (user) {
-        if (user.name.match(userName)) return user;
-    })
-    invitedUsers.push(newInvitation[0]);
-    saveToBackend('invitedUsers', invitedUsers)
-    cancelContactInvitation();
+    if (!invitedUsers.filter(function (newInvitedUser) { newInvitedUser.name.match(userName); })) {
+        newInvitation = users.filter(function (user) {
+            if (user.name.match(userName)) return user;
+        })
+        invitedUsers.push(newInvitation[0]);
+        saveToBackend('invitedUsers', invitedUsers);
+        cancelContactInvitation();
+    }
+    else closeContainerInTime(2000, 'popupMessageUsers');
 }
 
 
@@ -440,13 +445,15 @@ function renderSubtasks() {
     subtask.classList.remove('assign-btn-container')
     subtask.innerHTML = `
     <div class="subtasks-container">
-    <input minlength="3" id="subtaskInput" placeholder="Add new subtask">
-    <div class="button-container">
-    <button type="button" class="cancel-button" onclick ="cancelSubtask()"><img
-    src="../../assets/img/cancelDark.png"></button>
-    <button type="button" class="add-button" onclick="newSubtask()"><img
-    src="../../assets/img/checkDark.png"></button>
-    </div>
+        <input minlength="3" id="subtaskInput" placeholder="Add new subtask">
+        <div class="button-container">
+            <button type="button" class="cancel-button" onclick ="cancelSubtask()">
+                <img src="../../assets/img/cancelDark.png"> 
+            </button>
+            <button type="button" class="add-button" onclick="newSubtask()">
+                <img src="../../assets/img/checkDark.png">
+            </button>
+        </div>
     </div>
     `
 }
@@ -471,11 +478,12 @@ function cancelSubtask() {
  */
 function newSubtask() {
     let subtaskInput = getId('subtaskInput').value;
-    let renderedSubtasks = getId('renderedSubtasks');
-    subtasks.push({ title: subtaskInput, checked: false });
-    renderedSubtasks.innerHTML = "";
-    subtasks.forEach((subtask, index) => {
-        renderedSubtasks.innerHTML += `
+    if (subtaskInput.length > 2) {
+        let renderedSubtasks = getId('renderedSubtasks');
+        subtasks.push({ title: subtaskInput, checked: false });
+        renderedSubtasks.innerHTML = "";
+        subtasks.forEach((subtask, index) => {
+            renderedSubtasks.innerHTML += `
         <div class="subtask-checkbox-container"> 
             <input class="subtask-checkbox" type="checkbox" 
                 value="${index}" 
@@ -484,7 +492,10 @@ function newSubtask() {
             ${subtask.title}
         </div>            
     `;
-    });
+        });
+    }
+    else closeContainerInTime(2000, 'popupMessageSubtask');
+
 }
 
 
