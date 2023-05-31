@@ -321,10 +321,8 @@ function renderDetailedTask(index) {
                 </div>
                     <button class="close-upper-right" onclick="closeTaskDialog()"><img
                             src="../../assets/img/cancel.png"></button>        
-                    <h1>${task.title}</h1>
-                   
-                    <div class="long-text">${task.description}</div>
-             
+                    <h1>${task.title}</h1>                   
+                    <div class="long-text">${task.description}</div>             
                     <div class="details-container">
                         <h2>Due date: </h2>
                         <div>${task.date}</div>
@@ -343,7 +341,7 @@ function renderDetailedTask(index) {
                         <div class="details-assigned-users">${renderAssignedUsers(task.assignedTo)}</div>
                     </div>
                     <div class="change-tasks">
-                    <button class="delete-task-btn" onclick="setIndex(${index})"><img src="../../assets/img/deleteDark.png"></button>
+                    <button class="delete-task-btn" onclick="openDeleteDialog(${index})"><img src="../../assets/img/deleteDark.png"></button>
                     <button class="edit-task-btn" onclick="renderEditTask(${index})"><img src="../../assets/img/editBtnWhite.png"></button>
                     </div>
                 </div>
@@ -394,79 +392,84 @@ function renderEditTask(index) {
     let editTask = getId('editTaskDialog');
     let task = tasks[index];
     assignedUsers = task.assignedTo;
-    editTask.innerHTML = `
-    <div class="edit-task-dialog center">
-        <div class="edit-task-container">
-            <button class="close-upper-right desktop" onclick="closeTaskDialog()"><img
-                    src="../../assets/img/cancel.png"></button>
-            <form class="edit-task-form" onsubmit="changeTask(${index}, '${task.board}')">
-                <div class="edit-task-field">   
-                        <div class="mgn-b">            
-                        <div class="title-button">                        
-                            <h3>Title</h3>
-                            <button class="close-upper-right mobile" onclick="closeTaskDialog()"><img
-                                    src="../../assets/img/cancel.png"></button>
-                        </div>
-                        <input required class="title" id="title" value="${task.title}" placeholder="Enter a title"
-                            oninput="loadTasks()">
-                        </div>                        
-                        <div class="mgn-b">
-                            <h3>Description</h3>
-                            <textarea resize="none" required id="description"
-                                placeholder="Enter a description">${task.description}</textarea>
-                            <h3>Due date</h3>
-                            <input value="${task.date}" required id="date" class="date" type="date" name="setTodaysDate">
-                        </div>
-                        <div class="mgn-b">
-                            <h3>Prio</h3>
-                            <div id="urgency" class="priority-btns">
-                                <label for="urgent" class="urgent priority-btn">
-                                    <input type="radio" id="urgent" name="priority" value="urgent" class="priority-radio"
-                                        required>
-                                    Urgent<img src="../../assets/img/prioUrgent.png">
-                                </label>
-                                <label for="medium" class="medium priority-btn">
-                                    <input type="radio" id="medium" name="priority" value="medium" class="priority-radio">
-                                    Medium<img class="medium-prio" src="../../assets/img/prioMedium.png">
-                                </label>
-                                <label for="low" class="low priority-btn">
-                                    <input type="radio" id="low" name="priority" value="low" class="priority-radio">
-                                    Low<img src="../../assets/img/prioLow.png">
-                                </label>
-                            </div>
-                        </div>
-                        <div class="mgn-b">
-                            <h3>Assigned to</h3>
-                            <div class="assign-btn-container" id="assignBtnContainer">
-                                <button type="button" class="assign-btn"
-                                    onclick="toggleContainer('detailsUserMenu'); toggleContainer('userInitialContainer')">
-                                    <div>Select contact to assign</div>
-                                    <div id="imgArrow"><img src="../../assets/img/open.png"></div>
-                                </button>
-                                <div class="user-menu d-none" id="detailsUserMenu">
-                                    <div class="user-list" id="userList"></div>
-                                    <button id="inviteUserBtn" type="button" class="invite-user-btn"
-                                        onclick="inviteUsers()">Invite
-                                        new contact<img src="../../assets/img/contactsBlack.png">
-                                    </button>
-                                </div>
-                                </div>
-                                <div class="user-assignment-container">
-                                <div id="userInitialContainer" class="user-initial-container"></div>
-                                </div>
-                            <input class="d-none" id="category" value="${task.category.index}">
-                        </div>
-                        
-                        <button class="accept-edited-task-btn">Ok<img src="../../assets/img/check.png"></button>
-                    </div>
-            </form>
-        </div>
-    </div>
-`
+    editTask.innerHTML = editTaskDialogHTML(index, task);
     startPriorityEventListener(task.urgency);
     renderUserList();
     compareDate();
 }
+
+
+function editTaskDialogHTML(index, task) {
+    return`
+    <div class="edit-task-dialog center">
+    <div class="edit-task-container">
+        <button class="close-upper-right desktop" onclick="closeTaskDialog()"><img
+                src="../../assets/img/cancel.png"></button>
+        <form class="edit-task-form" onsubmit="changeTask(${index}, '${task.board}')">
+            <div class="edit-task-field">   
+                    <div class="mgn-b">            
+                    <div class="title-button">                        
+                        <h3>Title</h3>
+                        <button class="close-upper-right mobile" onclick="closeTaskDialog()"><img
+                                src="../../assets/img/cancel.png"></button>
+                    </div>
+                    <input required class="title" id="title" value="${task.title}" placeholder="Enter a title"
+                        oninput="loadTasks()">
+                    </div>                        
+                    <div class="mgn-b">
+                        <h3>Description</h3>
+                        <textarea resize="none" required id="description"
+                            placeholder="Enter a description">${task.description}</textarea>
+                        <h3>Due date</h3>
+                        <input value="${task.date}" required id="date" class="date" type="date" name="setTodaysDate">
+                    </div>
+                    <div class="mgn-b">
+                        <h3>Prio</h3>
+                        <div id="urgency" class="priority-btns">
+                            <label for="urgent" class="urgent priority-btn">
+                                <input type="radio" id="urgent" name="priority" value="urgent" class="priority-radio"
+                                    required>
+                                Urgent<img src="../../assets/img/prioUrgent.png">
+                            </label>
+                            <label for="medium" class="medium priority-btn">
+                                <input type="radio" id="medium" name="priority" value="medium" class="priority-radio">
+                                Medium<img class="medium-prio" src="../../assets/img/prioMedium.png">
+                            </label>
+                            <label for="low" class="low priority-btn">
+                                <input type="radio" id="low" name="priority" value="low" class="priority-radio">
+                                Low<img src="../../assets/img/prioLow.png">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mgn-b">
+                        <h3>Assigned to</h3>
+                        <div class="assign-btn-container" id="assignBtnContainer">
+                            <button type="button" class="assign-btn"
+                                onclick="toggleContainer('detailsUserMenu'); toggleContainer('userInitialContainer')">
+                                <div>Select contact to assign</div>
+                                <div id="imgArrow"><img src="../../assets/img/open.png"></div>
+                            </button>
+                            <div class="user-menu d-none" id="detailsUserMenu">
+                                <div class="user-list" id="userList"></div>
+                                <button id="inviteUserBtn" type="button" class="invite-user-btn"
+                                    onclick="inviteUsers()">Invite
+                                    new contact<img src="../../assets/img/contactsBlack.png">
+                                </button>
+                            </div>
+                            </div>
+                            <div class="user-assignment-container">
+                            <div id="userInitialContainer" class="user-initial-container"></div>
+                            </div>
+                        <input class="d-none" id="category" value="${task.category.index}">
+                    </div>                    
+                    <button class="accept-edited-task-btn">Ok<img src="../../assets/img/check.png"></button>
+                </div>
+        </form>
+    </div>
+</div>
+`
+}
+   
 
 
 /**
@@ -530,9 +533,27 @@ function deleteTask() {
     tasks.splice(currentIndexDelete, 1);
     saveToBackend('tasks', tasks)
     closeTaskDialog();
-    renderBoards(tasks)
+    closeContainer('deletePopup');
+    renderBoards(tasks);
 }
 
+
+/**
+ * Opens a specified dialog for deleting a task.
+ *
+ * @param {number} index - The index of the task to be deleted.
+ */
+function openDeleteDialog(index) {
+    setIndex(index);
+    openContainer('deletePopup'); 
+}
+
+
+/**
+ * Sets the current index for deletion to a specified value.
+ *
+ * @param {number} i - The new value for the current index of deletion.
+ */
 function setIndex(i) {
     currentIndexDelete = i;
 }
