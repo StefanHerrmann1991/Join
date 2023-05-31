@@ -21,6 +21,12 @@ let detailsAreOpen = false;
 
 
 /**
+ * A number that stores the current task which will be able to be deleted.
+ * @type {number}
+ */
+let currentIndexDelete;
+
+/**
  * This asynchronous function initializes the state of the boards. It includes the necessary
  * HTML, initializes the task adding process, connects to the backend, initializes tasks, 
  * and finally renders the boards.
@@ -216,11 +222,11 @@ function moveToBoard(i, targetBoard) {
  * @param {Number} i - The index of the task in the tasks array.
  * @return {String} - An HTML string for the task.
  */
-function boardTaskHTML(element, i) {   
+function boardTaskHTML(element, i) {
     let doneSubtask = element.subtasks.filter(function (subtask) { return subtask.checked }).length;
     let subtaskProgressBarClass = element.subtasks.length === 0 ? 'd-none' : '';
     let firstWord = element.description.split(' ')[0];
-    let trimmedFirstWord = firstWord.length > 10 ? firstWord.substring(0,10) + "..." : firstWord;
+    let trimmedFirstWord = firstWord.length > 10 ? firstWord.substring(0, 10) + "..." : firstWord;
     let description = element.description.length > 10 ? `${trimmedFirstWord}...` : element.description;
     return `
       <div draggable="true" ondragstart="startDragging(${i})" id="task-${i}" class="task" onclick="renderDetailedTask(${i})">
@@ -304,6 +310,7 @@ function renderDetailedTask(index) {
     let task = tasks[index]
     let editTask = getId('editTaskDialog')
     openContainer('editTaskDialog')
+    let subtask = task.subtasks.length === 0 ? 'd-none' : '';
     editTask.innerHTML = `
         <div class="edit-task-dialog center" id="editTaskContainer">
             <div class="edit-task-container">
@@ -326,15 +333,17 @@ function renderDetailedTask(index) {
                         <h2>Priority: </h2>
                         <div class="${task.urgency} details-priority-btn ">${task.urgency}<img class="filtered-img-${task.urgency}" src="../../assets/img/prio${task.urgency}.png"></div>
                     </div>
-                    <div class="subtasks-in-details" id="subtask-${index}">
-               
+                    <div class="${subtask}">
+                    <h2>Subtasks: </h2>
+                    <div class="subtasks-in-details" id="subtask-${index}">       
+                    </div>        
                     </div>
                     <div class="assigned-to-container">
                         <h2>Assigned to:</h2>
                         <div class="details-assigned-users">${renderAssignedUsers(task.assignedTo)}</div>
                     </div>
                     <div class="change-tasks">
-                    <button class="delete-task-btn" onclick="deleteTask(${index})"><img src="../../assets/img/deleteDark.png"></button>
+                    <button class="delete-task-btn" onclick="setIndex(${index})"><img src="../../assets/img/deleteDark.png"></button>
                     <button class="edit-task-btn" onclick="renderEditTask(${index})"><img src="../../assets/img/editBtnWhite.png"></button>
                     </div>
                 </div>
@@ -357,7 +366,7 @@ function renderSubtasksDetails(index) {
         const subtask = subtasks[i];
         let checkedValue = subtask.checked ? "checked" : "";
         subtaskId.innerHTML += `
-        <h2>Subtasks: </h2><div class="subtask-checkbox-container">
+        <div class="subtask-checkbox-container">
         <input class="subtask-checkbox" type="checkbox" value="0" onchange="updateEditSubtask(${index}, ${i})" ${checkedValue}>
         ${subtask.title}
       </div>`;
@@ -517,9 +526,13 @@ function autocompleteMatchTask(input) {
  * Deletes an element from an array, updates the data on the server,  and renders boards.
  * @param {i} @type {Number}
  */
-function deleteTask(i) {
-    tasks.splice(i, 1);
+function deleteTask() {
+    tasks.splice(currentIndexDelete, 1);
     saveToBackend('tasks', tasks)
     closeTaskDialog();
     renderBoards(tasks)
+}
+
+function setIndex(i) {
+    currentIndexDelete = i;
 }

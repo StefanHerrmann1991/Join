@@ -42,7 +42,7 @@ function addToTasks(board) {
     setTimeout(function () {
         closeContainer('successfulSubmit');
         window.location.href = '/main/02board/board.html';
-    }, 2000);
+    }, 2500);
     if (typeof myFunction === 'function') renderBoards(tasks);
 }
 
@@ -394,9 +394,9 @@ function cancelContactInvitation() {
  * Adds a new invitation based on the value inputted in 'userSearchInput' and cancels the invitation form after successful invitation.
  */
 function newContactInvitation() {
-    let newInvitation;
+    let newInvitation;    
     userName = getId('userSearchInput').value;
-    if (!invitedUsers.filter(function (newInvitedUser) { newInvitedUser.name.match(userName); })) {
+    if (!doubleIsThere(userName)) {
         newInvitation = users.filter(function (user) {
             if (user.name.match(userName)) return user;
         })
@@ -404,9 +404,13 @@ function newContactInvitation() {
         saveToBackend('invitedUsers', invitedUsers);
         cancelContactInvitation();
     }
-    else closeContainerInTime(2000, 'popupMessageUsers');
+    else closeContainerInTime(2500, 'popupMessageUsers');
 }
 
+
+function doubleIsThere(userName) {  
+    return invitedUsers.some(user => user.name.match(userName));
+}
 
 /**
  * Matches the input string with user names or emails and returns a list of matching users.
@@ -429,7 +433,7 @@ function showResults(val) {
     const res = getId("userSearchInput");
     res.innerHTML = '';
     let list = '';
-    const usersList = autocompleteMatch(val);
+    const usersList = autocompleteMatch((val.toLowerCase()));
     for (let i = 0; i < usersList.length; i++) {
         list += `<option value="${usersList[i].name}">${usersList[i].name} (${usersList[i].email})</option>`;
     }

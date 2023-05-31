@@ -1,7 +1,20 @@
 @import '../../style.sass'
 
-.delete-popup
+.delete-popup-container
     @include popup
+    @include flex-center
+    .delete-popup
+        display: flex
+        justify-content: center
+        align-items: center
+        img
+            width: 35px
+            height: 35px
+            margin: 0px
+            padding: 0px
+        .cancel-delete
+            filter: invert(100%)
+            
 
 .board-main
     width: 90%

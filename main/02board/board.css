@@ -283,13 +283,13 @@ h3 {
   align-items: center;
   text-align: center;
   flex-direction: row;
-  padding: 0px;
+  padding: 23.5px 24.5px;
   background: #2A3647;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
   color: white;
   position: absolute;
-  bottom: 20px !important;
+  bottom: 20% !important;
   left: 50%;
   transform: translateX(-50%);
   animation: fly-in 0.8s ease-out forwards;
@@ -452,7 +452,7 @@ h3 {
     display: block;
   }
 }
-.delete-popup {
+.delete-popup-container {
   position: absolute;
   z-index: 105;
   background-color: rgba(0, 0, 0, 0.2);
@@ -462,6 +462,23 @@ h3 {
   width: 100vw;
   top: 0;
   left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.delete-popup-container .delete-popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.delete-popup-container .delete-popup img {
+  width: 35px;
+  height: 35px;
+  margin: 0px;
+  padding: 0px;
+}
+.delete-popup-container .delete-popup .cancel-delete {
+  filter: invert(100%);
 }
 
 .board-main {

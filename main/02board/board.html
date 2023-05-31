@@ -31,7 +31,7 @@
                             <div class="button-container">
                                 <img class="search-btn" src="../../assets/img/search.png">
                             </div>
-                        </div>                     
+                        </div>
                     </div>
                     <button class="add-task" onclick="openContainer('addTasksPopup');">
                         <nobr class="desktop">Add task</nobr><img src="../../assets/img/addTaskWhite.png">
@@ -42,12 +42,12 @@
         </div>
     </div>
     <div id="editTaskDialog" class="d-none"></div>
-    <div class="delete-popup" id="deletePopup">
-        <div>Are you sure you want to delete that task?</div>
-        <button><img></button>
-        <button><img></button>
+    <div class="delete-popup-container d-none" id="deletePopup">
+        <div class="delete-popup task-submit-successful">
+            <div>Are you sure you want to delete that task?</div>
+            <button class="cancel-delete" onclick="closeContainer('deletePopup')"><img src="../../assets/img/cancelDark.png"></button>
+            <button class="check-delete" onclick="deleteTask()"><img src="../../assets/img/check.png"></button>
+        </div>
     </div>
     <div class="add-task-popup d-none" id="addTasksPopup" w3-include-html="../03addTasks/taskPopup.html"></div>
 </body>
-
-

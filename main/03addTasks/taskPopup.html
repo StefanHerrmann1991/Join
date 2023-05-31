@@ -11,8 +11,17 @@
 
 <body>
     <div class="task-main">
-        <div class="task-submit-successful d-none" id="successfulSubmit">Task added to board <img
-                src="../../assets/img/board.png"></div>
+        <div class="popup-message d-none" id="successfulSubmit">
+            <div class="task-submit-successful ">Task added to board <img src="../../assets/img/board.png"></div>
+        </div>
+        <div class="popup-message d-none" id="popupMessageUsers">
+            <div class="task-submit-successful">The user has already been invited.
+            </div>
+        </div>
+        <div class="popup-message d-none" id="popupMessageSubtask">
+            <div class="task-submit-successful">The subtask needs to have at least three letters.
+            </div>
+        </div>
         <button class="close-upper-right" onclick="closeContainer('addTasksPopup')">
             <img src="../../assets/img/cancel.png">
         </button>
@@ -41,7 +50,8 @@
                         </div>
                         <h3>Assigned to</h3>
                         <div class="assign-btn-container" id="assignBtnContainer">
-                            <button type="button" class="assign-btn" onclick="toggleContainer('userMenu'); toggleContainer('userInitialContainer')">
+                            <button type="button" class="assign-btn"
+                                onclick="toggleContainer('userMenu'); toggleContainer('userInitialContainer')">
                                 <div>Select contact to assign</div>
                                 <div id="imgArrow"><img src="../../assets/img/open.png"></div>
                             </button>
