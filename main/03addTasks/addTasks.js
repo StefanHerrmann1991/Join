@@ -1,11 +1,4 @@
 /**
- * Searches for the element with class 'popup' in the DOM tree.
- * @type {HTMLElement}
- */
-const popup = document?.querySelector('.popup');
-
-
-/**
  * Initialization of tasks including HTML inclusion, backend initialization, 
  * user list rendering, task loading, categories loading and rendering.
  * Also sets up the priority event listener and compares date.
@@ -14,14 +7,15 @@ const popup = document?.querySelector('.popup');
  */
 async function initTasks() {
     await includeHTML();
-    await initBackend();
-    invitedUsers = await loadFromBackend('invitedUsers', invitedUsers);
+    await initContactList();
     tasks = await loadFromBackend('tasks', tasks);
     categories = await loadFromBackend('categories', categories);
+    invitedUsers = await loadFromBackend('invitedUsers', invitedUsers);
     await renderUserList();
     await renderCategories();
     startPriorityEventListener();
     compareDate();
+    highlightChosenMenu()
 }
 
 
@@ -39,11 +33,13 @@ function addToTasks(board) {
     tasks.push(task);
     saveToBackend('tasks', tasks)
     openContainer('successfulSubmit');
-    setTimeout(function () {
-        closeContainer('successfulSubmit');
-        window.location.href = '../../main/02board/board.html';
-    }, 1500);
-    if (typeof myFunction === 'function') renderBoards(tasks);
+    if(checkMenu()) {
+        setTimeout(function () {
+            closeContainer('successfulSubmit');
+            window.location.href = '../../main/02board/board.html';
+        }, 1500);
+    }    
+    renderBoards(tasks);
 }
 
 
@@ -109,24 +105,6 @@ function newCategory() {
 }
 
 
-
-function categoryHTML() {
-    return `
-    <div class="subtasks-container">
-        <div class="category-input-color">
-            <input minlength="3" id="categoryInput" type="text" placeholder="New category name">     
-            <div class="chosen-color" id="chosenColor"></div>       
-        </div>
-        <div class="button-container">
-            <button type="button" class="cancel-button" onclick="cancelNewCategory()"><img
-                    src="../../assets/img/cancelDark.png"></button>
-            <button type="button" class="add-button" onclick="addCategory()"><img src="../../assets/img/checkDark.png"></button>
-        </div>
-    </div>
-    <div id="colorPicker" class="color-picker"></div>       
-    `
-}
-
 /**
  * Cancels the category creation process and reverts the layout changes made in newCategory function. 
  * Then it re-renders the categories.
@@ -134,18 +112,7 @@ function categoryHTML() {
 function cancelNewCategory() {
     let newCategory = getId('categoryContainer')
     newCategory.classList.add('assign-btn-container');
-    newCategory.innerHTML = `
-    <button type="button" class="assign-btn" onclick="toggleContainer('categoryMenu');">
-    <div class="chosen-category-container" id="categorySelect">Select task category</div>
-    <div id="imgArrow"><img src="../../assets/img/open.png"></div>
-    <input id="validateCategory" required class="hidden-input">
-    </button>
-        <div class="user-menu d-none" id="categoryMenu">
-            <button id="newCategoryBtn" type="button" class="new-category-btn"
-            onclick="newCategory()">New category</button>
-            <div class="category-list" id="categoryList"></div>
-        </div>            
- `
+    newCategory.innerHTML = newCategoryHTML()
     renderCategories();
 }
 
@@ -203,12 +170,7 @@ function renderCategories() {
     categoryOption.innerHTML = '';
     for (let i = 0; i < categories.length; i++) {
         const category = categories[i];
-        categoryOption.innerHTML += `
-        <button type="button" onclick="saveCategory(${i})" class="each-category-container">
-        <div class="category" id="category-${i}">${category.topic}</div>
-        <div class="category-color" style="background-color: ${category.color}"></div>
-        </button>
-        `
+        categoryOption.innerHTML += categoryOptionsHTML(category, i);
     };
 };
 
@@ -220,11 +182,7 @@ function renderCategories() {
 function saveCategory(index) {
     let chosenCategoryOption = getId('categorySelect');
     let category = categories[index];
-    chosenCategoryOption.innerHTML = ` 
-    <button type="button" id="category" class="category" value="${category.index}">
-    <span>${category.topic}</span>
-    <div class="category-color" style="background-color: ${category.color}"></div></button>  
-      `
+    chosenCategoryOption.innerHTML = chosenCategoryHTML(category);
     validateData('validateCategory', category);
     closeContainer('categoryMenu');
 }
@@ -240,16 +198,12 @@ function startPriorityEventListener(selectedValue) {
     radioEls.forEach(radioEl => {
         const parentLabel = radioEl.parentElement;
         if (radioEl.value === selectedValue) {
-            // If the radio value matches the selectedValue, set its parent label as 'selected'
             parentLabel.classList.add('selected');
-            radioEl.checked = true; // Set the radio button as checked
+            radioEl.checked = true;
         }
         radioEl.addEventListener('change', () => {
-            // Remove selected class from all parent labels
             radioEls.forEach(r => r.parentElement.classList.remove('selected'));
-            // Add selected class to the clicked radio button's parent label
             parentLabel.classList.add('selected');
-            // Store the selected value
             selectedValue = radioEl.value;
         });
     });
@@ -283,20 +237,6 @@ function compareDate() {
 }
 
 
-window.onload = async function () {
-    downloadFromServer();
-}
-
-
-/**
- * Disables the selection of a date before the current day on the HTML element with id 'date'.
- */
-function compareDate() {
-    let today = new Date().toISOString().split('T')[0];
-    document.getElementById('date').setAttribute('min', today);
-}
-
-
 /**
  * Renders a list of users to the HTML element with id 'userList'.
  * Iterates through the 'invitedUsers' array and creates an input checkbox for each user.
@@ -307,9 +247,7 @@ function renderUserList() {
     for (let i = 0; i < invitedUsers.length; i++) {
         const user = invitedUsers[i];
         let isChecked = '';
-        if (assignedUsers !== undefined) {
-            isChecked = assignedUsers.some(assignedUser => assignedUser.name === user.name) ? 'checked' : '';
-        }
+        if (assignedUsers !== undefined) isChecked = assignedUsers.some(assignedUser => assignedUser.name === user.name) ? 'checked' : '';
         userListContainer.innerHTML += `
         <div class="user-list-container">
           <div>${user.name}</div>
@@ -357,19 +295,7 @@ function renderUserInitial(event, index) {
 function inviteUsers() {
     let inviteContainer = getId('assignBtnContainer');
     inviteContainer.classList.remove('assign-btn-container');
-    inviteContainer.innerHTML = `  
-    <div class="subtasks-container">
-        <input class="costom-datalist" id="userSearchInput" type="text" list="usersSearch" name="userList" placeholder="Contact email" onKeyUp="showResults(this.value)">
-        <div class="button-container">
-            <button type="button" class="cancel-button" onclick="cancelContactInvitation()">
-                <img src="../../assets/img/cancelDark.png" >
-            </button>
-            <button type="button" class="add-button" onclick="newContactInvitation()">
-                <img src="../../assets/img/checkDark.png">
-            </button>
-        </div>
-    </div>  
-    `
+    inviteContainer.innerHTML = invivteUsersHTML();
 }
 
 
@@ -379,18 +305,7 @@ function inviteUsers() {
 function cancelContactInvitation() {
     let inviteContainer = getId('assignBtnContainer');
     inviteContainer.classList.add('assign-btn-container');
-    inviteContainer.innerHTML = `
-    <button type="button" class="assign-btn" onclick="toggleContainer('userMenu'); toggleContainer('userInitialContainer')">
-        <div>Select contact to assign</div>
-        <div id="imgArrow"><img src="../../assets/img/open.png"></div>
-    </button>
-    <div class="user-menu" id="userMenu">
-        <div class="user-list" id="userList"></div>
-        <button id="inviteUserBtn" type="button" class="invite-user-btn"
-        onclick="inviteUsers()">Invite new contact<img src="../../assets/img/contactsBlack.png">
-        </button>   
-    </div>
-    `
+    inviteContainer.innerHTML = contactInvitationHTML();
     renderUserList();
 }
 
@@ -399,7 +314,7 @@ function cancelContactInvitation() {
  * Adds a new invitation based on the value inputted in 'userSearchInput' and cancels the invitation form after successful invitation.
  */
 function newContactInvitation() {
-    let newInvitation;    
+    let newInvitation;
     userName = getId('userSearchInput').value;
     if (!doubleIsThere(userName)) {
         newInvitation = users.filter(function (user) {
@@ -413,9 +328,10 @@ function newContactInvitation() {
 }
 
 
-function doubleIsThere(userName) {  
+function doubleIsThere(userName) {
     return invitedUsers.some(user => user.name.match(userName));
 }
+
 
 /**
  * Matches the input string with user names or emails and returns a list of matching users.
@@ -429,6 +345,7 @@ function autocompleteMatch(input) {
         if (user.name.match(reg) || user.email.match(reg)) return user;
     });
 }
+
 
 /**
  * Renders a dropdown list of user names and emails that match the input string in 'userSearchInput'.
@@ -452,19 +369,7 @@ function showResults(val) {
 function renderSubtasks() {
     let subtask = getId('subtasks')
     subtask.classList.remove('assign-btn-container')
-    subtask.innerHTML = `
-    <div class="subtasks-container">
-        <input minlength="3" id="subtaskInput" placeholder="Add new subtask">
-        <div class="button-container">
-            <button type="button" class="cancel-button" onclick ="cancelSubtask()">
-                <img src="../../assets/img/cancelDark.png"> 
-            </button>
-            <button type="button" class="add-button" onclick="newSubtask()">
-                <img src="../../assets/img/checkDark.png">
-            </button>
-        </div>
-    </div>
-    `
+    subtask.innerHTML = subtaskHTML();
 }
 
 
@@ -474,11 +379,7 @@ function renderSubtasks() {
 function cancelSubtask() {
     let subtask = getId('subtasks');
     subtask.classList.add('assign-btn-container')
-    subtask.innerHTML = `
-    <button onclick="renderSubtasks()" type="button" class="assign-btn"  type="text">
-    <div id="subtaskMenu">Add new subtask</div><img  class="add-subtask" src="../../assets/img/addIcon.png">
-    </button>  
-    `
+    subtask.innerHTML = cancelSubtaskHTML();
 }
 
 
@@ -492,19 +393,10 @@ function newSubtask() {
         subtasks.push({ title: subtaskInput, checked: false });
         renderedSubtasks.innerHTML = "";
         subtasks.forEach((subtask, index) => {
-            renderedSubtasks.innerHTML += `
-        <div class="subtask-checkbox-container"> 
-            <input class="subtask-checkbox" type="checkbox" 
-                value="${index}" 
-                    ${subtask.checked ? 'checked' : ''} 
-                    onchange="updateSubtask(${index})">
-            ${subtask.title}
-        </div>            
-    `;
+            renderedSubtasks.innerHTML += newSubtaskHTML(subtask, index);
         });
     }
     else closeContainerInTime(2000, 'popupMessageSubtask');
-
 }
 
 

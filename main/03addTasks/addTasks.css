@@ -577,8 +577,9 @@ input:-webkit-autofill:active {
 
 .title, select, textarea, .date, .standard {
   display: block;
-  padding: 13px 21px;
-  width: 100%;
+  padding-left: 21px;
+  padding-right: 21px;
+  width: calc(100% - 42px);
   background: #FFFFFF;
   border: 1px solid #D1D1D1;
   border-radius: 10px;

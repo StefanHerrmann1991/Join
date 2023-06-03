@@ -2,8 +2,6 @@
 
 $element-width: 100%
 
-
-
 button
     border: none
     background-color: transparent
@@ -70,7 +68,7 @@ input:-webkit-autofill:active
             height: 24px
             margin-left: 2px
         @include hover-style-1
-        
+
     .create-task-btn
         background-color: #2A3647
         color: white
@@ -84,13 +82,12 @@ input:-webkit-autofill:active
             height: 24px
             margin-left: 2px
         @include hover-style-2
-        
-        
 
 .title, select, textarea, .date, .standard
     display: block
-    padding: 13px 21px
-    width: 100%
+    padding-left: 21px
+    padding-right: 21px
+    width: calc(100% - 42px)
     background: #FFFFFF
     border: 1px solid #D1D1D1
     border-radius: 10px
@@ -123,7 +120,7 @@ input, select
         &:hover
             transform: scale(1.1)
             box-shadow: $hover-shadow
-            
+
         .priority-btn.selected
             background-color: #2A3647
             color: #fff

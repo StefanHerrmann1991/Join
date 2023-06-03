@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
- 
+<head>    
     <!-- css files-->
     <link rel="stylesheet" href="../00login-register/login.css">
     <link rel="stylesheet" href="../01summary/summary.css">
@@ -18,16 +16,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
-    <script>
-        async function init() {
-            setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
-            await downloadFromServer();
-            tasks = JSON.parse(backend.getItem('tasks')) || [];
-        }
-    </script>
 </head>
 
-<body onload="init()">
+<body>
     <div class="navbar-header">
         <nav id="navbar">
             <a src="index.html">
@@ -74,5 +65,4 @@
         </header>
     </div>
 </body>
-
 </html>

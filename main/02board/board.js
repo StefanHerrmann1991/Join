@@ -26,18 +26,20 @@ let detailsAreOpen = false;
  */
 let currentIndexDelete;
 
+
 /**
  * This asynchronous function initializes the state of the boards. It includes the necessary
  * HTML, initializes the task adding process, connects to the backend, initializes tasks, 
  * and finally renders the boards.
  */
 async function initBoards() {
-    includeHTML();
+    await includeHTML();
     await initAddTasks();
-    await initBackend();
+    await initContactList();
     await initTasks()
     await renderBoards(tasks);
     invitedUsers = await loadFromBackend('invitedUsers', invitedUsers);
+    highlightChosenMenu()
 }
 
 
@@ -366,7 +368,6 @@ function autocompleteMatchTask(input) {
 
 /**
  * Deletes an element from an array, updates the data on the server,  and renders boards.
- * @param {i} @type {Number}
  */
 function deleteTask() {
     tasks.splice(currentIndexDelete, 1);

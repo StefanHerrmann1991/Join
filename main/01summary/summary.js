@@ -49,6 +49,7 @@ async function initSummary() {
         <div>${outputDateStr}</div>`;
   }
   await renderSummary();
+  highlightChosenMenu()
 }
 
 

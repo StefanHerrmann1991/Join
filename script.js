@@ -131,7 +131,7 @@ async function saveBackendDataOf(dataObject) {
  * @param {string} key - The key under which the value will be saved.
  * @param {string} value - The value to be serialized and saved.
  */
-async function saveToBackend(key, value) {    
+async function saveToBackend(key, value) {
     if (event) event.preventDefault();
     keyAsText = JSON.stringify(value);
     await backend.setItem(key, keyAsText);
@@ -293,3 +293,14 @@ function isMobileView() {
 function loadTasks() {
     tasks = loadFromBackend('tasks', tasks);
 }
+
+
+function highlightChosenMenu() {    
+    navTitle = document.querySelectorAll('.nav-title')
+    currentTitle = document.getElementsByTagName('h1')[0]
+    navTitle.forEach(elementTitle => {
+        if (elementTitle.textContent == currentTitle.textContent)  elementTitle.parentNode.classList.add('selected-menu')
+    })
+}
+ 
+
