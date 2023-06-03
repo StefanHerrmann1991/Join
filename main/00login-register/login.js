@@ -145,7 +145,6 @@ function savePassword() {
         let passwordInput = document.getElementById("password");
         let password = passwordInput.value;
         localStorage.setItem("savedPassword", password);
-        console.log("Password saved to local storage");
     }
 }
 
@@ -172,7 +171,7 @@ function renderForgotPassword() {
             <h2>I forgot my password</h2>
             <div class="be-happy"> Don't worry! We will send you an email with the instructions to reset your password.
             </div>
-            <form onsubmit="forgotPassword(event); openSendMail()">
+            <form onsubmit="forgotPassword(event)">
                 <input minlength="3" type="email" id="email" name="email" required placeholder="Email">
                 <div class="menu-btn color-white">
                     <button class="btn-1" type="submit"><nobr>Send me the email</nobr></button>
@@ -247,8 +246,7 @@ function registerUser() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     passwordValidation();
-    const isEmailRegistered = registeredUsers.some(user => user.email === email);
-    if (!isEmailRegistered) {
+    if (!isUserRegistered(email, registeredUsers)) {
         registeredUsers.push({ 'name': name, 'email': email, 'password': password });
         addUsers();
         renderAuth('login');
@@ -258,12 +256,23 @@ function registerUser() {
 
 
 /**
+ * Checks if a user is already registered.
+ * @param {String} email - The email address of the user.
+ * @param {Array} registeredUsers - The array of registered users.
+ * @returns {Boolean} - Returns true if the user is registered, false otherwise.
+ */
+function isUserRegistered(email, registeredUsers) {
+    return registeredUsers.some(user => user.email === email);
+}
+
+
+/**
  * Validates the username during user registration.
  */
 function passwordValidation() {
     for (let i = 0; i < registeredUsers.length; i++) {
         if (registerUser.value == registeredUsers[i]['email']) {
-            alert('That username already exists please choose another one');
+            closeContainerInTime(2500, 'alreadyExist');
             return;
         }
     }
@@ -320,7 +329,7 @@ function checkLogin() {
             return;
         }
     }
-    alert('Username or Password is not correct!');
+    closeContainerInTime(2500, 'passwordIncorrect');     
 }
 
 
@@ -332,20 +341,16 @@ async function forgotPassword(event) {
     event.preventDefault();
     const email = getId('email').value;
     const user = registeredUsers.find(user => user.email === email);
-    if (user) {
+    if (isUserRegistered(email, registeredUsers)) {
         const token = generateRandomToken();
         user.resetToken = token;
         try {
             await sendForgotPasswordEmail(email, token);
-
             openSendMail();
-        } catch (error) {
-            console.error(error);
-            alert('Error sending the email. Please try again later.');
+        } catch (error) {           
+            closeContainerInTime(2500, 'tryLater');           
         }
-    } else {
-        alert('No user found with this email');
-    }
+    } else closeContainerInTime(2500, 'notRegistered');        
 };
 
 

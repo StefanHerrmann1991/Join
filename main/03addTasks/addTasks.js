@@ -41,7 +41,7 @@ function addToTasks(board) {
     openContainer('successfulSubmit');
     setTimeout(function () {
         closeContainer('successfulSubmit');
-        window.location.href = '/main/02board/board.html';
+        window.location.href = '../../main/02board/board.html';
     }, 1500);
     if (typeof myFunction === 'function') renderBoards(tasks);
 }
@@ -104,7 +104,14 @@ function getUrgency() {
 function newCategory() {
     let newCategory = getId('categoryContainer');
     newCategory.classList.remove('assign-btn-container');
-    newCategory.innerHTML = `
+    newCategory.innerHTML = categoryHTML();
+    renderColorPicker();
+}
+
+
+
+function categoryHTML() {
+    return `
     <div class="subtasks-container">
         <div class="category-input-color">
             <input minlength="3" id="categoryInput" type="text" placeholder="New category name">     
@@ -118,9 +125,7 @@ function newCategory() {
     </div>
     <div id="colorPicker" class="color-picker"></div>       
     `
-    renderColorPicker();
 }
-
 
 /**
  * Cancels the category creation process and reverts the layout changes made in newCategory function. 
