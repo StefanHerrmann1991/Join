@@ -4,6 +4,7 @@
     <script src="../../mini_backend.js"></script>
     <script src="../../script.js"></script>
     <script src="board.js"></script>
+    <script src="boardTemplate.js"></script>
     <script src="../03addTasks/addTasks.js"></script>
     <script src="../04contacts/contacts.js"></script>
 
@@ -16,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
 </head>
+
 
 <body onload="initBoards()">
     <div w3-include-html="../../index.html"></div>
@@ -45,9 +47,12 @@
     <div class="delete-popup-container d-none" id="deletePopup">
         <div class="delete-popup task-submit-successful">
             <div>Are you sure you want to delete that task?</div>
-            <button class="cancel-delete" onclick="closeContainer('deletePopup')"><img src="../../assets/img/cancelDark.png"></button>
+            <button class="cancel-delete" onclick="closeContainer('deletePopup')"><img
+                    src="../../assets/img/cancelDark.png"></button>
             <button class="check-delete" onclick="deleteTask()"><img src="../../assets/img/check.png"></button>
         </div>
     </div>
     <div class="add-task-popup d-none" id="addTasksPopup" w3-include-html="../03addTasks/taskPopup.html"></div>
 </body>
+
+

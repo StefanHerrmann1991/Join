@@ -232,7 +232,7 @@ function openSendMail() {
  * Opens the summary when a not registerd user wants to test the website.
  */
 function loginAsGuest() {
-    window.open('/../../main/01summary/summary.html');
+    window.open('../../main/01summary/summary.html');
 }
 
 
