@@ -1,5 +1,5 @@
 function contactInvitationHTML() {
-    return`
+    return `
     <button type="button" class="assign-btn" onclick="toggleContainer('userMenu'); toggleContainer('userInitialContainer')">
         <div>Select contact to assign</div>
         <div id="imgArrow"><img src="../../assets/img/open.png"></div>
@@ -17,7 +17,7 @@ function contactInvitationHTML() {
 function invivteUsersHTML() {
     return `  
     <div class="subtasks-container">
-        <input class="costom-datalist" id="userSearchInput" type="text" list="usersSearch" name="userList" placeholder="Contact email" onKeyUp="showResults(this.value)">
+        <input required class="costom-datalist" id="userSearchInput" type="text" list="usersSearch" name="userList" placeholder="Contact email" onKeyUp="showResults(this.value)">
         <div class="button-container">
             <button type="button" class="cancel-button" onclick="cancelContactInvitation()">
                 <img src="../../assets/img/cancelDark.png" >
@@ -35,8 +35,7 @@ function categoryHTML() {
     return `
     <div class="subtasks-container">
         <div class="category-input-color">
-            <input minlength="3" id="categoryInput" type="text" placeholder="New category name">     
-            <div class="chosen-color" id="chosenColor"></div>       
+            <input minlength="3" id="categoryInput" type="text" placeholder="New category name" required>                
         </div>
         <div class="button-container">
             <button type="button" class="cancel-button" onclick="cancelNewCategory()"><img
