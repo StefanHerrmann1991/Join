@@ -1,9 +1,10 @@
+let newCategoryOpen = false;
+let newSubtaskOpen = false;
+
 /**
  * Initialization of tasks including HTML inclusion, backend initialization, 
  * user list rendering, task loading, categories loading and rendering.
  * Also sets up the priority event listener and compares date.
- * This function uses async/await syntax to ensure all these steps are done sequentially.
- * @async
  */
 async function initTasks() {
     await includeHTML();
@@ -22,9 +23,7 @@ async function initTasks() {
 /**
  * Adds a new task to the tasks array. It processes the task inputs, 
  * assigns an id, saves the tasks and gives user a feedback on successful submission.
- * If function 'myFunction' is defined, it also renders the boards with the new tasks.
- * @param {string} board - The id of the board to which the task is to be added.
- * @function
+ * @param {string} board - The id of the board to which the task will be added.
  */
 function addToTasks(board) {
     event.preventDefault();
@@ -35,6 +34,7 @@ function addToTasks(board) {
     openContainer('successfulSubmit');
     checkCurrentTitle();
 }
+
 
 function checkCurrentTitle() {
     if (document.getElementsByTagName('h1')[0].textContent !== 'Board') {
@@ -61,7 +61,7 @@ function checkCurrentTitle() {
  */
 function validateData(id, array) {
     let validateId = getId(id);
-    if (array.length === 0) validateId.setAttribute('required', '');
+    if (array.length === 0 || validateId == undefined) validateId.setAttribute('required', '');
     else validateId.removeAttribute('required');
 }
 
@@ -74,7 +74,7 @@ function validateData(id, array) {
  */
 function processTaskInputs(board) {
     if (board == undefined) board = 'board-0';
-    else board = chosenBoard
+    else board = chosenBoard;
     let [title, description, category, date] = getIds('title', 'description', 'category', 'date');
     let urgency = getUrgency();
     let task = {
@@ -107,6 +107,7 @@ function getUrgency() {
  * Changes the layout for a new category input, and renders a color picker.
  */
 function newCategory() {
+    newCategoryOpen = true
     let newCategory = getId('categoryContainer');
     newCategory.classList.remove('assign-btn-container');
     newCategory.innerHTML = categoryHTML();
@@ -119,9 +120,10 @@ function newCategory() {
  * Then it re-renders the categories.
  */
 function cancelNewCategory() {
+    newCategoryOpen = false;
     let newCategory = getId('categoryContainer')
     newCategory.classList.add('assign-btn-container');
-    newCategory.innerHTML = newCategoryHTML()
+    newCategory.innerHTML = newCategoryHTML();
     renderCategories();
 }
 
@@ -156,17 +158,20 @@ function chooseCategoryColor(index) {
  */
 function addCategory() {
     let topic = getId('categoryInput').value;
-    let color = chosenColor;
-    if (chosenColor == undefined) color = '#E200BE';
-    let newCategory = {
-        'topic': topic,
-        'color': color,
-        'index': categories.length
+    if (topic.length > 2) {
+        let color = chosenColor;
+        if (chosenColor == undefined) color = '#E200BE';
+        let newCategory = {
+            'topic': topic,
+            'color': color,
+            'index': categories.length
+        }
+        categories.push(newCategory);
+        saveToBackend('categories', categories);
+        cancelNewCategory();
+        renderCategories();
     }
-    categories.push(newCategory);
-    saveToBackend('categories', categories);
-    cancelNewCategory();
-    renderCategories();
+    else closeContainerInTime(2000, 'popupMessageCategory');
 }
 
 
