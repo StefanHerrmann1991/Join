@@ -373,9 +373,6 @@ h3 {
   h2 {
     font-size: 41px;
   }
-  div, button, input, textarea, h3, a {
-    font-size: 16px;
-  }
 }
 @media (max-width: 768px) {
   .main-container {
@@ -490,6 +487,14 @@ input, textarea, select, button, .priority-btn {
   font-weight: 400;
   font-size: 21px;
   line-height: 120%;
+}
+
+textarea {
+  padding-top: 12px;
+}
+
+.add-task-title {
+  font-size: 64px;
 }
 
 .assign-btn-container {

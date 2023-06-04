@@ -37,10 +37,10 @@ function addToTasks(board) {
 }
 
 function checkCurrentTitle() {
-    if (!document.getElementsByTagName('h1')[0].textContent === 'Board') {
+    if (document.getElementsByTagName('h1')[0].textContent !== 'Board') {
         setTimeout(function () {
             window.location.href = '../../main/02board/board.html';
-        }, 1500);
+        }, 1400);
     }
     else {
         renderBoards(tasks);
