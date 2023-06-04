@@ -33,15 +33,24 @@ function addToTasks(board) {
     tasks.push(task);
     saveToBackend('tasks', tasks)
     openContainer('successfulSubmit');
-    if(checkMenu()) {
-        setTimeout(function () {
-            closeContainer('successfulSubmit');
-            window.location.href = '../../main/02board/board.html';
-        }, 1500);
-    }    
-    renderBoards(tasks);
+    checkCurrentTitle();
 }
 
+function checkCurrentTitle() {
+    if (!document.getElementsByTagName('h1')[0].textContent === 'Board') {
+        setTimeout(function () {
+            window.location.href = '../../main/02board/board.html';
+        }, 1500);
+    }
+    else {
+        renderBoards(tasks);
+        closeContainer('addTasksPopup');
+        clearInputTasks();
+    }
+    setTimeout(function () {
+        closeContainer('successfulSubmit');
+    }, 1500);
+}
 
 /**
  * Checks the data's validity. It sets 'required' attribute for the element if the array is empty.
