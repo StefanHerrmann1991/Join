@@ -50,12 +50,31 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-content: center;
   flex-wrap: wrap;
 }
 .main-menu .nav-item {
-  padding-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+.main-menu .nav-item img {
+  margin-right: 20px;
+}
+.main-menu .nav-item img {
+  width: 26px;
+  height: 26px;
+}
+.main-menu .nav-item .inner-item {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .dashboard {
@@ -139,20 +158,6 @@ body {
 #logo {
   width: 100px;
   height: 122px;
-}
-
-.nav-item {
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-.nav-item img {
-  margin-right: 20px;
-}
-.nav-item img {
-  width: 26px;
-  height: 26px;
 }
 
 button, a {
@@ -417,6 +422,7 @@ h3 {
     top: 76px;
   }
   .navbar-header {
+    position: absolute;
     display: flex;
     width: 100svw;
     height: 100%;
@@ -431,24 +437,6 @@ h3 {
     width: 100%;
     height: 74px;
   }
-  .nav-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 0px !important;
-  }
-  .nav-item .nav-title {
-    font-weight: 400 !important;
-    font-size: 16px !important;
-    color: #CDCDCD;
-    margin-top: 14px;
-  }
-  .nav-item img {
-    margin: 0px;
-    width: 22px;
-    height: 22px;
-  }
   .main-menu {
     width: 90%;
     height: 100%;
@@ -457,6 +445,32 @@ h3 {
     flex-direction: row;
     align-items: flex-end;
     padding-top: 0px !important;
+  }
+  .main-menu .nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px !important;
+    width: 25%;
+    height: 100%;
+  }
+  .main-menu .nav-item .inner-item {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .main-menu .nav-item .inner-item img {
+    margin-right: 0px;
+    width: 22px;
+    height: 22px;
+  }
+  .main-menu .nav-title {
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    color: #CDCDCD;
+    margin-top: 14px;
   }
   #legalNotice {
     display: none;
@@ -652,7 +666,7 @@ input, select {
 }
 .subtasks-container .button-container {
   position: absolute;
-  right: 10;
+  right: 10px;
   height: 100%;
   display: flex;
   justify-content: center;

@@ -299,7 +299,7 @@ function highlightChosenMenu() {
     navTitle = document.querySelectorAll('.nav-title')
     currentTitle = document.getElementsByTagName('h1')[0]
     navTitle.forEach(elementTitle => {
-        if (elementTitle.textContent == currentTitle.textContent)  elementTitle.parentNode.classList.add('selected-menu')
+        if (elementTitle.textContent == currentTitle.textContent)  elementTitle.parentNode.parentNode.classList.add('selected-menu')
     })
 }
  

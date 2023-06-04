@@ -80,11 +80,27 @@ body
     width: 100%
     display: flex
     flex-direction: column
-    justify-content: space-between
+    justify-content: center
     align-content: center
     flex-wrap: wrap
     .nav-item
-        padding-top: 40px
+        width: 100%
+        display: flex
+        justify-content: center
+        padding-top: 10px
+        padding-bottom: 10px
+        margin-bottom: 10px
+        margin-top: 10px
+        color: #FFFFFF
+        cursor: pointer
+        img
+            margin-right: 20px
+        & img
+            width: 26px
+            height: 26px
+        .inner-item
+            display: flex
+            justify-content: flex-start
 
 .dashboard
     width: 100vw
@@ -156,17 +172,6 @@ body
 #logo
     width: 100px
     height: 122px
-
-.nav-item
-    color: #FFFFFF
-    display: flex
-    align-items: center
-    cursor: pointer
-    img
-        margin-right: 20px
-    & img
-        width: 26px
-        height: 26px
 
 button, a
     cursor: pointer
@@ -288,7 +293,6 @@ h3
         0%
             margin-bottom: -200px
             opacity: 0
-
         100%
             margin-bottom: 0px
             opacity: 1
@@ -386,33 +390,19 @@ h3
         top: 76px
 
     .navbar-header
+        position: absolute
         display: flex
         width: 100svw
         height: 100%
         align-items: center
         flex-direction: column-reverse
         justify-content: space-between
+
     #logo
         display: none
     #navbar, #header
         width: 100%
         height: 74px
-
-    .nav-item
-        display: flex
-        justify-content: center
-        align-items: center
-        flex-direction: column
-        padding: 0px !important
-        .nav-title
-            font-weight: 400 !important
-            font-size: 16px !important
-            color: #CDCDCD
-            margin-top: 14px
-        img
-            margin: 0px
-            width: 22px
-            height: 22px
 
     .main-menu
         width: 90%
@@ -422,6 +412,30 @@ h3
         flex-direction: row
         align-items: flex-end
         padding-top: 0px !important
+
+        .nav-item
+            display: flex
+            justify-content: center
+            align-items: center
+            flex-direction: column
+            padding: 0px !important
+            width: 25%
+            height: 100%
+            .inner-item
+                width: 20%
+                display: flex
+                flex-direction: column
+                align-items: center
+                img
+                    margin-right: 0px
+                    width: 22px
+                    height: 22px
+
+        .nav-title
+            font-weight: 400 !important
+            font-size: 16px !important
+            color: #CDCDCD
+            margin-top: 14px
 
     #legalNotice
         display: none
