@@ -458,7 +458,6 @@
             animation: none
             .add-contact-menu
                 width: 100%
-
                 flex-direction: column
                 height: calc( 100% - 148px )
                 .add-contact-description
@@ -474,6 +473,12 @@
                         margin-top: 2.5%
                     p
                         font-size: 21px
+
+                    .close-upper-right
+                        z-index: 200
+                        img
+                            height: 40px
+                            width: 40px
                 .add-contact-submenu
                     border-radius: 0px 0px 30px 30px
                     width: 90%
@@ -486,9 +491,6 @@
                         width: 90%
                         margin: auto
 
-                        input
-                            padding-right: 40px
-
                     #editInitial, #newContactImg
                         width: 100%
                         display: flex
@@ -496,7 +498,7 @@
                         align-items: flex-start
                         position: absolute
                         margin-top: 0%
-                        top: -30
+                        top: -35px
 
                     #newContactImg
                         .edit-initial
@@ -511,12 +513,11 @@
                         height: 41px
                     .create-contact-btns
                         @include flex-center
-
+                        width: 100% !important
                         button
                             height: 40px
-
-                        &:last-child
-                            width: 100%
+                            &:last-child
+                                width: 71px
 
     .add-contact-menu
         height: 100%

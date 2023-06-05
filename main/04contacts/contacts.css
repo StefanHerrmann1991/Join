@@ -54,6 +54,7 @@ body {
   flex-wrap: wrap;
 }
 .main-menu .nav-item {
+  width: 100%;
   display: flex;
   justify-content: center;
   padding-top: 10px;
@@ -370,9 +371,6 @@ h3 {
   }
   h2 {
     font-size: 41px;
-  }
-  div, button, input, textarea, h3, a {
-    font-size: 16px;
   }
 }
 @media (max-width: 768px) {
@@ -1028,6 +1026,13 @@ h3 {
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-description p, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description p {
     font-size: 21px;
   }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-description .close-upper-right, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description .close-upper-right {
+    z-index: 200;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-description .close-upper-right img, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description .close-upper-right img {
+    height: 40px;
+    width: 40px;
+  }
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu {
     border-radius: 0px 0px 30px 30px;
     width: 90%;
@@ -1041,9 +1046,6 @@ h3 {
     width: 90%;
     margin: auto;
   }
-  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form input {
-    padding-right: 40px;
-  }
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #editInitial, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #newContactImg, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #editInitial, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #newContactImg {
     width: 100%;
     display: flex;
@@ -1051,7 +1053,7 @@ h3 {
     align-items: flex-start;
     position: absolute;
     margin-top: 0%;
-    top: -30;
+    top: -35px;
   }
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #newContactImg .edit-initial, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #newContactImg .edit-initial {
     border: none;
@@ -1068,12 +1070,13 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100% !important;
   }
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button {
     height: 40px;
   }
-  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns:last-child, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns:last-child {
-    width: 100%;
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:last-child, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:last-child {
+    width: 71px;
   }
   .add-contact-menu {
     height: 100%;

@@ -54,6 +54,7 @@ body {
   flex-wrap: wrap;
 }
 .main-menu .nav-item {
+  width: 100%;
   display: flex;
   justify-content: center;
   padding-top: 10px;
@@ -370,9 +371,6 @@ h3 {
   }
   h2 {
     font-size: 41px;
-  }
-  div, button, input, textarea, h3, a {
-    font-size: 16px;
   }
 }
 @media (max-width: 768px) {

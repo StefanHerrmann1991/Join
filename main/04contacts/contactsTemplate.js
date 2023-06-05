@@ -6,9 +6,12 @@ function editContactHTML(actualContact) {
                 <img class="desktop" src="../../assets/img/logo.png">
                 <h2>Edit contact</h2>                
                 <div class="lower-border"></div>
+                <button class="close-upper-right mobile" onclick="closeContainer('editContactDialog')">
+                    <img src="../../assets/img/cancelWhite.png">                   
+                </button>
             </div>
             <div class="add-contact-submenu">
-                <button class="close-upper-right" onclick="closeContainer('editContactDialog')">
+                <button class="close-upper-right desktop" onclick="closeContainer('editContactDialog')">
                     <img src="../../assets/img/cancel.png">                   
                 </button>
                 <div id="editInitial"></div>
