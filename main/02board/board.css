@@ -357,6 +357,9 @@ h3 {
 }
 
 @media (max-width: 992px) {
+  .add-task-title {
+    font-size: 47px;
+  }
   .main-container {
     position: absolute;
     top: 120px;
@@ -502,6 +505,10 @@ h3 {
 }
 .delete-popup-container .delete-popup .cancel-delete {
   filter: invert(100%);
+}
+
+.overflow-hidden {
+  overflow: hidden !important;
 }
 
 .board-main {
@@ -686,9 +693,9 @@ h3 {
   justify-content: space-between;
 }
 .boards .board {
-  width: 250px;
+  width: max(250px, 20%);
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 .boards .board .board-task-container {
   width: 100%;

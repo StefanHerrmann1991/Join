@@ -717,13 +717,13 @@ h3 {
   padding-left: 21px;
   padding-right: 21px;
 }
-.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns {
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns {
   margin-top: 8%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   height: 55px;
 }
-.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button {
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -734,33 +734,33 @@ h3 {
   font-weight: 700;
   font-size: 21px;
 }
-.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button img, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button img {
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button img, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button img, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button img, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button img {
   width: 24px;
   height: 24px;
   margin-left: 2px;
 }
-.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:first-child, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:first-child {
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:first-child, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button:first-child, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:first-child, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button:first-child {
   color: #2A3647;
   border: 1px solid #2A3647;
   background-color: white;
   margin-right: 2%;
 }
-.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:first-child:hover:hover, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:first-child:hover:hover {
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:first-child:hover:hover, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button:first-child:hover:hover, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:first-child:hover:hover, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button:first-child:hover:hover {
   border: 1px solid #29ABE2;
   color: #29ABE2;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:first-child:hover:hover img, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:first-child:hover:hover img {
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:first-child:hover:hover img, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button:first-child:hover:hover img, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:first-child:hover:hover img, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button:first-child:hover:hover img {
   filter: invert(47%) sepia(86%) saturate(463%) hue-rotate(153deg) brightness(106%) contrast(84%);
 }
-.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:last-child, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:last-child {
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:last-child, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button:last-child, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:last-child, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button:last-child {
   background-color: #2A3647;
   color: white;
   border: none;
   color: #FFFFFF;
-  width: 222px;
+  width: 212px;
 }
-.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:last-child:hover:hover, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:last-child:hover:hover {
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:last-child:hover:hover, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button:last-child:hover:hover, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:last-child:hover:hover, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button:last-child:hover:hover {
   background-color: #29ABE2;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -926,14 +926,11 @@ h3 {
     height: 80px;
     width: 80px;
   }
-  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns {
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns {
     height: 40px;
   }
-  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button {
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button {
     font-size: 16px;
-  }
-  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns:last-child, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns:last-child {
-    width: 160px;
   }
   .main-contact-container {
     top: 76px;
@@ -1066,16 +1063,16 @@ h3 {
     z-index: 100;
     height: 41px;
   }
-  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns {
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100% !important;
   }
-  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button {
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button {
     height: 40px;
   }
-  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:last-child, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:last-child {
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button:last-child:not(.add-contact-dialog), .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button:last-child:not(.add-contact-dialog) {
     width: 71px;
   }
   .add-contact-menu {

@@ -15,6 +15,9 @@
         .cancel-delete
             filter: invert(100%)
 
+.overflow-hidden
+    overflow: hidden !important
+
 .board-main
     width: 90%
     margin: auto
@@ -167,9 +170,9 @@
     width: 100%
     justify-content: space-between
     .board
-        width: 250px
+        width: max(250px, 20%)
         display: flex
-        flex-wrap: wrap
+        flex-direction: column
         .board-task-container
             width: 100%
 

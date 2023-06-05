@@ -20,7 +20,7 @@ function editContactHTML(actualContact) {
                     <input minlength="3" type="text" id="editName" name="editName" required>
                     <input minlength="3" type="email" id="editEmail" name="editEmail" required>
                     <input minlength="3" type="tel" id="editPhone" name="editPhone" required>
-                <div class="create-contact-btns">
+                <div class="edit-contact-btns">
                     <button type="button" onclick="deleteContact(${actualContact})">
                         Delete
                     </button>
