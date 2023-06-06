@@ -85,6 +85,7 @@ body {
 /* Webkit-based browsers */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 12px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -106,6 +107,7 @@ body {
 /* Internet Explorer/Edge */
 *::-ms-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 *::-ms-thumb {
@@ -515,6 +517,8 @@ h3 {
   width: 90%;
   margin: auto;
   height: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 .board-main .boards-title-menu {
   margin-bottom: 5%;
@@ -624,15 +628,21 @@ h3 {
   align-items: center;
 }
 
-.board-task-container {
-  margin-top: 15%;
-  position: relative;
-  min-height: 550px;
+.board-task {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 400px;
-  overflow-y: scroll;
+  height: 80vh;
+  overflow-y: auto;
+}
+
+.board-task-container {
+  margin-top: 15%;
+  position: relative;
+  max-height: calc(100% - 100px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   overflow-x: hidden;
 }
 .board-task-container .board {
@@ -687,13 +697,12 @@ h3 {
 .boards {
   display: flex;
   align-items: flex-start;
-  overflow-x: scroll;
   gap: 2.5%;
   width: 100%;
   justify-content: space-between;
 }
 .boards .board {
-  width: max(250px, 20%);
+  width: max(250px, 30%);
   display: flex;
   flex-direction: column;
 }
