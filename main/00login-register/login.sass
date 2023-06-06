@@ -12,12 +12,12 @@
     position: relative
     height: 51px
     @include flex-center
-
     .password-input
-        padding: 0px
+        padding: 0px !important
         margin: 0px !important
         border: none !important
         padding-left: 21px !important
+        padding-right: 21px !important
         height: 100%
     button
         position: absolute
@@ -25,7 +25,6 @@
         background-color: transparent
         height: 100%
         right: 21px
-
         img
             height: 24px
             width: 24px
@@ -69,9 +68,8 @@
                 background-image: url(../../assets/img/lock.png)
             input
                 background-repeat: no-repeat
-
                 font-size: 21px
-                width: 100%
+                width: calc(100% - 42px)
                 margin-top: 8%
                 border: 1px solid #D1D1D1
                 border-radius: 10px
@@ -79,7 +77,6 @@
                 background-size: 24px
                 background-repeat: no-repeat
                 background-position: 95%
-
             .menu-btn
                 button
                     height: 51px
@@ -228,7 +225,6 @@
 .color-white
     color: white !important
 
-
 .menu-btn
     @include flex-center
     gap: 5%
@@ -262,8 +258,8 @@
             height: 25px
             width: 25px
     nobr
-        padding-left: 5%
-        margin-left: 5%
+            padding-left: 5%
+            margin-left: 5%
     input
         padding: 0px !important
         margin: 0px !important
@@ -299,7 +295,6 @@
     animation: hightenOpacity 1.2s linear forwards
     opacity: 0
     z-index: 0
-
     @keyframes hightenOpacity
         0%
             opacity: 0

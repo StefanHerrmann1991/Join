@@ -496,10 +496,11 @@ h3 {
   align-items: center;
 }
 .password-btn .password-input {
-  padding: 0px;
+  padding: 0px !important;
   margin: 0px !important;
   border: none !important;
   padding-left: 21px !important;
+  padding-right: 21px !important;
   height: 100%;
 }
 .password-btn button {
@@ -566,7 +567,7 @@ h3 {
 .register .sign-up-container form input {
   background-repeat: no-repeat;
   font-size: 21px;
-  width: 100%;
+  width: calc(100% - 42px);
   margin-top: 8%;
   border: 1px solid #D1D1D1;
   border-radius: 10px;
