@@ -15,15 +15,10 @@
         .cancel-delete
             filter: invert(100%)
 
-.overflow-hidden
-    overflow: hidden !important
-
 .board-main
     width: 90%
     margin: auto
     height: 100%
-    overflow-x: scroll
-    overflow-y: hidden
     .boards-title-menu
         margin-bottom: 5%
         gap: 2.5%
@@ -116,19 +111,15 @@
         display: flex
         align-items: center
 
-.board-task
-    display: flex
-    flex-direction: column
-    align-items: center
-    height: 80vh
-    overflow-y: auto
 .board-task-container
     margin-top: 15%
     position: relative
-    max-height: calc(100% - 100px)
+    min-height: 550px
     display: flex
     flex-direction: column
     align-items: center
+    height: 400px
+    overflow-y: scroll
     overflow-x: hidden
     .board
         padding-top: 23px
@@ -171,14 +162,14 @@
 .boards
     display: flex
     align-items: flex-start
+    overflow-x: scroll
     gap: 2.5%
     width: 100%
     justify-content: space-between
-
     .board
-        width: max(250px, 30%)
+        width: 250px
         display: flex
-        flex-direction: column
+        flex-wrap: wrap
         .board-task-container
             width: 100%
 

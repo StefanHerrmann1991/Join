@@ -187,10 +187,8 @@ function boardsContentHTML(board) {
                 <img src="../../assets/img/plusButton.png"
             </button>
         </div>
-        <div class="board-task">
         <div id="${board.boardId}" class="board-task-container" ondrop="moveTo('${board.boardId}')"
             ondragover="allowDrop(event)"></div>
-        </div>
     </div>
     `
 }

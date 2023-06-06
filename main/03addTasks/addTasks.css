@@ -1024,7 +1024,7 @@ input.subtask-checkbox[type=checkbox]:checked {
 }
 
 .task-main {
-  width: 85%;
+  width: 95%;
   height: 85%;
   overflow-y: hidden;
   position: relative;
@@ -1040,7 +1040,7 @@ input.subtask-checkbox[type=checkbox]:checked {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 95%;
+  width: 96%;
   margin: auto;
   overflow-y: auto;
   height: 100%;
@@ -1099,7 +1099,7 @@ input.subtask-checkbox[type=checkbox]:checked {
     width: 100px;
   }
   .btn-container .create-task-btn {
-    width: 140px;
+    width: 190px;
   }
 }
 @media (max-width: 768px) {
