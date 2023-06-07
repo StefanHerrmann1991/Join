@@ -4,7 +4,7 @@
 function editTaskHTML(task, index) {
     let subtask = task.subtasks.length === 0 ? 'd-none' : '';
     return `
-    <div class="edit-task-dialog center" id="editTaskContainer">
+    <div class="edit-task-dialog center" id="editTaskContainer" onclick="closeContainerEvent(event, 'editTaskContainer')">
         <div class="edit-task-container">
             <div class="task-details">
                 <div class="task-head">
@@ -49,7 +49,7 @@ function editTaskHTML(task, index) {
 
 function editTaskDialogHTML(index, task) {
     return `
-    <div class="edit-task-dialog center">
+    <div class="edit-task-dialog center" id="editTaskContainer" onclick="closeContainerEvent(event, 'editTaskContainer')">
         <div class="edit-task-container">
             <button class="close-upper-right desktop" onclick="closeTaskDialog()"><img
                     src="../../assets/img/cancel.png"></button>

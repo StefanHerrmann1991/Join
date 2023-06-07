@@ -46,7 +46,7 @@
             <div id="boards" class="boards"></div>
         </div>
     </div>
-    <div id="editTaskDialog" class="d-none"></div>
+    <div id="editTaskDialog"  class="d-none" ></div>
     <div class="delete-popup-container d-none" id="deletePopup">
         <div class="delete-popup task-submit-successful">
             <div>Are you sure you want to delete that task?</div>
@@ -55,7 +55,7 @@
             <button class="check-delete" onclick="deleteTask()"><img src="../../assets/img/check.png"></button>
         </div>
     </div>
-    <div class="add-task-popup d-none" id="addTasksPopup" w3-include-html="../03addTasks/taskPopup.html"></div>
+    <div class="add-task-popup d-none" onclick="closeContainerEvent(event, 'addTasksPopup')" id="addTasksPopup" w3-include-html="../03addTasks/taskPopup.html"></div>
 </body>
 </html>
 
