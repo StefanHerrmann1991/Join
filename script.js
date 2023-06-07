@@ -306,4 +306,5 @@ function highlightChosenMenu() {
 
 function closeContainerEvent(event, containerId) {   
     if (event.target.id === containerId) closeContainer(containerId);    
+    
   }
