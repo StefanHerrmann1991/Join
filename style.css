@@ -46,12 +46,8 @@ body {
 }
 
 .main-menu {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
 }
 .main-menu .nav-item {
   width: 100%;
@@ -63,6 +59,13 @@ body {
   margin-top: 10px;
   color: #FFFFFF;
   cursor: pointer;
+  position: relative;
+}
+.main-menu .nav-item .inner-item {
+  width: 127px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 .main-menu .nav-item img {
   margin-right: 20px;
@@ -70,10 +73,6 @@ body {
 .main-menu .nav-item img {
   width: 26px;
   height: 26px;
-}
-.main-menu .nav-item .inner-item {
-  display: flex;
-  justify-content: flex-start;
 }
 
 .dashboard {
