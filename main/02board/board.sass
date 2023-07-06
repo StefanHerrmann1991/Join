@@ -19,6 +19,7 @@
     width: 90%
     margin: auto
     height: 100%
+    overflow: hidden
     .boards-title-menu
         margin-bottom: 5%
         gap: 2.5%
@@ -119,8 +120,7 @@
     flex-direction: column
     align-items: center
     height: 400px
-    overflow-y: scroll
-    overflow-x: hidden
+
     .board
         padding-top: 23px
 
@@ -128,7 +128,7 @@
     @include flex-center
     flex-direction: column
     padding: 18px 19px
-    width: 180px
+    width: 200px
     background: #FFFFFF
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04)
     border-radius: 30px
@@ -163,8 +163,9 @@
     display: flex
     align-items: flex-start
     overflow-x: scroll
-    gap: 2.5%
-    width: 100%
+    padding-right: 50px
+    gap: 4%
+    width: calc(100% - 50px)
     justify-content: space-between
     .board
         width: 250px
@@ -174,7 +175,7 @@
             width: 100%
 
     .board-header
-        width: 250px
+        width: 280px
         height: 50px
         display: flex
         justify-content: space-between
@@ -387,16 +388,22 @@ progress
 .hovered
     background-color: rgb(0,0,0,0.05)
 
+.task-headline
+    font-size: 18px
+
 @media (max-width: 992px)
 
     .boards
+        padding-right: 25px
         .board-header
             width: 200px
-    .task-headline
-        font-size: 16px
+
+
+
 
     .add-task
         height: 40px
+        font-size: 16px
 
     .edit-task-container
         .task-details
@@ -414,8 +421,8 @@ progress
             width: 35px
 
     .board-main img
-        height: 25px
-        width: 25px
+        height: 12.5px
+        width: 12.5px
 
 @media (max-width: 768px)
 
@@ -439,6 +446,7 @@ progress
         padding: 9px
 
     .task-head
+        font-size: 18px
         display: flex
         justify-content: space-between
         padding-top: 5%

@@ -46,12 +46,8 @@ body {
 }
 
 .main-menu {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
 }
 .main-menu .nav-item {
   width: 100%;
@@ -63,6 +59,13 @@ body {
   margin-top: 10px;
   color: #FFFFFF;
   cursor: pointer;
+  position: relative;
+}
+.main-menu .nav-item .inner-item {
+  width: 127px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 .main-menu .nav-item img {
   margin-right: 20px;
@@ -70,10 +73,6 @@ body {
 .main-menu .nav-item img {
   width: 26px;
   height: 26px;
-}
-.main-menu .nav-item .inner-item {
-  display: flex;
-  justify-content: flex-start;
 }
 
 .dashboard {
@@ -513,6 +512,7 @@ h3 {
   width: 90%;
   margin: auto;
   height: 100%;
+  overflow: hidden;
 }
 .board-main .boards-title-menu {
   margin-bottom: 5%;
@@ -630,8 +630,6 @@ h3 {
   flex-direction: column;
   align-items: center;
   height: 400px;
-  overflow-y: scroll;
-  overflow-x: hidden;
 }
 .board-task-container .board {
   padding-top: 23px;
@@ -643,7 +641,7 @@ h3 {
   align-items: center;
   flex-direction: column;
   padding: 18px 19px;
-  width: 180px;
+  width: 200px;
   background: #FFFFFF;
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
   border-radius: 30px;
@@ -686,8 +684,9 @@ h3 {
   display: flex;
   align-items: flex-start;
   overflow-x: scroll;
-  gap: 2.5%;
-  width: 100%;
+  padding-right: 50px;
+  gap: 4%;
+  width: calc(100% - 50px);
   justify-content: space-between;
 }
 .boards .board {
@@ -699,7 +698,7 @@ h3 {
   width: 100%;
 }
 .boards .board-header {
-  width: 250px;
+  width: 280px;
   height: 50px;
   display: flex;
   justify-content: space-between;
@@ -979,15 +978,20 @@ progress {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
+.task-headline {
+  font-size: 18px;
+}
+
 @media (max-width: 992px) {
+  .boards {
+    padding-right: 25px;
+  }
   .boards .board-header {
     width: 200px;
   }
-  .task-headline {
-    font-size: 16px;
-  }
   .add-task {
     height: 40px;
+    font-size: 16px;
   }
   .edit-task-container .task-details h1 {
     font-size: 21px;
@@ -1003,8 +1007,8 @@ progress {
     width: 35px;
   }
   .board-main img {
-    height: 25px;
-    width: 25px;
+    height: 12.5px;
+    width: 12.5px;
   }
 }
 @media (max-width: 768px) {
@@ -1027,6 +1031,7 @@ progress {
     padding: 9px;
   }
   .task-head {
+    font-size: 18px;
     display: flex;
     justify-content: space-between;
     padding-top: 5%;

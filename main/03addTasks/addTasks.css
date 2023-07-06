@@ -47,12 +47,8 @@ body {
 }
 
 .main-menu {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
 }
 .main-menu .nav-item {
   width: 100%;
@@ -64,6 +60,13 @@ body {
   margin-top: 10px;
   color: #FFFFFF;
   cursor: pointer;
+  position: relative;
+}
+.main-menu .nav-item .inner-item {
+  width: 127px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 .main-menu .nav-item img {
   margin-right: 20px;
@@ -71,10 +74,6 @@ body {
 .main-menu .nav-item img {
   width: 26px;
   height: 26px;
-}
-.main-menu .nav-item .inner-item {
-  display: flex;
-  justify-content: flex-start;
 }
 
 .dashboard {
@@ -1071,7 +1070,7 @@ input.subtask-checkbox[type=checkbox]:checked {
 
 @media (max-width: 992px) {
   .priority-btns .priority-btn {
-    font-size: 16px;
+    font-size: 15px;
     height: 41px;
     padding-left: 2.5px;
     padding-right: 2.5px;
@@ -1091,6 +1090,7 @@ input.subtask-checkbox[type=checkbox]:checked {
   }
   .assign-btn-container .assign-btn {
     height: 41px;
+    font-size: 15px;
   }
   .btn-container .clear-btn, .btn-container .create-task-btn {
     height: 40px;
