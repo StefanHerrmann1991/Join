@@ -326,8 +326,7 @@ function cancelContactInvitation() {
 
 function newContactInvitation() {
     let newInvitation;
-    let userName = getId('userSearchInput').value;
-    debugger
+    let userName = getId('userSearchInput').value; 
     let contactExists = contactBook.contacts.some(contact => 
         contact.name === userName || contact.email === userName
     );
@@ -364,13 +363,12 @@ function doubleIsThere(userName) {
  * @returns {Array} An array of user objects whose names or emails match the input string.
  */
 function autocompleteMatch(input) {
-    if (input == '') return [];
-    let reg = new RegExp(input);
+    if (input === '') return [];
+    let reg = new RegExp(input, 'i');
     return users.filter(function (user) {
-        if (user.name.match(reg) || user.email.match(reg)) return user;
+        return user.name.match(reg) || user.email.match(reg);
     });
 }
-
 
 /**
  * Renders a dropdown list of user names and emails that match the input string in 'userSearchInput'.
