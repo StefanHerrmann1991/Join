@@ -327,13 +327,13 @@ function cancelContactInvitation() {
 function newContactInvitation() {
     let newInvitation;
     let userName = getId('userSearchInput').value;
-
-    let contactExists = Object.values(contactBook).some(contact =>
+    debugger
+    let contactExists = contactBook.contacts.some(contact => 
         contact.name === userName || contact.email === userName
     );
 
     if (!contactExists) {
-        closeContainerInTime(2500, 'popupMessageUsers'); // Show error message since user doesn't exist in contactBook
+        closeContainerInTime(2500, 'popupMessageFalseContact'); // Show error message since user doesn't exist in contactBook
         return;
     }
 
