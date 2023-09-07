@@ -1,10 +1,8 @@
 * {
   padding: 0px;
   margin: 0px;
-  -webkit-margin-after: 0px;
-          margin-block-end: 0px;
-  -webkit-margin-before: 0px;
-          margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-block-start: 0px;
   font-family: "Inter", sans-serif;
   scroll-behavior: smooth;
 }
@@ -46,12 +44,8 @@ body {
 }
 
 .main-menu {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
 }
 .main-menu .nav-item {
   width: 100%;
@@ -63,6 +57,13 @@ body {
   margin-top: 10px;
   color: #FFFFFF;
   cursor: pointer;
+  position: relative;
+}
+.main-menu .nav-item .inner-item {
+  width: 127px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 .main-menu .nav-item img {
   margin-right: 20px;
@@ -70,10 +71,6 @@ body {
 .main-menu .nav-item img {
   width: 26px;
   height: 26px;
-}
-.main-menu .nav-item .inner-item {
-  display: flex;
-  justify-content: flex-start;
 }
 
 .dashboard {
@@ -377,6 +374,9 @@ h3 {
   h2 {
     font-size: 41px;
   }
+  div, button, input, textarea, h3, a {
+    font-size: 15px;
+  }
 }
 @media (max-width: 768px) {
   .main-container {
@@ -411,9 +411,6 @@ h3 {
   }
   h1 {
     font-size: 47px;
-  }
-  div, button, input, textarea, h3, a {
-    font-size: 16px;
   }
   .logout-btn button, .logout-btn a {
     padding: 8px;

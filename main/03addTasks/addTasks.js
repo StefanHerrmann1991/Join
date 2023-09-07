@@ -324,21 +324,32 @@ function cancelContactInvitation() {
 }
 
 
-/**
- * Adds a new invitation based on the value inputted in 'userSearchInput' and cancels the invitation form after successful invitation.
- */
 function newContactInvitation() {
     let newInvitation;
-    userName = getId('userSearchInput').value;
+    let userName = getId('userSearchInput').value;
+
+    let contactExists = Object.values(contactBook).some(contact =>
+        contact.name === userName || contact.email === userName
+    );
+
+    if (!contactExists) {
+        closeContainerInTime(2500, 'popupMessageUsers'); // Show error message since user doesn't exist in contactBook
+        return;
+    }
+
     if (!doubleIsThere(userName)) {
         newInvitation = users.filter(function (user) {
-            if (user.name.match(userName)) return user;
-        })
-        invitedUsers.push(newInvitation[0]);
-        saveToBackend('invitedUsers', invitedUsers);
-        cancelContactInvitation();
+            return user.name.match(userName);
+        });
+
+        if (newInvitation.length > 0) {
+            invitedUsers.push(newInvitation[0]);
+            saveToBackend('invitedUsers', invitedUsers);
+            cancelContactInvitation();
+        }
+    } else {
+        closeContainerInTime(2500, 'popupMessageUsers'); // Show error message for double entry
     }
-    else closeContainerInTime(2500, 'popupMessageUsers');
 }
 
 
