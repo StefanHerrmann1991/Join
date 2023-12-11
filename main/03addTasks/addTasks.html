@@ -39,7 +39,7 @@
         <div class="task-submit-successful">The user is not in your contact list. Please enter a valid user.</div>
     </div>
     <div class="main-container">
-        <div class="title-form d-none">
+        <div class="title-form">
             <h1>Add Task</h1>
             <form class="add-task-formfield" onsubmit="addToTasks();">
                 <div class="task-fields">
@@ -67,20 +67,25 @@
                             </div>
                         </div>
                         <h3>Assigned to</h3>
-                        <!--  <div class="assign-btn-container" id="assignBtnContainer">
-                            <button type="button" class="assign-btn"
-                                onclick="toggleContainer('userMenu'); toggleContainer('userInitialContainer')">
-                                <div>Select contact to assign</div>
-                                <div id="imgArrow"><img src="../../assets/img/open.png"></div>
-                            </button>
-                            <div class="user-menu d-none" id="userMenu">
-                                <div class="user-list" id="userList"></div>
-                                <button id="inviteUserBtn" type="button" class="invite-user-btn"
-                                    onclick="inviteUsers()">Invite new contact<img
-                                        src="../../assets/img/contactsBlack.png"></button>
+                        <div name="usersSelect" id="usersSelect" class="users-select">
+                            <div id="userAssignBtn" class="absolute">
+                                <button class="toggle-user-input user-menu" onclick="toggleInput()">
+                                    <div>Select contacts to assign</div>
+                                    <img src="../../assets/img/open.png">
+                                </button>
                             </div>
-                        </div> -->
+                            <div id="userSearchInputCon" class="absolute d-none">
+                                <div class="input-userlist-box">
+                                    <div class="toggle-user-input user-menu">
+                                        <input id="userSearchInput" class="user-search-input" placeholder="Search for collegues" oninput="filterUsers(this.value)">
+                                        <button class="assign-user-btn" onclick="toggleInput()"><img src="../../assets/img/open.png"></button>
+                                    </div>
+                                    <div id="allUsersList" class="all-users-list"></div>
+                                </div>
+                            </div>
+                        </div>
                         <div id="userInitialContainer" class="user-initial-container"></div>
+                
                     </div>
                     <div class="border"></div>
                     <div class="add-task-right">
@@ -126,25 +131,7 @@
                 </div>
             </form>
         </div>
-        <form>
-            <div name="usersSelect" id="usersSelect" class="users-select">
-                <div id="userAssignBtn" class="absolute">
-                    <button class="toggle-user-input user-menu" onclick="toggleInput()">
-                        <div>Select contacts to assign</div>
-                        <img src="../../assets/img/open.png">
-                    </button>
-                </div>
-                <div id="userSearchInputCon" class="absolute d-none">
-                    <div class="input-userlist-box">
-                        <div class="toggle-user-input user-menu">
-                            <input id="userSearchInput" class="user-search-input" placeholder="Search for collegues" oninput="filterUsers(this.value)">
-                            <button onclick="toggleInput()"><img src="../../assets/img/open.png"></button>
-                        </div>
-                        <div id="allUsersList" class="all-users-list"></div>
-                    </div>
-                </div>
-            </div>
-        </form>
+      
     </div>
 </body>
 

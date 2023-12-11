@@ -14,7 +14,6 @@ async function initTasks() {
         categories = await loadFromBackend('categories', categories); */
     /*  invitedUsers = await loadFromBackend('invitedUsers', invitedUsers);  */
     await renderUserList();
-    await renderUserList2();
     await renderCategories();
     startPriorityEventListener();
     compareDate();
@@ -253,142 +252,6 @@ function compareDate() {
 }
 
 
-/**
- * Renders a list of users to the HTML element with id 'userList'.
- * Iterates through the 'invitedUsers' array and creates an input checkbox for each user.
- */
-function renderUserList() {
-    /* const userListContainer = getId('userList');
-    userListContainer.innerHTML = '';
-    for (let i = 0; i < users.length; i++) {
-        const user = users[i];
-        let isChecked = '';
-        if (assignedUsers !== undefined) isChecked = assignedUsers.some(assignedUser => assignedUser.name === user.name) ? 'checked' : '';
-        userListContainer.innerHTML += `
-        <div class="user-list-container">
-          <div>${user.name}</div>
-          <input name="assignedUsers" type="checkbox" id="checkbox-${i}" class="square-checkbox" ${isChecked} value="${user.name}" onclick="renderUserInitial(event, '${i}')"> 
-        </div>
-      `;
-        if (isChecked) renderDetailedUsers(i);
-    } */
-}
-
-
-
-
-
-/**
- * Renders the detailed view of a user.
- * @param {number} index - The index of the user in the 'invitedUsers' array.
- */
-function renderDetailedUsers(index) {
-    let user = users[index];
-    getId('userInitialContainer').innerHTML += `<div id="userIcon-${[index]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
-}
-
-
-/**
- * Renders the initial of a user when their checkbox is checked and removes it when unchecked.
- * @param {Object} event - The triggering event.
- * @param {number} index - The index of the user in the 'invitedUsers' array.
- */
-function renderUserInitial(event, index) {
-    const user = users[index];
-    const userIndex = assignedUsers.indexOf(user);
-    if (event.target.checked) {
-        user.assigned = true;
-        assignedUsers.push(user)
-        getId('userInitialContainer').innerHTML += `<div id="userIcon-${[index]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
-    }
-    if (!event.target.checked) {
-        assignedUsers.splice(userIndex, 1)
-        getId(`userIcon-${index}`).remove();
-    }
-}
-
-
-/**
- * Transforms the HTML element with id 'assignBtnContainer' into an window for the user invitation.
- */
-function inviteUsers() {
-    let inviteContainer = getId('assignBtnContainer');
-    inviteContainer.classList.remove('assign-btn-container');
-    inviteContainer.innerHTML = invivteUsersHTML();
-}
-
-
-/**
- * Cancels the process of inviting a new user, reverts the HTML of 'assignBtnContainer' and renders the user list.
- */
-function cancelContactInvitation() {
-    let inviteContainer = getId('assignBtnContainer');
-    inviteContainer.classList.add('assign-btn-container');
-    inviteContainer.innerHTML = contactInvitationHTML();
-    renderUserList();
-}
-
-
-function newContactInvitation() {
-    let newInvitation;
-    let userName = getId('userSearchInput').value;
-    let contactExists = contactBook.contacts.some(contact =>
-        contact.name === userName || contact.email === userName
-    );
-
-    if (!contactExists) {
-        closeContainerInTime(2500, 'popupMessageFalseContact'); // Show error message since user doesn't exist in contactBook
-        return;
-    }
-
-    if (!doubleIsThere(userName)) {
-        newInvitation = users.filter(function (user) {
-            return user.name.match(userName);
-        });
-
-        if (newInvitation.length > 0) {
-            invitedUsers.push(newInvitation[0]);
-            saveToBackend('invitedUsers', invitedUsers);
-            cancelContactInvitation();
-        }
-    } else {
-        closeContainerInTime(2500, 'popupMessageUsers'); // Show error message for double entry
-    }
-}
-
-
-function doubleIsThere(userName) {
-    return invitedUsers.some(user => user.name.match(userName));
-}
-
-
-/**
- * Matches the input string with user names or emails and returns a list of matching users.
- * @param {string} input - The input string to match against user names and emails.
- * @returns {Array} An array of user objects whose names or emails match the input string.
- */
-function autocompleteMatch(input) {
-    if (input === '') return [];
-    let reg = new RegExp(input, 'i');
-    return users.filter(function (user) {
-        return user.name.match(reg) || user.email.match(reg);
-    });
-}
-
-/**
- * Renders a dropdown list of user names and emails that match the input string in 'userSearchInput'.
- * @param {string} val - The input string to match against user names and emails.
- */
-function showResults(val) {
-    const res = getId("userSearchInput");
-    res.innerHTML = '';
-    let list = '';
-    const usersList = autocompleteMatch((val.toLowerCase()));
-    for (let i = 0; i < usersList.length; i++) {
-        list += `<option value="${usersList[i].name}">${usersList[i].name} (${usersList[i].email})</option>`;
-    }
-    res.innerHTML = `<datalist class="custom-datalist" id="usersSearch" name="userList">${list}</datalist>`;
-}
 
 
 /**
@@ -450,28 +313,62 @@ function searchContacts() {
 }
 
 
-function renderUserList2(filteredUsers) {
-    if (filteredUsers) usersArray = filteredUsers;
-    else usersArray = users;
+// Assuming `users` is an array of user objects where each user has a unique `id`
+// Assuming `assignedUsers` is an array that will hold the user objects that have been assigned
 
+function renderUserList(filteredUsers) {
+    let usersArray = filteredUsers || users;
     const userListContainer = getId('allUsersList');
     userListContainer.innerHTML = '';
-    for (let i = 0; i < usersArray.length; i++) {
-        const user = usersArray[i];
-        console.log(user);
-        let isChecked = '';
-        if (assignedUsers !== undefined) isChecked = assignedUsers.some(assignedUser => assignedUser.name === user.name) ? 'checked' : '';
+    usersArray.forEach((user) => {
+        let isChecked = assignedUsers.some(assignedUser => assignedUser.id === user.id) ? 'checked' : '';
         userListContainer.innerHTML += `
         <div class="user-list-container">
             <div class="initial-name">
-                <div id="userIcon-${[i]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>
+                <div class="user-icon" style="background-color: ${user.color}">${user.initial}</div>
                 <div>${user.name}</div>
+            </div>
+            <input name="assignedUsers" type="checkbox" id="checkbox-${user.id}" class="square-checkbox" ${isChecked}
+                   value="${user.name}" onclick="renderUserInitial(event, ${user.id})"> 
         </div>
-          <input name="assignedUsers" type="checkbox" id="checkbox-${i}" class="square-checkbox" ${isChecked} value="${user.name}" onclick="renderUserInitial(event, '${i}')"> 
-        </div>
-      `;
-        if (isChecked) renderDetailedUsers(i);
+        `;
+    });
+}
+
+function renderDetailedUsers(userId) {
+    let user = users.find(user => user.id === userId);
+    if (user) {
+        getId('userInitialContainer').innerHTML += `<div id="userIcon-${user.id}" class="user-icon" style="background-color: ${user.color}">${user.initial}</div>`;
     }
+}
+
+function renderUserInitial(event, userId) {
+    let user = users.find(user => user.id === userId);
+    if (!user) return;
+
+    if (event.target.checked) {
+        user.assigned = true;
+        assignedUsers.push(user);
+        getId('userInitialContainer').innerHTML += `<div id="userIcon-${user.id}" class="user-icon" style="background-color: ${user.color}">${user.initial}</div>`;
+    } else {
+        let userIndex = assignedUsers.findIndex(assignedUser => assignedUser.id === user.id);
+        if (userIndex !== -1) {
+            user.assigned = false;
+            assignedUsers.splice(userIndex, 1);
+            getId(`userIcon-${user.id}`).remove();
+        }
+    }
+}
+
+// This function is empty and not used, but I'll leave it here in case you plan to use it later.
+function showClickedUser(id) {
+    // Implementation depends on what you want to do when a user is clicked
+}
+
+
+
+function renderAssignedUsers() {
+
 }
 
 
@@ -493,7 +390,7 @@ function filterUsers(searchTerm) {
             user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
             user.phone.includes(searchTerm);
     });
-    renderUserList2(filteredUsers)
+    renderUserList(filteredUsers)
 }
 
 
