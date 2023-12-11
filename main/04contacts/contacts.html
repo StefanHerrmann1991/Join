@@ -4,7 +4,7 @@
 <head>
     <!-- script data -->
     <script src="../../includeHTML.js"></script>
-    <script src="../../mini_backend.js" defer></script>
+    <script src="../../storage.js" defer></script>
     <script src="../../script.js"></script>
     <script src="contacts.js"></script>
     <script src="contactsTemplate.js"></script>
@@ -51,42 +51,48 @@
             </div>
         </div>
     </div>
-    <div class="add-contact-dialog d-none" id="addContactDialog" onclick="closeContainerEvent(event, 'addContactDialog')">
-        <div class="add-contact-menu">
-            <div class="add-contact-description">
-                <img class="desktop" src="../../assets/img/logo.png">
-                <h2>Add contact</h2>
-                <p>Tasks are better with a team!</p>
-                <div class="lower-border"></div>
-                <button class="close-upper-right mobile" onclick="closeContainer('addContactDialog')">
-                    <img src="../../assets/img/cancelWhite.png">
-                </button>
-            </div>
-            <div class="add-contact-submenu">
-                <button class="close-upper-right desktop" onclick="closeContainer('addContactDialog')">
-                    <img src="../../assets/img/cancel.png">
-                </button>
-                <div id="newContactImg">
-                    <img class="edit-initial" src="../../assets/img/addContactBig.png">
+    <div class="add-contact-dialog d-none" id="addContactDialog"
+        onclick="closeContainerEvent(event, 'addContactDialog')">
+        <div class="add-contact">
+            <div class="add-contact-menu">
+                <div class="add-contact-description">
+                    <img class="desktop" src="../../assets/img/logo.png">
+                    <h2>Add contact</h2>
+                    <p>Tasks are better with a team!</p>
+                    <div class="lower-border"></div>
+                    <button class="close-upper-right mobile" onclick="closeContainer('addContactDialog')">
+                        <img src="../../assets/img/cancelWhite.png">
+                    </button>
                 </div>
-                <form onsubmit="createContact(event); saveBackendDataOf(contactBook); renderContacts()"
-                    id="contactFormfield">
-                    <input type="text" id="name" name="name" required placeholder="Name">
-                    <input type="email" id="email" name="email" required placeholder="Email">
-                    <input type="tel" id="phone" name="phone" required placeholder="Phone">
-                    <div class="create-contact-btns">
-                        <button class="desktop-flex" type="button " onclick="closeContainer('addContactDialog')">Cancel
-                            <img src="../../assets/img/cancel.png">
-                        </button>
-                        <button type=submit>
-                            <nobr>Create contact</nobr>
-                            <img src="../../assets/img/check.png">
-                        </button>
+                <div class="add-contact-submenu">
+                    <button class="close-upper-right desktop" onclick="closeContainer('addContactDialog')">
+                        <img src="../../assets/img/cancel.png">
+                    </button>
+                    <div id="newContactImg">
+                        <img class="edit-initial" src="../../assets/img/addContactBig.png">
                     </div>
-                </form>
+                    <form onsubmit="createContact(event); saveBackendDataOf(contactBook); renderContacts()"
+                        id="contactFormfield">
+                        <input type="text" id="name" name="name" required placeholder="Name">
+                        <input type="email" id="email" name="email" required placeholder="Email">
+                        <input type="tel" id="phone" name="phone" required placeholder="Phone">
+                        <div class="create-contact-btns">
+                            <button class="desktop-flex" type="button "
+                                onclick="closeContainer('addContactDialog')">Cancel
+                                <img src="../../assets/img/cancel.png">
+                            </button>
+                            <button type=submit>
+                                <nobr>Create contact</nobr>
+                                <img src="../../assets/img/check.png">
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    <div class="edit-contact-dialog d-none" id="editContactDialog" onclick="closeContainerEvent(event, 'editContactDialog')"></div>
+    <div class="edit-contact-dialog d-none" id="editContactDialog"
+        onclick="closeContainerEvent(event, 'editContactDialog')"></div>
 </body>
+
 </html>

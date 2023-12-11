@@ -10,7 +10,7 @@ let urgencies = ['High', 'Medium', 'Low'];
  */
 let categories = [{
     'topic': 'Sales',
-    'color': 'FC71FF',
+    'color': '#FC71FF',
     'index': '0'
 }, {
     'topic': 'Backoffice',
@@ -122,7 +122,7 @@ function newVariable(paramAsText) {
 async function saveBackendDataOf(dataObject) {
     let wordAsText = newVariable(dataObject) + `AsText`;
     let stringifyDataObject = JSON.stringify(dataObject);
-    await backend.setItem(`${wordAsText}`, stringifyDataObject);
+    await setItem(`${wordAsText}`, stringifyDataObject);
 };
 
 
@@ -134,7 +134,7 @@ async function saveBackendDataOf(dataObject) {
 async function saveToBackend(key, value) {
     if (event) event.preventDefault();
     keyAsText = JSON.stringify(value);
-    await backend.setItem(key, keyAsText);
+    await setItem(key, keyAsText);
     console.log(key, value, keyAsText);
 }
 
@@ -145,7 +145,7 @@ async function saveToBackend(key, value) {
  */
 function loadFromBackend(key, value) {
     if (event) event.preventDefault();
-    let keyAsText = backend.getItem(key);
+    let keyAsText = getItem(key);
     if (keyAsText) value = JSON.parse(keyAsText);
     return value;
 }

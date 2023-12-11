@@ -9,10 +9,12 @@ let newSubtaskOpen = false;
 async function initTasks() {
     await includeHTML();
     await initContactList();
-    tasks = await loadFromBackend('tasks', tasks);
-    categories = await loadFromBackend('categories', categories);
-    invitedUsers = await loadFromBackend('invitedUsers', invitedUsers);
+
+    /*     tasks = await loadFromBackend('tasks', tasks);
+        categories = await loadFromBackend('categories', categories); */
+    /*  invitedUsers = await loadFromBackend('invitedUsers', invitedUsers);  */
     await renderUserList();
+    await renderUserList2();
     await renderCategories();
     startPriorityEventListener();
     compareDate();
@@ -256,10 +258,10 @@ function compareDate() {
  * Iterates through the 'invitedUsers' array and creates an input checkbox for each user.
  */
 function renderUserList() {
-    const userListContainer = getId('userList');
+    /* const userListContainer = getId('userList');
     userListContainer.innerHTML = '';
-    for (let i = 0; i < invitedUsers.length; i++) {
-        const user = invitedUsers[i];
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
         let isChecked = '';
         if (assignedUsers !== undefined) isChecked = assignedUsers.some(assignedUser => assignedUser.name === user.name) ? 'checked' : '';
         userListContainer.innerHTML += `
@@ -269,8 +271,11 @@ function renderUserList() {
         </div>
       `;
         if (isChecked) renderDetailedUsers(i);
-    }
+    } */
 }
+
+
+
 
 
 /**
@@ -278,7 +283,7 @@ function renderUserList() {
  * @param {number} index - The index of the user in the 'invitedUsers' array.
  */
 function renderDetailedUsers(index) {
-    let user = invitedUsers[index];
+    let user = users[index];
     getId('userInitialContainer').innerHTML += `<div id="userIcon-${[index]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>`;
 }
 
@@ -289,7 +294,7 @@ function renderDetailedUsers(index) {
  * @param {number} index - The index of the user in the 'invitedUsers' array.
  */
 function renderUserInitial(event, index) {
-    const user = invitedUsers[index];
+    const user = users[index];
     const userIndex = assignedUsers.indexOf(user);
     if (event.target.checked) {
         user.assigned = true;
@@ -326,8 +331,8 @@ function cancelContactInvitation() {
 
 function newContactInvitation() {
     let newInvitation;
-    let userName = getId('userSearchInput').value; 
-    let contactExists = contactBook.contacts.some(contact => 
+    let userName = getId('userSearchInput').value;
+    let contactExists = contactBook.contacts.some(contact =>
         contact.name === userName || contact.email === userName
     );
 
@@ -430,4 +435,65 @@ function newSubtask() {
 function updateSubtask(index) {
     subtasks[index].checked = !subtasks[index].checked;
 }
+
+
+
+function toggleInput() {
+    event.preventDefault();
+    getId('userAssignBtn').classList.toggle('d-none');
+    getId('userSearchInputCon').classList.toggle('d-none');
+
+}
+
+function searchContacts() {
+
+}
+
+
+function renderUserList2(filteredUsers) {
+    if (filteredUsers) usersArray = filteredUsers;
+    else usersArray = users;
+
+    const userListContainer = getId('allUsersList');
+    userListContainer.innerHTML = '';
+    for (let i = 0; i < usersArray.length; i++) {
+        const user = usersArray[i];
+        console.log(user);
+        let isChecked = '';
+        if (assignedUsers !== undefined) isChecked = assignedUsers.some(assignedUser => assignedUser.name === user.name) ? 'checked' : '';
+        userListContainer.innerHTML += `
+        <div class="user-list-container">
+            <div class="initial-name">
+                <div id="userIcon-${[i]}" class="user-icon" style="background-color : ${user.color}">${user.initial}</div>
+                <div>${user.name}</div>
+        </div>
+          <input name="assignedUsers" type="checkbox" id="checkbox-${i}" class="square-checkbox" ${isChecked} value="${user.name}" onclick="renderUserInitial(event, '${i}')"> 
+        </div>
+      `;
+        if (isChecked) renderDetailedUsers(i);
+    }
+}
+
+
+function handleClickOutside(event) {
+    let usersSelect = document.getElementById('usersSelect');
+
+    // Check if the click is outside the usersSelect element
+    if (!usersSelect.contains(event.target)) {
+        toggleInput();
+    }
+}
+
+document.addEventListener('click', handleClickOutside);
+
+
+function filterUsers(searchTerm) {
+    const filteredUsers = users.filter(user => {
+        return user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            user.phone.includes(searchTerm);
+    });
+    renderUserList2(filteredUsers)
+}
+
 

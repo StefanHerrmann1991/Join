@@ -245,8 +245,8 @@ function createContact(event) {
 async function initContacts() {
   await initContactList();
   await includeHTML();
-  await renderContacts();  
-  highlightChosenMenu(); 
+  await renderContacts();
+  highlightChosenMenu();
 }
 
 
@@ -255,10 +255,15 @@ async function initContacts() {
  * Sets up the backend, downloads data from the server, parses the contact list, and sorts contacts afterwards.
  */
 async function initContactList() {
-  await setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
-  await downloadFromServer();
-  ContactBookAsText = JSON.parse(backend.getItem('ContactBookAsText')) || [];
-  contactBook = new ContactBook(ContactBookAsText.contacts, ContactBookAsText.initialList);
+  let contactBookAsText;
+  try {
+    const contactBookText = await getItem('ContactBookAsText');
+    contactBookAsText = JSON.parse(contactBookText);
+  } catch (e) {
+    // If there's an error, default to an object with an empty contacts array
+    contactBookAsText = { contacts: [], initialList: [] };
+  }
+  contactBook = new ContactBook(contactBookAsText.contacts, contactBookAsText.initialList);
   contactBook.sortInitials();
   contactBook.sortContacts();
   users = contactBook.contacts;

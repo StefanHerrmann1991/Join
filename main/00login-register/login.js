@@ -3,7 +3,7 @@
  * @returns {Promise<void>} A Promise that resolves when authentication initialization is complete.
  */
 async function initAuthentification() {
-    await initLogin();
+    /*  await initLogin(); */
     await loadRegisterdUsers();
     await renderAuth('login');
 }
@@ -251,7 +251,7 @@ function registerUser() {
         addUsers();
         renderAuth('login');
     }
-    else {closeContainerInTime(2500, 'alreadyRegistered');}
+    else { closeContainerInTime(2500, 'alreadyRegistered'); }
 };
 
 
@@ -285,9 +285,9 @@ function passwordValidation() {
  * @returns {Promise<void>} A Promise that resolves when the users are added to the backend.
  */
 async function addUsers() { //check async: no diff
-    if (event) event.preventDefault();
-    let registerdUsersAsText = JSON.stringify(registeredUsers);
-    await backend.setItem('registeredUsers', registerdUsersAsText);
+    /*     if (event) event.preventDefault();
+        let registerdUsersAsText = JSON.stringify(registeredUsers);
+        await setItem(registeredUser); */
 }
 
 
@@ -295,11 +295,15 @@ async function addUsers() { //check async: no diff
  * Loads the registered users from the backend storage.
  * @param {Event} event - The event object from the form submission.
  */
-function loadRegisterdUsers() {
-    if (event) event.preventDefault();
-    let registeredUsersAsText = backend.getItem('registeredUsers');
-    if (registeredUsersAsText) registeredUsers = JSON.parse(registeredUsersAsText);
+async function loadRegisterdUsers() {
+    try {
+        registeredUsers = JSON.parse(await getItem('registeredUsers'));
+        console.log(registeredUsers)
+    } catch (e) {
+        registeredUsers = [];
+    }
 }
+
 
 
 /**
@@ -329,7 +333,7 @@ function checkLogin() {
             return;
         }
     }
-    closeContainerInTime(2500, 'passwordIncorrect');     
+    closeContainerInTime(2500, 'passwordIncorrect');
 }
 
 
@@ -347,10 +351,10 @@ async function forgotPassword(event) {
         try {
             await sendForgotPasswordEmail(email, token);
             openSendMail();
-        } catch (error) {           
-            closeContainerInTime(2500, 'tryLater');           
+        } catch (error) {
+            closeContainerInTime(2500, 'tryLater');
         }
-    } else closeContainerInTime(2500, 'notRegistered');        
+    } else closeContainerInTime(2500, 'notRegistered');
 };
 
 
