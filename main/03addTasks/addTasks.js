@@ -109,8 +109,9 @@ function getUrgency() {
  */
 function newCategory() {
     newCategoryOpen = true
-    let newCategory = getId('categoryContainer');
-    newCategory.classList.remove('assign-btn-container');
+    let newCategory = getId('newCategoryContainer');
+    getId('newCategoryBtn').classList.add('d-none');
+    /*  newCategory.classList.remove('assign-btn-container'); */
     newCategory.innerHTML = categoryHTML();
     renderColorPicker();
 }
@@ -122,8 +123,9 @@ function newCategory() {
  */
 function cancelNewCategory() {
     newCategoryOpen = false;
-    let newCategory = getId('categoryContainer')
-    newCategory.classList.add('assign-btn-container');
+    let newCategory = getId('newCategoryContainer')
+    getId('newCategoryBtn').classList.remove('d-none');
+    /*  newCategory.classList.add('assign-btn-container'); */
     newCategory.innerHTML = newCategoryHTML();
     renderCategories();
 }
@@ -137,6 +139,7 @@ function renderColorPicker() {
     for (let i = 0; i < colorPicker.length; i++) {
         const color = colorPicker[i];
         pickColor.innerHTML += `<button type="button" onclick="chooseCategoryColor(${i})" class="category-color" style="background-color: ${color}"></button>`
+        console.log(color);
     }
 }
 
@@ -252,8 +255,6 @@ function compareDate() {
 }
 
 
-
-
 /**
  * Transforms the HTML element with id 'subtasks' into a subtask input form where new subtasks could be added to the task.
  */
@@ -301,20 +302,27 @@ function updateSubtask(index) {
 
 
 
-function toggleInput() {
+function toggleUsersInput() {
     event.preventDefault();
     getId('userAssignBtn').classList.toggle('d-none');
     getId('userSearchInputCon').classList.toggle('d-none');
-
 }
+
+
+function toggleCategoryInput() {
+    event.preventDefault();
+    getId('categoriesContainer').classList.toggle('d-none');
+}
+
+
+
 
 function searchContacts() {
 
 }
 
 
-// Assuming `users` is an array of user objects where each user has a unique `id`
-// Assuming `assignedUsers` is an array that will hold the user objects that have been assigned
+
 
 function renderUserList(filteredUsers) {
     let usersArray = filteredUsers || users;
@@ -328,7 +336,7 @@ function renderUserList(filteredUsers) {
                 <div class="user-icon" style="background-color: ${user.color}">${user.initial}</div>
                 <div>${user.name}</div>
             </div>
-            <input name="assignedUsers" type="checkbox" id="checkbox-${user.id}" class="square-checkbox" ${isChecked}
+            <input name="assignedUsers" type="checkbox" id="checkbox-${user.id}" class="subtask-checkbox" ${isChecked}
                    value="${user.name}" onclick="renderUserInitial(event, ${user.id})"> 
         </div>
         `;
@@ -360,19 +368,8 @@ function renderUserInitial(event, userId) {
     }
 }
 
-// This function is empty and not used, but I'll leave it here in case you plan to use it later.
-function showClickedUser(id) {
-    // Implementation depends on what you want to do when a user is clicked
-}
 
-
-
-function renderAssignedUsers() {
-
-}
-
-
-function handleClickOutside(event) {
+/* function handleClickOutside(event) {
     let usersSelect = document.getElementById('usersSelect');
 
     // Check if the click is outside the usersSelect element
@@ -381,7 +378,7 @@ function handleClickOutside(event) {
     }
 }
 
-document.addEventListener('click', handleClickOutside);
+document.addEventListener('click', handleClickOutside); */
 
 
 function filterUsers(searchTerm) {

@@ -2,6 +2,8 @@
 
 $element-width: 100%
 
+/* ********************************MAIN STYLES******************************************* */
+
 button
     border: none
     background-color: transparent
@@ -13,8 +15,27 @@ input, textarea, select, button, .priority-btn
     font-size: 21px
     line-height: 120%
 
+.title, select, textarea, .date, .standard
+    display: block
+    padding-left: 21px
+    padding-right: 21px
+    width: calc(100% - 42px)
+    background: #FFFFFF
+    border: 1px solid #D1D1D1
+    border-radius: 10px
+    resize: none
+    cursor: pointer
+
+textarea
+    height: 119px
+
+input, select
+    height: 51px
+
 textarea
     padding-top: 12px
+
+/* ********************************TASK LAYOUT******************************************* */
 
 .add-task-title
     font-size: 64px
@@ -34,6 +55,7 @@ textarea
 
 .add-task-right
     width: 45%
+
 .add-task-left
     width: 45%
     .user-initial-container
@@ -52,12 +74,13 @@ input:-webkit-autofill:active
 .add-task-right
     position: relative
 
+/* ********************************MAIN BUTTONS******************************************* */
+
 .btn-container
     display: flex
     justify-content: space-between
     align-items: center
     button
-
         border-radius: 10px
         font-weight: 700
         display: flex
@@ -71,12 +94,11 @@ input:-webkit-autofill:active
         width: 136px
         height: 61px
         border-radius: 10px
-
+        @include hover-style-1
         img
             width: 24px
             height: 24px
             margin-left: 2px
-        @include hover-style-1
 
     .create-task-btn
         background-color: #2A3647
@@ -86,31 +108,16 @@ input:-webkit-autofill:active
         color: #FFFFFF
         width: 177px
         height: 61px
+        @include hover-style-2
         img
             width: 24px
             height: 24px
             margin-left: 2px
-        @include hover-style-2
-
-.title, select, textarea, .date, .standard
-    display: block
-    padding-left: 21px
-    padding-right: 21px
-    width: calc(100% - 42px)
-    background: #FFFFFF
-    border: 1px solid #D1D1D1
-    border-radius: 10px
-    resize: none
-    cursor: pointer
-
-textarea
-    height: 119px
-
-input, select
-    height: 51px
 
 .assignment-button-container
     display: flex
+
+/* ********************************PRIORITY BUTTONS******************************************* */
 
 .priority-btns
     display: flex
@@ -139,6 +146,9 @@ input, select
         margin-left: 5px
         width: 20px
         height: 14.5px
+
+
+/* ********************************SUBTASK BUTTONS******************************************* */
 
 .subtasks-container
     position: relative
@@ -183,6 +193,9 @@ input, select
     display: flex
     justify-content: center
     align-items: center
+
+
+
 
 .assign-btn-container
     display: flex
@@ -349,9 +362,7 @@ input, select
     right: 20%
 
 .new-category-btn
-    height: 51px
-    padding-left: 21px
-    padding-right: 21px
+    height: 51px  
     width: 100%
     display: flex
     justify-content: flex-start
@@ -516,7 +527,7 @@ input.subtask-checkbox[type="checkbox"]:checked
     &:focus-visible
         outline: none
 
-.all-users-list
+.all-users-list, .all-categories-list
     padding: 20px 0px 20px 0px
     position: absolute
     width: 100%
@@ -544,6 +555,40 @@ input.subtask-checkbox[type="checkbox"]:checked
 .initial-name
     display: flex
     align-items: center
+
+.select-category
+    position: relative
+    height: 54px
+
+.each-category-container
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    gap: 12px
+    width: 100%
+
+.category-container
+    width: calc( 100% - 8px)
+    display: flex
+    flex-direction: column
+    background: #FFFFFF
+    border: 1px solid #D1D1D1
+    border-radius: 10px
+    position: relative
+    align-items: flex-start
+    .assign-btn
+        height: 51px
+        padding-left: 21px
+        padding-right: 21px
+        width: 98%
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+#categoryContainer
+    width: 100%
+    #categoryMenu
+        width: 100%
 
 @media( max-width: 992px)
 

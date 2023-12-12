@@ -51,8 +51,6 @@ function categoryHTML() {
 function newCategoryHTML() {
     return `
     <button type="button" class="assign-btn" onclick="toggleContainer('categoryMenu');">
-        <div class="chosen-category-container" id="categorySelect">Select task category</div>
-        <div id="imgArrow"><img src="../../assets/img/open.png"></div>
         <input id="validateCategory" required class="hidden-input">
     </button>
     <div class="user-menu d-none" id="categoryMenu">

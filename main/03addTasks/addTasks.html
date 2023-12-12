@@ -50,26 +50,10 @@
                         <h3>Description</h3>
                         <textarea minlength="3" resize="none" required id="description"
                             placeholder="Enter a description"></textarea>
-                        <h3>Category</h3>
-                        <div class="assign-btn-container" id="categoryContainer">
-                            <button type="button" class="assign-btn"
-                                onclick="toggleContainer('categoryMenu'); renderCategories()">
-                                <div class="chosen-category-container" id="categorySelect">Select task category
-                                </div>
-                                <div id="imgArrow"><img src="../../assets/img/open.png"></div>
-                                <input id="validateCategory" required class="hidden-input">
-                            </button>
-                            <div class="user-menu d-none" id="categoryMenu">
-                                <button id="newCategoryBtn" type="button" class="new-category-btn"
-                                    onclick="newCategory()">New
-                                    category</button>
-                                <div class="category-list" id="categoryList"></div>
-                            </div>
-                        </div>
                         <h3>Assigned to</h3>
                         <div name="usersSelect" id="usersSelect" class="users-select">
                             <div id="userAssignBtn" class="absolute">
-                                <button class="toggle-user-input user-menu" onclick="toggleInput()">
+                                <button class="toggle-user-input user-menu" onclick="toggleUsersInput()">
                                     <div>Select contacts to assign</div>
                                     <img src="../../assets/img/open.png">
                                 </button>
@@ -77,15 +61,16 @@
                             <div id="userSearchInputCon" class="absolute d-none">
                                 <div class="input-userlist-box">
                                     <div class="toggle-user-input user-menu">
-                                        <input id="userSearchInput" class="user-search-input" placeholder="Search for collegues" oninput="filterUsers(this.value)">
-                                        <button class="assign-user-btn" onclick="toggleInput()"><img src="../../assets/img/open.png"></button>
+                                        <input id="userSearchInput" class="user-search-input"
+                                            placeholder="Search for collegues" oninput="filterUsers(this.value)">
+                                        <button class="assign-user-btn" onclick="toggleUsersInput()"><img
+                                                src="../../assets/img/open.png"></button>
                                     </div>
                                     <div id="allUsersList" class="all-users-list"></div>
                                 </div>
                             </div>
                         </div>
                         <div id="userInitialContainer" class="user-initial-container"></div>
-                
                     </div>
                     <div class="border"></div>
                     <div class="add-task-right">
@@ -99,7 +84,6 @@
                                         class="priority-radio" required>
                                     Urgent<img src="../../assets/img/prioUrgent.png">
                                 </label>
-
                                 <label for="medium" class="medium priority-btn">
                                     <input type="radio" id="medium" name="priority" value="medium"
                                         class="priority-radio">
@@ -114,8 +98,8 @@
                             <h3>Subtasks</h3>
                             <div class="assign-btn-container" id="subtasks">
                                 <button onclick="renderSubtasks()" type="button" class="assign-btn" type="text">
-                                    <div id="subtaskMenu">Add new subtask</div><img class="add-subtask"
-                                        src="../../assets/img/addIcon.png">
+                                    <div id="subtaskMenu">Add new subtask</div>
+                                    <img class="add-subtask" src="../../assets/img/addIcon.png">
                                 </button>
                             </div>
                             <div id="renderedSubtasks"></div>
@@ -126,12 +110,44 @@
                             <button class="create-task-btn" type="submit" class="assign-btn">
                                 <span>Create Task</span><img src="../../assets/img/check.png"></button>
                         </div>
-
+                        <h3> Category</h3>
+                        <div class="select-category">
+                            <div class="absolute">
+                                <button type="button" class="assign-btn"
+                                    onclick="toggleContainer('categoryMenu'); renderCategories()">
+                                    <div class="chosen-category-container" id="categorySelect">Select task category
+                                    </div>
+                                    <div> <img src="../../assets/img/open.png"></div>
+                                    <input id="validateCategory" required class="hidden-input">
+                                </button>
+                                <div class="d-none" id="categoryMenu">
+                                    <button id="newCategoryBtn" type="button" class="new-category-btn"
+                                        onclick="newCategory()">New
+                                        category</button>
+                                    <div class="category-list" id="categoryList"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--   <div class="category-container" id="categoryContainer">
+                            <button type="button" class="assign-btn"
+                                onclick="toggleContainer('categoryMenu'); renderCategories()">
+                                <div class="chosen-category-container" id="categorySelect">Select task category
+                                </div>
+                                <div> <img src="../../assets/img/open.png"></div>
+                                <input id="validateCategory" required class="hidden-input">
+                            </button>
+                            <div class="d-none" id="categoryMenu">
+                                <button id="newCategoryBtn" type="button" class="new-category-btn"
+                                    onclick="newCategory()">New
+                                    category</button>
+                                <div class="category-list" id="categoryList"></div>
+                            </div>
+                        </div> -->
                     </div>
                 </div>
             </form>
         </div>
-      
+
     </div>
 </body>
 
