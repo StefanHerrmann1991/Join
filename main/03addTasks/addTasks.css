@@ -690,7 +690,7 @@ input:-webkit-autofill:active {
   border-radius: 10px;
   border: none;
   padding: 0px;
-  margin-left: 22px;
+  margin-left: 14px;
   width: 70%;
 }
 .subtasks-container input:focus {
@@ -833,9 +833,9 @@ input:-webkit-autofill:active {
 
 .user-icon {
   border-radius: 50%;
-  border: 1px solid rgb(192, 192, 192);
-  height: 45px;
-  width: 45px;
+  border: 2px solid white;
+  height: 40px;
+  width: 40px;
   color: white;
   font-weight: bold;
   text-transform: uppercase;
@@ -845,8 +845,8 @@ input:-webkit-autofill:active {
   flex-wrap: wrap;
   box-sizing: border-box;
   transition: all 225ms linear;
-  margin-left: 8px;
-  margin-right: 8px;
+  margin: 6px;
+  font-size: 12px;
 }
 
 #userSearchInput {
@@ -874,6 +874,7 @@ input:-webkit-autofill:active {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  padding-left: 20px;
 }
 
 .category-color {
@@ -1082,6 +1083,14 @@ input.subtask-checkbox[type=checkbox]:checked {
   width: 100%;
 }
 
+.color-topic {
+  display: flex;
+  align-items: center;
+}
+.color-topic span {
+  margin-left: 12px;
+}
+
 .category-list {
   padding: 20px 20px 0px 20px;
   gap: 12px;
@@ -1137,6 +1146,11 @@ input.subtask-checkbox[type=checkbox]:checked {
   margin-right: auto;
   justify-content: space-between;
   align-items: center;
+}
+.user-in-list:hover {
+  border-radius: 10px;
+  background: var(--version-2-main-color, #2b3542);
+  color: white;
 }
 
 .initial-name {

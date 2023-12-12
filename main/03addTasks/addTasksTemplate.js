@@ -49,7 +49,7 @@ function invivteUsersHTML() {
 } */
 
 
- function newCategoryHTML() {
+function newCategoryHTML() {
     return `
     <button type="button" class="assign-btn" onclick="toggleContainer('categoryMenu');">
         <input id="validateCategory" required class="hidden-input">
@@ -104,9 +104,13 @@ function cancelSubtaskHTML() {
 
 function chosenCategoryHTML(category) {
     return ` 
-    <button type="button" id="category" class="category" value="${category.index}">
-        <span>${category.topic}</span>
-    <div class="category-color" style="background-color: ${category.color}"></div></button>  
+    <button type="button" id="category" class="toggle-user-input user-menu" value="${category.index}">
+        <div class="color-topic">
+            <div class="category-color" style="background-color: ${category.color}"></div>
+            <span>${category.topic}</span>
+        </div>
+        <img src="../../assets/img/open.png" onclick="toggleCategoryInput()">
+    </button>  
     `
 }
 
@@ -114,8 +118,8 @@ function chosenCategoryHTML(category) {
 function categoryOptionsHTML(category, index) {
     return `
     <button type="button" onclick="saveCategory(${index})" class="each-category-container">
-    <div class="category" id="category-${index}">${category.topic}</div>
     <div class="category-color" style="background-color: ${category.color}"></div>
+    <div class="category" id="category-${index}">${category.topic}</div>
     </button>
     `
 }

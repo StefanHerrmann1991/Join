@@ -61,7 +61,7 @@ function checkCurrentTitle() {
  */
 function validateData(id, array) {
     let validateId = getId(id);
-    if (array.length === 0 || validateId == undefined) validateId.setAttribute('required', '');
+    if (array.length === 0 || validateId == undefined) validateId?.setAttribute('required', '');
     else validateId.removeAttribute('required');
 }
 
@@ -191,7 +191,7 @@ function renderCategories() {
  * @param {number} index - The index of the category in the 'categories' array.
  */
 function saveCategory(index) {
-    let chosenCategoryOption = getId('categorySelect');
+    let chosenCategoryOption = getId('openCategoryBtn');
     let category = categories[index];
     chosenCategoryOption.innerHTML = chosenCategoryHTML(category);
     validateData('validateCategory', category);
