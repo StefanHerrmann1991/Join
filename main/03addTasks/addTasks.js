@@ -9,10 +9,9 @@ let newSubtaskOpen = false;
 async function initTasks() {
     await includeHTML();
     await initContactList();
-
-    /*     tasks = await loadFromBackend('tasks', tasks);
-        categories = await loadFromBackend('categories', categories); */
-    /*  invitedUsers = await loadFromBackend('invitedUsers', invitedUsers);  */
+    /*  tasks = await loadFromBackend('tasks', tasks); */
+    categories = await loadFromBackend('categories', categories);
+    console.log(categories);
     await renderUserList();
     await renderCategories();
     startPriorityEventListener();
@@ -112,10 +111,7 @@ function getUrgency() {
  */
 function cancelNewCategory() {
     newCategoryOpen = false;
-    let newCategory = getId('newCategoryContainer')
     getId('newCategoryBtn').classList.remove('d-none');
-    /*  newCategory.classList.add('assign-btn-container'); */
-    /* newCategory.innerHTML = newCategoryHTML(); */
     renderCategories();
 }
 
@@ -126,11 +122,9 @@ function cancelNewCategory() {
 function renderColorPicker() {
     let pickColor = getId('colorPicker');
     pickColor.innerHTML = '';
-
     for (let i = 0; i < colorPicker.length; i++) {
         const color = colorPicker[i];
         pickColor.innerHTML += `<button type="button" onclick="chooseCategoryColor(${i})" class="category-color" style="background-color: ${color}"></button>`
-        console.log(color);
     }
 }
 
@@ -165,9 +159,16 @@ function addCategory() {
         saveToBackend('categories', categories);
         cancelNewCategory();
         renderCategories();
-        getId('newCategoryMenu').classList.add('d-none');
+        closeNewCategory();
     }
     else closeContainerInTime(2000, 'popupMessageCategory');
+}
+
+
+function setRandomColor() {
+    // Generating a random color in hexadecimal (e.g., #ff0033)
+    const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+    return randomColor;
 }
 
 
@@ -175,7 +176,7 @@ function addCategory() {
  * Renders categories to the HTML element with id 'categoryList'.
  * Iterates through the 'categories' array and creates a button for each category.
  */
-function renderCategories() {  
+function renderCategories() {
     let categoryOption = getId('categoryList');
     categoryOption.innerHTML = '';
     for (let i = 0; i < categories.length; i++) {
@@ -294,14 +295,12 @@ function updateSubtask(index) {
 }
 
 
-
 function toggleUsersInput() {
     event.preventDefault();
     getId('userAssignBtn').classList.toggle('d-none');
     getId('userSearchInputCon').classList.toggle('d-none');
     getId('users-background').classList.toggle('white-background');
 }
-
 
 
 function openNewCategory() {
@@ -331,33 +330,56 @@ function toggleCategoryInput() {
 }
 
 
-
-
-function searchContacts() {
-
-}
-
-
-
-
 function renderUserList(filteredUsers) {
     let usersArray = filteredUsers || users;
     const userListContainer = getId('allUsersList');
     userListContainer.innerHTML = '';
+
     usersArray.forEach((user) => {
         let isChecked = assignedUsers.some(assignedUser => assignedUser.id === user.id) ? 'checked' : '';
+        let userElementId = `user-${user.id}`;
+
         userListContainer.innerHTML += `
-        <div class="user-list-container">
-            <div class="initial-name">
-                <div class="user-icon" style="background-color: ${user.color}">${user.initial}</div>
-                <div>${user.name}</div>
+            <div id="${userElementId}" class="user-in-list">
+                <div class="initial-name">
+                    <div class="user-icon" style="background-color: ${user.color}">${user.initial}</div>
+                    <div>${user.name}</div>
+                </div>
+                <input name="assignedUsers" type="checkbox" id="checkbox-${user.id}" class="subtask-checkbox" ${isChecked}
+                       value="${user.name}" onclick="renderUserInitial(event, ${user.id})"> 
             </div>
-            <input name="assignedUsers" type="checkbox" id="checkbox-${user.id}" class="subtask-checkbox" ${isChecked}
-                   value="${user.name}" onclick="renderUserInitial(event, ${user.id})"> 
-        </div>
         `;
     });
+
+    // Add event listener to user-in-list elements
+    userListContainer.querySelectorAll('.user-in-list').forEach(userElement => {
+        userElement.addEventListener('click', () => {
+            let checkbox = userElement.querySelector('.subtask-checkbox');
+            if (event.target !== checkbox) {
+                checkbox.click();
+            }
+            updateStylesForCheckedItems();
+        });
+    });
 }
+
+function updateStylesForCheckedItems() {
+    document.querySelectorAll('.user-in-list').forEach(userElement => {
+        let checkbox = userElement.querySelector('.subtask-checkbox');
+        if (checkbox && checkbox.checked) {
+            // Apply styles for checked items
+            userElement.style.borderRadius = '10px';
+            userElement.style.background = 'var(--version-2-main-color, #2A3647)';
+            userElement.style.color = 'white';
+        } else {
+            // Reset styles for unchecked items
+            userElement.style.borderRadius = '';
+            userElement.style.background = '';
+            userElement.style.color = '';
+        }
+    });
+}
+
 
 function renderDetailedUsers(userId) {
     let user = users.find(user => user.id === userId);

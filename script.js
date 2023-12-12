@@ -143,9 +143,9 @@ async function saveToBackend(key, value) {
  *  This function loads and converts the tasks from text-format to a JSON-array. 
  *  The preventDefault() function is necessary to prevent the page from reloading when adding a new task.
  */
-function loadFromBackend(key, value) {
+async function loadFromBackend(key, value) {
     if (event) event.preventDefault();
-    let keyAsText = getItem(key);
+    let keyAsText = await getItem(key);
     if (keyAsText) value = JSON.parse(keyAsText);
     return value;
 }
