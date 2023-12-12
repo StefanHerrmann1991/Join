@@ -51,26 +51,28 @@
                         <textarea minlength="3" resize="none" required id="description"
                             placeholder="Enter a description"></textarea>
                         <h3>Assigned to</h3>
-                        <div name="usersSelect" id="usersSelect" class="users-select">
-                            <div id="userAssignBtn" class="absolute">
-                                <button class="toggle-user-input user-menu" onclick="toggleUsersInput()">
-                                    <div>Select contacts to assign</div>
-                                    <img src="../../assets/img/open.png">
-                                </button>
-                            </div>
-                            <div id="userSearchInputCon" class="absolute d-none">
-                                <div class="input-userlist-box">
-                                    <div class="toggle-user-input user-menu">
-                                        <input id="userSearchInput" class="user-search-input"
-                                            placeholder="Search for collegues" oninput="filterUsers(this.value)">
-                                        <button class="assign-user-btn" onclick="toggleUsersInput()"><img
-                                                src="../../assets/img/open.png"></button>
+                        <div class="background" id="users-background">
+                            <div name="usersSelect" id="usersSelect" class="users-select">
+                                <div id="userAssignBtn" class="absolute">
+                                    <button class="toggle-user-input user-menu" onclick="toggleUsersInput()">
+                                        <div>Select contacts to assign</div>
+                                        <img src="../../assets/img/open.png">
+                                    </button>
+                                </div>
+                                <div id="userSearchInputCon" class="absolute d-none">
+                                    <div class="input-userlist-box">
+                                        <div class="toggle-user-input user-menu">
+                                            <input id="userSearchInput" class="user-search-input"
+                                                placeholder="Search for collegues" oninput="filterUsers(this.value)">
+                                            <button class="assign-user-btn" onclick="toggleUsersInput()"><img
+                                                    src="../../assets/img/open.png"></button>
+                                        </div>
+                                        <div id="allUsersList" class="all-users-list"></div>
                                     </div>
-                                    <div id="allUsersList" class="all-users-list"></div>
                                 </div>
                             </div>
+                            <div id="userInitialContainer" class="user-initial-container"></div>
                         </div>
-                        <div id="userInitialContainer" class="user-initial-container"></div>
                     </div>
                     <div class="border"></div>
                     <div class="add-task-right">
@@ -105,21 +107,22 @@
                             <div id="renderedSubtasks"></div>
                         </div>
                         <h3> Category</h3>
-                        <div class="select-category">
-                            <div class="absolute">
-                                <div id="new-category-btn">
-                                    <button class="toggle-user-input user-menu" onclick="toggleCategoryInput()">
-                                        <div>Select task category</div>
-                                        <img src="../../assets/img/open.png">
-                                    </button>
-                                </div>
-                                <div id="categoriesContainer" class="all-categories-list">
-                                    <div id="categoryList"></div>
-                                    <button id="newCategoryBtn" type="button" class="new-category-btn"
-                                        onclick="openNewCategory()">New
-                                        category</button>
-                                    <div id="newCategoryContainer" class="d-none" ">
-                                        <div class="subtasks-container">
+                        <div class="background" id="category-background">
+                            <div class="select-category">
+                                <div class="absolute">
+                                    <div id="new-category-btn ">
+                                        <button class="toggle-user-input user-menu" onclick="toggleCategoryInput()">
+                                            <div>Select task category</div>
+                                            <img src="../../assets/img/open.png">
+                                        </button>
+                                    </div>
+                                    <div id="categoriesContainer" class="all-categories-list d-none">
+                                        <div id="categoryList"></div>
+                                        <button id="newCategoryBtn" type="button" class="new-category-btn"
+                                            onclick="openNewCategory()">New
+                                            category</button>
+                                        <div id="newCategoryContainer" class="d-none" ">
+                                        <div class=" subtasks-container">
                                             <div class="category-input-color">
                                                 <input minlength="3" id="categoryInput" type="text"
                                                     placeholder="New category name" required>
@@ -138,13 +141,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="btn-container">
-                            <button class="clear-btn" type="reset" class="clear-btn" onclick="clearInputTasks()">
-                                Clear<img src="../../assets/img/cancel.png"></button>
-                            <button class="create-task-btn" type="submit" class="assign-btn">
-                                <span>Create Task</span><img src="../../assets/img/check.png"></button>
-                        </div>
-                        <!--   <div class="category-container" id="categoryContainer">
+                    </div>
+                    <div class="btn-container">
+                        <button class="clear-btn" type="reset" class="clear-btn" onclick="clearInputTasks()">
+                            Clear<img src="../../assets/img/cancel.png"></button>
+                        <button class="create-task-btn" type="submit" class="assign-btn">
+                            <span>Create Task</span><img src="../../assets/img/check.png"></button>
+                    </div>
+                    <!--   <div class="category-container" id="categoryContainer">
                             <button type="button" class="assign-btn"
                                 onclick="toggleContainer('categoryMenu'); renderCategories()">
                                 <div class="chosen-category-container" id="categorySelect">Select task category
@@ -159,10 +163,10 @@
                                 <div class="category-list" id="categoryList"></div>
                             </div>
                         </div> -->
-                    </div>
                 </div>
-            </form>
         </div>
+        </form>
+    </div>
 
     </div>
 </body>

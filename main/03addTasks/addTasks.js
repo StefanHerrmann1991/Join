@@ -175,9 +175,7 @@ function addCategory() {
  * Renders categories to the HTML element with id 'categoryList'.
  * Iterates through the 'categories' array and creates a button for each category.
  */
-function renderCategories() {
-    debugger
-    console.log(categories)
+function renderCategories() {  
     let categoryOption = getId('categoryList');
     categoryOption.innerHTML = '';
     for (let i = 0; i < categories.length; i++) {
@@ -301,6 +299,7 @@ function toggleUsersInput() {
     event.preventDefault();
     getId('userAssignBtn').classList.toggle('d-none');
     getId('userSearchInputCon').classList.toggle('d-none');
+    getId('users-background').classList.toggle('white-background');
 }
 
 
@@ -328,6 +327,7 @@ function closeNewCategory() {
 function toggleCategoryInput() {
     event.preventDefault();
     getId('categoriesContainer').classList.toggle('d-none');
+    getId('category-background').classList.toggle('white-background');
 }
 
 

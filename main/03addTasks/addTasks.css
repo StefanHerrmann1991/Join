@@ -528,6 +528,14 @@ textarea {
   padding-top: 12px;
 }
 
+.background {
+  background-color: #F6F7F8;
+}
+
+.white-background {
+  background-color: white;
+}
+
 /* ********************************TASK LAYOUT******************************************* */
 .add-task-title {
   font-size: 64px;
