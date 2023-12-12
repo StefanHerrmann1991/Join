@@ -31,11 +31,12 @@ function invivteUsersHTML() {
 }
 
 
-function categoryHTML() {
+/* function categoryHTML() {
     return `
-    <div class="subtasks-container">
+    <div class="subtasks-container" id="newCategoryMenu">
         <div class="category-input-color">
-            <input minlength="3" id="categoryInput" type="text" placeholder="New category name" required>                
+            <input minlength="3" id="categoryInput" type="text" placeholder="New category name" required>     
+            <div id="chosenColor"></div>           
         </div>
         <div class="button-container">
             <button type="button" class="cancel-button" onclick="cancelNewCategory()"><img
@@ -45,10 +46,10 @@ function categoryHTML() {
     </div>
     <div id="colorPicker" class="color-picker"></div>       
     `
-}
+} */
 
 
-function newCategoryHTML() {
+ function newCategoryHTML() {
     return `
     <button type="button" class="assign-btn" onclick="toggleContainer('categoryMenu');">
         <input id="validateCategory" required class="hidden-input">

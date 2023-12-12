@@ -104,29 +104,45 @@
                             </div>
                             <div id="renderedSubtasks"></div>
                         </div>
+                        <h3> Category</h3>
+                        <div class="select-category">
+                            <div class="absolute">
+                                <div id="new-category-btn">
+                                    <button class="toggle-user-input user-menu" onclick="toggleCategoryInput()">
+                                        <div>Select task category</div>
+                                        <img src="../../assets/img/open.png">
+                                    </button>
+                                </div>
+                                <div id="categoriesContainer" class="all-categories-list">
+                                    <div id="categoryList"></div>
+                                    <button id="newCategoryBtn" type="button" class="new-category-btn"
+                                        onclick="openNewCategory()">New
+                                        category</button>
+                                    <div id="newCategoryContainer" class="d-none" ">
+                                        <div class="subtasks-container">
+                                            <div class="category-input-color">
+                                                <input minlength="3" id="categoryInput" type="text"
+                                                    placeholder="New category name" required>
+                                                <div id="chosenColor"></div>
+                                            </div>
+                                            <div class="button-container">
+                                                <button onclick="closeNewCategory()" type="button"
+                                                    class="cancel-button"><img
+                                                        src="../../assets/img/cancelDark.png"></button>
+                                                <button type="button" class="add-button" onclick="addCategory()"><img
+                                                        src="../../assets/img/checkDark.png"></button>
+                                            </div>
+                                        </div>
+                                        <div id="colorPicker" class="color-picker"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="btn-container">
                             <button class="clear-btn" type="reset" class="clear-btn" onclick="clearInputTasks()">
                                 Clear<img src="../../assets/img/cancel.png"></button>
                             <button class="create-task-btn" type="submit" class="assign-btn">
                                 <span>Create Task</span><img src="../../assets/img/check.png"></button>
-                        </div>
-                        <h3> Category</h3>
-                        <div class="select-category">
-                            <div class="absolute">
-                                <button type="button" class="assign-btn"
-                                    onclick="toggleContainer('categoryMenu'); renderCategories()">
-                                    <div class="chosen-category-container" id="categorySelect">Select task category
-                                    </div>
-                                    <div> <img src="../../assets/img/open.png"></div>
-                                    <input id="validateCategory" required class="hidden-input">
-                                </button>
-                                <div class="d-none" id="categoryMenu">
-                                    <button id="newCategoryBtn" type="button" class="new-category-btn"
-                                        onclick="newCategory()">New
-                                        category</button>
-                                    <div class="category-list" id="categoryList"></div>
-                                </div>
-                            </div>
                         </div>
                         <!--   <div class="category-container" id="categoryContainer">
                             <button type="button" class="assign-btn"

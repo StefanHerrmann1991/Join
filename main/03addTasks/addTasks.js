@@ -104,17 +104,6 @@ function getUrgency() {
 }
 
 
-/**
- * Changes the layout for a new category input, and renders a color picker.
- */
-function newCategory() {
-    newCategoryOpen = true
-    let newCategory = getId('newCategoryContainer');
-    getId('newCategoryBtn').classList.add('d-none');
-    /*  newCategory.classList.remove('assign-btn-container'); */
-    newCategory.innerHTML = categoryHTML();
-    renderColorPicker();
-}
 
 
 /**
@@ -126,7 +115,7 @@ function cancelNewCategory() {
     let newCategory = getId('newCategoryContainer')
     getId('newCategoryBtn').classList.remove('d-none');
     /*  newCategory.classList.add('assign-btn-container'); */
-    newCategory.innerHTML = newCategoryHTML();
+    /* newCategory.innerHTML = newCategoryHTML(); */
     renderCategories();
 }
 
@@ -136,6 +125,8 @@ function cancelNewCategory() {
  */
 function renderColorPicker() {
     let pickColor = getId('colorPicker');
+    pickColor.innerHTML = '';
+
     for (let i = 0; i < colorPicker.length; i++) {
         const color = colorPicker[i];
         pickColor.innerHTML += `<button type="button" onclick="chooseCategoryColor(${i})" class="category-color" style="background-color: ${color}"></button>`
@@ -168,12 +159,13 @@ function addCategory() {
         let newCategory = {
             'topic': topic,
             'color': color,
-            'index': categories.length
+            'index': `${categories.length}`
         }
         categories.push(newCategory);
         saveToBackend('categories', categories);
         cancelNewCategory();
         renderCategories();
+        getId('newCategoryMenu').classList.add('d-none');
     }
     else closeContainerInTime(2000, 'popupMessageCategory');
 }
@@ -184,6 +176,8 @@ function addCategory() {
  * Iterates through the 'categories' array and creates a button for each category.
  */
 function renderCategories() {
+    debugger
+    console.log(categories)
     let categoryOption = getId('categoryList');
     categoryOption.innerHTML = '';
     for (let i = 0; i < categories.length; i++) {
@@ -202,6 +196,7 @@ function saveCategory(index) {
     let category = categories[index];
     chosenCategoryOption.innerHTML = chosenCategoryHTML(category);
     validateData('validateCategory', category);
+    renderCategories();
     closeContainer('categoryMenu');
 }
 
@@ -306,6 +301,27 @@ function toggleUsersInput() {
     event.preventDefault();
     getId('userAssignBtn').classList.toggle('d-none');
     getId('userSearchInputCon').classList.toggle('d-none');
+}
+
+
+
+function openNewCategory() {
+    toggleNewCategory();
+    renderColorPicker();
+}
+
+
+function toggleNewCategory() {
+    getId('newCategoryBtn').classList.toggle('d-none');
+    getId('newCategoryContainer').classList.toggle('d-none');
+}
+
+
+function closeNewCategory() {
+    console.log('trigere')
+    toggleNewCategory();
+    categoryInput.value = '';
+
 }
 
 
