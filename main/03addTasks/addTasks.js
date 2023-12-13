@@ -194,7 +194,7 @@ function saveCategory(index) {
     let chosenCategoryOption = getId('openCategoryBtn');
     let category = categories[index];
     chosenCategoryOption.innerHTML = chosenCategoryHTML(category);
-    validateData('validateCategory', category);
+    validateData('categoryInput', category);
     renderCategories();
     closeContainer('categoryMenu');
 }
@@ -232,7 +232,7 @@ function clearInputTasks() {
     radioEls.forEach(r => r.parentElement.classList.remove('selected'));
     getId('renderedSubtasks').innerHTML = '';
     getId('userInitialContainer').innerHTML = '';
-    getId('validateCategory').required = true;
+    getId('categoryInput').required = true;
     closeContainer('categoryMenu');
     cancelNewCategory();
     subtasks = [];
@@ -391,11 +391,11 @@ function closeNewCategory() {
     console.log('trigere')
     toggleNewCategory();
     categoryInput.value = '';
-
 }
 
 
 function toggleCategoryInput() {
+    console.log('toggle')
     event.preventDefault();
     getId('categoriesContainer').classList.toggle('d-none');
     getId('category-background').classList.toggle('white-background');

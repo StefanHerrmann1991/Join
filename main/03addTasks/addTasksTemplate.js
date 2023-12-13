@@ -14,17 +14,6 @@ function contactInvitationHTML() {
 }
 
 
-function newCategoryHTML() {
-    return `
-    <button type="button" class="assign-btn" onclick="toggleContainer('categoryMenu');">
-        <input id="validateCategory" required class="hidden-input">
-    </button>
-    <div class="user-menu d-none" id="categoryMenu">
-        <button id="newCategoryBtn" type="button" class="new-category-btn" onclick="newCategory()">New category</button>
-        <div class="category-list" id="categoryList"></div>
-    </div>          
- `
-}
 
 
 function subtaskHTML() {
@@ -61,8 +50,10 @@ function chosenCategoryHTML(category) {
         <div class="color-topic">
             <div class="category-color" style="background-color: ${category.color}"></div>
             <span>${category.topic}</span>
-        </div>
-        <img src="../../assets/img/openUp.png" onclick="toggleCategoryInput()">
+        </div>        
+        <img onclick="toggleCategoryInput()" class="category-input small-btn" src=" ../../assets/img/open.png">
+        <img onclick="toggleCategoryInput()" class="category-input small-btn d-none"
+            src="../../assets/img/openUp.png">
     </button>  
     `
 }
