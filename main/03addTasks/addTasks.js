@@ -52,6 +52,7 @@ function checkCurrentTitle() {
     }, 1500);
 }
 
+
 /**
  * Checks the data's validity. It sets 'required' attribute for the element if the array is empty.
  * Otherwise, it removes 'required' attribute.
@@ -101,8 +102,6 @@ function getUrgency() {
     if (selectedUrgency) urgency = selectedUrgency.value;
     return urgency;
 }
-
-
 
 
 /**
@@ -292,37 +291,11 @@ function renderSubtasks() {
     });
 }
 
-function newSubtaskHTML(subtask, index) {
-    return `
-    <div class="subtask-checkbox-container"> 
-        <li class="each-subtask" id="eachSubtask-${index}" onmouseenter="showEditSubtask(${index})" onmouseleave="hideEditSubtask(${index})">
-            <button class="subtask" type="button" onclick="openSubtask(${index})" >
-                <div class="bullet"></div>
-                <div>${subtask.title}</div>                
-            </button>
-            <div class="subtask-edit-btns relative d-none" id="subtaskEdit-${index}">           
-                <button class="delete-btn" type="button" onclick="openEditSubtask(${index})"><img  class="small-btn" src="../../assets/img/editSmall.png"></button>
-                <button class="add-button" type="button" onclick="editSubtask(${index})"><img  class="small-btn" src="../../assets/img/checkGreen.png"</button>  
-            </div>  
-        </div>
-        </div>
-        <div class="edit-subtask-con d-none" id="subtaskEditMenu-${index}">
-            <input id="subtaskEditInput" class="subtask-edit-input" value="${subtask.title}">
-            <div class="subtask-edit-btns">
-                <button class="delete-btn " type="button" onclick="deleteSubtask(${index})"><img  class="small-btn" src="../../assets/img/deleteDark.png"></button>
-                <button class="add-button " type="button" onclick="editSubtask(${index})"><img  class="small-btn" src="../../assets/img/checkGreen.png"</button>    
-            </div>
-        </div>
-    </div>            
-`;
-}
-
 
 function openEditSubtask(index) {
     getId(`subtaskEditMenu-${index}`).classList.remove('d-none');
     getId(`eachSubtask-${index}`).classList.add('d-none');
 }
-
 
 
 function showEditSubtask(index) {
@@ -332,8 +305,6 @@ function showEditSubtask(index) {
 function hideEditSubtask(index) {
     getId(`subtaskEdit-${index}`).classList.add('d-none');
 }
-
-
 
 
 function deleteSubtask(index) {
@@ -353,9 +324,6 @@ function editSubtask(index) {
         closeContainerInTime(2000, 'popupMessageSubtask');
     }
 }
-
-
-
 
 
 /**
@@ -438,6 +406,7 @@ function renderUserList(filteredUsers) {
     });
 }
 
+
 function updateStylesForCheckedItems() {
     document.querySelectorAll('.user-in-list').forEach(userElement => {
         let checkbox = userElement.querySelector('.subtask-checkbox');
@@ -463,6 +432,7 @@ function renderDetailedUsers(userId) {
     }
 }
 
+
 function renderUserInitial(event, userId) {
     let user = users.find(user => user.id === userId);
     if (!user) return;
@@ -479,24 +449,6 @@ function renderUserInitial(event, userId) {
         }
     }
 }
-
-/* 
-function handleClickOutside(event) {
-    let usersSelect = document.getElementById('usersSelect');
-
-    // Specify the input fields you want to exclude by their ID or class
-    if (event.target.id === 'userSearchInput' || event.target.classList.contains('some-class')) {
-        return;
-    }
-
-    // Check if the click is outside the usersSelect element
-    if (!usersSelect.contains(event.target)) {
-        toggleUsersInput()
-    }
-}
-
-document.addEventListener('click', handleClickOutside);
- */
 
 
 function filterUsers(searchTerm) {
