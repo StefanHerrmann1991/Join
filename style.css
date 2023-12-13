@@ -5,6 +5,8 @@
   margin-block-start: 0px;
   font-family: "Inter", sans-serif;
   scroll-behavior: smooth;
+  padding-block: 0px;
+  padding-inline: 0px;
 }
 
 .selected-menu {
@@ -72,6 +74,16 @@ body {
 .main-menu .nav-item img {
   width: 26px;
   height: 26px;
+}
+
+input, button {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+button {
+  height: auto;
+  display: block;
 }
 
 .dashboard {

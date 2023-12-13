@@ -56,7 +56,7 @@
                                 <div id="userAssignBtn" class="absolute">
                                     <button class="toggle-user-input user-menu" onclick="toggleUsersInput()">
                                         <div>Select contacts to assign</div>
-                                        <img src="../../assets/img/open.png">
+                                        <img class="small-btn" src="../../assets/img/open.png">
                                     </button>
                                 </div>
                                 <div id="userSearchInputCon" class="absolute d-none">
@@ -65,7 +65,7 @@
                                             <input id="userSearchInput" class="user-search-input"
                                                 placeholder="Search for collegues" oninput="filterUsers(this.value)">
                                             <button class="assign-user-btn" onclick="toggleUsersInput()"><img
-                                                    src="../../assets/img/open.png"></button>
+                                                    class="small-btn" src="../../assets/img/openUp.png"></button>
                                         </div>
                                         <div id="allUsersList" class="all-users-list"></div>
                                     </div>
@@ -99,9 +99,9 @@
                             </div>
                             <h3>Subtasks</h3>
                             <div class="assign-btn-container" id="subtasks">
-                                <button onclick="changeSubtaskInput()" type="button" class="assign-btn" type="text">
+                                <button onclick="changeSubtaskInput()" type="button" class="assign-btn " type="text">
                                     <div id="subtaskMenu">Add new subtask</div>
-                                    <img class="add-subtask" src="../../assets/img/addIcon.png">
+                                    <img class="add-subtask small-btn" src="../../assets/img/addIcon.png">
                                 </button>
                             </div>
                             <div id="renderedSubtasks"></div>
@@ -113,7 +113,9 @@
                                     <div id="openCategoryBtn">
                                         <button class="toggle-user-input user-menu" onclick="toggleCategoryInput()">
                                             <div>Select task category</div>
-                                            <img src="../../assets/img/open.png">
+                                            <img class="category-input small-btn" src=" ../../assets/img/open.png">
+                                            <img class="category-input small-btn d-none"
+                                                src="../../assets/img/openUp.png">
                                         </button>
                                     </div>
                                     <div id="categoriesContainer" class="all-categories-list d-none">
@@ -130,10 +132,10 @@
                                                 </div>
                                                 <div class="button-container">
                                                     <button onclick="closeNewCategory()" type="button"
-                                                        class="cancel-button"><img
+                                                        class="cancel-button"><img class="small-btn"
                                                             src="../../assets/img/cancelDark.png"></button>
-                                                    <button type="button" class="add-button"
-                                                        onclick="addCategory()"><img
+                                                    <button type="button" class="add-button" 
+                                                        onclick="addCategory()"><img class="small-btn"
                                                             src="../../assets/img/checkDark.png"></button>
                                                 </div>
                                             </div>

@@ -8,23 +8,33 @@ button
     border: none
     background-color: transparent
 
+    .small-btn
+        width: 24px
+        height: 24px
+        padding: 2px
+        border-radius: 50%
+        &:hover
+            background-color: #d6d5e97c
+
 input, textarea, select, button, .priority-btn
     font-family: 'Inter'
     font-style: normal
     font-weight: 400
     font-size: 21px
-    line-height: 120%
 
 .title, select, textarea, .date, .standard
     display: block
     padding-left: 21px
     padding-right: 21px
-    width: calc(100% - 42px)
+    width: 100%
     background: #FFFFFF
     border: 1px solid #D1D1D1
     border-radius: 10px
     resize: none
     cursor: pointer
+
+textarea
+    width: calc( 100% - 42px )
 
 textarea
     height: 135px
@@ -40,8 +50,6 @@ textarea
 
 .white-background
     background-color: white
-
-.button-img
 
 /* ********************************TASK LAYOUT******************************************* */
 
@@ -266,6 +274,9 @@ input:-webkit-autofill:active
 #category
     span
         margin-right: 10px
+
+#categoryInput
+    margin: 0px
 
 .color-picker
     display: flex
@@ -525,6 +536,7 @@ input.subtask-checkbox[type="checkbox"]:checked
         width: 100%
     .assign-user-btn
         width: auto
+        height: 24px
 
 .user-search-input
     width: 95%

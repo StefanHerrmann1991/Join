@@ -317,7 +317,8 @@ function openSubtask(index) {
 
 function deleteSubtask(index) {
     subtasks.splice(index, 1);
-    renderSubtasks(); // Rerender the subtasks list
+    renderSubtasks(); 
+
 }
 
 
@@ -325,7 +326,10 @@ function editSubtask(index) {
     let newTitle = subtaskEditInput.value
     if (newTitle !== null && newTitle.length > 2) {
         subtasks[index].title = newTitle;
-        renderSubtasks(); // Rerender the subtasks list
+        renderSubtasks();
+    }
+    else {
+        closeContainerInTime(2000, 'popupMessageSubtask');
     }
 }
 
@@ -374,6 +378,9 @@ function toggleCategoryInput() {
     event.preventDefault();
     getId('categoriesContainer').classList.toggle('d-none');
     getId('category-background').classList.toggle('white-background');
+    Array.from(document.getElementsByClassName('category-input')).forEach(input => {
+        input.classList.toggle('d-none');
+    });
 }
 
 

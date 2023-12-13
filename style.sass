@@ -5,6 +5,8 @@
     margin-block-start: 0px
     font-family: 'Inter', sans-serif
     scroll-behavior: smooth
+    padding-block: 0px
+    padding-inline: 0px
 
 $main: #2A3647
 $active-color: #091931
@@ -101,6 +103,14 @@ body
         & img
             width: 26px
             height: 26px
+
+input, button
+    box-sizing: border-box
+    -moz-box-sizing: border-box
+
+button
+    height: auto
+    display: block
 
 .dashboard
     width: 100vw
@@ -328,7 +338,6 @@ h3
     align-items: center
     img
         margin-right: 8px
-    
 
 @media (max-width: 992px)
 

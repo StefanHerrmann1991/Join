@@ -2,7 +2,7 @@ function contactInvitationHTML() {
     return `
     <button type="button" class="assign-btn" onclick="toggleContainer('userMenu'); toggleContainer('userInitialContainer')">
         <div>Select contact to assign</div>
-        <div id="imgArrow"><img src="../../assets/img/open.png"></div>
+        <div id="imgArrow"><img src="../../assets/img/openUp.png"></div>
     </button>
     <div class="user-menu" id="userMenu">
         <div class="user-list" id="userList"></div>
@@ -12,41 +12,6 @@ function contactInvitationHTML() {
     </div>
     `
 }
-
-
-function invivteUsersHTML() {
-    return `  
-    <div class="subtasks-container">
-        <input required class="costom-datalist" id="userSearchInput" type="text" list="usersSearch" name="userList" placeholder="Contact email" onKeyUp="showResults(this.value)">
-        <div class="button-container">
-            <button type="button" class="cancel-button" onclick="cancelContactInvitation()">
-                <img src="../../assets/img/cancelDark.png" >
-            </button>
-            <button type="button" class="add-button" onclick="newContactInvitation()">
-                <img src="../../assets/img/checkDark.png">
-            </button>
-        </div>
-    </div>  
-    `
-}
-
-
-/* function categoryHTML() {
-    return `
-    <div class="subtasks-container" id="newCategoryMenu">
-        <div class="category-input-color">
-            <input minlength="3" id="categoryInput" type="text" placeholder="New category name" required>     
-            <div id="chosenColor"></div>           
-        </div>
-        <div class="button-container">
-            <button type="button" class="cancel-button" onclick="cancelNewCategory()"><img
-                    src="../../assets/img/cancelDark.png"></button>
-            <button type="button" class="add-button" onclick="addCategory()"><img src="../../assets/img/checkDark.png"></button>
-        </div>
-    </div>
-    <div id="colorPicker" class="color-picker"></div>       
-    `
-} */
 
 
 function newCategoryHTML() {
@@ -68,10 +33,10 @@ function subtaskHTML() {
         <input minlength="3" id="subtaskInput" placeholder="Add new subtask">
         <div class="button-container">
             <button type="button" class="cancel-button" onclick ="cancelSubtask()">
-                <img src="../../assets/img/cancelDark.png"> 
+                <img class="small-btn" src="../../assets/img/cancelDark.png"> 
             </button>
             <button type="button" class="add-button" onclick="newSubtask()">
-                <img src="../../assets/img/checkDark.png">
+                <img class="small-btn" src="../../assets/img/checkDark.png">
             </button>
         </div>
     </div>
@@ -97,7 +62,7 @@ function chosenCategoryHTML(category) {
             <div class="category-color" style="background-color: ${category.color}"></div>
             <span>${category.topic}</span>
         </div>
-        <img src="../../assets/img/open.png" onclick="toggleCategoryInput()">
+        <img src="../../assets/img/openUp.png" onclick="toggleCategoryInput()">
     </button>  
     `
 }
