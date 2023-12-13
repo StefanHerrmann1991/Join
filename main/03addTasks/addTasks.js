@@ -252,7 +252,7 @@ function compareDate() {
 /**
  * Transforms the HTML element with id 'subtasks' into a subtask input form where new subtasks could be added to the task.
  */
-function renderSubtasks() {
+function changeSubtaskInput() {
     let subtask = getId('subtasks')
     subtask.classList.remove('assign-btn-container')
     subtask.innerHTML = subtaskHTML();
@@ -275,15 +275,62 @@ function cancelSubtask() {
 function newSubtask() {
     let subtaskInput = getId('subtaskInput').value;
     if (subtaskInput.length > 2) {
-        let renderedSubtasks = getId('renderedSubtasks');
         subtasks.push({ title: subtaskInput, checked: false });
-        renderedSubtasks.innerHTML = "";
-        subtasks.forEach((subtask, index) => {
-            renderedSubtasks.innerHTML += newSubtaskHTML(subtask, index);
-        });
+        renderSubtasks(); // Call updateSubtaskList instead
+    } else {
+        closeContainerInTime(2000, 'popupMessageSubtask');
     }
-    else closeContainerInTime(2000, 'popupMessageSubtask');
 }
+
+
+function renderSubtasks() {
+    let renderedSubtasks = getId('renderedSubtasks');
+    renderedSubtasks.innerHTML = ""; // Clear existing content
+
+    subtasks.forEach((subtask, index) => {
+        renderedSubtasks.innerHTML += newSubtaskHTML(subtask, index);
+    });
+}
+
+function newSubtaskHTML(subtask, index) {
+    return `
+    <div class="subtask-checkbox-container"> 
+        <div class="each-subtask">
+            <input class="subtask-checkbox" type="checkbox"  value="${index}" ${subtask.checked ? 'checked' : ''} onchange="updateSubtask(${index})">
+            <button onclick="openSubtask(${index})">${subtask.title}</button>
+        </div>
+        <div class="edit-subtask-con">
+            <input id="subtaskEditInput" class="subtask-edit-input" value="${subtask.title}">
+            <div class="subtask-edit-btns">
+                <button type="button" onclick="deleteSubtask(${index})"><img src="../../assets/img/deleteDark.png"></button>
+                <button type="button" onclick="editSubtask(${index})"><img src="../../assets/img/checkGreen.png"</button>    
+            </div>
+        </div>
+    </div>            
+`;
+}
+
+function openSubtask(index) {
+
+}
+
+
+function deleteSubtask(index) {
+    subtasks.splice(index, 1);
+    renderSubtasks(); // Rerender the subtasks list
+}
+
+
+function editSubtask(index) {
+    let newTitle = subtaskEditInput.value
+    if (newTitle !== null && newTitle.length > 2) {
+        subtasks[index].title = newTitle;
+        renderSubtasks(); // Rerender the subtasks list
+    }
+}
+
+
+
 
 
 /**
@@ -391,7 +438,6 @@ function renderDetailedUsers(userId) {
 function renderUserInitial(event, userId) {
     let user = users.find(user => user.id === userId);
     if (!user) return;
-
     if (event.target.checked) {
         user.assigned = true;
         assignedUsers.push(user);
@@ -406,17 +452,23 @@ function renderUserInitial(event, userId) {
     }
 }
 
-
-/* function handleClickOutside(event) {
+/* 
+function handleClickOutside(event) {
     let usersSelect = document.getElementById('usersSelect');
+
+    // Specify the input fields you want to exclude by their ID or class
+    if (event.target.id === 'userSearchInput' || event.target.classList.contains('some-class')) {
+        return;
+    }
 
     // Check if the click is outside the usersSelect element
     if (!usersSelect.contains(event.target)) {
-        toggleInput();
+        toggleUsersInput()
     }
 }
 
-document.addEventListener('click', handleClickOutside); */
+document.addEventListener('click', handleClickOutside);
+ */
 
 
 function filterUsers(searchTerm) {

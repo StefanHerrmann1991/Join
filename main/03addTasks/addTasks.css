@@ -676,7 +676,47 @@ input:-webkit-autofill:active {
   height: 14.5px;
 }
 
-/* ********************************SUBTASK BUTTONS******************************************* */
+/* ********************************SUBTASK******************************************* */
+.each-subtask {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.each-subtask button {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.edit-subtask-con {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--Ligth-blue, #29ABE2);
+  background: var(--white, #FFF);
+  padding: 4px 16px;
+}
+.edit-subtask-con .subtask-edit-btns {
+  display: flex;
+  gap: 12px;
+  height: 24px;
+}
+.edit-subtask-con .subtask-edit-btns img {
+  height: 24px;
+  width: 24px;
+}
+
+.subtask-edit-input {
+  border: unset;
+  padding: 0px;
+  height: auto !important;
+}
+.subtask-edit-input:focus {
+  border: none;
+}
+.subtask-edit-input:focus-visible {
+  outline: none;
+}
+
 .subtasks-container {
   position: relative;
   display: flex;

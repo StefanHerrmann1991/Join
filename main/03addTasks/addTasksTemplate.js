@@ -79,18 +79,6 @@ function subtaskHTML() {
 }
 
 
-function newSubtaskHTML(subtask, index) {
-    return `
-    <div class="subtask-checkbox-container"> 
-        <input class="subtask-checkbox" type="checkbox" 
-            value="${index}" 
-                ${subtask.checked ? 'checked' : ''} 
-                onchange="updateSubtask(${index})">
-        ${subtask.title}
-    </div>            
-`;
-}
-
 
 function cancelSubtaskHTML() {
     return `
