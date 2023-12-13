@@ -295,29 +295,50 @@ function renderSubtasks() {
 function newSubtaskHTML(subtask, index) {
     return `
     <div class="subtask-checkbox-container"> 
-        <div class="each-subtask">
-            <input class="subtask-checkbox" type="checkbox"  value="${index}" ${subtask.checked ? 'checked' : ''} onchange="updateSubtask(${index})">
-            <button onclick="openSubtask(${index})">${subtask.title}</button>
+        <li class="each-subtask" id="eachSubtask-${index}" onmouseenter="showEditSubtask(${index})" onmouseleave="hideEditSubtask(${index})">
+            <button class="subtask" type="button" onclick="openSubtask(${index})" >
+                <div class="bullet"></div>
+                <div>${subtask.title}</div>                
+            </button>
+            <div class="subtask-edit-btns relative d-none" id="subtaskEdit-${index}">           
+                <button class="delete-btn" type="button" onclick="openEditSubtask(${index})"><img  class="small-btn" src="../../assets/img/editSmall.png"></button>
+                <button class="add-button" type="button" onclick="editSubtask(${index})"><img  class="small-btn" src="../../assets/img/checkGreen.png"</button>  
+            </div>  
         </div>
-        <div class="edit-subtask-con">
+        </div>
+        <div class="edit-subtask-con d-none" id="subtaskEditMenu-${index}">
             <input id="subtaskEditInput" class="subtask-edit-input" value="${subtask.title}">
             <div class="subtask-edit-btns">
-                <button type="button" onclick="deleteSubtask(${index})"><img src="../../assets/img/deleteDark.png"></button>
-                <button type="button" onclick="editSubtask(${index})"><img src="../../assets/img/checkGreen.png"</button>    
+                <button class="delete-btn " type="button" onclick="deleteSubtask(${index})"><img  class="small-btn" src="../../assets/img/deleteDark.png"></button>
+                <button class="add-button " type="button" onclick="editSubtask(${index})"><img  class="small-btn" src="../../assets/img/checkGreen.png"</button>    
             </div>
         </div>
     </div>            
 `;
 }
 
-function openSubtask(index) {
+
+function openEditSubtask(index) {
+    getId(`subtaskEditMenu-${index}`).classList.remove('d-none');
+    getId(`eachSubtask-${index}`).classList.add('d-none');
+}
+
+
+
+function showEditSubtask(index) {
+    getId(`subtaskEdit-${index}`).classList.remove('d-none');
 
 }
+function hideEditSubtask(index) {
+    getId(`subtaskEdit-${index}`).classList.add('d-none');
+}
+
+
 
 
 function deleteSubtask(index) {
     subtasks.splice(index, 1);
-    renderSubtasks(); 
+    renderSubtasks();
 
 }
 

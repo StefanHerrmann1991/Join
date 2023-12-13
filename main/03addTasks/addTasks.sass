@@ -166,12 +166,38 @@ input:-webkit-autofill:active
 
 /* ********************************SUBTASK******************************************* */
 
+.bullet
+    width: 6px
+    height: 6px
+    background-color:  black
+    border-radius: 50%
+
+.subtask, .subtask-edit-input
+    font-size: 16px
+
+.subtask
+    display: flex
+    align-items: center
+    gap: 10px
+
 .each-subtask
     display: flex
-    justify-content: flex-start
+    justify-content: space-between
     align-items: center
+    width: calc(100% - 32px)
+    padding: 4px 16px
+    height: 32px
     button
         width: fit-content
+
+.subtask-edit-btns
+    display: flex
+    height: 24px
+    img
+        height: 24px
+        width: 24px
+
+absolute-edit-btns
 
 .edit-subtask-con
     display: flex
@@ -180,13 +206,6 @@ input:-webkit-autofill:active
     border-bottom: 1px solid var(--Ligth-blue, #29ABE2)
     background: var(--white, #FFF)
     padding: 4px 16px
-    .subtask-edit-btns
-        display: flex
-        gap: 12px
-        height: 24px
-        img
-            height: 24px
-            width: 24px
 
 .subtask-edit-input
     border: unset
@@ -228,14 +247,14 @@ input:-webkit-autofill:active
         width: 24px
         height: 24px
 
-    .cancel-button
-        border-right: 1px solid #D1D1D1
-        padding-right: 10%
-        height: 24px
+.cancel-button, .delete-btn
+    border-right: 1px solid #D1D1D1
+    padding-right: 5px
+    height: 24px
 
-    .add-button
-        padding-left: 10%
-        height: 24px
+.add-button
+    padding-left: 5px
+    height: 24px
 
 .subtasks-container .button-container
     display: flex
