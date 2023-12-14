@@ -512,6 +512,11 @@ h3 {
   overflow: hidden;
 }
 
+.help-and-logout {
+  display: flex;
+  align-items: center;
+}
+
 .add-contact-btn {
   position: absolute;
   bottom: 5%;

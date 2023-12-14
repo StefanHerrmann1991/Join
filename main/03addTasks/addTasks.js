@@ -29,8 +29,7 @@ async function initTasks() {
 async function addToTasks(board) {
     event.preventDefault();
     const task = await processTaskInputs(board);
-    task.id = tasks.length + 1; // set id when creating the task
-    console.log(task);
+    task.id = tasks.length + 1; 
     tasks.push(task);
     saveToBackend('tasks', tasks)
     openContainer('successfulSubmit');

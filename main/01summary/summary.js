@@ -26,10 +26,10 @@ let allTaskNumber = 0;
  */
 async function initSummary() {
   includeHTML();
-  await initAddTasks();
   await showUserName();
+  tasks = await loadFromBackend('tasks', tasks);
   let earliestTask;
-  [earliestTask, count] = findEarliestTask();
+  [earliestTask, count] = await findEarliestTask();
   if (earliestTask !== null) {
     dateConverted = new Date(earliestTask.date)
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
