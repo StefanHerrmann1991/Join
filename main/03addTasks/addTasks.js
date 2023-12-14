@@ -1,5 +1,7 @@
 let newCategoryOpen = false;
 let newSubtaskOpen = false;
+let usersOpen = false;
+let categoriesOpen = false;
 
 /**
  * Initialization of tasks including HTML inclusion, backend initialization, 
@@ -9,9 +11,8 @@ let newSubtaskOpen = false;
 async function initTasks() {
     await includeHTML();
     await initContactList();
-    /*  tasks = await loadFromBackend('tasks', tasks); */
+    tasks = await loadFromBackend('tasks', tasks);
     categories = await loadFromBackend('categories', categories);
-    console.log(categories);
     await renderUserList();
     await renderCategories();
     startPriorityEventListener();
@@ -25,13 +26,13 @@ async function initTasks() {
  * assigns an id, saves the tasks and gives user a feedback on successful submission.
  * @param {string} board - The id of the board to which the task will be added.
  */
-function addToTasks(board) {
+async function addToTasks(board) {
     event.preventDefault();
-    const task = processTaskInputs(board);
+    const task = await processTaskInputs(board);
     task.id = tasks.length + 1; // set id when creating the task
     console.log(task);
     tasks.push(task);
-    /* saveToBackend('tasks', tasks) */
+    saveToBackend('tasks', tasks)
     openContainer('successfulSubmit');
     checkCurrentTitle();
 }
@@ -233,12 +234,24 @@ function clearInputTasks() {
     getId('renderedSubtasks').innerHTML = '';
     getId('userInitialContainer').innerHTML = '';
     getId('categoryInput').required = true;
-    closeContainer('categoryMenu');
-    cancelNewCategory();
+    getId('categoryInput').value = '';
+    closeNewCategory();
+    resetCategory();
     subtasks = [];
     assignedUsers = [];
 }
 
+
+function resetCategory() {
+    let categoryBtn = getId('openCategoryBtn')
+    categoryBtn.innerHTML = `
+    <button class="toggle-user-input user-menu" onclick="toggleCategoryInput()">
+    <div>Select task category</div>
+        <img class="category-input small-btn" src=" ../../assets/img/open.png">
+        <img class="category-input small-btn d-none" src="../../assets/img/openUp.png">
+    </button>`
+    closeNewCategory();
+}
 
 /**
  * Disables the selection of a date before the current day on the HTML element with id 'date'.
@@ -316,7 +329,7 @@ function deleteSubtask(index) {
 
 
 function editSubtask(index) {
-    let newTitle = subtaskEditInput.value
+    let newTitle = getId(`subtaskEditInput-${index}`).value
     if (newTitle !== null && newTitle.length > 2) {
         subtasks[index].title = newTitle;
         renderSubtasks();
@@ -337,12 +350,34 @@ function updateSubtask(index) {
 
 
 function toggleUsersInput() {
+    usersOpen = !usersOpen;
+    console.log(usersOpen);
     event.preventDefault();
     getId('userAssignBtn').classList.toggle('d-none');
     getId('userSearchInputCon').classList.toggle('d-none');
     getId('users-background').classList.toggle('white-background');
+
 }
 
+document.addEventListener('click', function(event) {
+    var isClickInsideUsers = getId('allUsersList').contains(event.target);
+    var isClickInsideUserInput = getId('userSearchInputCon').contains(event.target);
+
+    // Only toggle if the click is outside 'allUsersList' and not on 'userSearchInputCon'
+    if (!isClickInsideUsers && !isClickInsideUserInput && usersOpen) {
+        toggleUsersInput();
+    }
+}, true);
+
+document.addEventListener('click', function(event) {
+    var isClickInsideCategories = getId('categoriesContainer').contains(event.target);
+    var isClickInsideOpenCategoryBtn = getId('openCategoryBtn').contains(event.target);
+
+    // Only toggle if the click is outside 'categoriesContainer' and not on 'openCategoryBtn'
+    if (!isClickInsideCategories && !isClickInsideOpenCategoryBtn && categoriesOpen) {
+        toggleCategoryInput();
+    }
+}, true);
 
 function openNewCategory() {
     toggleNewCategory();
@@ -363,13 +398,16 @@ function closeNewCategory() {
 
 
 function toggleCategoryInput() {
+    categoriesOpen = !categoriesOpen;
     event.preventDefault();
     getId('categoriesContainer').classList.toggle('d-none');
     getId('category-background').classList.toggle('white-background');
     Array.from(document.getElementsByClassName('category-input')).forEach(input => {
         input.classList.toggle('d-none');
-    });
+    });    
 }
+
+
 
 
 function renderUserList(filteredUsers) {

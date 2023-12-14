@@ -81,7 +81,7 @@ function newSubtaskHTML(subtask, index) {
         </div>
         </div>
         <div class="edit-subtask-con d-none" id="subtaskEditMenu-${index}">
-            <input id="subtaskEditInput" class="subtask-edit-input" value="${subtask.title}">
+            <input id="subtaskEditInput-${index}" class="subtask-edit-input" value="${subtask.title}">
             <div class="subtask-edit-btns">
                 <button class="delete-btn " type="button" onclick="deleteSubtask(${index})"><img  class="small-btn" src="../../assets/img/deleteDark.png"></button>
                 <button class="add-button " type="button" onclick="editSubtask(${index})"><img  class="small-btn" src="../../assets/img/checkGreen.png"</button>    

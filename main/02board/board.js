@@ -34,7 +34,6 @@ let currentIndexDelete;
  */
 async function initBoards() {
     await includeHTML();
-    await initAddTasks();
     await initContactList();
     await initTasks()
     await renderBoards(tasks);
@@ -60,19 +59,6 @@ function renderNewBoardBtn() {
             </div>
         </div>
     `
-}
-
-
-
-/**
- * This function is used to initiate the process of adding tasks. It sets the URL of the backend,
- * and then downloads the tasks from the server. If there are no tasks, it initializes the tasks
- * array as empty.
- */
-async function initAddTasks() {
-    setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
-    await downloadFromServer();
-    tasks = JSON.parse(backend.getItem('tasks')) || [];
 }
 
 
