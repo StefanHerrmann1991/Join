@@ -295,14 +295,18 @@ function loadTasks() {
 }
 
 
-function highlightChosenMenu() {    
-    navTitle = document.querySelectorAll('.nav-title')
-    currentTitle = document.getElementsByTagName('h1')[0]
-    navTitle.forEach(elementTitle => {
-        if (elementTitle.textContent == currentTitle.textContent)  elementTitle.parentNode.parentNode.classList.add('selected-menu')
-    })
+function highlightChosenMenu() {
+    var navTitles = document.querySelectorAll('.nav-title');
+    console.log(navTitles)
+    var currentTitle = document.querySelector('h1') ? document.querySelector('h1').textContent.trim().toLowerCase() : "";
+    console.log(currentTitle)
+
+    navTitles.forEach(function (elementTitle) {
+        if (elementTitle.textContent.trim().toLowerCase() === currentTitle) {
+            elementTitle.parentNode.parentNode.classList.add('selected-menu');
+        }
+    });
 }
- 
 
 function closeContainerEvent(event, containerId) {   
     if (event.target.id === containerId) closeContainer(containerId);    

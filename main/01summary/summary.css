@@ -84,6 +84,9 @@ input, button {
 button {
   height: auto;
   display: block;
+  height: -moz-fit-content;
+  height: fit-content;
+  font-size: 0px;
 }
 
 .dashboard {
@@ -501,6 +504,11 @@ h3 {
     display: block;
   }
 }
+.big-number {
+  font-weight: 600;
+  font-size: 56px;
+}
+
 .greeting {
   font-size: 47px;
   color: #2A3647;
@@ -520,10 +528,6 @@ h3 {
   flex-direction: column;
   width: 30%;
   height: 170px;
-}
-.board-summary .big-number {
-  font-weight: 600;
-  font-size: 64px;
 }
 .board-summary:hover {
   background-color: #2A3647;
@@ -610,10 +614,6 @@ a {
   display: flex;
   gap: 25px;
   height: 170px;
-}
-.lower-board-summary .big-number {
-  font-weight: 600;
-  font-size: 64px;
 }
 .lower-board-summary:hover {
   background-color: #2A3647;
@@ -703,11 +703,20 @@ a {
   color: #29abe2;
 }
 
+.board-summary {
+  height: 130px;
+}
+
+.lower-board-summary {
+  height: 130px;
+}
+
+.deadline {
+  height: 110px;
+}
+
 @media (max-width: 992px) {
-  .board-summary .big-number {
-    font-size: 47px;
-  }
-  .lower-board-summary .big-number {
+  .big-number {
     font-size: 47px;
   }
   .board-title-summary {
@@ -733,7 +742,7 @@ a {
     height: 26px;
   }
   .lower-board-summary, .board-summary, .deadline {
-    height: 110px;
+    height: 100px;
   }
 }
 @media (max-width: 768px) {
