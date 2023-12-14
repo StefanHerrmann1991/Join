@@ -29,8 +29,9 @@ function addToTasks(board) {
     event.preventDefault();
     const task = processTaskInputs(board);
     task.id = tasks.length + 1; // set id when creating the task
+    console.log(task);
     tasks.push(task);
-    saveToBackend('tasks', tasks)
+    /* saveToBackend('tasks', tasks) */
     openContainer('successfulSubmit');
     checkCurrentTitle();
 }
@@ -356,14 +357,12 @@ function toggleNewCategory() {
 
 
 function closeNewCategory() {
-    console.log('trigere')
     toggleNewCategory();
     categoryInput.value = '';
 }
 
 
 function toggleCategoryInput() {
-    console.log('toggle')
     event.preventDefault();
     getId('categoriesContainer').classList.toggle('d-none');
     getId('category-background').classList.toggle('white-background');

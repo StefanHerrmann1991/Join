@@ -33,10 +33,10 @@ function subtaskHTML() {
 
 function cancelSubtaskHTML() {
     return `
-    <button onclick="renderSubtasks()" type="button" class="assign-btn"  type="text">
+    <button onclick="changeSubtaskInput()" type="button" class="assign-btn " type="text">
         <div id="subtaskMenu">Add new subtask</div>
-        <img  class="add-subtask" src="../../assets/img/addIcon.png">
-    </button>  
+        <img class="add-subtask small-btn" src="../../assets/img/addIcon.png">
+    </button>
     `
 }
 
