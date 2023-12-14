@@ -84,6 +84,9 @@ input, button {
 button {
   height: auto;
   display: block;
+  height: -moz-fit-content;
+  height: fit-content;
+  font-size: 0px;
 }
 
 .dashboard {
@@ -838,10 +841,10 @@ h3 {
 .edit-task-container .task-details h1 {
   padding-bottom: 12.5px;
   padding-top: 25px;
-  font-size: 34px;
+  font-size: 28px;
 }
 .edit-task-container .task-details .category-icon {
-  font-size: 27px;
+  font-size: 24px;
 }
 .edit-task-container .edit-task-form {
   width: 85%;
@@ -1059,6 +1062,7 @@ progress {
     justify-content: space-between;
     padding-top: 5%;
     padding-bottom: 5%;
+    width: 100%;
   }
   .details-assigned-users {
     padding-bottom: 5%;
@@ -1115,7 +1119,9 @@ progress {
   .edit-task-container .task-details {
     background-color: #F6F7F8;
     padding-top: 0px;
+    padding: 0px;
     width: 95%;
+    margin: auto;
     height: 100%;
     border-radius: 0px;
     overflow-x: hidden;

@@ -84,6 +84,9 @@ input, button {
 button {
   height: auto;
   display: block;
+  height: -moz-fit-content;
+  height: fit-content;
+  font-size: 0px;
 }
 
 .dashboard {

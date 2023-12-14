@@ -85,6 +85,9 @@ input, button {
 button {
   height: auto;
   display: block;
+  height: -moz-fit-content;
+  height: fit-content;
+  font-size: 0px;
 }
 
 .dashboard {
@@ -1335,6 +1338,7 @@ input.subtask-checkbox[type=checkbox]:checked {
   }
   .btn-container {
     position: absolute;
+    margin: 0px;
   }
   .close-upper-right {
     z-index: 700;

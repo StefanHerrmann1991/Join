@@ -205,7 +205,6 @@
                     background-size: 24px
                     background-repeat: no-repeat
                     background-position: 95%
-                    width: calc(100% - 42px)
                     padding-left: 21px
                     padding-right: 21px
                 .create-contact-btns, .edit-contact-btns
@@ -409,6 +408,9 @@
 
 @media (max-width: 768px)
 
+    .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns
+        justify-content: center
+
     .edit-contact-container
         top: 0px
 
@@ -585,34 +587,34 @@
 
 @media (max-width: 480px)
 
-    h2 
-        font-size: 36px !important
+    .add-contact-description
+        h2
+            font-size: 36px !important
 
     p
         display: none
 
-    .add-contact-dialog
-        
-        .edit-contact-dialog, .add-contact-dialog
-            .add-contact
-                .add-contact-menu
+    .add-contact-dialog, .edit-contact-dialog
+        .add-contact
+            .add-contact-menu
+                .add-contact-description
+                    width: 100%
+                    height: 20%
 
-                    .add-contact-description
-                        width: 100%
-                        height: 20%
-                        p
-                            display: none
-                    .add-contact-submenu
-                        height: 80%
-                        width: 100%
+                .add-contact-submenu
+                    height: 80%
+                    width: 100%
+                    form
+                        display: flex
+                        flex-direction: column
+                        justify-content: center
 
         .edit-initial
             display: none
 
-
 @media (min-width: 2900px)
 
-    .add-contact-dialog 
-        .add-contact 
+    .add-contact-dialog
+        .add-contact
             .add-contact-menu
                 width: 40%
