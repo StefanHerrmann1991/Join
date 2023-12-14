@@ -43,13 +43,13 @@ function cancelSubtaskHTML() {
 
 function chosenCategoryHTML(category) {
     return ` 
-    <button type="button" id="category" class="toggle-user-input user-menu" value="${category.index}">
+    <button type="button"  onclick="toggleCategoryInput()" id="category" class="toggle-user-input user-menu" value="${category.index}">
         <div class="color-topic">
             <div class="category-color" style="background-color: ${category.color}"></div>
             <span>${category.topic}</span>
         </div>        
-        <img onclick="toggleCategoryInput()" class="category-input small-btn" src=" ../../assets/img/open.png">
-        <img onclick="toggleCategoryInput()" class="category-input small-btn d-none"
+        <img class="category-input small-btn" src=" ../../assets/img/open.png">
+        <img class="category-input small-btn d-none"
             src="../../assets/img/openUp.png">
     </button>  
     `
