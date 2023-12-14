@@ -91,7 +91,7 @@ button {
   display: block;
   height: -moz-fit-content;
   height: fit-content;
-  font-size: 0px;
+  font-size: unset;
 }
 
 .dashboard {
@@ -225,6 +225,12 @@ h2 {
   margin-bottom: 5%;
 }
 
+.task-title {
+  font-size: 36px;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+}
+
 h3 {
   font-family: "Inter";
   font-style: normal;
@@ -303,6 +309,12 @@ h3 {
 .margin-auto {
   width: 90%;
   margin: auto;
+}
+
+.mobile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .close-upper-right {
@@ -409,6 +421,9 @@ h3 {
   }
 }
 @media (max-width: 768px) {
+  #helpBtn {
+    display: none;
+  }
   .main-container {
     width: 100%;
     top: 90px;

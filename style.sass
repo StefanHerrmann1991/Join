@@ -116,7 +116,7 @@ button
     height: auto
     display: block
     height: fit-content
-    font-size: 0px
+    font-size: unset
 
 .dashboard
     width: 100vw
@@ -229,6 +229,10 @@ h2
     margin-top: 5%
     margin-bottom: 5%
 
+.task-title
+    font-size: 36px
+    margin-top: 2.5%
+    margin-bottom: 2.5%
 h3
     font-family: "Inter"
     font-style: normal
@@ -279,6 +283,11 @@ h3
 .margin-auto
     width: 90%
     margin: auto
+
+.mobile-header
+    display: flex
+    align-items: center
+    gap: 20px
 
 .close-upper-right
     position: absolute
@@ -369,6 +378,10 @@ h3
         font-size: 15px
 
 @media (max-width: 768px)
+
+
+    #helpBtn
+        display: none
 
     .main-container
         width: 100%
@@ -469,3 +482,4 @@ h3
 
     .mobile-logo
         display: block
+

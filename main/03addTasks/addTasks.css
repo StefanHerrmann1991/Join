@@ -10,6 +10,11 @@
   padding-inline: 0px;
 }
 
+.help-and-logout {
+  display: flex;
+  align-items: center;
+}
+
 .selected-menu {
   background-color: #091931;
 }
@@ -87,7 +92,7 @@ button {
   display: block;
   height: -moz-fit-content;
   height: fit-content;
-  font-size: 0px;
+  font-size: unset;
 }
 
 .dashboard {
@@ -221,6 +226,12 @@ h2 {
   margin-bottom: 5%;
 }
 
+.task-title {
+  font-size: 36px;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+}
+
 h3 {
   font-family: "Inter";
   font-style: normal;
@@ -299,6 +310,12 @@ h3 {
 .margin-auto {
   width: 90%;
   margin: auto;
+}
+
+.mobile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .close-upper-right {
@@ -405,6 +422,9 @@ h3 {
   }
 }
 @media (max-width: 768px) {
+  #helpBtn {
+    display: none;
+  }
   .main-container {
     width: 100%;
     top: 90px;
@@ -617,7 +637,7 @@ input:-webkit-autofill:active {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 15%;
+  margin-top: 5%;
 }
 .btn-container button {
   border-radius: 10px;
@@ -701,6 +721,11 @@ input:-webkit-autofill:active {
   margin-left: 5px;
   width: 20px;
   height: 14.5px;
+}
+
+.close-upper-right img {
+  width: 30px;
+  height: 30px;
 }
 
 /* ********************************SUBTASK******************************************* */
@@ -1292,7 +1317,15 @@ input.subtask-checkbox[type=checkbox]:checked {
   width: 100%;
 }
 
+@media (max-width: 1100px) {
+  .btn-container {
+    margin-top: 5%;
+  }
+}
 @media (max-width: 992px) {
+  .user-menu {
+    padding: 12px 16px;
+  }
   .priority-btns .priority-btn {
     font-size: 15px;
     height: 41px;
@@ -1315,6 +1348,9 @@ input.subtask-checkbox[type=checkbox]:checked {
   .assign-btn-container .assign-btn {
     height: 41px;
     font-size: 15px;
+  }
+  .btn-container {
+    margin-top: 5%;
   }
   .btn-container .clear-btn, .btn-container .create-task-btn {
     height: 40px;
