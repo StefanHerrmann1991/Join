@@ -296,11 +296,8 @@ function loadTasks() {
 
 
 function highlightChosenMenu() {
-    var navTitles = document.querySelectorAll('.nav-title');
-    console.log(navTitles)
-    var currentTitle = document.querySelector('h1') ? document.querySelector('h1').textContent.trim().toLowerCase() : "";
-    console.log(currentTitle)
-
+    let navTitles = document.querySelectorAll('.nav-title');
+    let currentTitle = document.querySelector('h1') ? document.querySelector('h1').textContent.trim().toLowerCase() : "";
     navTitles.forEach(function (elementTitle) {
         if (elementTitle.textContent.trim().toLowerCase() === currentTitle) {
             elementTitle.parentNode.parentNode.classList.add('selected-menu');
@@ -308,7 +305,7 @@ function highlightChosenMenu() {
     });
 }
 
-function closeContainerEvent(event, containerId) {   
-    if (event.target.id === containerId) closeContainer(containerId);    
-    
-  }
+function closeContainerEvent(event, containerId) {
+    if (event.target.id === containerId) closeContainer(containerId);
+
+}

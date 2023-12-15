@@ -78,12 +78,12 @@ function processTaskInputs(board) {
     if (board == undefined) board = 'board-0';
     else board = chosenBoard;
     let [title, description, category, date] = getIds('title', 'description', 'category', 'date');
-    let urgency = getUrgency();
+    let priority = getPriority();
     let task = {
         'title': title.value,
         'description': description.value,
         'category': categories[category.value],
-        'urgency': urgency,
+        'priority': priority,
         'date': date.value,
         'board': board,
         'assignedTo': assignedUsers,
@@ -97,7 +97,7 @@ function processTaskInputs(board) {
  * Gets the value of the checked priority radio button.
  * @returns {string} The value of the checked radio button or undefined if no radio button is checked.
  */
-function getUrgency() {
+function getPriority() {
     let urgency;
     let selectedUrgency = document.querySelector('#urgency input.priority-radio:checked');
     if (selectedUrgency) urgency = selectedUrgency.value;
@@ -220,6 +220,9 @@ function startPriorityEventListener(selectedValue) {
         });
     });
 }
+
+
+
 
 
 /**

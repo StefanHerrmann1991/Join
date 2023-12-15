@@ -86,14 +86,6 @@ input, button {
   -moz-box-sizing: border-box;
 }
 
-button {
-  height: auto;
-  display: block;
-  height: -moz-fit-content;
-  height: fit-content;
-  font-size: unset;
-}
-
 .dashboard {
   width: 100vw;
   position: relative;

@@ -14,10 +14,8 @@
   align-items: center;
 }
 
-.selected-menu {
-  background-color: #091931;
-}
-
+/* .selected-menu
+ *  background-color: $dark-select */
 .scroll {
   overflow-y: scroll;
 }
@@ -84,14 +82,6 @@ body {
 input, button {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
-}
-
-button {
-  height: auto;
-  display: block;
-  height: -moz-fit-content;
-  height: fit-content;
-  font-size: unset;
 }
 
 .dashboard {
@@ -522,6 +512,11 @@ h3 {
   }
   .mobile-logo {
     display: block;
+  }
+}
+@media (max-width: 540px) {
+  .kanban-description {
+    display: none;
   }
 }
 .delete-popup-container {

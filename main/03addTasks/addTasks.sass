@@ -3,11 +3,9 @@
 $element-width: 100%
 
 /* ********************************MAIN STYLES******************************************* */
-
 button
     border: none
     background-color: transparent
-
     .small-btn
         width: 24px
         height: 24px
@@ -91,6 +89,9 @@ input:-webkit-autofill:active
     position: relative
 
 /* ********************************MAIN BUTTONS******************************************* */
+.close-upper-right img
+    width: 30px
+    height: 30px
 
 .btn-container
     display: flex
@@ -156,17 +157,35 @@ input:-webkit-autofill:active
             transform: scale(1.1)
             box-shadow: $hover-shadow
 
-        .priority-btn.selected
-            background-color: #2A3647
-            color: #fff
     img
         margin-left: 5px
         width: 20px
         height: 14.5px
 
-.close-upper-right img
-    width: 30px
-    height: 30px
+    .priority-radio
+        opacity: 0
+        top: 100%
+        width: 1px
+        height: 1px
+        position: absolute
+
+.priority-btn.selected
+    border: none
+    cursor: pointer
+    position: relative
+    color: white
+    &.low
+        background-color: #7AE229 !important
+        img
+            filter: invert(1%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(101%) contrast(200%)
+    &.urgent
+        background-color: #FF3D00 !important
+        img
+            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%)
+    &.medium
+        background-color: #FFA800 !important
+        img
+            filter: invert(50%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%)
 
 /* ********************************SUBTASK******************************************* */
 
@@ -200,8 +219,6 @@ input:-webkit-autofill:active
     img
         height: 24px
         width: 24px
-
-absolute-edit-btns
 
 .edit-subtask-con
     display: flex
@@ -411,42 +428,6 @@ absolute-edit-btns
 .adjust-position
     position: absolute
     right: 20%
-
-.priority-radio
-    opacity: 0
-    top: 100%
-    width: 1px
-    height: 1px
-    position: absolute
-
-.priority-btn
-    border: none
-    background-color: #ddd
-    color: #333
-    border-radius: 5px
-    cursor: pointer
-    position: relative
-
-    .priority-radio:checked + &
-        color: white
-
-    .priority-radio:checked + &.low
-        background-color: #7AE229
-
-    .priority-radio:checked + &.low img
-        filter: invert(1%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(101%) contrast(200%)
-
-    .priority-radio:checked + &.urgent
-        background-color: #FF3D00
-
-    .priority-radio:checked + &.urgent img
-        filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%)
-
-    .priority-radio:checked + &.medium
-        background-color: #FFA800
-
-    .priority-radio:checked + &.medium img
-        filter: invert(50%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%)
 
 input.subtask-checkbox[type="checkbox"]
     -webkit-appearance: none
@@ -679,7 +660,6 @@ input.subtask-checkbox[type="checkbox"]:checked
 
 @media( max-width: 1100px)
     .btn-container
-
         margin-top: 5%
 
 @media( max-width: 992px)
