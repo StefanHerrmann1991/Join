@@ -13,6 +13,7 @@ async function initTasks() {
     await initContactList();
     tasks = await loadFromBackend('tasks', tasks);
     categories = await loadFromBackend('categories', categories);
+    console.log(tasks, categories);
     await renderUserList();
     await renderCategories();
     startPriorityEventListener();
@@ -357,13 +358,13 @@ function toggleUsersInput() {
     event.preventDefault();
     getId('userAssignBtn').classList.toggle('d-none');
     getId('userSearchInputCon').classList.toggle('d-none');
-    getId('users-background').classList.toggle('white-background');
+    getId('usersBackground').classList.toggle('white-background');
 
 }
 
-document.addEventListener('click', function(event) {
-    var isClickInsideUsers = getId('allUsersList').contains(event.target);
-    var isClickInsideUserInput = getId('userSearchInputCon').contains(event.target);
+/* document.addEventListener('click', function(event) {
+    let isClickInsideUsers = getId('allUsersList').contains(event.target);
+    let isClickInsideUserInput = getId('userSearchInputCon').contains(event.target);
 
     // Only toggle if the click is outside 'allUsersList' and not on 'userSearchInputCon'
     if (!isClickInsideUsers && !isClickInsideUserInput && usersOpen) {
@@ -372,14 +373,14 @@ document.addEventListener('click', function(event) {
 }, true);
 
 document.addEventListener('click', function(event) {
-    var isClickInsideCategories = getId('categoriesContainer').contains(event.target);
-    var isClickInsideOpenCategoryBtn = getId('openCategoryBtn').contains(event.target);
+    let isClickInsideCategories = getId('categoriesContainer').contains(event.target);
+    let isClickInsideOpenCategoryBtn = getId('openCategoryBtn').contains(event.target);
 
     // Only toggle if the click is outside 'categoriesContainer' and not on 'openCategoryBtn'
     if (!isClickInsideCategories && !isClickInsideOpenCategoryBtn && categoriesOpen) {
         toggleCategoryInput();
     }
-}, true);
+}, true); */
 
 function openNewCategory() {
     toggleNewCategory();
@@ -403,7 +404,7 @@ function toggleCategoryInput() {
     categoriesOpen = !categoriesOpen;
     event.preventDefault();
     getId('categoriesContainer').classList.toggle('d-none');
-    getId('category-background').classList.toggle('white-background');
+    getId('categoryBackground').classList.toggle('white-background');
     Array.from(document.getElementsByClassName('category-input')).forEach(input => {
         input.classList.toggle('d-none');
     });    

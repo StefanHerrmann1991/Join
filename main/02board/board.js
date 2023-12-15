@@ -18,6 +18,7 @@ let boards = [
  * @type {boolean}
  */
 let detailsAreOpen = false;
+let editIsOpen = false;
 
 
 /**
@@ -35,9 +36,8 @@ let currentIndexDelete;
 async function initBoards() {
     await includeHTML();
     await initContactList();
-    await initTasks()
+    await initTasks();
     await renderBoards(tasks);
-    invitedUsers = await loadFromBackend('invitedUsers', invitedUsers);
     highlightChosenMenu()
 }
 
@@ -89,24 +89,6 @@ function renderBoards(array) {
  */
 function setBoard(boardName) {
     chosenBoard = boardName
-}
-
-
-/**
- * This function is used to process inputs for a new board. It takes the value from the 'newBoardInput' field,
- * formats it to uppercase, generates a unique id, and returns an object representing the new board.
- *
- * @return {Object} - An object representing the new board.
- */
-function processBoardInputs() {
-    let boardInput = getId('newBoardInput').value
-    let boardTitle = boardInput.toUpperCase();
-    let boardId = 'board-' + boards.length
-    let board = {
-        'boardTitle': boardTitle,
-        'boardId': lowerFirstLetter(boardId),
-    };
-    return board;
 }
 
 
@@ -212,9 +194,9 @@ function renderAssignedUsers(usersArr) {
                 iconsHTML += `<span class="user-icon" alt="user icon" style="background-color: #2A3647">${usersArr.length - 2}+</span>`
                 break;
             }
-            if (!detailsAreOpen) iconsHTML += `
+            if (!detailsAreOpen || editIsOpen) iconsHTML += `
             <span class="user-icon" alt="user icon" style="background-color: ${user.color}">${user.initial}</span>`;
-            if (detailsAreOpen) iconsHTML += `
+            if (detailsAreOpen && !editIsOpen) iconsHTML += `
             <div class="user-details">
             <span class="user-icon" alt="user icon" style="background-color: ${user.color}">${user.initial}</span>
             <div>${user.name}</div>
@@ -242,11 +224,11 @@ function openTask(index) {
  * Renders the detailed view of a specific task.
  * @param {number} index - The index of the task in the 'tasks' array.
  */
-function renderDetailedTask(index) {
+async function renderDetailedTask(index) {
     detailsAreOpen = true;
     let task = tasks[index]
     let editTask = getId('editTaskDialog')
-    openContainer('editTaskDialog')    
+    openContainer('editTaskDialog')
     editTask.innerHTML = editTaskHTML(task, index);
     renderSubtasksDetails(index);
 }
@@ -257,17 +239,16 @@ function renderDetailedTask(index) {
  * @param {number} index - The index of the task in the 'tasks' array.
  */
 function renderSubtasksDetails(index) {
-
     let subtaskId = getId(`subtask-${index}`)
     let subtasks = tasks[index].subtasks
     for (let i = 0; i < subtasks.length; i++) {
         const subtask = subtasks[i];
         let checkedValue = subtask.checked ? "checked" : "";
         subtaskId.innerHTML += `
-        <div class="subtask-checkbox-container">
+    <div class="subtask-checkbox-container">
         <input class="subtask-checkbox" type="checkbox" value="0" onchange="updateEditSubtask(${index}, ${i})" ${checkedValue}>
-        ${subtask.title}
-      </div>`;
+        <div>${subtask.title}<div>
+    </div>`;
     }
 }
 
@@ -287,16 +268,32 @@ function updateEditSubtask(taskIndex, subtaskIndex) {
  * Renders the task editing form for a specific task.
  * @param {number} index - The index of the task in the 'tasks' array.
  */
-function renderEditTask(index) {
+async function renderEditTask(index) {
     detailsAreOpen = true;
     let editTask = getId('editTaskDialog');
     let task = tasks[index];
     assignedUsers = task.assignedTo;
     editTask.innerHTML = editTaskDialogHTML(index, task);
+    categories = await loadFromBackend('categories', categories);
+    await renderCategories();
     startPriorityEventListener(task.urgency);
     renderUserList();
     compareDate();
+
 }
+
+function renderTaskSubtasks(subtaskArray) {
+    let subtaskHTML = '';
+    if (subtaskArray.length > 0) {
+        for (let index = 0; index < subtaskArray.length; index++) {
+            const subtask = subtaskArray[index];
+            // Use the editSubtaskHTML function to generate HTML for each subtask
+            subtaskHTML += editSubtaskHTML(subtask, index);
+        }
+    }
+    return subtaskHTML;
+}
+
 
 
 /**
@@ -322,6 +319,10 @@ async function changeTask(index, board) {
 function closeTaskDialog() {
     detailsAreOpen = false;
     closeContainer('editTaskDialog');
+    getId('addTaskRemover').innerHTML = `
+    <div class="add-task-popup d-none" onclick="closeContainerEvent(event, 'addTasksPopup')" id="addTasksPopup"
+    w3-include-html="../03addTasks/taskPopup.html"></div>
+    `
     renderBoards(tasks);
 }
 
@@ -371,7 +372,7 @@ function deleteTask() {
  */
 function openDeleteDialog(index) {
     setIndex(index);
-    openContainer('deletePopup'); 
+    openContainer('deletePopup');
 }
 
 
@@ -383,3 +384,6 @@ function openDeleteDialog(index) {
 function setIndex(i) {
     currentIndexDelete = i;
 }
+
+
+
