@@ -397,7 +397,7 @@ h3 {
   z-index: 10;
 }
 .close-upper-right:hover {
-  background-color: rgba(41, 170, 226, 0.2745098039);
+  background-color: rgba(41, 170, 226, 0.0745098039);
 }
 .close-upper-right img {
   width: 30px;
@@ -731,10 +731,6 @@ h3 {
   height: 0;
   margin: unset;
 }
-.add-contact-dialog .add-contact .add-contact-menu .add-contact-description img, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description img {
-  height: 66px;
-  width: 55px;
-}
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu {
   position: relative;
   display: flex;
@@ -911,6 +907,7 @@ h3 {
   color: #29ABE2;
   display: flex;
   align-items: center;
+  font-size: 21px;
 }
 .add-task-btn img {
   width: 15px;
@@ -1150,7 +1147,6 @@ h3 {
     flex-direction: row;
     width: 100%;
     align-items: center;
-    justify-content: space-between;
   }
   .add-contact-btn {
     top: 15%;
