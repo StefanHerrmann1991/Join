@@ -3,7 +3,6 @@
  * @returns {Promise<void>} A Promise that resolves when authentication initialization is complete.
  */
 async function initAuthentification() {
-    /*  await initLogin(); */
     await loadRegisterdUsers();
     await renderAuth('login');
 }
@@ -28,27 +27,45 @@ function renderAuth(status) {
  */
 function renderSignUp() {
     return `
-<div class="register">
-<div class="logo-container">
-<img class="logo" src="../../assets/img/logo2.png">
-</div>
-<div class="sign-up-container">
-<img onclick="initAuthentification('login')" class="arrow-back" src="../../assets/img/backArrow.png">
-    <div class="sign-up">
-        <h2>Sign up</h2>
-        <form onsubmit="registerUser();">
-            <input minlength="3" type="text" id="name" name="name" required placeholder="Name">
-            <input minlength="3" type="email" id="email" name="email" required placeholder="Email">
-            <input minlength="6" maxlength="20" type="password" id="password" name="Password" required placeholder="Password">
-                       <div class="menu-btn">
-                <button class="btn-1" type="submit"><nobr>Sign up</nobr></button>
-                <button class="btn-2" onclick="renderAuth('login')">Back</button>
-            </div>
-        </form>
+    <div class="register">
+    <div class="logo-container">
+        <img class="logo" src="../../assets/img/logo2.png">
+    </div>
+    <div class="sign-up-container">
+        <img onclick="initAuthentification('login')" class="arrow-back" src="../../assets/img/backArrow.png">
+        <div class="sign-up">
+            <h2>Sign up</h2>
+            <form onsubmit="registerUser();">
+                <input minlength="3" type="text" id="name" name="name" required placeholder="Name">
+                <input minlength="3" type="email" id="email" name="email" required placeholder="Email">
+                <input minlength="6" maxlength="20" type="password" id="password" name="Password" required placeholder="Password">             
+                <div>
+                    <input type="checkbox" id="enableRegistration" name="enableRegistration" onchange="toggleSignUpButton()">
+                    <label for="enableRegistration">I agree to the terms and conditions</label>
+                </div>
+                <div class="menu-btn">
+                    <button class="btn-1" type="submit" id="signupButton" disabled><nobr>Sign up</nobr></button>
+                    <button class="btn-2" onclick="renderAuth('login')">Back</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
-</div>
-</div>` }
+</div>`;
+}
+
+
+function toggleSignUpButton() {
+    var checkBox = document.getElementById("enableRegistration");
+    var signUpButton = document.getElementById("signupButton");
+
+    if (checkBox.checked == true) {
+        signUpButton.disabled = false;
+    } else {
+        signUpButton.disabled = true;
+    }
+}
+
 
 
 /**
@@ -198,7 +215,7 @@ function renderResetPassword() {
                     <button type="submit">
                         <nobr>Continue</nobr>
                     </button>
-                </div>
+                </div>                
             </form>
         </div>
     </div>
@@ -275,9 +292,8 @@ function passwordValidation() {
  * @returns {Promise<void>} A Promise that resolves when the users are added to the backend.
  */
 async function addUsers() { //check async: no diff
-    /*     if (event) event.preventDefault();
-        let registerdUsersAsText = JSON.stringify(registeredUsers);
-        await setItem(registeredUser); */
+    if (event) event.preventDefault();
+    saveToBackend('registeredUsers', registeredUsers)
 }
 
 
@@ -365,10 +381,10 @@ async function sendForgotPasswordEmail(email, token) {
         method: 'POST',
         body: formData
     });
-/*     const response = await fetch('https://stefan-herrmann.developerakademie.net/send_mail/send_mail.php', {
-        method: 'POST',
-        body: formData
-    }); */
+    /*     const response = await fetch('https://stefan-herrmann.developerakademie.net/send_mail/send_mail.php', {
+            method: 'POST',
+            body: formData
+        }); */
 
     if (!response.ok) {
         throw new Error('Failed to send email');

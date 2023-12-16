@@ -9,15 +9,6 @@
   padding-inline: 0px;
 }
 
-.input:-internal-autofill-selected {
-  -webkit-appearance: menulist-button;
-     -moz-appearance: menulist-button;
-          appearance: menulist-button;
-  background-image: none !important;
-  background-color: white !important;
-  color: fieldtext !important;
-}
-
 .help-and-logout {
   display: flex;
   align-items: center;
