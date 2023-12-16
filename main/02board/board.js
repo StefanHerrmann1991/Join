@@ -102,7 +102,6 @@ function setBoard(boardName) {
  * @param {Array} array - The array of tasks to be rendered on the board.
  */
 function renderEachBoard(boardTitle, boardId, array) {
-
     let boardTaskArray = array.filter(t => t['board'] == `${boardId}`);
     getId(`${boardId}`).innerHTML = '';
     if (boardTaskArray.length == 0) getId(`${boardId}`).innerHTML = renderEmptyBoard(boardTitle);
@@ -301,7 +300,7 @@ async function renderEditTask(index) {
     await renderCategories();
     openCurrentCategory(task.category)
     startPriorityEventListener(task.priority);
-    renderUserList();
+    renderUserList()
     compareDate();
 }
 
@@ -311,16 +310,15 @@ function openCurrentCategory(category) {
     chosenCategoryOption.innerHTML = chosenCategoryHTML(category);
 }
 
-function renderTaskSubtasks(subtaskArray) {
 
+function renderTaskSubtasks(subtaskArray) {
     subtasks = subtaskArray
     console.log(subtasks, subtaskArray)
     let subtaskHTML = '';
     if (subtaskArray.length > 0) {
         for (let index = 0; index < subtaskArray.length; index++) {
             const subtask = subtaskArray[index];
-            // Use the editSubtaskHTML function to generate HTML for each subtask
-            subtaskHTML += editSubtaskHTML(subtask, index);
+                     subtaskHTML += editSubtaskHTML(subtask, index);
         }
     }
     return subtaskHTML;
@@ -366,7 +364,6 @@ function closeEditTask() {
  * @param {string} val The input string to match against.
  */
 function showResultsTasks(val) {
-
     const tasksList = autocompleteMatchTask(val.toLowerCase());
     if (tasksList.length !== 0) renderBoards(tasksList);
     else renderBoards(tasks)

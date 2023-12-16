@@ -98,7 +98,7 @@ function renderAddTask() {
         </button>
         <div class="title-form">
             <h2 class="task-title">Add Task</h2>
-            <form class="add-task-formfield" onsubmit="addToTasks();">
+            <form class="add-task-formfield" onsubmit="addToTasks(${chosenBoard});">
                 <div class="task-fields">
                     <div class="add-task-left">
                         <h3>Title</h3>

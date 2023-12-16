@@ -27,6 +27,7 @@ async function initTasks() {
  * @param {string} board - The id of the board to which the task will be added.
  */
 async function addToTasks(board) {
+    console.log(board)
     event.preventDefault();
     const task = await processTaskInputs(board);
     task.id = tasks.length + 1;
@@ -429,11 +430,9 @@ function renderUserList(filteredUsers) {
     let usersArray = filteredUsers || users;
     const userListContainer = getId('allUsersList');
     userListContainer.innerHTML = '';
-
     usersArray.forEach((user) => {
-        let isChecked = assignedUsers.some(assignedUser => assignedUser.id === user.id) ? 'checked' : '';
+        let isChecked = assignedUsers.some(assignedUser => assignedUser.id === user.id) ? 'checked' : updateStylesForCheckedItems();
         let userElementId = `user-${user.id}`;
-
         userListContainer.innerHTML += `
             <div id="${userElementId}" class="user-in-list">
                 <div class="initial-name">
@@ -513,6 +512,7 @@ function filterUsers(searchTerm) {
 }
 
 function openAddTaskPopup() {
+    initTasks();
     getId('addTaskPopUpDialog').innerHTML = renderAddTask();
     openContainer('addTaskPopUpDialog');
 }
