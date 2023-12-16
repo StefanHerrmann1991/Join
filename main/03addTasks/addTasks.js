@@ -147,23 +147,31 @@ function chooseCategoryColor(index) {
  */
 function addCategory() {
     let topic = getId('categoryInput').value;
+    let color = chosenColor || '#E200BE';
     if (topic.length > 2) {
-        let color = chosenColor;
-        if (chosenColor == undefined) color = '#E200BE';
-        let newCategory = {
-            'topic': topic,
-            'color': color,
-            'index': `${categories.length}`
+        let isDuplicate = categories.some(category => category.topic === topic);
+        if (!isDuplicate) {
+            let newCategory = {
+                'topic': topic,
+                'color': color,
+                'index': `${categories.length}`
+            };
+            categories.push(newCategory);
+            saveToBackend('categories', categories);
+            renderCategories();
+        } else {
+            closeContainerInTime(2000, 'popupMessageCategoryDouble');
         }
-        categories.push(newCategory);
-        saveToBackend('categories', categories);
         cancelNewCategory();
-        renderCategories();
         closeNewCategory();
-        getId('newCategoryBtn').classList.remove('d-none')
+        getId('newCategoryBtn').classList.remove('d-none');
+    } else {
+        closeContainerInTime(2000, 'popupMessageCategory');
     }
-    else closeContainerInTime(2000, 'popupMessageCategory');
 }
+
+
+
 
 
 function setRandomColor() {
@@ -196,9 +204,9 @@ function saveCategory(index) {
     let category = categories[index];
     chosenCategoryOption.innerHTML = chosenCategoryHTML(category);
     validateData('categoryInput', category);
-    renderCategories();   
+    renderCategories();
     closeContainer('categoryMenu');
-  
+
 }
 
 
@@ -305,7 +313,7 @@ function newSubtask() {
 
 function renderSubtasks() {
     let renderedSubtasks = getId('renderedSubtasks');
-    renderedSubtasks.innerHTML = ""; 
+    renderedSubtasks.innerHTML = "";
 
     subtasks.forEach((subtask, index) => {
         renderedSubtasks.innerHTML += newSubtaskHTML(subtask, index);
@@ -504,13 +512,13 @@ function filterUsers(searchTerm) {
     renderUserList(filteredUsers)
 }
 
-function openAddTaskPopup() {    
+function openAddTaskPopup() {
     getId('addTaskPopUpDialog').innerHTML = renderAddTask();
     openContainer('addTaskPopUpDialog');
 }
 
 
-function closeAddTaskPopup() {     
+function closeAddTaskPopup() {
     closeContainer('addTaskPopUpDialog');
     getId('addTaskPopUpDialog').innerHTML = '';
 }
