@@ -1,19 +1,3 @@
-function contactInvitationHTML() {
-    return `
-    <button type="button" class="assign-btn" onclick="toggleContainer('userMenu'); toggleContainer('userInitialContainer')">
-        <div>Select contact to assign</div>
-        <div id="imgArrow"><img src="../../assets/img/openUp.png"></div>
-    </button>
-    <div class="user-menu" id="userMenu">
-        <div class="user-list" id="userList"></div>
-        <button id="inviteUserBtn" type="button" class="invite-user-btn"
-        onclick="inviteUsers()">Invite new contact<img src="../../assets/img/contactsBlack.png">
-        </button>   
-    </div>
-    `
-}
-
-
 function subtaskHTML() {
     return `
     <div class="subtasks-container">
@@ -59,10 +43,10 @@ function chosenCategoryHTML(category) {
 function categoryOptionsHTML(category, index) {
     return `
     <button type="button" onclick="saveCategory(${index})" class="each-category-container">
-    <div class="category-color" style="background-color: ${category.color}"></div>
-    <div class="category" id="category-${index}">${category.topic}</div>
+        <div class="category-color" style="background-color: ${category.color}"></div>
+        <div class="category" id="category-${index}">${category.topic}</div>
     </button>
-    `
+     `
 }
 
 

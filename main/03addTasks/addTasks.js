@@ -160,6 +160,7 @@ function addCategory() {
         cancelNewCategory();
         renderCategories();
         closeNewCategory();
+        getId('newCategoryBtn').classList.remove('d-none')
     }
     else closeContainerInTime(2000, 'popupMessageCategory');
 }
@@ -195,8 +196,9 @@ function saveCategory(index) {
     let category = categories[index];
     chosenCategoryOption.innerHTML = chosenCategoryHTML(category);
     validateData('categoryInput', category);
-    renderCategories();
+    renderCategories();   
     closeContainer('categoryMenu');
+  
 }
 
 
@@ -508,8 +510,7 @@ function openAddTaskPopup() {
 }
 
 
-function closeAddTaskPopup() {    
-  
+function closeAddTaskPopup() {     
     closeContainer('addTaskPopUpDialog');
     getId('addTaskPopUpDialog').innerHTML = '';
 }

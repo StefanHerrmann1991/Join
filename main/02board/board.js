@@ -351,11 +351,7 @@ async function changeTask(index, board) {
  */
 function closeTaskDialog() {
     detailsAreOpen = false;
-    closeContainer('editTaskDialog');
-    getId('addTaskRemover').innerHTML = `
-    <div class="add-task-popup d-none" onclick="closeContainerEvent(event, 'addTasksPopup')" id="addTasksPopup"
-    w3-include-html="../03addTasks/taskPopup.html"></div>
-    `
+    closeContainer('editTaskDialog');  
     renderBoards(tasks);
 }
 

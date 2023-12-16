@@ -385,8 +385,10 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 34px;
+  height: 34px;
   z-index: 1000;
-  padding: 3px;
+  padding: 4px;
   border-radius: 50%;
   position: absolute;
   top: 2.5%;
@@ -396,11 +398,21 @@ h3 {
   z-index: 10;
 }
 .close-upper-right:hover {
-  background-color: rgba(41, 170, 226, 0.6);
+  background-color: rgba(41, 170, 226, 0.0745098039);
 }
 .close-upper-right img {
   width: 30px;
   height: 30px;
+}
+
+.form-btn {
+  width: 100%;
+  font-size: 21px;
+}
+
+.main-btn {
+  width: 100%;
+  font-size: 21px;
 }
 
 @media (max-width: 992px) {
@@ -547,7 +559,7 @@ button .small-btn {
   border-radius: 50%;
 }
 button .small-btn:hover {
-  background-color: rgba(214, 213, 233, 0.4862745098);
+  background-color: rgba(41, 170, 226, 0.0745098039);
 }
 
 input, textarea, select, .priority-btn {
@@ -654,13 +666,14 @@ input:-webkit-autofill:active {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 21px;
 }
 .btn-container .clear-btn {
   color: #2A3647;
   border: 1px solid #2A3647;
   background-color: white;
   width: 136px;
-  height: 61px;
+  height: 54px;
   border-radius: 10px;
 }
 .btn-container .clear-btn:hover {
@@ -683,7 +696,7 @@ input:-webkit-autofill:active {
   border: none;
   color: #FFFFFF;
   width: 177px;
-  height: 61px;
+  height: 54px;
 }
 .btn-container .create-task-btn:hover {
   background-color: #29ABE2;
@@ -874,15 +887,16 @@ input:-webkit-autofill:active {
 .assign-btn-container {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  position: relative;
   background: #FFFFFF;
   border: 1px solid #D1D1D1;
   border-radius: 10px;
-  position: relative;
-  align-items: flex-start;
 }
 .assign-btn-container .assign-btn {
   height: 51px;
-  padding: 12px 16px 12px 16px;
+  font-size: 21px;
+  padding: 12px 16px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -1165,6 +1179,7 @@ input.subtask-checkbox[type=checkbox]:checked {
   padding: 12px 16px;
   justify-content: space-between;
   align-items: center;
+  font-size: 21px;
 }
 .user-menu .toggle-user-input {
   width: 100%;
@@ -1211,6 +1226,7 @@ input.subtask-checkbox[type=checkbox]:checked {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  font-size: 18px;
 }
 
 .new-category-menu {
@@ -1282,6 +1298,7 @@ input.subtask-checkbox[type=checkbox]:checked {
   align-items: center;
   gap: 12px;
   width: 100%;
+  font-size: 18px;
 }
 
 .category-container {

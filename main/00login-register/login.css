@@ -384,8 +384,10 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 34px;
+  height: 34px;
   z-index: 1000;
-  padding: 3px;
+  padding: 4px;
   border-radius: 50%;
   position: absolute;
   top: 2.5%;
@@ -395,11 +397,21 @@ h3 {
   z-index: 10;
 }
 .close-upper-right:hover {
-  background-color: rgba(41, 170, 226, 0.6);
+  background-color: rgba(41, 170, 226, 0.2745098039);
 }
 .close-upper-right img {
   width: 30px;
   height: 30px;
+}
+
+.form-btn {
+  width: 100%;
+  font-size: 21px;
+}
+
+.main-btn {
+  width: 100%;
+  font-size: 21px;
 }
 
 @media (max-width: 992px) {
