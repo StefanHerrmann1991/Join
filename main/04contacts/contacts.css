@@ -309,15 +309,6 @@ h3 {
   gap: 20px;
 }
 
-.close-upper-right {
-  position: absolute;
-  top: 5%;
-  right: 5%;
-  border: none;
-  background: transparent;
-  z-index: 10;
-}
-
 .task-submit-successful {
   display: flex;
   justify-content: center;
@@ -389,6 +380,28 @@ h3 {
   margin-right: 8px;
 }
 
+.close-upper-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 3px;
+  border-radius: 50%;
+  position: absolute;
+  top: 2.5%;
+  right: 5%;
+  border: none;
+  background: transparent;
+  z-index: 10;
+}
+.close-upper-right:hover {
+  background-color: rgba(41, 170, 226, 0.6);
+}
+.close-upper-right img {
+  width: 30px;
+  height: 30px;
+}
+
 @media (max-width: 992px) {
   .add-task-title {
     font-size: 47px;
@@ -408,7 +421,7 @@ h3 {
   h2 {
     font-size: 41px;
   }
-  div, button, input, textarea, h3, a {
+  div, input, textarea, h3, a {
     font-size: 15px;
   }
 }
@@ -1070,13 +1083,6 @@ h3 {
   }
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-description p, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description p {
     font-size: 21px;
-  }
-  .add-contact-dialog .add-contact .add-contact-menu .add-contact-description .close-upper-right, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description .close-upper-right {
-    z-index: 200;
-  }
-  .add-contact-dialog .add-contact .add-contact-menu .add-contact-description .close-upper-right img, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description .close-upper-right img {
-    height: 40px;
-    width: 40px;
   }
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu {
     border-radius: 0px 0px 30px 30px;

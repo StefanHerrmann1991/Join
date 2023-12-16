@@ -283,13 +283,13 @@ function renderContacts() {
       if (contactBook.initialList[i] == contactBook.contacts[index].firstNameInitial) {
         document.getElementById(`${initial}`).innerHTML += `
       <button onclick="showContact(${index})" id="contact-${index}" class="contact-container">
-      <div class="contact-intial"  style="background-color:${element.color}">
-      <div class="icon-initial">${element.initial}</div>
-      </div>
-      <div class="contact-name-email">
-      <div class="contact-name">${element.name}</div>
-      <div class="contact-email">${element.email}</div>
-      </div>
+        <div class="contact-intial"  style="background-color:${element.color}">
+          <div class="icon-initial">${element.initial}</div>
+        </div>
+        <div class="contact-name-email">
+          <div class="contact-name">${element.name}</div>
+          <div class="contact-email">${element.email}</div>
+        </div>
       </div>
       </button>`;
       }

@@ -13,7 +13,6 @@ async function initTasks() {
     await initContactList();
     tasks = await loadFromBackend('tasks', tasks);
     categories = await loadFromBackend('categories', categories);
-    console.log(tasks, categories);
     await renderUserList();
     await renderCategories();
     startPriorityEventListener();
@@ -30,7 +29,7 @@ async function initTasks() {
 async function addToTasks(board) {
     event.preventDefault();
     const task = await processTaskInputs(board);
-    task.id = tasks.length + 1; 
+    task.id = tasks.length + 1;
     tasks.push(task);
     saveToBackend('tasks', tasks)
     openContainer('successfulSubmit');
@@ -201,12 +200,15 @@ function saveCategory(index) {
 }
 
 
+
+
 /**
  * Starts an event listener for each priority radio button.
  * It adds the 'selected' class to the label of the checked radio button and removes it when another radio button is selected.
  * @param {string} [selectedValue] - The value of the radio button that is initially selected. 
  */
 function startPriorityEventListener(selectedValue) {
+    console.log(selectedValue)
     const radioEls = document.querySelectorAll('.priority-radio');
     radioEls.forEach(radioEl => {
         const parentLabel = radioEl.parentElement;
@@ -301,7 +303,7 @@ function newSubtask() {
 
 function renderSubtasks() {
     let renderedSubtasks = getId('renderedSubtasks');
-    renderedSubtasks.innerHTML = ""; // Clear existing content
+    renderedSubtasks.innerHTML = ""; 
 
     subtasks.forEach((subtask, index) => {
         renderedSubtasks.innerHTML += newSubtaskHTML(subtask, index);
@@ -407,7 +409,7 @@ function toggleCategoryInput() {
     getId('categoryBackground').classList.toggle('white-background');
     Array.from(document.getElementsByClassName('category-input')).forEach(input => {
         input.classList.toggle('d-none');
-    });    
+    });
 }
 
 
@@ -499,5 +501,18 @@ function filterUsers(searchTerm) {
     });
     renderUserList(filteredUsers)
 }
+
+function openAddTaskPopup() {    
+    getId('addTaskPopUpDialog').innerHTML = renderAddTask();
+    openContainer('addTaskPopUpDialog');
+}
+
+
+function closeAddTaskPopup() {    
+  
+    closeContainer('addTaskPopUpDialog');
+    getId('addTaskPopUpDialog').innerHTML = '';
+}
+
 
 

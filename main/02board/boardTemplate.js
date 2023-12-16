@@ -35,8 +35,6 @@ function editTaskHTML(task, index) {
                 <div class="assigned-to-container">
                     <h2>Assigned to:</h2>
                     <div class="details-assigned-users">${renderAssignedUsers(task.assignedTo)}</div>
-
-
                 </div>
                 <div class="change-tasks">
                     <button class="delete-task-btn" onclick="openDeleteDialog(${index})"><img
@@ -51,12 +49,11 @@ function editTaskHTML(task, index) {
 
 
 function editTaskDialogHTML(index, task) {
-    editIsOpen = !editIsOpen;
-    getId('addTaskRemover').innerHTML = '';
+    editIsOpen = !editIsOpen;    
     return `
     <div class="edit-task-dialog center" id="editTaskContainer" onclick="closeContainerEvent(event, 'editTaskContainer')">
         <div class="edit-task-container">
-            <button class="close-upper-right desktop" onclick="closeTaskDialog()"><img
+            <button class="close-upper-right" onclick="closeTaskDialog()"><img
                     src="../../assets/img/cancel.png"></button>
             <form class="edit-task-form" onsubmit="changeTask(${index}, '${task.board}')">            
             <div class="task-fields">                
@@ -64,7 +61,7 @@ function editTaskDialogHTML(index, task) {
                     <input minlength="3" required class="title" id="title" placeholder="Enter a title" value="${task.title}">
                     <h3>Description</h3>
                     <textarea minlength="3" resize="none" required id="description"
-                        placeholder="Enter a description" value="${task.description}"></textarea>
+                        placeholder="Enter a description">${task.description}</textarea>
                     <h3>Assigned to</h3>
                     <div id="usersBackground">
                         <div name="usersSelect" id="usersSelect" class="users-select">
@@ -86,8 +83,8 @@ function editTaskDialogHTML(index, task) {
                                 </div>
                             </div>
                         </div>
-                        <div id="userInitialContainer" class="user-initial-container">${renderAssignedUsers(task.assignedTo)}</div>                   
-                </div>                
+                        <div id="userInitialContainer" class="user-initial-container">${renderEditAssignedUsers(task.assignedTo)}</div>                   
+                    </div>                
                     <div class="form-and-btn">
                         <h3>Due date</h3>
                         <input required id="date" class="date" type="date" name="setTodaysDate" value="${task.date}">
@@ -109,7 +106,7 @@ function editTaskDialogHTML(index, task) {
                         </div>
                         <h3>Subtasks</h3>
                         <div class="assign-btn-container" id="subtasks">
-                            <button onclick="changeSubtaskInput()" type="button" class="assign-btn " type="text">
+                            <button onclick="changeSubtaskInput()" type="button" class="assign-btn" type="text">
                                 <div id="subtaskMenu">Add new subtask</div>
                                 <img class="add-subtask small-btn" src="../../assets/img/addIcon.png">
                             </button>
@@ -137,9 +134,7 @@ function editTaskDialogHTML(index, task) {
                                             <div class=" subtasks-container">
                                                 <div class="category-input-color">
                                                 <div id="chosenColor"></div>
-                                                <input minlength="3" id="categoryInput" type="text"
-                                                    placeholder="New category name" required>
-                                                </div>
+                                              </div>
                                                 <div class="button-container">
                                                 <button onclick="closeNewCategory()" type="button"
                                                     class="cancel-button"><img class="small-btn"
@@ -211,13 +206,12 @@ function boardTaskHTML(element, i) {
 }
 
 
-
 function boardsContentHTML(board) {
     return `
     <div class="board">
         <div class="board-header">
             <h2>${board.boardTitle}</h2>
-            <button class="add-task-board-btn" value="${board.boardId}" onclick="openContainer('addTasksPopup'); setBoard(this.value)">
+            <button class="add-task-board-btn" value="${board.boardId}" onclick="openAddTaskPopup(); setBoard(this.value)">
                 <img src="../../assets/img/plusButton.png"
             </button>
         </div>
@@ -229,9 +223,6 @@ function boardsContentHTML(board) {
 
 
 function editSubtaskHTML(subtask, index) {
-    // Determine the checked attribute based on the subtask's state
-    
-    
     return `
     <div class="subtask-checkbox-container">        
         <label for="checkbox-${index}" class="subtask-label"></label>
@@ -248,8 +239,8 @@ function editSubtaskHTML(subtask, index) {
         <div class="edit-subtask-con d-none" id="subtaskEditMenu-${index}">
             <input id="subtaskEditInput-${index}" class="subtask-edit-input" value="${subtask.title}">
             <div class="subtask-edit-btns">
-                <button class="delete-btn " type="button" onclick="deleteSubtask(${index})"><img class="small-btn" src="../../assets/img/deleteDark.png"></button>
-                <button class="add-button " type="button" onclick="editSubtask(${index})"><img class="small-btn" src="../../assets/img/checkGreen.png"></button>    
+                <button class="delete-btn" type="button" onclick="deleteSubtask(${index})"><img class="small-btn" src="../../assets/img/deleteDark.png"></button>
+                <button class="add-button" type="button" onclick="editSubtask(${index})"><img class="small-btn" src="../../assets/img/checkGreen.png"></button>    
             </div>
         </div>
     </div>            

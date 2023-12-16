@@ -36,7 +36,8 @@ let currentIndexDelete;
 async function initBoards() {
     await includeHTML();
     await initContactList();
-    await initTasks();
+    tasks = await loadFromBackend('tasks', tasks);
+    categories = await loadFromBackend('categories', categories);
     await renderBoards(tasks);
     highlightChosenMenu()
 }
@@ -60,6 +61,7 @@ function renderNewBoardBtn() {
         </div>
     `
 }
+
 
 
 /**
@@ -185,6 +187,12 @@ function moveToBoard(i, targetBoard) {
  * @param {Array} usersArr - The array of users.
  * @return {String} - HTML string of user icons.
  */
+/**
+ * This function renders the user icons for all users in a provided array.
+ * 
+ * @param {Array} usersArr - The array of users.
+ * @return {String} - HTML string of user icons.
+ */
 function renderAssignedUsers(usersArr) {
     let iconsHTML = '';
     if (usersArr && usersArr.length > 0) {
@@ -194,9 +202,9 @@ function renderAssignedUsers(usersArr) {
                 iconsHTML += `<span class="user-icon" alt="user icon" style="background-color: #2A3647">${usersArr.length - 2}+</span>`
                 break;
             }
-            if (!detailsAreOpen || editIsOpen) iconsHTML += `
+            if (!detailsAreOpen) iconsHTML += `
             <span class="user-icon" alt="user icon" style="background-color: ${user.color}">${user.initial}</span>`;
-            if (detailsAreOpen && !editIsOpen) iconsHTML += `
+            if (detailsAreOpen) iconsHTML += `
             <div class="user-details">
             <span class="user-icon" alt="user icon" style="background-color: ${user.color}">${user.initial}</span>
             <div>${user.name}</div>
@@ -207,6 +215,21 @@ function renderAssignedUsers(usersArr) {
     }
     else return iconsHTML = `<div>No user assigned</div>`
 }
+
+
+function renderEditAssignedUsers(usersArr) {
+    let iconsHTML = '';
+    if (usersArr && usersArr.length > 0) {
+        for (let index = 0; index < usersArr.length; index++) {
+            const user = usersArr[index];
+            iconsHTML += `
+            <span id="userIcon-${user.id}" class="user-icon" alt="user icon" style="background-color: ${user.color}">${user.initial}</span>`;
+        }
+        return iconsHTML;
+    }
+    else return iconsHTML = `<div>No user assigned</div>`
+}
+
 
 
 /**
@@ -246,7 +269,7 @@ function renderSubtasksDetails(index) {
         let checkedValue = subtask.checked ? "checked" : "";
         subtaskId.innerHTML += `
     <div class="subtask-checkbox-container">
-        <input class="subtask-checkbox" type="checkbox" value="0" onchange="updateEditSubtask(${index}, ${i})" ${checkedValue}>
+        <input name="subtask" class="subtask-checkbox" type="checkbox" value="0" onchange="updateEditSubtask(${index}, ${i})" ${checkedValue}>
         <div>${subtask.title}<div>
     </div>`;
     }
@@ -276,13 +299,22 @@ async function renderEditTask(index) {
     editTask.innerHTML = editTaskDialogHTML(index, task);
     categories = await loadFromBackend('categories', categories);
     await renderCategories();
-    startPriorityEventListener(task.urgency);
+    openCurrentCategory(task.category)
+    startPriorityEventListener(task.priority);
     renderUserList();
     compareDate();
+}
 
+
+function openCurrentCategory(category) {
+    let chosenCategoryOption = getId('openCategoryBtn');
+    chosenCategoryOption.innerHTML = chosenCategoryHTML(category);
 }
 
 function renderTaskSubtasks(subtaskArray) {
+
+    subtasks = subtaskArray
+    console.log(subtasks, subtaskArray)
     let subtaskHTML = '';
     if (subtaskArray.length > 0) {
         for (let index = 0; index < subtaskArray.length; index++) {
@@ -310,6 +342,7 @@ async function changeTask(index, board) {
     saveToBackend('tasks', tasks)
     closeTaskDialog();
     renderBoards(tasks);
+    editIsOpen = false;
 }
 
 
@@ -324,6 +357,11 @@ function closeTaskDialog() {
     w3-include-html="../03addTasks/taskPopup.html"></div>
     `
     renderBoards(tasks);
+}
+
+function closeEditTask() {
+    closeContainerEvent();
+    editIsOpen = false;
 }
 
 

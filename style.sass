@@ -14,6 +14,7 @@ $small: 74px
 $medium: 80px
 $large: 90px
 $hover: #29ABE2
+$hover-small-btn: #29aae246
 $hover-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 $popup-color: rgba(0, 0, 0, 0.2)
 $background: #F6F7F8
@@ -53,7 +54,7 @@ $dark-select: #091931
     align-items: center
 
 .selected-menu
-    background-color: $dark-select 
+    background-color: $dark-select
 
 .scroll
     overflow-y: scroll
@@ -283,13 +284,6 @@ h3
     align-items: center
     gap: 20px
 
-.close-upper-right
-    position: absolute
-    top: 5%
-    right: 5%
-    border: none
-    background: transparent
-    z-index: 10
 .task-submit-successful
     @include flex-center
     text-align: center
@@ -348,6 +342,25 @@ h3
     img
         margin-right: 8px
 
+.close-upper-right
+    @include flex-center
+    width: 34px
+    height: 34px
+    z-index: 1000
+    padding: 4px
+    border-radius: 50%
+    position: absolute
+    top: 2.5%
+    right: 5%
+    border: none
+    background: transparent
+    z-index: 10
+    &:hover
+        background-color: $hover-small-btn
+    img
+        width: 30px
+        height: 30px
+
 @media (max-width: 992px)
 
     .add-task-title
@@ -368,7 +381,7 @@ h3
     h2
         font-size: 41px
 
-    div, button, input, textarea, h3, a
+    div, input, textarea, h3, a
         font-size: 15px
 
 @media (max-width: 768px)

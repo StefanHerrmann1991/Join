@@ -310,15 +310,6 @@ h3 {
   gap: 20px;
 }
 
-.close-upper-right {
-  position: absolute;
-  top: 5%;
-  right: 5%;
-  border: none;
-  background: transparent;
-  z-index: 10;
-}
-
 .task-submit-successful {
   display: flex;
   justify-content: center;
@@ -390,6 +381,28 @@ h3 {
   margin-right: 8px;
 }
 
+.close-upper-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 3px;
+  border-radius: 50%;
+  position: absolute;
+  top: 2.5%;
+  right: 5%;
+  border: none;
+  background: transparent;
+  z-index: 10;
+}
+.close-upper-right:hover {
+  background-color: rgba(41, 170, 226, 0.6);
+}
+.close-upper-right img {
+  width: 30px;
+  height: 30px;
+}
+
 @media (max-width: 992px) {
   .add-task-title {
     font-size: 47px;
@@ -409,7 +422,7 @@ h3 {
   h2 {
     font-size: 41px;
   }
-  div, button, input, textarea, h3, a {
+  div, input, textarea, h3, a {
     font-size: 15px;
   }
 }
@@ -537,7 +550,7 @@ button .small-btn:hover {
   background-color: rgba(214, 213, 233, 0.4862745098);
 }
 
-input, textarea, select, button, .priority-btn {
+input, textarea, select, .priority-btn {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -630,11 +643,6 @@ input:-webkit-autofill:active {
 }
 
 /* ********************************MAIN BUTTONS******************************************* */
-.close-upper-right img {
-  width: 30px;
-  height: 30px;
-}
-
 .btn-container {
   display: flex;
   justify-content: space-between;
@@ -643,7 +651,6 @@ input:-webkit-autofill:active {
 }
 .btn-container button {
   border-radius: 10px;
-  font-weight: 700;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1294,6 +1301,14 @@ input.subtask-checkbox[type=checkbox]:checked {
   width: 98%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.add-task-popup-dialog {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 

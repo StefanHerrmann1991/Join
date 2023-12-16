@@ -35,14 +35,14 @@ async function initSummary() {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const outputDateStr = dateConverted.toLocaleDateString('en-US', options);
     let date = getId('nextDeadline');
-    let urgency = capitalizeFirst(earliestTask.urgency)
+    let priority = capitalizeFirst(earliestTask.priority)
     date.innerHTML = `
     <div class="next-tasks-counter">        
-        <div class="urgency-icon ${urgency.toLowerCase()}">
-        <img src="../../assets/img/prio${urgency}.png"></div>
+        <div class="urgency-icon ${priority.toLowerCase()}">
+        <img src="../../assets/img/prio${priority}.png"></div>
         <div>
         <div class="deadline-number">${count}</div>
-        <div>${urgency}</div>
+        <div>${priority}</div>
         </div>
         </div>
         <div class="middle-line"></div>
