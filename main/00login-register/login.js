@@ -10,16 +10,6 @@ async function initAuthentification() {
 
 
 /**
- * Initializes the login process.
- * @returns {Promise<void>} A Promise that resolves when login initialization is complete.
- */
-async function initLogin() {
-    await setURL('https://stefan-herrmann.developerakademie.net/smallest_backend_ever');
-    await downloadFromServer();
-}
-
-
-/**
  * Renders the authentication UI based on the given status.
  * @param {string} status - The status of authentication ('login', 'forgetPassword', 'resetPassword', 'signUp').
  */
@@ -371,10 +361,14 @@ async function sendForgotPasswordEmail(email, token) {
     formData.append('email', email);
     formData.append('name', 'Password Reset');
     formData.append('message', message);
-    const response = await fetch('https://stefan-herrmann.developerakademie.net/send_mail/send_mail.php', {
+    const response = await fetch('https://stefan-herrmann.org/forgot_mail/forgot_mail.php', {
         method: 'POST',
         body: formData
     });
+/*     const response = await fetch('https://stefan-herrmann.developerakademie.net/send_mail/send_mail.php', {
+        method: 'POST',
+        body: formData
+    }); */
 
     if (!response.ok) {
         throw new Error('Failed to send email');

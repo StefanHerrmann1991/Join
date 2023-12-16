@@ -633,7 +633,6 @@ h3 {
 .register .sign-up-container form input {
   background-repeat: no-repeat;
   font-size: 21px;
-  width: calc(100% - 42px);
   margin-top: 8%;
   border: 1px solid #D1D1D1;
   border-radius: 10px;
