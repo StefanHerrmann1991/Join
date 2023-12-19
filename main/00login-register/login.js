@@ -41,12 +41,12 @@ function renderSignUp() {
                 <input minlength="6" maxlength="20" type="password" id="password" name="Password" required placeholder="Password">             
                 <div>
                     <input type="checkbox" id="enableRegistration" name="enableRegistration" onchange="toggleSignUpButton()">
-                    <label for="enableRegistration">I agree to the terms and conditions</label>
+                    <label for="enableRegistration">I agree to the <a href="/main/05legal-notice/privacy-policy-empty.html">privacy policy</a></label>
                 </div>
                 <div class="menu-btn">
                     <button class="btn-1" type="submit" id="signupButton" disabled><nobr>Sign up</nobr></button>
                     <button class="btn-2" onclick="renderAuth('login')">Back</button>
-                </div>
+                </div> 
             </form>
         </div>
     </div>
