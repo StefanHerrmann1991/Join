@@ -2,7 +2,6 @@
  * This function returns an HTML string for editing tasks.
  */
 function editTaskHTML(task, index) {
-
     let subtask = task.subtasks.length === 0 ? 'd-none' : '';
     return `
     <div class="edit-task-dialog center" id="editTaskContainer" onclick="closeContainerEvent(event, 'editTaskContainer')">

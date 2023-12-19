@@ -54,7 +54,7 @@
                                         </div>
                                         <div id="allUsersList" class="all-users-list"></div>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
                             <div id="userInitialContainer" class="user-initial-container"></div>
                         </div>
@@ -67,16 +67,17 @@
                             <h3>Prio</h3>
                             <div id="urgency" class="priority-btns">
                                 <label for="urgent" class="urgent priority-btn">
-                                    <input type="radio" id="urgent" name="priority" value="urgent" class="priority-radio"
-                                        required>
+                                    <input type="radio" id="urgent" name="priority" value="urgent"
+                                        class="priority-radio" required>
                                     Urgent<img src="../../assets/img/prioUrgent.png">
                                 </label>
-    
+
                                 <label for="medium" class="medium priority-btn">
-                                    <input type="radio" id="medium" name="priority" value="medium" class="priority-radio">
+                                    <input type="radio" id="medium" name="priority" value="medium"
+                                        class="priority-radio">
                                     Medium<img class="medium-prio" src="../../assets/img/prioMedium.png">
                                 </label>
-    
+
                                 <label for="low" class="low priority-btn">
                                     <input type="radio" id="low" name="priority" value="low" class="priority-radio">
                                     Low<img src="../../assets/img/prioLow.png">
@@ -104,40 +105,41 @@
                                         </button>
                                     </div>
                                     <div id="categoriesContainer" class="all-categories-list d-none">
-                                        <div id="categoryList" class="category-list"></div>
-                                        <button id="newCategoryBtn" type="button" class="new-category-btn"
-                                            onclick="openNewCategory()">New
-                                            category</button>
-                                        <div id="newCategoryContainer" class="d-none new-category-menu">
-                                            <div class=" subtasks-container">
-                                                <div class="category-input-color">
-                                                    <div id="chosenColor"></div>
-                                                    <input minlength="3" id="categoryInput" type="text"
-                                                        placeholder="New category name" required>
+                                        <div class="box-shadow">
+                                            <div id="categoryList" class="category-list"></div>
+                                            <button id="newCategoryBtn" type="button" class="new-category-btn"
+                                                onclick="openNewCategory()">New
+                                                category</button>
+                                            <div id="newCategoryContainer" class="d-none new-category-menu">
+                                                <div class=" subtasks-container">
+                                                    <div class="category-input-color">
+                                                        <div id="chosenColor"></div>
+                                                        <input minlength="3" id="categoryInput" type="text"
+                                                            placeholder="New category name" required>
+                                                    </div>
+                                                    <div class="button-container">
+                                                        <button onclick="closeNewCategory()" type="button"
+                                                            class="cancel-button"><img class="small-btn"
+                                                                src="../../assets/img/cancelDark.png"></button>
+                                                        <button type="button" class="add-button"
+                                                            onclick="addCategory()"><img class="small-btn"
+                                                                src="../../assets/img/checkDark.png"></button>
+                                                    </div>
                                                 </div>
-                                                <div class="button-container">
-                                                    <button onclick="closeNewCategory()" type="button"
-                                                        class="cancel-button"><img class="small-btn"
-                                                            src="../../assets/img/cancelDark.png"></button>
-                                                    <button type="button" class="add-button" 
-                                                        onclick="addCategory()"><img class="small-btn"
-                                                            src="../../assets/img/checkDark.png"></button>
-                                                </div>
+                                                <div id="colorPicker" class="color-picker"></div>
                                             </div>
-                                            <div id="colorPicker" class="color-picker"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="btn-container">
-                            <button class="clear-btn" type="reset" class="clear-btn" onclick="clearInputTasks()">
-                                Clear<img src="../../assets/img/cancel.png"></button>
-                            <button class="create-task-btn" type="submit" class="assign-btn">
-                                <span>Create Task</span><img src="../../assets/img/check.png"></button>
+                            <div class="btn-container">
+                                <button class="clear-btn" type="reset" class="clear-btn" onclick="clearInputTasks()">
+                                    Clear<img src="../../assets/img/cancel.png"></button>
+                                <button class="create-task-btn" type="submit" class="assign-btn">
+                                    <span>Create Task</span><img src="../../assets/img/check.png"></button>
+                            </div>
                         </div>
                     </div>
-                </div>
             </form>
         </div>
     </div>

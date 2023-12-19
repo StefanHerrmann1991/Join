@@ -383,10 +383,10 @@ h3 {
   flex-direction: column;
   gap: 12px;
 }
-#legalNotice img {
-  margin-right: 8px;
+#legalNotice a {
+  color: #A8A8A8;
 }
-#legalNotice:hover {
+#legalNotice a:hover {
   color: #29ABE2;
 }
 

@@ -104,6 +104,7 @@ function renderAddTask() {
                                         <div>Assign contacts</div>
                                         <img class="small-btn" src="../../assets/img/open.png">
                                     </button>
+
                                 </div>
                                 <div id="userSearchInputCon" class="absolute d-none">
                                     <div class="input-userlist-box">
@@ -155,7 +156,7 @@ function renderAddTask() {
                             <div id="renderedSubtasks"></div>
                         </div>
                         <h3> Category</h3>
-                        <div class="background" id="categoryBackground">
+                        <div id="categoryBackground">
                             <div class="select-category">
                                 <div class="absolute">
                                     <div id="openCategoryBtn">
@@ -167,10 +168,11 @@ function renderAddTask() {
                                         </button>
                                     </div>
                                     <div id="categoriesContainer" class="all-categories-list d-none">
+                                    <div class="box-shadow">
                                         <div id="categoryList" class="category-list"></div>
                                         <button id="newCategoryBtn" type="button" class="new-category-btn"
                                             onclick="openNewCategory()">New
-                                            category</button>
+                                            category</button>                                      
                                         <div id="newCategoryContainer" class="d-none new-category-menu">
                                             <div class=" subtasks-container">
                                                 <div class="category-input-color">
@@ -189,7 +191,8 @@ function renderAddTask() {
                                             </div>
                                             <div id="colorPicker" class="color-picker"></div>
                                         </div>
-                                    </div>
+                                        </div>
+                                        </div>
                                 </div>
                             </div>
                         </div>

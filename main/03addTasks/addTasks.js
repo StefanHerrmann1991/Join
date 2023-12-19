@@ -436,11 +436,20 @@ function renderUserList(filteredUsers) {
                 <input name="assignedUsers" type="checkbox" id="checkbox-${user.id}" class="subtask-checkbox" ${isChecked}
                        value="${user.name}" onclick="renderUserInitial(event, ${user.id})"> 
             </div>
-        `;
+    `;
     });
 
+    let textBefore = '<div class="block">';
+    let textAfter = '</div>';
+    let newContainerHTML = textBefore + userListContainer.innerHTML + textAfter;
+    userListContainer.innerHTML = newContainerHTML;
+    checkboxListener(userListContainer)
     // Add event listener to user-in-list elements
-    userListContainer.querySelectorAll('.user-in-list').forEach(userElement => {
+  
+}
+
+function checkboxListener(container) {
+    container.querySelectorAll('.user-in-list').forEach(userElement => {
         userElement.addEventListener('click', () => {
             let checkbox = userElement.querySelector('.subtask-checkbox');
             if (event.target !== checkbox) {
@@ -450,7 +459,6 @@ function renderUserList(filteredUsers) {
         });
     });
 }
-
 
 function updateStylesForCheckedItems() {
     document.querySelectorAll('.user-in-list').forEach(userElement => {

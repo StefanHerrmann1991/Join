@@ -72,12 +72,8 @@ textarea
 
 .add-task-left
     width: 45%
-    .user-initial-container
-        position: absolute
+    .user-initial-container      
         display: flex
-        margin-top: 22px
-        margin-left: 11px
-        margin-right: 11px
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -548,11 +544,26 @@ input.subtask-checkbox[type="checkbox"]:checked
 .all-categories-list
     border-bottom-left-radius: 10px
     border-bottom-right-radius: 10px
+    .box-shadow
+        box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04)
+        border-bottom-left-radius: 10px
+        border-bottom-right-radius: 10px
+
+.all-categories-list
     background: var(--white, #FFF)
-    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04)
     z-index: 4000
     position: absolute
     width: 100%
+
+.task-main
+    .all-categories-list
+        &::after
+            display: block
+            content: ''
+            height: 20px
+
+.pdg-block
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04)
 
 .color-topic
     display: flex
@@ -584,25 +595,30 @@ input.subtask-checkbox[type="checkbox"]:checked
     padding: 10px 20px 10px 20px
     margin-top: 10px
     border-top: 1px solid #D1D1D1
+    border-radius: 0px 0px 10px 10px
     &:hover
         background-color: #D1D1D1
 
 .all-users-list
-    padding: 20px 0px 20px 0px
     position: absolute
     width: 100%
     z-index: 4000
-    overflow-y: auto
     min-height: 200px
     display: flex
     flex-direction: column
     align-items: flex-start
     justify-content: center
     gap: 8px
-    border-bottom-left-radius: 10px
-    border-bottom-right-radius: 10px
+    &::after
+        display: block
+        content: ''
+        height: 20px
+.block
     background: var(--white, #FFF)
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04)
+    border-bottom-left-radius: 10px
+    border-bottom-right-radius: 10px
+    width: 100%
 
 .user-in-list
     display: flex
@@ -628,9 +644,14 @@ input.subtask-checkbox[type="checkbox"]:checked
     display: flex
     justify-content: flex-start
     align-items: center
-    gap: 12px
+    gap: 8px
+    padding: 2px 0px
     width: 100%
     font-size: 18px
+    border-radius: 10px
+    &:hover
+        background-color: $hover-small-btn
+       
 
 .category-container
     width: calc( 100% - 8px)
@@ -667,6 +688,9 @@ input.subtask-checkbox[type="checkbox"]:checked
         margin-top: 5%
 
 @media( max-width: 992px)
+
+    .new-category-btn
+        font-size: 16px
 
     .task-main
         .title-form
