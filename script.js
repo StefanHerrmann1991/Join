@@ -307,5 +307,14 @@ function highlightChosenMenu() {
 
 function closeContainerEvent(event, containerId) {
     if (event.target.id === containerId) closeContainer(containerId);
+}
 
+function openPopup(messageText, type) {
+    popUp = getId('popUpMessage');
+    if(!type) type = ''
+    popUp.innerHTML = `<div class="notification-message ${type}">${messageText}.</div>`;
+    closeContainerInTime(2500, 'popUpMessage')
+    setTimeout(() => {
+        popUp.innerHTML = '';
+    }, 2500); 
 }

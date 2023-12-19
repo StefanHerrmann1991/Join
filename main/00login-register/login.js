@@ -259,7 +259,7 @@ function registerUser() {
         addUsers();
         renderAuth('login');
     }
-    else { closeContainerInTime(2500, 'alreadyRegistered'); }
+    else openPopup('The E-Mail is already registered.', error)
 };
 
 
@@ -280,7 +280,7 @@ function isUserRegistered(email, registeredUsers) {
 function passwordValidation() {
     for (let i = 0; i < registeredUsers.length; i++) {
         if (registerUser.value == registeredUsers[i]['email']) {
-            closeContainerInTime(2500, 'alreadyExist');
+            openPopup('That username already exists please choose another one.', 'error');
             return;
         }
     }
@@ -340,8 +340,7 @@ function checkLogin() {
             return;
         }
     }
-    openPopup('The E-Mail address or password is incorrect.', 'error')
-    /* closeContainerInTime(2500, 'passwordIncorrect'); */
+    openPopup('The E-Mail address or password is incorrect.', 'error')  
 }
 
 
@@ -360,9 +359,9 @@ async function forgotPassword(event) {
             await sendForgotPasswordEmail(email, token);
             openSendMail();
         } catch (error) {
-            openPopup(2500, 'Error sending the email. Please try again later.');
+            openPopup('Error sending the email. Please try again later.', 'error');
         }
-    } else closeContainerInTime(2500, 'notRegistered');
+    } else openPopup('No user found with this email.', 'error');
 };
 
 
@@ -384,7 +383,7 @@ async function sendForgotPasswordEmail(email, token) {
         body: formData
     });
     if (!response.ok) {
-        throw new Error('Failed to send email');
+        openPopup('The message could not be sent.', 'error');
     }
 }
 
@@ -404,11 +403,3 @@ function generateRandomToken() {
 }
 
 
-function openPopup(messageText) {
-    popUp = getId('popUpMessage');
-    popUp.innerHTML = `<div class="task-submit-successful">${messageText}.</div>`;
-    closeContainerInTime(2500, 'popUpMessage')
-    setTimeout(() => {
-        popUp.innerHTML = '';
-    }, 2500); 
-}

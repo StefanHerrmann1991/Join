@@ -81,18 +81,8 @@ function renderAddTask() {
     return `
     <div class="add-task-popup-dialog">
     <div class="task-main">
-        <div class="popup-message d-none" id="successfulSubmit">
-            <div class="task-submit-successful">Task added to board <img src="../../assets/img/board.png"></div>
-        </div>
-        <div class="popup-message d-none" id="popupMessageUsers">
-            <div class="task-submit-successful">The user has already been invited.</div>
-        </div>
-        <div class="popup-message d-none" id="popupMessageSubtask">
-            <div class="task-submit-successful">The subtask needs to have at least three letters.</div>
-        </div>
-        <div class="popup-message d-none" id="popupMessageCategory">
-            <div class="task-submit-successful">The category needs to have at least three letters.</div>
-        </div>
+    <div class="popup-message d-none" id="popUpMessage">
+    </div>
         <button class="close-upper-right" onclick="closeAddTaskPopup()">
             <img src="../../assets/img/cancel.png">
         </button>

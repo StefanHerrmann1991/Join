@@ -160,15 +160,11 @@ function addCategory() {
             categories.push(newCategory);
             saveToBackend('categories', categories);
             renderCategories();
-        } else {
-            closeContainerInTime(2000, 'popupMessageCategoryDouble');
-        }
+        } else openPopup('The category already exists', 'error')
         cancelNewCategory();
         closeNewCategory();
         getId('newCategoryBtn').classList.remove('d-none');
-    } else {
-        closeContainerInTime(2000, 'popupMessageCategory');
-    }
+    } else openPopup('The category needs to have at least three letters', 'error')
 }
 
 
@@ -307,7 +303,7 @@ function newSubtask() {
         subtasks.push({ title: subtaskInput, checked: false });
         renderSubtasks(); // Call updateSubtaskList instead
     } else {
-        closeContainerInTime(2000, 'popupMessageSubtask');
+        openPopup('The subtask needs to have at least three letters', 'error')
     }
 }
 
@@ -350,9 +346,7 @@ function editSubtask(index) {
         subtasks[index].title = newTitle;
         renderSubtasks();
     }
-    else {
-        closeContainerInTime(2000, 'popupMessageSubtask');
-    }
+    else openPopup('The subtask needs to have at least three letters.', 'error')
 }
 
 

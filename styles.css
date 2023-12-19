@@ -311,7 +311,11 @@ h3 {
   gap: 20px;
 }
 
-.task-submit-successful {
+.error {
+  background-color: darkred !important;
+}
+
+.notification-message {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -328,7 +332,7 @@ h3 {
   transform: translateX(-50%);
   animation: fly-in 0.8s ease-out forwards;
 }
-.task-submit-successful img {
+.notification-message img {
   height: 22px;
   width: 26px;
   margin-left: 30px;

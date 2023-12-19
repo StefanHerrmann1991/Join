@@ -23,24 +23,7 @@
 
 <body onload="initTasks()">
     <div w3-include-html="../../index.html"></div>
-    <div class="popup-message d-none" id="successfulSubmit">
-        <div class="task-submit-successful">Task added to board <img src="../../assets/img/board.png"></div>
-    </div>
-    <div class="popup-message d-none" id="popupMessageUsers">
-        <div class="task-submit-successful">The user has already been invited.</div>
-    </div>
-    <div class="popup-message d-none" id="popupMessageSubtask">
-        <div class="task-submit-successful">The subtask needs to have at least three letters.</div>
-    </div>
-    <div class="popup-message d-none" id="popupMessageCategory">
-        <div class="task-submit-successful">The category needs to have at least three letters.</div>
-    </div>
-    <div class="popup-message d-none" id="popupMessageFalseContact">
-        <div class="task-submit-successful">The user is not in your contact list. Please enter a valid user.</div>
-    </div>
-    <div class="popup-message d-none" id="popupMessageCategoryDouble">
-        <div class="task-submit-successful">The category already exists.</div>
-    </div>
+    <div class="popup-message d-none" id="popUpMessage"></div>
     <div class="main-container">
         <div class="title-form">
             <h1>Add Task</h1>
