@@ -680,13 +680,26 @@ h3 {
   left: 50%;
   transform: translateX(-50%);
 }
+.register .animation-lowerZ {
+  animation: lowerZIndex 1.2s ease forwards;
+}
+.register .low-z {
+  z-index: 0 !important;
+}
 .register .logo-container {
   width: 100%;
   height: 100%;
   z-index: 100;
   position: absolute;
   background-color: #F6F7F8;
-  animation: lowerZIndex 1.2s ease forwards;
+}
+.register .logo-container .logo-unmoved {
+  width: 100px;
+  height: 122px;
+  top: 10%;
+  left: 10%;
+  position: absolute;
+  transform: translate(-50%, -50%);
 }
 .register .logo-container .logo {
   position: absolute;
@@ -695,6 +708,8 @@ h3 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.register .logo-container .animation-logo {
   animation: moveLogo 1.2s ease forwards;
 }
 @keyframes lowerZIndex {
@@ -904,9 +919,9 @@ h3 {
   cursor: pointer !important;
   width: 37px !important;
   height: 37px !important;
-  animation: hightenOpacity 1.2s linear forwards;
   opacity: 0;
   z-index: 0;
+  animation: hightenOpacity 1.2s linear forwards;
 }
 @keyframes hightenOpacity {
   0% {

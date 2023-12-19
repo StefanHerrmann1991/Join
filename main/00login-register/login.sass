@@ -107,13 +107,28 @@
             left: 50%
             transform: translateX(-50%)
 
+    .animation-lowerZ
+        animation: lowerZIndex 1.2s ease forwards
+
+
+    .low-z
+        z-index: 0 !important
+
     .logo-container
         width: 100%
         height: 100%
         z-index: 100
         position: absolute
         background-color: #F6F7F8
-        animation: lowerZIndex 1.2s ease forwards
+
+        .logo-unmoved
+            width: 100px
+            height: 122px
+            top: 10%
+            left: 10%
+            position: absolute
+            transform: translate(-50%, -50%)
+
         .logo
             position: absolute
             width: 274px
@@ -121,8 +136,8 @@
             top: 50%
             left: 50%
             transform: translate(-50%, -50%)
+        .animation-logo
             animation: moveLogo 1.2s ease forwards
-
 
     @keyframes lowerZIndex
         0%
@@ -169,6 +184,7 @@
             width: 41px
             content: ''
             background-color: $popup-color
+
 .forgot-password-container
     border-radius: 30px
     position: relative
@@ -267,8 +283,6 @@
         padding: 0px !important
         margin: 0px !important
 
-
-    
 .to-register
     display: flex
     align-items: center
@@ -297,9 +311,10 @@
     cursor: pointer !important
     width: 37px !important
     height: 37px !important
-    animation: hightenOpacity 1.2s linear forwards
     opacity: 0
     z-index: 0
+    animation: hightenOpacity 1.2s linear forwards
+
     @keyframes hightenOpacity
         0%
             opacity: 0

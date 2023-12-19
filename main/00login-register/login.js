@@ -28,8 +28,8 @@ function renderAuth(status) {
 function renderSignUp() {
     return `
     <div class="register">
-    <div class="logo-container">
-        <img class="logo" src="../../assets/img/logo2.png">
+    <div class="logo-container low-z">
+        <img class="logo-unmoved" src="../../assets/img/logo2.png">
     </div>
     <div class="sign-up-container">
         <img onclick="initAuthentification('login')" class="arrow-back" src="../../assets/img/backArrow.png">
@@ -75,8 +75,8 @@ function toggleSignUpButton() {
 function renderLogin() {
     return `
 <div class="register">
-<div class="logo-container">
-<img class="logo" src="../../assets/img/logo2.png">
+<div id="animation-container" class="logo-container animation-lowerZ">
+<img id="animation-logo" class="logo animation-logo" src="../../assets/img/logo2.png">
 </div>
 <div class="to-register"><div class="desktop">Not a Join user?</div>
 <button class="btn-1" onclick="renderAuth('signUp')"><nobr>Sign up</nobr></button>
@@ -98,15 +98,16 @@ function renderLogin() {
             <a class="highlight-blue" onclick="renderAuth('forgetPassword')">
             <nobr>Forgot my password</nobr></a>
             </div>
-            <div class="menu-btn">
-                <button class="btn-1" type="submit">Log in</button>
-                <button class="btn-2" type="button" onclick="loginAsGuest()"><nobr>Guest Log in</nobr></button>
-            </div>            
-        </form>
+                     <div class="menu-btn">
+                         <button class="btn-1" type="submit">Log in</button>
+                         <button class="btn-2" type="button" onclick="loginAsGuest()"><nobr>Guest Log in</nobr></button>
+                     </div>            
+                 </form>
+            </div>
+        </div>
     </div>
 </div>
-</div>
-</div>`}
+`}
 
 
 /**
@@ -169,8 +170,8 @@ function renderForgotPassword() {
     </div>
     </div>
     <div class="register">
-    <div class="logo-container">
-    <img class="logo" src="../../assets/img/logo2.png">
+    <div class="logo-container low-z">
+    <img class="logo-unmoved" src="../../assets/img/logo2.png">
     </div>
     <div class="forgot-password-container">
         <img onclick="initAuthentification('login')" class="arrow-back" src="../../assets/img/backArrow.png">
@@ -198,8 +199,8 @@ function renderResetPassword() {
     return `
     <div class="register">
     <div>
-    <div class="logo-container">
-    <img class="logo" src="../../assets/img/login/logo.png">
+    <div class="logo-container low-z">
+    <img class="logo-unmoved" src="../../assets/img/login/logo.png">
     </div>
     <div class="forgot-password-container">
         <img onclick="initAuthentification('login')" class="arrow-back" src="../../assets/img/backArrow.png">
@@ -339,7 +340,8 @@ function checkLogin() {
             return;
         }
     }
-    closeContainerInTime(2500, 'passwordIncorrect');
+    openPopup('The E-Mail address or password is incorrect.', 'error')
+    /* closeContainerInTime(2500, 'passwordIncorrect'); */
 }
 
 
@@ -358,7 +360,7 @@ async function forgotPassword(event) {
             await sendForgotPasswordEmail(email, token);
             openSendMail();
         } catch (error) {
-            closeContainerInTime(2500, 'tryLater');
+            openPopup(2500, 'Error sending the email. Please try again later.');
         }
     } else closeContainerInTime(2500, 'notRegistered');
 };
@@ -381,11 +383,6 @@ async function sendForgotPasswordEmail(email, token) {
         method: 'POST',
         body: formData
     });
-    /*     const response = await fetch('https://stefan-herrmann.developerakademie.net/send_mail/send_mail.php', {
-            method: 'POST',
-            body: formData
-        }); */
-
     if (!response.ok) {
         throw new Error('Failed to send email');
     }
@@ -407,5 +404,11 @@ function generateRandomToken() {
 }
 
 
-
-
+function openPopup(messageText) {
+    popUp = getId('popUpMessage');
+    popUp.innerHTML = `<div class="task-submit-successful">${messageText}.</div>`;
+    closeContainerInTime(2500, 'popUpMessage')
+    setTimeout(() => {
+        popUp.innerHTML = '';
+    }, 2500); 
+}
