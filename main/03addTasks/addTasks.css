@@ -313,7 +313,7 @@ h3 {
 }
 
 .error {
-  background-color: red;
+  background-color: darkred !important;
 }
 
 .notification-message {
@@ -380,13 +380,15 @@ h3 {
 
 #legalNotice {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
   gap: 12px;
 }
-#legalNotice img {
-  margin-right: 8px;
+#legalNotice a {
+  color: #A8A8A8;
+}
+#legalNotice a:hover {
+  color: #29ABE2;
 }
 
 .close-upper-right {
@@ -662,10 +664,10 @@ input:-webkit-autofill:active {
   position: relative;
 }
 
-/* ********************************MAIN BUTTONS******************************************* */
+/* ********************************MAIN BUTTONS**************************************<***** */
 .btn-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin-top: 5%;
 }
@@ -1123,8 +1125,6 @@ input.subtask-checkbox[type=checkbox]:checked {
 }
 
 .task-main {
-  width: 95%;
-  height: 85%;
   overflow-y: hidden;
   position: relative;
   background: #FFFFFF;
@@ -1135,14 +1135,12 @@ input.subtask-checkbox[type=checkbox]:checked {
   bottom: 5%;
 }
 .task-main .title-form {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 96%;
+  padding: 35px;
   margin: auto;
   overflow-y: auto;
-  height: 100%;
+  min-width: 800px;
+  margin: auto;
+  overflow-y: auto;
 }
 .task-main h1 {
   margin-top: 5%;
@@ -1246,6 +1244,7 @@ input.subtask-checkbox[type=checkbox]:checked {
 }
 
 .new-category-btn {
+  font-size: 21px;
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -1350,8 +1349,11 @@ input.subtask-checkbox[type=checkbox]:checked {
   }
 }
 @media (max-width: 992px) {
+  .task-main .title-form {
+    min-width: 500px;
+  }
   .user-menu {
-    padding: 12px 16px;
+    padding: 6px 16px;
   }
   .priority-btns .priority-btn {
     font-size: 15px;
@@ -1379,6 +1381,9 @@ input.subtask-checkbox[type=checkbox]:checked {
   .btn-container {
     margin-top: 5%;
   }
+  .btn-container button {
+    font-size: 16px;
+  }
   .btn-container .clear-btn, .btn-container .create-task-btn {
     height: 40px;
   }
@@ -1395,6 +1400,7 @@ input.subtask-checkbox[type=checkbox]:checked {
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
   }
   .task-main .title-form {
+    min-width: auto;
     display: block !important;
     position: static;
     transform: unset;

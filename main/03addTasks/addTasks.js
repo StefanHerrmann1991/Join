@@ -365,7 +365,7 @@ function toggleUsersInput() {
     event.preventDefault();
     getId('userAssignBtn').classList.toggle('d-none');
     getId('userSearchInputCon').classList.toggle('d-none');
-    getId('usersBackground').classList.toggle('white-background');
+    getId('usersBackground').classList?.toggle('white-background');
 
 }
 
@@ -411,7 +411,7 @@ function toggleCategoryInput() {
     categoriesOpen = !categoriesOpen;
     event.preventDefault();
     getId('categoriesContainer').classList.toggle('d-none');
-    getId('categoryBackground').classList.toggle('white-background');
+    getId('categoryBackground').classList?.toggle('white-background');
     Array.from(document.getElementsByClassName('category-input')).forEach(input => {
         input.classList.toggle('d-none');
     });

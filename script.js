@@ -318,3 +318,13 @@ function openPopup(messageText, type) {
         popUp.innerHTML = '';
     }, 2500); 
 }
+
+
+function getInitialsRegistered(userName) {
+    const nameArray = userName.split(' ');
+    const firstNameInitial = nameArray.shift().substring(0, 1).toUpperCase();
+    let lastNameInitial = "";
+    if (nameArray.length > 0) lastNameInitial = nameArray.pop().substring(0, 1);
+    const initials = firstNameInitial + lastNameInitial;
+    return [firstNameInitial, initials]
+  }

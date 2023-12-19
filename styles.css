@@ -379,13 +379,15 @@ h3 {
 
 #legalNotice {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
   gap: 12px;
 }
-#legalNotice img {
-  margin-right: 8px;
+#legalNotice a {
+  color: #A8A8A8;
+}
+#legalNotice a:hover {
+  color: #29ABE2;
 }
 
 .close-upper-right {

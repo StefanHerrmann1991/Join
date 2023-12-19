@@ -97,11 +97,11 @@ function renderAddTask() {
                         <textarea minlength="3" resize="none" required id="description"
                             placeholder="Enter a description"></textarea>
                         <h3>Assigned to</h3>
-                        <div class="background" id="usersBackground">
+                        <div id="usersBackground">
                             <div name="usersSelect" id="usersSelect" class="users-select">
                                 <div id="userAssignBtn" class="absolute">
                                     <button class="toggle-user-input user-menu" onclick="toggleUsersInput()">
-                                        <div>Select contacts to assign</div>
+                                        <div>Assign contacts</div>
                                         <img class="small-btn" src="../../assets/img/open.png">
                                     </button>
                                 </div>
