@@ -26,8 +26,7 @@ async function initTasks() {
  * assigns an id, saves the tasks and gives user a feedback on successful submission.
  * @param {string} board - The id of the board to which the task will be added.
  */
-async function addToTasks(board) {
-    console.log(board)
+async function addToTasks(board) {   
     event.preventDefault();
     const task = await processTaskInputs(board);
     task.id = tasks.length + 1;
@@ -207,15 +206,12 @@ function saveCategory(index) {
 }
 
 
-
-
 /**
  * Starts an event listener for each priority radio button.
  * It adds the 'selected' class to the label of the checked radio button and removes it when another radio button is selected.
  * @param {string} [selectedValue] - The value of the radio button that is initially selected. 
  */
-function startPriorityEventListener(selectedValue) {
-    console.log(selectedValue)
+function startPriorityEventListener(selectedValue) {    
     const radioEls = document.querySelectorAll('.priority-radio');
     radioEls.forEach(radioEl => {
         const parentLabel = radioEl.parentElement;
@@ -230,9 +226,6 @@ function startPriorityEventListener(selectedValue) {
         });
     });
 }
-
-
-
 
 
 /**
@@ -360,34 +353,44 @@ function updateSubtask(index) {
 
 
 function toggleUsersInput() {
-    usersOpen = !usersOpen;
-    console.log(usersOpen);
+    usersOpen = !usersOpen;   
     event.preventDefault();
     getId('userAssignBtn').classList.toggle('d-none');
     getId('userSearchInputCon').classList.toggle('d-none');
     getId('usersBackground').classList?.toggle('white-background');
-
 }
 
-/* document.addEventListener('click', function(event) {
-    let isClickInsideUsers = getId('allUsersList').contains(event.target);
-    let isClickInsideUserInput = getId('userSearchInputCon').contains(event.target);
 
-    // Only toggle if the click is outside 'allUsersList' and not on 'userSearchInputCon'
-    if (!isClickInsideUsers && !isClickInsideUserInput && usersOpen) {
-        toggleUsersInput();
+document.addEventListener('click', function (event) {
+    let allUsersList = getId('allUsersList');
+    let userSearchInputCon = getId('userSearchInputCon');
+
+    if (allUsersList && userSearchInputCon) {
+        let isClickInsideUsers = allUsersList.contains(event.target);
+        let isClickInsideUserInput = userSearchInputCon.contains(event.target);
+
+        // Only toggle if the click is outside 'allUsersList' and not on 'userSearchInputCon'
+        if (!isClickInsideUsers && !isClickInsideUserInput && usersOpen) {
+            toggleUsersInput();
+        }
     }
 }, true);
 
-document.addEventListener('click', function(event) {
-    let isClickInsideCategories = getId('categoriesContainer').contains(event.target);
-    let isClickInsideOpenCategoryBtn = getId('openCategoryBtn').contains(event.target);
+document.addEventListener('click', function (event) {
+    let categoriesContainer = getId('categoriesContainer');
+    let openCategoryBtn = getId('openCategoryBtn');
 
-    // Only toggle if the click is outside 'categoriesContainer' and not on 'openCategoryBtn'
-    if (!isClickInsideCategories && !isClickInsideOpenCategoryBtn && categoriesOpen) {
-        toggleCategoryInput();
+    if (categoriesContainer && openCategoryBtn) {
+        let isClickInsideCategories = categoriesContainer.contains(event.target);
+        let isClickInsideOpenCategoryBtn = openCategoryBtn.contains(event.target);
+
+        // Only toggle if the click is outside 'categoriesContainer' and not on 'openCategoryBtn'
+        if (!isClickInsideCategories && !isClickInsideOpenCategoryBtn && categoriesOpen) {
+            toggleCategoryInput();
+        }
     }
-}, true); */
+}, true);
+
 
 function openNewCategory() {
     toggleNewCategory();
@@ -445,7 +448,7 @@ function renderUserList(filteredUsers) {
     userListContainer.innerHTML = newContainerHTML;
     checkboxListener(userListContainer)
     // Add event listener to user-in-list elements
-  
+
 }
 
 function checkboxListener(container) {

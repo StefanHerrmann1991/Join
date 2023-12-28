@@ -453,6 +453,14 @@ progress
 
 @media (max-width: 768px)
 
+    .add-task-board-btn
+        img
+            height: 25px
+            width: 25px
+
+    .boards
+        padding-right: 0px
+
     .edit-task-form
         .edit-task-field
             .user-assignment-container
@@ -579,6 +587,7 @@ progress
         padding-right: 10px
         padding-left: 10px
         height: 100%
+        width: calc( 100% - 20px )
         .boards-title-menu
             position: relative
             display: flex
@@ -593,6 +602,7 @@ progress
             margin: auto
             align-items: flex-start
             padding-bottom: 5%
+            overflow-x: hidden
             .board-header
                 width: 100%
             .board

@@ -134,8 +134,7 @@ async function saveBackendDataOf(dataObject) {
 async function saveToBackend(key, value) {
     if (event) event.preventDefault();
     keyAsText = JSON.stringify(value);
-    await setItem(key, keyAsText);
-    console.log(key, value, keyAsText);
+    await setItem(key, keyAsText);   
 }
 
 

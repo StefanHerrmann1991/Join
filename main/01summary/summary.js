@@ -39,11 +39,11 @@ async function initSummary() {
     date.innerHTML = `
     <div class="next-tasks-counter">        
         <div class="urgency-icon ${priority.toLowerCase()}">
-        <img src="../../assets/img/prio${priority}.png"></div>
+          <img src="../../assets/img/prio${priority}.png"></div>
         <div>
-        <div class="deadline-number">${count}</div>
+        <div class="big-number deadline-number">${count}</div>
         <div>${priority}</div>
-        </div>
+    </div>
         </div>
         <div class="middle-line"></div>
         <div>${outputDateStr}</div>`;
@@ -80,7 +80,6 @@ async function renderSummary() {
     boardId = board['boardId'];
     boardTitle = board['boardTitle'];
     boardName = board['boardName'];
-    console.log(boards)
     if (i < 2) {
       getId('upperSummary').innerHTML += `
       <a href="../02board/board.html" class="board-summary">
@@ -118,7 +117,7 @@ function getNumberOfTasks() {
   let text = `
   <a href="../02board/board.html" class="board-summary">
     <div class="big-number">${allTaskNumber}</div>
-    <div class="board-title-summary"><div>Tasks</div> in Board</div>
+    <div class="board-title-summary">Tasks in Board </div>
   </a>
   `;
   summary.insertAdjacentHTML('afterbegin', text);
@@ -158,8 +157,8 @@ function filterTasks(boardId) {
  * If no user is logged in, it defaults to 'Guest'.
  */
 function showUserName() {
-if (loggedInUser == undefined) loggedInUser = { name: 'Guest' };
-getId('userGreating').innerHTML = `${loggedInUser.name}`;  
+  if (loggedInUser == undefined) loggedInUser = { name: 'Guest' };
+  getId('userGreating').innerHTML = `${loggedInUser.name}`;
 }
 
 

@@ -9,31 +9,38 @@
     background: #FFFFFF
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1)
     border-radius: 30px
+
 .big-number
     font-weight: 600
-    font-size: 56px
+    font-size: 61px
 
 .greeting
     font-size: 47px
     color: #2A3647
 
+.upper-summary, .lower-summary, .deadline
+    a
+        padding: $pdg-bt
+
 .upper-summary
     width: 100%
+
 .board-summary
     @include summary
     flex-direction: column
     width: 30%
-    height: 170px
+    transition: background-color 0.3s ease, filter 0.3s ease
     &:hover
         @include hover
-        transform: scale(1.1)
-
 a
     color: black
     cursor: pointer
 
 .summary-task
     width: 100%
+    display: flex
+    gap: 18px
+    flex-direction: column
 
 .summary-main
     width: 90%
@@ -51,8 +58,6 @@ a
     display: flex
     flex-direction: column
     align-items: center
-    font-size: 47px
-    font-weight: 600
 
 .next-tasks-counter
     @include flex-center
@@ -85,10 +90,9 @@ a
     width: 50%
     display: flex
     gap: 25px
-    height: 170px
+    transition: background-color 0.3s ease, filter 0.3s ease
     &:hover
         @include hover
-        transform: scale(1.1)
         .icon
             background-color: white
             img
@@ -118,15 +122,14 @@ a
     align-items: center
     gap: 10%
 .deadline
-    margin-top: 5%
-    margin-bottom: 5%
     width: 100%
-    height: 150px
+    padding: $pdg-bt
     background: #FFFFFF
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1)
     border-radius: 30px
     display: flex
     align-items: center
+    transition: background-color 0.3s ease, filter 0.3s ease
     .urgency-icon
         height: 60px
         width: 60px
@@ -138,7 +141,6 @@ a
             filter: brightness(0) invert(1)
     &:hover
         @include hover
-        transform: scale(1.1)
 
 .urgent
     background-color: #FF3D00
@@ -150,16 +152,6 @@ a
 .name
     font-size: 64px
     color: #29abe2
-
-@media (max-width: 1300px)
-.board-summary
-    height: 130px
-
-.lower-board-summary
-    height: 130px
-
-.deadline
-    height: 110px
 
 @media (max-width: 992px)
 
@@ -184,9 +176,6 @@ a
         .editBtnWhite
             width: 19.5px
             height: 26px
-
-    .lower-board-summary, .board-summary, .deadline
-        height: 100px
 
 @media (max-width: 768px)
 
@@ -235,9 +224,6 @@ a
                 opacity: 0
                 z-index: 0
 @media (max-width: 480px)
-    .board-summary, .deadline-summary, .lower-board-summary
-        .big-number
-            font-size: 32px
 
-    .lower-board-summary, .board-summary, .deadline
-        height: 90px
+    .big-number
+        font-size: 32px

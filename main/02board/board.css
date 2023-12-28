@@ -394,6 +394,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 0px;
   width: 34px;
   height: 34px;
   z-index: 1000;
@@ -554,6 +555,37 @@ h3 {
 @media (max-width: 540px) {
   .kanban-description {
     display: none;
+  }
+  div, a {
+    font-size: 12px;
+  }
+}
+@media (max-height: 468px) and (orientation: landscape) {
+  h1 {
+    font-size: 36px;
+  }
+  .main-menu .nav-item {
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+  #logo {
+    width: 50px;
+    height: 61px;
+  }
+  div {
+    font-size: 14px !important;
+  }
+  #header {
+    height: 65px;
+  }
+  .profile-icon img {
+    width: 24px;
+    height: 24px;
+  }
+  .main-container {
+    position: absolute;
+    top: 85px;
+    height: calc(100% - 85px);
   }
 }
 .delete-popup-container {
@@ -1123,6 +1155,13 @@ progress {
   }
 }
 @media (max-width: 768px) {
+  .add-task-board-btn img {
+    height: 25px;
+    width: 25px;
+  }
+  .boards {
+    padding-right: 0px;
+  }
   .edit-task-form .edit-task-field .user-assignment-container {
     padding-top: 5%;
     width: min(300px, 70%);
@@ -1258,6 +1297,7 @@ progress {
     padding-right: 10px;
     padding-left: 10px;
     height: 100%;
+    width: calc(100% - 20px);
   }
   .board-main .boards-title-menu {
     position: relative;
@@ -1275,6 +1315,7 @@ progress {
     margin: auto;
     align-items: flex-start;
     padding-bottom: 5%;
+    overflow-x: hidden;
   }
   .board-main .boards .board-header {
     width: 100%;

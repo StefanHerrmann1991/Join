@@ -49,6 +49,12 @@ $dark-select: #091931
     justify-content: center
     align-items: center
 
+@mixin flex($direction: row, $align: center, $justify: center)
+    display: flex
+    flex-direction: $direction
+    align-items: $align
+    justify-content: $justify
+
 .help-and-logout
     display: flex
     align-items: center
@@ -108,10 +114,6 @@ body
         & img
             width: 26px
             height: 26px
-
-.error-message
-
-.success-message
 
 input, button
     box-sizing: border-box
@@ -356,6 +358,7 @@ h3
 
 .close-upper-right
     @include flex-center
+    font-size: 0px
     width: 34px
     height: 34px
     z-index: 1000
@@ -512,3 +515,28 @@ h3
 @media( max-width: 540px)
     .kanban-description
         display: none
+
+    div, a
+        font-size: 12px
+
+@media (max-height: 468px) and (orientation: landscape)
+    h1
+        font-size: 36px
+    .main-menu .nav-item
+        margin-bottom: 5px
+        margin-top: 5px
+    #logo
+        width: 50px
+        height: 61px
+    div
+        font-size: 14px !important
+    #header
+        height: 65px
+    .profile-icon
+        img
+            width: 24px
+            height: 24px
+    .main-container
+        position: absolute
+        top: 85px
+        height: calc(100% - 85px)

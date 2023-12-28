@@ -394,6 +394,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 0px;
   width: 34px;
   height: 34px;
   z-index: 1000;
@@ -554,6 +555,37 @@ h3 {
 @media (max-width: 540px) {
   .kanban-description {
     display: none;
+  }
+  div, a {
+    font-size: 12px;
+  }
+}
+@media (max-height: 468px) and (orientation: landscape) {
+  h1 {
+    font-size: 36px;
+  }
+  .main-menu .nav-item {
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+  #logo {
+    width: 50px;
+    height: 61px;
+  }
+  div {
+    font-size: 14px !important;
+  }
+  #header {
+    height: 65px;
+  }
+  .profile-icon img {
+    width: 24px;
+    height: 24px;
+  }
+  .main-container {
+    position: absolute;
+    top: 85px;
+    height: calc(100% - 85px);
   }
 }
 .main-contact-container {
@@ -722,6 +754,10 @@ h3 {
   height: 100%;
   border-radius: 30px 0px 0px 30px;
 }
+.add-contact-dialog .add-contact .add-contact-menu .add-contact-description img, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description img {
+  height: 120px;
+  width: 120px;
+}
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-description h2, .add-contact-dialog .add-contact .add-contact-menu .add-contact-description p, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description h2, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description p {
   color: white;
 }
@@ -754,10 +790,6 @@ h3 {
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu button img, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu button img {
   height: 24px;
   width: 24px;
-}
-.add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu img, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu img {
-  height: 120px;
-  width: 120px;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form {
   width: 65%;

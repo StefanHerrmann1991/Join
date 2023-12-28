@@ -312,8 +312,7 @@ function openCurrentCategory(category) {
 
 
 function renderTaskSubtasks(subtaskArray) {
-    subtasks = subtaskArray
-    console.log(subtasks, subtaskArray)
+    subtasks = subtaskArray;   
     let subtaskHTML = '';
     if (subtaskArray.length > 0) {
         for (let index = 0; index < subtaskArray.length; index++) {

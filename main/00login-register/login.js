@@ -304,8 +304,7 @@ async function addUsers() { //check async: no diff
  */
 async function loadRegisterdUsers() {
     try {
-        registeredUsers = JSON.parse(await getItem('registeredUsers'));
-        console.log(registeredUsers)
+        registeredUsers = JSON.parse(await getItem('registeredUsers'));      
     } catch (e) {
         registeredUsers = [];
     }
