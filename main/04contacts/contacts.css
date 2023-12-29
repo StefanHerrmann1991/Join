@@ -613,7 +613,7 @@ h3 {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  padding: 10px 10px;
+  padding: 10px;
   font-weight: 700;
   font-size: 16px;
   z-index: 2;
@@ -828,8 +828,9 @@ h3 {
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns {
   margin-top: 8%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   height: 55px;
+  gap: 20px;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button {
   display: flex;
@@ -866,7 +867,7 @@ h3 {
   color: white;
   border: none;
   color: #FFFFFF;
-  width: 212px;
+  width: 112px;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:last-child:hover:hover, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button:last-child:hover:hover, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:last-child:hover:hover, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button:last-child:hover:hover {
   background-color: #29ABE2;

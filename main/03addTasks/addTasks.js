@@ -26,7 +26,7 @@ async function initTasks() {
  * assigns an id, saves the tasks and gives user a feedback on successful submission.
  * @param {string} board - The id of the board to which the task will be added.
  */
-async function addToTasks(board) {   
+async function addToTasks(board) {
     event.preventDefault();
     const task = await processTaskInputs(board);
     task.id = tasks.length + 1;
@@ -211,7 +211,7 @@ function saveCategory(index) {
  * It adds the 'selected' class to the label of the checked radio button and removes it when another radio button is selected.
  * @param {string} [selectedValue] - The value of the radio button that is initially selected. 
  */
-function startPriorityEventListener(selectedValue) {    
+function startPriorityEventListener(selectedValue) {
     const radioEls = document.querySelectorAll('.priority-radio');
     radioEls.forEach(radioEl => {
         const parentLabel = radioEl.parentElement;
@@ -242,6 +242,7 @@ function clearInputTasks() {
     getId('categoryInput').value = '';
     closeNewCategory();
     resetCategory();
+    updateStylesForCheckedItems();
     subtasks = [];
     assignedUsers = [];
 }
@@ -353,7 +354,7 @@ function updateSubtask(index) {
 
 
 function toggleUsersInput() {
-    usersOpen = !usersOpen;   
+    usersOpen = !usersOpen;
     event.preventDefault();
     getId('userAssignBtn').classList.toggle('d-none');
     getId('userSearchInputCon').classList.toggle('d-none');

@@ -24,7 +24,7 @@
     justify-content: center
     align-items: center
     cursor: pointer
-    padding: 10px 10px
+    padding: 10px
     font-weight: 700
     font-size: 16px
     z-index: 2
@@ -202,8 +202,9 @@
                 .create-contact-btns, .edit-contact-btns
                     margin-top: 8%
                     display: flex
-                    justify-content: space-between
+                    justify-content: flex-end
                     height: 55px
+                    gap: 20px
                     button
                         @include flex-center
                         padding: 18px 10px
@@ -229,7 +230,7 @@
                             color: white
                             border: none
                             color: #FFFFFF
-                            width: 212px
+                            width: 112px
                             &:hover
                                 @include hover-style-2
 
