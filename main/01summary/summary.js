@@ -39,9 +39,10 @@ async function initSummary() {
     date.innerHTML = `
     <div class="next-tasks-counter">        
         <div class="urgency-icon ${priority.toLowerCase()}">
-          <img src="../../assets/img/prio${priority}.png"></div>
-        <div>
-        <div class="big-number deadline-number">${count}</div>
+          <img src="../../assets/img/prio${priority}.png">
+          </div>
+          <div>
+          <div class="big-number deadline-number">${count}</div>
         <div>${priority}</div>
     </div>
         </div>

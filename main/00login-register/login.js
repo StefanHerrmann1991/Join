@@ -8,6 +8,7 @@ async function initAuthentification() {
 }
 
 
+
 /**
  * Renders the authentication UI based on the given status.
  * @param {string} status - The status of authentication ('login', 'forgetPassword', 'resetPassword', 'signUp').
@@ -56,9 +57,8 @@ function renderSignUp() {
 
 
 function toggleSignUpButton() {
-    var checkBox = document.getElementById("enableRegistration");
-    var signUpButton = document.getElementById("signupButton");
-
+    let checkBox = document.getElementById("enableRegistration");
+    let signUpButton = document.getElementById("signupButton");
     if (checkBox.checked == true) {
         signUpButton.disabled = false;
     } else {
