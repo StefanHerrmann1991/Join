@@ -19,23 +19,26 @@
 </head>
 
 <body onload="initSummary()">
-    <div w3-include-html="../../index.html"></div>
-    <div class="main-container">
-        <div class="summary-main">
-            <div class="summary-title">
-                <h1>Summary</h1>
-                <div class="border-big"></div>
-                <div class="title-additive">Everything in a nutstell!</div>
-            </div>
-            <div class="summary-container">
-                <div class="summary-task">
-                    <div id="upperSummary" class="upper-summary"></div>
-                    <a href="../02board/board.html" class="deadline" id="nextDeadline"></a>
-                    <div id="lowerSummary" class="lower-summary"></div>
+    <div class="page-container">
+        <div class="nav-con" w3-include-html="../../index.html"></div>
+        <div class="page-con">
+            <div w3-include-html="../../header.html"></div>
+            <div class="summary-main">
+                <div class="summary-title">
+                    <h1>Summary</h1>
+                    <div class="border-big"></div>
+                    <div class="title-additive">Everything in a nutstell!</div>
                 </div>
-                <div class="greeting-sentence">
-                    <div class="greeting">Good Morning,</div>
-                    <div class="name" id="userGreating"></div>
+                <div class="summary-container">
+                    <div class="summary-task">
+                        <div id="upperSummary" class="upper-summary"></div>
+                        <a href="../02board/board.html" class="deadline" id="nextDeadline"></a>
+                        <div id="lowerSummary" class="lower-summary"></div>
+                    </div>
+                    <div class="greeting-sentence">
+                        <div class="greeting">Good Morning,</div>
+                        <div class="name" id="userGreating"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -43,4 +46,3 @@
 </body>
 
 </html>
-

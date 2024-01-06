@@ -24,42 +24,44 @@
 
 
 <body onload="initBoards()">
-    <div w3-include-html="../../index.html"></div>
-    <div class="main-container overflow-hidden">
-        <div class="board-main">
-            <div class="boards-title-menu">
-                <h1>Board</h1>
-                <div class="menu">
-                    <div class="board-input">
-                        <div class="search-container">
-                            <input class="costom-datalist" id="taskSearchInput" type="text" list="tasksSearch"
-                                name="tasksList" placeholder="Find task" onKeyUp="showResultsTasks(this.value)">
-                            <div class="button-container">
-                                <img class="search-btn" src="../../assets/img/search.png">
+    <div class="page-container">
+        <div class="nav-con" w3-include-html="../../index.html"></div>
+        <div class="page-con">
+            <div w3-include-html="../../header.html"></div>
+            <div class="board-main">
+                <div class="boards-title-menu">
+                    <h1>Board</h1>
+                    <div class="menu">
+                        <div class="board-input">
+                            <div class="search-container">
+                                <input class="costom-datalist" id="taskSearchInput" type="text" list="tasksSearch"
+                                    name="tasksList" placeholder="Find task" onKeyUp="showResultsTasks(this.value)">
+                                <div class="button-container">
+                                    <img class="search-btn" src="../../assets/img/search.png">
+                                </div>
                             </div>
                         </div>
+                        <button class="add-task" onclick="openAddTaskPopup();">
+                            <nobr class="desktop">Add task</nobr><img src="../../assets/img/addTaskWhite.png">
+                        </button>
                     </div>
-                    <button class="add-task" onclick="openAddTaskPopup();">
-                        <nobr class="desktop">Add task</nobr><img src="../../assets/img/addTaskWhite.png">
-                    </button>
                 </div>
+                <div id="boards" class="boards"></div>
             </div>
-            <div id="boards" class="boards"></div>
         </div>
-    </div>
-    <div id="editTaskDialog" class="d-none"></div>
-    <div class="delete-popup-container d-none" id="deletePopup">
-        <div class="delete-popup notification-message">
-            <div>Are you sure you want to delete that task?</div>
-            <button type="button" class="cancel-delete" onclick="closeContainer('deletePopup')"><img
-                    src="../../assets/img/cancelDark.png"></button>
-            <button type="button" class="check-delete" onclick="deleteTask()"><img src="../../assets/img/check.png"></button>
+        <div id="editTaskDialog" class="d-none"></div>
+        <div class="delete-popup-container d-none" id="deletePopup">
+            <div class="delete-popup notification-message">
+                <div>Are you sure you want to delete that task?</div>
+                <button type="button" class="cancel-delete" onclick="closeContainer('deletePopup')"><img
+                        src="../../assets/img/cancelDark.png"></button>
+                <button type="button" class="check-delete" onclick="deleteTask()"><img
+                        src="../../assets/img/check.png"></button>
+            </div>
         </div>
-    </div>
-    <div id="addTaskPopUpDialog" class="add-task-popup d-none">
+        <div id="addTaskPopUpDialog" class="add-task-popup d-none">
+        </div>
     </div>
 </body>
+
 </html>
-
-
-

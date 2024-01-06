@@ -79,6 +79,8 @@ let chosenBoard;
 let registeredUsers = [];
 
 
+
+
 /**
  * Splits a string identifier into an array of substrings.
  *
@@ -134,7 +136,7 @@ async function saveBackendDataOf(dataObject) {
 async function saveToBackend(key, value) {
     if (event) event.preventDefault();
     keyAsText = JSON.stringify(value);
-    await setItem(key, keyAsText);   
+    await setItem(key, keyAsText);
 }
 
 
@@ -146,8 +148,10 @@ async function loadFromBackend(key, value) {
     if (event) event.preventDefault();
     let keyAsText = await getItem(key);
     if (keyAsText) value = JSON.parse(keyAsText);
+    else value = loadDefault(key)
     return value;
 }
+
 
 
 /**
@@ -286,14 +290,6 @@ function isMobileView() {
 }
 
 
-/**
- * Loads the tasks array from the backend.
- */
-function loadTasks() {
-    tasks = loadFromBackend('tasks', tasks);
-}
-
-
 function highlightChosenMenu() {
     let navTitles = document.querySelectorAll('.nav-title');
     let currentTitle = document.querySelector('h1') ? document.querySelector('h1').textContent.trim().toLowerCase() : "";
@@ -310,12 +306,12 @@ function closeContainerEvent(event, containerId) {
 
 function openPopup(messageText, type) {
     popUp = getId('popUpMessage');
-    if(!type) type = ''
+    if (!type) type = ''
     popUp.innerHTML = `<div class="notification-message ${type}">${messageText}.</div>`;
     closeContainerInTime(2500, 'popUpMessage')
     setTimeout(() => {
         popUp.innerHTML = '';
-    }, 2500); 
+    }, 2500);
 }
 
 
@@ -326,4 +322,4 @@ function getInitialsRegistered(userName) {
     if (nameArray.length > 0) lastNameInitial = nameArray.pop().substring(0, 1);
     const initials = firstNameInitial + lastNameInitial;
     return [firstNameInitial, initials]
-  }
+}

@@ -44,7 +44,6 @@ a
 
 .summary-main
     width: 90%
-    height: 100%
     margin: auto
 
 .urgency-container
@@ -122,7 +121,7 @@ a
     align-items: center
     gap: 10%
 .deadline
-    width: 100%
+    width: calc( 100% - 10% )
     padding: $pdg-bt
     background: #FFFFFF
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1)
@@ -223,6 +222,7 @@ a
             100%
                 opacity: 0
                 z-index: 0
+                display: none
 @media (max-width: 480px)
 
     .big-number

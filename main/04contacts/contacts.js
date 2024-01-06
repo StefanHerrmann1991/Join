@@ -34,6 +34,7 @@ let contactIsOpen = false;
  */
 let addContactBtn = getId('addContactBtn');
 
+defaultContactBook =  { "contacts": [{ "name": "Fabian Eichhorn", "email": "fabian@gmx.de", "phone": "012222", "initial": "FE", "color": "rgb(234, 11, 170, 1.0)", "firstNameInitial": "F", "assigned": false, "id": 1 }, { "name": "Ines Fritsch", "email": "fritsch@gmx.de", "phone": "012222", "initial": "IF", "color": "rgb(188, 57, 47, 1.0)", "firstNameInitial": "I", "assigned": false, "id": 0 }, { "name": "Marco Beer", "email": "marco@gmx.de", "phone": "012222", "initial": "MB", "color": "rgb(127, 32, 139, 1.0)", "firstNameInitial": "M", "assigned": false, "id": 2 }, { "name": "Peter Münzer", "email": "p.muenzer@gmx.de", "phone": "11222222", "initial": "PM", "color": "rgb(81, 78, 16, 1.0)", "firstNameInitial": "P", "assigned": false, "id": 4 }, { "name": "Stefan Herrmann", "email": "sth1812@posteo.de", "phone": "012222", "initial": "SH", "color": "rgb(35, 123, 149, 1.0)", "firstNameInitial": "S", "assigned": false, "id": 3 }], "initialList": ["F", "I", "M", "P", "S"] }
 
 /**
  * Creates a new contact object.
@@ -243,8 +244,8 @@ function createContact(event) {
  * Initializes the contact list by setting up the backend and rendering the contacts.
  */
 async function initContacts() {
-  await initContactList();
   await includeHTML();
+  await initContactList();
   await renderContacts();
   highlightChosenMenu();
 }
@@ -258,11 +259,12 @@ async function initContactList() {
   let contactBookAsText;
   try {
     const contactBookText = await getItem('ContactBookAsText');
-    contactBookAsText = JSON.parse(contactBookText);
+     contactBookAsText = JSON.parse(contactBookText);
   } catch (e) {
     // If there's an error, default to an object with an empty contacts array
-    contactBookAsText = { contacts: [], initialList: [] };
+    contactBookAsText = defaultContactBook
   }
+  console.log(contactBookAsText)
   contactBook = new ContactBook(contactBookAsText.contacts, contactBookAsText.initialList);
   contactBook.sortInitials();
   contactBook.sortContacts();

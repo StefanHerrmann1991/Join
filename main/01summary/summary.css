@@ -9,6 +9,10 @@
   padding-inline: 0px;
 }
 
+.shadow {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 .help-and-logout {
   display: flex;
   align-items: center;
@@ -43,11 +47,6 @@ a {
 
 body {
   background-color: #F6F7F8;
-}
-
-.navbar-header {
-  display: flex;
-  width: 100vw;
 }
 
 .main-menu {
@@ -91,6 +90,7 @@ input, button {
   position: relative;
 }
 
+/* Thin scrollbar for all browsers */
 /* Webkit-based browsers */
 ::-webkit-scrollbar {
   width: 8px;
@@ -115,7 +115,7 @@ input, button {
 
 /* Internet Explorer/Edge */
 *::-ms-scrollbar {
-  width: 8px;
+  width: 4px;
   height: 8px;
 }
 
@@ -130,15 +130,13 @@ input, button {
 }
 
 #header {
+  height: 90px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 90px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
   background: #FFFFFF;
-  font-weight: 400;
-  width: 80%;
-  font-size: 21px;
+  position: relative;
   z-index: 100;
 }
 #header .inner-header {
@@ -154,8 +152,9 @@ input, button {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 20%;
   height: 100vh;
+  height: 100svh;
+  width: auto;
   background: #2A3647;
   border-radius: 0px;
   z-index: 100;
@@ -175,13 +174,8 @@ button, a {
 }
 
 .main-container {
-  position: absolute;
-  top: clamp(120px, 15%, 100%);
-  left: 20%;
   display: flex;
   justify-content: flex-start;
-  width: 80%;
-  height: calc(100% - clamp(120px, 15%, 100%));
   overflow: scroll;
 }
 
@@ -205,6 +199,21 @@ button, a {
 h1 {
   font-weight: 700;
   font-size: 61px;
+}
+
+.page-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+}
+
+.nav-con {
+  width: 20%;
+}
+
+.page-con {
+  width: 80%;
 }
 
 h2 {
@@ -272,13 +281,9 @@ h3 {
   margin-left: 12px;
   border-radius: 50%;
   border: 3px solid #2A3647;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 49px;
+  height: 49px;
   position: relative;
-}
-.profile-icon img {
-  padding: 10px;
 }
 
 .logout-btn {
@@ -311,7 +316,6 @@ h3 {
 .mobile-header {
   display: flex;
   align-items: center;
-  flex-direction: row-reverse;
   gap: 20px;
 }
 
@@ -398,6 +402,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 0px;
   width: 34px;
   height: 34px;
   z-index: 1000;
@@ -428,6 +433,175 @@ h3 {
   font-size: 21px;
 }
 
+@media (max-width: 992px) {
+  .add-task-title {
+    font-size: 47px;
+  }
+  .main-container {
+    position: absolute;
+    top: 120px;
+    left: 20%;
+    display: flex;
+    justify-content: flex-start;
+    width: 80%;
+    height: calc(100% - 120px);
+  }
+  h1 {
+    font-size: 47px;
+  }
+  h2 {
+    font-size: 41px;
+  }
+  div, input, textarea, h3, a {
+    font-size: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .page-container {
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+  #navbar, #header {
+    height: 76px;
+  }
+  .page-con {
+    width: 100%;
+    height: calc(100% - 76px);
+  }
+  .nav-con {
+    width: 100%;
+    height: 76px;
+  }
+  #helpBtn {
+    display: none;
+  }
+  .main-container {
+    width: 100%;
+    top: 90px;
+    left: 0;
+    height: calc(100vh - 90px - 74px);
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+  }
+  #navbar {
+    z-index: 1000;
+  }
+  .add-task-popup {
+    background-color: transparent;
+    z-index: 200;
+    height: calc(100% - 148px);
+    top: 74px;
+  }
+  .mobile-flex {
+    display: flex !important;
+  }
+  .mobile {
+    display: block !important;
+  }
+  .desktop {
+    display: none !important;
+  }
+  .desktop-flex {
+    display: none !important;
+  }
+  h1 {
+    font-size: 47px;
+  }
+  .logout-btn button, .logout-btn a {
+    padding: 8px;
+    color: #CDCDCD;
+  }
+  .logout-btn {
+    top: 76px;
+  }
+  .navbar-header {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+  #logo {
+    display: none;
+  }
+  .main-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding-top: 0px !important;
+    height: 100%;
+  }
+  .main-menu .nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px !important;
+    width: 25%;
+    height: 100%;
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+  .main-menu .nav-item .inner-item {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .main-menu .nav-item .inner-item img {
+    margin-right: 0px;
+    width: 22px;
+    height: 22px;
+  }
+  .main-menu .nav-title {
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    color: #CDCDCD;
+    margin-top: 14px;
+  }
+  #legalNotice {
+    display: none !important;
+  }
+  .mobile-logo {
+    display: block;
+  }
+}
+@media (max-width: 540px) {
+  .kanban-description {
+    display: none;
+  }
+  div, a {
+    font-size: 12px;
+  }
+}
+@media (max-height: 468px) and (orientation: landscape) {
+  h1 {
+    font-size: 36px;
+  }
+  .main-menu .nav-item {
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+  #logo {
+    width: 50px;
+    height: 61px;
+  }
+  div {
+    font-size: 14px !important;
+  }
+  #header {
+    height: 65px;
+  }
+  .profile-icon img {
+    width: 24px;
+    height: 24px;
+  }
+  .main-container {
+    position: absolute;
+    top: 85px;
+    height: calc(100% - 85px);
+  }
+}
 .big-number {
   font-weight: 600;
   font-size: 61px;
@@ -439,7 +613,7 @@ h3 {
 }
 
 .upper-summary a, .lower-summary a, .deadline a {
-  padding: 2.5% 0px;
+  padding: 2.5%;
 }
 
 .upper-summary {
@@ -476,7 +650,6 @@ a {
 
 .summary-main {
   width: 90%;
-  height: 100%;
   margin: auto;
 }
 
@@ -586,8 +759,8 @@ a {
 }
 
 .deadline {
-  width: 100%;
-  padding: 2.5% 0px;
+  width: 90%;
+  padding: 2.5%;
   background: #FFFFFF;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
@@ -701,6 +874,7 @@ a {
     100% {
       opacity: 0;
       z-index: 0;
+      display: none;
     }
   }
 }
