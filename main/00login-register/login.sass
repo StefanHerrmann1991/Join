@@ -23,6 +23,7 @@
         border: none !important
         padding-left: 21px !important
         padding-right: 21px !important
+        width: 100%
         height: 100%
     button
         position: absolute
@@ -109,7 +110,6 @@
 
     .animation-lowerZ
         animation: lowerZIndex 1.2s ease forwards
-
 
     .low-z
         z-index: 0 !important
@@ -273,8 +273,7 @@
     gap: 5%
     .remember-me
         @include flex-center
-        #rememberMe
-            @include $small-img
+
     nobr
             padding-left: 5%
             margin-left: 5%
@@ -355,20 +354,10 @@
 
     .login-option
         flex-direction: column
-        justify-content: flex-start
-        align-items: flex-start
-
-        .remember-me, nobr
-            padding: 0px
-            margin: 0px
-            nobr
-            margin-left: 12px
-
-        .remember-me
-            display: flex
-            margin-bottom: 5%
-            nobr
-            margin-left: 5%
+        justify-content: center
+        gap: 20px
+       
+    
     .sign-up
         h2
             margin-top: 0px

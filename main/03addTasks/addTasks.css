@@ -10,10 +10,6 @@
   padding-inline: 0px;
 }
 
-.shadow {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
 .help-and-logout {
   display: flex;
   align-items: center;
@@ -91,8 +87,6 @@ input, button {
   position: relative;
 }
 
-/* Thin scrollbar for all browsers */
-/* Webkit-based browsers */
 ::-webkit-scrollbar {
   width: 8px;
   height: 12px;
@@ -108,13 +102,11 @@ input, button {
   border-radius: 8px;
 }
 
-/* Firefox */
 * {
   scrollbar-width: thin;
   scrollbar-color: #ccc #f5f5f5;
 }
 
-/* Internet Explorer/Edge */
 *::-ms-scrollbar {
   width: 4px;
   height: 8px;
@@ -131,14 +123,15 @@ input, button {
 }
 
 #header {
-  height: 90px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   background: #FFFFFF;
+  height: 90px;
   position: relative;
-  z-index: 100;
+  z-index: 1000;
 }
 #header .inner-header {
   width: 90%;
@@ -439,13 +432,8 @@ h3 {
     font-size: 47px;
   }
   .main-container {
-    position: absolute;
-    top: 120px;
-    left: 20%;
     display: flex;
     justify-content: flex-start;
-    width: 80%;
-    height: calc(100% - 120px);
   }
   h1 {
     font-size: 47px;
@@ -589,9 +577,6 @@ h3 {
   }
   div {
     font-size: 14px !important;
-  }
-  #header {
-    height: 65px;
   }
   .profile-icon img {
     width: 24px;

@@ -51,6 +51,7 @@ function editTaskDialogHTML(index, task) {
     editIsOpen = !editIsOpen;    
     return `
     <div class="edit-task-dialog center" id="editTaskContainer" onclick="closeContainerEvent(event, 'editTaskContainer')">
+    <div class="edit-task-main">
         <div class="edit-task-container">
             <button class="close-upper-right" onclick="closeTaskDialog()"><img
                     src="../../assets/img/cancel.png"></button>
@@ -153,6 +154,7 @@ function editTaskDialogHTML(index, task) {
                 </div>
             </div>
             </form>
+        </div>
         </div>
     </div>
     `

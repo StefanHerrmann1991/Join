@@ -22,9 +22,6 @@ $inversion-color: invert(47%) sepia(86%) saturate(463%) hue-rotate(153deg) brigh
 $dark-select: #091931
 $pdg-bt: 2.5%
 
-    
-
-
 @mixin hover-style-1
     &:hover
         border: 1px solid $hover
@@ -58,6 +55,10 @@ $pdg-bt: 2.5%
     flex-direction: $direction
     align-items: $align
     justify-content: $justify
+
+@mixin small-img
+    width: 24px
+    height: 24px
 
 .help-and-logout
     display: flex
@@ -123,9 +124,6 @@ input, button
     width: 100vw
     position: relative
 
-/* Thin scrollbar for all browsers */
-
-/* Webkit-based browsers */
 ::-webkit-scrollbar
     width: 8px
     height: 12px
@@ -138,12 +136,10 @@ input, button
     background-color: #f5f5f5
     border-radius: 8px
 
-/* Firefox */
 *
     scrollbar-width: thin
     scrollbar-color: #ccc #f5f5f5
 
-/* Internet Explorer/Edge */
 *::-ms-scrollbar
     width: 4px
     height: 8px
@@ -222,7 +218,7 @@ h1
     width: 100vw
     height: 100vh
     height: 100svh
-
+    overflow: hidden
 .nav-con
     width: 20%
 
@@ -397,13 +393,8 @@ h3
         font-size: 47px
 
     .main-container
-        position: absolute
-        top: 120px
-        left: 20%
         display: flex
         justify-content: flex-start
-        width: calc( 100% - 20%)
-        height: calc( 100% - 120px )
 
     h1
         font-size: 47px
@@ -543,13 +534,11 @@ h3
         height: 61px
     div
         font-size: 14px !important
-    #header
-        height: 65px
+
     .profile-icon
-        img
-            width: 24px
-            height: 24px
-    .main-container
-        position: absolute
-        top: 85px
-        height: calc(100% - 85px)
+        border: 2px solid #2A3647
+        width: 38px
+        height: 38px
+
+    #header
+        height: 56px

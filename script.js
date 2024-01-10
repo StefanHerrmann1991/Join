@@ -148,7 +148,6 @@ async function loadFromBackend(key, value) {
     if (event) event.preventDefault();
     let keyAsText = await getItem(key);
     if (keyAsText) value = JSON.parse(keyAsText);
-    else value = loadDefault(key)
     return value;
 }
 

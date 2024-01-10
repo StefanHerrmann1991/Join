@@ -86,8 +86,6 @@ input, button {
   position: relative;
 }
 
-/* Thin scrollbar for all browsers */
-/* Webkit-based browsers */
 ::-webkit-scrollbar {
   width: 8px;
   height: 12px;
@@ -103,13 +101,11 @@ input, button {
   border-radius: 8px;
 }
 
-/* Firefox */
 * {
   scrollbar-width: thin;
   scrollbar-color: #ccc #f5f5f5;
 }
 
-/* Internet Explorer/Edge */
 *::-ms-scrollbar {
   width: 4px;
   height: 8px;
@@ -435,13 +431,8 @@ h3 {
     font-size: 47px;
   }
   .main-container {
-    position: absolute;
-    top: 120px;
-    left: 20%;
     display: flex;
     justify-content: flex-start;
-    width: 80%;
-    height: calc(100% - 120px);
   }
   h1 {
     font-size: 47px;
@@ -586,24 +577,19 @@ h3 {
   div {
     font-size: 14px !important;
   }
-  #header {
-    height: 65px;
-  }
   .profile-icon img {
     width: 24px;
     height: 24px;
   }
-  .main-container {
-    position: absolute;
-    top: 85px;
-    height: calc(100% - 85px);
+  #header {
+    height: 56px;
   }
 }
 .main-contact-container {
   height: calc(100% - 90px);
   display: flex;
   justify-content: flex-start;
-  width: 80%;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -673,6 +659,7 @@ h3 {
   justify-content: flex-start;
   flex-direction: column;
   position: relative;
+  width: 60%;
 }
 
 .contact-task-container {
@@ -758,10 +745,6 @@ h3 {
   width: 40%;
   height: 100%;
   border-radius: 30px 0px 0px 30px;
-}
-.add-contact-dialog .add-contact .add-contact-menu .add-contact-description img, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description img {
-  height: 120px;
-  width: 120px;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-description h2, .add-contact-dialog .add-contact .add-contact-menu .add-contact-description p, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description h2, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description p {
   color: white;
@@ -872,11 +855,15 @@ h3 {
   color: white;
   border: none;
   color: #FFFFFF;
-  width: 112px;
 }
 .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:last-child:hover:hover, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button:last-child:hover:hover, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button:last-child:hover:hover, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button:last-child:hover:hover {
   background-color: #29ABE2;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.small-logo {
+  height: 120px;
+  width: 120px;
 }
 
 .close-upper-right {
@@ -1047,10 +1034,6 @@ h3 {
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button {
     font-size: 16px;
   }
-  .main-contact-container {
-    top: 76px;
-    height: calc(100% - 76px);
-  }
   .edit-initial {
     min-width: 60px;
     min-height: 60px;
@@ -1082,8 +1065,10 @@ h3 {
   .edit-contact-container {
     padding: 0px;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 152px);
     overflow-y: scroll;
+    position: absolute;
+    background-color: #FFFFFF;
   }
   .edit-contact-headline {
     padding-top: 5%;
@@ -1117,7 +1102,7 @@ h3 {
   .add-contact-dialog .add-contact .add-contact-menu, .edit-contact-dialog .add-contact .add-contact-menu {
     width: 100%;
     flex-direction: column;
-    height: calc(100% - 148px);
+    height: calc(100% - 152px);
   }
   .add-contact-dialog .add-contact .add-contact-menu .add-contact-description, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description {
     position: relative;
@@ -1206,9 +1191,7 @@ h3 {
     width: 100%;
   }
   .main-contact-container {
-    left: 0%;
-    top: 74px;
-    height: calc(100% - 148px);
+    height: calc(100% - 76px);
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -1273,5 +1256,10 @@ h3 {
 @media (min-width: 2900px) {
   .add-contact-dialog .add-contact .add-contact-menu {
     width: 40%;
+  }
+}
+@media (max-height: 468px) and (orientation: landscape) {
+  .main-contact-container {
+    height: calc(100% - 56px);
   }
 }/*# sourceMappingURL=contacts.css.map */

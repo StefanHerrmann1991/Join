@@ -3,6 +3,7 @@ let newSubtaskOpen = false;
 let usersOpen = false;
 let categoriesOpen = false;
 
+
 /**
  * Initialization of tasks including HTML inclusion, backend initialization, 
  * user list rendering, task loading, categories loading and rendering.
@@ -167,20 +168,16 @@ function addCategory() {
 }
 
 
-
-
-
+/**
+ * Generating a random color in hexadecimal (e.g., #ff0033)
+ */
 function setRandomColor() {
-    // Generating a random color in hexadecimal (e.g., #ff0033)
+
     const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
     return randomColor;
 }
 
 
-/**
- * Renders categories to the HTML element with id 'categoryList'.
- * Iterates through the 'categories' array and creates a button for each category.
- */
 function renderCategories() {
     let categoryOption = getId('categoryList');
     categoryOption.innerHTML = '';
@@ -422,8 +419,6 @@ function toggleCategoryInput() {
 }
 
 
-
-
 function renderUserList(filteredUsers) {
     let usersArray = filteredUsers || users;
     const userListContainer = getId('allUsersList');
@@ -452,6 +447,7 @@ function renderUserList(filteredUsers) {
 
 }
 
+
 function checkboxListener(container) {
     container.querySelectorAll('.user-in-list').forEach(userElement => {
         userElement.addEventListener('click', () => {
@@ -464,16 +460,15 @@ function checkboxListener(container) {
     });
 }
 
+
 function updateStylesForCheckedItems() {
     document.querySelectorAll('.user-in-list').forEach(userElement => {
         let checkbox = userElement.querySelector('.subtask-checkbox');
         if (checkbox && checkbox.checked) {
-            // Apply styles for checked items
             userElement.style.borderRadius = '10px';
             userElement.style.background = 'var(--version-2-main-color, #2A3647)';
             userElement.style.color = 'white';
         } else {
-            // Reset styles for unchecked items
             userElement.style.borderRadius = '';
             userElement.style.background = '';
             userElement.style.color = '';
