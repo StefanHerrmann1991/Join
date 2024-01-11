@@ -166,12 +166,6 @@ button, a {
   cursor: pointer;
 }
 
-.main-container {
-  display: flex;
-  justify-content: flex-start;
-  overflow: scroll;
-}
-
 .mgn-r {
   padding-right: 12px;
 }
@@ -431,10 +425,6 @@ h3 {
   .add-task-title {
     font-size: 47px;
   }
-  .main-container {
-    display: flex;
-    justify-content: flex-start;
-  }
   h1 {
     font-size: 47px;
   }
@@ -463,15 +453,6 @@ h3 {
   }
   #helpBtn {
     display: none;
-  }
-  .main-container {
-    width: 100%;
-    top: 90px;
-    left: 0;
-    height: calc(100vh - 90px - 74px);
-    padding: 0px;
-    margin: 0px;
-    overflow-x: hidden;
   }
   #navbar {
     z-index: 1000;
@@ -595,8 +576,8 @@ h3 {
     right: 0;
     bottom: 0;
     width: 66vw;
-    height: calc(100vh - 4px);
-    height: calc(100svh - 4px);
+    height: calc(100vh - 10px);
+    height: calc(100svh - 10px);
     margin: auto;
     border-radius: 30px;
     border: solid 2px #2A3647;
@@ -633,10 +614,16 @@ h3 {
   filter: invert(100%);
 }
 
+.spacer {
+  width: 100%;
+  min-height: 16px;
+}
+
 .board-main {
   width: 90%;
   margin: auto;
-  height: 90%;
+  height: calc(100% - 90px);
+  padding: 5% 0px;
 }
 .board-main .boards-title-menu {
   margin-bottom: 5%;
@@ -714,6 +701,17 @@ h3 {
   margin-left: 5px;
 }
 
+.empty-board {
+  padding: 19px 18px;
+  width: calc(100% - 38px);
+  background-color: #D1D1D1;
+  border: 1px dashed #A8A8A8;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .assign-btn-container {
   display: flex;
   flex-direction: column;
@@ -747,13 +745,11 @@ h3 {
 }
 
 .board-task-container {
-  margin-top: 15%;
   position: relative;
-  min-height: 550px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 400px;
+  height: 100%;
 }
 .board-task-container .board {
   padding-top: 23px;
@@ -769,7 +765,6 @@ h3 {
   background: #FFFFFF;
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
   border-radius: 30px;
-  margin-top: 35px;
   cursor: pointer;
 }
 .task:first-child {
@@ -821,6 +816,7 @@ h3 {
   width: 250px;
   display: flex;
   flex-wrap: wrap;
+  height: 100%;
 }
 .boards .board .board-task-container {
   width: 100%;
@@ -1296,16 +1292,6 @@ progress {
   .task {
     width: 90%;
   }
-  .empty-board {
-    padding: 19px 18px;
-    width: calc(100% - 38px);
-    background-color: #D1D1D1;
-    border: 1px dashed #A8A8A8;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
   .board-input .search-container {
     margin-top: 15%;
   }
@@ -1317,13 +1303,13 @@ progress {
   .board-main {
     padding-right: 10px;
     padding-left: 10px;
-    height: calc(100% - 76px);
+    height: calc(100% - 76px - 5%);
     width: calc(100% - 20px);
   }
   .board-main .boards-title-menu {
     position: relative;
     display: flex;
-    align-items: center;
+    justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
   }
@@ -1335,7 +1321,6 @@ progress {
     width: 100%;
     margin: auto;
     align-items: flex-start;
-    padding-bottom: 5%;
     overflow-x: hidden;
   }
   .board-main .boards .board-header {
@@ -1344,7 +1329,6 @@ progress {
   .board-main .boards .board {
     width: 100%;
     height: auto;
-    margin-bottom: 5%;
   }
   .add-task {
     position: absolute;
@@ -1363,13 +1347,7 @@ progress {
     overflow-y: scroll;
   }
   .boards {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-  }
-  .boards .board {
-    justify-content: center;
   }
   .move-to {
     border-top: 1px solid #D1D1D1;

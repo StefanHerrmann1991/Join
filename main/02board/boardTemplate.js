@@ -177,32 +177,32 @@ function boardTaskHTML(element, i) {
     let description = element.description.length > 10 ? `${trimmedFirstWord}...` : element.description;
     return `
       <div draggable="true" ondragstart="startDragging(${i})" id="task-${i}" class="task" onclick="renderDetailedTask(${i})">
-          <div class="task-container">
-              <div class="category-icon" style="background-color: ${element.category.color}">${element.category.topic}</div>
-              <h2 class="task-headline"><b>${capitalizeFirst(element['title'])}</b></h2>
-              <div class="description">${description}</div>
-              <div id="subtaskProgressBar" class="subtask-progress ${subtaskProgressBarClass}">
-                  <progress value="${doneSubtask}" max="${element.subtasks.length}"></progress>
-                  <div>${doneSubtask}/${element.subtasks.length}</div>
-              </div>
-              <div class="user-urgency">
-                  <div class="assigned-users">
-                      ${renderAssignedUsers(element.assignedTo)}
-                  </div>
-                  <img class="urgency" src="../../assets/img/prio${capitalizeFirst(element.priority)}.png">
-              </div>
-          </div>
-          
+            <div class="task-container">
+                <div class="category-icon" style="background-color: ${element.category.color}">${element.category.topic}</div>
+                <h2 class="task-headline"><b>${capitalizeFirst(element['title'])}</b></h2>
+                <div class="description">${description}</div>
+                <div id="subtaskProgressBar" class="subtask-progress ${subtaskProgressBarClass}">
+                    <progress value="${doneSubtask}" max="${element.subtasks.length}"></progress>
+                    <div>${doneSubtask}/${element.subtasks.length}</div>
+                </div>
+                <div class="user-urgency">
+                    <div class="assigned-users">
+                        ${renderAssignedUsers(element.assignedTo)}
+                    </div>
+                    <img class="urgency" src="../../assets/img/prio${capitalizeFirst(element.priority)}.png">
+                </div>
+          </div>                      
           <div class="move-to mobile-flex" onclick="event.stopPropagation(); toggleContainer('boardBtns-${i}')">
-              <img  class="chevron" src="../../assets/img/chevron.png">
-              <div id="boardBtns-${i}" class="move-btn-box d-none">
+                <img  class="chevron" src="../../assets/img/chevron.png">
+                <div id="boardBtns-${i}" class="move-btn-box d-none">
                   <div><button onclick="event.stopPropagation(); moveToBoard(${i},'board-0')" class="move-button">Todo</button></div>
                   <div><button onclick="event.stopPropagation(); moveToBoard(${i},'board-1')" class="move-button">In Progress</button></div>
                   <div><button onclick="event.stopPropagation(); moveToBoard(${i},'board-2')" class="move-button">Awaiting Feedback</button></div>
                   <div><button onclick="event.stopPropagation(); moveToBoard(${i},'board-3')" class="move-button">Done</button></div>
-              </div>                
+                </div>                
+            </div>
       </div>
-      </div>
+      <div class="spacer"></div>       
     `;
 }
 

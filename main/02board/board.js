@@ -120,7 +120,7 @@ function renderEachBoard(boardTitle, boardId, array) {
  * @return {String} - HTML string for an empty board.
  */
 function renderEmptyBoard(boardTitle) {
-    return `<div class="empty-board mobile">No tasks ${boardTitle.toLowerCase()}</div>`;
+    return `<div class="empty-board">No tasks ${boardTitle.toLowerCase()}</div>`;
 }
 
 

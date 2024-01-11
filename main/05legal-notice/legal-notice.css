@@ -166,12 +166,6 @@ button, a {
   cursor: pointer;
 }
 
-.main-container {
-  display: flex;
-  justify-content: flex-start;
-  overflow: scroll;
-}
-
 .mgn-r {
   padding-right: 12px;
 }
@@ -431,10 +425,6 @@ h3 {
   .add-task-title {
     font-size: 47px;
   }
-  .main-container {
-    display: flex;
-    justify-content: flex-start;
-  }
   h1 {
     font-size: 47px;
   }
@@ -463,15 +453,6 @@ h3 {
   }
   #helpBtn {
     display: none;
-  }
-  .main-container {
-    width: 100%;
-    top: 90px;
-    left: 0;
-    height: calc(100vh - 90px - 74px);
-    padding: 0px;
-    margin: 0px;
-    overflow-x: hidden;
   }
   #navbar {
     z-index: 1000;
@@ -595,8 +576,8 @@ h3 {
     right: 0;
     bottom: 0;
     width: 66vw;
-    height: calc(100vh - 4px);
-    height: calc(100svh - 4px);
+    height: calc(100vh - 10px);
+    height: calc(100svh - 10px);
     margin: auto;
     border-radius: 30px;
     border: solid 2px #2A3647;

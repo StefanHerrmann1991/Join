@@ -167,12 +167,6 @@ button, a {
   cursor: pointer;
 }
 
-.main-container {
-  display: flex;
-  justify-content: flex-start;
-  overflow: scroll;
-}
-
 .mgn-r {
   padding-right: 12px;
 }
@@ -432,10 +426,6 @@ h3 {
   .add-task-title {
     font-size: 47px;
   }
-  .main-container {
-    display: flex;
-    justify-content: flex-start;
-  }
   h1 {
     font-size: 47px;
   }
@@ -464,15 +454,6 @@ h3 {
   }
   #helpBtn {
     display: none;
-  }
-  .main-container {
-    width: 100%;
-    top: 90px;
-    left: 0;
-    height: calc(100vh - 90px - 74px);
-    padding: 0px;
-    margin: 0px;
-    overflow-x: hidden;
   }
   #navbar {
     z-index: 1000;
@@ -663,9 +644,9 @@ textarea {
 }
 
 /* ********************************TASK LAYOUT******************************************* */
-.main-box {
-  width: 90%;
-  height: 100%;
+.main-container .title-form {
+  display: flex;
+  flex-direction: column;
 }
 
 .add-task-title {
@@ -677,7 +658,7 @@ textarea {
 }
 
 .add-task-formfield {
-  width: 99%;
+  width: calc(100% - 1px);
 }
 .add-task-formfield button {
   width: 100%;
@@ -958,21 +939,6 @@ input:-webkit-autofill:active {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-
-.user-list {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  overflow-y: scroll;
-  height: 80px;
-  margin-bottom: 60px;
-  cursor: pointer;
-}
-.user-list div {
-  display: flex;
   align-items: center;
 }
 
