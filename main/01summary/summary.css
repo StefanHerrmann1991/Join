@@ -30,34 +30,11 @@
   padding: 8px 16px;
 }
 
-.btn-1, .btn-1-big {
-  background: #2A3647;
-  border-radius: 10px;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 21px;
-}
-.btn-1 img, .btn-1-big img {
-  width: 15px;
-  height: 15px;
-}
-.btn-1:hover, .btn-1-big:hover {
+.btn-1:hover {
   background-color: #29ABE2 !important;
   border: unset !important;
 }
 
-.btn-2-big {
-  padding: 16px 16px;
-}
-
-.btn-2 {
-  padding: 8px 16px;
-}
 .btn-2:hover {
   color: #29ABE2 !important;
   border: solid 1px #29ABE2 !important;
@@ -422,8 +399,8 @@ h3 {
   justify-content: center;
   align-items: center;
   font-size: 0px;
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   z-index: 1000;
   padding: 4px;
   border-radius: 50%;
@@ -438,8 +415,8 @@ h3 {
   background-color: rgba(41, 170, 226, 0.0745098039);
 }
 .close-upper-right img {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
 }
 
 .form-btn {
@@ -530,7 +507,7 @@ h3 {
     flex-direction: row;
     align-items: flex-end;
     padding-top: 0px !important;
-    height: 100%;
+    height: 76px;
   }
   .main-menu .nav-item {
     display: flex;
@@ -558,7 +535,7 @@ h3 {
     font-weight: 400 !important;
     font-size: 16px !important;
     color: #CDCDCD;
-    margin-top: 14px;
+    margin-top: 6px;
   }
   #legalNotice {
     display: none !important;
@@ -579,10 +556,6 @@ h3 {
   h1 {
     font-size: 36px;
   }
-  .main-menu .nav-item {
-    margin-bottom: 5px;
-    margin-top: 5px;
-  }
   #logo {
     width: 50px;
     height: 61px;
@@ -597,6 +570,9 @@ h3 {
   }
   #header {
     height: 56px;
+  }
+  .main-container {
+    height: calc(100% - 56px - 40px);
   }
 }
 @media (min-width: 2400px) {
@@ -665,6 +641,8 @@ a {
 .summary-main {
   width: 90%;
   margin: auto;
+  height: calc(100% - 90px);
+  padding: 5% 0px;
 }
 
 .urgency-container {
@@ -687,6 +665,8 @@ a {
   justify-content: center;
   align-items: center;
   gap: 20px;
+  width: calc(50% - 5px);
+  border-right: solid 5px #D1D1D1;
 }
 .next-tasks-counter img {
   width: 40px;
@@ -694,9 +674,11 @@ a {
   filter: brightness(0) invert(1);
 }
 
-.middle-line {
-  border: 2px solid #D1D1D1;
-  height: 80%;
+.date {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
 }
 
 .summary-title {

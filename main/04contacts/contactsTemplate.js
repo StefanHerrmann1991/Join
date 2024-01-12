@@ -3,7 +3,7 @@ function editContactHTML(actualContact) {
     <div class="add-contact" >
         <div class="add-contact-menu">
             <div class="add-contact-description">
-                <img class="desktop" src="../../assets/img/logo.png">
+                <img class="desktop small-logo" src="../../assets/img/logo.png">
                 <h2>Edit contact</h2>                
                 <div class="lower-border"></div>
                 <button class="close-upper-right mobile" onclick="closeContainer('editContactDialog')">

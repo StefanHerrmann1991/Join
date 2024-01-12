@@ -37,17 +37,17 @@ async function initSummary() {
     let date = getId('nextDeadline');
     let priority = capitalizeFirst(earliestTask.priority)
     date.innerHTML = `
-    <div class="next-tasks-counter">        
+    <div class="next-tasks-counter">    
         <div class="urgency-icon ${priority.toLowerCase()}">
-          <img src="../../assets/img/prio${priority}.png">
-          </div>
-          <div>
-          <div class="big-number deadline-number">${count}</div>
-        <div>${priority}</div>
-    </div>
+            <img src="../../assets/img/prio${priority}.png">
         </div>
-        <div class="middle-line"></div>
-        <div>${outputDateStr}</div>`;
+        <div>
+            <div class="big-number deadline-number">${count}</div>
+            <div>${priority}</div>
+        </div>    
+    </div> 
+    <div class="date">${outputDateStr}</div>
+`;
   }
   await renderSummary();
   highlightChosenMenu()

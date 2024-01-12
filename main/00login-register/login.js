@@ -5,6 +5,7 @@
 async function initAuthentification() {
     await loadRegisterdUsers();
     await renderAuth('login');
+
 }
 
 
@@ -294,7 +295,9 @@ function passwordValidation() {
  */
 async function addUsers() { //check async: no diff
     if (event) event.preventDefault();
-    saveToBackend('registeredUsers', registeredUsers)
+    new Contact
+    saveToBackend('registeredUsers', registeredUsers);
+
 }
 
 

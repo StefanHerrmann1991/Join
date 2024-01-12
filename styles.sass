@@ -76,29 +76,12 @@ $pdg-bt: 2.5%
 .btn-1
     padding: 8px 16px
 
-.btn-1, .btn-1-big
-    background: #2A3647
-    border-radius: 10px
-    color: white
-    display: flex
-    justify-content: center
-    align-items: center
-    gap: 5px
-    cursor: pointer
-    font-weight: 700
-    font-size: 21px
-    img
-        width: 15px
-        height: 15px
+.btn-1
     &:hover
         background-color: $hover !important
         border: unset !important
 
-.btn-2-big
-    padding: 16px 16px
-
 .btn-2
-    padding: 8px 16px
     &:hover
         color: $hover !important
         border: solid 1px $hover !important
@@ -380,8 +363,8 @@ h3
 .close-upper-right
     @include flex-center
     font-size: 0px
-    width: 34px
-    height: 34px
+    width: 40px
+    height: 40px
     z-index: 1000
     padding: 4px
     border-radius: 50%
@@ -394,8 +377,8 @@ h3
     &:hover
         background-color: $hover-small-btn
     img
-        width: 30px
-        height: 30px
+        width: 32px
+        height: 32px
 
 .form-btn
     width: 100%
@@ -531,9 +514,7 @@ h3
 @media (max-height: 468px) and (orientation: landscape)
     h1
         font-size: 36px
-    .main-menu .nav-item
-        margin-bottom: 5px
-        margin-top: 5px
+  
     #logo
         width: 50px
         height: 61px
@@ -547,6 +528,9 @@ h3
 
     #header
         height: 56px
+
+    .main-container
+        height: calc( 100% - 56px - 40px)
 
 @media (min-width: 2400px)
     .page-container
