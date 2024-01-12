@@ -249,18 +249,22 @@ function loginAsGuest() {
  * Registers a new user.
  * @param {Event} event - The event object from the form submission.
  */
-function registerUser() {
+async function registerUser() {
     event.preventDefault();
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     passwordValidation();
     if (!isUserRegistered(email, registeredUsers)) {
-        registeredUsers.push({ 'name': name, 'email': email, 'password': password });
-        addUsers();
+        await initContactList();     
+        let phone = 'unset';
+        contactBook.addContact(name, email, phone);
+        await saveBackendDataOf(contactBook);
+        /*  registeredUsers.push({ 'name': name, 'email': email, 'password': password }); */
+        /*    addUsers(); */
         renderAuth('login');
     }
-    else openPopup('The E-Mail is already registered.', error)
+    else openPopup('The E-Mail is already registered.', 'error')
 };
 
 
@@ -295,9 +299,7 @@ function passwordValidation() {
  */
 async function addUsers() { //check async: no diff
     if (event) event.preventDefault();
-    new Contact
     saveToBackend('registeredUsers', registeredUsers);
-
 }
 
 
@@ -307,7 +309,7 @@ async function addUsers() { //check async: no diff
  */
 async function loadRegisterdUsers() {
     try {
-        registeredUsers = JSON.parse(await getItem('registeredUsers'));      
+        registeredUsers = JSON.parse(await getItem('registeredUsers'));
     } catch (e) {
         registeredUsers = [];
     }
@@ -342,7 +344,7 @@ function checkLogin() {
             return;
         }
     }
-    openPopup('The E-Mail address or password is incorrect.', 'error')  
+    openPopup('The E-Mail address or password is incorrect.', 'error')
 }
 
 

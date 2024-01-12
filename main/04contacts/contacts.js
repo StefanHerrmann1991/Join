@@ -230,7 +230,7 @@ function createContact(event) {
   event.preventDefault();
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
-  const phone = document.getElementById('phone').value;
+  const phone = document?.getElementById('phone').value;
   contactBook.addContact(name, email, phone);
   contactBook.sortInitials();
   contactBook.sortContacts();
