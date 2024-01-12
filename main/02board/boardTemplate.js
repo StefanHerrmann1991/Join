@@ -150,7 +150,7 @@ function editTaskDialogHTML(index, task) {
                                 </div>
                             </div>                 
                         </div>               
-                    <button class="accept-edit-btn">Ok</button>                   
+                    <button class="accept-edit-btn btn-1">Ok</button>                   
                 </div>
             </div>
             </form>

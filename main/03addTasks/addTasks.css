@@ -23,11 +23,42 @@
   overflow-y: scroll;
 }
 
-.btn-1:hover {
+.btn-1-big {
+  padding: 16px 16px;
+}
+
+.btn-1 {
+  padding: 8px 16px;
+}
+
+.btn-1, .btn-1-big {
+  background: #2A3647;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 21px;
+}
+.btn-1 img, .btn-1-big img {
+  width: 15px;
+  height: 15px;
+}
+.btn-1:hover, .btn-1-big:hover {
   background-color: #29ABE2 !important;
   border: unset !important;
 }
 
+.btn-2-big {
+  padding: 16px 16px;
+}
+
+.btn-2 {
+  padding: 8px 16px;
+}
 .btn-2:hover {
   color: #29ABE2 !important;
   border: solid 1px #29ABE2 !important;

@@ -70,12 +70,35 @@ $pdg-bt: 2.5%
 .scroll
     overflow-y: scroll
 
+.btn-1-big
+    padding: 16px 16px
+
 .btn-1
+    padding: 8px 16px
+
+.btn-1, .btn-1-big
+    background: #2A3647
+    border-radius: 10px
+    color: white
+    display: flex
+    justify-content: center
+    align-items: center
+    gap: 5px
+    cursor: pointer
+    font-weight: 700
+    font-size: 21px
+    img
+        width: 15px
+        height: 15px
     &:hover
         background-color: $hover !important
         border: unset !important
 
+.btn-2-big
+    padding: 16px 16px
+
 .btn-2
+    padding: 8px 16px
     &:hover
         color: $hover !important
         border: solid 1px $hover !important
@@ -465,7 +488,7 @@ h3
         flex-direction: row
         align-items: flex-end
         padding-top: 0px !important
-        height: 100%
+        height: 76px
         .nav-item
             display: flex
             justify-content: center
@@ -490,7 +513,7 @@ h3
             font-weight: 400 !important
             font-size: 16px !important
             color: #CDCDCD
-            margin-top: 14px
+            margin-top: 6px
 
     #legalNotice
         display: none !important

@@ -22,11 +22,42 @@
   overflow-y: scroll;
 }
 
-.btn-1:hover {
+.btn-1-big {
+  padding: 16px 16px;
+}
+
+.btn-1 {
+  padding: 8px 16px;
+}
+
+.btn-1, .btn-1-big {
+  background: #2A3647;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 21px;
+}
+.btn-1 img, .btn-1-big img {
+  width: 15px;
+  height: 15px;
+}
+.btn-1:hover, .btn-1-big:hover {
   background-color: #29ABE2 !important;
   border: unset !important;
 }
 
+.btn-2-big {
+  padding: 16px 16px;
+}
+
+.btn-2 {
+  padding: 8px 16px;
+}
 .btn-2:hover {
   color: #29ABE2 !important;
   border: solid 1px #29ABE2 !important;
@@ -499,7 +530,7 @@ h3 {
     flex-direction: row;
     align-items: flex-end;
     padding-top: 0px !important;
-    height: 100%;
+    height: 76px;
   }
   .main-menu .nav-item {
     display: flex;
@@ -527,7 +558,7 @@ h3 {
     font-weight: 400 !important;
     font-size: 16px !important;
     color: #CDCDCD;
-    margin-top: 14px;
+    margin-top: 6px;
   }
   #legalNotice {
     display: none !important;
@@ -612,6 +643,12 @@ h3 {
 }
 .delete-popup-container .delete-popup .cancel-delete {
   filter: invert(100%);
+}
+
+.boards-container {
+  height: calc(85% - 90px);
+  overflow: auto;
+  padding-right: 5%;
 }
 
 .spacer {
@@ -732,6 +769,11 @@ h3 {
   align-items: center;
 }
 
+.accept-edit-btn {
+  width: 100px !important;
+  align-self: flex-end;
+}
+
 .details-assigned-users {
   display: flex;
   flex-direction: column;
@@ -805,18 +847,17 @@ h3 {
 
 .boards {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   overflow-x: scroll;
-  padding-right: 50px;
   gap: 4%;
   width: calc(100% - 50px);
   justify-content: space-between;
+  overflow-y: hidden;
 }
 .boards .board {
   width: 250px;
   display: flex;
   flex-wrap: wrap;
-  height: 100%;
 }
 .boards .board .board-task-container {
   width: 100%;
@@ -890,8 +931,6 @@ h3 {
   position: relative;
   background-color: white;
   padding: 30px;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 30px;
   height: 500px;
   overflow-y: scroll;
 }
@@ -903,17 +942,6 @@ h3 {
 }
 .edit-task-container .user-initial-container {
   display: flex;
-}
-.edit-task-container .accept-edit-btn {
-  display: flex;
-  padding: 8px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-  border-radius: 10px;
-  background: #2A3647;
-  width: auto;
-  color: white;
 }
 
 .single-task-container {
@@ -1108,29 +1136,6 @@ progress {
   filter: invert(50%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(200%);
 }
 
-.accept-edited-task-btn {
-  color: white;
-  background: #2A3647;
-  border-radius: 10px;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  bottom: 35px;
-  right: 35px;
-  width: 83px;
-  height: 50px;
-}
-.accept-edited-task-btn:hover {
-  background-color: #29ABE2;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.accept-edited-task-btn img {
-  margin-left: 8px;
-  width: 24px;
-  height: 24px;
-}
-
 .empty {
   border: unset;
   display: inline-block;
@@ -1161,9 +1166,6 @@ progress {
   .single-task-container .task-details h2 {
     font-size: 16px;
   }
-  .accept-edited-task-btn {
-    height: 40px;
-  }
   .assigned-users .user-icon {
     height: 35px;
     width: 35px;
@@ -1174,6 +1176,13 @@ progress {
   }
 }
 @media (max-width: 768px) {
+  .board-main {
+    padding: 0px;
+    padding-top: 20px;
+  }
+  .boards-container {
+    height: auto;
+  }
   .add-task-board-btn img {
     height: 25px;
     width: 25px;
@@ -1189,13 +1198,6 @@ progress {
   }
   .edit-task-form .edit-task-field .user-assignment-container .user-icon {
     margin-left: -20px;
-  }
-  .accept-edited-task-btn {
-    display: flex;
-    position: static;
-    align-self: flex-end;
-    margin: 0px 20px 20px 20px;
-    padding: 9px;
   }
   .task-head {
     font-size: 18px;
@@ -1219,13 +1221,11 @@ progress {
     display: flex;
     flex-direction: column;
   }
-  .edit-task-dialog {
-    height: calc(100vh - 148px);
-    background-color: transparent;
-    padding-top: 0px;
-    background-color: #F6F7F8;
-    margin-top: 74px;
-    z-index: 20;
+  .edit-task-main {
+    height: calc(100% - 152px);
+  }
+  .edit-task-container {
+    height: calc(100% - 60px);
   }
   .single-task-container {
     border-radius: 0px;
@@ -1303,7 +1303,7 @@ progress {
   .board-main {
     padding-right: 10px;
     padding-left: 10px;
-    height: calc(100% - 76px - 5%);
+    height: calc(100% - 76px - 20px);
     width: calc(100% - 20px);
   }
   .board-main .boards-title-menu {
