@@ -1,0 +1,243 @@
+@import '../../styles.sass'
+
+@media (max-width: 992px)
+
+    .add-contact-dialog, .edit-contact-dialog
+        .add-contact
+            .add-contact-menu
+                .add-contact-description
+                    h2
+                        font-size: 47px
+                .add-contact-submenu
+                    form
+                        width: 70%
+                    .create-contact-btns, .edit-contact-btns
+                        height: 40px
+                        button
+                            font-size: 16px
+
+    .edit-initial
+        min-width: 80px
+        min-height: 80px
+        height: 80px
+        width: 80px
+        font-size: 27px
+
+    .edit-name-initial-con
+        .edit-name
+            font-size: 27px
+
+    .contact-book
+        .contact-name
+            font-size: 16px
+
+@media (max-width: 768px)
+
+    .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns
+        justify-content: center
+
+    .selected-user
+        background-color: transparent !important
+        color: black
+
+    #editContactFormfield
+        width: 90%
+        z-index: 100
+        height: 80%
+
+    .edit-information
+        .delete-btn
+            display: none
+
+    .edit-contact-container
+        padding: 0px
+        width: 100%
+        height: calc( 100% - 152px )
+        overflow-y: scroll
+        position: absolute
+        background-color: #FFFFFF
+
+    .edit-contact-headline
+        padding-top: 5%
+        margin-bottom: 5%
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        .title-additive
+            font-size: 21px
+            margin-top: 5%
+        .border-big
+            order: 3
+            display: inline-block
+            border: none
+            border-top: 3px solid #29ABE2
+            width: 100px
+            height: 0
+            margin: unset
+            margin-top: 5%
+            margin-bottom: 5%
+
+    .edit-initial
+        min-height: 60px
+        height: 60px
+        min-width: 60px
+        width: 60px
+
+    .add-contact-dialog, .edit-contact-dialog
+        .add-contact
+            animation: none
+            .add-contact-menu
+                width: 100%
+                flex-direction: column
+                height: calc( 100% - 152px )
+                .add-contact-description
+                    position: relative
+                    @include flex-center
+                    width: 90%
+                    margin: auto
+                    height: 40%
+                    padding: 0px
+                    border-radius: 30px 30px 0px 0px
+                    h2
+                        margin-bottom: 2.5%
+                        margin-top: 2.5%
+                    p
+                        font-size: 21px
+
+                .add-contact-submenu
+                    border-radius: 0px 0px 30px 30px
+                    width: 90%
+                    margin: auto
+                    padding: 0px
+                    flex-direction: column
+                    height: 60%
+                    form
+                        z-index: 400
+                        width: 90%
+                        margin: auto
+
+                    #editInitial, #newContactImg
+                        width: 100%
+                        display: flex
+                        justify-content: center
+                        align-items: flex-start
+                        position: absolute
+                        margin-top: 0%
+                        top: -35px
+
+                    #newContactImg
+                        .edit-initial
+                            border: none
+                            min-height: 80px
+                            min-width: 80px
+                    input
+                        margin-top: 4%
+                        margin-bottom: 4%
+                        z-index: 100
+                        height: 41px
+                    .edit-contact-btns
+                        @include flex-center
+                        width: 100% !important
+                        button
+                            height: 40px
+                            &:last-child:not(.add-contact-dialog)
+                                width: 71px
+
+    .add-contact-menu
+        height: 100%
+        width: 100%
+
+    .edit-name-initial-con
+        display: flex
+        flex-direction: row
+        width: 100%
+        align-items: center
+
+    .add-contact-btn
+        top: 15%
+        right: 5%
+        width: 193px
+        height: 53px
+        bottom: unset
+
+    .kanban-description, #helpBtn
+        display: none
+
+    .main-contact-container, .contact-flex
+        width: 100%
+
+    .main-contact-container
+        height: calc( 100% - 76px)
+        display: flex
+        flex-direction: column
+        align-items: flex-end
+        .contact-flex
+            width: 100%
+
+    .back-btn
+        display: block
+        position: absolute
+        top: 5%
+        right: 10%
+
+    .contact-flex
+        position: static
+        height: 100%
+        width: 100%
+
+    .contact-container
+        padding: 0px
+
+    .contact-btn-container
+        width: 100%
+        padding-top: 20px
+        padding-bottom: 20px
+        display: flex
+        justify-content: flex-end
+        background-color: white
+        .add-contact-btn
+            position: static
+            margin-right: 12px
+
+    .contact-information h4
+        padding-top: 15px
+
+@media (max-width: 480px)
+
+    .add-contact-description
+        h2
+            font-size: 36px !important
+
+    p
+        display: none
+
+    .add-contact-dialog, .edit-contact-dialog
+        .add-contact
+            .add-contact-menu
+                .add-contact-description
+                    width: 100%
+                    height: 20%
+
+                .add-contact-submenu
+                    height: 80%
+                    width: 100%
+                    form
+                        display: flex
+                        flex-direction: column
+                        justify-content: center
+
+        .edit-initial
+            display: none
+
+@media (min-width: 2900px)
+
+    .add-contact-dialog
+        .add-contact
+            .add-contact-menu
+                width: 40%
+                left: 35%
+
+@media (max-height: 468px) and (orientation: landscape)
+
+    .main-contact-container
+        height: calc( 100% - 56px)

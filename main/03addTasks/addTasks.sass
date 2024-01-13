@@ -125,9 +125,6 @@ input:-webkit-autofill:active
             height: 24px
             margin-left: 2px
 
-.assignment-button-container
-    display: flex
-
 /* ********************************PRIORITY BUTTONS******************************************* */
 
 .priority-btns
@@ -304,6 +301,25 @@ input:-webkit-autofill:active
         height: 20px
         width: 20px
 
+.invite-user-btn
+    position: absolute
+    padding-left: 23px
+    padding-right: 23px
+    width: 100%
+    display: flex
+    justify-content: space-between
+    align-items: center
+    bottom: 0
+    z-index: 100px
+    height: 51px
+    border-top: 1px solid #D1D1D1
+    img
+        width: 30px
+        height: 30px
+    &:hover
+        background-color: #D1D1D1
+        border-bottom-left-radius: 10px
+        border-bottom-right-radius: 10px
 
 .square-checkbox
     -webkit-appearance: none
@@ -455,16 +471,7 @@ input.subtask-checkbox[type="checkbox"]:checked
         margin-top: 5%
         margin-bottom: 5%
 
-.main-container
-    .title-form
-        width: 90%
-        height: 100%
-        margin: auto
-        display: flex
-        flex-direction: column
-        justify-content: flex-start
-        h1
-            margin-bottom: 5%
+
 
 .create-task-btn
     position: relative
@@ -507,16 +514,14 @@ input.subtask-checkbox[type="checkbox"]:checked
 .all-categories-list
     border-bottom-left-radius: 10px
     border-bottom-right-radius: 10px
-    .box-shadow
-        box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04)
-        border-bottom-left-radius: 10px
-        border-bottom-right-radius: 10px
-
-.all-categories-list
     background: var(--white, #FFF)
     z-index: 4000
     position: absolute
     width: 100%
+    .box-shadow
+        box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04)
+        border-bottom-left-radius: 10px
+        border-bottom-right-radius: 10px
 
 .task-main
     .all-categories-list
@@ -524,9 +529,6 @@ input.subtask-checkbox[type="checkbox"]:checked
             display: block
             content: ''
             height: 20px
-
-.pdg-block
-    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04)
 
 .color-topic
     display: flex
@@ -541,7 +543,6 @@ input.subtask-checkbox[type="checkbox"]:checked
     flex-direction: column
     align-items: flex-start
     justify-content: center
-    font-size: 18px
 
 .new-category-menu
     border-top: 1px solid #D1D1D1
@@ -569,6 +570,7 @@ input.subtask-checkbox[type="checkbox"]:checked
     min-height: 200px
     height: auto
     margin-bottom: 20px
+    padding-top: 40px
 
 .block
     display: flex
@@ -647,5 +649,3 @@ input.subtask-checkbox[type="checkbox"]:checked
     width: 100%
     #categoryMenu
         width: 100%
-
-

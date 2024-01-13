@@ -1,0 +1,838 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  margin-block-end: 0px;
+  margin-block-start: 0px;
+  font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
+  padding-block: 0px;
+  padding-inline: 0px;
+}
+
+.help-and-logout {
+  display: flex;
+  align-items: center;
+}
+
+.selected-menu {
+  background-color: #091931;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+
+.btn-1-big {
+  padding: 16px 16px;
+}
+
+.btn-1 {
+  padding: 8px 16px;
+}
+
+.btn-1:hover {
+  background-color: #29ABE2 !important;
+  border: unset !important;
+}
+
+.btn-2:hover {
+  color: #29ABE2 !important;
+  border: solid 1px #29ABE2 !important;
+}
+
+.main {
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  font-size: 18px;
+}
+
+body {
+  background-color: #F6F7F8;
+}
+
+.main-menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.main-menu .nav-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color: #FFFFFF;
+  cursor: pointer;
+  position: relative;
+}
+.main-menu .nav-item .inner-item {
+  width: 127px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.main-menu .nav-item img {
+  margin-right: 20px;
+}
+.main-menu .nav-item img {
+  width: 26px;
+  height: 26px;
+}
+
+input, button {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.dashboard {
+  width: 100vw;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #f5f5f5;
+}
+
+*::-ms-scrollbar {
+  width: 4px;
+  height: 8px;
+}
+
+*::-ms-thumb {
+  background-color: #ccc;
+  border-radius: 8px;
+}
+
+*::-ms-track {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  background: #FFFFFF;
+  height: 90px;
+  position: relative;
+  z-index: 1000;
+}
+#header .inner-header {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+
+#navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  height: 100svh;
+  width: auto;
+  background: #2A3647;
+  border-radius: 0px;
+  z-index: 100;
+}
+#navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+#logo {
+  width: 100px;
+  height: 122px;
+}
+
+button, a {
+  cursor: pointer;
+}
+
+.mgn-r {
+  padding-right: 12px;
+}
+
+.mgn-l {
+  padding-left: 12px;
+}
+
+.subtask-progress {
+  display: flex;
+  width: 100%;
+}
+
+.d-none {
+  display: none !important;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 61px;
+}
+
+.page-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.nav-con {
+  width: 20%;
+}
+
+.page-con {
+  width: 80%;
+}
+
+h2 {
+  color: #2A3647;
+  font-size: 21px;
+  font-weight: 700;
+  padding: 0 !important;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.task-title {
+  font-size: 36px;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+}
+
+h3 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+}
+
+.popup-message {
+  position: absolute;
+  z-index: 105;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 100svh;
+  width: 100svw;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+}
+
+.add-task-popup {
+  position: absolute;
+  z-index: 105;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 100svh;
+  width: 100svw;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.profile-icon {
+  margin-left: 12px;
+  border-radius: 50%;
+  border: 3px solid #2A3647;
+  width: 49px;
+  height: 49px;
+  position: relative;
+}
+
+.logout-btn {
+  width: 130px;
+  height: auto;
+  background: #2A3647;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 20px 0px 20px 20px;
+  color: white;
+  position: absolute;
+  top: 90px;
+  right: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.logout-btn button, .logout-btn a {
+  background-color: #2A3647;
+  padding: 12px;
+  color: white;
+  border: none;
+}
+
+.margin-auto {
+  width: 90%;
+  margin: auto;
+}
+
+.mobile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.error {
+  background-color: darkred !important;
+}
+
+.notification-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: row;
+  padding: 23.5px 24.5px;
+  background: #2A3647;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  color: white;
+  position: absolute;
+  bottom: 20% !important;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: fly-in 0.8s ease-out forwards;
+}
+.notification-message img {
+  height: 22px;
+  width: 26px;
+  margin-left: 30px;
+}
+@keyframes fly-in {
+  0% {
+    margin-bottom: -200px;
+    opacity: 0;
+  }
+  100% {
+    margin-bottom: 0px;
+    opacity: 1;
+  }
+}
+
+.mobile-logo {
+  display: none;
+  width: 32px;
+  height: 39px;
+}
+
+.border-big {
+  border: 3px solid #29ABE2;
+  height: 59px;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.mobile {
+  display: none !important;
+}
+
+.mobile-flex {
+  display: none !important;
+}
+
+.desktop-flex {
+  display: flex !important;
+}
+
+.desktop {
+  display: block !important;
+}
+
+#legalNotice {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 12px;
+}
+#legalNotice a {
+  color: #A8A8A8;
+}
+#legalNotice a:hover {
+  color: #29ABE2;
+}
+
+.close-upper-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0px;
+  width: 40px;
+  height: 40px;
+  z-index: 1000;
+  padding: 4px;
+  border-radius: 50%;
+  position: absolute;
+  top: 2.5%;
+  right: 5%;
+  border: none;
+  background: transparent;
+  z-index: 10;
+}
+.close-upper-right:hover {
+  background-color: rgba(41, 170, 226, 0.0745098039);
+}
+.close-upper-right img {
+  width: 32px;
+  height: 32px;
+}
+
+.form-btn {
+  width: 100%;
+  font-size: 21px;
+}
+
+.main-btn {
+  width: 100%;
+  font-size: 21px;
+}
+
+@media (max-width: 992px) {
+  h1 {
+    font-size: 47px;
+  }
+  h2 {
+    font-size: 41px;
+  }
+  div, input, textarea, h3, a {
+    font-size: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .page-container {
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+  #navbar, #header {
+    height: 76px;
+  }
+  .page-con {
+    width: 100%;
+    height: calc(100% - 76px);
+  }
+  .nav-con {
+    width: 100%;
+    height: 76px;
+  }
+  #helpBtn {
+    display: none;
+  }
+  #navbar {
+    z-index: 1000;
+  }
+  .add-task-popup {
+    background-color: transparent;
+    z-index: 200;
+    height: calc(100% - 148px);
+    top: 74px;
+  }
+  .mobile-flex {
+    display: flex !important;
+  }
+  .mobile {
+    display: block !important;
+  }
+  .desktop {
+    display: none !important;
+  }
+  .desktop-flex {
+    display: none !important;
+  }
+  h1 {
+    font-size: 47px;
+  }
+  .logout-btn button, .logout-btn a {
+    padding: 8px;
+    color: #CDCDCD;
+  }
+  .logout-btn {
+    top: 76px;
+  }
+  .navbar-header {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+  #logo {
+    display: none;
+  }
+  .main-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding-top: 0px !important;
+    height: 76px;
+  }
+  .main-menu .nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px !important;
+    width: 25%;
+    height: 100%;
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+  .main-menu .nav-item .inner-item {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .main-menu .nav-item .inner-item img {
+    margin-right: 0px;
+    width: 22px;
+    height: 22px;
+  }
+  .main-menu .nav-title {
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    color: #CDCDCD;
+    margin-top: 6px;
+  }
+  #legalNotice {
+    display: none !important;
+  }
+  .mobile-logo {
+    display: block;
+  }
+}
+@media (max-width: 540px) {
+  .kanban-description {
+    display: none;
+  }
+  div, a {
+    font-size: 12px;
+  }
+}
+@media (max-height: 468px) and (orientation: landscape) {
+  h1 {
+    font-size: 36px;
+  }
+  #logo {
+    width: 50px;
+    height: 61px;
+  }
+  div {
+    font-size: 14px !important;
+  }
+  .profile-icon {
+    border: 2px solid #2A3647;
+    width: 38px;
+    height: 38px;
+  }
+  #header {
+    height: 56px;
+  }
+  .main-container {
+    height: calc(100% - 56px - 40px);
+  }
+}
+@media (min-width: 2400px) {
+  .page-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 66vw;
+    height: calc(100vh - 10px);
+    height: calc(100svh - 10px);
+    margin: auto;
+    border-radius: 30px;
+    border: solid 2px #2A3647;
+    overflow: hidden;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+@media (max-width: 992px) {
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-description h2, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description h2 {
+    font-size: 47px;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form {
+    width: 70%;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns {
+    height: 40px;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button {
+    font-size: 16px;
+  }
+  .edit-initial {
+    min-width: 80px;
+    min-height: 80px;
+    height: 80px;
+    width: 80px;
+    font-size: 27px;
+  }
+  .edit-name-initial-con .edit-name {
+    font-size: 27px;
+  }
+  .contact-book .contact-name {
+    font-size: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .create-contact-btns {
+    justify-content: center;
+  }
+  .selected-user {
+    background-color: transparent !important;
+    color: black;
+  }
+  #editContactFormfield {
+    width: 90%;
+    z-index: 100;
+    height: 80%;
+  }
+  .edit-information .delete-btn {
+    display: none;
+  }
+  .edit-contact-container {
+    padding: 0px;
+    width: 100%;
+    height: calc(100% - 152px);
+    overflow-y: scroll;
+    position: absolute;
+    background-color: #FFFFFF;
+  }
+  .edit-contact-headline {
+    padding-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .edit-contact-headline .title-additive {
+    font-size: 21px;
+    margin-top: 5%;
+  }
+  .edit-contact-headline .border-big {
+    order: 3;
+    display: inline-block;
+    border: none;
+    border-top: 3px solid #29ABE2;
+    width: 100px;
+    height: 0;
+    margin: unset;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+  .edit-initial {
+    min-height: 60px;
+    height: 60px;
+    min-width: 60px;
+    width: 60px;
+  }
+  .add-contact-dialog .add-contact, .edit-contact-dialog .add-contact {
+    animation: none;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu, .edit-contact-dialog .add-contact .add-contact-menu {
+    width: 100%;
+    flex-direction: column;
+    height: calc(100% - 152px);
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-description, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    height: 40%;
+    padding: 0px;
+    border-radius: 30px 30px 0px 0px;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-description h2, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description h2 {
+    margin-bottom: 2.5%;
+    margin-top: 2.5%;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-description p, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description p {
+    font-size: 21px;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu {
+    border-radius: 0px 0px 30px 30px;
+    width: 90%;
+    margin: auto;
+    padding: 0px;
+    flex-direction: column;
+    height: 60%;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form {
+    z-index: 400;
+    width: 90%;
+    margin: auto;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #editInitial, .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #newContactImg, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #editInitial, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #newContactImg {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: absolute;
+    margin-top: 0%;
+    top: -35px;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #newContactImg .edit-initial, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu #newContactImg .edit-initial {
+    border: none;
+    min-height: 80px;
+    min-width: 80px;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu input, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu input {
+    margin-top: 4%;
+    margin-bottom: 4%;
+    z-index: 100;
+    height: 41px;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100% !important;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button {
+    height: 40px;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button:last-child:not(.add-contact-dialog), .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu .edit-contact-btns button:last-child:not(.add-contact-dialog) {
+    width: 71px;
+  }
+  .add-contact-menu {
+    height: 100%;
+    width: 100%;
+  }
+  .edit-name-initial-con {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+  }
+  .add-contact-btn {
+    top: 15%;
+    right: 5%;
+    width: 193px;
+    height: 53px;
+    bottom: unset;
+  }
+  .kanban-description, #helpBtn {
+    display: none;
+  }
+  .main-contact-container, .contact-flex {
+    width: 100%;
+  }
+  .main-contact-container {
+    height: calc(100% - 76px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .main-contact-container .contact-flex {
+    width: 100%;
+  }
+  .back-btn {
+    display: block;
+    position: absolute;
+    top: 5%;
+    right: 10%;
+  }
+  .contact-flex {
+    position: static;
+    height: 100%;
+    width: 100%;
+  }
+  .contact-container {
+    padding: 0px;
+  }
+  .contact-btn-container {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+    background-color: white;
+  }
+  .contact-btn-container .add-contact-btn {
+    position: static;
+    margin-right: 12px;
+  }
+  .contact-information h4 {
+    padding-top: 15px;
+  }
+}
+@media (max-width: 480px) {
+  .add-contact-description h2 {
+    font-size: 36px !important;
+  }
+  p {
+    display: none;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-description, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-description {
+    width: 100%;
+    height: 20%;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu {
+    height: 80%;
+    width: 100%;
+  }
+  .add-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form, .edit-contact-dialog .add-contact .add-contact-menu .add-contact-submenu form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .add-contact-dialog .edit-initial, .edit-contact-dialog .edit-initial {
+    display: none;
+  }
+}
+@media (min-width: 2900px) {
+  .add-contact-dialog .add-contact .add-contact-menu {
+    width: 40%;
+    left: 35%;
+  }
+}
+@media (max-height: 468px) and (orientation: landscape) {
+  .main-contact-container {
+    height: calc(100% - 56px);
+  }
+}/*# sourceMappingURL=contacts-responsive.css.map */
