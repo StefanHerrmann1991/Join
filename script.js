@@ -79,6 +79,10 @@ let chosenBoard;
 let registeredUsers = [];
 
 
+
+
+
+
 /**
  * Splits a string identifier into an array of substrings.
  *
