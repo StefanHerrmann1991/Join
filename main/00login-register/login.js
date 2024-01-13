@@ -256,12 +256,12 @@ async function registerUser() {
     const password = document.getElementById('password').value;
     passwordValidation();
     if (!isUserRegistered(email, registeredUsers)) {
-        await initContactList();     
+        await initContactList();
         let phone = 'unset';
         contactBook.addContact(name, email, phone);
         await saveBackendDataOf(contactBook);
-        /*  registeredUsers.push({ 'name': name, 'email': email, 'password': password }); */
-        /*    addUsers(); */
+        registeredUsers.push({ 'name': name, 'email': email, 'password': password });  
+        addUsers();
         renderAuth('login');
     }
     else openPopup('The E-Mail is already registered.', 'error')

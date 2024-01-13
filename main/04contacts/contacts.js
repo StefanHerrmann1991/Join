@@ -69,13 +69,13 @@ class ContactBook {
   contacts;
   initialList;
 
+  
   /**
    * Creates a new contact book.
    *
    * @param {Array} contacts - An array of contacts.
    * @param {Array} initialList - A list of distinct first name initials.
    */
-
   constructor(contacts, initialList) {
     if (contacts) this.contacts = contacts
     else this.contacts = [];
@@ -120,12 +120,12 @@ class ContactBook {
 
 
   /**
-    * Edits a contact in the contact book.
-    *
-    * @param {number} index - The index of the contact to edit.
-    * @param {string} name - The new full name of the contact.
-    * @param {string} email - The new email address of the contact.
-    * @param {string} phone - The new phone number of the contact.
+  * Edits a contact in the contact book.
+  *
+  * @param {number} index - The index of the contact to edit.
+  * @param {string} name - The new full name of the contact.
+  * @param {string} email - The new email address of the contact.
+  * @param {string} phone - The new phone number of the contact.
   */
   editContact(index, name, email, phone) {
     let actualContact = this.contacts[index]
@@ -155,7 +155,7 @@ class ContactBook {
   }
 
 
-  /**
+ /**
  * This method counts the occurrence of an element in an array.
  * @param {Array} arr - The array to be checked.
  * @param {any} element - The element whose occurrence is to be counted.
@@ -236,7 +236,7 @@ function createContact(event) {
   contactBook.sortContacts();
   closeContainer('addContactDialog');
   renderContacts();
-}
+  }
 
 
 /**
