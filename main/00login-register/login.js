@@ -367,7 +367,6 @@ async function resetPassword(event) {
     event.preventDefault();
     const newPassword = document.getElementById('password').value;
     const confirmPassword = document.getElementById('passwordValidation').value;
-
     if (newPassword !== confirmPassword) {
         openPopup('Passwords do not match.', 'error');
         return;
@@ -379,7 +378,7 @@ async function resetPassword(event) {
         delete user.resetToken;
         await saveToBackend('registeredUsers', registeredUsers);
         openPopup('Password successfully updated.', 'success');
-        renderAuth('login');
+        window.location.href = "https://join.stefan-herrmann.org/main/00login-register/login.html";
     } else {
         openPopup('User not found.', 'error');
     }
