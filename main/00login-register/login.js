@@ -20,8 +20,7 @@ async function initResetPassword() {
 function renderAuth(status) {
     let auth = document.getElementById('authentification');
     if (status === 'login') auth.innerHTML = renderLogin()
-    if (status === 'forgetPassword') auth.innerHTML = renderForgotPassword()
-    if (status === 'resetPassword') auth.innerHTML = renderResetPassword()
+    if (status === 'forgetPassword') auth.innerHTML = renderForgotPassword()    
     if (status === 'signUp') auth.innerHTML = renderSignUp()
 }
 
@@ -194,38 +193,6 @@ function renderForgotPassword() {
 </div>
 ` }
 
-
-/**
- * Renders the reset password form.
- * @returns {string} The HTML string for the reset password form.
- */
-function renderResetPassword() {
-    return `
-    <div class="register">
-    <div>
-    <div class="logo-container low-z">
-    <img class="logo-unmoved" src="../../assets/img/login/logo.png">
-    </div>
-    <div class="forgot-password-container">
-        <img onclick="initAuthentification('login')" class="arrow-back" src="../../assets/img/backArrow.png">
-        <div class="reset-password">
-            <h2>Reset your password</h2>
-            <div> Change your account password
-            </div>
-            <form onsubmit="createUser(event)">
-                <input type="password" minlength="6" maxlength="20" id="password" name="Password" required placeholder="Password">
-                <input type="password" minlength="6" id="passwordValidation" name="passwordValidaton" required
-                    placeholder="Confirm password">
-                <div class="menu-btn color-white">
-                    <button type="submit">
-                        <nobr>Continue</nobr>
-                    </button>
-                </div>                
-            </form>
-        </div>
-    </div>
-</div>
-` }
 
 
 /**

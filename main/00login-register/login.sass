@@ -309,20 +309,9 @@
     cursor: pointer !important
     width: 37px !important
     height: 37px !important
-    opacity: 0
-    z-index: 0
-    animation: hightenOpacity 1.2s linear forwards
+    opacity: 1
+    z-index: 1000
 
-    @keyframes hightenOpacity
-        0%
-            opacity: 0
-            z-index: 0
-        90%
-            opacity: 0
-            z-index: 0
-        100%
-            opacity: 100
-            z-index: 100
 
 @media (max-width: 992px)
 
@@ -343,6 +332,11 @@
                     height: 78.03px
                     top: 10%
                     left: 20%
+            .logo-unmoved
+                width: 64px
+                height: 78.03px
+                top: 10%
+                left: 20%
 
 @media (max-width: 768px)
 
@@ -356,8 +350,7 @@
         flex-direction: column
         justify-content: center
         gap: 20px
-       
-    
+
     .sign-up
         h2
             margin-top: 0px

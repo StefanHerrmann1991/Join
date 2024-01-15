@@ -963,29 +963,6 @@ input:-webkit-autofill:active {
   width: 20px;
 }
 
-.invite-user-btn {
-  position: absolute;
-  padding-left: 23px;
-  padding-right: 23px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  bottom: 0;
-  z-index: 100px;
-  height: 51px;
-  border-top: 1px solid #D1D1D1;
-}
-.invite-user-btn img {
-  width: 30px;
-  height: 30px;
-}
-.invite-user-btn:hover {
-  background-color: #D1D1D1;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
 .square-checkbox {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -1119,13 +1096,6 @@ input.subtask-checkbox[type=checkbox]:checked {
 .add-subtask {
   height: 24px;
   width: 24px;
-}
-
-.hidden-input {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
 }
 
 .relative {

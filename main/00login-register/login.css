@@ -955,23 +955,8 @@ h3 {
   cursor: pointer !important;
   width: 37px !important;
   height: 37px !important;
-  opacity: 0;
-  z-index: 0;
-  animation: hightenOpacity 1.2s linear forwards;
-}
-@keyframes hightenOpacity {
-  0% {
-    opacity: 0;
-    z-index: 0;
-  }
-  90% {
-    opacity: 0;
-    z-index: 0;
-  }
-  100% {
-    opacity: 100;
-    z-index: 100;
-  }
+  opacity: 1;
+  z-index: 1000;
 }
 
 @media (max-width: 992px) {
@@ -991,6 +976,12 @@ h3 {
       top: 10%;
       left: 20%;
     }
+  }
+  .register .logo-container .logo-unmoved {
+    width: 64px;
+    height: 78.03px;
+    top: 10%;
+    left: 20%;
   }
 }
 @media (max-width: 768px) {
