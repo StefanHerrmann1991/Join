@@ -14,7 +14,6 @@ async function initTasks() {
     await initContactList();
     tasks = await loadFromBackend('tasks', tasks);
     categories = await loadFromBackend('categories', categories);
-    console.log(tasks, categories)
     await renderUserList();
     await renderCategories();
     startPriorityEventListener();
@@ -422,7 +421,7 @@ function toggleCategoryInput() {
 
 function renderUserList(filteredUsers) {
     let usersArray = filteredUsers || users;
-    console.log(usersArray)
+  
     const userListContainer = getId('allUsersList');
     userListContainer.innerHTML = '';
     usersArray.forEach((user) => {

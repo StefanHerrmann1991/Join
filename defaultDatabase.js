@@ -14,8 +14,7 @@ async function loadDefaultDatabase() {
     tasks = await loadFromBackend('tasks', tasks);
     categories = await loadFromBackend('categories', categories);
     registeredUsers = await loadFromBackend('registeredUsers', registeredUsers);
-    contactBookText = await loadFromBackend('ContactBookAsText');
-    console.log(contactBookText, registeredUsers, tasks, categories);
+    contactBookText = await loadFromBackend('ContactBookAsText');  
 }
 
 

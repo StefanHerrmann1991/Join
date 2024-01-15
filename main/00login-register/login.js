@@ -280,7 +280,7 @@ async function addUsers() { //check async: no diff
 async function loadRegisterdUsers() {
     try {
         registeredUsers = JSON.parse(await getItem('registeredUsers'));
-        console.log(registeredUsers);
+        
     } catch (e) {
         registeredUsers = [];
     }
@@ -373,8 +373,7 @@ async function resetPassword(event) {
         return;
     }
     const userEmailOrToken = getTokenFromUrl();
-    const user = registeredUsers.find(u => u.resetToken === userEmailOrToken);
-    console.log(user, registeredUsers);
+    const user = registeredUsers.find(u => u.resetToken === userEmailOrToken);   
     if (user) {
         user.password = newPassword;
         delete user.resetToken;
