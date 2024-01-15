@@ -119,38 +119,44 @@ class ContactBook {
   }
 
 
-  /**
-  * Edits a contact in the contact book.
-  *
-  * @param {number} index - The index of the contact to edit.
-  * @param {string} name - The new full name of the contact.
-  * @param {string} email - The new email address of the contact.
-  * @param {string} phone - The new phone number of the contact.
-  */
-  editContact(index, name, email, phone) {
-    let actualContact = this.contacts[index]
-    let oldInitial = this.contacts[index].firstNameInitial
-    let [newInitial, initials] = this.getInitials(name);
-    if (oldInitial !== newInitial) this.checkInitials(oldInitial)
-    actualContact.name = name;
-    actualContact.email = email;
-    actualContact.phone = phone;
-    actualContact.firstNameInitial = newInitial;
-    actualContact.initial = initials;
-    if (!this.initialList.includes(newInitial)) this.initialList.push(newInitial);
-  }
+/**
+* Edits a contact in the contact book.
+*
+* @param {number} index - The index of the contact to edit.
+* @param {string} name - The new full name of the contact.
+* @param {string} email - The new email address of the contact.
+* @param {string} phone - The new phone number of the contact.
+*/
+editContact(index, name, email, phone) {
+  let actualContact = this.contacts[index];
+  let oldInitial = actualContact.firstNameInitial;
+  let [newInitial, initials] = this.getInitials(name);
 
+  actualContact.name = name;
+  actualContact.email = email;
+  actualContact.phone = phone;
+  actualContact.initial = initials;
+  actualContact.firstNameInitial = newInitial;
+
+  if (oldInitial !== newInitial) {
+    this.checkInitials(oldInitial);
+  }
+  if (!this.initialList.includes(newInitial)) {
+    this.initialList.push(newInitial);
+  }
+}
 
   /**
   * This method checks if the first name initial is still in use by other contacts.
   * @param {string} firstNameInitial - The first letter of the contact's first name.
   */
   checkInitials(firstNameInitial) {
-    const firstNameInitials = this.contacts.map(contact => contact.firstNameInitial);
-    const count = this.countOccurrence(firstNameInitials, firstNameInitial);
-    if (count == 1) {
+    const count = this.countOccurrence(this.contacts.map(contact => contact.firstNameInitial), firstNameInitial);
+    if (count === 0) {
       const index = this.initialList.indexOf(firstNameInitial);
-      if (index > -1) this.initialList.splice(index, 1);
+      if (index > -1) {
+        this.initialList.splice(index, 1);
+      }
     }
   }
 
@@ -161,14 +167,9 @@ class ContactBook {
  * @param {any} element - The element whose occurrence is to be counted.
  * @returns {number} - The number of occurrences of the element.
  */
-  countOccurrence(arr, element) {
-    let count = 0;
-    for (let i = 0; i < arr.length; i++) {
-      if (arr.indexOf(element, i) !== -1) count++;
-    }
-    return count;
-  }
-
+ countOccurrence(arr, element) {
+  return arr.filter(el => el === element).length;
+}
 
   /**
   * This method gets the first name initial and the first name initial + last name initial (if any) of a name.
@@ -378,15 +379,16 @@ function editContact(index) {
  * @param {Event} event - The event triggering this function.
  * @param {number} index - The index of the contact to be updated.
  */
-function saveEditedContact(event, index) {
+async function saveEditedContact(event, index) {
   event.preventDefault();
   contactName = getId('editName').value;
   contactEmail = getId('editEmail').value;
   contactPhone = getId('editPhone').value;
   contactBook.editContact(index, contactName, contactEmail, contactPhone);
-  renderContacts();
   closeContainer('editContactDialog');
   showContact(index);
+  await saveBackendDataOf(contactBook);
+  renderContacts();
 }
 
 
