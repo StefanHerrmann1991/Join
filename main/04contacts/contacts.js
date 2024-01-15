@@ -348,9 +348,9 @@ function selectUser(index) {
  * Deletes a contact from the contact book at a given index and re-renders the contact list.
  * @param {number} index - The index of the contact to be deleted.
  */
-function deleteContact(index) {
+async function deleteContact(index) {
   contactBook.deleteContact(index);
-  saveBackendDataOf(contactBook);
+  await saveBackendDataOf(contactBook);
   getId('contactPopup').innerHTML = ''
   renderContacts();
   closeContainer('editContactDialog')
