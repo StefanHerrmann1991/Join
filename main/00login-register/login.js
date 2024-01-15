@@ -5,9 +5,12 @@
 async function initAuthentification() {
     await loadRegisterdUsers();
     await renderAuth('login');
-
 }
 
+
+async function initResetPassword() {
+    await loadRegisterdUsers();
+}
 
 
 /**
@@ -260,7 +263,7 @@ async function registerUser() {
         let phone = 'unset';
         contactBook.addContact(name, email, phone);
         await saveBackendDataOf(contactBook);
-        registeredUsers.push({ 'name': name, 'email': email, 'password': password });  
+        registeredUsers.push({ 'name': name, 'email': email, 'password': password });
         addUsers();
         renderAuth('login');
     }
@@ -310,11 +313,11 @@ async function addUsers() { //check async: no diff
 async function loadRegisterdUsers() {
     try {
         registeredUsers = JSON.parse(await getItem('registeredUsers'));
+        console.log(registeredUsers);
     } catch (e) {
         registeredUsers = [];
     }
 }
-
 
 
 /**
@@ -359,6 +362,7 @@ async function forgotPassword(event) {
     if (isUserRegistered(email, registeredUsers)) {
         const token = generateRandomToken();
         user.resetToken = token;
+        await saveToBackend('registeredUsers', registeredUsers);
         try {
             await sendForgotPasswordEmail(email, token);
             openSendMail();
@@ -376,13 +380,13 @@ async function forgotPassword(event) {
  * @returns {Promise<void>} A Promise that resolves when the email is sent successfully.
  */
 async function sendForgotPasswordEmail(email, token) {
-    const resetUrl = window.location.origin + '/Join/main/00login-register/resetPassword.html?token=' + token;
+    const resetUrl = window.location.origin + '/main/00login-register/resetPassword.html?token=' + token;
     const message = `Click the following link to reset your password: ${resetUrl}`;
     const formData = new FormData();
     formData.append('email', email);
     formData.append('name', 'Password Reset');
     formData.append('message', message);
-    const response = await fetch('https://stefan-herrmann.org/forgot_mail/forgot_mail.php', {
+    const response = await fetch('https://join.stefan-herrmann.org/main/00login-register/forgot_mail.php', {
         method: 'POST',
         body: formData
     });
@@ -390,6 +394,38 @@ async function sendForgotPasswordEmail(email, token) {
         openPopup('The message could not be sent.', 'error');
     }
 }
+
+
+async function resetPassword(event) {
+    event.preventDefault();
+    const newPassword = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('passwordValidation').value;
+
+    if (newPassword !== confirmPassword) {
+        openPopup('Passwords do not match.', 'error');
+        return;
+    }
+    const userEmailOrToken = getTokenFromUrl();
+    const user = registeredUsers.find(u => u.resetToken === userEmailOrToken);
+    console.log(user, registeredUsers);
+    if (user) {
+        user.password = newPassword;
+        delete user.resetToken;
+        await saveToBackend('registeredUsers', registeredUsers);
+        openPopup('Password successfully updated.', 'success');
+        renderAuth('login');
+    } else {
+        openPopup('User not found.', 'error');
+    }
+}
+
+
+function getTokenFromUrl() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    return urlParams.get('token');
+}
+
 
 
 /**
@@ -405,5 +441,4 @@ function generateRandomToken() {
     }
     return result;
 }
-
 

@@ -3,7 +3,7 @@
 ########### CONFIG ###############
 
 
-$redirect = 'resetPassword.html';
+$redirect = 'serve_reset_password.php';
 
 ########### CONFIG END ###########
 
