@@ -226,9 +226,9 @@ function boardsContentHTML(board) {
 function editSubtaskHTML(subtask, index) {
     return `
     <div class="subtask-checkbox-container">        
-        <label for="checkbox-${index}" class="subtask-label"></label>
+        <label class="subtask-label"></label>
         <li class="each-subtask" id="eachSubtask-${index}" onmouseenter="showEditSubtask(${index})" onmouseleave="hideEditSubtask(${index})">
-            <button class="subtask" type="button" onclick="openSubtask(${index})" >
+            <button class="subtask" type="button" onclick="openSubtask(${index})">
                 <div class="bullet"></div>
                 <div>${subtask.title}</div>                
             </button>

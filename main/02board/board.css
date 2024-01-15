@@ -745,6 +745,10 @@ h3 {
 .accept-edit-btn {
   width: 100px !important;
   align-self: flex-end;
+  padding: 16px 16px;
+  background-color: #2A3647;
+  color: white;
+  border-radius: 10px;
 }
 
 .details-assigned-users {
