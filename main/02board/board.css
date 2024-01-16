@@ -94,41 +94,6 @@ input, button {
   position: relative;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 12px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  border-radius: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #f5f5f5;
-  border-radius: 8px;
-}
-
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #ccc #f5f5f5;
-}
-
-*::-ms-scrollbar {
-  width: 4px;
-  height: 8px;
-}
-
-*::-ms-thumb {
-  background-color: #ccc;
-  border-radius: 8px;
-}
-
-*::-ms-track {
-  background-color: #f5f5f5;
-  border-radius: 8px;
-}
-
 #header {
   position: relative;
   z-index: 1;
@@ -240,7 +205,7 @@ h3 {
 
 .popup-message {
   position: absolute;
-  z-index: 105;
+  z-index: 6000;
   background-color: rgba(0, 0, 0, 0.2);
   height: 100svh;
   width: 100svw;
@@ -252,7 +217,7 @@ h3 {
 
 .add-task-popup {
   position: absolute;
-  z-index: 105;
+  z-index: 6000;
   background-color: rgba(0, 0, 0, 0.2);
   height: 100svh;
   width: 100svw;
@@ -322,6 +287,7 @@ h3 {
 }
 
 .notification-message {
+  z-index: 100000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -571,7 +537,7 @@ h3 {
     height: 56px;
   }
   .main-container {
-    height: calc(100% - 56px - 40px);
+    height: calc(100% - 56px - 40px - 5%);
   }
 }
 @media (min-width: 2400px) {
@@ -593,7 +559,7 @@ h3 {
 }
 .delete-popup-container {
   position: absolute;
-  z-index: 105;
+  z-index: 6000;
   background-color: rgba(0, 0, 0, 0.2);
   height: 100svh;
   width: 100svw;
@@ -875,7 +841,7 @@ h3 {
 
 .edit-task-dialog {
   position: absolute;
-  z-index: 105;
+  z-index: 6000;
   background-color: rgba(0, 0, 0, 0.2);
   height: 100svh;
   width: 100svw;

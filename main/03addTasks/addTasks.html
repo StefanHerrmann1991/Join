@@ -12,7 +12,7 @@
 
     <script src="../../main/04contacts/contacts.js"></script>
     <!-- css data -->
-    <link rel="stylesheet" href="addTasks.css">   
+    <link rel="stylesheet" href="addTasks.css">
     <link rel="stylesheet" href="addTasks-responsive.css">
     <link rel="stylesheet" href="../../styles.css">
     <link rel="icon" href="../../assets/img/logo.png" type="image/x-icon">
@@ -23,7 +23,9 @@
 </head>
 
 <body onload="initTasks()">
-    <div class="popup-message d-none" id="popUpMessage"></div>
+    <div class="popup-message d-none" id="successfulSubmit">
+        <div class="task-submit-successful">Task added to board <img src="../../assets/img/board.png"></div>
+    </div>
     <div class="page-container">
         <div class="nav-con" w3-include-html="../../index.html"></div>
         <div class="page-con">
@@ -75,13 +77,11 @@
                                             class="priority-radio" required>
                                         Urgent<img src="../../assets/img/prioUrgent.png">
                                     </label>
-
                                     <label for="medium" class="medium priority-btn">
                                         <input type="radio" id="medium" name="priority" value="medium"
                                             class="priority-radio">
                                         Medium<img class="medium-prio" src="../../assets/img/prioMedium.png">
                                     </label>
-
                                     <label for="low" class="low priority-btn">
                                         <input type="radio" id="low" name="priority" value="low" class="priority-radio">
                                         Low<img src="../../assets/img/prioLow.png">

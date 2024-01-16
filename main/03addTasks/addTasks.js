@@ -32,7 +32,7 @@ async function addToTasks(board) {
     const task = await processTaskInputs(board);
     task.id = tasks.length + 1;
     tasks.push(task);
-    saveToBackend('tasks', tasks)
+    saveToBackend('tasks', tasks);
     openContainer('successfulSubmit');
     checkCurrentTitle();
 }
@@ -292,7 +292,8 @@ function newSubtask() {
     let subtaskInput = getId('subtaskInput').value;
     if (subtaskInput.length > 2) {
         subtasks.push({ title: subtaskInput, checked: false });
-        renderSubtasks(); // Call updateSubtaskList instead
+        cancelSubtask();
+        renderSubtasks(); 
     } else {
         openPopup('The subtask needs to have at least three letters', 'error')
     }
@@ -302,7 +303,6 @@ function newSubtask() {
 function renderSubtasks() {
     let renderedSubtasks = getId('renderedSubtasks');
     renderedSubtasks.innerHTML = "";
-
     subtasks.forEach((subtask, index) => {
         renderedSubtasks.innerHTML += newSubtaskHTML(subtask, index);
     });
@@ -319,6 +319,8 @@ function showEditSubtask(index) {
     getId(`subtaskEdit-${index}`).classList.remove('d-none');
 
 }
+
+
 function hideEditSubtask(index) {
     getId(`subtaskEdit-${index}`).classList.add('d-none');
 }
@@ -373,6 +375,7 @@ document.addEventListener('click', function (event) {
         }
     }
 }, true);
+
 
 document.addEventListener('click', function (event) {
     let categoriesContainer = getId('categoriesContainer');
@@ -512,6 +515,7 @@ function filterUsers(searchTerm) {
     });
     renderUserList(filteredUsers)
 }
+
 
 function openAddTaskPopup() {
     initTasks();

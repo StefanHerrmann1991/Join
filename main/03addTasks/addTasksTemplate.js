@@ -81,7 +81,7 @@ function renderAddTask() {
     return `
     <div class="add-task-popup-dialog">
     <div class="task-main">
-    <div class="popup-message d-none" id="popUpMessage">
+    <div class="popup-message d-none">
     </div>
         <button class="close-upper-right" onclick="closeAddTaskPopup()">
             <img src="../../assets/img/cancel.png">

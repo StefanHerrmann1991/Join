@@ -288,6 +288,7 @@ h3 {
 }
 
 .notification-message {
+  z-index: 100000;
   display: flex;
   justify-content: center;
   align-items: center;
