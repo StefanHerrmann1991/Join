@@ -95,42 +95,9 @@ input, button {
   position: relative;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 12px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  border-radius: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #f5f5f5;
-  border-radius: 8px;
-}
-
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #ccc #f5f5f5;
-}
-
-*::-ms-scrollbar {
-  width: 4px;
-  height: 8px;
-}
-
-*::-ms-thumb {
-  background-color: #ccc;
-  border-radius: 8px;
-}
-
-*::-ms-track {
-  background-color: #f5f5f5;
-  border-radius: 8px;
-}
-
 #header {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -239,7 +206,7 @@ h3 {
 
 .popup-message {
   position: absolute;
-  z-index: 105;
+  z-index: 6000;
   background-color: rgba(0, 0, 0, 0.2);
   height: 100svh;
   width: 100svw;
@@ -251,7 +218,7 @@ h3 {
 
 .add-task-popup {
   position: absolute;
-  z-index: 105;
+  z-index: 6000;
   background-color: rgba(0, 0, 0, 0.2);
   height: 100svh;
   width: 100svw;
@@ -570,7 +537,7 @@ h3 {
     height: 56px;
   }
   .main-container {
-    height: calc(100% - 56px - 40px);
+    height: calc(100% - 56px - 40px - 5%);
   }
 }
 @media (min-width: 2400px) {
@@ -651,8 +618,10 @@ textarea {
 .main-container {
   width: 90%;
   margin: auto;
-  height: calc(100% - 90px);
+  max-height: calc(100% - 90px - 5%);
   padding: 5% 0px;
+  overflow-y: auto;
+  overflow-x: clip;
 }
 .main-container .title-form {
   display: flex;
@@ -678,7 +647,9 @@ textarea {
 }
 
 .add-task-right {
+  position: relative;
   width: 45%;
+  box-sizing: border-box;
 }
 
 .add-task-left {
@@ -693,10 +664,6 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
-}
-
-.add-task-right {
-  position: relative;
 }
 
 /* ********************************MAIN BUTTONS**************************************<***** */
@@ -1114,6 +1081,7 @@ input.subtask-checkbox[type=checkbox]:checked {
   overflow-y: hidden;
   position: relative;
   background: #FFFFFF;
+  z-index: 5000;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
 }
@@ -1121,6 +1089,7 @@ input.subtask-checkbox[type=checkbox]:checked {
   bottom: 5%;
 }
 .task-main .title-form {
+  z-index: 5000;
   padding: 35px;
   margin: auto;
   overflow-y: auto;

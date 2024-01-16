@@ -51,8 +51,10 @@ textarea
 .main-container
     width: 90%
     margin: auto
-    height: calc(100% - 90px)
+    max-height: calc(100% - 90px - 5%)
     padding: 5% 0px
+    overflow-y: auto
+    overflow-x: clip
     .title-form
         display: flex
         flex-direction: column
@@ -71,7 +73,9 @@ textarea
         width: 100%
 
 .add-task-right
+    position: relative
     width: 45%
+    box-sizing: border-box
 
 .add-task-left
     width: 45%
@@ -84,8 +88,8 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active
     -webkit-box-shadow: 0 0 0 30px white inset !important
 
-.add-task-right
-    position: relative
+
+    
 
 /* ********************************MAIN BUTTONS**************************************<***** */
 
@@ -301,7 +305,6 @@ input:-webkit-autofill:active
         height: 20px
         width: 20px
 
-
 .square-checkbox
     -webkit-appearance: none
     -moz-appearance: none
@@ -431,11 +434,13 @@ input.subtask-checkbox[type="checkbox"]:checked
     overflow-y: hidden
     position: relative
     background: #FFFFFF
+    z-index: 5000
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1)
     border-radius: 30px
     .btn-container
         bottom: 5%
     .title-form
+        z-index: 5000
         padding: 35px
         margin: auto
         overflow-y: auto

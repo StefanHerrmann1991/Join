@@ -50,24 +50,28 @@
 
 @media (max-width: 768px)
 
+    .task-main .all-categories-list::after
+        display: none
+
     .main-container
         padding: 20px 0px
-        height: calc( 100% - 76px - 28px )
 
     .task-main
         background-color: #F6F7F8
         box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1)
-        
+
         .title-form
             min-width: auto
             display: block !important
             position: static
             transform: unset
             max-height: auto
+            box-sizing: content-box
 
     .title-form
         max-height: calc( 100% - 76px )
         overflow: scroll
+        box-sizing: border-box
 
     .btn-container
         position: absolute
