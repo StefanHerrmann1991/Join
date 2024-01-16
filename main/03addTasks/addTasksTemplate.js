@@ -162,6 +162,7 @@ function renderAddTask() {
                                     <div id="openCategoryBtn">
                                         <button class="toggle-user-input user-menu" onclick="toggleCategoryInput()">
                                             <div>Select task category</div>
+                                            <input id="validateCategory" required class="hidden-input">
                                             <img class="category-input small-btn" src=" ../../assets/img/open.png">
                                             <img class="category-input small-btn d-none"
                                                 src="../../assets/img/openUp.png">
@@ -178,7 +179,7 @@ function renderAddTask() {
                                                 <div class="category-input-color">
                                                     <div id="chosenColor"></div>
                                                     <input minlength="3" id="categoryInput" type="text"
-                                                        placeholder="New category name" required>
+                                                        placeholder="New category name">
                                                 </div>
                                                 <div class="button-container">
                                                     <button onclick="closeNewCategory()" type="button"

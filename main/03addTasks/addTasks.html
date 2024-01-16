@@ -103,11 +103,12 @@
                                     <div class="absolute">
                                         <div id="openCategoryBtn">
                                             <button class="toggle-user-input user-menu" onclick="toggleCategoryInput()">
-                                                <div>Select task category</div>
+                                                <div>Select task category</div>                                              
+                                                <input id="validateCategory" required class="hidden-input">
                                                 <img class="category-input small-btn" src=" ../../assets/img/open.png">
                                                 <img class="category-input small-btn d-none"
                                                     src="../../assets/img/openUp.png">
-                                            </button>
+                                                                                                </button>
                                         </div>
                                         <div id="categoriesContainer" class="all-categories-list d-none">
                                             <div class="box-shadow">
@@ -115,12 +116,13 @@
                                                 <button id="newCategoryBtn" type="button" class="new-category-btn"
                                                     onclick="openNewCategory()">New
                                                     category</button>
+                                                    
                                                 <div id="newCategoryContainer" class="d-none new-category-menu">
                                                     <div class=" subtasks-container">
                                                         <div class="category-input-color">
                                                             <div id="chosenColor"></div>
                                                             <input minlength="3" id="categoryInput" type="text"
-                                                                placeholder="New category name" required>
+                                                                placeholder="New category name">
                                                         </div>
                                                         <div class="button-container">
                                                             <button onclick="closeNewCategory()" type="button"

@@ -120,6 +120,7 @@ function editTaskDialogHTML(index, task) {
                                 <div id="openCategoryBtn">
                                     <button class="toggle-user-input user-menu" onclick="toggleCategoryInput()">
                                         <div>Select task category</div>
+                                        <input id="validateCategory" required class="hidden-input">
                                         <img class="category-input small-btn" src=" ../../assets/img/open.png">
                                         <img class="category-input small-btn d-none"
                                             src="../../assets/img/openUp.png">

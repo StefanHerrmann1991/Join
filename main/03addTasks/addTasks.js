@@ -79,6 +79,7 @@ function processTaskInputs(board) {
     if (board == undefined) board = 'board-0';
     else board = chosenBoard;
     let [title, description, category, date] = getIds('title', 'description', 'category', 'date');
+    console.log(category)
     let priority = getPriority();
     let task = {
         'title': title.value,
@@ -196,7 +197,7 @@ function saveCategory(index) {
     let chosenCategoryOption = getId('openCategoryBtn');
     let category = categories[index];
     chosenCategoryOption.innerHTML = chosenCategoryHTML(category);
-    validateData('categoryInput', category);
+    validateData('validateCategory', category);
     renderCategories();
     closeContainer('categoryMenu');
 
@@ -234,8 +235,7 @@ function clearInputTasks() {
     const radioEls = document.querySelectorAll('.priority-radio');
     radioEls.forEach(r => r.parentElement.classList.remove('selected'));
     getId('renderedSubtasks').innerHTML = '';
-    getId('userInitialContainer').innerHTML = '';
-    getId('categoryInput').required = true;
+    getId('userInitialContainer').innerHTML = '';   
     getId('categoryInput').value = '';
     closeNewCategory();
     resetCategory();
@@ -250,6 +250,7 @@ function resetCategory() {
     categoryBtn.innerHTML = `
     <button class="toggle-user-input user-menu" onclick="toggleCategoryInput()">
     <div>Select task category</div>
+    <input id="validateCategory" required class="hidden-input">
         <img class="category-input small-btn" src=" ../../assets/img/open.png">
         <img class="category-input small-btn d-none" src="../../assets/img/openUp.png">
     </button>`
