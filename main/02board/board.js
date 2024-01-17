@@ -305,6 +305,9 @@ async function renderEditTask(index) {
 }
 
 
+function closeEditTaskDialog() {}
+
+
 function openCurrentCategory(category) {
     let chosenCategoryOption = getId('openCategoryBtn');
     chosenCategoryOption.innerHTML = chosenCategoryHTML(category);
