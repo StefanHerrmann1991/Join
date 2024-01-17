@@ -105,7 +105,7 @@ input, button {
   background: #FFFFFF;
   height: 90px;
   position: relative;
-  z-index: 1000;
+  z-index: 1;
 }
 #header .inner-header {
   width: 90%;

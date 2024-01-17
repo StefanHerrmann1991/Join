@@ -76,10 +76,10 @@ function validateData(id, array) {
  * @returns {object} The task object.
  */
 function processTaskInputs(board) {
+
     if (board == undefined) board = 'board-0';
     else board = chosenBoard;
     let [title, description, category, date] = getIds('title', 'description', 'category', 'date');
-    console.log(category)
     let priority = getPriority();
     let task = {
         'title': title.value,
@@ -235,7 +235,7 @@ function clearInputTasks() {
     const radioEls = document.querySelectorAll('.priority-radio');
     radioEls.forEach(r => r.parentElement.classList.remove('selected'));
     getId('renderedSubtasks').innerHTML = '';
-    getId('userInitialContainer').innerHTML = '';   
+    getId('userInitialContainer').innerHTML = '';
     getId('categoryInput').value = '';
     closeNewCategory();
     resetCategory();
@@ -294,7 +294,7 @@ function newSubtask() {
     if (subtaskInput.length > 2) {
         subtasks.push({ title: subtaskInput, checked: false });
         cancelSubtask();
-        renderSubtasks(); 
+        renderSubtasks();
     } else {
         openPopup('The subtask needs to have at least three letters', 'error')
     }
@@ -425,7 +425,6 @@ function toggleCategoryInput() {
 
 function renderUserList(filteredUsers) {
     let usersArray = filteredUsers || users;
-  
     const userListContainer = getId('allUsersList');
     userListContainer.innerHTML = '';
     usersArray.forEach((user) => {

@@ -239,8 +239,20 @@ function renderEditAssignedUsers(usersArr) {
 function openTask(index) {
     tasks[index]
     renderEditTask();
+    console.log()
 }
 
+
+function closeEditTask() {
+    let editTaskDialog = getId('editTaskDialog');
+    closeTaskDialog();
+    clearInputTasks();
+    editTaskDialog.innerHTML = '';
+}
+
+function closeEditTaskEvent(event) {
+    editIsOpen = false;
+}
 
 /**
  * Renders the detailed view of a specific task.
@@ -305,7 +317,7 @@ async function renderEditTask(index) {
 }
 
 
-function closeEditTaskDialog() {}
+function closeEditTaskDialog() { }
 
 
 function openCurrentCategory(category) {
@@ -315,12 +327,12 @@ function openCurrentCategory(category) {
 
 
 function renderTaskSubtasks(subtaskArray) {
-    subtasks = subtaskArray;   
+    subtasks = subtaskArray;
     let subtaskHTML = '';
     if (subtaskArray.length > 0) {
         for (let index = 0; index < subtaskArray.length; index++) {
             const subtask = subtaskArray[index];
-                     subtaskHTML += editSubtaskHTML(subtask, index);
+            subtaskHTML += editSubtaskHTML(subtask, index);
         }
     }
     return subtaskHTML;
@@ -337,7 +349,7 @@ function renderTaskSubtasks(subtaskArray) {
 async function changeTask(index, board) {
     event.preventDefault();
     chosenBoard = board
-    let task = processTaskInputs(board);
+    let task = processTaskInputs(board, index);
     tasks[index] = task;
     saveToBackend('tasks', tasks)
     closeTaskDialog();
@@ -351,14 +363,11 @@ async function changeTask(index, board) {
  */
 function closeTaskDialog() {
     detailsAreOpen = false;
-    closeContainer('editTaskDialog');  
+    closeContainer('editTaskDialog');
     renderBoards(tasks);
 }
 
-function closeEditTask() {
-    closeContainerEvent();
-    editIsOpen = false;
-}
+
 
 
 /**

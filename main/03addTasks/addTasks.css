@@ -106,7 +106,7 @@ input, button {
   background: #FFFFFF;
   height: 90px;
   position: relative;
-  z-index: 1000;
+  z-index: 1;
 }
 #header .inner-header {
   width: 90%;
@@ -1300,7 +1300,7 @@ input.subtask-checkbox[type=checkbox]:checked {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
   background: var(--white, #FFF);
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
@@ -1330,6 +1330,9 @@ input.subtask-checkbox[type=checkbox]:checked {
 .initial-name {
   display: flex;
   align-items: center;
+}
+.initial-name div {
+  font-size: 13px;
 }
 
 .select-category {

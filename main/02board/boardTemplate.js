@@ -48,116 +48,116 @@ function editTaskHTML(task, index) {
 
 
 function editTaskDialogHTML(index, task) {
-    editIsOpen = !editIsOpen;    
+    editIsOpen = !editIsOpen;
     return `
-    <div class="edit-task-dialog center" id="editTaskContainer" onclick="closeContainerEvent(event, 'editTaskContainer')">
-    <div class="edit-task-main">
-        <div class="edit-task-container">
-            <button class="close-upper-right" onclick="closeTaskDialog()"><img
-                    src="../../assets/img/cancel.png"></button>
-            <form class="edit-task-form" onsubmit="changeTask(${index}, '${task.board}')">            
-            <div class="task-fields">                
-                    <h3>Title</h3>
-                    <input minlength="3" required class="title" id="title" placeholder="Enter a title" value="${task.title}">
-                    <h3>Description</h3>
-                    <textarea minlength="3" resize="none" required id="description"
-                        placeholder="Enter a description">${task.description}</textarea>
-                    <h3>Assigned to</h3>
-                    <div id="usersBackground">
-                        <div name="usersSelect" id="usersSelect" class="users-select">
-                            <div id="userAssignBtn" class="absolute">
-                                <button class="toggle-user-input user-menu" onclick="toggleUsersInput()">
-                                    <div>Assign contacts</div>
-                                    <img class="small-btn" src="../../assets/img/open.png">
-                                </button>
-                            </div>
-                            <div id="userSearchInputCon" class="absolute d-none">
-                                <div class="input-userlist-box">
-                                    <div class="toggle-user-input user-menu">
-                                        <input id="userSearchInput" class="user-search-input"
-                                            placeholder="Search for collegues" oninput="filterUsers(this.value)">
-                                        <button class="assign-user-btn" onclick="toggleUsersInput()"><img
-                                                class="small-btn" src="../../assets/img/openUp.png"></button>
+        <div class="edit-task-dialog center" id="editTaskContainer" onclick="closeEditTaskEvent(event)">
+            <div class="edit-task-main">
+                <div class="edit-task-container">
+                    <button class="close-upper-right" onclick="closeEditTask()"><img src="../../assets/img/cancel.png"></button>
+                    <form class="edit-task-form" onsubmit="changeTask(${index}, '${task.board}')">
+                        <div class="task-fields">
+                            <h3>Title</h3>
+                            <input minlength="3" required class="title" id="title" placeholder="Enter a title"
+                                value="${task.title}">
+                            <h3>Description</h3>
+                            <textarea minlength="3" resize="none" required id="description"
+                                placeholder="Enter a description">${task.description}</textarea>
+                            <h3>Assigned to</h3>
+                            <div id="usersBackground">
+                                <div name="usersSelect" id="usersSelect" class="users-select">
+                                    <div id="userAssignBtn" class="absolute">
+                                        <button class="toggle-user-input user-menu" onclick="toggleUsersInput()">
+                                            <div>Assign contacts</div>
+                                            <img class="small-btn" src="../../assets/img/open.png">
+                                        </button>
                                     </div>
-                                    <div id="allUsersList" class="all-users-list"></div>
+                                    <div id="userSearchInputCon" class="absolute d-none">
+                                        <div class="input-userlist-box">
+                                            <div class="toggle-user-input user-menu">
+                                                <input id="userSearchInput" class="user-search-input"
+                                                    placeholder="Search for collegues" oninput="filterUsers(this.value)">
+                                                <button class="assign-user-btn" onclick="toggleUsersInput()"><img
+                                                        class="small-btn" src="../../assets/img/openUp.png"></button>
+                                            </div>
+                                            <div id="allUsersList" class="all-users-list"></div>
+                                        </div>
+                                    </div>
                                 </div>
+                                <div id="userInitialContainer" class="user-initial-container">
+                                    ${renderEditAssignedUsers(task.assignedTo)}</div>
                             </div>
-                        </div>
-                        <div id="userInitialContainer" class="user-initial-container">${renderEditAssignedUsers(task.assignedTo)}</div>                   
-                    </div>                
-                    <div class="form-and-btn">
-                        <h3>Due date</h3>
-                        <input required id="date" class="date" type="date" name="setTodaysDate" value="${task.date}">
-                        <h3>Prio</h3>
-                        <div id="urgency" class="priority-btns">
-                            <label for="urgent" class="urgent priority-btn">
-                                <input type="radio" id="urgent" name="priority" value="urgent" class="priority-radio"
-                                    required>
-                                Urgent<img src="../../assets/img/prioUrgent.png">
-                            </label>
-                            <label for="medium" class="medium priority-btn">
-                                <input type="radio" id="medium" name="priority" value="medium" class="priority-radio">
-                                Medium<img class="medium-prio" src="../../assets/img/prioMedium.png">
-                            </label>
-                            <label for="low" class="low priority-btn">
-                                <input type="radio" id="low" name="priority" value="low" class="priority-radio">
-                                Low<img src="../../assets/img/prioLow.png">
-                            </label>
-                        </div>
-                        <h3>Subtasks</h3>
-                        <div class="assign-btn-container" id="subtasks">
-                            <button onclick="changeSubtaskInput()" type="button" class="assign-btn" type="text">
-                                <div id="subtaskMenu">Add new subtask</div>
-                                <img class="add-subtask small-btn" src="../../assets/img/addIcon.png">
-                            </button>
-                        </div>
-                        <div id="renderedSubtasks">${renderTaskSubtasks(task.subtasks)}</div>
-                    </div>
-                    <h3> Category</h3>
-                    <div id="categoryBackground">
-                        <div class="select-category">
-                            <div class="absolute">
-                                <div id="openCategoryBtn">
-                                    <button class="toggle-user-input user-menu" onclick="toggleCategoryInput()">
-                                        <div>Select task category</div>
-                                        <input id="validateCategory" required class="hidden-input">
-                                        <img class="category-input small-btn" src=" ../../assets/img/open.png">
-                                        <img class="category-input small-btn d-none"
-                                            src="../../assets/img/openUp.png">
+                            <div class="form-and-btn">
+                                <h3>Due date</h3>
+                                <input required id="date" class="date" type="date" name="setTodaysDate" value="${task.date}">
+                                <h3>Prio</h3>
+                                <div id="urgency" class="priority-btns">
+                                    <label for="urgent" class="urgent priority-btn">
+                                        <input type="radio" id="urgent" name="priority" value="urgent" class="priority-radio"
+                                            required>
+                                        Urgent<img src="../../assets/img/prioUrgent.png">
+                                    </label>
+                                    <label for="medium" class="medium priority-btn">
+                                        <input type="radio" id="medium" name="priority" value="medium" class="priority-radio">
+                                        Medium<img class="medium-prio" src="../../assets/img/prioMedium.png">
+                                    </label>
+                                    <label for="low" class="low priority-btn">
+                                        <input type="radio" id="low" name="priority" value="low" class="priority-radio">
+                                        Low<img src="../../assets/img/prioLow.png">
+                                    </label>
+                                </div>
+                                <h3>Subtasks</h3>
+                                <div class="assign-btn-container" id="subtasks">
+                                    <button onclick="changeSubtaskInput()" type="button" class="assign-btn" type="text">
+                                        <div id="subtaskMenu">Add new subtask</div>
+                                        <img class="add-subtask small-btn" src="../../assets/img/addIcon.png">
                                     </button>
                                 </div>
-                                <div id="categoriesContainer" class="all-categories-list d-none">
-                                    <div id="categoryList" class="category-list"></div>
-                                    <button id="newCategoryBtn" type="button" class="new-category-btn"
-                                        onclick="openNewCategory()">New
-                                        category</button>
-                                        <div id="newCategoryContainer" class="d-none new-category-menu">
-                                            <div class=" subtasks-container">
-                                                <div class="category-input-color">
-                                                <div id="chosenColor"></div>
-                                              </div>
-                                                <div class="button-container">
-                                                <button onclick="closeNewCategory()" type="button"
-                                                    class="cancel-button"><img class="small-btn"
-                                                        src="../../assets/img/cancelDark.png"></button>
-                                                <button type="button" class="add-button" 
-                                                    onclick="addCategory()"><img class="small-btn"
-                                                        src="../../assets/img/checkDark.png"></button>
+                                <div id="renderedSubtasks">${renderTaskSubtasks(task.subtasks)}</div>
+                            </div>
+                            <h3> Category</h3>
+                            <div id="categoryBackground">
+                                <div class="select-category">
+                                    <div class="absolute">
+                                        <div id="openCategoryBtn">
+                                            <button class="toggle-user-input user-menu" onclick="toggleCategoryInput()">
+                                                <div>Select task category</div>
+                                                <input id="validateCategory" required class="hidden-input">
+                                                <img class="category-input small-btn" src=" ../../assets/img/open.png">
+                                                <img class="category-input small-btn d-none" src="../../assets/img/openUp.png">
+                                            </button>
+                                        </div>
+                                        <div id="categoriesContainer" class="all-categories-list d-none">
+                                            <div id="categoryList" class="category-list"></div>
+                                            <button id="newCategoryBtn" type="button" class="new-category-btn"
+                                                onclick="openNewCategory()">New
+                                                category</button>
+                                            <div id="newCategoryContainer" class="d-none new-category-menu">
+                                                <div class=" subtasks-container">
+                                                    <div class="category-input-color">
+                                                        <div id="chosenColor"></div>
+                                                        <input minlength="3" id="categoryInput" type="text"
+                                                            placeholder="New category name">
+                                                    </div>
+                                                    <div class="button-container">
+                                                        <button onclick="closeNewCategory()" type="button"
+                                                            class="cancel-button"><img class="small-btn"
+                                                                src="../../assets/img/cancelDark.png"></button>
+                                                        <button type="button" class="add-button" onclick="addCategory()"><img
+                                                                class="small-btn" src="../../assets/img/checkDark.png"></button>
+                                                    </div>
                                                 </div>
+                                                <div id="colorPicker" class="color-picker"></div>
                                             </div>
                                         </div>
-                                        <div id="colorPicker" class="color-picker"></div>
                                     </div>
                                 </div>
-                            </div>                 
-                        </div>               
-                    <button class="accept-edit-btn btn-1">Ok</button>                   
+                                </div>
+                            <button class="accept-edit-btn btn-1">Ok</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            </form>
         </div>
-        </div>
-    </div>
     `
 }
 
