@@ -9,6 +9,10 @@
   padding-inline: 0px;
 }
 
+body {
+  box-sizing: border-box;
+}
+
 .help-and-logout {
   display: flex;
   align-items: center;
@@ -800,6 +804,10 @@ h3 {
 }
 .task .description {
   color: #A8A8A8;
+}
+.task:hover {
+  transform: rotate(2deg);
+  transition: 125ms;
 }
 
 .subtasks-in-details {

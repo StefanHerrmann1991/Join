@@ -278,7 +278,7 @@ function displayStringsArr(stringsArray) {
  * Logs the user out by redirecting them to the login page.
  */
 function logout() {
-    window.open('../00login-register/login.html');
+    window.location.href = '../00login-register/login.html';
 }
 
 

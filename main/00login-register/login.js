@@ -211,7 +211,7 @@ function openSendMail() {
  * Opens the summary when a not registerd user wants to test the website.
  */
 function loginAsGuest() {
-    window.open('../../main/01summary/summary.html');
+    window.location.href = '../../main/01summary/summary.html';
 }
 
 
@@ -279,8 +279,7 @@ async function addUsers() { //check async: no diff
  */
 async function loadRegisterdUsers() {
     try {
-        registeredUsers = JSON.parse(await getItem('registeredUsers'));
-        
+        registeredUsers = JSON.parse(await getItem('registeredUsers'));        
     } catch (e) {
         registeredUsers = [];
     }
@@ -392,7 +391,6 @@ function getTokenFromUrl() {
 }
 
 
-
 /**
  * Generates a random token for password recovery.
  * @returns {string} The generated random token.
@@ -406,4 +404,3 @@ function generateRandomToken() {
     }
     return result;
 }
-
