@@ -35,6 +35,8 @@ let contactIsOpen = false;
 let addContactBtn = getId('addContactBtn');
 
 
+let chosenContact = '';
+
 /**
  * Creates a new contact object.
  *

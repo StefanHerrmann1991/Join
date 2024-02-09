@@ -18,7 +18,7 @@ async function initTasks() {
     await renderCategories();
     startPriorityEventListener();
     compareDate();
-    highlightChosenMenu()
+    highlightChosenMenu();
 }
 
 
@@ -35,6 +35,7 @@ async function addToTasks(board) {
     saveToBackend('tasks', tasks);
     openContainer('successfulSubmit');
     checkCurrentTitle();
+    closeAddTaskPopup();
 }
 
 
@@ -526,7 +527,10 @@ function openAddTaskPopup() {
 
 function closeAddTaskPopup() {
     closeContainer('addTaskPopUpDialog');
-    getId('addTaskPopUpDialog').innerHTML = '';
+    const element = getId('addTaskPopUpDialog');
+    if (element) { 
+        element.innerHTML = ''; 
+    }
 }
 
 
