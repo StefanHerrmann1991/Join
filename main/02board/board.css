@@ -615,7 +615,7 @@ h3 {
     height: 56px;
   }
   .main-container {
-    height: calc(100% - 56px - 40px - 5%);
+    height: calc(100% - 56px - 40px - 50px);
   }
 }
 @media (min-width: 2400px) {
@@ -763,6 +763,7 @@ h3 {
   background-color: #D1D1D1;
   border: 1px dashed #A8A8A8;
   border-radius: 10px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;

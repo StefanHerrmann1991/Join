@@ -615,7 +615,7 @@ h3 {
     height: 56px;
   }
   .main-container {
-    height: calc(100% - 56px - 40px - 5%);
+    height: calc(100% - 56px - 40px - 50px);
   }
 }
 @media (min-width: 2400px) {
